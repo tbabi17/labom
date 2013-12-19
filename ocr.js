@@ -2731,6 +2731,7 @@ Ext.define('OCS.Dashboard', {
 					layout: 'fit',
 					title:'Deals by revenue',		
 					columnWidth: 1/2,
+					autoScroll: true,
 					height: 400,
 					margin: '0 0 10 0',
 					tbar: [{
