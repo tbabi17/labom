@@ -2134,6 +2134,7 @@ Ext.define('OCS.CaseView', {
 			}
 		);
 
+		me.filterData('Open Cases');
 		return me.grid;
 	},
 		
