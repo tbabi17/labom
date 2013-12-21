@@ -1533,6 +1533,7 @@ Ext.define('OCS.DealView', {
 			}
 		);
 
+		me.filterData('Open Deals');
 		return me.grid;
 	},
 		
