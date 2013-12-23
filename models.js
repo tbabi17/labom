@@ -609,7 +609,7 @@ function renderClass(v) {
 }
 
 function renderTip(v, metadata, record, rowIndex, colIndex, store) {
-	metadata.tdAttr = 'data-qtip="<b>right click</b></br>"'
+	metadata.tdAttr = 'data-qtip="<b>double click</b></br>"'
 	return v;
 }
 
