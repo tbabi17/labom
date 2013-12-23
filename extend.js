@@ -700,23 +700,18 @@ Ext.define('OCS.Window', {
 });
 
 Ext.define('OCS.HelpWindow', {
-	extend : 'Ext.Window',
-	table: '',
-	layout: 'border',
-	closable: true,
-	modal: true,
-	minWidth: 350,
+	extend : 'OCS.Window',
 
-	constructor: function(cnfg) {
-        this.callParent(arguments);
-        this.initConfig(cnfg);
-
-		this.items = [{
+	initComponent: function() {
+		var me = this;
+		me.items = [{
 			xtype: 'panel',
 			autoLoad: {
 				url: ''
 			}
 		}];
+
+		me.callParent(arguments);
     }	
 });
 
