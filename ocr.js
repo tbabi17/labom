@@ -443,7 +443,7 @@ Ext.define('OCS.RetailPanel', {
 				text: 'Help',
 				handler: function(widget, event) {		
 					new OCS.HelpWindow({
-						id: me.xlsName
+						id: me.func
 					}).show();
 				}
 			})
