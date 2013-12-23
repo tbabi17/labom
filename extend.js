@@ -713,6 +713,8 @@ Ext.define('OCS.HelpWindow', {
 			xtype: 'panel',
 			region: 'center',
 			border: false,
+			autoScroll: true,
+			bodyPadding: 5,
 			autoLoad: {
 				url: 'help/'+me.id+'.html'
 			}
