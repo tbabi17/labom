@@ -41,6 +41,16 @@ Ext.define('OCS.ComplainWindow', {
 					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
 					googleEvent(rec, me.func);
 				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
 			})
 		];
 
