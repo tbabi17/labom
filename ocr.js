@@ -948,6 +948,16 @@ Ext.define('OCS.MyActivityGrid', {
 
 					me.grid.getView().getSelectionModel().clearSelections();
 				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
 			})			
 		];
 
@@ -3443,6 +3453,16 @@ Ext.define('OCS.QuotePanel', {
 					} else
 					  Ext.MessageBox.alert('Status', 'No selection !', function() {});
 				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
 			})
 		];
 
@@ -3662,6 +3682,16 @@ Ext.define('OCS.SalesPanel', {
 						}).createWindow();
 					} else
 					  Ext.MessageBox.alert('Status', 'No selection !', function() {});
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
 				}
 			})
 		];
