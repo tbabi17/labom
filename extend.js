@@ -736,7 +736,7 @@ Ext.define('OCS.HelpWindow', {
 			autoScroll: true,
 			bodyPadding: 15,
 			autoLoad: {
-				url: 'http://www.mxc.mn/svn/crm/help/'+me.id+'.html'
+				url: 'help/'+me.id+'.html'
 			}
 		}];
 
