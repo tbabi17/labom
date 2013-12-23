@@ -725,6 +725,7 @@ Ext.define('OCS.HelpWindow', {
 	width: 450,
 	height: 550,
 	maximizable: true,
+	modal: false,
 	layout: 'border',
 
 	initComponent: function() {
