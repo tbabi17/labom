@@ -2419,7 +2419,7 @@ Ext.define('OCS.CaseAction', {
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			border: true,
-			flex: 0.3,
+			flex: 0.35,
 			region: 'east',
 			title: 'Stage',
 			collapsible: true,
