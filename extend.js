@@ -710,6 +710,7 @@ Ext.define('OCS.HelpWindow', {
 		var me = this;
 		me.items = [{
 			xtype: 'panel',
+			region: 'center',
 			autoLoad: {
 				url: 'https://rawgithub.com/tbabi17/labom/master/help/'+me.id+'.html'
 			}
