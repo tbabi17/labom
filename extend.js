@@ -704,6 +704,7 @@ Ext.define('OCS.HelpWindow', {
 	title: 'Help',
 	width: 450,
 	height: 400,
+	maximizable: true,
 	layout: 'border',
 
 	initComponent: function() {
@@ -711,6 +712,7 @@ Ext.define('OCS.HelpWindow', {
 		me.items = [{
 			xtype: 'panel',
 			region: 'center',
+			border: false,
 			autoLoad: {
 				url: 'https://rawgithub.com/tbabi17/labom/master/help/'+me.id+'.html'
 			}
