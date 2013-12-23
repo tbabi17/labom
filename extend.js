@@ -701,11 +701,15 @@ Ext.define('OCS.Window', {
 
 Ext.define('OCS.HelpWindow', {
 	extend : 'OCS.Window',
+	title: 'Help',
+	width: 450,
+	height: 400,
+	layout: 'border',
 
 	initComponent: function() {
 		var me = this;
 		me.items = [{
-			xtype: 'panel'			
+			xtype: 'panel'
 		}];
 
 		me.callParent(arguments);
