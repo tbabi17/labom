@@ -1849,6 +1849,12 @@ Ext.define('OCS.GridView', {
 						}
 					}
 				},
+				{
+					iconCls: 'help',
+					handler: function() {
+						
+					}
+				},
 				'->'
 			]
 		});		
