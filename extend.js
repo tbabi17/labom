@@ -714,7 +714,7 @@ Ext.define('OCS.HelpWindow', {
 			region: 'center',
 			border: false,
 			autoLoad: {
-				url: 'https://rawgithub.com/tbabi17/labom/master/help/'+me.id+'.html'
+				url: 'help/'+me.id+'.html'
 			}
 		}];
 
