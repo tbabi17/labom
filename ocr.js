@@ -436,6 +436,14 @@ Ext.define('OCS.RetailPanel', {
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help', 
+				text: 'Help',
+				handler: function(widget, event) {		
+					
+				}
 			})
 		];
 			
