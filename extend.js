@@ -703,7 +703,7 @@ Ext.define('OCS.HelpWindow', {
 	extend : 'OCS.Window',
 	title: 'Help',
 	width: 450,
-	height: 400,
+	height: 550,
 	maximizable: true,
 	layout: 'border',
 
@@ -714,7 +714,7 @@ Ext.define('OCS.HelpWindow', {
 			region: 'center',
 			border: false,
 			autoScroll: true,
-			bodyPadding: 5,
+			bodyPadding: 15,
 			autoLoad: {
 				url: 'help/'+me.id+'.html'
 			}
