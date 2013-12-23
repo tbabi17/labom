@@ -736,7 +736,7 @@ Ext.define('OCS.HelpWindow', {
 			autoScroll: true,
 			bodyPadding: 15,
 			autoLoad: {
-				url: 'help/'+me.id+'.html'
+				url: 'https://raw.github.com/tbabi17/labom/master/help/'+me.id+'.html'
 			}
 		}];
 
