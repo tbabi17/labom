@@ -699,6 +699,28 @@ Ext.define('OCS.Window', {
 	}
 });
 
+Ext.define('OCS.HelpWindow', {
+	extend : 'Ext.Window',
+	table: '',
+	layout: 'border',
+	closable: true,
+	modal: true,
+	minWidth: 350,
+
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);
+
+		this.items = [{
+			xtype: 'panel',
+			autoLoad: {
+				url: ''
+			}
+		}];
+    }	
+});
+
+
 Ext.define('OCS.AddProductWindow', {
 	extend: 'OCS.Window',
 	title: 'Add product',

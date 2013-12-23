@@ -442,7 +442,7 @@ Ext.define('OCS.RetailPanel', {
 				iconCls   : 'help', 
 				text: 'Help',
 				handler: function(widget, event) {		
-					
+					new OCS.HelpWindow().show();
 				}
 			})
 		];
