@@ -112,7 +112,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
     	            totalProperty: 'results'
     	        },				
 				simpleSortMode: true,
-				extraParams: {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: new Date(new Date().getFullYear(), 0, 1), end_date: new Date(new Date().getFullYear(), 11, 31)}
+				extraParams: {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: new Date(new Date().getFullYear(), 0, 1), end_date: new Date(new Date().getFullYear(), 11, 31), values: 'user_level', where: 0}
 			}
 		});
 
@@ -170,7 +170,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2};
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
 		me.store.load();
 	}
 });
