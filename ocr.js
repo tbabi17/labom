@@ -1512,6 +1512,16 @@ Ext.define('OCS.DealView', {
 					});	
 				}
 			})
+			,'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})
 		];
 
 		return me.actions;
@@ -2112,7 +2122,17 @@ Ext.define('OCS.CaseView', {
 				handler: function(widget, event) {
 					me.deleteRecord();
 				}
-			})			
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})
 		];
 
 		return me.actions;
@@ -3188,6 +3208,16 @@ Ext.define('OCS.CampaignPanel', {
 						  Ext.MessageBox.alert('Status', 'Error !', function() {});
 					   }
 					});		
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
 				}
 			})
 		];
