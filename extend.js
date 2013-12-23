@@ -1849,10 +1849,14 @@ Ext.define('OCS.GridView', {
 						}
 					}
 				},
+				'-',
 				{
+					text : 'System help',
 					iconCls: 'help',
 					handler: function() {
-						
+						new OCS.HelpWindow({
+							id: 'crm_main_help'
+						}).show();
 					}
 				},
 				'->'
