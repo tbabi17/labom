@@ -709,7 +709,10 @@ Ext.define('OCS.HelpWindow', {
 	initComponent: function() {
 		var me = this;
 		me.items = [{
-			xtype: 'panel'
+			xtype: 'panel',
+			autoLoad: {
+				url: ''
+			}
 		}];
 
 		me.callParent(arguments);
