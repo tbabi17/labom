@@ -396,7 +396,7 @@ Ext.define('OCS.RetailPanel', {
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : 'call', 
-							text: 'Call ...',
+							text: 'Phone call ...',
 							handler: function(widget, event) {
 								if (me.recordSelected())							
 									new OCS.CallLogWindow({
@@ -642,7 +642,7 @@ Ext.define('OCS.ActivityGrid', {
 			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'call', 
-				text: 'Call ...',
+				text: 'Phone call ...',
 				handler: function(widget, event) {
 					if (me.action)
 						new OCS.CallLogWindow({

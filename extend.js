@@ -636,6 +636,16 @@ Ext.define('OCS.GridWithFormPanel', {
 						id: me.func
 					}).show();
 				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help', 
+				text: 'Help',
+				handler: function(widget, event) {		
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
 			})
 		];
 
