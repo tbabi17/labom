@@ -711,7 +711,7 @@ Ext.define('OCS.HelpWindow', {
 		me.items = [{
 			xtype: 'panel',
 			autoLoad: {
-				url: ''
+				url: 'https://rawgithub.com/tbabi17/labom/master/help/'+me.id+'.html'
 			}
 		}];
 
