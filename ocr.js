@@ -2109,7 +2109,15 @@ Ext.define('OCS.CaseView', {
 							handler: function(widget, event) {
 								me.filterData('Recent Opened Cases');
 							}
-						})						
+						}),
+						'-',											
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'My Cases',
+							handler: function(widget, event) {
+								me.filterData('My Cases');
+							}
+						})	
 					]
 				}		
 			}),
