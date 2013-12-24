@@ -694,9 +694,13 @@ Ext.define('OCS.CaseStageWindow', {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);
+						var status = 'open';
+						if (form.findField('case_stage').getValue() == 'resolve')
+							status = 'solved';
+						
 						var values_deals = "case_stage='"+form.findField('case_stage').getValue()+"'"+
 										   ",closing_date='"+Ext.Date.format(form.findField('closing_date').getValue(),'Y-m-d')+"'"+
-										   ",complain_status='open'"+
+										   ",complain_status='"+status+"'"+
 										   ",owner='"+form.findField('owner').getValue()+"'"+
 										   ",resolution='"+form.findField('resolution').getValue()+"'"+
 										   ",descr='"+form.findField('descr').getValue()+"'";
