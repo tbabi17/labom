@@ -2139,7 +2139,7 @@ Ext.define('OCS.CaseView', {
 				text: 'Help',
 				handler: function(widget, event) {
 					new OCS.HelpWindow({
-						id: me.func
+						id: 'crm_case_process'
 					}).show();
 				}
 			})
