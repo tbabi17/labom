@@ -129,7 +129,7 @@ Ext.define('OCS.Viewport', {
 				autoEl: {
 					tag: 'div',
 					html:'<div class="caption">'+
-							'<span class="captitle">Optimal CRM [Хувилбар 2.0.1]</span>'+
+							'<span class="captitle">Optimal CRM [Хувилбар 2.0.2]</span>'+
 							'<a href="logout.php" class="logout"><table cellpadding=0 cellspacing=0><tr><td><img class="avatar" src="images/user_male2-48.png"/></td><td>&nbsp;&nbsp;'+logged+' | Гарах</td></tr></table></a>'+
 						  '</div>'
 				}
