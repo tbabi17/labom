@@ -1316,7 +1316,7 @@ Ext.define('OCS.ContactForm', {
 						name: 'parent_crm_id',
 						margins: '0 0 0 6',
 						readOnly: true,
-						hidden: false,
+						hidden: true,
 						width: 40,
 						value: me.parent_crm_id
 					},{
