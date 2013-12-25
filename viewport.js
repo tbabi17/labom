@@ -46,7 +46,7 @@ Ext.define('OCS.Viewport', {
 			autoHeight:true,
 			listeners: {
 				'tabchange': function(tabPanel, tab){					
-					if (!(tab.title != 'Contact' || tab.title = 'Account'))					
+					if (!(tab.title == 'Contact' || tab.title == 'Account'))					
 						Ext.getCmp('customerComponent').collapse();						
 
 					if (tab.title == 'Dashboard') {
