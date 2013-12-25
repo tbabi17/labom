@@ -576,7 +576,7 @@ Ext.define('OCS.ActivityGrid', {
 			 return;
 		}
 
-		if (me.owner != logged) {
+		if (me.selected.get('owner') != logged) {
 			Ext.MessageBox.alert('Error', 'Not available !', function() {});
 			return;
 		}
