@@ -433,12 +433,10 @@ Ext.define('OCS.RetailPanel', {
 				iconCls   : 'deal', 
 				text: 'Deal ...',
 				handler: function(widget, event) {		
-					if (me.recordSelected() && me.isCustomer())
+					if (me.recordSelected())
 						new OCS.NewDealWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
-					else
-						Ext.MessageBox.alert('Status', 'Not available ! Only for customer level.', function() {});
 				}
 			}),
 			'-',
