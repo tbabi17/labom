@@ -40,7 +40,6 @@ Ext.define('OCS.InvoiceActivityGrid', {
 	}
 });
 
-
 Ext.define('OCS.DealGrid', {
 	extend: 'OCS.Module',
 	func: 'crm_task_list',
