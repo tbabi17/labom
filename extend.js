@@ -627,6 +627,32 @@ Ext.define('OCS.GridWithFormPanel', {
 					me.deleteRecord();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'export',
+				text: 'Export',
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
+					}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.title},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
