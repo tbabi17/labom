@@ -562,7 +562,7 @@ Ext.define('OCS.ActivityGrid', {
 		var count = 0;
 		me.store.each(function(record) {  
 			alert(record.status);
-			if (record.status == 'open' || record.status == 'pending' || record.status == 'remind' || record.status == 'draft')				
+			if (record.get('status') == 'open' || record.get('status') == 'pending' || record.get('status') == 'remind' || record.get('status') == 'draft')				
 				count++;
 		});
 
