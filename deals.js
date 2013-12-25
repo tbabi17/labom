@@ -277,6 +277,11 @@ Ext.define('OCS.DealProductGrid', {
 		me.values = 'deal_id';
 		me.loadStore();
 	},
+	
+	productCount: function() {
+		var me = this;
+		return me.store.getCount();
+	},
 
 	createGrid: function() {
 		var me = this;	
@@ -642,6 +647,10 @@ Ext.define('OCS.StageWindow', {
 
 							if (me.openActivity > 0) {
 								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
+								return;
+							}
+							if (me.productCount > 0) {
+								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are no products !', function() {});
 								return;
 							}
 						}

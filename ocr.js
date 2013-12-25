@@ -1938,7 +1938,8 @@ Ext.define('OCS.DealAction', {
 							if (me.selected.get('owner') == logged) {							
 								new OCS.StageWindow({
 									selected: me.selected,
-									openActivity: me.dealActivity.openActivityCount()
+									openActivity: me.dealActivity.openActivityCount(),
+									productCount: me.dealProduct.productCount()
 								}).show();
 							} else 
 								Ext.MessageBox.alert('Error', 'Not available !', function() {});
@@ -1967,6 +1968,11 @@ Ext.define('OCS.DealAction', {
 								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
 								return;
 							}
+							if (me.dealProduct.productCount() == 0) {
+								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are no products !', function() {});
+								return;
+							}
+
 
 							if (me.selected.get('owner') == logged) {				
 								new OCS.DealDescrWindow({
