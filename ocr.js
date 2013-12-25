@@ -583,6 +583,11 @@ Ext.define('OCS.ActivityGrid', {
 		}
 
 		if (me.selected.get('work_type') == 'phone call') {
+			if (me.selected.get('callresult') == 'success') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+
 			Ext.Ajax.request({
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+me.selected.get('id')},
@@ -595,6 +600,10 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		} else
 		if (me.selected.get('work_type') == 'email') {
+			if (me.selected.get('callresult') == 'sent') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+me.selected.get('id')},
@@ -607,6 +616,10 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		} else
 		if (me.selected.get('work_type') == 'appointment') {
+			if (me.selected.get('callresult') == 'completed') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+me.selected.get('id')},
@@ -619,6 +632,10 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		}  else
 		if (me.selected.get('work_type') == 'task') {
+			if (me.selected.get('callresult') == 'completed') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+me.selected.get('id')},
