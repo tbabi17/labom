@@ -1962,6 +1962,7 @@ Ext.define('OCS.DealAction', {
 						id: 'deal_closewon',
 						scope: this,
 						handler: function() {
+							alert(me.dealActivity.openActivityCount());
 							if (me.dealActivity.openActivityCount() > 0) {
 								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
 								return;
