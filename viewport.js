@@ -33,6 +33,93 @@ Ext.define('OCS.Viewport', {
 		 views['sales'] = new OCS.SalesPanel();
 //		 views['salesorders'] = new OCS.SalesOrders();
 		 views['settings'] = new OCS.SettingsPanel().createPanel();
+		
+		 views['mainTabs'] = Ext.create('Ext.tab.Panel', {
+			region: 'center', 
+			deferredRender: true,
+			margins: '0 0 0 0',
+			activeTab: 0,		
+			minTabWidth: 80,
+			tabWidth: 95,
+			cls: 'MainPanel',
+			autoWidth:true,
+			autoHeight:true,
+			listeners: {
+				'tabchange': function(tabPanel, tab){					
+					Ext.getCmp('customerComponent').collapse();						
+
+					if (tab.title == 'Dashboard') {
+						views['dashboard'].reloadCharts();
+					} else
+					if (tab.title == 'Cases') {
+						views['cases'].reload();
+					} else
+					if (tab.title == 'Invoices') {
+						views['quotes'].reload();
+					} else
+					if (tab.title == 'Deals') {
+						views['deals'].reload();
+					} else
+					if (tab.title == 'Contracts') {
+						views['sales'].reload();
+					}
+				}
+			},
+			items: [{
+				title: 'Dashboard',
+				autoScroll: true,
+				items: views['dashboard'].createPanel()
+			},{
+				title: 'Activities',
+				id: 'workspace',
+				layout: 'border',		
+				border: false,
+				items: views['workspace']
+			}, {
+				title: 'Deals',
+				id: 'leads_opportuny',
+				layout: 'border',
+				border: false,
+				items: views['deals'].createPanel()
+			},{
+				title: 'Contacts',
+				id: 'retail',
+				layout: 'border',
+//					hidden: !(userType == 'retail'),
+				items: views['retail'].createGrid()
+			}, {
+				title: 'Accounts',
+				id: 'corporate',
+				layout: 'border',
+	//			hidden: !(userType == 'corporate'),
+				items: views['corporate'].createGrid()
+			},{
+				title: 'Cases',
+				id: 'cases',
+				layout: 'border',
+				items: views['cases'].createPanel()
+			},{
+				title: 'Campaigns',
+				id: 'campaigns',
+				layout: 'border',
+				items: views['campaigns'].createPanel()
+			},{
+				title: 'Invoices',
+				layout: 'border',
+				items: views['quotes'].createGrid()
+			},{
+				title: 'Contracts',
+				layout: 'border',
+				items: views['sales'].createGrid()
+			},{
+				title: 'Reports',
+				hidden: true
+			},{
+				title: 'Settings',
+				layout: 'border',
+				items: views['settings']
+			}]
+		});
 
 		 me.items = [			
 			 Ext.create('Ext.Component', {
@@ -72,92 +159,7 @@ Ext.define('OCS.Viewport', {
 						views['csales'].createPanel()
 				]
 			}, 			
-			Ext.create('Ext.tab.Panel', {
-				region: 'center', 
-				deferredRender: true,
-				margins: '0 0 0 0',
-				activeTab: 0,		
-				minTabWidth: 80,
-				tabWidth: 95,
-				cls: 'MainPanel',
-				autoWidth:true,
-		        autoHeight:true,
-				listeners: {
-					'tabchange': function(tabPanel, tab){					
-						Ext.getCmp('customerComponent').collapse();						
-
-						if (tab.title == 'Dashboard') {
-							views['dashboard'].reloadCharts();
-						} else
-						if (tab.title == 'Cases') {
-							views['cases'].reload();
-						} else
-						if (tab.title == 'Invoices') {
-							views['quotes'].reload();
-						} else
-						if (tab.title == 'Deals') {
-							views['deals'].reload();
-						} else
-						if (tab.title == 'Contracts') {
-							views['sales'].reload();
-						}
-					}
-				},
-				items: [{
-					title: 'Dashboard',
-					autoScroll: true,
-					items: views['dashboard'].createPanel()
-				},{
-					title: 'Activities',
-					id: 'workspace',
-					layout: 'border',		
-					border: false,
-					items: views['workspace']
-				}, {
-					title: 'Deals',
-					id: 'leads_opportuny',
-					layout: 'border',
-					border: false,
-					items: views['deals'].createPanel()
-				},{
-					title: 'Contacts',
-					id: 'retail',
-					layout: 'border',
-//					hidden: !(userType == 'retail'),
-					items: views['retail'].createGrid()
-				}, {
-					title: 'Accounts',
-					id: 'corporate',
-					layout: 'border',
-		//			hidden: !(userType == 'corporate'),
-					items: views['corporate'].createGrid()
-				},{
-					title: 'Cases',
-					id: 'cases',
-					layout: 'border',
-					items: views['cases'].createPanel()
-				},{
-					title: 'Campaigns',
-					id: 'campaigns',
-					layout: 'border',
-					items: views['campaigns'].createPanel()
-				},{
-					title: 'Invoices',
-					layout: 'border',
-					items: views['quotes'].createGrid()
-				},{
-					title: 'Contracts',
-					layout: 'border',
-					items: views['sales'].createGrid()
-				},{
-					title: 'Reports',
-					hidden: true
-				},{
-					title: 'Settings',
-					layout: 'border',
-					items: views['settings']
-				}]
-			})
+			views['mainTabs']
 		];
 		
 		
