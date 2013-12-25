@@ -3588,7 +3588,7 @@ Ext.define('OCS.QuotePanel', {
 			tabPosition: 'top',	
 			items: [
 				me.gridQuoteList.createGrid(),
-				me.invoiceActivity.createGrid()
+				me.invoiceActivity.createPanel()
 			]
 		});
 
