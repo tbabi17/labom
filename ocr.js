@@ -600,7 +600,7 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		} else
 		if (me.selected.get('work_type') == 'email') {
-			if (me.selected.get('callresult') == 'sent') {
+			if (me.selected.get('email_status') == 'sent') {
 				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
 				return;
 			}
@@ -616,7 +616,7 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		} else
 		if (me.selected.get('work_type') == 'appointment') {
-			if (me.selected.get('callresult') == 'completed') {
+			if (me.selected.get('event_status') == 'completed') {
 				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
 				return;
 			}
@@ -632,7 +632,7 @@ Ext.define('OCS.ActivityGrid', {
 			});
 		}  else
 		if (me.selected.get('work_type') == 'task') {
-			if (me.selected.get('callresult') == 'completed') {
+			if (me.selected.get('task_status') == 'completed') {
 				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
 				return;
 			}
