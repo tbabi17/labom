@@ -4595,6 +4595,7 @@ Ext.define('OCS.RetailNewWindow', {
 	title: 'New contact',
 	table: 'crm_customer',
 	maximizable: true,
+	modal: false,
 	width: 680,
 	height: 620,
 
