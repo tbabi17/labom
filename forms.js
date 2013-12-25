@@ -13,6 +13,7 @@ Ext.define('OCS.RetailForm', {
 		labelWidth: 70,
 		msgTarget: 'qtip'
 	},
+	autoClose: true,
 
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -485,7 +486,11 @@ Ext.define('OCS.RetailForm', {
 			itemId: 'commit_after_close',
 			xtype: 'checkbox',
 			labelWidth: 140,
-			boxLabel: 'automatically close window after commit'
+			checked: true,
+			boxLabel: 'automatically close window after commit',
+			handler: function (field, value) {
+				me.autoClose = field.getValue();
+			}
 		},'->',{
 			text : 'Reset',
 			iconCls: 'reset',
@@ -506,6 +511,8 @@ Ext.define('OCS.RetailForm', {
 						views['retail'].store.getProxy().extraParams = me.ep;
 						views['retail'].store.loadPage(1);
 						form.reset();
+						if (me.autoClose)
+							me.win.close();
 					});
 				}
 			}

@@ -4604,7 +4604,8 @@ Ext.define('OCS.RetailNewWindow', {
 
 		me.form = Ext.create('OCS.RetailForm', {
 			id : 'retail_form',
-			region: 'center'
+			region: 'center',
+			win : this
 		});
 
 		me.items = [me.form];
