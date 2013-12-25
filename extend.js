@@ -692,6 +692,13 @@ Ext.define('OCS.Window', {
 	constructor: function(cnfg) {
         this.callParent(arguments);
         this.initConfig(cnfg);
+
+		this.listeners = {
+			'close': function() {
+				if (me.backgrid)
+					me.backgrid.getStore().reload();
+			}
+		};
     },
 
 	commitRecord: function(values) {

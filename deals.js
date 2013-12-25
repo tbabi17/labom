@@ -46,17 +46,20 @@ Ext.define('OCS.DealGrid', {
 							me.selected.set('parent_crm_id', me.selected.get('crm_id'));
 							new OCS.ContactNewWindow({
 								record: me.selected,
-								title: 'Add contact'
+								title: 'Add contact',								
+								backgrid: me.grid
 							}).show();
 						}		
 						else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
 							new OCS.CompetitorWindow({
-								selected: me.selected
+								selected: me.selected,								
+								backgrid: me.grid
 							}).createWindow();
 						}
 						else if (me.modelName == 'CRM_DEAL_SALES_TEAM') {
 							new OCS.SalesTeamWindow({
-								selected: me.selected
+								selected: me.selected,								
+								backgrid: me.grid
 							}).createWindow();
 						}
 					} else
@@ -234,7 +237,8 @@ Ext.define('OCS.DealProductGrid', {
 				handler: function(widget, event) {		
 					if (me.action)
 						new OCS.ProductWindow({
-							selected: me.selected
+							selected: me.selected,
+							backgrid: me.grid
 						}).createWindow();
 					else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
