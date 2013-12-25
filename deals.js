@@ -19,6 +19,28 @@ Ext.define('OCS.DealActivityGrid', {
 	}
 });
 
+Ext.define('OCS.InvoiceActivityGrid', {
+	extend: 'OCS.DealActivityGrid',
+	func: 'crm_customer_activity_list',
+	sortField: '_date',
+	tab : 'activity_property',
+	dateField: '_date',
+	title: 'Activities',
+	icon: 'task',
+	modelName: 'CRM_CALENDAR',
+	collapsed : false,		
+	
+	updateSource: function(rec) {
+		var me = this;
+		me.action = rec.get('owner') == logged;
+		me.selected = rec;
+		me.where = rec.get('crm_id')+','+rec.get('deal_id');
+		me.values = 'crm_id,deal_id';
+		me.loadStore();
+	}
+});
+
+
 Ext.define('OCS.DealGrid', {
 	extend: 'OCS.Module',
 	func: 'crm_task_list',

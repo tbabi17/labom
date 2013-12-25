@@ -3577,6 +3577,9 @@ Ext.define('OCS.QuotePanel', {
 			values: 'quote_id',
 			flex: 0.75
 		});
+
+		me.invoiceActivity = new Ext.create('OCS.InvoiceActivityGrid', {
+		});
 		
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -3584,7 +3587,8 @@ Ext.define('OCS.QuotePanel', {
 			region: 'south',
 			tabPosition: 'top',	
 			items: [
-				me.gridQuoteList.createGrid()
+				me.gridQuoteList.createGrid(),
+				me.invoiceActivity.createGrid()
 			]
 		});
 
