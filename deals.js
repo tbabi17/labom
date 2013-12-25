@@ -65,9 +65,10 @@ Ext.define('OCS.DealGrid', {
 						if (me.modelName == 'CRM_RETAIL') {
 							me.selected.set('firstName', me.selected.get('crm_name'));
 							me.selected.set('parent_crm_id', me.selected.get('crm_id'));
+							me.selected.set('customer_type', 1);
 							new OCS.ContactNewWindow({
 								record: me.selected,
-								title: 'Add contact',								
+								title: 'Add contact',						
 								backgrid: me.grid
 							}).show();
 						}		
@@ -188,7 +189,7 @@ Ext.define('OCS.DealGrid', {
 
 
 Ext.define('OCS.DealContactGrid', {
-	extend: 'OCS.DealGrid',
+	extend: 'OCS.DealGrid,
 	func: 'crm_contact_list',
 	tab : 'deal_detail_property',
 	title: 'Contacts',
@@ -216,8 +217,7 @@ Ext.define('OCS.DealContactGrid', {
             record.data.email
         );
     },
-	
-	
+		
 	createColumns: function() {
 		var me = this;
 		return [{
