@@ -418,7 +418,7 @@ fields['CRM_SALES_FIELDS'] = [
    {name: 'crm_id', text: 'CRM ID', width: 80, hidden: true},
    {name: 'deal_id', text: 'DEAL ID', width: 80, hidden: true},
    {name: 'crm_name', text: 'Customer', width: 210, renderer: renderCRMName},
-   {name: 'deal_name', text: 'Topic Name', width: 210, renderer: renderDealName},
+   {name: 'deal_name', text: 'Deal Name', width: 210, renderer: renderDealName},
    {name: 'product_name', text: 'Product name', width: 280}, 
    {name: 'quote_code', text: 'Quote ID', hidden: true, width: 110, align: 'center'},    
    {name: 'start_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Start date', width: 80, align: 'center'}, 
