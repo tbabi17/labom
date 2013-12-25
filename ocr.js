@@ -3590,8 +3590,7 @@ Ext.define('OCS.QuotePanel', {
 			title: 'Products',
 			tab: 'crm_quote_detail_list',
 			region: 'center',
-			table: 'crm_quote_details',
-			hidden: me.quoteList,
+			table: 'crm_quote_details',			
 			values: 'quote_id',
 			flex: 0.75
 		});
@@ -3599,16 +3598,28 @@ Ext.define('OCS.QuotePanel', {
 		me.invoiceActivity = new Ext.create('OCS.InvoiceActivityGrid', {
 		});
 		
-		me.tabs = Ext.widget('tabpanel', {
-			activeTab: 0,
-			flex: 1,			
-			region: 'south',
-			tabPosition: 'top',	
-			items: [
-				me.gridQuoteList.createGrid(),
-				me.invoiceActivity.createPanel()
-			]
-		});
+		if (me.quoteList) {
+			me.tabs = Ext.widget('tabpanel', {
+				activeTab: 0,
+				flex: 1,			
+				region: 'south',
+				tabPosition: 'top',	
+				items: [
+					me.invoiceActivity.createPanel()
+				]
+			});
+		} else {
+			me.tabs = Ext.widget('tabpanel', {
+				activeTab: 0,
+				flex: 1,			
+				region: 'south',
+				tabPosition: 'top',	
+				items: [
+					me.gridQuoteList.createGrid(),
+					me.invoiceActivity.createPanel()
+				]
+			});
+		}
 
 		me.subpanel = Ext.create('Ext.panel.Panel', {			
 			xtype: 'panel',
