@@ -1006,6 +1006,13 @@ Ext.define('OCS.MyActivityGrid', {
 					me.completeActivity();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'calendar',
+				text: 'Calendar',
+				handler: function(widget, event) {
+
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
