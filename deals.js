@@ -694,11 +694,12 @@ Ext.define('OCS.StageWindow', {
 						me.selected.data['expected_revenue'] = form.findField('expected_revenue').getValue();
 						me.selected.data['stage'] = form.findField('stage').getValue();
 						me.selected.data['descr'] = form.findField('descr').getValue();
+						me.customerLevelDetection(form.findField('stage').getValue());
 
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deals', action: 'update', values: values_deals, where: "deal_id="+me.selected.get('deal_id')},
-						   success: function(response, opts) {
+						   success: function(response, opts) {							  
 							  me.close();
 							  views['deals'].reload(me.selected);
 						   },
@@ -718,9 +719,7 @@ Ext.define('OCS.StageWindow', {
 								  Ext.MessageBox.alert('Status', 'Error !', function() {});
 							   }
 							});	
-						}
-
-						me.customerLevelDetection(form.findField('stage').getValue());
+						}						
 					}
 					else
 					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
