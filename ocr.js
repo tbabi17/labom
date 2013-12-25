@@ -3435,6 +3435,7 @@ Ext.define('OCS.QuotePanel', {
 			Ext.create('Ext.Action', {
 				iconCls: 'add',
 				text: 'New...',
+				disabled: true,
 				handler: function(widget, event) {
 					if (selected) {					
 						me.initSource();
@@ -3679,6 +3680,7 @@ Ext.define('OCS.SalesPanel', {
 			Ext.create('Ext.Action', {
 				iconCls: 'add',
 				text: 'New...',
+				disabled: true,
 				handler: function(widget, event) {
 					if (selected) {					
 						me.initSource();
