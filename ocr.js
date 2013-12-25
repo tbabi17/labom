@@ -3571,13 +3571,22 @@ Ext.define('OCS.QuotePanel', {
 			func:'crm_quote_detail_list',
 			title: 'Products',
 			tab: 'crm_quote_detail_list',
-			region: 'south',
+			region: 'center',
 			table: 'crm_quote_details',
 			hidden: me.quoteList,
 			values: 'quote_id',
 			flex: 0.75
 		});
 		
+		me.tabs = Ext.widget('tabpanel', {
+			activeTab: 0,
+			flex: 1,			
+			region: 'south',
+			tabPosition: 'top',	
+			items: [
+				me.gridQuoteList.createGrid()
+			]
+		});
 
 		me.subpanel = Ext.create('Ext.panel.Panel', {			
 			xtype: 'panel',
@@ -3590,8 +3599,7 @@ Ext.define('OCS.QuotePanel', {
 			closable: true,
 			closeAction: 'hide',
 			items: [
-				me.form,
-				me.gridQuoteList.createGrid()
+				me.form, me.tabs
 			]
 		});
 
