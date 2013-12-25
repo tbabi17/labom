@@ -1333,7 +1333,7 @@ Ext.define('OCS.ContactForm', {
 
 		me.buttons = [{
 			text : 'Jump to Contacts',
-			iconCls: 'views',
+			iconCls: 'list',
 			handler: function() {
 				views['mainTabs'].setActiveTab(3);
 			}
