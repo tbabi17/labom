@@ -3532,6 +3532,7 @@ Ext.define('OCS.QuotePanel', {
 			if (record) {
 				selectedQuote = record;
 				me.form.updateSource(record);
+				me.invoiceActivity.updateSource(record);
 				me.gridQuoteList.loadStore(selectedQuote.get('id'));
 				me.subpanel.setVisible(true);
 			} else {
