@@ -307,7 +307,7 @@ fields['CRM_QUOTE_FIELDS'] = [
    {name: 'quote_code', text: 'Quote ID', hidden: true, width: 110, align: 'center'}, 
    {name: 'crm_id', text: 'CRM ID', width: 80, hidden: true},
    {name: 'deal_id', text: 'DEAL ID', width: 80, hidden: true},
-   {name: 'deal_name', text: 'Topic Name', width: 200, renderer: renderDealName},
+   {name: 'deal_name', text: 'Deal Name', width: 200, renderer: renderDealName},
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'qty', text: 'Qty', align: 'right', width: 55, type: 'float', renderer: renderNumber, summaryRenderer: renderTNumber, summaryType: 'sum'},
    {name: 'amount', text: 'Total Amount', align: 'right', type: 'float', width: 110, renderer: renderMoney, summaryRenderer: renderTMoney, summaryType: 'sum'},
