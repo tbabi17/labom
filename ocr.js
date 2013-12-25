@@ -2636,7 +2636,7 @@ Ext.define('OCS.SettingsPanel', {
 										table: 'crm_products',
 										tab: 'my_crm_product_list',
 										insert: (user_level==0),
-										remove: (user_level==0),
+										remove: (user_level==0),	
 										defaultRec: {
 											data: {
 												product_id: '0',
