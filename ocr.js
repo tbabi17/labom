@@ -1479,6 +1479,13 @@ Ext.define('OCS.DealView', {
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'My Deals',
+							handler: function(widget, event) {
+								me.filterData('My Deals');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'All deals in current fiscal year',
 							handler: function(widget, event) {
 								me.filterData('All deals in current fiscal year');
