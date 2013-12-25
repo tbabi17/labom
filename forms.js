@@ -961,6 +961,15 @@ Ext.define('OCS.CorporateForm', {
 			xtype: 'tbtext',
 			text: '',
 			cls: 'warning'
+		},{
+			itemId: 'commit_after_close',
+			xtype: 'checkbox',
+			labelWidth: 140,
+			checked: true,
+			boxLabel: 'automatically close window after commit',
+			handler: function (field, value) {
+				me.autoClose = field.getValue();
+			}
 		},'->',{
 			text : 'Reset',
 			iconCls: 'reset',
@@ -981,6 +990,9 @@ Ext.define('OCS.CorporateForm', {
 						views['corporate'].store.getProxy().extraParams = me.ep;
 						views['corporate'].store.loadPage(1);
 						form.reset();
+
+						if (me.autoClose)
+							me.win.close();
 					});
 				}
 			}
@@ -1320,10 +1332,11 @@ Ext.define('OCS.ContactForm', {
 		];
 
 		me.buttons = [{
-			itemId: 'customer_duplicate_warning',
-			xtype: 'tbtext',
-			text: 'Contact-аас хайж олоод оруулж болно !',
-			cls: 'warning'
+			text : 'Jump to Contacts',
+			iconCls: 'view',
+			handler: function() {
+				
+			}
 		},'->',{
 			text : 'Reset',
 			iconCls: 'reset',
