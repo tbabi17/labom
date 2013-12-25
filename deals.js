@@ -187,9 +187,8 @@ Ext.define('OCS.DealGrid', {
 	}
 });
 
-
 Ext.define('OCS.DealContactGrid', {
-	extend: 'OCS.DealGrid,
+	extend: 'OCS.DealGrid',
 	func: 'crm_contact_list',
 	tab : 'deal_detail_property',
 	title: 'Contacts',
