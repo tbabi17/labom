@@ -69,7 +69,8 @@ Ext.define('OCS.DealGrid', {
 							new OCS.ContactNewWindow({
 								record: me.selected,
 								title: 'Add contact',						
-								backgrid: me.grid
+								backgrid: me.grid,
+								modal: true
 							}).show();
 						}		
 						else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
