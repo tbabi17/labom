@@ -440,7 +440,7 @@ Ext.define('CRM_SALES', {
 
 fields['CRM_PRODUCT_FIELDS'] = [
    {name: 'product_id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'product_name', text: 'Name', width: 250}, 
+   {name: 'product_name', text: 'Name', width: 250, primary: true}, 
    {name: 'product_type', text: 'Type', width: 100},
    {name: 'price', text: 'Unit price', type: 'float', width: 90, renderer: renderMoney, align: 'right'}
 ];
@@ -452,8 +452,8 @@ Ext.define('CRM_PRODUCT', {
 
 fields['CRM_USERS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'owner', text: 'User name', width: 130}, 
-   {name: 'password', text: 'Password', width: 90, hidden: true, renderer: renderPassword},
+   {name: 'owner', text: 'User name', width: 130, primary: true}, 
+   {name: 'password', text: 'Password', width: 90, hidden: true, renderer: renderPassword, primary: true},
    {name: 'fullName', text: 'Full name', width: 120},
    {name: 'section', text: 'Section', width: 150},
    {name: 'team', text: 'Team', width: 150},
@@ -461,7 +461,7 @@ fields['CRM_USERS_FIELDS'] = [
    {name: 'company', text: 'Company', width: 150},
    {name: 'gmailAccount', text: 'Goolge Account', width: 120},
    {name: 'user_type', text: 'Direction', width: 100, hidden: true},
-   {name: 'user_level', text: 'Level', width: 80, renderer: renderUserLevel}
+   {name: 'user_level', text: 'Level', width: 80, renderer: renderUserLevel, primary: true}
 ];
 
 Ext.define('CRM_USERS', {
@@ -471,7 +471,7 @@ Ext.define('CRM_USERS', {
 
 fields['CRM_USERS_GROUP_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'owner', text: 'Member', width: 120},
+   {name: 'owner', text: 'Member', width: 120, primary: true},
    {name: 'groupName', text: 'Group name', width: 150},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
