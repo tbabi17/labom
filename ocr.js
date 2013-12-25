@@ -546,6 +546,17 @@ Ext.define('OCS.ActivityGrid', {
 		me.store.loadPage(1);
 	},
 
+	openActivityCount: function() {
+		var me = this;
+		var count = 0;
+		me.store.each(function(record) {  
+			if (record.status == 'open' || record.status == 'pending' || record.status == 'remind')				
+				count++;
+		});
+
+		return count;
+	},
+
 	createActions: function() {
 		var me = this;
 		me.actions = [		
@@ -2043,7 +2054,7 @@ Ext.define('OCS.CaseActivityGrid', {
 	values : 'crm_id,case_id',
 	icon: 'task',
 	modelName: 'CRM_CALENDAR',
-	collapsed : false,	
+	collapsed : false,		
 	
 	updateSource: function(rec) {
 		var me = this;
@@ -2052,7 +2063,7 @@ Ext.define('OCS.CaseActivityGrid', {
 		me.where = rec.get('crm_id')+','+rec.get('case_id');
 		me.values = 'crm_id,case_id';
 		me.loadStore();
-	}
+	}	
 });
 
 
@@ -2357,7 +2368,8 @@ Ext.define('OCS.CaseAction', {
 									});	
 								} else {
 									new OCS.CaseStageWindow({
-										selected: me.selected
+										selected: me.selected,
+										openActivity : me.activityGrid.openActivityCount()
 									}).show();
 								}
 							} else
@@ -2381,8 +2393,13 @@ Ext.define('OCS.CaseAction', {
 						iconCls: 'deal_won',
 						text: 'Resolve case',
 						id: 'case_resolve',
-						scope: this,
+						scope: this,//99110436
 						handler: function() {
+							if (me.activityGrid.openActivityCount() > 0) {
+								Ext.MessageBox.alert('Error', 'This case cannot be closed because there are open activities associated with it !', function() {});
+								return;
+							}
+
 							if (me.selected.get('owner') == logged)
 								new OCS.CaseResolveWindow({
 									selected: me.selected
