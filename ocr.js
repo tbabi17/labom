@@ -576,12 +576,12 @@ Ext.define('OCS.ActivityGrid', {
 			 return;
 		}
 
+		me.selected = me.grid.getView().getSelectionModel().getSelection()[0];
 		if (me.selected.get('owner') != logged) {
 			Ext.MessageBox.alert('Error', 'Not available !', function() {});
 			return;
 		}
 
-		me.selected = me.grid.getView().getSelectionModel().getSelection()[0];
 		if (me.selected.get('work_type') == 'phone call') {
 			Ext.Ajax.request({
 			   url: 'avia.php',
