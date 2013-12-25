@@ -476,8 +476,8 @@ Ext.define('OCS.GridWithFormPanel', {
 	defaultRec: {},
 	primary : 'id',
 	region: 'center',
-	insert: true,
-	remove: true,
+	insert: false,
+	remove: false,
 	hidden: false,
 
 	constructor: function(config) {

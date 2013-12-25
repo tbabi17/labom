@@ -2534,8 +2534,8 @@ Ext.define('OCS.SettingsPanel', {
 							func:'crm_users_list',
 							table: 'crm_users',
 							title: 'Users',
-							insert: false,
-							remove: false,
+							insert: (user_level==0),
+							remove: (user_level==0),
 							defaultRec: {
 								data: {
 									id: '0',
@@ -2551,6 +2551,8 @@ Ext.define('OCS.SettingsPanel', {
 							func:'crm_user_group_list',
 							title: 'Group members',
 							table: 'crm_user_groups',
+							insert: (user_level==0),
+							remove: (user_level==0),
 							tab: 'my_crm_user_group_list',
 							values: 'groupName',
 							defaultRec: {
@@ -2633,6 +2635,8 @@ Ext.define('OCS.SettingsPanel', {
 										title: 'Products',
 										table: 'crm_products',
 										tab: 'my_crm_product_list',
+										insert: (user_level==0),
+										remove: (user_level==0),
 										defaultRec: {
 											data: {
 												product_id: '0',
@@ -2657,6 +2661,8 @@ Ext.define('OCS.SettingsPanel', {
 										title: 'Goals',
 										table: 'crm_user_planning',
 										tab: 'my_crm_user_planning_list',
+										insert: (user_level==0),
+										remove: (user_level==0),
 										defaultRec: {
 											data: {
 												id: '0',
