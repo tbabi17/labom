@@ -1937,7 +1937,8 @@ Ext.define('OCS.DealAction', {
 						handler: function() {
 							if (me.selected.get('owner') == logged) {							
 								new OCS.StageWindow({
-									selected: me.selected
+									selected: me.selected,
+									openActivity: me.dealActivity.openActivityCount()
 								}).show();
 							} else 
 								Ext.MessageBox.alert('Error', 'Not available !', function() {});

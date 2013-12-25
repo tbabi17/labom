@@ -445,7 +445,6 @@ Ext.define('OCS.DealSalesTeamGrid', {
 
 Ext.define('OCS.StageWindow', {
 	extend: 'OCS.Window',
-	
 	title: 'Stage detail',
 	maximizable: true,
 	height: 560,
@@ -640,6 +639,11 @@ Ext.define('OCS.StageWindow', {
 						if (form.findField('stage').getValue() == 'close as won') {
 							me.probablity = 100;
 							me.status = 'won';
+
+							if (me.openActivity > 0) {
+								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
+								return;
+							}
 						}
 						var values_deals = "probablity="+me.probablity+
 										   ",stage='"+form.findField('stage').getValue()+"'"+
