@@ -421,20 +421,24 @@ Ext.define('OCS.RetailPanel', {
 				iconCls   : 'complain', 
 				text: 'Case ...',
 				handler: function(widget, event) {
-					if (me.recordSelected())
+					if (me.recordSelected() && me.isCustomer())
 						new OCS.ComplainWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
+					else
+						Ext.MessageBox.alert('Status', 'Not available !', function() {});
 				}
 			}),	
 			Ext.create('Ext.Action', {
 				iconCls   : 'deal', 
 				text: 'Deal ...',
 				handler: function(widget, event) {		
-					if (me.recordSelected())
+					if (me.recordSelected() && me.isCustomer())
 						new OCS.NewDealWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
+					else
+						Ext.MessageBox.alert('Status', 'Not available !', function() {});
 				}
 			}),
 			'-',
@@ -459,6 +463,15 @@ Ext.define('OCS.RetailPanel', {
 			return true;
 		
 		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
+	},
+
+	isCustomer: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0].data['level'] == 'customer';
+
 		return false;
 	},
 
