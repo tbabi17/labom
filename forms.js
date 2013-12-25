@@ -484,7 +484,8 @@ Ext.define('OCS.RetailForm', {
 		},{
 			itemId: 'commit_after_close',
 			xtype: 'checkbox',
-			fieldLabel: 'automatically close window after commit'
+			labelWidth: 140,
+			boxLabel: 'automatically close window after commit'
 		},'->',{
 			text : 'Reset',
 			iconCls: 'reset',
