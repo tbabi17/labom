@@ -2534,6 +2534,8 @@ Ext.define('OCS.SettingsPanel', {
 							func:'crm_users_list',
 							table: 'crm_users',
 							title: 'Users',
+							insert: false,
+							remove: false,
 							defaultRec: {
 								data: {
 									id: '0',

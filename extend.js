@@ -476,6 +476,8 @@ Ext.define('OCS.GridWithFormPanel', {
 	defaultRec: {},
 	primary : 'id',
 	region: 'center',
+	insert: true,
+	remove: true,
 	hidden: false,
 
 	constructor: function(config) {
@@ -608,6 +610,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',
 				text: 'New...',
+				disabled: me.insert,
 				handler: function(widget, event) {
 					me.form.updateSource(me.defaultRec);
 					me.form.setVisible(true);
@@ -623,6 +626,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'delete',
 				text: 'Delete',
+				disabled: me.remove,
 				handler: function(widget, event) {
 					me.deleteRecord();
 				}
