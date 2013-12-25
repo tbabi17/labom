@@ -426,7 +426,7 @@ Ext.define('OCS.RetailPanel', {
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 					else
-						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+						Ext.MessageBox.alert('Status', 'Not available ! Only for customer level', function() {});
 				}
 			}),	
 			Ext.create('Ext.Action', {
@@ -438,7 +438,7 @@ Ext.define('OCS.RetailPanel', {
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 					else
-						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+						Ext.MessageBox.alert('Status', 'Not available ! Only for customer level.', function() {});
 				}
 			}),
 			'-',
