@@ -71,7 +71,6 @@ Ext.define('OCS.Viewport', {
 			items: [{
 				title: 'Dashboard',
 				autoScroll: true,
-				hidden: shows['dashboard'],
 				items: views['dashboard'].createPanel()
 			},{
 				title: 'Activities',
