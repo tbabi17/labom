@@ -130,7 +130,12 @@ Ext.onReady(function() {
 								cls: 'login',
 								width: 210,								
 								value: checkCookie(),
-								emptyText: 'user name'
+								emptyText: 'user name',
+								listeners: {									
+									afterrender: function(field) {
+									  field.focus();
+								    }
+								}
 							},
 						    {
 								id : 'password',
@@ -149,7 +154,8 @@ Ext.onReady(function() {
 										}
 									},
 									afterrender: function(field) {
-									  field.focus();
+										if (checkCookie())										
+											field.focus();
 								    }
 								}
 						    }]
