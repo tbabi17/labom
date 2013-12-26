@@ -226,6 +226,13 @@ Ext.define('OCS.RetailPanel', {
 			}),
 			Ext.create('Ext.Action', {
 				icon   : '',  
+				text: 'Without Owner  List',
+				handler: function(widget, event) {
+					me.filterData('Without Owner List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
 				text: 'My '+me.xlsName+' List',
 				handler: function(widget, event) {
 					me.filterData('My '+me.xlsName+' List');
