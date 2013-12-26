@@ -15,6 +15,8 @@ Ext.define('OCS.Viewport', {
 			modal: false,
 			height: 400			
 		 });
+		 shows['dashboard'] = (user_level == 3);
+
 		 views = [];
 		 views['retail'] = new OCS.RetailPanel();
 		 views['corporate'] = new OCS.CorporatePanel();
@@ -69,6 +71,7 @@ Ext.define('OCS.Viewport', {
 			items: [{
 				title: 'Dashboard',
 				autoScroll: true,
+				hidden: shows['dashboard'],
 				items: views['dashboard'].createPanel()
 			},{
 				title: 'Activities',
