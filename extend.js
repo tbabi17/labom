@@ -364,11 +364,13 @@ Ext.define('OCS.Module', {
 			Ext.MessageBox.alert('Status', 'Not selected !', function() {});
 			return;
 		}
-
-		if (selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
-			Ext.MessageBox.alert('Status', 'Not available !', function() {});
-			return;
-		}	
+		
+		if (user_level == 0) {		
+			if (selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
+				Ext.MessageBox.alert('Status', 'Not available !', function() {});
+				return;
+			}	
+		}
 
 		Ext.Msg.confirm('Warning ','Устгах уу ?',function(btn){
 			if(btn === 'yes'){

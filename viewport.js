@@ -1,4 +1,5 @@
 var views = [];
+var shows = [];
 Ext.define('OCS.Viewport', {
 	extend : 'Ext.Viewport',
 	
@@ -14,7 +15,6 @@ Ext.define('OCS.Viewport', {
 			modal: false,
 			height: 400			
 		 });
-
 		 views = [];
 		 views['retail'] = new OCS.RetailPanel();
 		 views['corporate'] = new OCS.CorporatePanel();
