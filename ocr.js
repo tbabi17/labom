@@ -21,8 +21,7 @@ function googleEventDynamic(rec) {
 }
 
 function googleEvent(rec, func) {
-	if (func == 'crm_event_list')
-	{	
+	if (func == 'crm_event_list') {
 		_location = rec.get('venue');
 		if (typeof _location == 'undefined')
 			_location = '';
@@ -42,8 +41,7 @@ function googleEvent(rec, func) {
 			descr = name+' : уулзалт хийх';
 		window.open("https://www.google.com/calendar/render?action=TEMPLATE&trp=false&text="+subject+"&dates="+start_date+"T020000Z/"+start_date+"T030000Z&location="+_location+"&details="+descr+"&sprop&sf=true&output=xml","_blank","toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=850, height=500");
 	} else
-	if (func == 'crm_task_list')
-	{	
+	if (func == 'crm_task_list') {	
 		_location = '';		
 			
 		subject = rec.get('task_type');
@@ -61,8 +59,7 @@ function googleEvent(rec, func) {
 			descr = name+' : төлөвлөсөн ажил';
 		window.open("https://www.google.com/calendar/render?action=TEMPLATE&trp=false&text="+subject+"&dates="+start_date+"T020000Z/"+start_date+"T030000Z&location="+_location+"&details="+descr+"&sprop&sf=true&output=xml","_blank","toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=850, height=500");
 	} else
-	if (func == 'crm_calllog_list')
-	{	
+	if (func == 'crm_calllog_list') {	
 		_location = '';		
 			
 		subject = rec.get('task_type');
@@ -82,8 +79,7 @@ function googleEvent(rec, func) {
 			descr = name+' : харилцагчтай ярих';
 		window.open("https://www.google.com/calendar/render?action=TEMPLATE&trp=false&text="+subject+"&dates="+start_date+"T020000Z/"+start_date+"T030000Z&location="+_location+"&details="+descr+"&sprop&sf=true&output=xml","_blank","toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=850, height=500");
 	} else
-	if (func == 'crm_complain_list')
-	{	
+	if (func == 'crm_complain_list') {	
 		_location = '';		
 			
 		subject = rec.get('complain_reason');
