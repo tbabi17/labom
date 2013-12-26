@@ -128,7 +128,7 @@ Ext.onReady(function() {
 								id: 'username',
 								xtype: 'textfield',
 								cls: 'login',
-								width: 210,
+								width: 210,								
 								value: checkCookie(),
 								emptyText: 'user name'
 							},
@@ -147,7 +147,10 @@ Ext.onReady(function() {
 											var password = Ext.getCmp('password').getValue();
 											login_request(user,password);
 										}
-									}
+									},
+									afterrender: function(field) {
+									  field.focus();
+								    }
 								}
 						    }]
 					   }
