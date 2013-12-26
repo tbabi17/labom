@@ -1854,10 +1854,10 @@ Ext.define('OCS.GridView', {
 			displayInfo: true,
 			displayMsg: '{0}-{1} of {2}',
 			emptyMsg: "Empty !",
-			items: [me.searchField, {
+			items: [/*me.searchField, */{
 					xtype: 'textfield',
 					width: 150,
-					hidden: true,
+					//hidden: true,
 					emptyText: 'Search value...',
 					readOnly: false,
 					listeners: {
