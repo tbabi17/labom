@@ -666,6 +666,8 @@ function renderUserLevel(v) {
 	if (v == 2)
 		return 'head';
 	if (v == 3)
+		return 'admin';
+	if (v == 5)
 		return 'ceo';
 	if (v == 10)
 		return 'president';
