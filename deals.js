@@ -360,7 +360,7 @@ Ext.define('OCS.DealProductGrid', {
 });
 
 Ext.define('OCS.DealCompetitorGrid', {
-	extend: 'OCS.DealProductGrid',
+	extend: 'OCS.DealGrid',
 	func: 'crm_deal_competitor_list',
 	tab : 'deal_competitor_property',
 	title: 'Competitors',
