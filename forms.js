@@ -508,14 +508,18 @@ Ext.define('OCS.RetailForm', {
 					var values = form.getValues(true);	
 					if (values.indexOf('autoclose-inputEl=on')!=-1)
 						values = values.substring(0, values.lastIndexOf('&'));
-					me.ep = views['retail'].store.getProxy().extraParams;
-					views['retail'].store.getProxy().extraParams = {handle: 'web', action: 'insert', func: 'crm_retail_list', table: 'crm_customer', values:values};
-					views['retail'].store.load(function(data) {
-						if (me.autoClose)
-							me.win.close();
-						views['retail'].store.getProxy().extraParams = me.ep;
-						views['retail'].store.loadPage(1);
-						form.reset();
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', action: 'insert', func: 'crm_retail_list', table: 'crm_customer', values:values},
+					   success: function(response, opts) {
+							if (me.autoClose)
+								me.win.close();
+							views['retail'].store.loadPage(1);	
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
 					});
 				}
 			}
@@ -992,14 +996,17 @@ Ext.define('OCS.CorporateForm', {
 					if (values.indexOf('autoclose-inputEl=on')!=-1)
 						values = values.substring(0, values.lastIndexOf('&'));
 					
-					me.ep = views['corporate'].store.getProxy().extraParams;
-					views['corporate'].store.getProxy().extraParams = {handle: 'web', action: 'insert', func: 'crm_corporate_list', table: 'crm_customer', values:values};
-					views['corporate'].store.load(function(data) {
-						if (me.autoClose)
-							me.win.close();
-						views['corporate'].store.getProxy().extraParams = me.ep;
-						views['corporate'].store.loadPage(1);
-						form.reset();
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', action: 'insert', func: 'crm_corporate_list', table: 'crm_customer', values:values},
+					   success: function(response, opts) {
+							if (me.autoClose)
+								me.win.close();
+							views['corporate'].store.loadPage(1);	
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
 					});
 				}
 			}
