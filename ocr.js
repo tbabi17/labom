@@ -4663,7 +4663,8 @@ Ext.define('OCS.CorporateNewWindow', {
 
 		me.form = Ext.create('OCS.CorporateForm', {
 			id : 'corporate_form',
-			region: 'center'
+			region: 'center',
+			win : this
 		});
 
 		me.items = [me.form];
