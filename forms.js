@@ -533,6 +533,7 @@ Ext.define('OCS.CorporateForm', {
 	height: 410,
 	autoScroll: true,
 	split: true,
+	autoClose: true,
 	func: 'crm_corporate_list',
 	bodyPadding: '10 10 10 10',	
 	fieldDefaults: {
