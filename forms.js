@@ -965,6 +965,7 @@ Ext.define('OCS.CorporateForm', {
 			itemId: 'commit_after_close',
 			xtype: 'checkbox',
 			labelWidth: 140,
+			id: 'autoclose',
 			checked: true,
 			boxLabel: 'automatically close window after commit',
 			handler: function (field, value) {
@@ -984,6 +985,10 @@ Ext.define('OCS.CorporateForm', {
 				var form = this.up('form').getForm();
 				if (form.isValid())	{
 					var values = form.getValues(true);	
+					if (values.endsWith('=on')) {
+						values = values.substring(0, values.lastIndexOf('&'));
+						alert(values);
+					}
 					me.ep = views['corporate'].store.getProxy().extraParams;
 					views['corporate'].store.getProxy().extraParams = {handle: 'web', action: 'insert', func: 'crm_corporate_list', table: 'crm_customer', values:values};
 					views['corporate'].store.load(function(data) {
