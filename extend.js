@@ -396,6 +396,13 @@ Ext.define('OCS.Module', {
 				return rec.get('value');
 		    return Ext.Date.format(rec.get('value'), 'Y-m-d');
 		}
+		if (rec.get('name').substring(2, rec.get('name').length) == 'password')
+		{
+			var jsSha = new jsSHA(rec.get('value'));
+			var hash = jsSha.getHash("SHA-512", "HEX");
+			value = hash;
+			return value;
+		}
 		
 		value = rec.get('value');
 		if (value == '' && 
