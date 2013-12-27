@@ -376,11 +376,16 @@ Ext.define('OCS.Module', {
 		Ext.Msg.confirm('Warning ','Устгах уу ?',function(btn){
 			if(btn === 'yes'){
 				var id = selection[0].get(me.primary);
-				me.ep = me.store.getProxy().extraParams;				
-				me.store.getProxy().extraParams = {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id};
-				me.store.load(function(data) {
-					me.store.getProxy().extraParams = me.ep;
-					me.store.loadPage(1);
+
+				Ext.Ajax.request({
+				   url: 'avia.php',					   
+				   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id},
+				   success: function(response, opts) {
+						me.store.loadPage(1);
+				   },
+				   failure: function(response, opts) {										   
+					  Ext.MessageBox.alert('Status', 'Error !', function() {});
+				   }
 				});
 			}else{
 				
