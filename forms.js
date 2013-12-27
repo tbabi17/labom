@@ -486,6 +486,7 @@ Ext.define('OCS.RetailForm', {
 			itemId: 'commit_after_close',
 			xtype: 'checkbox',
 			labelWidth: 140,
+			id: 'autoclose',
 			checked: true,
 			boxLabel: 'automatically close window after commit',
 			handler: function (field, value) {
@@ -505,14 +506,16 @@ Ext.define('OCS.RetailForm', {
 				var form = this.up('form').getForm();
 				if (form.isValid())	{
 					var values = form.getValues(true);	
+					if (values.indexOf('autoclose-inputEl=on')!=-1)
+						values = values.substring(0, values.lastIndexOf('&'));
 					me.ep = views['retail'].store.getProxy().extraParams;
 					views['retail'].store.getProxy().extraParams = {handle: 'web', action: 'insert', func: 'crm_retail_list', table: 'crm_customer', values:values};
 					views['retail'].store.load(function(data) {
+						if (me.autoClose)
+							me.win.close();
 						views['retail'].store.getProxy().extraParams = me.ep;
 						views['retail'].store.loadPage(1);
 						form.reset();
-						if (me.autoClose)
-							me.win.close();
 					});
 				}
 			}
@@ -985,19 +988,17 @@ Ext.define('OCS.CorporateForm', {
 				var form = this.up('form').getForm();
 				if (form.isValid())	{
 					var values = form.getValues(true);	
-					if (values.indexOf('autoclose-inputEl=on')!=-1) {
+					if (values.indexOf('autoclose-inputEl=on')!=-1)
 						values = values.substring(0, values.lastIndexOf('&'));
-						alert(values);
-					}
+					
 					me.ep = views['corporate'].store.getProxy().extraParams;
 					views['corporate'].store.getProxy().extraParams = {handle: 'web', action: 'insert', func: 'crm_corporate_list', table: 'crm_customer', values:values};
 					views['corporate'].store.load(function(data) {
+						if (me.autoClose)
+							me.win.close();
 						views['corporate'].store.getProxy().extraParams = me.ep;
 						views['corporate'].store.loadPage(1);
 						form.reset();
-
-						if (me.autoClose)
-							me.win.close();
 					});
 				}
 			}
