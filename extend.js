@@ -58,7 +58,8 @@ Ext.define('OCS.Module', {
 						}
 						
 						if (me.func == 'crm_alarm_list' && me.store.getCount() > 0) {
-							Ext.getCmp('alarm_window').show();
+							if (Ext.getCmp('alarm_window'))							
+								Ext.getCmp('alarm_window').show();
 						}
 
 						if (me.tab) {
@@ -366,7 +367,7 @@ Ext.define('OCS.Module', {
 		}
 		
 		if (user_level == 0) {		
-			if (selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
+			if (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
 				Ext.MessageBox.alert('Status', 'Not available !', function() {});
 				return;
 			}	
