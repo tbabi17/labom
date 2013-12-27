@@ -985,7 +985,7 @@ Ext.define('OCS.CorporateForm', {
 				var form = this.up('form').getForm();
 				if (form.isValid())	{
 					var values = form.getValues(true);	
-					if (values.endsWith('=on')) {
+					if (values.indexOf('autoclose-inputEl=on')!=-1) {
 						values = values.substring(0, values.lastIndexOf('&'));
 						alert(values);
 					}
