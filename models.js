@@ -233,7 +233,7 @@ Ext.define('CRM_MESSAGE', {
 fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'case_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'complain_status', text: 'Status', width: 65, align: 'center', renderer: renderComplainStatus},   
-   {name: 'complain_reason', text: 'Case Reason', width: 200, align: 'center', primary: true},   
+   {name: 'complain_reason', text: 'Case Reason', width: 200, primary: true},   
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'case_stage', text: 'Stage', width: 70, renderer: renderCaseLevel},
