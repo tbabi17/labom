@@ -368,8 +368,8 @@ Ext.define('CRM_CASE_PRODUCTS', {
 fields['CRM_CASE_TRANSFER_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'case_id', text: 'Case ID', hidden: true},
-   {name: 'descr', text: 'Note', width: 200},
-   {name: 'owner', text: 'Owner', width: 120}, 
+   {name: 'descr', text: 'Note', width: 200, primary: true},
+   {name: 'owner', text: 'Owner', width: 120, primary: true}, 
    {name: '_from', text: 'From', width: 120},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
@@ -385,7 +385,7 @@ fields['CRM_DEAL_SALES_TEAM_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', hidden: true},
    {name: 'crm_id', text: 'CRM ID', hidden: true},
    {name: 'deal_name', text: 'Topic Name', width: 200, renderer: renderDealName},
-   {name: 'owner', text: 'Sales manager', width: 150, renderer: renderOwner}, 
+   {name: 'owner', text: 'Sales manager', width: 150, renderer: renderOwner, primary: true}, 
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
@@ -400,7 +400,7 @@ fields['CRM_DEAL_COMPETITORS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'deal_id', text: 'Deal ID', hidden: true}, 
    {name: 'crm_id', text: 'CRM ID', hidden: true},
-   {name: 'competitor_name', text: 'Competitor name', width: 200}, 
+   {name: 'competitor_name', text: 'Competitor name', width: 200, primary: true}, 
    {name: 'www', text: 'Web site', width: 140, renderer: renderWWW},
    {name: 'reported_revenue', text: 'Reported revenue', width: 120, type: 'float', align: 'right', renderer: renderMoney},
    {name: 'strength', text: 'Strength', width: 120},
