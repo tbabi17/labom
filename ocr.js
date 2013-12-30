@@ -1073,6 +1073,11 @@ Ext.define('OCS.MyActivityGrid', {
 		me.loadStore();
 	},		
 
+	reload: function() {
+		var me = this;
+		me.loadStore();
+	},
+
 	createPanel: function() {
 		var me = this;
 		me.createGrid();
