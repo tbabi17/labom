@@ -707,6 +707,10 @@ function renderMail(v) {
 }
 
 function renderWWW(v) {
+	var input = 'www';
+	if (v.substring(0, input.length) === input)
+		v = 'http://'+v;
+
 	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+v+'</span></a>';
 }
 
