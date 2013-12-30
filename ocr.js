@@ -2726,14 +2726,14 @@ Ext.define('OCS.Workspace', {
 		me.grid = new Ext.create('OCS.MyProfile', {
 			modelName: 'CRM_CALENDAR',
 			func: 'crm_calendar_list'
-		}).createPanel();
+		});
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			region: 'center',
 			border: false,
 			items: [
-				me.grid
+				me.grid.createPanel()
 			]
 		});
 
