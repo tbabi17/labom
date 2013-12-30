@@ -89,11 +89,38 @@ Ext.define('OCS.DealGrid', {
 				}
 			}),
 			Ext.create('Ext.Action', {
-				iconCls   : 'remove',
-				text: 'Delete',
+				iconCls   : 'delete',
+				text: 'Remove from list ...',
 				handler: function(widget, event) {
 					if (me.action) {
-						me.deleteRecord();
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {
+							if (me.modelName == 'CRM_RETAIL') {
+								Ext.Msg.confirm('Warning ','Remove from list ?',function(btn){
+									if(btn === 'yes'){
+										Ext.Ajax.request({
+										   url: 'avia.php',
+										   params: {handle: 'web', table: 'crm_customer', action: 'update', values: 'parent_crm_id=0', where: "crm_id="+sel[0].get('crm_id')},
+										   success: function(response, opts) {
+											  me.loadStore();
+										   },
+										   failure: function(response, opts) {										   
+											  Ext.MessageBox.alert('Status', 'Error !', function() {});
+										   }
+										});	
+									}else{
+										
+									}	
+								});		
+							}		
+							else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
+								me.deleteRecord();
+							}
+							else if (me.modelName == 'CRM_DEAL_SALES_TEAM') {
+								me.deleteRecord();
+							}
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
@@ -380,7 +407,8 @@ Ext.define('OCS.DealCompetitorGrid', {
 	sortField: 'competitor_name',
 	modelName: 'CRM_DEAL_COMPETITORS',
 	collapsed: false,
-	
+	primary: 'id',
+		
 	createGrid: function() {
 		var me = this;	
 		me.createActions();
@@ -440,6 +468,7 @@ Ext.define('OCS.DealSalesTeamGrid', {
 	sortField: 'owner',
 	modelName: 'CRM_DEAL_SALES_TEAM',
 	collapsed: false,
+	primary: 'id',
 	
 	createGrid: function() {
 		var me = this;	
