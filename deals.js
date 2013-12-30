@@ -90,7 +90,7 @@ Ext.define('OCS.DealGrid', {
 			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'delete',
-				text: 'Remove from list ...',
+				text: 'Remove from list',
 				handler: function(widget, event) {
 					if (me.action) {
 						var sel = me.grid.getView().getSelectionModel().getSelection();

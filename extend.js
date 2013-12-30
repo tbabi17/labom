@@ -600,6 +600,11 @@ Ext.define('OCS.GridWithFormPanel', {
 				},'->',{
 					iconCls: 'commit',
 					text: 'Commit',
+					listeners: {
+						mouseover: function(){
+							console.log(1);
+						}
+					},
 					handler: function() {
 						me.commitRecord();	
 					}
