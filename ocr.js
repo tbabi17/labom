@@ -2733,7 +2733,7 @@ Ext.define('OCS.Workspace', {
 			region: 'center',
 			border: false,
 			items: [
-
+				me.grid
 			]
 		});
 
