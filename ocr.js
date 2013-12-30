@@ -4482,7 +4482,7 @@ Ext.define('OCS.MyProfile', {
 	
 	reload: function() {
 		var me = this;
-		me.mylog.reload();
+		me.mylog.loadStore();
 	},
 
 	createPanel: function() {
