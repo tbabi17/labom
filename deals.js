@@ -113,12 +113,8 @@ Ext.define('OCS.DealGrid', {
 									}	
 								});		
 							}		
-							else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
-								me.deleteRecord();
-							}
-							else if (me.modelName == 'CRM_DEAL_SALES_TEAM') {
-								me.deleteRecord();
-							}
+							else
+								me.deleteRecord();											
 						} else
 							Ext.MessageBox.alert('Status', 'No selection !', function() {});
 					} else
@@ -1151,6 +1147,7 @@ Ext.define('OCS.CaseHistoryGrid', {
 	sortField: '_date',
 	modelName: 'CRM_CASE_TRANSFER',
 	collapsed: false,
+	primary: 'id',
 	
 	createActions: function() {
 		var me = this;
