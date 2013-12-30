@@ -349,7 +349,10 @@ Ext.define('OCS.Module', {
 			   params : {handle: 'web', action: action, func: '', table: me.table, values:values1, where: captcha},
 			   success: function(response, opts) {
 				  Ext.MessageBox.alert('Status', 'Success !', function() {});
-				  views['corporate'].store.reload();
+				  if (me.modelName == 'CRM_RETAIL')				 				  
+					  views['retail'].store.reload();
+				  else
+					  views['corporate'].store.reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
