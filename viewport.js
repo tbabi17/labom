@@ -28,7 +28,7 @@ Ext.define('OCS.Viewport', {
 
 		 views['case'] = new OCS.CaseGrid();
 		 views['dashboard'] = new OCS.Dashboard();
-		 views['workspace'] = new OCS.Workspace().createPanel();
+		 views['workspace'] = new OCS.Workspace();
 		 views['deals'] = new OCS.Deals();
 		 views['campaigns'] = new OCS.Campaigns();
 		 views['quotes'] = new OCS.QuotePanel();
@@ -80,7 +80,7 @@ Ext.define('OCS.Viewport', {
 				id: 'workspace',
 				layout: 'border',		
 				border: false,
-				items: views['workspace']
+				items: views['workspace'].createPanel()
 			}, {
 				title: 'Deals',
 				id: 'leads_opportuny',
