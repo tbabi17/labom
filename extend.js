@@ -406,8 +406,12 @@ Ext.define('OCS.Module', {
 		}
 		if (rec.get('name').substring(2, rec.get('name').length) == 'password')
 		{
-			var jsSha = new jsSHA(rec.get('value'));
-			var hash = jsSha.getHash("SHA-512", "HEX");
+			var hash = value;
+			if (value.length < 20) {					
+				var jsSha = new jsSHA(rec.get('value'));
+				hash = jsSha.getHash("SHA-512", "HEX");
+			}
+
 			value = hash;
 			return value;
 		}
