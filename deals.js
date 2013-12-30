@@ -87,6 +87,16 @@ Ext.define('OCS.DealGrid', {
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'remove',
+				text: 'Delete',
+				handler: function(widget, event) {
+					if (me.action) {
+						me.deleteRecord();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
 			})
 		];
 
