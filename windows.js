@@ -302,14 +302,18 @@ Ext.define('OCS.NotesWindow', {
 
 	initSource: function() {
 		var me = this;
+		var deal_id = me.selected.get('deal_id')
+		var case_id = me.selected.get('case_id');
+		if (case_id.length == 0) case_id = '0';	
+		if (deal_id.length == 0) deal_id = '0';
 		me.defaultRec = {
 			data: {
 				id: '0',
 				crm_id: me.selected.get('crm_id'),
 				owner: logged,
 				userCode: logged,
-				deal_id:me.selected.get('deal_id'),		
-				case_id: me.selected.get('case_id'),		
+				deal_id: deal_id,		
+				case_id: case_id,		
 				_date: Ext.Date.format(new Date(),'Y-m-d H:m:s')
 			}
 		};
