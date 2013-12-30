@@ -65,6 +65,9 @@ Ext.define('OCS.Viewport', {
 					} else
 					if (tab.title == 'Contracts') {
 						views['sales'].reload();
+					} else
+					if (tab.title == 'Activities') {
+						views['workspace'].reload();
 					}
 				}
 			},

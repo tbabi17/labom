@@ -2714,19 +2714,26 @@ Ext.define('OCS.SettingsPanel', {
 
 Ext.define('OCS.Workspace', {
 	extend: 'OCS.Module',		
+	
+	reload: function() {
+		var me = this;
+		me.grid.reload();
+	},
 
 	createPanel: function() {
 		var me = this;
+		
+		me.grid = new Ext.create('OCS.MyProfile', {
+			modelName: 'CRM_CALENDAR',
+			func: 'crm_calendar_list'
+		}).createPanel();
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			region: 'center',
 			border: false,
 			items: [
-				new Ext.create('OCS.MyProfile', {
-					modelName: 'CRM_CALENDAR',
-					func: 'crm_calendar_list'
-				}).createPanel()					
+
 			]
 		});
 
@@ -3798,6 +3805,11 @@ Ext.define('OCS.SalesPanel', {
 Ext.define('OCS.MyGridWithFormPanel', {	
 	extend: 'OCS.GridWithFormPanel',
 	filter: false,
+	
+	reload: function() {
+		var me = this;
+		me.store.reload();
+	},
 
 	createForm: function() {
 		var me = this;
@@ -4461,6 +4473,11 @@ Ext.define('OCS.MyProfile', {
 
 	createBars: function() {
 		var me = this;	
+	},
+	
+	reload: function() {
+		var me = this;
+		me.grid.reload();
 	},
 
 	createPanel: function() {
