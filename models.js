@@ -708,7 +708,7 @@ function renderMail(v) {
 
 function renderWWW(v) {
 	var input = 'http';
-	if (v.substring(0, input.length) != input)
+	if (v != '' && v.substring(0, input.length) != input)
 		v = 'http://'+v;
 
 	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+v+'</span></a>';
