@@ -53,7 +53,6 @@ Ext.define('OCS.DealGrid', {
 	values: 'crm_id',
 	where: '0',
 	action: true,
-	primary : 'id',
 	
 	createActions: function() {
 		var me = this;

@@ -499,6 +499,7 @@ Ext.define('OCS.CompetitorWindow', {
 	groupField: '',
 	values: 'deal_id',
 	modelName: 'CRM_DEAL_COMPETITORS',
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
@@ -524,6 +525,7 @@ Ext.define('OCS.SalesTeamWindow', {
 	groupField: '',
 	values: 'deal_id',
 	modelName: 'CRM_DEAL_SALES_TEAM',
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
