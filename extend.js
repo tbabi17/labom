@@ -602,7 +602,7 @@ Ext.define('OCS.GridWithFormPanel', {
 					text: 'Commit',
 					listeners: {
 						mouseover: function(){
-							me.form.getSelectionModel().setLocked(true); 
+							me.form.doLayout();
 						}
 					},
 					handler: function() {
