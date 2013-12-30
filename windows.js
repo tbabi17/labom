@@ -299,6 +299,7 @@ Ext.define('OCS.NotesWindow', {
 	table: 'crm_notes',
 	groupField: '',
 	modelName: 'CRM_NOTES',	
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
@@ -310,7 +311,7 @@ Ext.define('OCS.NotesWindow', {
 				crm_id: me.selected.get('crm_id'),
 				owner: logged,
 				userCode: logged,
-				deal_id: deal_id?deal_id:'0',		
+				deal_id: deal_id?deal_id:'0',
 				case_id: case_id?case_id:'0',		
 				_date: Ext.Date.format(new Date(),'Y-m-d H:m:s')
 			}
