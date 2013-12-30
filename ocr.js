@@ -3808,7 +3808,7 @@ Ext.define('OCS.MyGridWithFormPanel', {
 	
 	reload: function() {
 		var me = this;
-		me.store.reload();
+		me.reload();
 	},
 
 	createForm: function() {
