@@ -1421,7 +1421,7 @@ Ext.define('OCS.DetailGrid', {
 			title: '',
 			iconCls: '',
 			split: true,
-			flex: 1,
+			flex: 1.5,
 			border: false,
 			region: 'north',
 			sealedColumns: true,
