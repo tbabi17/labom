@@ -349,7 +349,7 @@ Ext.define('OCS.Module', {
 			   params : {handle: 'web', action: action, func: '', table: me.table, values:values1, where: captcha},
 			   success: function(response, opts) {
 				  Ext.MessageBox.alert('Status', 'Success !', function() {});
-				  views['corporate'].store.loadPage(1);
+				  views['corporate'].store.reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -381,7 +381,7 @@ Ext.define('OCS.Module', {
 				   url: 'avia.php',					   
 				   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id},
 				   success: function(response, opts) {
-						me.store.loadPage(1);
+						me.store.reload();
 				   },
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
