@@ -2717,13 +2717,13 @@ Ext.define('OCS.Workspace', {
 	
 	reload: function() {
 		var me = this;
-		me.grid.reload();
+		me.workspace.reload();
 	},
 
 	createPanel: function() {
 		var me = this;
 		
-		me.grid = new Ext.create('OCS.MyProfile', {
+		me.workspace = new Ext.create('OCS.MyProfile', {
 			modelName: 'CRM_CALENDAR',
 			func: 'crm_calendar_list'
 		});
@@ -2733,7 +2733,7 @@ Ext.define('OCS.Workspace', {
 			region: 'center',
 			border: false,
 			items: [
-				me.grid.createPanel()
+				me.workspace.createPanel()
 			]
 		});
 
@@ -4477,7 +4477,7 @@ Ext.define('OCS.MyProfile', {
 	
 	reload: function() {
 		var me = this;
-		me.grid.reload();
+		me.mylog.reload();
 	},
 
 	createPanel: function() {
