@@ -3021,7 +3021,7 @@ Ext.define('OCS.Dashboard', {
 		 var today = new Date();
 		 var m = today.getMonth();
 		 var y = today.getFullYear();
-		 var nextDate= new Date(y, 1, 1);
+		 var nextDate= new Date(y, 0, 1);
 		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
 		 return ndate;
 	},
@@ -3030,7 +3030,7 @@ Ext.define('OCS.Dashboard', {
 		 var today = new Date();
 		 var m = today.getMonth();
 		 var y = today.getFullYear();
-		 var nextDate= new Date(y+1, 1, 1);
+		 var nextDate= new Date(y+1, 0, 1);
 		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
 		 return ndate;
 	}
