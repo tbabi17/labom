@@ -307,7 +307,10 @@ Ext.define('OCS.CasesByStatus', {
 				field: 'name',
 				display: 'rotate',
 				contrast: true,
-				font: '11px Segoe UI'		
+				font: '11px Segoe UI',
+				renderer: function(v) {
+					return v;
+				}
 			}
 		}];
 
