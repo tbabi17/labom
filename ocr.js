@@ -2791,7 +2791,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts[3] = new OCS.LeadBySource();
 //		me.charts[4] = new OCS.OpportunityByProbability();
 		me.charts[5] = new OCS.SalesStagePipeLine();
-		me.charts[6] = new OCS.AccountByIndustry();
+		me.charts[6] = new OCS.AccountByIndustry();	
 	},
 
 	reloadCharts: function() {
@@ -2964,6 +2964,11 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									me.charts[2].rangeData(me.year(), me.nextyear());
 								}
+							},'-',{
+								text: 'Last month',
+								handler: function() {
+									me.charts[2].rangeData(me.prevmonth(), me.month());
+								}
 							}]
 						}
 					}],
@@ -2999,6 +3004,15 @@ Ext.define('OCS.Dashboard', {
 		 return ndate;
 	},
 	
+	prevmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m-1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
 	nextmonth: function() {
 		 var today = new Date();
 		 var m = today.getMonth();
