@@ -345,7 +345,15 @@ Ext.define('OCS.DealPostGrid', {
 
 		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
 			if (selectedRecord.length) {
-				new OCS.DealPostReplyWindow().show();
+				var rec = selectedRecord[0];
+				new OCS.DealPostReplyWindow({
+					selected: {
+						data: {
+							'deal_id': rec.get('deal_id'),
+							'message': rec.get('message')
+						}
+					}
+				}).show();
 			}
 		});
 	}
