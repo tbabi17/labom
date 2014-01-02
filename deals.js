@@ -303,7 +303,7 @@ Ext.define('OCS.DealPostGrid', {
 		var me = this;
 		return [{
 			text: 'Messages',
-			dataIndex: 'subject',
+			dataIndex: 'message',
 			renderer: me.renderTitle,
 			flex: 1,
 			sortable: false
