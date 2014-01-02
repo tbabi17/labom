@@ -270,6 +270,48 @@ Ext.define('OCS.DealContactGrid', {
 	}
 });
 
+Ext.define('OCS.DealPostGrid', {
+	extend: 'OCS.DealGrid',
+	func: 'crm_post_list',
+	tab : 'deal_post_list',
+	title: 'Posts',
+	icon: 'call',
+	table: 'crm_posts',
+	dateField: '_date',
+	sortField: 'crm_id',
+	modelName: 'CRM_POSTS',
+	collapsed: false,
+
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.where = rec.get('deal_id');
+		me.values = 'deal_id';
+		me.loadStore();
+	},
+
+	renderTitle: function(value, p, record) {
+        return Ext.String.format(
+            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}&nbsp;*{2}</br><a href="mailto:{3}">{3}</a></span></td></tr></table>',
+            value,
+            record.data.owner,
+            record.data._date
+        );
+    },
+		
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: 'Messages',
+			dataIndex: 'subject',
+			renderer: me.renderTitle,
+			flex: 1,
+			sortable: false
+		}];
+	}
+});
+
+
 Ext.define('OCS.DealProductGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_deal_product_list',

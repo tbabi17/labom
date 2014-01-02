@@ -1938,6 +1938,7 @@ Ext.define('OCS.DealAction', {
 		var me = this;
 		me.createTmpl();
 				
+		me.dealPosts = new OCS.DealPostGrid();
 		me.dealContact = new OCS.DealContactGrid();
 		me.dealActivity = new OCS.DealActivityGrid();
 		me.dealProduct = new OCS.DealProductGrid();
@@ -1950,6 +1951,7 @@ Ext.define('OCS.DealAction', {
 			region: 'center',
 			tabPosition: 'top',	
 			items: [
+				me.dealPosts.createPanel(),
 				me.dealContact.createPanel(),			
 				me.dealActivity.createPanel(),
 				me.dealProduct.createPanel(),
