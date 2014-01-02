@@ -1692,7 +1692,7 @@ Ext.define('OCS.Deals', {
 				items: [
 					{
 						region: 'center',	
-						flex: 0.6,
+						flex: 0.5,
 						layout: 'border',						
 						items: [me.deals.createView()]
 					}, me.action.createPanel()
