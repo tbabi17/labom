@@ -347,12 +347,8 @@ Ext.define('OCS.DealPostGrid', {
 			if (selectedRecord.length) {
 				var rec = selectedRecord[0];
 				new OCS.DealPostReplyWindow({
-					selected: {
-						data: {
-							'deal_id': rec.get('deal_id'),
-							'message': rec.get('message')
-						}
-					}
+					deal_id: rec.get('deal_id'),
+					message: rec.get('message')										
 				}).show();
 			}
 		});
@@ -919,14 +915,14 @@ Ext.define('OCS.DealPostReplyWindow', {
 				fieldLabel: 'deal_id',
 				name: 'deal_id',
 				hidden: true,
-				value: me.selected.get('deal_id'),
+				value: me.deal_id,
 				readOnly: true
 			},	
 			{
 				xtype: 'textarea',
 				fieldLabel: 'Reply to post',
 				name: 'message',
-				value: me.selected.get('message'),
+				value: me.message,
 				emptyText: 'Post here message ... ',
 				style: 'margin:0', 
 				flex: 1 
