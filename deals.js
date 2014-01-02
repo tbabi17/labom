@@ -182,6 +182,7 @@ Ext.define('OCS.DealGrid', {
 			actions: me.createActions(),
 			tbarable: false,
 			feature: false,
+			search: false,
 			viewConfig: {
 				trackOver: false,
 				stripeRows: false,
