@@ -113,8 +113,8 @@ Ext.define('OCS.Module', {
 	
 	loadStore: function() {
 		var me = this;
-//		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
-		me.store.reload();
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+		me.store.loadPage(1);
 	},
 
 	createStandardColumns: function() {	
