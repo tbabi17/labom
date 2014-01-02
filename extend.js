@@ -2221,7 +2221,10 @@ Ext.define('OCS.AGridView', {
 						 keyup : function(textfield,eventObject){
 							if (eventObject.getCharCode() == Ext.EventObject.ENTER) {
 								var post = textfield.getValue();
-								me.postHere(post);
+								if (post.length > 0) {								
+									textfield.setValue('');
+									me.postHere(post);
+								}
 							}
 						}
 					}
@@ -2230,7 +2233,10 @@ Ext.define('OCS.AGridView', {
 					iconCls: 'replied',
 					handler: function() {
 						var post = Ext.getCmp('post_here').getValue();
-						me.postHere(post);
+						if (post.length > 0) {
+							Ext.getCmp('post_here').setValue('');
+							me.postHere(post);
+						}
 					}
 				}
 			]
