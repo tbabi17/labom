@@ -1716,6 +1716,7 @@ Ext.define('OCS.DealAction', {
 			me.detail.update(me.tmplMarkup[rec.get('stage')].apply(rec.data));
 			
 			me.dealContact.updateSource(rec);
+			me.dealPosts.updateSource(rec);
 			me.dealActivity.updateSource(rec);
 			me.dealProduct.updateSource(rec);
 			me.dealCompotetor.updateSource(rec);
