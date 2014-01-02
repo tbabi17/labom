@@ -873,7 +873,7 @@ Ext.define('OCS.ActivityGrid', {
 			dataIndex: 'subject',
 			flex: 1,
 			renderer: me.renderTitle,
-			sortable: false
+			sortable: true
 		},{
 			text: "Priority",
 			dataIndex: 'priority',
@@ -1042,7 +1042,7 @@ Ext.define('OCS.MyActivityGrid', {
 			dataIndex: 'subject',
 			flex: 1,
 			renderer: me.renderTitle,
-			sortable: false
+			sortable: true
 		},{
 			text: "Priority",
 			dataIndex: 'priority',
@@ -1133,7 +1133,7 @@ Ext.define('OCS.CaseGrid', {
 			text: 'Case title',
 			dataIndex: 'complain_reason',
 			width: 180,
-			sortable: false
+			sortable: true
 		},{
 			text: "Priority",
 			dataIndex: 'priority',
@@ -1189,7 +1189,7 @@ Ext.define('OCS.OpportunityGrid', {
 			text: "Topic",
 			dataIndex: 'deal',
 			width: 200,
-			sortable: false
+			sortable: true
 		},{
 			text: "Status",
 			dataIndex: 'stage',
@@ -1257,7 +1257,7 @@ Ext.define('OCS.CustomerSalesPanel', {
 			text: "Product",
 			dataIndex: 'product_name',
 			width: 200,
-			sortable: false
+			sortable: true
 		},{
 			text: "Start Date",
 			dataIndex: 'start_date',
@@ -1400,7 +1400,7 @@ Ext.define('OCS.DetailGrid', {
 			dataIndex: 'crm_name',
 			renderer: me.renderTitle,
 			flex: 1,
-			sortable: false
+			sortable: true
 		},{
 			text: 'Хариуцагч',
 			dataIndex: 'userCode',
@@ -3078,7 +3078,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 			dataIndex: 'subject',
 			flex: 1,
 			renderer: me.renderTitle,
-			sortable: false
+			sortable: true
 		},{
 			text: "Priority",
 			dataIndex: 'priority',
