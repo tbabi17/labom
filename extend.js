@@ -2272,7 +2272,7 @@ Ext.define('OCS.AGridView', {
 		var values = 'deal_id='+me.deal_id+'&case_id='+me.case_id+'&message='+value+'&owner='+logged+'&userCode='+logged;
 		Ext.Ajax.request({
 		   url: 'avia.php',
-		   params: {handle: 'web', action: 'insert', func: '', table: 'crm_post', values:values, where: ''},
+		   params: {handle: 'web', action: 'insert', func: '', table: 'crm_posts', values:values, where: ''},
 		   success: function(response, opts) {
 			  me.loadStore();
 		   },
