@@ -944,6 +944,7 @@ Ext.define('OCS.MyActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_my_activity_list',
 	sortField: '_date',
+	sortDirection: 'DESC',
 	tab : 'my_activity_property',
 	dateField: '_date',
 	title: 'My Activities',
