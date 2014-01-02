@@ -1885,7 +1885,7 @@ Ext.define('OCS.GridView', {
 			items: [/*me.searchField, */{
 					xtype: 'textfield',
 					width: 150,
-					hidden: me.search,
+					hidden: !me.search,
 					emptyText: 'Search value...',
 					readOnly: false,
 					listeners: {
