@@ -2223,7 +2223,7 @@ Ext.define('OCS.AGridView', {
 					}
 				}, {
 					text: 'Post',
-					iconCls: 'reply',
+					iconCls: 'replied',
 					handler: function() {
 
 					}
