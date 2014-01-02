@@ -943,7 +943,7 @@ Ext.define('OCS.ActivityGrid', {
 Ext.define('OCS.MyActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_my_activity_list',
-	sortField: 'priority',
+	sortField: '_date',
 	tab : 'my_activity_property',
 	dateField: '_date',
 	title: 'My Activities',
@@ -987,7 +987,7 @@ Ext.define('OCS.MyActivityGrid', {
 								me.filterData('Email List');
 							}
 						}),
-						'-',					
+						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
 							text: 'All Activity List (Case)',
