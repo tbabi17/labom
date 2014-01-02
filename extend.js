@@ -2215,11 +2215,12 @@ Ext.define('OCS.AGridView', {
 					emptyText: 'Enter post here ...',
 					readOnly: false,
 					listeners: {
-						 change: {
-							 fn: me.onTextFieldChange_,
-							 scope: this,
-							 buffer: 200
-						 }
+						 keyup : function(textfield,eventObject){
+							if (eventObject.getCharCode() == Ext.EventObject.ENTER) {
+								var post = textfield.getValue();
+								alert(post);
+							}
+						}
 					}
 				}, {
 					text: 'Post',
@@ -2260,19 +2261,6 @@ Ext.define('OCS.AGridView', {
 		};
 			
 		me.callParent(arguments);
-	},
-	
-	onTextFieldChange_: function(e) {
-		var me = this;		
-		var v = e.getValue();
-		if (v) {			
-			me.query = v;
-			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, query: me.query};
-			me.store.loadPage(1);
-		} else {
-			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
-			me.store.loadPage(1);
-		}
 	},
 	
 	loadStore: function() {
