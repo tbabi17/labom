@@ -911,7 +911,6 @@ Ext.define('OCS.ActivityGrid', {
 			func: me.func,
 			tbarable: false,
 			feature: false,
-				/*
 			viewConfig: {
 				trackOver: false,
 				stripeRows: true,
@@ -922,7 +921,7 @@ Ext.define('OCS.ActivityGrid', {
 					pluginId: 'preview'
 				}],
 			    emptyText: 'No records'				
-			}	*/			
+			}				
 		});
 	},
 
@@ -1042,7 +1041,7 @@ Ext.define('OCS.MyActivityGrid', {
 			text: "Activity",
 			dataIndex: 'subject',
 			flex: 1,
-			renderer: me.renderTitle,
+		//	renderer: me.renderTitle,
 			sortable: true
 		},{
 			text: "Priority",
