@@ -900,7 +900,7 @@ Ext.define('OCS.StageWindow', {
 
 Ext.define('OCS.DealPostReplyWindow', {
 	extend: 'OCS.Window',
-
+	title: 'Reply',
 	maximizable: true,
 	height: 220,
 	width: 300,	
@@ -932,7 +932,6 @@ Ext.define('OCS.DealPostReplyWindow', {
 				xtype: 'textarea',
 				fieldLabel: 'Reply to post',
 				name: 'message',
-				value: me.message,
 				emptyText: 'Post here message ... ',
 				style: 'margin:0', 
 				flex: 1 
@@ -943,7 +942,17 @@ Ext.define('OCS.DealPostReplyWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
-							
+						var values = 'deal_id='+form.findField('deal_id').getValue()+'&case_id=0&message='+form.findField('message').getValue()+'&owner='+logged+'&userCode='+logged+'&level='+form.findField('level').getValue();
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'insert', func: '', table: 'crm_posts', values:values, where: ''},
+						   success: function(response, opts) {
+							  me.loadStore();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});			
 					}
 					else
 					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
