@@ -342,6 +342,12 @@ Ext.define('OCS.DealPostGrid', {
 			    emptyText: 'No records'    
 			}
 		});
+
+		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
+			if (selectedRecord.length) {
+				new OCS.DealPostReplyWindow().show();
+			}
+		});
 	}
 });
 
@@ -885,6 +891,57 @@ Ext.define('OCS.StageWindow', {
 		}
 	}
 });
+
+Ext.define('OCS.DealPostReplyWindow', {
+	extend: 'OCS.Window',
+
+	maximizable: true,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'deal_id',
+				name: 'deal_id',
+				hidden: true,
+				value: me.selected.get('deal_id'),
+				readOnly: true
+			},	
+			{
+				xtype: 'textarea',
+				fieldLabel: 'Reply to post',
+				name: 'message',
+				value: me.selected.get('message'),
+				emptyText: 'Post here message ... ',
+				style: 'margin:0', 
+				flex: 1 
+			}],
+			buttons: [{
+				text: 'Commit',
+				iconCls: 'commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+							
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 
 Ext.define('OCS.DealDescrWindow', {
 	extend: 'OCS.Window',
