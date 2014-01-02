@@ -2199,6 +2199,8 @@ Ext.define('OCS.AGridView', {
 	stripeRows: true,	
 	stateful: false,
 	emptyText: 'No records.',
+	deal_id: 0,
+	case_id: 0,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -2267,7 +2269,7 @@ Ext.define('OCS.AGridView', {
 	
 	postHere: function(value) {
 		var me = this;
-		var values = 'deal_id='+me.where+'&case_id=0&message='+value+'&owner='+logged+'&userCode='+logged;
+		var values = 'deal_id='+me.deal_id+'&case_id='+me.case_id+'&message='+value+'&owner='+logged+'&userCode='+logged;
 		Ext.Ajax.request({
 		   url: 'avia.php',
 		   params: {handle: 'web', action: 'insert', func: me.func, table: me.table, values:values, where: ''},
@@ -2278,6 +2280,12 @@ Ext.define('OCS.AGridView', {
 			  Ext.MessageBox.alert('Status', 'Error !', function() {});
 		   }
 		});
+	},
+
+	initSource: function(deal_id, case_id) {
+		var me = this;
+		me.deal_id = deal_id;
+		me.case_id = case_id;
 	},
 
 	loadStore: function() {

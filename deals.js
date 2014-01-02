@@ -293,6 +293,7 @@ Ext.define('OCS.DealPostGrid', {
 		me.selected = rec;
 		me.where = rec.get('deal_id');
 		me.values = 'deal_id';
+		me.grid.initSource(rec.get('deal_id'), 0);
 		me.loadStore();
 	},
 
