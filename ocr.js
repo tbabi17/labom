@@ -890,7 +890,7 @@ Ext.define('OCS.ActivityGrid', {
 			sortable: true
 		},{
 			text: "Created on",
-			dataIndex: 'userCode',
+			dataIndex: '_date',
 			width: 100,
 			hidden: true,
 			sortable: true
@@ -1059,7 +1059,7 @@ Ext.define('OCS.MyActivityGrid', {
 			sortable: true
 		},{
 			text: "Created on",
-			dataIndex: 'userCode',
+			dataIndex: '_date',
 			width: 100,
 			hidden: true,
 			sortable: true
@@ -3095,7 +3095,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 			sortable: true
 		},{
 			text: "Created on",
-			dataIndex: 'userCode',
+			dataIndex: '_date',
 			width: 100,
 			hidden: true,
 			sortable: true
