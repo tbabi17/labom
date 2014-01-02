@@ -2832,19 +2832,22 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
-
+									me.charts[2].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
+									me.charts[2].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
+									me.charts[2].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
+									me.charts[2].rangeData(me.year(), me.nextyear());
 								}
 							}]
 						}
@@ -2870,19 +2873,22 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
-
+									me.charts[3].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
+									me.charts[3].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
+									me.charts[3].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
+									me.charts[3].rangeData(me.year(), me.nextyear());
 								}
 							}]
 						}
@@ -2908,19 +2914,22 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
-
+									me.charts[7].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
+									me.charts[7].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
+									me.charts[7].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
+									me.charts[7].rangeData(me.year(), me.nextyear());
 								}
 							}]
 						}
@@ -2938,19 +2947,22 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
-
+									me.charts[2].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
+									me.charts[2].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
+									me.charts[2].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
+									me.charts[2].rangeData(me.year(), me.nextyear());
 								}
 							}]
 						}
@@ -2961,6 +2973,66 @@ Ext.define('OCS.Dashboard', {
 		});
 
 		return me.panel;
+	},
+
+	today: function() {
+		var now = new Date();
+		return Ext.Date.format(now, 'Y-m-d');
+	},
+
+	tommorow: function() {
+		 var today = new Date();
+		 var d = today.getDate();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m, d+1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	month: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+	
+	nextmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m+1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	monday: function() {
+		var today = new Date();
+		var day = today.getDay() || 7;
+		if( day !== 1 )
+		    today.setHours(-24 * (day - 1)); 
+		var ndate=Ext.Date.format(today, 'Y-m-d');
+		return ndate;
+	},
+
+	year: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, 1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	nextyear: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y+1, 1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
 	}
 });
 
