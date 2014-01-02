@@ -2214,12 +2214,12 @@ Ext.define('OCS.AGridView', {
 					xtype: 'textfield',
 					width: 250,					
 					emptyText: 'Enter post here ...',
-					readOnly: false,
+					enableKeyEvents: true,
 					listeners: {
 						 keyup : function(textfield,eventObject){
 							if (eventObject.getCharCode() == Ext.EventObject.ENTER) {
 								var post = textfield.getValue();
-								alert(post);
+								me.postHere(post);
 							}
 						}
 					}
@@ -2227,7 +2227,8 @@ Ext.define('OCS.AGridView', {
 					text: 'Post',
 					iconCls: 'replied',
 					handler: function() {
-						alert(Ext.getCmp('post_here').getValue());
+						var post = Ext.getCmp('post_here').getValue();
+						me.postHere(post);
 					}
 				}
 			]
@@ -2264,6 +2265,21 @@ Ext.define('OCS.AGridView', {
 		me.callParent(arguments);
 	},
 	
+	postHere: function(value) {
+		var me = this;
+		var values = 'deal_id='+me.where+'&case_id=0&message='+value+'&owner='+logged+'&userCode='+logged;
+		Ext.Ajax.request({
+		   url: 'avia.php',
+		   params: {handle: 'web', action: 'insert', func: me.func, table: me.table, values:values, where: ''},
+		   success: function(response, opts) {
+			  me.loadStore();
+		   },
+		   failure: function(response, opts) {										   
+			  Ext.MessageBox.alert('Status', 'Error !', function() {});
+		   }
+		});
+	},
+
 	loadStore: function() {
 		var me = this;
 		me.store.loadPage(1);

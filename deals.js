@@ -278,7 +278,7 @@ Ext.define('OCS.DealPostGrid', {
 	icon: 'call',
 	table: 'crm_posts',
 	dateField: '_date',
-	sortField: 'crm_id',
+	sortField: '_date',
 	modelName: 'CRM_POSTS',
 	collapsed: false,
 	
