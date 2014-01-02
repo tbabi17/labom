@@ -280,6 +280,7 @@ fields['CRM_POSTS_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', width: 50, hidden: true},   
    {name: 'case_id', text: 'Case ID', width: 50, hidden: true},
    {name: 'message', text: 'Note', width: 200, primary: true},
+   {name: 'level', type: 'int', text: 'level', width: 50, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}

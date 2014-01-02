@@ -299,10 +299,11 @@ Ext.define('OCS.DealPostGrid', {
 
 	renderTitle: function(value, p, record) {
         return Ext.String.format(
-            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}</br>{2}</br></span></td></tr></table>',
+            '<table><tr><td style="padding-left:{3}px"><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}</br>{2}</br></span></td></tr></table>',
             value,
             record.data.owner,
-            record.data._date
+            record.data._date,
+			record.data.level*50
         );
     },
 		
@@ -900,7 +901,7 @@ Ext.define('OCS.DealPostReplyWindow', {
 	extend: 'OCS.Window',
 
 	maximizable: true,
-	height: 250,
+	height: 220,
 	width: 300,	
 
 	initComponent: function() {
@@ -917,7 +918,15 @@ Ext.define('OCS.DealPostReplyWindow', {
 				hidden: true,
 				value: me.deal_id,
 				readOnly: true
-			},	
+			},
+			{
+				xtype: 'textfield',
+				fieldLabel: 'level',
+				name: 'level',
+				hidden: true,
+				value: me.level+1,
+				readOnly: true
+			},
 			{
 				xtype: 'textarea',
 				fieldLabel: 'Reply to post',
