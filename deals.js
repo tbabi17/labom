@@ -314,6 +314,33 @@ Ext.define('OCS.DealPostGrid', {
 			flex: 1,
 			sortable: false
 		}];
+	},
+	
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.AGridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 0.75,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			actions: me.createActions(),
+			viewConfig: {
+				trackOver: false,
+				stripeRows: false,
+				plugins: [{
+					ptype: 'preview',
+					bodyField: 'descr',
+					expanded: true,
+					pluginId: 'preview'
+				}],
+			    emptyText: 'No records'    
+			}
+		});
 	}
 });
 

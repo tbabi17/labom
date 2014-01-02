@@ -2187,3 +2187,90 @@ Ext.define('OCS.GridView', {
 		me.store.loadPage(1);
 	}
 });
+
+
+Ext.define('OCS.AGridView', {
+	extend: 'Ext.grid.Panel',	
+	border: false,
+	region: 'center',
+	split: true,
+	multiSelect: true,
+	columnLines: true,
+	stripeRows: true,	
+	stateful: false,
+	emptyText: 'No records.',
+	
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },
+	
+	initComponent: function() {
+		var me = this;
+	
+		me.tbar = Ext.create('Ext.Toolbar', {
+			items: [{
+					xtype: 'textfield',
+					width: 150,
+					emptyText: 'Post here ...',
+					readOnly: false,
+					listeners: {
+						 change: {
+							 fn: me.onTextFieldChange_,
+							 scope: this,
+							 buffer: 200
+						 }
+					}
+				}
+			]
+		});		
+
+		me.contextMenu = Ext.create('Ext.menu.Menu', {
+			items: me.actions
+		});
+
+		me.viewConfig = {
+			emptyText: me.emptyText,
+			trackOver: false,
+			stripeRows: false,
+			listeners: {
+				itemcontextmenu: function(view, rec, node, index, e) {
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(e.getXY());
+					return false;
+				},
+				containercontextmenu: function(grid, e) {
+					var position = e.getXY();
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(position);
+				}
+			},
+			getRowClass: function (record, rowIndex, rowParams, store) {
+                may = record.get('mayDuplicate') != '0' ? 'may-duplicate' : '';
+				return may;
+            }
+		};
+			
+		me.callParent(arguments);
+	},
+	
+	onTextFieldChange_: function(e) {
+		var me = this;		
+		var v = e.getValue();
+		if (v) {			
+			me.query = v;
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, query: me.query};
+			me.store.loadPage(1);
+		} else {
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+			me.store.loadPage(1);
+		}
+	},
+	
+	loadStore: function() {
+		var me = this;
+		me.store.loadPage(1);
+	}
+});
