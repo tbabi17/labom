@@ -281,6 +281,12 @@ Ext.define('OCS.DealPostGrid', {
 	sortField: 'crm_id',
 	modelName: 'CRM_POSTS',
 	collapsed: false,
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	},
 
 	updateSource: function(rec) {
 		var me = this;

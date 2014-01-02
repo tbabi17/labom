@@ -1922,7 +1922,6 @@ Ext.define('OCS.GridView', {
 			items: me.actions
 		});
 
-
 		me.viewConfig = {
 			emptyText: me.emptyText,
 			trackOver: false,
