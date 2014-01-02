@@ -911,6 +911,7 @@ Ext.define('OCS.ActivityGrid', {
 			func: me.func,
 			tbarable: false,
 			feature: false,
+				/*
 			viewConfig: {
 				trackOver: false,
 				stripeRows: true,
@@ -921,7 +922,7 @@ Ext.define('OCS.ActivityGrid', {
 					pluginId: 'preview'
 				}],
 			    emptyText: 'No records'				
-			}				
+			}	*/			
 		});
 	},
 
