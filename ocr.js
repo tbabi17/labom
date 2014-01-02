@@ -1041,7 +1041,7 @@ Ext.define('OCS.MyActivityGrid', {
 			text: "Activity",
 			dataIndex: 'subject',
 			flex: 1,
-		//	renderer: me.renderTitle,
+			renderer: me.renderTitle,
 			sortable: true
 		},{
 			text: "Priority",
