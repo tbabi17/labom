@@ -349,7 +349,8 @@ Ext.define('OCS.DealPostGrid', {
 				var rec = selectedRecord[0];
 				new OCS.DealPostReplyWindow({
 					deal_id: rec.get('deal_id'),
-					message: rec.get('message')										
+					message: rec.get('message'),
+					level: rec.get('level')
 				}).show();
 			}
 		});
