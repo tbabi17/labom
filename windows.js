@@ -690,12 +690,12 @@ Ext.define('OCS.CaseStageWindow', {
 					name: 'descr',
 					emptyText: 'Тайлбар',
 					style: 'margin:0', 
-					flex: 1 
+					flex: 1
 				}
 			],
 			buttons: [{
 				text: 'Commit',
-				handler: function() {	
+				handler: function() {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);
@@ -705,7 +705,7 @@ Ext.define('OCS.CaseStageWindow', {
 						
 						if (status == 'solved' && me.openActivity > 0) {
 							Ext.MessageBox.alert('Error', 'This case cannot be closed because there are open activities associated with it !', function() {});
-							return;							
+							return;
 						}
 
 						var values_deals = "case_stage='"+form.findField('case_stage').getValue()+"'"+
