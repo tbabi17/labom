@@ -2210,8 +2210,9 @@ Ext.define('OCS.AGridView', {
 	
 		me.tbar = Ext.create('Ext.Toolbar', {
 			items: [{
+					id: 'post_here',
 					xtype: 'textfield',
-					width: 250,
+					width: 250,					
 					emptyText: 'Enter post here ...',
 					readOnly: false,
 					listeners: {
@@ -2226,7 +2227,7 @@ Ext.define('OCS.AGridView', {
 					text: 'Post',
 					iconCls: 'replied',
 					handler: function() {
-
+						alert(Ext.getCmp('post_here').getValue());
 					}
 				}
 			]
