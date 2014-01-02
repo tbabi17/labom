@@ -1857,6 +1857,7 @@ Ext.define('OCS.GridView', {
 	filter: false,
 	tbarable: false,
 	feature: true,
+	searchField : true,
 	emptyText: 'No records.',
 	
 	constructor: function(cnfg) {
@@ -1884,7 +1885,7 @@ Ext.define('OCS.GridView', {
 			items: [/*me.searchField, */{
 					xtype: 'textfield',
 					width: 150,
-					//hidden: true,
+					hidden: me.searchField,
 					emptyText: 'Search value...',
 					readOnly: false,
 					listeners: {
