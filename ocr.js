@@ -2464,7 +2464,6 @@ Ext.define('OCS.DealAction', {
 								return;
 							}
 
-
 							if (me.selected.get('owner') == logged) {				
 								new OCS.DealDescrWindow({
 									selected: me.selected,
@@ -2890,7 +2889,7 @@ Ext.define('OCS.CaseAction', {
 								} else {
 									new OCS.CaseStageWindow({
 										selected: me.selected,
-										openActivity : me.activityGrid.openActivityCount()
+										openActivity : me.caseActivity.openActivityCount()
 									}).show();
 								}
 							} else
