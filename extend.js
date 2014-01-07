@@ -454,7 +454,7 @@ Ext.define('OSS.SearchCombo', {
 	pageSize: 10,
 	valueField: 'value',
 	displayField: 'value',
-    typeAhead: true,
+    typeAhead: false,
     hideLabel: false,
     hideTrigger:true,
 	minChars: 1,
