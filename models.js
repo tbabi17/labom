@@ -227,7 +227,7 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', width: 80}
+   {name: '_date', text: 'Created on', width: 120}
 ];
 
 Ext.define('CRM_WORKFLOW', {
