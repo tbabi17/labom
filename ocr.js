@@ -2991,6 +2991,7 @@ Ext.define('OCS.SettingsPanel', {
 							title: 'Users',
 							insert: (user_level==0),
 							remove: (user_level==0),
+							buttons: true,
 							defaultRec: {
 								data: {
 									id: '0',
@@ -3090,6 +3091,7 @@ Ext.define('OCS.SettingsPanel', {
 										title: 'Products',
 										table: 'crm_products',
 										tab: 'my_crm_product_list',
+										buttons: true,
 										insert: (user_level==0),
 										remove: (user_level==0),	
 										defaultRec: {
@@ -3116,6 +3118,7 @@ Ext.define('OCS.SettingsPanel', {
 										title: 'Goals',
 										table: 'crm_user_planning',
 										tab: 'my_crm_user_planning_list',
+										buttons: true,
 										insert: (user_level==0),
 										remove: (user_level==0),
 										defaultRec: {
