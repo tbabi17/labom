@@ -692,7 +692,7 @@ Ext.define('OCS.RetailPanel', {
 		var me = this;
 		me.createStore();		
 
-		me.grid = Ext.create('OCS.GridView', {	
+		me.grid = Ext.create('OCS.GridView', {
 			store: me.store,
 			columns: me.createColumns(),
 			actions: me.createActions(),
@@ -700,6 +700,8 @@ Ext.define('OCS.RetailPanel', {
 		});										
 
 		me.panel = Ext.create('Ext.panel.Panel', {
+			title: me.title,
+			id: me.tab,
 			layout: 'border',
 			border: false,
 			region: 'center',
@@ -718,6 +720,7 @@ Ext.define('OCS.CorporatePanel', {
 	func: 'crm_corporate_list',
 	autoSelect: true,
 	xlsName: 'Account',
+	title: 'Account List',
 		
 	createSubActions: function() {
 		var me = this;
@@ -893,6 +896,8 @@ Ext.define('OCS.CorporatePanel', {
 		});				
 								
 		me.panel = Ext.create('Ext.panel.Panel', {
+			title: me.title,
+			id: me.tab,
 			layout: 'border',
 			border: false,
 			region: 'center',
