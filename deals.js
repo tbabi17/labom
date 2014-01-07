@@ -19,6 +19,17 @@ Ext.define('OCS.DealActivityGrid', {
 	}
 });
 
+Ext.define('OCS.CompetitorDealActivityGrid', {
+	extend: 'OCS.DealActivityGrid',
+	tab : 'competitor_deal_activity_property',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	}
+});
+
 Ext.define('OCS.InvoiceActivityGrid', {
 	extend: 'OCS.DealActivityGrid',
 	func: 'crm_customer_activity_list',
@@ -74,7 +85,7 @@ Ext.define('OCS.DealGrid', {
 						}		
 						else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
 							new OCS.CompetitorWindow({
-								selected: me.selected,								
+								selected: me.selected,
 								backgrid: me.grid
 							}).createWindow();
 						}
@@ -270,6 +281,16 @@ Ext.define('OCS.DealContactGrid', {
 	}
 });
 
+Ext.define('OCS.CompetitorDealContactGrid', {
+	extend: 'OCS.DealContactGrid',
+	tab : 'competitor_deal_detail_property',
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	}
+});
+
 Ext.define('OCS.DealPostGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_post_list',
@@ -299,7 +320,7 @@ Ext.define('OCS.DealPostGrid', {
 
 	renderTitle: function(value, p, record) {
         return Ext.String.format(
-            '<table><tr><td style="padding-left:{3}px"><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}</br>{2}</br></span></td></tr></table>',
+            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}</br>{2}</br></span></td></tr></table>',
             value,
             record.data.owner,
             record.data._date,
@@ -352,6 +373,62 @@ Ext.define('OCS.DealPostGrid', {
 					message: rec.get('message'),
 					level: rec.get('level')
 				}).show();
+			}
+		});
+	}
+});
+
+Ext.define('OCS.CompetitorDealPostGrid', {
+	extend: 'OCS.DealPostGrid',
+	func: 'crm_post_list',
+	tab : 'competitor_deal_post_list',
+	title: 'Posts',
+	icon: 'call',
+	table: 'crm_posts',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_POSTS',
+	collapsed: false,
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	},
+
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.where = rec.get('deal_id');
+		me.values = 'deal_id';
+		me.grid.initSource(rec.get('deal_id'), 0);
+		me.loadStore();
+	},
+
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.AGridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 0.75,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			actions: me.createActions(),
+			postable: false,
+			viewConfig: {
+				trackOver: false,
+				stripeRows: false,
+				plugins: [{
+					ptype: 'preview',
+					bodyField: 'descr',
+					expanded: true,
+					pluginId: 'preview'
+				}],
+			    emptyText: 'No records'    
 			}
 		});
 	}
@@ -481,6 +558,19 @@ Ext.define('OCS.DealProductGrid', {
 	}
 });
 
+Ext.define('OCS.CompetitorDealProductGrid', {
+	extend: 'OCS.DealProductGrid',
+	tab : 'competitor_deal_product_property',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+		];
+
+		return me.actions;
+	}
+});
+
 Ext.define('OCS.DealCompetitorGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_deal_competitor_list',
@@ -542,6 +632,19 @@ Ext.define('OCS.DealCompetitorGrid', {
 	}
 });
 
+
+Ext.define('OCS.CompetitorDealCompetitorGrid', {
+	extend: 'OCS.DealCompetitorGrid',
+	tab : 'competitor_deal_competitor_property',	
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+		];
+
+		return me.actions;
+	}
+});
+
 Ext.define('OCS.DealSalesTeamGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_deal_sales_team_list',
@@ -595,6 +698,17 @@ Ext.define('OCS.DealSalesTeamGrid', {
 	}
 });
 
+Ext.define('OCS.CompetitorDealSalesTeamGrid', {
+	extend: 'OCS.DealSalesTeamGrid',	
+	tab : 'competitor_deal_sales_team_property',
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+		];
+
+		return me.actions;
+	}	
+});
 
 Ext.define('OCS.StageWindow', {
 	extend: 'OCS.Window',
@@ -737,8 +851,8 @@ Ext.define('OCS.StageWindow', {
 							value: me.selected.get('competitor_name'),
 							margins: '0 0 0 6',
 							flex: 1,
-							table: 'crm_deal_competitors',
-							name: 'competitor_name'
+							table: 'crm_competitors',
+							name: 'competitor_name'							
 						},{
 							xtype: 'textfield',
 							fieldLabel: 'Бүртгэсэн',				
@@ -942,7 +1056,7 @@ Ext.define('OCS.DealPostReplyWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
-						var values = 'deal_id='+form.findField('deal_id').getValue()+'&case_id=0&message='+form.findField('message').getValue()+'&owner='+logged+'&userCode='+logged+'&level='+form.findField('level').getValue();
+						var values = 'reply_id='+form.findField('reply_id')+'&deal_id='+form.findField('deal_id').getValue()+'&case_id=0&message='+form.findField('message').getValue()+'&owner='+logged+'&userCode='+logged+'&level='+form.findField('level').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'insert', func: '', table: 'crm_posts', values:values, where: ''},
@@ -1019,7 +1133,7 @@ Ext.define('OCS.DealDescrWindow', {
 				name: 'competitor_name',
 				hidden: me.comp,
 				value: me.selected.get('competitor_name'),
-				table: 'crm_deal_competitors'
+				table: 'crm_competitors'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -1085,6 +1199,7 @@ Ext.define('OCS.DealDescrWindow', {
 						   params: {handle: 'web', table: 'crm_deals', action: 'update', values: values_deals, where: "deal_id="+me.selected.get('deal_id')},
 						   success: function(response, opts) {
 							  me.close();
+							  me.competitorWrite();
 							  me.customerLevelDetection();
 							  views['deals'].reload(me.selected);
 						   },

@@ -172,6 +172,57 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
 		me.store.load();
+	},
+
+	createWindow: function() {
+		var me = this;
+
+		me.grid = new Ext.create('Ext.grid.Panel', {
+			selType: 'checkboxmodel',
+			store: me.store,
+			region: 'center',
+			border: false,
+			flex: 1,
+			columns : [
+                {text: "owner", width: 120, dataIndex: 'owner', renderer: renderOwner, sortable: true},
+                {text: "actual_revenue", flex: 1, dataIndex: 'actual_revenue', align: 'right', renderer: renderMoney, sortable: true},
+                {text: "expected_revenue", width: 125, dataIndex: 'expected_revenue', align: 'right', renderer: renderMoney, sortable: true},
+                {text: "target_revenue", width: 125, dataIndex: 'target_revenue', renderer: renderMoney, align: 'right', sortable: true}
+            ],
+			buttons: [{
+				text: 'Reset',
+				iconCls: 'reset',
+				handler: function() {
+					me.store.clearFilter();
+				}
+			},{
+				text: 'View',
+				iconCls: 'commit',
+				handler: function() {
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					var owners = '';
+					for (i = 0;  i < records.length; i++) {
+						var rec = records[i];
+						owners += rec.get('owner')+',';
+					}
+
+					me.store.filter(function(r) {
+						var value = r.get('owner');
+						return (owners.indexOf(value+',') != -1);
+					});
+				}
+			}]
+		});
+
+		me.win = new Ext.create('Ext.Window', {
+			title: 'Filter',
+			width: 500,
+			height: 350,
+			layout: 'border',
+			items: me.grid
+		});
+		
+		me.win.show();
 	}
 });
 

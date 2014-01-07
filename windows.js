@@ -5,8 +5,16 @@ Ext.define('OCS.ComplainWindow', {
 	table: 'crm_complain',	
 	values: 'crm_id',
 //	groupField: 'groupId',
+	buttons: true,
 	modelName: 'CRM_COMPLAIN',
 	primary: 'case_id',
+	
+	filterData: function(views) {
+		var me = this;		
+		me.title = views;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
+		me.store.loadPage(1);
+	},
 
 	createActions: function() {
 		var me = this;
@@ -259,6 +267,81 @@ Ext.define('OCS.PersonalViewWindow', {
 	}
 });
 
+Ext.define('OCS.CustomerCampaignWindow', {
+	extend: 'OCS.ComplainWindow',
+	func : 'crm_customer_campaign_list', 
+	title: 'Campaign list',
+	table: 'crm_customer_campaigns',
+	groupField: '',
+	values: 'crm_id',
+	primary: 'id',
+	modelName: 'CRM_CUSTOMER_CAMPAIGN',	
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				id: '0',
+				crm_id: me.selected.data['crm_id'],
+				_date : Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+				userCode: logged
+			}
+		};
+
+		me.where = me.selected.data['crm_id'];
+	}
+});
+
+Ext.define('OCS.CampaignWindow', {
+	extend: 'OCS.ComplainWindow',
+	func : 'crm_campaign_list', 
+	title: 'Campaigns',
+	table: 'crm_campaign',
+	groupField: '',
+	values: 'userCode',
+	modelName: 'CRM_CAMPAIGN',	
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				id: '0',
+				campaign_status: 'planning',
+				campaign_live: 'dynamic',
+				_date : Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+				start_date : Ext.Date.format(new Date(),'Y-m-d'),
+				end_date : Ext.Date.format(new Date(),'Y-m-d'),
+				personal: me.ids,
+				owner: logged,
+				userCode: logged
+			}
+		};
+
+		me.where = logged;
+	},
+
+	createWindow: function() {
+		var me = this;
+		me.initSource();
+		me.panel = me.createGrid();
+		me.form.updateSource(me.defaultRec);
+
+		me.win = Ext.create('widget.window', {
+			title:me.title,
+			closable: true,
+			maximizable: true,
+			width: 950,
+			modal: true,
+			minWidth: 650,
+			height: 500,
+			layout: 'border',		
+			items: [me.panel]		
+		});
+
+		me.win.show();
+	}
+});
+
 Ext.define('OCS.TaskWindow', {
 	extend: 'OCS.ComplainWindow',
 	func : 'crm_task_list', 
@@ -289,6 +372,127 @@ Ext.define('OCS.TaskWindow', {
 		};
 
 		me.where = me.selected.get('crm_id');
+	}
+});
+
+Ext.define('OCS.ActivityWindow', {
+	extend: 'OCS.ComplainWindow',
+	func : 'crm_all_activity_list', 
+	title: 'Activities',
+	table: 'crm_calendar',
+	groupField: '',
+	buttons: false,
+	modelName: 'CRM_CALENDAR',
+	primary: 'id',
+	values: '',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [	
+			Ext.create('Ext.Action', {
+				iconCls: 'list',
+				text: 'Views',
+				menu: {
+					xtype: 'menu',
+					items: [						
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Task List',
+							handler: function(widget, event) {
+								me.filterData('Task List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Appointment List',
+							handler: function(widget, event) {
+								me.filterData('Appointment List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Phone Call List',
+							handler: function(widget, event) {
+								me.filterData('Phone Call List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Email List',
+							handler: function(widget, event) {
+								me.filterData('Email List');
+							}
+						}),
+						'-',
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Activity List (Case)',
+							handler: function(widget, event) {
+								me.filterData('All Activity List (Case)');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Activity List',
+							handler: function(widget, event) {
+								me.filterData('All Activity List');
+							}
+						})
+					]
+				}		
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'calendar',
+				text: 'Calendar',
+				handler: function(widget, event) {
+					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
+					googleEvent(rec, me.func);
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				id: '0',
+			}
+		};
+	},
+
+	createWindow: function() {
+		var me = this;
+		me.initSource();
+		me.panel = me.createGrid();
+		me.form.updateSource(me.defaultRec);
+
+		me.win = Ext.create('widget.window', {
+			title: me.title,
+			closable: true,
+			maximizable: true,
+			width: 950,
+			modal: true,
+			minWidth: 650,
+			height: 500,
+			layout: 'border',		
+			items: [me.panel]		
+		});
+
+		me.win.show();
 	}
 });
 
@@ -841,6 +1045,78 @@ Ext.define('OCS.CaseAssignWindow', {
 	}
 });
 
+Ext.define('OCS.CustomerAssignWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Assign to',
+	maximizable: false,
+	height: 150,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'customer_assign_to',				
+			title: 'Assign to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',				
+				name: 'owner',
+				value: logged
+			},				
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				name: 'userCode',
+				value: logged,
+				hidden: true,
+				readOnly: true
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('owner').getValue()+","+form.findField('selected').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_customer', action: 'update_customer_owner', values: values},
+						   success: function(response, opts) {
+								if (me.direction == 'Contact')
+									views['retail'].store.reload();
+								if (me.direction == 'Account')
+									views['corporate'].store.reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
 
 Ext.define('OCS.CaseResolveWindow', {
 	extend: 'OCS.Window',	
@@ -931,5 +1207,190 @@ Ext.define('OCS.CaseResolveWindow', {
 		
 		me.items = [me.form];		
 		me.callParent(arguments);
+	}
+});
+
+
+Ext.define('OCS.MarkCompleteWindow', {
+	extend: 'OCS.Window',
+	title: 'Mark complete',
+	maximizable: true,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;		
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [
+				{
+					xtype: 'combo',
+					store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'processing'},{value: 'completed'}]
+					}),
+					fieldLabel: 'Status',
+					name: 'workflow_status',
+					queryMode: 'local',
+					displayField: 'value',
+					valueField: 'value',
+					triggerAction: 'all',
+					value: 'completed',
+					editable: false
+				},
+				{
+					xtype: 'numberfield',
+					name: 'precent',
+					fieldLabel: 'Precent',
+					value: me.selected.get('precent')
+				},
+				{
+					xtype: 'textfield',
+					fieldLabel: 'Owner',				
+					name: 'owner',
+					value: logged,
+					hidden: true,
+					readOnly: true
+				},{
+					xtype: 'textarea',
+					fieldLabel: 'Тайлбар',
+					hideLabel: true,
+					name: 'descr',
+					value: me.selected.get('descr'),
+					emptyText: 'Note ...',
+					style: 'margin:0', 
+					flex: 1 
+				}
+			],
+			buttons: [{
+				text: 'Commit',
+				iconCls: 'commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						var precent = form.findField('precent').getValue();
+						if (form.findField('workflow_status').getValue() == 'completed')
+							precent = 100;
+						values = "workflow_status='"+form.findField('workflow_status').getValue()+"',precent="+precent+",owner='"+form.findField('owner').getValue()+"',descr='"+form.findField('descr').getValue()+"'";
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_workflow', action: 'update', values: values, where: "id="+me.selected.get('id')},
+						   success: function(response, opts) {
+							  me.close();
+							  views['workflow'].reload();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});													
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
+Ext.define('OCS.MassMailWindow', {
+	extend: 'OCS.Window',
+	title: 'Auto mail',
+	maximizable: true,
+	height: 450,
+	width: 650,	
+
+	initComponent: function() {
+		var me = this;		
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'From',				
+				name: 'from'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Subject',				
+				name: 'subject'
+			},{
+				xtype: 'htmleditor',
+				name: 'htmlContent', 
+				flex: 1,
+				anchor: '100%'
+			}],
+			buttons: [{
+				text: 'Start',
+				iconCls: 'commit',
+				handler: function() {
+					
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
+Ext.define('OCS.CustomerDetailWindow', {
+	extend: 'OCS.Window',
+	title: 'Detail',
+	maximizable: true,
+	height: 600,
+	modal: false,
+	width: 590,	
+
+	initComponent: function() {
+		var me = this;			
+
+		me.property = new OCS.DetailGrid();
+		me.activity = new OCS.ActivityGrid();
+		me.opportunity = new OCS.OpportunityGrid();
+		me.customer_campaings = new OCS.CustomerCampaigns();
+	    me.csales = new OCS.CustomerSalesPanel();
+		me.ccase = new OCS.CaseGrid();
+
+		me.items = [{
+			id: 'customerComponent',
+			xtype: 'tabpanel',
+			region: 'center',
+			border: false,
+			activeTab: 0,
+			cls: 'MainPanel',
+			tabPosition: 'top',			
+			items: [					
+				me.property.createPanel(),
+				me.activity.createPanel(),
+				me.ccase.createPanel(),
+				me.opportunity.createPanel(),
+				me.csales.createPanel(),
+				me.customer_campaings.createPanel()
+			]
+		}];	
+		
+		me.updateSource(me.selected);
+		me.callParent(arguments);
+	},
+
+	updateSource: function(rec) {
+		var me = this;				
+
+		me.property.updateSource(rec);
+		me.activity.updateSource(rec);
+		me.opportunity.updateSource(rec);
+		me.customer_campaings.updateSource(rec);
+		me.ccase.updateSource(rec);
+		me.csales.updateSource(rec);
+
+		Ext.getBody().unmask();
 	}
 });

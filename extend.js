@@ -58,8 +58,20 @@ Ext.define('OCS.Module', {
 						}
 						
 						if (me.func == 'crm_alarm_list' && me.store.getCount() > 0) {
-							if (Ext.getCmp('alarm_window'))							
-								Ext.getCmp('alarm_window').show();
+							var deal = 0, ccase = 0, activity = 0;
+							me.store.each(function(rec){
+								if (rec.data['type'] == 'deal')
+									deal++;
+								else
+								if (rec.data['type'] == 'case')
+									ccase++;
+								else
+									activity++;
+							});
+
+							views['topbar'].update('<div class="caption">'+
+													 '<table cellpadding=0 cellspacing=0><tr><td class="padding'+(pk=='dashboard'?' active':'')+'"><a href="index.php?pk=dashboard">Dashboard</a></td><td class="padding'+(pk=='workspace'?' active':'')+'"><a href="index.php?pk=workspace">Activities'+(activity>0?'<div class="noti_bubble">'+activity+'</div>':'')+'</a></td><td class="padding'+(pk=='deals'?' active':'')+'"><a href="index.php?pk=deals">Deals'+(deal>0?'<div class="noti_bubble">'+deal+'</div>':'')+'</a></td><td class="padding'+(pk=='retail'?' active':'')+'"><a href="index.php?pk=retail">Contacts</a></td><td class="padding'+(pk=='corporate'?' active':'')+'"><a href="index.php?pk=corporate">Accounts</a></td><td class="padding'+(pk=='cases'?' active':'')+'"><a href="index.php?pk=cases">Cases'+(ccase>0?'<div class="noti_bubble">'+ccase+'</div>':'')+'</a></td><td class="padding'+(pk=='campaigns'?' active':'')+'"><a href="index.php?pk=campaigns">Campaigns</a></td><td class="padding'+(pk=='competitor'?' active':'')+'"><a href="index.php?pk=competitor">Competitors</a></td><td class="padding'+(pk=='quotes'?' active':'')+'"><a href="index.php?pk=quotes">Invoices</a></td><td class="padding'+(pk=='sales'?' active':'')+'"><a href="index.php?pk=sales">Contracts</a></td><td class="padding'+(pk=='settings'?' active':'')+'"><a href="index.php?pk=settings">Settings</a></td><td class="padding" style="float:right"><a href="logout.php">'+logged+' | Гарах</a></td></tr></table>'+
+									 			   '</div>');
 						}
 
 						if (me.tab) {
@@ -192,7 +204,7 @@ Ext.define('OCS.Module', {
 			v1 = v1 + chrs[v[0].charAt(i)];
 
 		return v1.toUpperCase();//this.capitalise(v1)+' '+this.capitalise(v2);
-	},
+	},		
 
 	getCustomerName: function(rec) {
 		if (rec.get('firstName'))
@@ -210,15 +222,9 @@ Ext.define('OCS.Module', {
 		var me = this;
 		crm_id = rec.get('crm_id');
 		selected = rec;
-	
-		views['property'].updateSource(rec);
-		views['activity'].updateSource(rec);
-		views['opportunity'].updateSource(rec);
-		views['case'].updateSource(rec);
-		views['csales'].updateSource(rec);
+
 		if (me.form)
-			me.form.loadRecord(rec);			
-		Ext.getCmp('customerComponent').setTitle(me.getCustomerName(rec));
+			me.form.loadRecord(rec);
 	},
 
 	commitRecord: function() {		
@@ -269,6 +275,7 @@ Ext.define('OCS.Module', {
 		if (me.form)
 			me.form.setVisible(false);				
 
+		Ext.getBody().mask('Saving...');
 		if (action == 'insert')
 		{		
 			values = values.substring(0, values.length - 1);
@@ -276,6 +283,7 @@ Ext.define('OCS.Module', {
 			   url: 'avia.php',
 			   params: {handle: 'web', action: action, func: me.func, table: me.table, values:values, where: me.where},
 			   success: function(response, opts) {
+				  Ext.getBody().unmask();
 				  Ext.MessageBox.alert('Status', 'Success !', function() {});
   				  me.store.loadPage(1);
 			   },
@@ -289,6 +297,7 @@ Ext.define('OCS.Module', {
 			   url: 'avia.php',
 			   params: {handle: 'web', action: action, func: me.func, table: me.table, values:values1, where: captcha},
 			   success: function(response, opts) {
+				  Ext.getBody().unmask();
 				  Ext.MessageBox.alert('Status', 'Success !', function() {});
 				  me.store.loadPage(1);									  
 				  if (me.grid)				
@@ -341,13 +350,14 @@ Ext.define('OCS.Module', {
 				captcha = 'case_id='+rec.get('value');
 			}
         });	
-		
+		Ext.getBody().mask('Saving...');
 		if (action == 'update') {			
 			values1 = values1.substring(0, values1.length - 1);
 			Ext.Ajax.request({
 			   url: 'avia.php',					   
 			   params : {handle: 'web', action: action, func: '', table: me.table, values:values1, where: captcha},
 			   success: function(response, opts) {
+				  Ext.getBody().unmask();
 				  Ext.MessageBox.alert('Status', 'Success !', function() {});
 				  if (me.modelName == 'CRM_RETAIL')				 				  
 					  views['retail'].store.reload();
@@ -375,15 +385,15 @@ Ext.define('OCS.Module', {
 				return;
 			}	
 		}
-
 		Ext.Msg.confirm('Warning ','Устгах уу ?',function(btn){
 			if(btn === 'yes'){
 				var id = selection[0].get(me.primary);
-
+				Ext.getBody().mask('Deleting...');
 				Ext.Ajax.request({
 				   url: 'avia.php',					   
 				   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id},
 				   success: function(response, opts) {
+					    Ext.getBody().unmask();
 						me.store.reload();
 				   },
 				   failure: function(response, opts) {										   
@@ -540,6 +550,16 @@ Ext.define('OCS.GridWithFormPanel', {
 		}
 	},
 	
+	recordSelected: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return true;
+		
+		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
+	},
+	
 	createGrid: function() {
 		var me = this;
 		me.createStore();
@@ -588,36 +608,49 @@ Ext.define('OCS.GridWithFormPanel', {
 			}
 		});
 		
-		me.form = new OCS.PropertyGrid({
-			modelName: me.modelName,
-			region: 'east',
-			hidden: true,
-			title: me.title,			
-			split: true,
-			flex: 0.65,
-			closable: true,
-			closeAction: 'hide',
-			sealedColumns: true,		
-			buttons: [{
-					iconCls: 'reset',
-					text: 'Reset',
-					handler: function() {
-						me.form.updateSource(me.defaultRec);
-					}				
-				},'->',{
-					iconCls: 'commit',
-					text: 'Commit',
-					listeners: {
-						mouseover: function(){
-							me.form.doLayout();
+		if (!me.buttons)
+			me.form = new OCS.PropertyGrid({
+				modelName: me.modelName,
+				region: 'east',
+				hidden: true,
+				title: me.title,			
+				split: true,
+				flex: 0.65,
+				closable: true,
+				closeAction: 'hide',
+				sealedColumns: true				
+			});
+		else
+			me.form = new OCS.PropertyGrid({
+				modelName: me.modelName,
+				region: 'east',
+				hidden: true,
+				title: me.title,			
+				split: true,
+				flex: 0.65,
+				closable: true,
+				closeAction: 'hide',
+				sealedColumns: true,		
+				buttons: [{
+						iconCls: 'reset',
+						text: 'Reset',
+						handler: function() {
+							me.form.updateSource(me.defaultRec);
+						}				
+					},'->',{
+						iconCls: 'commit',
+						text: 'Commit',
+						listeners: {
+							mouseover: function(){
+								me.form.doLayout();
+							}
+						},
+						handler: function() {
+							me.commitRecord();	
 						}
-					},
-					handler: function() {
-						me.commitRecord();	
 					}
-				}
-			]
-		});
+				]
+			});
 		
 		me.initSource();
 
@@ -702,15 +735,6 @@ Ext.define('OCS.GridWithFormPanel', {
 	selectionModel: function() {
 		var me = this;
 		return me.grid.getSelectionModel();
-	},
-
-	recordSelected: function() {
-		var me = this;
-		var recs = me.grid.getView().getSelectionModel().getSelection();
-		if (recs && recs.length > 0)
-			return true;
-
-		return false;
 	},
 
 	showForm: function() {
@@ -1046,14 +1070,13 @@ Ext.define('OCS.PropertyGrid', {
 		closable: true,
 		closeAction: 'hide',
 		border: false,
-		iconCls: 'detail',
 		closeAction: 'hide',
 		flex: 1,
 		viewConfig: { 
 			stripeRows: false, 
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
-				if (name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
+				if (name == 'personal' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
 					return 'zero-adult-row';
 				
 				if (name == 'descr')
@@ -1113,6 +1136,12 @@ Ext.define('OCS.PropertyGrid', {
 				name: name
 			};
 		
+		if (name == 'precent')
+			return {
+				xtype: 'numberfield',
+				name: name
+			};
+
 		if (name == 'password')
 			return {
 				xtype: 'textfield',
@@ -1265,6 +1294,23 @@ Ext.define('OCS.PropertyGrid', {
 			  editable: false
 			};
 		}
+		
+		if (name == 'campaign_live')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'dynamic'},{value: 'static'}]
+              }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'value',
+			  valueField: 'value',			  
+			  triggerAction: 'all',
+			  editable: false
+			};
+		}
 
 		if (name == 'campaign_type')
 		{
@@ -1272,7 +1318,7 @@ Ext.define('OCS.PropertyGrid', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
   				  model: 'CRM_ITEM',
- 				  data: [{value: 'phone call'},{value: 'appointment'},{value: 'email'}]
+ 				  data: [{value: 'task'},{value: 'phone call'},{value: 'appointment'},{value: 'email'}]
               }),
 			  name: name,
 			  queryMode: 'local',
@@ -1711,6 +1757,23 @@ Ext.define('OCS.PropertyGrid', {
 			  editable: false
 			};
 		}
+		
+		if (name == 'workflow_status')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_ITEM',
+ 				  data: [{value: 'processing'},{value: 'completed'}]
+              }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			};
+		}
 
 		if (name == 'complain_status')
 		{
@@ -1941,21 +2004,24 @@ Ext.define('OCS.GridView', {
 				},				
 				itemclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
-						me.selectCustomer(record);
-						
 						if (Ext.getCmp('contact_form') && me.func == 'crm_retail_list')						
 							Ext.getCmp('contact_form').getForm().loadRecord(record);
 					}
 				},
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
-						me.selectCustomer(record);
-						Ext.getCmp('customerComponent').expand();
+						me.selectCustomer(record);						
 					}
 				}
 			},
 			getRowClass: function (record, rowIndex, rowParams, store) {
                 may = record.get('mayDuplicate') != '0' ? 'may-duplicate' : '';
+
+				if (record.get('workflow_status') == 'processing')
+					return 'bold-row';
+				if (record.get('workflow_status') == 'completed')
+					return 'gray-row';
+
 				return may;
             }
 		};
@@ -1969,7 +2035,16 @@ Ext.define('OCS.GridView', {
 			},{
 				id: 'group',
 				ftype: 'groupingsummary',				
-				groupHeaderTpl: '{name} ({rows.length})'
+				groupHeaderTpl: Ext.create('Ext.XTemplate',
+					'{name:this.formatName} {rows.length}',
+					{
+						formatName: function(name) {
+							if (name.indexOf(',') != -1)
+								return name.split(',')[0];
+							return name;
+						}
+					}
+				)
 			},{
 				id: 'summary',
 				ftype: 'summary',
@@ -2001,18 +2076,17 @@ Ext.define('OCS.GridView', {
 
 	selectCustomer: function(rec) {
 		var me = this;
+		Ext.getBody().mask('Loading...');
 		crm_id = rec.get('crm_id');
-		selected = rec;
-
-		views['property'].updateSource(rec);
-		views['activity'].updateSource(rec);
-		views['opportunity'].updateSource(rec);
-		views['case'].updateSource(rec);
-		views['csales'].updateSource(rec);
+		selected = rec;		
 		
 		if (me.form)		
 			me.form.loadRecord(rec);
-		Ext.getCmp('customerComponent').setTitle(me.getCustomerName(rec));
+
+		new OCS.CustomerDetailWindow({
+			title: me.getCustomerName(rec),
+			selected: rec
+		}).show();
 	},
 
 	initSorterBar: function() {
@@ -2201,6 +2275,7 @@ Ext.define('OCS.AGridView', {
 	emptyText: 'No records.',
 	deal_id: 0,
 	case_id: 0,
+	postable: true,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -2211,6 +2286,7 @@ Ext.define('OCS.AGridView', {
 		var me = this;
 	
 		me.tbar = Ext.create('Ext.Toolbar', {
+			hidden: !me.postable,
 			items: [{
 					id: 'post_here',
 					xtype: 'textfield',

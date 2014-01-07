@@ -2,6 +2,7 @@ var crm_id = '';
 var selected;
 var selectedLead;
 var selectedQuote;
+var selectedOwner;
 var fields = [];
 var customers = [];
 var campaigns = [];
@@ -193,26 +194,47 @@ Ext.define('CRM_CALLLOG', {
 
 fields['CRM_CALENDAR_FIELDS'] = [   
    {name: 'id', text: 'ID', hidden: true},
-   {name: 'work_type', text: 'Type', width: 80, align: 'left', renderer: renderWorkType},
-   {name: '_date', text: 'Created on', width: 80},
+   {name: 'work_type', text: 'Type', width: 80, align: 'center', renderer: renderWorkType},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
-   {name: 'crm_name', text: 'Customer', width: 250, renderer: renderCRMName},
+   {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'deal_id', text: 'Deal ID', width: 10, hidden: true},
    {name: 'case_id', text: 'Case ID', width: 50, hidden: true},
-   {name: 'deal_name', text: 'Topic name', width: 250, hidden: true},
-   {name: 'times', text: 'Time', width: 60, align: 'center'},
+   {name: 'deal_name', text: 'Topic name', width: 200, hidden: true},
+   {name: 'days', text: 'Duedate', width: 60, align: 'center', hidden: true},
+   {name: 'times', text: 'Time', width: 60, align: 'center', hidden: true},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'status', text: 'Status', width: 70, align: 'center'},
-   {name: 'subject', text: 'Subject', width: 150},
+   {name: 'subject', text: 'Subject', width: 200},
    {name: 'source', text: 'Source', hidden: true, width: 150},
-   {name: 'owner', text: 'Owner', width: 150, hidden: true},
-   {name: 'descr', text: 'Description', width: 200}
+   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
+   {name: '_date', text: 'Created on', width: 80},
+   {name: 'descr', text: 'Description', width: 200, hidden: true}
 ];
 
 Ext.define('CRM_CALENDAR', {
 	extend: 'Ext.data.Model',
 	fields: fields['CRM_CALENDAR_FIELDS']
 });
+
+fields['CRM_WORKFLOW_FIELDS'] = [   
+   {name: 'id', text: 'ID', hidden: true},
+   {name: 'workflow_status', text: 'Status', width: 70, align: 'center'},
+   {name: 'subject', text: 'Subject', width: 200, primary: true},
+   {name: 'descr', text: 'Description', width: 200, hidden: true},
+   {name: 'precent', text: 'Precent', width: 60, align: 'center', renderer: renderPrecent},
+   {name: 'start_date', text: 'Start date', width: 70, align: 'center'},
+   {name: 'end_date', text: 'End date', width: 70, align: 'center'},
+   {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
+   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
+   {name: 'userCode', text: 'userCode', width: 100},
+   {name: '_date', text: 'Created on', width: 80}
+];
+
+Ext.define('CRM_WORKFLOW', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_WORKFLOW_FIELDS']
+});
+
 
 fields['CRM_MESSAGE_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true},         
@@ -302,9 +324,9 @@ fields['CRM_EMAIL_FIELDS'] = [
    {name: 'email_status', text: 'Status', width: 70, align: 'center'},
    {name: 'subject', text: 'Subject', width: 200, primary: true},
    {name: '_to', text: 'To', width: 150, renderer: renderMail},
-   {name: '_from', text: 'From', width: 150, renderer: renderMail},
+   {name: '_from', text: 'From', width: 150, renderer: renderMail, hidden: true},
    {name: 'campaign', text: 'Campaign', width: 150},
-   {name: 'descr', text: 'Message body', width: 200},
+   {name: 'descr', text: 'Message body', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
@@ -410,6 +432,20 @@ Ext.define('CRM_DEAL_SALES_TEAM', {
 	fields: fields['CRM_DEAL_SALES_TEAM_FIELDS']
 });
 
+fields['CRM_CUSTOMER_CAMPAIGN_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'crm_id', text: 'CRM ID', hidden: true},
+   {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
+   {name: 'campaign', text: 'Campaign', width: 200},
+   {name: 'userCode', text: 'Created by', width: 100},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+];
+
+Ext.define('CRM_CUSTOMER_CAMPAIGN', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_CUSTOMER_CAMPAIGN_FIELDS']
+});
+
 
 fields['CRM_DEAL_COMPETITORS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
@@ -484,6 +520,19 @@ Ext.define('CRM_USERS', {
 	fields: fields['CRM_USERS_FIELDS']
 });
 
+fields['CRM_COMPETITOR_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'competitor_name', text: 'Competitor name', width: 120},
+   {name: 'www', text: 'Web site', width: 150},
+   {name: 'userCode', text: 'Create by', width: 100, hidden: true},
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+];
+
+Ext.define('CRM_COMPETITOR', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_COMPETITOR_FIELDS']
+});
+
 fields['CRM_USERS_GROUP_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'owner', text: 'Member', width: 120, primary: true},
@@ -522,7 +571,6 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'phone', text: 'Phone', width: 80, hidden: true, primary: true},
    {name: 'probablity', text: 'Probablity', width: 70, type:'int', summaryType:'average', summaryRenderer:renderTPrecent, align: 'right', renderer: renderPrecent},
    {name: 'expected_revenue', text: 'Expected revenue', type:'float', width: 120, align: 'right', summaryType:'sum', summaryRenderer: renderTMoney, renderer: renderMoney},
-//   {name: 'actual_revenue', text: 'Actual revenue', width: 110, align: 'right', hidden:true, renderer: renderMoney},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
    {name: 'current_situation', text: 'Current situation', width: 200, hidden: true},
    {name: 'customer_need', text: 'Customer need', width: 200, hidden: true},
@@ -568,18 +616,18 @@ fields['CRM_CAMPAIGN_FIELDS'] = [
    {name: 'id', text: 'ID', width: 0, hidden: true},
    {name: 'campaign_status', text: 'Status', width: 70, align: 'center', renderer: renderCampaignStatus},
    {name: 'campaign', text: 'Campaign name', width: 200, primary: true},
-   {name: 'total_members', text: 'Total members', width: 100, align: 'right'},
-   {name: 'campaign_type', text: 'Type', width: 80},
-   {name: 'customer_type', text: 'Direction', width: 90, hidden: true},
-   {name: 'personal', text: 'Personal view', width: 150, primary: true},
+   {name: 'total_members', type: 'int', text: 'Members', width: 70, align: 'right'},
+   {name: 'campaign_live', text: 'Define', width: 60, align: 'center', hidden: true},
+   {name: 'campaign_type', text: 'Type', width: 80, hidden: true},
+   {name: 'personal', text: 'Personal view', width: 150, hidden: true},
+   {name: 'product_name', text: 'Product name', width: 150},
    {name: 'expected_revenue', text: 'Expected Revenue', type: 'float', width: 120, summaryType: 'sum', align: 'right', renderer: renderMoney, summaryRenderer: renderTMoney},
    {name: 'budgeted_cost', text: 'Budgeted cost', type: 'float', align: 'center', align: 'right', hidden: true, width: 110, summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney},
-   {name: 'actual_cost', text: 'Actual cost', type: 'float', align: 'right', summaryType: 'sum', hidden: true, width: 110, renderer: renderMoney, summaryRenderer: renderTMoney},
    {name: 'start_date', text: 'Start date', dateFormat: 'Y-m-d', align: 'center', width: 75},
    {name: 'end_date', text: 'End date', dateFormat: 'Y-m-d', align: 'center', width: 75},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', hidden: true, width: 80},
+   {name: 'owner', text: 'Owner', width: 80, renderer:renderOwner},   
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 80},
    {name: 'descr', text: 'Description', width: 250, hidden: true},
-   {name: 'owner', text: 'Owner', width: 80, hidden: true, renderer:renderOwner},   
    {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true}
 ];
 
@@ -1097,3 +1145,44 @@ Ext.override('Ext.data.Store', {
     }
   }
 }); 
+
+function customerInfo(crm_id) {
+	new OCS.CustomerDetailWindow({
+		selected: {
+			data: {
+				crm_id: crm_id,
+				parent_crm_id: crm_id,
+				type: 'БАЙГУУЛЛГА'
+			}
+		}
+	}).show();
+}
+
+String.prototype.replaceAll = function( token, newToken, ignoreCase ) {
+    var _token;
+    var str = this + "";
+    var i = -1;
+
+    if ( typeof token === "string" ) {
+
+        if ( ignoreCase ) {
+
+            _token = token.toLowerCase();
+
+            while( (
+                i = str.toLowerCase().indexOf(
+                    token, i >= 0 ? i + newToken.length : 0
+                ) ) !== -1
+            ) {
+                str = str.substring( 0, i ) +
+                    newToken +
+                    str.substring( i + token.length );
+            }
+
+        } else {
+            return this.split( token ).join( newToken );
+        }
+
+    }
+return str;
+};

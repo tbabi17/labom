@@ -155,14 +155,106 @@ Ext.define('OCS.AnimateView', {
 		});			
 
 		return me.panel;
+	}
+});
+
+Ext.define('OCS.OwnerView', {
+	extend: 'OCS.Module',
+	func: 'crm_users_list',
+	modelName : 'CRM_USERS',
+	cls : 'leads',
+
+	createTmpl: function() {
+		return Ext.create('Ext.XTemplate',
+				'<tpl for=".">',
+					'<div class="phone">',
+						'<div class="content">',
+						'<strong>{owner}</strong>',
+						'<span class="text">{gmailAccount}</span></br></br>',
+						'</div>',	
+					'</div>',
+				'</tpl>'
+			);
 	},
 
-	updateStoreSorters: function() {    
-        this.store.sort(this.sorters);
-    },
-	
-	dirs: [],
-	sorters: []
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.dataview = Ext.create('Ext.view.View', {
+			deferInitialRefresh: false,
+			store: me.store,
+			tpl  : me.createTmpl(),
+			id: me.cls,
+			itemSelector: 'div.phone',
+			overItemCls : 'phone-hover',
+			multiSelect : true,
+			autoScroll  : true,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			}
+		});
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.dataview,		
+			region: 'center'
+		});			
+		return me.panel;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.reload();
+	},
+
+	selectAction: function(selections) {
+		var me = this;
+		selectedOwner = selections[0].get('owner');
+		views['workflow'].defaultRec = {
+			data: {
+				id: '0',
+				start_date: Ext.Date.format(new Date(),'Y-m-d'),
+				end_date: Ext.Date.format(new Date(),'Y-m-d'),
+				precent: '0',
+				_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+				workflow_status: 'processing',
+				priority: 'medium',
+				owner: selectedOwner,
+				userCode: logged
+			}
+		};
+		views['workflow'].updateSource(selectedOwner);
+		views['calendar'].loadPanel(selections[0].get('gmailAccount'));
+	}
+});
+
+Ext.define('OCS.CompetitorView', {
+	extend: 'OCS.OwnerView',
+	func: 'crm_competitor_list',
+	modelName : 'CRM_COMPETITOR',
+	cls: 'competitor',
+
+	createTmpl: function() {
+		return Ext.create('Ext.XTemplate',
+				'<tpl for=".">',
+					'<div class="phone">',
+						'<div class="content">',
+						'<strong>{competitor_name}</strong>',
+						'<span class="text">{www}</span></br></br>',
+						'</div>',	
+					'</div>',
+				'</tpl>'
+			);
+	},
+
+	selectAction: function(selections) {
+		var me = this;
+		views['competitor_deals'].updateSource(selections[0].get('competitor_name'));
+	}
 });
 
 Ext.define('OCS.RetailPanel', {	
@@ -184,9 +276,49 @@ Ext.define('OCS.RetailPanel', {
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
 		me.store.loadPage(1);
 	},
-
-	createActions: function() {
+	
+	createSubActions: function() {
 		var me = this;
+		me.subViews = [
+			Ext.create('Ext.Action', {
+				text: 'Create personal view...',
+				handler: function(widget, event) {								
+					new OCS.PersonalViewWindow({
+						selected: me.grid.getView().getSelectionModel().getSelection()[0]
+					}).createWindow();
+				}
+			}),
+		'-'];
+
+		me.per = personals.split(",");
+		for (i = 0; i < me.per.length; i++) {
+			if (me.per[i] && me.per[i].length > 0)				
+				me.subViews.push(
+					Ext.create('Ext.Action', {
+						icon   : '',  
+						text: me.per[i],
+						handler: function(widget, event) {					
+							me.filterData(widget.text);
+						}
+					})
+				);
+		}
+
+		me.camViews = [];
+		me.cam = campaigns_static.split(":");
+		for (i = 0; i < me.cam.length; i++) {
+			if (me.cam[i] && me.cam[i].length > 0)				
+				me.camViews.push(
+					Ext.create('Ext.Action', {
+						icon   : '',  
+						text: me.cam[i],
+						handler: function(widget, event) {					
+							me.filterData(widget.text);
+						}
+					})
+				);
+		}
+
 		me.customViews = [
 			Ext.create('Ext.Action', {
 				icon   : '',  
@@ -209,6 +341,7 @@ Ext.define('OCS.RetailPanel', {
 					me.filterData('Customer List');
 				}
 			}),
+			'-',
 			Ext.create('Ext.Action', {
 				icon   : '',  
 				text: 'VIP List',
@@ -216,6 +349,14 @@ Ext.define('OCS.RetailPanel', {
 					me.filterData('VIP List');
 				}
 			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'EXPAT List',
+				handler: function(widget, event) {
+					me.filterData('EXPAT List');
+				}
+			}),
+			'-',
 			Ext.create('Ext.Action', {
 				icon   : '',  
 				text: 'All '+me.xlsName+' List',
@@ -237,7 +378,13 @@ Ext.define('OCS.RetailPanel', {
 					me.filterData('My '+me.xlsName+' List');
 				}
 			}),
-			'-',
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'My Created '+me.xlsName+' List',
+				handler: function(widget, event) {
+					me.filterData('My Created '+me.xlsName+' List');
+				}
+			}),
 			Ext.create('Ext.Action', {
 				icon   : '',  
 				text: 'Recently Added List',
@@ -245,32 +392,31 @@ Ext.define('OCS.RetailPanel', {
 					me.filterData('Recently Added List');
 				}
 			}),
+			'-',			
 			Ext.create('Ext.Action', {
 				icon   : '',  
-				text: 'Create Personal View...',
-				handler: function(widget, event) {								
-					new OCS.PersonalViewWindow({
-						selected: me.grid.getView().getSelectionModel().getSelection()[0]
-					}).createWindow();
-				}
+				text: 'Standard Views',
+				menu: {
+					xtype: 'menu',
+					items: me.camViews
+				}					
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Personal Views',
+				menu: {
+					xtype: 'menu',
+					items: me.subViews
+				}					
 			})
 		];
 
-//		if (me.per && me.per.length > 3) {		
-			me.per = personals.split(",");
-			for (i = 0; i < me.per.length; i++) {
-				if (me.per[i] && me.per[i].length > 0)				
-					me.customViews.push(
-						Ext.create('Ext.Action', {
-							icon   : '',  
-							text: me.per[i],
-							handler: function(widget, event) {					
-								me.filterData(widget.text);
-							}
-						})
-					);
-			}
-//		}
+		return me.customViews;
+	},
+
+	createActions: function() {
+		var me = this;
+		
 
 		me.actions = [			
 			Ext.create('Ext.Action', {
@@ -278,7 +424,7 @@ Ext.define('OCS.RetailPanel', {
 				text: 'Views',
 				menu: {
 					xtype: 'menu',
-					items: me.customViews
+					items: me.createSubActions()
 				}		
 			}),		
 			'-',
@@ -287,19 +433,29 @@ Ext.define('OCS.RetailPanel', {
 				text: 'New...',
 				handler: function(widget, event) {
 					if (me.modelName == 'CRM_RETAIL')					
-						new OCS.RetailNewWindow().show();
+						new OCS.RetailNewWindow({							
+						}).show();
 					else
-						new OCS.CorporateNewWindow().show();
-
-					Ext.getCmp('customerComponent').collapse();
+						new OCS.CorporateNewWindow({
+						}).show();
 				}
 			}),	
 			Ext.create('Ext.Action', {
 				iconCls   : 'edit',
 				text: 'Expand...',
 				handler: function(widget, event) {					
-					me.selectCustomer(me.grid.getView().getSelectionModel().getSelection()[0]);
-					Ext.getCmp('customerComponent').expand();
+					if (me.recordSelected()) {					
+						if (me.modelName == 'CRM_RETAIL')					
+							new OCS.RetailNewWindow({
+								title: 'Edit Contact',
+								selected: me.grid.getView().getSelectionModel().getSelection()[0]
+							}).show();
+						else
+							new OCS.CorporateNewWindow({
+								title: 'Edit Account',
+								selected: me.grid.getView().getSelectionModel().getSelection()[0]
+							}).show();
+					}
 				}
 			}),	
 			Ext.create('Ext.Action', {
@@ -310,6 +466,21 @@ Ext.define('OCS.RetailPanel', {
 				}
 			}),
 			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal_assign',
+				text: 'Assign...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.CustomerAssignWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								ids: me.selectedIds(),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'merge',
 				text: 'Merge...',
@@ -445,6 +616,33 @@ Ext.define('OCS.RetailPanel', {
 						}).createWindow();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'campaign', 
+				text: 'Campaign ...',
+				menu: {
+					xtype: 'menu',
+					items: [{
+						text: 'For selected records',
+						handler: function(widget, event) {		
+							if (me.recordSelected())
+								new OCS.CampaignWindow({
+									direction: me.xlsName,
+									title: 'Campaigns ('+me.grid.getView().getSelectionModel().getSelection().length+' '+me.xlsName+')',
+									ids: me.selectedIds()
+								}).createWindow();
+						}
+					},{
+						text: 'For all records',
+						handler: function(widget, event) {		
+							new OCS.CampaignWindow({
+								direction: me.xlsName,
+								title: 'Campaigns ('+me.store.getTotalCount()+' '+me.xlsName+')',
+								ids: me.xlsName
+							}).createWindow();
+						}
+					}]
+				}				
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help', 
@@ -459,7 +657,7 @@ Ext.define('OCS.RetailPanel', {
 			
 		return me.actions;
 	},
-
+	
 	recordSelected: function() {
 		var me = this;
 		var recs = me.grid.getView().getSelectionModel().getSelection();
@@ -468,6 +666,17 @@ Ext.define('OCS.RetailPanel', {
 		
 		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
 		return false;
+	},
+
+	selectedIds: function(all) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			result += recs[i].get('crm_id')+':';
+		}
+
+		return result;
 	},
 
 	isCustomer: function() {
@@ -479,7 +688,7 @@ Ext.define('OCS.RetailPanel', {
 		return false;
 	},
 
-	createGrid: function() {
+	createPanel: function() {
 		var me = this;
 		me.createStore();		
 
@@ -510,6 +719,157 @@ Ext.define('OCS.CorporatePanel', {
 	autoSelect: true,
 	xlsName: 'Account',
 		
+	createSubActions: function() {
+		var me = this;
+		me.subViews = [
+			Ext.create('Ext.Action', {
+				text: 'Create personal view...',
+				handler: function(widget, event) {								
+					new OCS.PersonalViewWindow({
+						selected: me.grid.getView().getSelectionModel().getSelection()[0]
+					}).createWindow();
+				}
+			}),
+		'-'];
+
+		me.per = personals.split(",");
+		for (i = 0; i < me.per.length; i++) {
+			if (me.per[i] && me.per[i].length > 0)				
+				me.subViews.push(
+					Ext.create('Ext.Action', {
+						icon   : '',  
+						text: me.per[i],
+						handler: function(widget, event) {					
+							me.filterData(widget.text);
+						}
+					})
+				);
+		}
+		
+		me.camViews = [];
+		me.cam = campaigns_static.split(":");
+		for (i = 0; i < me.cam.length; i++) {
+			if (me.cam[i] && me.cam[i].length > 0)				
+				me.camViews.push(
+					Ext.create('Ext.Action', {
+						icon   : '',  
+						text: me.cam[i],
+						handler: function(widget, event) {					
+							me.filterData(widget.text);
+						}
+					})
+				);
+		}
+
+		me.customViews = [
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Suspect List',
+				handler: function(widget, event) {
+					me.filterData('Suspect List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Prospect List',
+				handler: function(widget, event) {
+					me.filterData('Prospect List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Customer List',
+				handler: function(widget, event) {
+					me.filterData('Customer List');
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Corporate List',
+				handler: function(widget, event) {
+					me.filterData('Corporate List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'SME List',
+				handler: function(widget, event) {
+					me.filterData('SME List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Reseller List',
+				handler: function(widget, event) {
+					me.filterData('Reseller List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'External List',
+				handler: function(widget, event) {
+					me.filterData('External List');
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'All '+me.xlsName+' List',
+				handler: function(widget, event) {
+					me.filterData('');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Without Owner  List',
+				handler: function(widget, event) {
+					me.filterData('Without Owner List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'My '+me.xlsName+' List',
+				handler: function(widget, event) {
+					me.filterData('My '+me.xlsName+' List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'My Created '+me.xlsName+' List',
+				handler: function(widget, event) {
+					me.filterData('My Created '+me.xlsName+' List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Recently Added List',
+				handler: function(widget, event) {
+					me.filterData('Recently Added List');
+				}
+			}),
+			'-',			
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Standard Views',
+				menu: {
+					xtype: 'menu',
+					items: me.camViews
+				}					
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'Personal Views',
+				menu: {
+					xtype: 'menu',
+					items: me.subViews
+				}					
+			})
+		];
+
+		return me.customViews;
+	},
+
 	createGrid: function() {
 		var me = this;
 		me.createStore();	
@@ -552,6 +912,8 @@ Ext.define('OCS.ActivityGrid', {
 	sortDirection: 'desc',
 	title: 'Activities',
 	icon: 'task',
+	values: 'id',
+	where: '0',
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,
 	action: true,
@@ -587,6 +949,12 @@ Ext.define('OCS.ActivityGrid', {
 			Ext.MessageBox.alert('Error', 'Not available !', function() {});
 			return;
 		}
+		
+		var id = me.selected.get('id');
+		if (id.indexOf('_') != -1) {
+			var sp = id.split('_');
+			id = sp[0];
+		}
 
 		if (me.selected.get('work_type') == 'phone call') {
 			if (me.selected.get('status') == 'success') {
@@ -596,7 +964,7 @@ Ext.define('OCS.ActivityGrid', {
 
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+me.selected.get('id')},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -612,7 +980,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+me.selected.get('id')},
+			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -628,7 +996,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+me.selected.get('id')},
+			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -644,7 +1012,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+me.selected.get('id')},
+			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -861,7 +1229,10 @@ Ext.define('OCS.ActivityGrid', {
 	updateSource: function(rec) {
 		var me = this;
 		me.selected = rec;
-		me.where = rec.get('crm_id');
+		if (rec.data['crm_id'])
+			me.where = rec.data['crm_id'];
+		else
+			me.where = rec.get('crm_id');
 		me.values = 'crm_id';
 		me.loadStore();
 	},
@@ -931,8 +1302,9 @@ Ext.define('OCS.ActivityGrid', {
 		me.createGrid();
 
 		me.panel = Ext.create('Ext.Panel', {
-			id: me.tab,
+			id: me.tab,	
 			title: me.title,
+			border: false,
 			layout: 'border',
 			items: [me.grid]
 		});
@@ -944,7 +1316,7 @@ Ext.define('OCS.ActivityGrid', {
 Ext.define('OCS.MyActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_my_activity_list',
-	sortField: 'subject',
+	sortField: '_date',
 	sortDirection: 'desc',
 	tab : 'my_activity_property',
 	dateField: '_date',
@@ -1007,6 +1379,15 @@ Ext.define('OCS.MyActivityGrid', {
 					]
 				}		
 			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls : 'edit',
+				text: 'Expand',
+				handler: function(widget, event) {
+					new OCS.ActivityWindow().createWindow();
+				}
+			}),	
+			'-',
 			Ext.create('Ext.Action', {
 				iconCls : 'save',
 				text: 'Complete',
@@ -1200,13 +1581,19 @@ Ext.define('OCS.OpportunityGrid', {
 		},{
 			text: "Close Date",
 			dataIndex: 'closing_date',
-			width: 100,
+			width: 70,
 			sortable: true
 		},{
 			text: "Expected Revenue",
 			dataIndex: 'expected_revenue',
 			renderer: renderMoney,
 			align: 'right',
+			width: 100,
+			sortable: true
+		},{
+			text: "Owner",
+			dataIndex: 'owner',
+			renderer: renderOwner,
 			width: 100,
 			sortable: true
 		}];
@@ -1227,6 +1614,86 @@ Ext.define('OCS.OpportunityGrid', {
 			tbarable: false,
 			feature: false,
 			emptyText: 'No Opportunity records found.'
+		});	
+	}
+});
+
+
+Ext.define('OCS.CustomerCampaigns', {
+	extend: 'OCS.CaseGrid',
+	func: 'crm_customer_campaign_list',
+	sortField: 'campaign',
+	tab : 'customer_campaigns_property',
+	dateField: '_date',
+	title: 'Campaigns',
+	icon: 'sales',
+	modelName: 'CRM_CUSTOMER_CAMPAIGN',
+	collapsed : false,
+	region: 'center',
+	table: 'crm_customer_campaings',
+	primary: 'crm_id',	
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls  : 'add',  
+				text: 'Add ...',
+				handler: function(widget, event) {
+					new OCS.CustomerCampaignWindowCheckList({
+						crm_id: me.selected.get('crm_id'),
+						backgrid: me.grid
+					}).show();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls  : 'delete',  
+				text: 'Delete',
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			})
+		];
+			
+		return me.actions;
+	},
+
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: "Campaign",
+			dataIndex: 'campaign',
+			width: 200,
+			sortable: true
+		},{
+			text: "Created by",
+			dataIndex: 'userCode',
+			renderer: renderOwner,
+			width: 100,
+			sortable: true
+		},{
+			text: "Created on",
+			dataIndex: '_date',
+			width: 100,
+			sortable: true
+		}];
+	},
+
+	createGrid: function() {
+		var me = this;			
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			region: me.region,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			tbarable: false,
+			feature: false,
+			emptyText: 'No Campaign records found.'
 		});	
 	}
 });
@@ -1304,11 +1771,13 @@ Ext.define('OCS.DetailGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_contact_list',
 	tab : 'detail_property',
-	title: 'Property',
+	title: 'Contacts',
 	icon: 'call',
 	table: 'crm_customer',
 	dateField: '_date',
 	sortField: 'crm_id',
+	primary: 'crm_id',
+	values: 'parent_crm_id',
 	modelName: 'CRM_RETAIL',
 	collapsed: false,
 	
@@ -1320,10 +1789,11 @@ Ext.define('OCS.DetailGrid', {
 				iconCls   : 'add',
 				text: 'Add ...',
 				handler: function(widget, event) {
-					if (selected.get('type') == 'БАЙГУУЛЛАГА') {					
+					if (me.selected.get('type') == 'БАЙГУУЛЛАГА') {
 						new OCS.ContactNewWindow({
-							record: selected,
-							title: 'Add contact to - '+selected.get('firstName')
+							record: me.selected,
+							title: 'Add contact to - '+me.selected.get('firstName'),
+							backgrid: me.grid
 						}).show();
 					} else
 						Ext.MessageBox.alert('Status', 'Not available !', function() {});
@@ -1362,19 +1832,9 @@ Ext.define('OCS.DetailGrid', {
 
 	updateSource: function(rec) {
 		var me = this;
-		if (rec.get('type') == 'БАЙГУУЛЛАГА') {
-			me.form.modelName = 'CRM_CORPORATE';
-			me.form.createSource(rec);
-		} else {
-			me.form.modelName = 'CRM_RETAIL';
-			me.form.createSource(rec);
-		}
-		
-		me.form.updateSource(rec);
-		me.where = crm_id;
+		me.selected = rec;
+		me.where = rec.data['crm_id'];
 		me.values = 'parent_crm_id';
-		me.grid.where = crm_id;
-		me.grid.values = 'parent_crm_id';
 		me.loadStore();
 	},
 
@@ -1386,13 +1846,7 @@ Ext.define('OCS.DetailGrid', {
             record.data.email,
 			record.data.decision_maker
         );
-    },
-	
-	initSource: function() {
-		var me = this;
-		me.rec = {
-		};
-	},
+    },	
 
 	createColumns: function() {
 		var me = this;
@@ -1422,33 +1876,12 @@ Ext.define('OCS.DetailGrid', {
 		var me = this;
 		me.createGrid();
 		
-		me.form = new OCS.PropertyGrid({
-			modelName: me.modelName,
-			closable: false,
-			title: '',
-			iconCls: '',
-			split: true,
-			flex: 1.5,
-			border: false,
-			region: 'north',
-			sealedColumns: true,
-			buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						me.updateRecord();
-					}
-				}
-			]
-		}); 
-		
-	//	me.grid.setTitle('Contact list');
 		me.panel = Ext.create('Ext.Panel', {
 			id: me.tab,
 			title: me.title,			
 			border: false,
 			layout: 'border',
-			items: [me.form, me.grid]
+			items: [me.grid]
 		});
 
 		return me.panel;
@@ -1692,7 +2125,7 @@ Ext.define('OCS.Deals', {
 				items: [
 					{
 						region: 'center',	
-						flex: 0.5,
+						flex: 0.6,
 						layout: 'border',						
 						items: [me.deals.createView()]
 					}, me.action.createPanel()
@@ -2751,6 +3184,35 @@ Ext.define('OCS.Workspace', {
 	}
 });
 
+Ext.define('OCS.Competitors', {
+	extend: 'OCS.Module',		
+	
+	reload: function() {
+		var me = this;
+		me.competitor.reload();
+	},
+
+	createPanel: function() {
+		var me = this;
+		
+		me.competitor = new Ext.create('OCS.CompetitorProfile', {
+			modelName: 'CRM_CALENDAR',
+			func: 'crm_calendar_list'
+		});
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			region: 'center',
+			border: false,
+			items: [
+				me.competitor.createPanel()
+			]
+		});
+
+		return me.panel;
+	}
+});
+
 Ext.define('OCS.SalesOrders', {
 	extend: 'OCS.Module',		
 
@@ -2935,10 +3397,16 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									me.charts[7].rangeData(me.year(), me.nextyear());
 								}
+							},'-',
+							{
+								text: 'Filter ...',
+								handler: function() {
+									me.charts[7].createWindow();
+								}
 							}]
 						}
 					}],
-					items: me.charts[7]
+					items: [me.charts[7]]
 				},{
 					title:'Cases by Status',		
 					layout: 'fit',
@@ -3111,7 +3579,12 @@ Ext.define('OCS.CampaignActivityGrid', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
-					me.completeActivity();
+					if (me.type == 'email')
+						new OCS.MassMailWindow({
+							emails: me.getEmailList()
+						}).show();
+					else
+						me.completeActivity();
 				}
 			}),			
 			Ext.create('Ext.Action', {
@@ -3144,7 +3617,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 						}).createWindow();
 					else if (me.selected.get('work_type') == 'email')											
 						new OCS.EmailWindow({
-							selected: record
+							selected: me.selected
 						}).createWindow();
 					else if (me.selected.get('work_type') == 'note')											
 						new OCS.NotesWindow({
@@ -3160,7 +3633,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 
 		return me.actions;
 	},
-
+	
 	createColumns: function() {
 		var me = this;
 		return [{
@@ -3197,6 +3670,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 		me.selected = rec;
 		me.where = rec.get('campaign');
 		me.owner = rec.get('owner');
+		me.type = rec.get('campaign_type');
 		me.values = 'campaign';
 		me.loadStore();
 	},		
@@ -3293,22 +3767,14 @@ Ext.define('OCS.CampaignPanel', {
 	modelName: 'CRM_CAMPAIGN',
 	func: 'crm_campaign_list',
 	autoSelect: true,
+	buttons: false,
 	title: 'Campaign',
 	table: 'crm_campaign',
 	tab: 'my_crm_campaign_list',
 	
 	createActions: function() {
 		var me = this;
-		me.actions = [
-			Ext.create('Ext.Action', {
-				iconCls  : 'add',
-				text: 'New...',
-				handler: function(widget, event) {
-					me.initSource();
-					me.form.setVisible(true);
-					Ext.getCmp('customerComponent').collapse();
-				}
-			}),	
+		me.actions = [			
 			Ext.create('Ext.Action', {
 				iconCls : 'edit',
 				text: 'Expand...',
@@ -3414,6 +3880,7 @@ Ext.define('OCS.CampaignPanel', {
 				owner: logged,
 				budgeted_cost: '0',
 				actual_cost: '0',
+				campaign_live: 'dynamic',
 				expected_revenue: '0',
 				start_date: Ext.Date.format(new Date(),'Y-m-d'),
 				end_date: Ext.Date.format(new Date(),'Y-m-d'),
@@ -3422,37 +3889,11 @@ Ext.define('OCS.CampaignPanel', {
 		};
 		
 		me.form.updateSource(me.defaultRec);
-	},
-
-	createGrid: function() {
-		var me = this;
-		me.createStore();	
-
-		me.features = [];
-		if (me.groupField) {
-			me.features = [{
-				ftype: 'grouping',
-				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
-				hideGroupedHeader: true,
-				startCollapsed: true,
-				disabled: (me.groupField.length == 0),
-				id: 'grouping_'+me.modelName
-			}];
-		}
-				
-		me.grid = Ext.create('OCS.GridView', {	
-			store: me.store,
-			columns: me.createColumns(),
-			features: me.features,
-			actions: me.createActions(),
-			func: me.func
-		});				
 
 		me.grid.getSelectionModel().on({
 			selectionchange: function(sm, selections) {
 				if (selections.length) {
 					me.form.updateSource(selections[0]);
-			//		me.form.setVisible(true);
 					views['campaigns'].reload(selections[0]);
 				} else {
 					me.form.updateSource(me.defaultRec);
@@ -3460,44 +3901,6 @@ Ext.define('OCS.CampaignPanel', {
 				}
 			}
 		});
-
-		me.form = new OCS.PropertyGrid({
-			modelName: me.modelName,
-			region: 'east',
-			hidden: true,
-			title: me.title,			
-			split: true,
-			flex: 0.5,
-			closable: true,
-			closeAction: 'hide',
-			sealedColumns: true,						
-			buttons: [{
-					text: 'Reset',
-					iconCls: 'reset',
-					handler: function() {
-						me.form.updateSource(me.defaultRec);
-					}				
-				},'->',{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						me.commitRecord();	
-						me.form.createSource();
-					}
-				}
-			]
-		});
-
-		me.initSource();
-
-		me.panel = Ext.create('Ext.panel.Panel', {
-			layout: 'border',
-			border: false,
-			region: me.region,
-			items : [me.grid, me.form]	
-		});
-
-		return me.panel;
 	}
 });
 
@@ -3657,7 +4060,7 @@ Ext.define('OCS.QuotePanel', {
 		me.form.updateSource(me.defaultRec);
 	},
 
-	createGrid: function() {
+	createPanel: function() {
 		var me = this;
 		me.createStore();
 	
@@ -3900,664 +4303,175 @@ Ext.define('OCS.SalesPanel', {
 
 Ext.define('OCS.MyGridWithFormPanel', {	
 	extend: 'OCS.GridWithFormPanel',
-	filter: false,
+	filter: false,	
 	
 	reload: function() {
 		var me = this;
-		me.reload();
+		me.store.reload();
 	},
 
-	createForm: function() {
+	updateSource: function(owner) {
 		var me = this;
-		if (me.func == 'crm_campaign_list')
-		{
-			me.values = 'company';
-			me.where = company;
-			me.table = 'crm_campaign';
-
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'event_complete_form',				
-				title:'Campaign update',
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Customer count',
-					readOnly: true,
-					value: 0,
-					name: 'crm_count'
-				},{
-					 xtype: 'combo',
-					 fieldLabel: 'Status',
-					 store: Ext.create('Ext.data.Store', {
-						  model: 'CRM_ITEM',
-						  data: [{value: 'planning'},{value: 'active'},{value: 'inactive'},{value:'complete'}]
-					 }),
-					 name: 'campaign_status',
-					 queryMode: 'local',
-					 displayField: 'value',
-					 valueField: 'value',
-					 triggerAction: 'all',
-					 editable: false
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Created by',
-					hidden: true,
-					name: 'userCode'
-				},{
-					 xtype: 'combo',
-					 fieldLabel: 'Type',
-					 store: Ext.create('Ext.data.Store', {
-						  model: 'CRM_ITEM',
-						  data: [{value: 'phone call'},{value: 'appointment'},{value: 'email'}]
-					 }),
-					 name: 'campaign_type',
-					 queryMode: 'local',
-					 displayField: 'value',
-					 valueField: 'value',
-					 triggerAction: 'all',
-					 editable: false
-				},{
-					xtype: 'searchcombo',
-					fieldLabel: 'Personal view',
-					name: 'personal',
-					value: logged,
-					table: 'crm_personal_view'
-				},{
-					xtype: 'searchcombo',
-					fieldLabel: 'Owner',
-					name: 'owner',
-					value: logged,
-					table: 'crm_users'
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Note',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Note...',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							me.ep = me.store.getProxy().extraParams;
-							values = "crm_count='"+form.findField('crm_count').getValue()+"',campaign_status='"+form.findField('campaign_status').getValue()+"',descr='"+form.findField('descr').getValue()+"',_date=CURRENT_TIMESTAMP";
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: values, where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = me.ep;
-								me.store.loadPage(1);
-
-								me.form.setVisible(false);
-							});	
-
-							/*me.createStore();			
-							me.store.getProxy().extraParams = {handle: 'web', action: 'campaign_insert_calllog', values: values, where: me.module.where, query: me.module.query};
-							me.store.load(function(data) {
-								me.module.store.loadPage(1);
-								me.win.close();
-							});*/	
-						}
-						else	
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});	
-		} else
-		if (me.func == 'crm_event_list') {
-			me.values = 'owner,event_status';
-			me.where = logged+',pending';
-			me.table = 'crm_events';
-
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'event_complete_form',				
-				title:'Appointment update',
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'crm_id'
-				},{
-					xtype: 'searchcombo',
-					fieldLabel: 'Purpose',
-					name: 'purpose',
-					hidden: true,
-					table: 'crm_calllog'
-				},{
-					xtype: 'searchcombo',
-					hidden: true,
-					fieldLabel: 'Owner',
-					name: 'owner',
-					table: 'crm_users'
-				},{
-					 xtype: 'combo',
-					 fieldLabel: 'Status',
-					 store: Ext.create('Ext.data.Store', {
-						  model: 'CRM_ITEM',
-						  data: [{value: 'pending'},{value: 'success'},{value: 'cancelled'}]
-					 }),
-					 name: 'event_status',
-					 queryMode: 'local',
-					 displayField: 'value',
-					 valueField: 'value',
-					 triggerAction: 'all',
-					 editable: false
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Created by',
-					hidden: true,
-					name: 'userCode'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Location',
-					name: 'venue'
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Note',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Note ...',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							me.ep = me.store.getProxy().extraParams;
-							values = "event_status='success',descr='yrilaa',_date=CURRENT_TIMESTAMP";
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: values, where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = me.ep;
-								me.store.loadPage(1);
-
-								me.form.setVisible(false);
-							});							
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});				
-		} else
-		if (me.func == 'crm_calllog_list') {
-			me.values = 'owner,callresult';
-			me.where = logged+',pending';
-			me.table = 'crm_calllog';
-
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'calls_complete_form',				
-				title:'Call result',
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'crm_id'
-				},{
-					xtype: 'searchcombo',
-					fieldLabel: 'Зорилго',
-					name: 'purpose',
-					hidden: true,
-					table: 'crm_calllog'
-				},{
-					xtype: 'searchcombo',
-					hidden: true,
-					fieldLabel: 'Хүлээн авагч',
-					name: 'owner',
-					table: 'crm_users'
-				},{
-					 xtype: 'combo',
-					 fieldLabel: 'Үр дүн',
-					 store: Ext.create('Ext.data.Store', {
-						  model: 'CRM_ITEM',
-						  data: [{value: 'pending'},{value: 'success'},{value: 'unsuccess'},{value: 'remind'}]
-					 }),
-					 name: 'callresult',
-					 queryMode: 'local',
-					 displayField: 'value',
-					 valueField: 'value',
-					 triggerAction: 'all',
-					 editable: false
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Бүртгэсэн',
-					hidden: true,
-					name: 'userCode'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Хаанаас',
-					hidden: true,
-					name: '_from'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Утасны дугаар',
-					name: '_to'
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Тайлбар',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Тайлбар бичнэ үү !',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							me.ep = me.store.getProxy().extraParams;
-							values = "callresult='success',_to='99101790',descr='yrilaa',_date=CURRENT_TIMESTAMP";
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: values, where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = me.ep;
-								me.store.loadPage(1);
-
-								me.form.setVisible(false);
-							});							
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});				
-		} else
-		if (me.func == 'crm_complain_list') {
-			me.values = 'owner,complain_status';
-			me.where = logged+',escalated';
-			me.table = 'crm_complain';
-			
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'complain_transfer_form',				
-				title:'Case action',		
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'crm_id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Case ID',
-					hidden: true,
-					name: 'groupId'
-				},{
-					xtype: 'combo',
-					store: Ext.create('Ext.data.Store', {
-						model: 'CRM_ITEM',
-						data: [{value: 'escalated'},{value: 'on hold'},{value: 'closed'}]
-					}),
-					displayField: 'value',
-					valueField: 'value',
-					fieldLabel: 'Төлөв',
-					queryMode: 'local',
-					value: 'pending',
-					editable: false,	
-					name: 'complain_status',
-				},{
-					xtype: 'combo',
-					store: Ext.create('Ext.data.Store', {
-						model: 'CRM_ITEM',
-						data: [{value: 'User did not attend any training'},{value: 'complex functionality'},{value: 'existing problem'},{value:'instructions not clear'},{value:'new problem'}]
-					}),
-					displayField: 'value',
-					valueField: 'value',
-					fieldLabel: 'Шалтгаан',
-					editable: false,
-					queryMode: 'local',
-					name: 'complain_reason',
-				}, {
-					xtype: 'searchcombo',
-					fieldLabel: 'Хүлээн авагч',
-					name: 'owner',
-					table: 'crm_users'
-				},{
-					xtype: 'combo',
-					store: Ext.create('Ext.data.Store', {
-						model: 'CRM_ITEM',
-						data: [{value: 'problem'},{value: 'feature request'},{value: 'question'}]
-					}),
-					displayField: 'value',
-					valueField: 'value',
-					fieldLabel: 'Төрөл',
-					queryMode: 'local',
-					name: 'complain_type',
-					hidden: true
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Бүртгэсэн',
-					hidden: true,
-					name: 'userCode'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Холбоо барих',
-					name: 'phone'
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Тайлбар',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Тайлбар бичнэ үү !',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							/*me.ep = me.store.getProxy().extraParams;
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: "complain_status='"+form.findField('complain_status').getValue()+"'", where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {*/
-								//me.store.getProxy().extraParams = me.ep;
-								
-								me.ep = me.store.getProxy().extraParams;
-								me.store.getProxy().extraParams = {handle: 'web', action: 'insert', func: me.func, table: me.table, values:values, where: me.where};
-								me.store.load(function(data) {
-									me.store.getProxy().extraParams = me.ep;
-									me.store.loadPage(1);
-								});
-							//});							
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});
-		} else 
-		if (me.func == 'crm_message_list') {
-			me.values = 'owner';
-			me.where = logged;
-			me.table = 'crm_message';
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'message_form',				
-				title:'Message detail',	
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'From',
-					readOnly: true,
-					value: logged,
-					name: 'owner'
-				},{
-					xtype: 'searchcombo',
-					fieldLabel: 'Reply to',
-					name: '_from',
-					table: 'crm_message'
-				},{
-					xtype: 'textfield',
-					fieldLabel: 'Subject',
-					name: 'subject'
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Тайлбар',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Тайлбар бичнэ үү !',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Read',					
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							me.ep = me.store.getProxy().extraParams;
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: "message_status='read'", where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = me.ep;
-								me.store.loadPage(1);
-							});	
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				},'->',{
-					text: 'Reply',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{				
-							var _from = form.findField('_from').getValue();
-							form.findField('_from').setValue(form.findField('owner').getValue());
-							form.findField('owner').setValue(_from);
-							var values = form.getValues(true);
-
-							me.ep = me.store.getProxy().extraParams;
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: "message_status='replied'", where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = {handle: 'web', action: 'insert', func: me.func, table: me.table, values: values, where: me.where};
-								me.store.load(function(data) {
-									form.New();
-									me.store.getProxy().extraParams = me.ep;
-									me.store.loadPage(1);
-								});
-							});	
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});
-		} else 
-		if (me.func == 'crm_task_list') {
-			me.values = 'owner,task_status';
-			me.where = logged+',open';
-			me.table = 'crm_tasks';
-			me.form = Ext.create('OCS.FormPanel', {
-				id : 'task_form',				
-				title:'Task detail',	
-				width: 350,
-				items: [{
-					xtype: 'textfield',
-					fieldLabel: '',
-					hidden: true,
-					name: 'id'
-				},{
-					xtype: 'combo',
-					store: Ext.create('Ext.data.Store', {
-						model: 'CRM_ITEM',
-						data: [{value: 'open'},{value: 'processing'},{value: 'completed'}]
-					}),
-					displayField: 'value',
-					valueField: 'value',
-					fieldLabel: 'Төлөв',
-					queryMode: 'local',
-					selectOnTab: false,
-					editable: false,
-					value: 'open',
-					name: 'task_status',
-				},{
-					xtype: 'textarea',
-					fieldLabel: 'Тайлбар',
-					hideLabel: true,
-					name: 'descr',
-					emptyText: 'Тайлбар бичнэ үү !',
-					style: 'margin:0', 
-					flex: 1 
-				}],
-				buttons: [{
-					text: 'Commit',
-					iconCls: 'commit',
-					handler: function() {
-						var form = this.up('form').getForm();
-						if (form.isValid())	{
-							var values = form.getValues(true);
-							
-							me.ep = me.store.getProxy().extraParams;
-							me.store.getProxy().extraParams = {handle: 'web', action: 'update', func: me.func, table: me.table, values: "task_status='"+form.findField('task_status').getValue()+"',descr='"+form.findField('descr').getValue()+"'", where: "id="+form.findField('id').getValue()};
-							me.store.load(function(data) {
-								me.store.getProxy().extraParams = me.ep;
-								me.store.loadPage(1);
-							});	
-						}
-						else
-						  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
-					}
-				}]
-			});
-		}
-	},
-
-	createGrid: function() {
-		var me = this;		
-		me.createForm();
-		me.createStore();
-
-		me.grid = Ext.create('OCS.GridView', {
-			store: me.store,
-			columns: me.createColumns(),
-			actions: me.createActions(),
-			func: me.func,
-			filter: me.filter
-		});	
-
-		me.grid.on('itemclick', function(dv, record, item, index, e) {
-			if (record) {
-				if (me.form) {
-					me.form.setVisible(true);					
-					me.form.getForm().loadRecord(record);
-				}
-			}
-		});
-
-		me.panel = Ext.create('Ext.panel.Panel', {
-			layout: 'border',
-			border: false,
-			region: 'center',
-			items : [me.grid, me.form]			
-		});
-
-		return me.panel;
+		me.where = owner;
+		me.values = 'owner';
+		me.loadStore(owner);
 	},
 	
-	createActions: function() {
+	createActions: function(actions) {
 		var me = this;
-		if (me.func == 'crm_complain_list' || me.func == 'crm_message_list' || me.func == 'crm_task_list' || me.func == 'crm_event_list' || me.func == 'crm_calllog_list')
-		{		
-			me.actions = [
-				Ext.create('Ext.Action', {
-					iconCls   : 'add',
-					text: 'New ...',
-					handler: function(widget, event) {
-						if (me.func == 'crm_complain_list')
-						{						
-							if (selected)						
-								new OCS.ComplainWindow({
-									selected: selected
-								}).createWindow();
-							else
-							    Ext.MessageBox.alert('Status', 'Харилцагч сонгоно уу !', function() {});
-						} else
-						if (me.func == 'crm_calllog_list')
-						{						
-							if (selected)						
-								new OCS.CallLogWindow({
-									selected: selected
-								}).createWindow();
-							else
-							    Ext.MessageBox.alert('Status', 'Харилцагч сонгоно уу !', function() {});
-						} else
-						if (me.func == 'crm_task_list')
-						{						
-							if (selected)						
-								new OCS.TaskWindow({
-									selected: selected
-								}).createWindow();
-							else
-							    Ext.MessageBox.alert('Status', 'Харилцагч сонгоно уу !', function() {});
-						} else
-						if (me.func == 'crm_event_list')
-						{						
-							if (selected)						
-								new OCS.EventWindow({
-									selected: selected
-								}).createWindow();
-							else
-							    Ext.MessageBox.alert('Status', 'Харилцагч сонгоно уу !', function() {});
-						} else
-						if (me.func == 'crm_message_list') {						
-							new OCS.MessageWindow().show();
-						}
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'New...',
+				disabled: me.insert,
+				handler: function(widget, event) {
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(true);
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					me.showForm();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Delete',
+				disabled: me.remove,
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'save',
+				text: 'Mark complete',
+				handler: function(widget, event) {
+					var selection = me.grid.getSelectionModel().getSelection();
+					if (selection.length > 0)									
+						new OCS.MarkCompleteWindow({
+							selected: selection[0]
+						}).show();
+					else
+						Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+				}
+			}),	
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'export',
+				text: 'Export',
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
 					}
-				}),
-				Ext.create('Ext.Action', {
-					iconCls   : 'delete',
-					text: 'Delete',
-					disabled: true,
-					handler: function(widget, event) {
-						
-					}
-				}),
-				'-',
-				Ext.create('Ext.Action', {
-					iconCls   : 'calendar',
-					text: 'Calendar',
-					handler: function(widget, event) {
-						var rec = me.grid.getView().getSelectionModel().getSelection()[0];
-						googleEvent(rec, me.func);
-					}
-				})
-			];
-		} else {
-			me.actions = [				
-				Ext.create('Ext.Action', {
-					iconCls   : 'calendar',
-					text: 'Calendar',
-					handler: function(widget, event) {
-						var rec = me.grid.getView().getSelectionModel().getSelection()[0];
-						googleEventDynamic(rec);
-					}
-				})		
-			];
-		}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.title},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})			
+		];
 
 		return me.actions;
 	}
 });
 
+Ext.define('OCS.CompetitorGridWithFormPanel', {	
+	extend: 'OCS.MyGridWithFormPanel',
+	filter: false,	
+	
+	reload: function() {
+		var me = this;
+		me.store.reload();
+	},
+
+	updateSource: function(competitor_name) {
+		var me = this;
+		me.where = competitor_name;
+		me.values = 'competitor_name';
+		me.loadStore(competitor_name);
+	},
+	
+	createActions: function(actions) {
+		var me = this;
+		me.actions = [			
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal',
+				text: 'Deal ...',
+				handler: function(widget, event) {
+					if (me.recordSelected())
+						new OCS.NewDealWindow({
+							selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						}).createWindow();
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'export',
+				text: 'Export',
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
+					}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.title},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})			
+		];
+
+		return me.actions;
+	}
+});
 
 Ext.define('OCS.DealGridWithFormPanel', {	
 	extend: 'OCS.MyGridWithFormPanel'
@@ -4574,6 +4488,7 @@ Ext.define('OCS.MyProfile', {
 	reload: function() {
 		var me = this;
 		me.mylog.loadStore();
+		me.owners.loadStore();
 	},
 
 	createPanel: function() {
@@ -4593,18 +4508,34 @@ Ext.define('OCS.MyProfile', {
 		
 		me.mylog = new OCS.MyActivityGrid();
 
-		me.grid = new Ext.create('OCS.MyGridWithFormPanel', {
-			modelName: 'CRM_CALENDAR',
-			func: 'crm_calendar_list',
-			sortField: 'crm_id',			
-			//groupField: 'work_type',
-			where: 'alldate',
+		views['workflow'] = new Ext.create('OCS.MyGridWithFormPanel', {
+			modelName: 'CRM_WORKFLOW',
+			func: 'crm_workflow_list',
+			table: 'crm_workflow',
+			sortField: '_date',			
 			dateField: '_date',
-			sortDirection: 'ASC',
-			filter: true,
-			searchBar : false
+			sortDirection: 'desc',
+			filter: false,
+			searchBar : false,
+			buttons: true,
+			border: false,
+			defaultRec: {
+				data: {
+					id: '0',
+					start_date: Ext.Date.format(new Date(),'Y-m-d'),
+					end_date: Ext.Date.format(new Date(),'Y-m-d'),
+					_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+					workflow_status: 'processing',
+					precent: '0',
+					priority: 'medium',
+					owner: selectedOwner,
+					userCode: logged
+				}
+			}
 		});
 		
+		me.owners = new OCS.OwnerView();
+		views['calendar'] = new Ext.create('OCS.MyCalendar');
 
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'border',
@@ -4622,25 +4553,145 @@ Ext.define('OCS.MyProfile', {
 				items: [{
 					xtype: 'panel',
 					region: 'center',
-					flex: 1,
-					title: 'Quick notes',
+					flex: 0.5,
+					title: 'Members',
 					width: 380,
-					bodyPadding: 3,
-					autoScroll: true,
+					autoScroll: false,
 					collapsible: true,
-					collapsed: true,
-					autoLoad: {
-						url: 'sticky.php',
-						scripts: true
-					}
+					collapsed: false,
+					items: [me.owners.createView()]
 				},me.mylog.createPanel()]	
-			}, /*me.grid.createGrid()*/
-			new Ext.create('OCS.MyCalendar').createPanel()]
+			}, {
+				xtype: 'panel',
+				layout: 'border',
+				region: 'center',
+				flex: 1,
+				border: false,
+				items: [
+					views['calendar'].createPanel(),
+					{
+						xtype: 'panel',
+						layout: 'border',
+						split: true,
+						region: 'south',
+						flex: 0.7,
+						items: [views['workflow'].createGrid()]	
+					}					
+				]
+			}]
 		});
 
 		return me.panel;
 	}
 });
+
+Ext.define('OCS.CompetitorProfile', {	
+	extend: 'OCS.Module',	
+
+	createBars: function() {
+		var me = this;	
+	},
+	
+	reload: function() {
+		var me = this;
+
+	},
+
+	createPanel: function() {
+		var me = this;
+			
+		views['competitor_deals'] = new Ext.create('OCS.CompetitorGridWithFormPanel', {
+			modelName: 'CRM_DEAL',
+			func: 'crm_competitor_deal_list',
+			table: 'crm_deals',
+			sortField: '_date',			
+			dateField: '_date',
+			sortDirection: 'desc',
+			filter: false,
+			searchBar : false,
+			buttons: true,
+			border: false,
+			defaultRec: {
+				data: {
+					id: '0'
+				}
+			}
+		});
+			
+
+		me.complist = new OCS.CompetitorView();
+		
+		me.cdealPosts = new OCS.CompetitorDealPostGrid();
+		me.cdealContact = new OCS.CompetitorDealContactGrid();
+		me.cdealActivity = new OCS.CompetitorDealActivityGrid();
+		me.cdealProduct = new OCS.CompetitorDealProductGrid();
+		me.cdealCompotetor = new OCS.CompetitorDealCompetitorGrid();
+		me.cdealTeams = new OCS.CompetitorDealSalesTeamGrid();
+
+		me.tabs = Ext.widget('tabpanel', {
+			activeTab: 0,
+			flex: 1,			
+			border: false,
+			region: 'south',
+			split: true,
+			tabPosition: 'top',	
+			items: [
+				me.cdealPosts.createPanel(),
+				me.cdealContact.createPanel(),			
+				me.cdealActivity.createPanel(),
+				me.cdealProduct.createPanel(),
+				me.cdealCompotetor.createPanel(),
+				me.cdealTeams.createPanel()
+			]
+		});
+
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'border',
+			border: false,
+			bodyPadding: 2,
+			region: 'center',
+			items : [{
+				xtype: 'panel',
+				layout: 'border',
+				width: 380,				
+				border: true,
+				split: true,
+				minWidth: 300,
+				region: 'west',
+				items: [me.complist.createView()]	
+			}, {
+				xtype: 'panel',
+				layout: 'border',
+				region: 'center',
+				flex: 1,
+				border: true,
+				items: [views['competitor_deals'].createGrid(), me.tabs]
+			}]
+		});
+
+		views['competitor_deals'].selectionModel().on({
+			selectionchange: function(sm, selections) {
+				if (selections.length) {
+					var rec = selections[0];
+					me.reload(rec);
+				}			
+			}
+		});		
+
+		return me.panel;
+	},
+
+	reload: function(rec) {
+		var me = this;
+		me.cdealContact.updateSource(rec);
+		me.cdealPosts.updateSource(rec);
+		me.cdealActivity.updateSource(rec);
+		me.cdealProduct.updateSource(rec);
+		me.cdealCompotetor.updateSource(rec);
+		me.cdealTeams.updateSource(rec);
+	}
+});
+
 
 
 Ext.define('OCS.MyCalendar', {	
@@ -4648,24 +4699,38 @@ Ext.define('OCS.MyCalendar', {
 
 	createPanel: function() {
 		var me = this;				
+		
+		me.frame = Ext.create('Ext.panel.Panel', {
+			xtype: 'panel',
+			region: 'center',
+			bodyPadding: 0,
+			frame: false,
+			border: false,
+			height: 600,
+			autoLoad: {
+				url: 'calenar.php?account='+gmailAccount
+			}
+		});
 
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'border',
-			border: false,
+			border: true,
 			region: 'center',
-			items : [{
-				xtype: 'panel',
-				region: 'center',
-				bodyPadding: 0,
-				frame: false,
-				border: false,
-				autoLoad: {
-					url: 'calenar.php?account='+gmailAccount
-				}
-			}]
+			autoScroll: true,
+			items : [me.frame]
 		});
 
 		return me.panel;
+	},
+
+	loadPanel: function(account) {
+		var me = this;
+		Ext.Ajax.request({
+			url: 'calenar.php?account='+account,
+			success: function (response) {
+				me.frame.update(response.responseText);
+			}
+		});
 	}
 });
 
@@ -4722,8 +4787,8 @@ Ext.define('OCS.RetailNewWindow', {
 	table: 'crm_customer',
 	maximizable: true,
 	modal: false,
-	width: 680,
-	height: 620,
+	width: 650,
+	height: 555,
 
 	initComponent: function() {
 		var me = this;
@@ -4731,7 +4796,8 @@ Ext.define('OCS.RetailNewWindow', {
 		me.form = Ext.create('OCS.RetailForm', {
 			id : 'retail_form',
 			region: 'center',
-			win : this
+			win : this,
+			selected: me.selected
 		});
 
 		me.items = [me.form];
@@ -4754,8 +4820,16 @@ Ext.define('OCS.ContactNewWindow', {
 		me.form = Ext.create('OCS.ContactForm', {
 			id: 'contact_form',
 			region: 'center',
-			record: me.record
+			record: me.record,
+			win: this
 		});
+
+		me.listeners = {
+			'close': function() {
+				if (me.backgrid)
+					me.backgrid.getStore().reload();
+			}
+		}
 
 		me.items = [me.form];
 		me.callParent(arguments);
@@ -4768,8 +4842,8 @@ Ext.define('OCS.CorporateNewWindow', {
 	table: 'crm_customer',
 	maximizable: true,
 	modal : false,
-	width: 700,
-	height: 610,
+	width: 650,
+	height: 560,
 
 	initComponent: function() {
 		var me = this;
@@ -4777,13 +4851,46 @@ Ext.define('OCS.CorporateNewWindow', {
 		me.form = Ext.create('OCS.CorporateForm', {
 			id : 'corporate_form',
 			region: 'center',
-			win : this
+			win : this,
+			selected: me.selected
 		});
 
 		me.items = [me.form];
 		me.callParent(arguments);
 	}
 });
+
+Ext.define('OCS.CustomerCampaignWindowCheckList', {
+	extend: 'OCS.Window',
+	title: 'Campaign list',
+	table: 'crm_campaign',
+	maximizable: true,
+	modal : false,
+	width: 300,
+	height: 350,
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.CustomerCampaignForm', {
+			id : 'customer_campaign_form',
+			region: 'center',
+			crm_id: this.crm_id,
+			win : this
+		});
+		
+		me.listeners = {
+			'close': function() {
+				if (me.backgrid)
+					me.backgrid.getStore().reload();
+			}
+		}
+
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
+
 
 Ext.define('OCS.LeadWindow', {
 	extend: 'OCS.Window',

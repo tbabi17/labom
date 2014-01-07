@@ -2,11 +2,11 @@ Ext.define('OCS.RetailForm', {
 	extend: 'Ext.form.Panel',
 	border: false,
 	region: 'center',
-	height: 410,
+	height: 380,
 	autoScroll: true,
 	closeAction: 'hide',	
 	split: true,
-	bodyPadding: '10 10 0',	
+	bodyPadding: '5 5 0',	
 	func: 'crm_retail_list',
 	fieldDefaults: {
 		labelAlign: 'right',
@@ -88,6 +88,13 @@ Ext.define('OCS.RetailForm', {
 	initComponent: function() {
 		var me = this;
 
+		me.listeners = {
+			'afterrender': function() {
+				if (me.selected && me.selected.get('crm_id') > 0)
+					me.getForm().loadRecord(me.selected);
+			}
+		};
+
 		me.items = [{
 				xtype: 'fieldset',
 				title: 'Main information',
@@ -96,7 +103,7 @@ Ext.define('OCS.RetailForm', {
 				layout: 'anchor',
 				defaults: {
 					anchor: '100%',
-					margin: '20 20 20 20',
+					margin: '15 15 15 15',
 				},
 				items: [{
 					xtype: 'fieldcontainer',
@@ -232,7 +239,6 @@ Ext.define('OCS.RetailForm', {
 					items: [{
 						fieldLabel: 'Level',
 						xtype: 'combo',
-						value: 'suspect',
 						labelWidth: 70,
 						name: 'level',
 						store: Ext.create('Ext.data.Store', {
@@ -244,6 +250,7 @@ Ext.define('OCS.RetailForm', {
 						valueField: 'value',
 						triggerAction: 'all',
 						editable: false,
+					    allowBlank: false,
 						flex: 0.5
 					},{
 						fieldLabel: 'Type',
@@ -253,7 +260,7 @@ Ext.define('OCS.RetailForm', {
 						value: 'RETAIL',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'EXPAT'}]
+						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'AGENT'},{value: 'EXPAT'}]
 						}),
 						queryMode: 'local',
 						displayField: 'value',
@@ -330,7 +337,7 @@ Ext.define('OCS.RetailForm', {
 				collapsible: true,
 				defaults: {
 					anchor: '100%',
-					margin: '20 20 20 20'
+					margin: '15 15 15 15'
 				},
 				items: [{
 						xtype: 'container',
@@ -454,6 +461,26 @@ Ext.define('OCS.RetailForm', {
 				]
 			},{
 				xtype: 'fieldset',
+				id: 'contact_campaign_list',
+				hidden: true,
+				title: 'Campaigns',
+				collapsible: true,
+				collapsed: false,
+				defaultType: 'checkbox',
+				layout: 'anchor',
+				defaults: {
+					anchor: '100%',
+					hideEmptyLabel: false,
+					margin: '15 15 15 15'
+				},
+				items: [{
+					xtype: 'container',
+					layout: 'hbox',
+					defaultType: 'checkbox',
+					items: me.campaign_list
+				}]					
+			},{
+				xtype: 'fieldset',
 				title: 'Note',
 				collapsible: true,
 				collapsed: false,
@@ -475,7 +502,7 @@ Ext.define('OCS.RetailForm', {
 					value: logged
 				}]					
 			}
-		];
+		];		
 
 		me.buttons = [{
 			itemId: 'customer_duplicate_warning',
@@ -488,7 +515,7 @@ Ext.define('OCS.RetailForm', {
 			labelWidth: 140,
 			id: 'autoclose',
 			checked: true,
-			boxLabel: 'automatically close window after commit',
+			boxLabel: 'automatically close after commit',
 			handler: function (field, value) {
 				me.autoClose = field.getValue();
 			}
@@ -508,19 +535,51 @@ Ext.define('OCS.RetailForm', {
 					var values = form.getValues(true);	
 					if (values.indexOf('autoclose-inputEl=on')!=-1)
 						values = values.substring(0, values.lastIndexOf('&'));
+					me.level = form.findField('level').getValue();
+					
+					if (me.selected && me.selected.get('crm_id') > 0) {
+						values = values.replaceAll("=", "='");
+						values = values.replaceAll("&", "',");
+						values += "'";
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'update', func: '', table: 'crm_customer', values:values, where: 'crm_id='+me.selected.get('crm_id')},
+						   success: function(response, opts) {
+								Ext.getBody().unmask();
 
-					Ext.Ajax.request({
-					   url: 'avia.php',
-					   params: {handle: 'web', action: 'insert', func: 'crm_retail_list', table: 'crm_customer', values:values},
-					   success: function(response, opts) {
-							if (me.autoClose)
-								me.win.close();
-							views['retail'].store.loadPage(1);	
-					   },
-					   failure: function(response, opts) {										   
-						  Ext.MessageBox.alert('Status', 'Error !', function() {});
-					   }
-					});
+								if (me.autoClose)
+									me.win.close();
+								if (me.level == 'customer')							
+									new OCS.CustomerCampaignWindowCheckList({
+										crm_id: response.responseText
+									}).show();
+
+								views['retail'].store.loadPage(1);	
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					} else {
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'insert', func: '', table: 'crm_customer', values:values},
+						   success: function(response, opts) {
+								if (me.autoClose)
+									me.win.close();
+								if (me.level == 'customer') {							
+									new OCS.CustomerCampaignWindowCheckList({
+										crm_id: response.responseText
+									}).show();
+								}
+
+								views['retail'].store.loadPage(1);	
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					}
 				}
 			}
 		}];
@@ -533,13 +592,13 @@ Ext.define('OCS.RetailForm', {
 Ext.define('OCS.CorporateForm', {
 	extend: 'Ext.form.Panel',
 	border: false,
-	region: 'cebter',
-	height: 410,
+	region: 'center',
+	height: 380,
 	autoScroll: true,
 	split: true,
 	autoClose: true,
 	func: 'crm_corporate_list',
-	bodyPadding: '10 10 10 10',	
+	bodyPadding: '5 5 5 5',	
 	fieldDefaults: {
 		labelAlign: 'right',
 		labelWidth: 60,
@@ -600,6 +659,13 @@ Ext.define('OCS.CorporateForm', {
 
 	initComponent: function() {
 		var me = this;
+		
+		me.listeners = {
+			'afterrender': function() {
+				if (me.selected && me.selected.get('crm_id') > 0)
+					me.getForm().loadRecord(me.selected);
+			}
+		};
 
 		me.items = [{
 				xtype: 'fieldset',
@@ -609,7 +675,7 @@ Ext.define('OCS.CorporateForm', {
 				layout: 'anchor',
 				defaults: {
 					anchor: '100%',
-					margin: '20 20 20 20',
+					margin: '15 15 15 15',
 					labelWidth: 60
 				},
 				items: [{
@@ -694,7 +760,7 @@ Ext.define('OCS.CorporateForm', {
 						value: 'CORPORATE',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'CORPORATE'},{value: 'SME'},{value: 'RESELLER'}]
+						  data: [{value: 'CORPORATE'},{value: 'SME'},{value: 'RESELLER'},{value: 'BROKER'}]
 						}),
 						queryMode: 'local',
 						displayField: 'value',
@@ -705,17 +771,17 @@ Ext.define('OCS.CorporateForm', {
 					},{
 						fieldLabel: 'Level',
 						xtype: 'combo',
-						value: 'suspect',
 						name: 'level',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
 						  data: [{value: 'customer'},{value: 'prospect'},{value: 'suspect'}]
-						}),
+						}),	
 						queryMode: 'local',
 						displayField: 'value',
 						valueField: 'value',
 						triggerAction: 'all',
 						editable: false,
+					    allowBlank: false,
 						flex: 0.5
 					},{
 						id: 'regNo',
@@ -815,7 +881,7 @@ Ext.define('OCS.CorporateForm', {
 				collapsible: true,
 				defaults: {
 					anchor: '100%',
-					margin: '20 20 20 20',
+					margin: '15 15 15 15',
 					labelWidth: 60
 				},
 				items: [{
@@ -823,7 +889,7 @@ Ext.define('OCS.CorporateForm', {
 							layout: 'hbox',
 							defaultType: 'textfield',
 							items: [{
-								id: 'phone1',
+								id: 'phone',
 								fieldLabel: 'Phone 1',
 								labelWidth: 60,
 								name: 'phone',
@@ -975,7 +1041,7 @@ Ext.define('OCS.CorporateForm', {
 			labelWidth: 140,
 			id: 'autoclose',
 			checked: true,
-			boxLabel: 'automatically close window after commit',
+			boxLabel: 'automatically close after commit',
 			handler: function (field, value) {
 				me.autoClose = field.getValue();
 			}
@@ -995,22 +1061,57 @@ Ext.define('OCS.CorporateForm', {
 					var values = form.getValues(true);	
 					if (values.indexOf('autoclose-inputEl=on')!=-1)
 						values = values.substring(0, values.lastIndexOf('&'));
+					me.level = form.findField('level').getValue();
+					Ext.getBody().mask('Saving...');
 					
-					Ext.Ajax.request({
-					   url: 'avia.php',
-					   params: {handle: 'web', action: 'insert', func: 'crm_corporate_list', table: 'crm_customer', values:values},
-					   success: function(response, opts) {
-							if (me.autoClose)
-								me.win.close();
-							views['corporate'].store.loadPage(1);	
-					   },
-					   failure: function(response, opts) {										   
-						  Ext.MessageBox.alert('Status', 'Error !', function() {});
-					   }
-					});
+					if (me.selected && me.selected.get('crm_id') > 0) {
+						values = values.replaceAll("=", "='");
+						values = values.replaceAll("&", "',");
+						values += "'";
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'update', func: '', table: 'crm_customer', values:values, where: 'crm_id='+me.selected.get('crm_id')},
+						   success: function(response, opts) {
+								Ext.getBody().unmask();
+
+								if (me.autoClose)
+									me.win.close();
+								if (me.level == 'customer')							
+									new OCS.CustomerCampaignWindowCheckList({
+										crm_id: response.responseText
+									}).show();
+
+								views['corporate'].store.loadPage(1);	
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					} else {						
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'insert', func: '', table: 'crm_customer', values:values},
+						   success: function(response, opts) {
+								Ext.getBody().unmask();
+
+								if (me.autoClose)
+									me.win.close();
+								if (me.level == 'customer')							
+									new OCS.CustomerCampaignWindowCheckList({
+										crm_id: response.responseText
+									}).show();
+
+								views['corporate'].store.loadPage(1);	
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					}
 				}
 			}
 		}];
+
 
 		me.callParent(arguments);
 	}
@@ -1370,7 +1471,7 @@ Ext.define('OCS.ContactForm', {
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'update', table: 'crm_customer', func: '', values: "decision_maker='"+me.form.findField('decision_maker').getValue()+"',parent_crm_id="+me.parent_crm_id, fields: '', where: 'crm_id='+form.findField('crm_id').getValue()},
 						   success: function(response, opts) {
-								Ext.MessageBox.alert('Status', 'Success !', function() {});
+								if (me.win) me.win.close();
 								form.reset();
 						   },
 						   failure: function(response, opts) {										   
@@ -1382,7 +1483,7 @@ Ext.define('OCS.ContactForm', {
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'insert', table: 'crm_customer', func: '', values: values, fields: '', where: ''},
 						   success: function(response, opts) {
-								Ext.MessageBox.alert('Status', 'Success !', function() {});
+								if (me.win) me.win.close();
 								form.reset();
 						   },
 						   failure: function(response, opts) {										   
@@ -1398,6 +1499,94 @@ Ext.define('OCS.ContactForm', {
 	}
 });
 
+
+Ext.define('OCS.CustomerCampaignForm', {
+	extend: 'Ext.form.Panel',
+	border: false,
+	region: 'center',
+	height: 410,
+	autoScroll: true,
+	closeAction: 'hide',	
+	split: true,
+	bodyPadding: '10 10 0',	
+	fieldDefaults: {
+		labelAlign: 'right',
+		labelWidth: 70,
+		msgTarget: 'qtip'
+	},
+
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },			
+
+	initComponent: function() {
+		var me = this;
+		
+		me.campaign_list = [];
+		me.array = campaigns_static.split(":");
+		for (i = 0; i < me.array.length; i++) {
+			if (me.array[i].length > 0)						
+				me.campaign_list.push({
+					xtype: 'checkbox',
+					boxLabel: me.array[i],
+					flex: 1,
+					checked: true,
+					name: 'checkbox'+i,
+					inputValue: me.array[i]
+				});
+		}
+
+		me.items = [{
+				xtype: 'fieldset',
+				title: 'Campaings',
+				collapsible: true,
+				defaultType: 'checkbox',
+				layout: 'anchor',
+				defaults: {
+					anchor: '100%',
+					margin: '15 15 15 15'
+				},
+				items: [{
+					xtype: 'container',
+					layout: 'vbox',
+					defaultType: 'checkbox',
+					items: me.campaign_list
+				}]
+			}
+		];
+
+		me.buttons = [{
+			text : 'Reset',
+			iconCls: 'reset',
+			handler: function() {
+				var form = this.up('form').getForm();
+				form.reset();
+			}
+		},{
+			text: 'Commit',
+			iconCls: 'commit',
+			handler: function() {
+				var form = this.up('form').getForm();
+				if (form.isValid())	{					
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', action: 'insert_customer_campaign', table: 'crm_customer_campaigns', func: '', values: form.getValues(true), fields: '', where: me.crm_id},
+					   success: function(response, opts) {
+						    me.win.close();
+							form.reset();
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});
+				}
+			}
+		}];
+
+		me.callParent(arguments);
+	}
+});
 
 
 Ext.define('OCS.CompotetorForm', {
