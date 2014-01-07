@@ -226,7 +226,7 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'end_date', text: 'End date', width: 70, align: 'center'},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
-   {name: 'userCode', text: 'userCode', width: 100},
+   {name: 'userCode', text: 'Created by', width: 100},
    {name: '_date', text: 'Created on', width: 80}
 ];
 
