@@ -2037,7 +2037,7 @@ Ext.define('OCS.GridView', {
 				id: 'group',
 				ftype: 'groupingsummary',				
 				groupHeaderTpl: Ext.create('Ext.XTemplate',
-					'{name:this.formatName} {rows.length}',
+					'{name:this.formatName} ({rows.length})',
 					{
 						formatName: function(name) {
 							if (name.indexOf(',') != -1)
