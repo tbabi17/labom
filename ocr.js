@@ -2916,7 +2916,7 @@ Ext.define('OCS.CaseAction', {
 						id: 'case_resolve',
 						scope: this,//99110436
 						handler: function() {
-							if (me.activityGrid.openActivityCount() > 0) {
+							if (me.caseActivity.openActivityCount() > 0) {
 								Ext.MessageBox.alert('Error', 'This case cannot be closed because there are open activities associated with it !', function() {});
 								return;
 							}
