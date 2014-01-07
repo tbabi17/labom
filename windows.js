@@ -125,6 +125,7 @@ Ext.define('OCS.NewDealWindow', {
 	table: 'crm_deals',
 	values: 'crm_id',
 	groupField: '',
+	buttons: true,
 	sortField: 'closing_date',
 	modelName: 'CRM_DEAL',
 	primary: 'deal_id',
