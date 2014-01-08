@@ -643,6 +643,14 @@ Ext.define('OCS.RetailPanel', {
 					}]
 				}				
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'email', 
+				text: 'Mail',
+				handler: function(widget, event) {		
+					new OCS.MassMailWindow({
+					}).show();
+				}
+			}),			
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help', 
