@@ -315,6 +315,7 @@ Ext.define('OCS.DealPostGrid', {
 		me.where = rec.get('deal_id');
 		me.values = 'deal_id';
 		me.grid.initSource(rec.get('deal_id'), 0);
+		me.grid.owner = rec.get('owner');
 		me.loadStore();
 	},
 
@@ -352,7 +353,6 @@ Ext.define('OCS.DealPostGrid', {
 			collapsed: me.collapsed,
 			func: me.func,
 			actions: me.createActions(),
-			owner: (me.selected?me.selected.get('owner'):owner),
 			viewConfig: {
 				trackOver: false,
 				stripeRows: false,
