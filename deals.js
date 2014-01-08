@@ -352,6 +352,7 @@ Ext.define('OCS.DealPostGrid', {
 			collapsed: me.collapsed,
 			func: me.func,
 			actions: me.createActions(),
+			owner: me.selected.get('owner'),
 			viewConfig: {
 				trackOver: false,
 				stripeRows: false,

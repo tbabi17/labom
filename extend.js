@@ -2277,6 +2277,7 @@ Ext.define('OCS.AGridView', {
 	deal_id: 0,
 	case_id: 0,
 	postable: true,
+	owner: logged,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -2352,7 +2353,7 @@ Ext.define('OCS.AGridView', {
 	
 	postHere: function(value) {
 		var me = this;
-		var values = 'deal_id='+me.deal_id+'&case_id='+me.case_id+'&message='+value+'&owner='+logged+'&userCode='+logged;
+		var values = 'deal_id='+me.deal_id+'&case_id='+me.case_id+'&message='+value+'&owner='+me.owner+'&userCode='+logged;
 		Ext.Ajax.request({
 		   url: 'avia.php',
 		   params: {handle: 'web', action: 'insert', func: '', table: 'crm_posts', values:values, where: ''},
