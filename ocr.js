@@ -4852,10 +4852,12 @@ Ext.define('OCS.ContactNewWindow', {
 		}
 		
 		me.views = Ext.create('OCS.ContactView', {
+			flex: 1,
+			region: 'center',
 		});
 
 		me.items = [{
-			region: 'center',
+			region: 'south',
 			flex: 1,
 			border: false,
 			items: [me.views.createView()]
@@ -4863,7 +4865,7 @@ Ext.define('OCS.ContactNewWindow', {
 			flex: 1,
 			split: true,
 			border: false,
-			region: 'south',
+			region: 'center',
 			items:[me.form]
 		}];
 
