@@ -4854,6 +4854,7 @@ Ext.define('OCS.ContactNewWindow', {
 		me.views = Ext.create('OCS.ContactView', {
 			flex: 1,
 			region: 'center',
+			form: me.form
 		});
 
 		me.items = [{
@@ -5258,7 +5259,14 @@ Ext.define('OCS.ContactView', {
 			func: me.func,
 			search: true,
 			tbarable: true
-		});							
+		});				
+			
+		me.grid.getSelectionModel().on({
+			selectionchange: function(sm, selections) {
+				if (me.form && selections.length > 0)
+					me.form.loadRecord(selections[0]);
+			}
+		});
 
 		return me.grid;
 	}
