@@ -5259,17 +5259,9 @@ Ext.define('OCS.ContactView', {
 			actions: me.createActions(),
 			func: me.func,
 			search: true,
-			tbarable: true
-		});				
-			
-		me.grid.getSelectionModel().on({
-			selectionchange: function(sm, selections) {
-				if (me.form && selections.length > 0) {
-					alert(me.form.getForm().findFields('firstName').getValue());
-					me.form.getForm().findFields('firstName').setValue(selections[0].get('firstName'));
-				}
-			}
-		});
+			tbarable: true,
+			form: me.form
+		});						
 
 		return me.grid;
 	}

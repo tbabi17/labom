@@ -2008,6 +2008,10 @@ Ext.define('OCS.GridView', {
 						if (Ext.getCmp('contact_form') && me.func == 'crm_retail_list')						
 							Ext.getCmp('contact_form').getForm().loadRecord(record);
 					}
+
+					if (me.form) {
+						me.form.getForm().findFields('firstName').setValue(selections[0].get('firstName'));
+					}
 				},
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
