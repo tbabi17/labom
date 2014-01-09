@@ -2009,7 +2009,7 @@ Ext.define('OCS.GridView', {
 							Ext.getCmp('contact_form').getForm().loadRecord(record);
 					}
 
-					if (me.form) {
+					if (me.form && me.func == 'crm_contact_list') {
 						me.form.getForm().findFields('firstName').setValue(selections[0].get('firstName'));
 					}
 				},
