@@ -2339,7 +2339,8 @@ Ext.define('OCS.AGridView', {
 
 		me.viewConfig = {
 			emptyText: me.emptyText,
-			trackOver: false,
+			trackMouseOver: true,
+			trackOver: true,
 			stripeRows: false,
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
