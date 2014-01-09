@@ -1363,7 +1363,6 @@ Ext.define('OCS.CustomerDetailWindow', {
 		me.ccase = new OCS.CaseGrid();
 
 		me.items = [{
-			id: 'customerComponent',
 			xtype: 'tabpanel',
 			region: 'center',
 			border: false,
