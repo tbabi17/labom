@@ -561,6 +561,7 @@ Ext.define('OCS.CallLogWindow', {
 	table: 'crm_calllog',
 	groupField: '',
 	modelName: 'CRM_CALLLOG',
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
