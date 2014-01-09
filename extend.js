@@ -120,7 +120,7 @@ Ext.define('OCS.Module', {
 			}
 		});
 
-		me.store.loadPage(1);
+//		me.store.loadPage(1);
 	},
 	
 	loadStore: function() {
