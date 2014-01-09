@@ -4857,12 +4857,13 @@ Ext.define('OCS.ContactNewWindow', {
 		me.items = [{
 			region: 'center',
 			flex: 1,
-			me.views.createView()
+			items: [me.views.createView()]
 		}, {
 			flex: 1,
 			region: 'south',
 			items:[me.form]
 		}];
+
 		me.callParent(arguments);
 	}
 });
