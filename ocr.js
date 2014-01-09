@@ -646,6 +646,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'email', 
 				text: 'Mail',
+				hidden: true,
 				handler: function(widget, event) {		
 					new OCS.MassMailWindow({
 					}).show();
