@@ -1923,6 +1923,7 @@ Ext.define('OCS.GridView', {
 	feature: true,
 	search : true,
 	emptyText: 'No records.',
+	cls : 'custom-grid',
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -2031,9 +2032,7 @@ Ext.define('OCS.GridView', {
 				if (record.get('workflow_status') == 'processing')
 					return 'bold-row';
 				if (record.get('workflow_status') == 'completed')
-					return 'gray-row';
-				
-				if (record.dirty == true) return 'bg-row-edited';
+					return 'gray-row';			
 
 				return may;
             }
