@@ -5237,7 +5237,6 @@ Ext.define('OCS.ContactView', {
 
 		me.grid = Ext.create('OCS.GridView', {	
 			store: me.store,
-			region: 'north',		
 			columns: me.createColumns(),
 			actions: me.createActions(),
 			func: me.func
