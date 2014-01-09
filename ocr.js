@@ -3058,7 +3058,7 @@ Ext.define('OCS.SettingsPanel', {
 							}
 						});
 
-		me.panel = Ext.create('Ext.Panel', {	
+		me.panel = Ext.create('Ext.Panel', {				
 			layout: 'border',
 			region: 'center',
 			border: false,
@@ -3068,9 +3068,9 @@ Ext.define('OCS.SettingsPanel', {
 				split: true,
 				border: false
 			},
-			items: [{	
+			items: [{					
+				layout: 'border',
 				region: 'center',
-				layout: 'border',				
 				title: '',
 				border: false,
 				collapsible: false,
@@ -3097,7 +3097,7 @@ Ext.define('OCS.SettingsPanel', {
 								id : 'user_group_list',
 								title: 'Group members',
 								hidden: !(user_level > 0),
-								region: 'west',
+								region: 'east',
 								flex: 1,
 								split: true,
 								closable: false,
@@ -3107,50 +3107,146 @@ Ext.define('OCS.SettingsPanel', {
 								]
 							}							
 						]
-					},
+					}								
+				]
+			}]
+		});
+		
+		me.userList.selectionModel().on({
+			selectionchange: function(sm, selections) {
+				if (selections.length) {
+					me.userGroup.setDefaultRec({
+						data: {
+							id: '0',
+							groupName: selections[0].get('owner'),
+							_date: Ext.Date.format(new Date(),'Y-m-d h:m:s')
+						}
+					});
+					me.userGroup.loadStore(selections[0].get('owner'));
+				}			
+			}
+		});
+
+		return me.panel;
+	}
+});
+
+Ext.define('OCS.ProductPanel', {
+	extend: 'OCS.Module',
+
+	createPanel: function() {
+		var me = this;
+
+		me.panel = Ext.create('Ext.Panel', {				
+			layout: 'border',
+			region: 'center',
+			border: false,
+			bodyPadding: 2,
+			defaults: {
+				collapsible: true,
+				split: true,
+				border: false
+			},
+			items: [{					
+				layout: 'border',
+				region: 'center',
+				title: '',
+				border: false,
+				collapsible: false,
+				items: [					
 					{
-						xtype: 'panel',
-						region: 'north',
-						flex: 1.25,
-						split: true,
+						region: 'center',
+						split: true,			
 						border: false,
-						title: '',
+						flex: 1,
 						layout: 'border',
-						items: [{
-								id : 'product_list',
-								title: 'Products',
-								region: 'west',
-								flex: 1,
-								split: true,
-								closable: false,
-								layout: 'border',
-								items: [
-									new Ext.create('OCS.GridWithFormPanel', {
-										modelName:'CRM_PRODUCT',
-										func:'crm_product_list',
-										title: 'Products',
-										table: 'crm_products',
-										tab: 'my_crm_product_list',
-										buttons: true,
-										insert: (user_level==0),
-										remove: (user_level==0),	
-										defaultRec: {
-											data: {
-												product_id: '0',
-												price: '0'
-											}
-										}
-									}).createGrid()
-								]
-							},{
-								id : 'owner_plan_list',
-								title: 'Planning',
+						items: [
+							{
+								xtype: 'panel',
 								region: 'center',
 								flex: 1,
 								split: true,
+								border: false,
+								title: '',
+								layout: 'border',
+								items: [{
+										id : 'product_list',
+										title: 'Products',
+										flex: 1,
+										region: 'center',
+										split: true,
+										closable: false,
+										layout: 'border',
+										items: [
+											new Ext.create('OCS.GridWithFormPanel', {
+												modelName:'CRM_PRODUCT',
+												func:'crm_product_list',
+												title: 'Products',
+												table: 'crm_products',
+												tab: 'my_crm_product_list',
+												buttons: true,
+												insert: (user_level==0),
+												remove: (user_level==0),	
+												defaultRec: {
+													data: {
+														product_id: '0',
+														price: '0'
+													}
+												}
+											}).createGrid()
+										]
+									}		
+								]
+							}								
+						]
+					}								
+				]
+			}]
+		});
+
+		return me.panel;
+	}
+});
+
+Ext.define('OCS.GoalsPanel', {
+	extend: 'OCS.Module',
+
+	createPanel: function() {
+		var me = this;
+
+		me.panel = Ext.create('Ext.Panel', {				
+			layout: 'border',
+			region: 'center',
+			border: false,
+			bodyPadding: 2,
+			defaults: {
+				collapsible: true,
+				split: true,
+				border: false
+			},
+			items: [{					
+				layout: 'border',
+				region: 'center',
+				title: '',
+				border: false,
+				collapsible: false,
+				items: [					
+					{
+						region: 'center',
+						split: true,			
+						border: false,
+						flex: 1,
+						layout: 'border',
+						items: [
+							{
+								id : 'owner_plan_list',
+								title: 'Planning',
+								flex: 1,
+								region: 'east',
+								split: true,
 								closable: false,
 								layout: 'border',
-								hidden: !(user_level == 0),
+								//hidden: !(user_level == 0),
 								items: [
 									new Ext.create('OCS.GridWithFormPanel', {
 										modelName:'CRM_STAT',
@@ -3171,7 +3267,7 @@ Ext.define('OCS.SettingsPanel', {
 							}, {
 								id : 'user_planning_list',
 								title: 'Goals',
-								region: 'east',
+								region: 'center',
 								flex: 1,
 								split: true,
 								closable: false,
@@ -3197,31 +3293,17 @@ Ext.define('OCS.SettingsPanel', {
 										}
 									}).createGrid()
 								]
-							}			
+							}								
 						]
-					}									
+					}								
 				]
 			}]
-		});
-		
-		me.userList.selectionModel().on({
-			selectionchange: function(sm, selections) {
-				if (selections.length) {
-					me.userGroup.setDefaultRec({
-						data: {
-							id: '0',
-							groupName: selections[0].get('owner'),
-							_date: Ext.Date.format(new Date(),'Y-m-d h:m:s')
-						}
-					});
-					me.userGroup.loadStore(selections[0].get('owner'));
-				}			
-			}
 		});
 
 		return me.panel;
 	}
 });
+
 
 Ext.define('OCS.Workspace', {
 	extend: 'OCS.Module',		

@@ -529,15 +529,14 @@ Ext.define('CRM_PRODUCT', {
 });
 
 fields['CRM_STAT_FIELDS'] = [
-   {name: 'owner', text: 'Owner', width: 100}, 
-   {name: '_date', text: 'Date', width: 60, primary: true}, 
-   {name: 'event_p', text: 'Type', width: 120},
-   {name: 'quote_p', text: 'Plan', width: 90},
-   {name: 'newcus_p', text: 'Plan', width: 90},
-   {name: 'expat_p', text: 'Plan', width: 90},
-   {name: 'vip_p', text: 'Plan', width: 90},
-   {name: 'extend_p', text: 'Plan', width: 90},
-   {name: 'decline_p', text: 'Plan', width: 90}
+   {name: 'owner', text: 'Owner', width: 120}, 
+   {name: '_date', text: 'Date', width: 9, primary: true}, 
+   {name: 'event_p', type: 'int', text: 'Appointment', width: 120},
+   {name: 'quote_p', type: 'int', text: 'Quote', width: 90},
+   {name: 'newcus_p', type: 'int', text: 'New Customer', width: 90},
+   {name: 'expat_p', type: 'int', text: 'Expat Customer', width: 90},
+   {name: 'vip_p', type: 'int', text: 'VIP customer', width: 90},
+   {name: 'extend_p', type: 'int', text: 'Extension', width: 90}
 ];
 
 Ext.define('CRM_STAT', {
