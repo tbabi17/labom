@@ -4854,7 +4854,15 @@ Ext.define('OCS.ContactNewWindow', {
 		me.views = Ext.create('OCS.ContactView', {
 		});
 
-		me.items = [me.views.createView(), me.form];
+		me.items = [{
+			region: 'center',
+			flex: 1,
+			me.views.createView()
+		}, {
+			flex: 1,
+			region: 'south',
+			items:[me.form]
+		}];
 		me.callParent(arguments);
 	}
 });
