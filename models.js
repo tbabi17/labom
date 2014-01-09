@@ -65,9 +65,6 @@ Ext.define('CRM_RETAIL', {
 
 fields['CRM_CONTACT_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
-   {name: 'type', text: 'CRM Type', width: 50, hidden:true},   
-   {name: 'level', text: '#', width: 30, align: 'center', lock: true, renderer: renderCustomerLevel},
-   {name: '_class', text: 'Class', width: 50, align: 'center', renderer: renderClass},     
    {name: 'regNo', text: 'Register', width: 80, hidden: true},   
    {name: 'firstName', text: 'First name', width: 100, lock: true, renderer: renderTip, primary: true},
    {name: 'lastName', text: 'Last name', width: 100, lock: true, renderer: renderTip},
