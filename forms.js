@@ -549,7 +549,7 @@ Ext.define('OCS.RetailForm', {
 
 								if (me.autoClose)
 									me.win.close();
-								if (me.level == 'customer')							
+								if (me.level == 'customer' && campaigns_static.length > 0)							
 									new OCS.CustomerCampaignWindowCheckList({
 										crm_id: response.responseText
 									}).show();
@@ -567,7 +567,7 @@ Ext.define('OCS.RetailForm', {
 						   success: function(response, opts) {
 								if (me.autoClose)
 									me.win.close();
-								if (me.level == 'customer') {							
+								if (me.level == 'customer' && campaigns_static.length > 0) {							
 									new OCS.CustomerCampaignWindowCheckList({
 										crm_id: response.responseText
 									}).show();
@@ -1076,7 +1076,7 @@ Ext.define('OCS.CorporateForm', {
 
 								if (me.autoClose)
 									me.win.close();
-								if (me.level == 'customer')							
+								if (me.level == 'customer' && campaigns_static.length > 0)							
 									new OCS.CustomerCampaignWindowCheckList({
 										crm_id: response.responseText
 									}).show();
@@ -1096,7 +1096,7 @@ Ext.define('OCS.CorporateForm', {
 
 								if (me.autoClose)
 									me.win.close();
-								if (me.level == 'customer')							
+								if (me.level == 'customer' && campaigns_static.length > 0)							
 									new OCS.CustomerCampaignWindowCheckList({
 										crm_id: response.responseText
 									}).show();
