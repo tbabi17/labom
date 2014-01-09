@@ -4842,6 +4842,7 @@ Ext.define('OCS.ContactNewWindow', {
 			id: 'contact_form',
 			region: 'center',
 			record: me.record,
+			crm_id: me.record.get('crm_id')
 			win: this
 		});
 
