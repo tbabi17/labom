@@ -4854,7 +4854,7 @@ Ext.define('OCS.ContactNewWindow', {
 		me.views = Ext.create('OCS.ContactView', {
 		});
 
-		me.items = [me.views, me.form];
+		me.items = [me.views.createView(), me.form];
 		me.callParent(arguments);
 	}
 });
