@@ -704,7 +704,7 @@ function renderClass(v) {
 
 function renderTip(v, metadata, record, rowIndex, colIndex, store) {
 	//metadata.tdAttr = 'data-qtip="<b>double click</b></br>"'	
-	return '<a href="javascript:customerInfo('+record.data['crm_id']+')" class="select_customer">'+v+'</a>';
+	return '<a href="javascript:customerInfo(\''+record.data['crm_id']+'\')" class="select_customer">'+v+'</a>';
 }
 
 function renderPassword(v) {
