@@ -1924,6 +1924,7 @@ Ext.define('OCS.GridView', {
 	search : true,
 	emptyText: 'No records.',
 	cls : 'custom-grid',
+	trackMouseOver: true,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -1989,7 +1990,8 @@ Ext.define('OCS.GridView', {
 
 		me.viewConfig = {
 			emptyText: me.emptyText,
-			trackOver: false,
+			trackOver: true,
+			trackMouseOver: true,
 			stripeRows: false,
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
