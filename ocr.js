@@ -1327,7 +1327,7 @@ Ext.define('OCS.ActivityGrid', {
 	}
 });
 
-xt.define('OCS.DetailActivityGrid', {
+Ext.define('OCS.DetailActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	
 	createActions: function() {
