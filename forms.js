@@ -1212,7 +1212,7 @@ Ext.define('OCS.ContactForm', {
 			companyName = name.substring(name.indexOf('<g>')+3, name.indexOf('</g'));			
 			companyName = companyName.trim();
 		}
-
+		me.crm_id = 0;
 		if (me.record)
 			me.parent_crm_id = me.record.data['crm_id'];
 
@@ -1427,7 +1427,7 @@ Ext.define('OCS.ContactForm', {
 						name: 'parent_crm_id',
 						margins: '0 0 0 6',
 						readOnly: true,
-						hidden: true,
+					//	hidden: true,
 						width: 40,
 						value: me.parent_crm_id
 					},{
