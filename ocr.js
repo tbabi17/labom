@@ -1653,10 +1653,13 @@ Ext.define('OCS.CustomerCampaigns', {
 				iconCls  : 'add',  
 				text: 'Add ...',
 				handler: function(widget, event) {
-					new OCS.CustomerCampaignWindowCheckList({
-						crm_id: me.selected.get('crm_id'),
-						backgrid: me.grid
-					}).show();
+					if (campaigns_static.length > 0)
+						new OCS.CustomerCampaignWindowCheckList({
+							crm_id: me.selected.get('crm_id'),
+							backgrid: me.grid
+						}).show();
+					else
+						Ext.MessageBox.alert('Status', 'Not available !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
@@ -2454,7 +2457,7 @@ Ext.define('OCS.DealAction', {
 						id: 'deal_assign',
 						scope: this,
 						handler: function() {
-							if (me.selected.get('owner') == logged)
+							if (me.selected.get('owner') == logged || user_level > 0)
 								new OCS.AssignWindow({
 									selected: me.selected
 								}).show();
