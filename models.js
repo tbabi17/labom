@@ -207,8 +207,8 @@ fields['CRM_CALLLOG_FIELDS'] = [
    {name: '_from', text: 'From', width: 70, align: 'center', hidden: true},
    {name: '_to', text: 'To', width: 70, align: 'center', renderer: renderPhone, primary: true},  
    {name: 'descr', text: 'Description', width: 200, hidden: true},
-   {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
-   {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
+//   {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
+//   {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
    {name: '_date', type: 'datetime', text: 'Created on', width: 200}
 ];
