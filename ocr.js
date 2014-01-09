@@ -4830,7 +4830,7 @@ Ext.define('OCS.ContactNewWindow', {
 	table: 'crm_customer',
 	maximizable: true,
 	modal: false,
-	width: 700,
+	width: 750,
 	height: 450,
 	layout: 'border',
 
@@ -5251,7 +5251,9 @@ Ext.define('OCS.ContactView', {
 			store: me.store,
 			columns: me.createColumns(),
 			actions: me.createActions(),
-			func: me.func
+			func: me.func,
+			search: true,
+			tbarable: true
 		});							
 
 		return me.grid;
