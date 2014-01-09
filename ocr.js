@@ -1508,7 +1508,7 @@ Ext.define('OCS.CaseGrid', {
 	createActions: function() {
 		var me = this;
 		me.actions = [
-			Ext.create('Ext.Action', {
+		/*	Ext.create('Ext.Action', {
 				iconCls : 'add',  
 				text: 'Add ...',
 				handler: function(widget, event) {
@@ -1516,7 +1516,7 @@ Ext.define('OCS.CaseGrid', {
 						selected: me.selected
 					}).createWindow();
 				}
-			})
+			})*/
 		];
 			
 		return me.actions;
@@ -1564,7 +1564,7 @@ Ext.define('OCS.OpportunityGrid', {
 	createActions: function() {
 		var me = this;
 		me.actions = [
-			Ext.create('Ext.Action', {
+			/*Ext.create('Ext.Action', {
 				iconCls  : 'add',  
 				text: 'Add ...',
 				handler: function(widget, event) {
@@ -1572,7 +1572,7 @@ Ext.define('OCS.OpportunityGrid', {
 						selected: me.selected
 					}).createWindow();
 				}
-			})
+			})*/
 		];
 			
 		return me.actions;
