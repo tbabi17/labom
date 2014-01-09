@@ -3119,7 +3119,7 @@ Ext.define('OCS.SettingsPanel', {
 						items: [{
 								id : 'product_list',
 								title: 'Products',
-								region: 'east',
+								region: 'west',
 								flex: 1,
 								split: true,
 								closable: false,
@@ -3171,7 +3171,7 @@ Ext.define('OCS.SettingsPanel', {
 							}, {
 								id : 'user_planning_list',
 								title: 'Goals',
-								region: 'west',
+								region: 'east',
 								flex: 1,
 								split: true,
 								closable: false,
