@@ -3119,7 +3119,7 @@ Ext.define('OCS.SettingsPanel', {
 						items: [{
 								id : 'product_list',
 								title: 'Products',
-								region: 'center',
+								region: 'east',
 								flex: 0.5,
 								split: true,
 								closable: false,
