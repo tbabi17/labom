@@ -1356,7 +1356,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 		var me = this;			
 
 		me.property = new OCS.DetailGrid();
-		me.activity = new OCS.ActivityGrid();
+		me.activity = new OCS.DetailActivityGrid();
 		me.opportunity = new OCS.OpportunityGrid();
 		me.customer_campaings = new OCS.CustomerCampaigns();
 	    me.csales = new OCS.CustomerSalesPanel();

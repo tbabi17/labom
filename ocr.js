@@ -1327,6 +1327,19 @@ Ext.define('OCS.ActivityGrid', {
 	}
 });
 
+xt.define('OCS.DetailActivityGrid', {
+	extend: 'OCS.ActivityGrid',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [		
+			
+		];
+			
+		return me.actions;
+	}
+});
+
 Ext.define('OCS.MyActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_my_activity_list',
