@@ -5253,6 +5253,7 @@ Ext.define('OCS.ContactView', {
 		me.createStore();
 
 		me.grid = Ext.create('OCS.GridView', {	
+			title: 'Search contact',
 			store: me.store,
 			columns: me.createColumns(),
 			actions: me.createActions(),
