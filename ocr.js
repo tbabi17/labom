@@ -5264,7 +5264,7 @@ Ext.define('OCS.ContactView', {
 		me.grid.getSelectionModel().on({
 			selectionchange: function(sm, selections) {
 				if (me.form && selections.length > 0)
-					me.form.loadRecord(selections[0]);
+					me.form.getForm().loadRecord(selections[0]);
 			}
 		});
 
