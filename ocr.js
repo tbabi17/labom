@@ -5212,7 +5212,7 @@ Ext.define('OCS.LeadImportWindow', {
 });
 
 Ext.define('OCS.ContactView', {
-	extend: 'OCS.GridWithFormPanel',
+	extend: 'OCS.Module',
 	func: 'crm_contact_list',	
 	table: 'crm_customer',
 	
@@ -5237,7 +5237,7 @@ Ext.define('OCS.ContactView', {
 
 		me.grid = Ext.create('OCS.GridView', {	
 			store: me.store,
-			region: 'north',
+			region: 'north',		
 			columns: me.createColumns(),
 			actions: me.createActions(),
 			func: me.func
