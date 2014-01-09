@@ -533,6 +533,7 @@ Ext.define('OCS.EmailWindow', {
 	table: 'crm_emails',
 	groupField: '',
 	modelName: 'CRM_EMAIL',	
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
