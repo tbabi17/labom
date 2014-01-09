@@ -2010,8 +2010,10 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func == 'crm_contact_list') {
-						alert(record.get('firstName'));
-						Ext.getCmp('contact_form').getForm().findFields('firstName').setValue(record.get('firstName'));
+						Ext.getCmp('contact_form').getForm().findField('firstName').setValue(record.get('firstName'));
+						Ext.getCmp('contact_form').getForm().findField('lastName').setValue(record.get('lastName'));
+						Ext.getCmp('contact_form').getForm().findField('phone').setValue(record.get('phone'));
+						Ext.getCmp('contact_form').getForm().findField('email').setValue(record.get('email'));
 					}
 				},
 				itemdblclick: function(dv, record, item, index, e) {
