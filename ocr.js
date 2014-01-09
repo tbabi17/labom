@@ -4831,8 +4831,9 @@ Ext.define('OCS.ContactNewWindow', {
 	maximizable: true,
 	modal: false,
 	width: 700,
-	height: 250,
-	
+	height: 450,
+	layout: 'border',
+
 	initComponent: function() {
 		var me = this;
 		
@@ -4849,8 +4850,11 @@ Ext.define('OCS.ContactNewWindow', {
 					me.backgrid.getStore().reload();
 			}
 		}
+		
+		me.views = Ext.create('OCS.ContactView', {
+		});
 
-		me.items = [me.form];
+		me.items = [me.views, me.form];
 		me.callParent(arguments);
 	}
 });
@@ -5207,33 +5211,15 @@ Ext.define('OCS.LeadImportWindow', {
 	}
 });
 
-Ext.define('OCS.PotentialView', {
+Ext.define('OCS.ContactView', {
 	extend: 'OCS.GridWithFormPanel',
-	func: 'crm_potential_list',	
-	table: 'crm_potentials',
-	values: 'crm_id',
+	func: 'crm_contact_list',	
+	table: 'crm_customer',
 	
 	createActions: function() {
 		var me = this;
 		me.actions = [
-			Ext.create('Ext.Action', {
-				icon   : '',
-				text: 'New...',
-				handler: function(widget, event) {
-					selected = me.grid.getView().getSelectionModel().getSelection()[0];
-					new OCS.PotentialWindow({
-						title: me.getCustomerName(selectedLead)+' - New Potential',
-						selected: selectedLead
-					}).show();
-				}
-			}),			
-			Ext.create('Ext.Action', {
-				icon   : '',
-				text: 'Delete',
-				handler: function(widget, event) {
-					me.deleteRecord();
-				}
-			})					
+
 		];
 
 		return me.actions;
@@ -5241,12 +5227,12 @@ Ext.define('OCS.PotentialView', {
 	
 	callStore: function(rec) {
 		var me = this;		
-		me.loadStore(rec.get('crm_id'));
+
 	},	
 
 	createView: function() {
 		var me = this;
-		me.modelName = 'CRM_POTENTIAL';
+		me.modelName = 'CRM_CONTACT';
 		me.createStore();
 
 		me.grid = Ext.create('OCS.GridView', {	

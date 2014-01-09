@@ -62,6 +62,34 @@ Ext.define('CRM_RETAIL', {
 });
 
 
+
+fields['CRM_CONTACT_FIELDS'] = [
+   {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
+   {name: 'type', text: 'CRM Type', width: 50, hidden:true},   
+   {name: 'level', text: '#', width: 30, align: 'center', lock: true, renderer: renderCustomerLevel},
+   {name: '_class', text: 'Class', width: 50, align: 'center', renderer: renderClass},     
+   {name: 'regNo', text: 'Register', width: 80, hidden: true},   
+   {name: 'firstName', text: 'First name', width: 100, lock: true, renderer: renderTip, primary: true},
+   {name: 'lastName', text: 'Last name', width: 100, lock: true, renderer: renderTip},
+   {name: 'crm_name', text: 'Full name', width: 180, hidden: true},
+   {name: 'engName', text: 'Latin', width: 140, hidden: true},
+   {name: 'gender', text: 'Gender', width: 60, hidden: true},
+   {name: 'title', text: 'Company', width: 200},
+   {name: 'job_title', text: 'Position', width: 150},
+   {name: 'phone', text: 'Phone', width: 80, align: 'center', renderer: renderPhone},
+   {name: 'phone1', text: 'Phone B', width: 70, align: 'center', renderer: renderPhone},
+   {name: 'email', text: 'Email', width: 120, renderer: renderMail},
+   {name: 'decision_maker', text: 'Decision', width: 120, hidden: true},
+   {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner, hidden: true},
+   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
+];
+
+Ext.define('CRM_CONTACT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_CONTACT_FIELDS']
+});
+
+
 fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
    {name: 'type', text: 'CRM Type', width: 50, hidden:true},   
