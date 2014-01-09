@@ -1808,6 +1808,7 @@ Ext.define('OCS.DetailGrid', {
 	dateField: '_date',
 	sortField: 'crm_id',
 	primary: 'crm_id',
+	where: '0',
 	values: 'parent_crm_id',
 	modelName: 'CRM_RETAIL',
 	collapsed: false,
