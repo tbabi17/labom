@@ -2032,6 +2032,8 @@ Ext.define('OCS.GridView', {
 					return 'bold-row';
 				if (record.get('workflow_status') == 'completed')
 					return 'gray-row';
+				
+				if (record.dirty == true) return 'bg-row-edited';
 
 				return may;
             }
