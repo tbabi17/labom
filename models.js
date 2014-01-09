@@ -702,9 +702,9 @@ function renderClass(v) {
 	return v;
 }
 
-function renderTip(v, metadata, record, rowIndex, colIndex, store) {
+function renderTip(v) {
 	//metadata.tdAttr = 'data-qtip="<b>double click</b></br>"'	
-	return '<a href="" class="select_customer>'+v+'</a>';
+	return '<a href="" class="select_customer">'+v+'</a>';
 }
 
 function renderPassword(v) {
