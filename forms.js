@@ -841,7 +841,7 @@ Ext.define('OCS.CorporateForm', {
 						}),
 						queryMode: 'local',
 						displayField: 'value',
-						valueField: 'id',
+						valueField: 'value',
 						triggerAction: 'all',
 						editable: false,
 						flex: 0.3
