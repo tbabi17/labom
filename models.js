@@ -528,6 +528,24 @@ Ext.define('CRM_PRODUCT', {
 	fields: fields['CRM_PRODUCT_FIELDS']
 });
 
+fields['CRM_STAT_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 100}, 
+   {name: '_date', text: 'Date', width: 60, primary: true}, 
+   {name: 'event_p', text: 'Type', width: 120},
+   {name: 'quote_p', text: 'Plan', width: 90},
+   {name: 'newcus_p', text: 'Plan', width: 90},
+   {name: 'expat_p', text: 'Plan', width: 90},
+   {name: 'vip_p', text: 'Plan', width: 90},
+   {name: 'extend_p', text: 'Plan', width: 90},
+   {name: 'decline_p', text: 'Plan', width: 90}
+];
+
+Ext.define('CRM_STAT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_STAT_FIELDS']
+});
+
+
 fields['CRM_USERS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'owner', text: 'User name', width: 130, primary: true}, 

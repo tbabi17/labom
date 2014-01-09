@@ -3142,6 +3142,32 @@ Ext.define('OCS.SettingsPanel', {
 										}
 									}).createGrid()
 								]
+							},{
+								id : 'owner_plan_list',
+								title: 'Planning',
+								region: 'center',
+								flex: 0.5,
+								split: true,
+								closable: false,
+								layout: 'border',
+								hidden: (user_level == 0),
+								items: [
+									new Ext.create('OCS.GridWithFormPanel', {
+										modelName:'CRM_PRODUCT',
+										func:'crm_stat_list',
+										title: 'Planning',
+										table: 'crm_stat',
+										tab: 'my_crm_tat_list',
+										buttons: true,
+										insert: (user_level==0),
+										remove: (user_level==0),	
+										defaultRec: {
+											data: {
+												owner: logged
+											}
+										}
+									}).createGrid()
+								]
 							}, {
 								id : 'user_planning_list',
 								title: 'Goals',
