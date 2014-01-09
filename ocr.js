@@ -4854,8 +4854,7 @@ Ext.define('OCS.ContactNewWindow', {
 		
 		me.views = Ext.create('OCS.ContactView', {
 			flex: 1,
-			region: 'center',
-			form: me.form
+			region: 'center'
 		});
 
 		me.items = [{
@@ -5259,8 +5258,7 @@ Ext.define('OCS.ContactView', {
 			actions: me.createActions(),
 			func: me.func,
 			search: true,
-			tbarable: true,
-			form: me.form
+			tbarable: true
 		});						
 
 		return me.grid;
