@@ -2685,7 +2685,7 @@ Ext.define('OCS.CaseView', {
 							icon   : '',  
 							text: 'My Created Cases',
 							handler: function(widget, event) {
-								me.filterData('My Resolved Cases');
+								me.filterData('My Created Cases');
 							}
 						}),
 						Ext.create('Ext.Action', {
@@ -2715,7 +2715,14 @@ Ext.define('OCS.CaseView', {
 				iconCls   : 'delete',
 				text: 'Delete',
 				handler: function(widget, event) {
-					me.deleteRecord();
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					if (records.length > 0) {
+						var rec = records[0];
+						if (rec.get('case_stage') == 'resolve')
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						else
+							me.deleteRecord();
+					}
 				}
 			}),
 			'-',
