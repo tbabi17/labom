@@ -3290,7 +3290,7 @@ Ext.define('OCS.GoalsPanel', {
 								split: true,
 								closable: false,
 								layout: 'border',
-								hidden: !(user_level > 0),
+							//	hidden: !(user_level > 0),
 								items: [
 									new Ext.create('OCS.GridWithFormPanel', {
 										modelName:'CRM_USER_PLANNING',
