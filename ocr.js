@@ -3269,8 +3269,8 @@ Ext.define('OCS.GoalsPanel', {
 										table: 'crm_user_stat',
 										tab: 'my_crm_tat_list',
 										buttons: true,
-										insert: (user_level==0),
-										remove: (user_level==0),	
+//										insert: (user_level==0),
+//										remove: (user_level==0),	
 										defaultRec: {
 											data: {
 												id: '0',
