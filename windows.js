@@ -1473,7 +1473,15 @@ Ext.define('OCS.ActivityDetailWindow', {
 		
 		me.form.getForm().loadRecord(me.record);
 
-		me.items = [me.form];
+		me.items = [{
+			xtype: 'box'
+			, region: 'north'
+			, height: 100,
+			, fieldLabel: 'Google'
+			, name: 'google'
+			, html:'<a href="www.google.com" target="_blank">Google</a>' 
+		},me.form];
+
 		me.callParent(arguments);
 	}
 });
