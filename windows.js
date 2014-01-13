@@ -1421,7 +1421,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				readOnly: true,
 				name: 'work_type'
 			},{
-				xtype: 'textfield',
+				xtype: 'box',
 				fieldLabel: 'Deal name',				
 				readOnly: true,
 				name: 'deal_name'			
