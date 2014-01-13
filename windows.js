@@ -1416,42 +1416,42 @@ Ext.define('OCS.ActivityDetailWindow', {
 			closable: false,			
 			title: '',
 			items: [{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Activity type',
 				readOnly: true,
 				name: 'work_type'
 			},{
-				xtype: 'box',
+				xtype: 'displayfield',
 				fieldLabel: 'Deal name',				
 				readOnly: true,
 				name: 'deal_name'			
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Due date',				
 				readOnly: true,
 				name: 'days' 
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Due time',				
 				readOnly: true,
 				name: 'times', 
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Priority',				
 				readOnly: true,
 				name: 'priority', 
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Status',				
 				readOnly: true,
 				name: 'status'
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Subject',				
 				readOnly: true,
 				name: 'subject'
 			},{
-				xtype: 'textfield',
+				xtype: 'displayfield',
 				fieldLabel: 'Owner',				
 				readOnly: true,
 				name: 'owner'
@@ -1473,15 +1473,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		
 		me.form.getForm().loadRecord(me.record);
 
-		me.items = [{
-			xtype: 'box'
-			, region: 'north'
-			, height: 100,
-			, fieldLabel: 'Google'
-			, name: 'google'
-			, html:'<a href="www.google.com" target="_blank">Google</a>' 
-		},me.form];
-
+		me.items = [me.form];
 		me.callParent(arguments);
 	}
 });
