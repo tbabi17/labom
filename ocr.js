@@ -3266,14 +3266,18 @@ Ext.define('OCS.GoalsPanel', {
 										modelName:'CRM_STAT',
 										func:'crm_stat_list',
 										title: 'Planning',
-										table: 'crm_stat',
+										table: 'crm_user_stat',
 										tab: 'my_crm_tat_list',
 										buttons: true,
 										insert: (user_level==0),
 										remove: (user_level==0),	
 										defaultRec: {
 											data: {
-												owner: logged
+												id: '0',
+												owner: logged,
+												userCode: 'logged',
+												yearMonth: Ext.Date.format(new Date(),'Y-m-d'),
+												_date : Ext.Date.format(new Date(),'Y-m-d')
 											}
 										}
 									}).createGrid()
@@ -3419,7 +3423,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts[1] = new OCS.CampaignChartSuccess();
 		me.charts[2] = new OCS.CasesByStatus();
 		me.charts[3] = new OCS.LeadBySource();
-//		me.charts[4] = new OCS.OpportunityByProbability();
+		me.charts[4] = new OCS.StatUserChart();
 		me.charts[5] = new OCS.SalesStagePipeLine();
 		me.charts[6] = new OCS.AccountByIndustry();	
 	},
@@ -3572,7 +3576,7 @@ Ext.define('OCS.Dashboard', {
 					}],
 					items: [me.charts[7]]
 				},{
-					title:'Cases by Status',		
+					title:'Plan & Summary',		
 					layout: 'fit',
 					height: 400,
 					tbar: [{
@@ -3581,26 +3585,11 @@ Ext.define('OCS.Dashboard', {
 						menu: {
 							xtype: 'menu',
 							items: [{
-								text: 'Today',
-								handler: function() {
-									me.charts[2].rangeData(me.today(), me.tommorow());
-								}
-							},{
-								text: 'This week',
-								handler: function() {
-									me.charts[2].rangeData(me.monday(), me.tommorow());
-								}
-							},{
 								text: 'This month',
 								handler: function() {
 									me.charts[2].rangeData(me.month(), me.nextmonth());
 								}
 							},{
-								text: 'This year',
-								handler: function() {
-									me.charts[2].rangeData(me.year(), me.nextyear());
-								}
-							},'-',{
 								text: 'Last month',
 								handler: function() {
 									me.charts[2].rangeData(me.prevmonth(), me.month());
@@ -3608,7 +3597,7 @@ Ext.define('OCS.Dashboard', {
 							}]
 						}
 					}],
-					items: me.charts[2]
+					items: me.charts[4]
 				}]
 			}]
 		});

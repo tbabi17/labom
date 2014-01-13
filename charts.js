@@ -226,6 +226,143 @@ Ext.define('OCS.OpportunityRevenueChart', {
 	}
 });
 
+Ext.define('OCS.StatUserChart', {
+	extend: 'Ext.chart.Chart',
+	animate: true,
+	shadow: false,
+	insetPadding: 50,
+	legend: {
+		position: 'bottom'
+	},
+
+	initComponent: function() {
+		var me = this;
+
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['stat_type', 'actual', 'planning'],
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', values: '', where: 0}
+			}
+		});
+
+		me.reloadData();
+
+		me.axes = [{
+			type: 'Numeric',
+			position: 'left',
+			fields: ['actual', 'planning'],
+			title: false,
+			grid: false,
+			majorTickSteps: 0,
+			minimum: 0			
+		}, {
+			type: 'Category',
+			position: 'bottom',
+			fields: ['stat_type'],
+			label   : {
+	             rotation:{
+					 degrees:345
+				 }
+	        },
+			title: true
+		}];
+
+		me.series = [{
+			type: 'column',
+			axis: 'bottom',
+			gutter: 80,
+			xField: 'stat_type',
+			yField: ['actual', 'planning'],
+//			stacked: true,
+			tips: {
+				trackMouse: true,
+				width: 150,
+				height: 28,
+				renderer: function(storeItem, item) {
+					this.setTitle(item.value[0]+' '+String(item.value[1]));
+				}
+			}
+		}];
+
+		me.callParent(arguments);
+	},
+
+	reloadData: function() {
+		var me = this;
+		me.store.load();
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
+		me.store.load();
+	},
+
+	createWindow: function() {
+		var me = this;
+
+		me.grid = new Ext.create('Ext.grid.Panel', {
+			selType: 'checkboxmodel',
+			store: me.store,
+			region: 'center',
+			border: false,
+			flex: 1,
+			columns : [
+                {text: "owner", width: 120, dataIndex: 'owner', renderer: renderOwner, sortable: true},
+                {text: "actual_revenue", flex: 1, dataIndex: 'actual_revenue', align: 'right', renderer: renderMoney, sortable: true},
+                {text: "expected_revenue", width: 125, dataIndex: 'expected_revenue', align: 'right', renderer: renderMoney, sortable: true},
+                {text: "target_revenue", width: 125, dataIndex: 'target_revenue', renderer: renderMoney, align: 'right', sortable: true}
+            ],
+			buttons: [{
+				text: 'Reset',
+				iconCls: 'reset',
+				handler: function() {
+					me.store.clearFilter();
+				}
+			},{
+				text: 'View',
+				iconCls: 'commit',
+				handler: function() {
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					var owners = '';
+					for (i = 0;  i < records.length; i++) {
+						var rec = records[i];
+						owners += rec.get('owner')+',';
+					}
+
+					me.store.filter(function(r) {
+						var value = r.get('owner');
+						return (owners.indexOf(value+',') != -1);
+					});
+				}
+			}]
+		});
+
+		me.win = new Ext.create('Ext.Window', {
+			title: 'Filter',
+			width: 500,
+			height: 350,
+			layout: 'border',
+			items: me.grid
+		});
+		
+		me.win.show();
+	}
+});
+
 Ext.define('OCS.CampaignChartSuccess', {
 	extend: 'Ext.chart.Chart',
 	animate: true,
