@@ -228,6 +228,7 @@ Ext.define('OCS.OwnerView', {
 			}
 		};
 		views['workflow'].updateSource(selectedOwner);
+		views['mylog'].reloadOwner(selectedOwner);
 		views['calendar'].loadPanel(selections[0].get('gmailAccount'));
 	}
 });
@@ -1401,6 +1402,8 @@ Ext.define('OCS.MyActivityGrid', {
 							icon   : '',  
 							text: 'All Activity List',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.filterData('All Activity List');
 							}
 						})
@@ -1482,7 +1485,20 @@ Ext.define('OCS.MyActivityGrid', {
 		me.where = rec.get('crm_id');
 		me.values = 'crm_id';
 		me.loadStore();
-	},		
+	},	
+		
+	reloadOwner: function(owner) {
+		var me = this;
+		me.where = owner;
+		me.values = 'owner';
+		me.loadStore();
+		/*
+		me.store.filter(function(r) {
+			var value = r.get('owner');
+			alert(value+' '+owner);
+			return (owner == value);
+		});*/
+	},	
 
 	reload: function() {
 		var me = this;
@@ -4641,7 +4657,7 @@ Ext.define('OCS.MyProfile', {
 	
 	reload: function() {
 		var me = this;
-		me.mylog.loadStore();
+		views['mylog'].loadStore();
 		me.owners.loadStore();
 	},
 
@@ -4660,7 +4676,7 @@ Ext.define('OCS.MyProfile', {
 			}				
 		});
 		
-		me.mylog = new OCS.MyActivityGrid();
+		views['mylog'] = new OCS.MyActivityGrid();
 
 		views['workflow'] = new Ext.create('OCS.MyGridWithFormPanel', {
 			modelName: 'CRM_WORKFLOW',
@@ -4710,11 +4726,11 @@ Ext.define('OCS.MyProfile', {
 					flex: 0.5,
 					title: 'Members',
 					width: 380,
-					autoScroll: false,
+					autoScroll: true,
 					collapsible: true,
 					collapsed: false,
 					items: [me.owners.createView()]
-				},me.mylog.createPanel()]	
+				},views['mylog'].createPanel()]	
 			}, {
 				xtype: 'panel',
 				layout: 'border',

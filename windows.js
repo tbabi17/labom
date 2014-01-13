@@ -1396,3 +1396,84 @@ Ext.define('OCS.CustomerDetailWindow', {
 		Ext.getBody().unmask();
 	}
 });
+
+
+Ext.define('OCS.ActivityDetailWindow', {
+	extend: 'OCS.Window',
+	title: 'Activity Detail',
+	maximizable: true,
+	height: 520,
+	modal: false,
+	width: 400,	
+
+	initComponent: function() {
+		var me = this;			
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Activity type',
+				readOnly: true,
+				name: 'work_type'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal name',				
+				readOnly: true,
+				name: 'deal_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Due date',				
+				readOnly: true,
+				name: 'days' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Due time',				
+				readOnly: true,
+				name: 'times', 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Priority',				
+				readOnly: true,
+				name: 'priority', 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Status',				
+				readOnly: true,
+				name: 'status'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Subject',				
+				readOnly: true,
+				name: 'subject'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Owner',				
+				readOnly: true,
+				name: 'owner'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Descr',	
+				readOnly: true,
+				height: 200,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'close',
+				text: 'Close',				
+				handler: function() {
+					me.close();
+				}
+			}]
+		});
+		
+		me.form.getForm().loadRecord(me.record);
+
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
+

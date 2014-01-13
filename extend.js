@@ -1076,7 +1076,7 @@ Ext.define('OCS.PropertyGrid', {
 			stripeRows: false, 
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
-				if (name == 'personal' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
+				if (name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
 					return 'zero-adult-row';
 				
 				if (name == 'descr')
@@ -2021,6 +2021,12 @@ Ext.define('OCS.GridView', {
 						Ext.getCmp('contact_form').getForm().findField('phone').setValue(record.get('phone'));
 						Ext.getCmp('contact_form').getForm().findField('email').setValue(record.get('email'));
 					}
+
+					if (me.func.indexOf('_activity_list') != -1)
+						new OCS.ActivityDetailWindow({
+							title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
+							record: record
+						}).show();				
 				},
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
