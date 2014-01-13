@@ -3461,6 +3461,7 @@ Ext.define('OCS.Dashboard', {
 			region: 'center',
 			bodyBorder: false,
 			frame: false,
+			autoScroll: true,
 			baseCls:'x-plain',
 			bodyPadding: 5,
 			bodyStyle: 'background: white;',
