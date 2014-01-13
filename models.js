@@ -531,8 +531,8 @@ Ext.define('CRM_PRODUCT', {
 fields['CRM_STAT_FIELDS'] = [
    {name: 'id', text: 'id', hidden: true}, 
    {name: 'owner', text: 'Owner', width: 120}, 
-   {name: '_year', type: 'Year', width: 50, primary: true}, 
-   {name: '_month', type: 'Month', width: 50, primary: true}, 
+   {name: '_year', type: 'int', text: 'Year', width: 50, primary: true, align: 'center'}, 
+   {name: '_month', type: 'int', text: 'Month', width: 50, primary: true, align: 'center'}, 
    {name: 'event_p', type: 'int', text: 'Appointment', width: 120},
    {name: 'quote_p', type: 'int', text: 'Quote', width: 90},
    {name: 'newcus_p', type: 'int', text: 'New Customer', width: 90},
