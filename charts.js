@@ -254,7 +254,7 @@ Ext.define('OCS.StatUserChart', {
     	            totalProperty: 'results'
     	        },				
 				simpleSortMode: true,
-				extraParams: {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', values: '', where: 0}
+				extraParams: {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', values: '', where: 0, start_date: new Date().getFullYear(), end_date: new Date().getMonth()+1}
 			}
 		});
 
