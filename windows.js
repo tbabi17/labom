@@ -1405,9 +1405,10 @@ Ext.define('OCS.ActivityDetailWindow', {
 	height: 520,
 	modal: false,
 	width: 400,	
+	modal: true,
 
 	initComponent: function() {
-		var me = this;			
+		var me = this;				
 
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
@@ -1423,7 +1424,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Deal name',				
 				readOnly: true,
-				name: 'deal_name'
+				name: 'deal_name'			
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Due date',				
