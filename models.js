@@ -533,12 +533,12 @@ fields['CRM_STAT_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120}, 
    {name: '_year', type: 'int', text: 'Year', width: 50, primary: true, align: 'center'}, 
    {name: '_month', type: 'int', text: 'Month', width: 50, primary: true, align: 'center'}, 
-   {name: 'event_p', type: 'int', text: 'Appointment', width: 120},
-   {name: 'quote_p', type: 'int', text: 'Quote', width: 90},
-   {name: 'newcus_p', type: 'int', text: 'New Customer', width: 90},
-   {name: 'expat_p', type: 'int', text: 'Expat Customer', width: 90},
-   {name: 'vip_p', type: 'int', text: 'VIP customer', width: 90},
-   {name: 'extend_p', type: 'int', text: 'Extension', width: 90},
+   {name: 'event_p', type: 'int', text: 'Appointment', width: 90, align: 'right'},
+   {name: 'quote_p', type: 'int', text: 'Quote', width: 90, align: 'right'},
+   {name: 'newcus_p', type: 'int', text: 'New Customer', width: 90, align: 'right'},
+   {name: 'expat_p', type: 'int', text: 'Expat Customer', width: 90, align: 'right'},
+   {name: 'vip_p', type: 'int', text: 'VIP customer', width: 90, align: 'right'},
+   {name: 'extend_p', type: 'int', text: 'Extension', width: 90, align: 'right'},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
 ];
