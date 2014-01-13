@@ -3604,12 +3604,12 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'This month',
 								handler: function() {
-									me.charts[2].rangeData(me.month(), me.nextmonth());
+									me.charts[4].rangeData(me.yearValue(), me.monthValue());
 								}
 							},{
 								text: 'Last month',
 								handler: function() {
-									me.charts[2].rangeData(me.prevmonth(), me.month());
+									me.charts[4].rangeData(me.yearValue(), me.monthValue());
 								}
 							}]
 						}
@@ -3620,6 +3620,14 @@ Ext.define('OCS.Dashboard', {
 		});
 
 		return me.panel;
+	},
+
+	yearValue: function() {
+		return new Date().getFullYear();
+	},
+
+	monthValue: function() {
+		return new Date().getMonth()+1;
 	},
 
 	today: function() {

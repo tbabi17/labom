@@ -307,7 +307,7 @@ Ext.define('OCS.StatUserChart', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', start_date: e1, end_date: e2, values: '', where: 0};
 		me.store.load();
 	},
 
