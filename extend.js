@@ -1136,7 +1136,7 @@ Ext.define('OCS.PropertyGrid', {
 				name: name
 			};
 		
-		if (name == 'precent' || name.indexOf('_p') != -1 || name == '_month' || year == '_year')
+		if (name == 'precent' || name.indexOf('_p') != -1 || name == '_month' || name == '_year')
 			return {
 				xtype: 'numberfield',
 				name: name
