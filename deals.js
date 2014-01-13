@@ -323,7 +323,7 @@ Ext.define('OCS.DealPostGrid', {
         return Ext.String.format(
             '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title">{0}</span></b></br><span class="gray">{1}</br>{2}</br></span></td></tr></table>',
             value,
-            record.data.owner,
+            record.data.userCode,
             record.data._date,
 			record.data.level*50
         );
