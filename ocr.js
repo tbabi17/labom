@@ -3276,7 +3276,8 @@ Ext.define('OCS.GoalsPanel', {
 												id: '0',
 												owner: logged,
 												userCode: 'logged',
-												yearMonth: Ext.Date.format(new Date(),'Y-m-d'),
+												_year: new Date().getFullYear(),
+												_month: new Date().getMonth() + 1,
 												_date : Ext.Date.format(new Date(),'Y-m-d')
 											}
 										}
