@@ -1963,7 +1963,7 @@ Ext.define('OCS.GridView', {
 					}
 				},	
 				{
-					text: 'Clear grouping',
+					text: 'Reset',
 					hidden: !me.feature,
 					handler: function() {
 						if (me.feature) {
