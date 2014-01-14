@@ -2096,7 +2096,7 @@ Ext.define('OCS.DealView', {
 						if (me.recordSelected())						
 							new OCS.DealAssignWindow({
 								selected: me.grid.getView().getSelectionModel().getSelection()[0],
-								ids: me.selectedIds(),
+								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
 					} else
@@ -2150,7 +2150,7 @@ Ext.define('OCS.DealView', {
 		
 	reload: function() {
 		var me = this;
-		me.store.loadPage(1);
+		me.store.reload();
 	}
 });
 
@@ -4717,8 +4717,10 @@ Ext.define('OCS.MyProfile', {
 			defaultRec: {
 				data: {
 					id: '0',
-					start_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
-					end_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+					start_date: Ext.Date.format(new Date(),'Y-m-d'),
+					start_time: '09:00',
+					end_date: Ext.Date.format(new Date(),'Y-m-d'),
+					end_time: '18:00',
 					_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
 					workflow_status: 'processing',
 					precent: '0',

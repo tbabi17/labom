@@ -1077,7 +1077,14 @@ Ext.define('OCS.CustomerAssignWindow', {
 				fieldLabel: 'Owner',				
 				name: 'owner',
 				value: logged
-			},				
+			},
+			{
+				xtype: 'textarea',
+				fieldLabel: 'Description',				
+				name: 'descr',
+				flex: 1,
+				empty: 'Note...'
+			},
 			{
 				xtype: 'textfield',
 				fieldLabel: 'Created by',				
@@ -1093,7 +1100,7 @@ Ext.define('OCS.CustomerAssignWindow', {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);
-						values = form.findField('owner').getValue()+","+form.findField('selected').getValue();
+						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
 								
 						Ext.Ajax.request({
 						   url: 'avia.php',
@@ -1126,7 +1133,7 @@ Ext.define('OCS.DealAssignWindow', {
 	
 	title: 'Assign to',
 	maximizable: false,
-	height: 150,
+	height: 250,
 	width: 300,	
 
 	initComponent: function() {
@@ -1150,7 +1157,14 @@ Ext.define('OCS.DealAssignWindow', {
 				fieldLabel: 'Owner',				
 				name: 'owner',
 				value: logged
-			},				
+			},		
+			{
+				xtype: 'textarea',
+				fieldLabel: 'Description',				
+				name: 'descr',
+				flex: 1,
+				empty: 'Note...'
+			},		
 			{
 				xtype: 'textfield',
 				fieldLabel: 'Created by',				
@@ -1166,13 +1180,13 @@ Ext.define('OCS.DealAssignWindow', {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);
-						values = form.findField('owner').getValue()+","+form.findField('selected').getValue();
+						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
 								
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_customer', action: 'update_deals_owner', values: values},
+						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_owner', values: values},
 						   success: function(response, opts) {
-								views['deals'].store.reload();
+								views['deals'].reload();
 								me.close();
 						   },
 						   failure: function(response, opts) {										   

@@ -169,8 +169,8 @@ fields['CRM_EVENT_FIELDS'] = [
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'event_status', text: 'Status', width: 60, renderer: renderEventStatus, align: 'center'},
    {name: 'subject', text: 'Subject', width: 150, primary: true},
-   {name: 'start_date', type: 'datetime', text: 'Due date', width: 80, dateFormat: 'Y-m-d'},
-   {name: 'start_time', text: 'Due time', width: 70},
+   {name: 'start_date', type: 'datetime', text: 'Due date', width: 80, dateFormat: 'Y-m-d', renderer: renderDate},
+   {name: 'start_time', text: 'Due time', width: 70, renderer: renderTime},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'event_type', text: 'Type', width: 70, align: 'center'},
    {name: 'venue', text: 'Venue', width: 150},
@@ -249,10 +249,10 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'subject', text: 'Subject', width: 200, primary: true},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'precent', text: 'Precent', width: 60, align: 'center', renderer: renderPrecent},
-   {name: 'start_date', text: 'Start date', width: 80, align: 'center'},
-   {name: 'start_time', text: 'Start time', width: 80, align: 'center', renderer: renderAny},
-   {name: 'end_date', text: 'End date', width: 80, align: 'center'},
-   {name: 'end_time', text: 'End time', width: 80, align: 'center', renderer: renderAny},
+   {name: 'start_date', text: 'Start date', width: 70, align: 'center', renderer: renderDate},
+   {name: 'start_time', text: 'Start time', width: 65, align: 'center', renderer: renderTime},
+   {name: 'end_date', text: 'End date', width: 70, align: 'center', renderer: renderDate},
+   {name: 'end_time', text: 'End time', width: 65, align: 'center', renderer: renderTime},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
    {name: 'userCode', text: 'Created by', width: 100},
@@ -1038,6 +1038,18 @@ function renderNumber(v) {
 	return Ext.util.Format.number(v, '00,00,000.00');
 }
 
+function renderDate(v) {
+	var date = new Date(v);
+	return Ext.Date.format(date,'Y-m-d');
+}
+
+function renderTime(v) {
+	var date = new Date(v);
+	var h = date.getHours();
+	var m = date.getMinutes();
+	if (isNaN(h)) return v;	
+	return (h<10?'0'+h:h) + ":" + (m<10?'0'+m:m);	
+}
 
 function renderAny(v) {
 	return v;
