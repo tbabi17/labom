@@ -2016,7 +2016,8 @@ Ext.define('OCS.GridView', {
 
 						Ext.getCmp(me.id+'_start').setText('Start date');
 						Ext.getCmp(me.id+'_end').setText('End date');
-						me.rangeData('', '');
+						me.start = ''; me.end = '';
+						me.rangeData();
 					}
 				},
 				'-',
