@@ -520,6 +520,7 @@ Ext.define('OCS.DealProductGrid', {
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
+			feature: false,
 			actions: me.createActions(),
 			tbarable: false
 		});
@@ -598,6 +599,7 @@ Ext.define('OCS.DealCompetitorGrid', {
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
+			feature: false,
 			actions: me.createActions(),
 			tbarable: false
 		});
