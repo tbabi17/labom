@@ -4701,8 +4701,8 @@ Ext.define('OCS.MyProfile', {
 			defaultRec: {
 				data: {
 					id: '0',
-					start_date: Ext.Date.format(new Date(),'Y-m-d'),
-					end_date: Ext.Date.format(new Date(),'Y-m-d'),
+					start_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
+					end_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
 					_date: Ext.Date.format(new Date(),'Y-m-d h:m:s'),
 					workflow_status: 'processing',
 					precent: '0',
