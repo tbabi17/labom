@@ -1958,6 +1958,7 @@ Ext.define('OCS.GridView', {
 		me.dateMenu1 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
 				me.start = Ext.Date.format(date, 'Y-m-d');
+				Ext.getCmp(me.id+'_start').setText(me.start);
 				me.rangeData();
 			}
 		});
@@ -1965,6 +1966,7 @@ Ext.define('OCS.GridView', {
 		me.dateMenu2 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
 				me.end = Ext.Date.format(date, 'Y-m-d');
+				Ext.getCmp(me.id+'_end').setText(me.end);
 				me.rangeData();
 			}
 		});
