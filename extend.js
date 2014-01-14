@@ -1978,18 +1978,20 @@ Ext.define('OCS.GridView', {
 					id: me.id+'_start',
 					text: 'Start date',
 					iconCls: 'calendar',
+					hidden: !me.feature,
 					menu: me.dateMenu1
 				},
 				{
 					id: me.id+'_end',
 					text: 'End date',
 					iconCls: 'calendar',
+					hidden: !me.feature,
 					menu: me.dateMenu2
 				},
 				'-',
 				{
 					text: 'Reset',
-//					hidden: !me.feature,
+					hidden: !me.feature,
 					iconCls: 'reset',
 					handler: function() {
 						if (me.feature) {
