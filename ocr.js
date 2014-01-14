@@ -2087,6 +2087,14 @@ Ext.define('OCS.DealView', {
 					});	
 				}
 			})
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'assign',
+				text: 'Assign ...',
+				handler: function(widget, event) {
+					
+				}
+			}),
 			,'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
