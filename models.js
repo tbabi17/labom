@@ -623,7 +623,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'current_situation', text: 'Current situation', width: 200, hidden: true},
    {name: 'customer_need', text: 'Customer need', width: 200, hidden: true},
    {name: 'proposed_solution', text: 'Proposed solution', width: 200, hidden: true},
-   {name: '_date', text: 'Created on', width: 200, hidden: true},
+   {name: '_date', text: 'Created on', width: 120},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
    {name: 'competitor_name', text: 'Competitor', width: 200},
