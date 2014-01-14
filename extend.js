@@ -1943,7 +1943,13 @@ Ext.define('OCS.GridView', {
 		    store: me.store
 		});
 		
-		me.dateMenu = Ext.create('Ext.menu.DatePicker', {
+		me.dateMenu1 = Ext.create('Ext.menu.DatePicker', {
+			handler: function(dp, date){
+				alert(date);
+			}
+		});
+
+		me.dateMenu2 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
 				alert(date);
 			}
@@ -1970,13 +1976,11 @@ Ext.define('OCS.GridView', {
 				},	
 				{
 					iconCls: 'date',
-					handler: function() {
-
-					}
+					menu: me.dateMenu1
 				},
 				{
 					iconCls: 'date',
-					menu: me.dateMenu
+					menu: me.dateMenu2
 				},
 				{
 					text: 'Reset',
