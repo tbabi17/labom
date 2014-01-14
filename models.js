@@ -250,9 +250,9 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'precent', text: 'Precent', width: 60, align: 'center', renderer: renderPrecent},
    {name: 'start_date', text: 'Start date', width: 80, align: 'center'},
-   {name: 'start_time', text: 'Start time', width: 80, align: 'center'},
+   {name: 'start_time', text: 'Start time', width: 80, align: 'center', renderer: renderAny},
    {name: 'end_date', text: 'End date', width: 80, align: 'center'},
-   {name: 'end_time', text: 'End time', width: 80, align: 'center'},
+   {name: 'end_time', text: 'End time', width: 80, align: 'center', renderer: renderAny},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
    {name: 'userCode', text: 'Created by', width: 100},
@@ -1036,6 +1036,11 @@ function renderTNumber(v) {
 
 function renderNumber(v) {
 	return Ext.util.Format.number(v, '00,00,000.00');
+}
+
+
+function renderAny(v) {
+	return v;
 }
 
 
