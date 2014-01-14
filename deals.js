@@ -674,6 +674,7 @@ Ext.define('OCS.DealSalesTeamGrid', {
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
+			feature: false,
 			actions: me.createActions(),
 			tbarable: false
 		});
