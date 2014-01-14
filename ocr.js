@@ -2092,7 +2092,15 @@ Ext.define('OCS.DealView', {
 				iconCls   : 'deal_assign',
 				text: 'Assign ...',
 				handler: function(widget, event) {
-					
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealAssignWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								ids: me.selectedIds(),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
 			,'-',
