@@ -1942,6 +1942,12 @@ Ext.define('OCS.GridView', {
 		    width: 220,
 		    store: me.store
 		});
+		
+		me.dateMenu = Ext.create('Ext.menu.DatePicker', {
+			handler: function(dp, date){
+				alert(date);
+			}
+		});
 
 		me.bbar = Ext.create('Ext.PagingToolbar', {
 			store: me.store,
@@ -1962,6 +1968,16 @@ Ext.define('OCS.GridView', {
 						 }
 					}
 				},	
+				{
+					iconCls: 'date',
+					handler: function() {
+
+					}
+				},
+				{
+					iconCls: 'date',
+					menu: me.dateMenu
+				},
 				{
 					text: 'Reset',
 					hidden: !me.feature,
