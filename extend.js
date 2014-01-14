@@ -1926,11 +1926,23 @@ Ext.define('OCS.GridView', {
 	cls : 'custom-grid',
 	trackMouseOver: true,
 	
+	
 	constructor: function(cnfg) {
         this.callParent(arguments);
         this.initConfig(cnfg);	
     },
 	
+	rangeData: function() {
+		var me = this;
+		if (me.start.length > 0) {
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, start_date: me.start, end_date: me.end, values: me.values, where: me.where};
+			me.store.load();
+		} else {
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+			me.store.load();
+		}
+	},
+
 	initComponent: function() {
 		var me = this;
 		
@@ -1945,13 +1957,15 @@ Ext.define('OCS.GridView', {
 		
 		me.dateMenu1 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
-				Ext.getCmp(me.id+'_start').setText(Ext.Date.format(date, 'Y-m-d'));
+				me.start = Ext.Date.format(date, 'Y-m-d');
+				me.rangeData();
 			}
 		});
 
 		me.dateMenu2 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
-				Ext.getCmp(me.id+'_end').setText(Ext.Date.format(date, 'Y-m-d'));
+				me.end = Ext.Date.format(date, 'Y-m-d');
+				me.rangeData();
 			}
 		});
 
