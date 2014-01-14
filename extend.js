@@ -1989,7 +1989,8 @@ Ext.define('OCS.GridView', {
 				'-',
 				{
 					text: 'Reset',
-					hidden: !me.feature,
+//					hidden: !me.feature,
+					iconCls: 'reset',
 					handler: function() {
 						if (me.feature) {
 							me.getView().getFeature('group').disable();
