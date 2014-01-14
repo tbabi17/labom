@@ -2124,6 +2124,27 @@ Ext.define('OCS.GridView', {
 		me.callParent(arguments);
 	},
 	
+	recordSelected: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return true;
+		
+		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
+	},
+
+	selectedIds: function(all) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			result += recs[i].get('id')+':';
+		}
+
+		return result;
+	},
+
 	onTextFieldChange_: function(e) {
 		var me = this;		
 		var v = e.getValue();
