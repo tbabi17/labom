@@ -1945,13 +1945,13 @@ Ext.define('OCS.GridView', {
 		
 		me.dateMenu1 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
-				alert(date);
+				Ext.getCmp(me.id+'_start').setText(Ext.Date.format(date, 'Y-m-d'));
 			}
 		});
 
 		me.dateMenu2 = Ext.create('Ext.menu.DatePicker', {
 			handler: function(dp, date){
-				alert(date);
+				Ext.getCmp(me.id+'_end').setText(Ext.Date.format(date, 'Y-m-d'));
 			}
 		});
 
@@ -1975,10 +1975,14 @@ Ext.define('OCS.GridView', {
 					}
 				},	
 				{
+					id: me.id+'_start',
+					text: 'Start date',
 					iconCls: 'calendar',
 					menu: me.dateMenu1
 				},
 				{
+					id: me.id+'_end',
+					text: 'End date',
 					iconCls: 'calendar',
 					menu: me.dateMenu2
 				},
