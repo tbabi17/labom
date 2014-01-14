@@ -1975,11 +1975,11 @@ Ext.define('OCS.GridView', {
 					}
 				},	
 				{
-					iconCls: 'date',
+					iconCls: 'calendar',
 					menu: me.dateMenu1
 				},
 				{
-					iconCls: 'date',
+					iconCls: 'calendar',
 					menu: me.dateMenu2
 				},
 				{
