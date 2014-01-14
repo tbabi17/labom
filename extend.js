@@ -1986,6 +1986,7 @@ Ext.define('OCS.GridView', {
 					iconCls: 'calendar',
 					menu: me.dateMenu2
 				},
+				'-',
 				{
 					text: 'Reset',
 					hidden: !me.feature,
@@ -1993,6 +1994,9 @@ Ext.define('OCS.GridView', {
 						if (me.feature) {
 							me.getView().getFeature('group').disable();
 						}
+
+						Ext.getCmp(me.id+'_start').setText('Start date');
+						Ext.getCmp(me.id+'_end').setText('End date');
 					}
 				},
 				'-',
