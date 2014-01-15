@@ -908,6 +908,12 @@ Ext.define('OCS.StageWindow', {
 						var values = form.getValues(true);
 						me.probablity = form.findField('probablity').getValue();
 						me.status = 'open';
+						
+						if (me.productCount == 0 && form.findField('stage').getValue() == 'quote') {
+							Ext.MessageBox.alert('Error', 'This deal cannot be commited because there are no products !', function() {});
+							return;
+						}
+
 						if (form.findField('stage').getValue() == 'close as won') {
 							me.probablity = 100;
 							me.status = 'won';
@@ -916,7 +922,7 @@ Ext.define('OCS.StageWindow', {
 								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
 								return;
 							}
-							if (me.productCount > 0) {
+							if (me.productCount == 0) {
 								Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are no products !', function() {});
 								return;
 							}

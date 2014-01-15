@@ -187,7 +187,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 				ftype: 'grouping',
 				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
 				hideGroupedHeader: true,
-				startCollapsed: true,
+				startCollapsed: false,
 				id: 'grouping_opportunity_chart'
 			}],
 			flex: 1,
