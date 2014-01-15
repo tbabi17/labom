@@ -275,7 +275,8 @@ Ext.define('OCS.DealContactGrid', {
 						var sel = me.grid.getView().getSelectionModel().getSelection();
 						if (sel.length > 0) {
 							new OCS.CommissionWindow({
-								selected: sel[0]
+								selected: sel[0],
+								deal_id: me.deal_id
 							}).show();										
 						} else
 							Ext.MessageBox.alert('Status', 'No selection !', function() {});
@@ -291,6 +292,7 @@ Ext.define('OCS.DealContactGrid', {
 	updateSource: function(rec) {
 		var me = this;
 		me.selected = rec;
+		me.deal_id = rec.get('deal_id');
 		me.where = rec.get('crm_id');
 		me.values = 'parent_crm_id';
 		me.loadStore();
