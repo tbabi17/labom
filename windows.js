@@ -1592,8 +1592,7 @@ Ext.define('OCS.CommissionWindow', {
 				name: 'deal_id'			
 			},{
 				xtype: 'numberfield',
-				fieldLabel: 'Amount',				
-				readOnly: true,
+				fieldLabel: 'Amount',
 				name: 'amount' 
 			},{
 				xtype: 'textfield',
@@ -1603,21 +1602,21 @@ Ext.define('OCS.CommissionWindow', {
 				name: 'userCode'
 			},{
 				xtype: 'textarea',
-				fieldLabel: 'Descr',	
-				height: 200,
+				fieldLabel: 'Description',	
+				flex: 1,
 				name: 'descr'
 			}],
 			buttons: [{
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
-					me.close();
+					me.form.reset();
 				}
 			},{
 				iconCls: 'commit',
 				text: 'Commit',				
 				handler: function() {
-
+					
 				}
 			}]
 		});
