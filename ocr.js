@@ -2218,6 +2218,7 @@ Ext.define('OCS.DealAction', {
 			me.dealProduct.updateSource(rec);
 			me.dealCompotetor.updateSource(rec);
 			me.dealTeams.updateSource(rec);
+			me.dealCommission.updateSource(rec);
 
 			me.panel.expand();
 			Ext.getCmp('deal_next_stage').setText('Next Stage');
