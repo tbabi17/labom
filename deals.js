@@ -274,7 +274,9 @@ Ext.define('OCS.DealContactGrid', {
 					if (me.action) {
 						var sel = me.grid.getView().getSelectionModel().getSelection();
 						if (sel.length > 0) {
-							new OCS.CommissionWindow().show();										
+							new OCS.CommissionWindow({
+								selected: sel[0]
+							}).show();										
 						} else
 							Ext.MessageBox.alert('Status', 'No selection !', function() {});
 					} else
