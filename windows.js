@@ -1584,12 +1584,14 @@ Ext.define('OCS.CommissionWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
 				readOnly: true,
+				hidden: true,
 				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
 				readOnly: true,
+				hidden: true,
 				value: me.deal_id,
 				name: 'deal_id'
 			},{
@@ -1602,8 +1604,15 @@ Ext.define('OCS.CommissionWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Created by',				
 				readOnly: true,
+				hidden: true,
 				value: logged,
 				name: 'userCode'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Owner',				
+				readOnly: true,
+				value: logged,
+				name: 'owner'
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Description',	
