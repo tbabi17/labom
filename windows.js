@@ -1594,6 +1594,7 @@ Ext.define('OCS.CommissionWindow', {
 				name: 'deal_id'			
 			},{
 				xtype: 'numberfield',
+				value: 0,
 				fieldLabel: 'Amount',
 				name: 'amount' 
 			},{
