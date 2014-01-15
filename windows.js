@@ -1584,11 +1584,13 @@ Ext.define('OCS.CommissionWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
 				readOnly: true,
+				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',				
 				readOnly: true,
+				value: me.selected.get('deal_id'),
 				name: 'deal_id'			
 			},{
 				xtype: 'numberfield',
