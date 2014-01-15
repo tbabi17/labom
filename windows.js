@@ -1562,3 +1562,68 @@ Ext.define('OCS.ActivityDetailWindow', {
 	}
 });
 
+
+Ext.define('OCS.CommissionWindow', {
+	extend: 'OCS.Window',
+	title: 'Commission',
+	maximizable: true,
+	height: 520,
+	modal: false,
+	width: 400,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',				
+				readOnly: true,
+				name: 'deal_id'			
+			},{
+				xtype: 'numberfield',
+				fieldLabel: 'Amount',				
+				readOnly: true,
+				name: 'amount' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Descr',	
+				readOnly: true,
+				height: 200,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					me.close();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+
+				}
+			}]
+		});
+		
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
