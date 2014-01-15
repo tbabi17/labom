@@ -1596,6 +1596,7 @@ Ext.define('OCS.CommissionWindow', {
 				xtype: 'numberfield',
 				value: 0,
 				fieldLabel: 'Amount',
+				allowBlank: false,
 				name: 'amount' 
 			},{
 				xtype: 'textfield',
