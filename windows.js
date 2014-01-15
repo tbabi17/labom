@@ -1633,7 +1633,7 @@ Ext.define('OCS.CommissionWindow', {
 					var values = form.getValues(true);
 					if (form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
-						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&amount="+form.findField('amount').getValue()+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
