@@ -3632,7 +3632,7 @@ Ext.define('OCS.Dashboard', {
 						hidden: !me.feature,
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
-								me.charts[7]end = Ext.Date.format(date, 'Y-m-d');
+								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('end_7').setText(me.end);
 								me.charts[7].rangeData();
 							}
