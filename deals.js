@@ -166,7 +166,7 @@ Ext.define('OCS.DealGrid', {
 			feature: false,
 			search: false,
 			viewConfig: {
-				trackOver: true,
+				trackOver: false,
 				stripeRows: false,
 				plugins: [{
 					ptype: 'preview',
