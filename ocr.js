@@ -3585,21 +3585,29 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
+									Ext.getCmp('start_7').setText(me.today());
+									Ext.getCmp('end_7').setText( me.tommorow());
 									me.charts[7].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
+									Ext.getCmp('start_7').setText(me.monday());
+									Ext.getCmp('end_7').setText( me.tommorow());
 									me.charts[7].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
+									Ext.getCmp('start_7').setText(me.month());
+									Ext.getCmp('end_7').setText( me.nextmonth());
 									me.charts[7].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
+									Ext.getCmp('start_7').setText(me.year());
+									Ext.getCmp('end_7').setText( me.nextyear());
 									me.charts[7].rangeData(me.year(), me.nextyear());
 								}
 							}
