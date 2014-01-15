@@ -182,6 +182,13 @@ Ext.define('OCS.OpportunityRevenueChart', {
 			store: me.store,
 			region: 'center',
 			border: false,
+			features : [{
+				ftype: 'grouping',
+				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
+				hideGroupedHeader: true,
+				startCollapsed: true,
+				id: 'grouping_opportunity_chart'
+			}],
 			flex: 1,
 			columns : [
                 {text: "owner", flex: 1, dataIndex: 'owner', renderer: renderOwner, sortable: true},
