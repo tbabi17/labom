@@ -283,8 +283,7 @@ Ext.define('OCS.Module', {
 			   url: 'avia.php',
 			   params: {handle: 'web', action: action, func: me.func, table: me.table, values:values, where: me.where},
 			   success: function(response, opts) {
-				  Ext.getBody().unmask();
-				  Ext.MessageBox.alert('Status', 'Success !', function() {});
+				  Ext.getBody().unmask();				
   				  me.store.loadPage(1);
 			   },
 			   failure: function(response, opts) {										   
@@ -298,7 +297,6 @@ Ext.define('OCS.Module', {
 			   params: {handle: 'web', action: action, func: me.func, table: me.table, values:values1, where: captcha},
 			   success: function(response, opts) {
 				  Ext.getBody().unmask();
-				  Ext.MessageBox.alert('Status', 'Success !', function() {});
 				  me.store.loadPage(1);									  
 				  if (me.grid)				
 						me.grid.getSelectionModel().clearSelections();
