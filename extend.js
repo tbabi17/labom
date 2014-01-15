@@ -2073,13 +2073,13 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func == 'crm_contact_list') {
-						Ext.getCmp('contact_form').getForm().findField('crm_id').setValue(record.get('crm_id'));
+/*						Ext.getCmp('contact_form').getForm().findField('crm_id').setValue(record.get('crm_id'));
 						Ext.getCmp('contact_form').getForm().findField('firstName').setValue(record.get('firstName'));
 						Ext.getCmp('contact_form').getForm().findField('lastName').setValue(record.get('lastName'));
 						Ext.getCmp('contact_form').getForm().findField('engName').setValue(record.get('engName'));
 						Ext.getCmp('contact_form').getForm().findField('job_title').setValue(record.get('job_title'));
 						Ext.getCmp('contact_form').getForm().findField('phone').setValue(record.get('phone'));
-						Ext.getCmp('contact_form').getForm().findField('email').setValue(record.get('email'));
+						Ext.getCmp('contact_form').getForm().findField('email').setValue(record.get('email'));*/
 					}
 
 					if (me.func.indexOf('_activity_list') != -1)
