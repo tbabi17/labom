@@ -3602,7 +3602,8 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									me.charts[7].rangeData(me.year(), me.nextyear());
 								}
-							},'-',
+							}
+							,'-',
 							{
 								text: 'Filter ...',
 								handler: function() {
@@ -3610,6 +3611,32 @@ Ext.define('OCS.Dashboard', {
 								}
 							}]
 						}
+					},'->',
+					{
+						id: 'start_7',
+						text: 'Start date',
+						iconCls: 'calendar',
+						hidden: !me.feature,
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('start_7').setText(me.start);
+								me.charts[7].rangeData();
+							}
+						})
+					},
+					{
+						id: 'end_7',
+						text: 'End date',
+						iconCls: 'calendar',
+						hidden: !me.feature,
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7]end = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('end_7').setText(me.end);
+								me.charts[7].rangeData();
+							}
+						})
 					}],
 					items: [me.charts[7]]
 				},{
