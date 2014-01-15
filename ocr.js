@@ -3616,7 +3616,6 @@ Ext.define('OCS.Dashboard', {
 						id: 'start_7',
 						text: 'Start date',
 						iconCls: 'calendar',
-						hidden: !me.feature,
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
 								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
@@ -3629,7 +3628,6 @@ Ext.define('OCS.Dashboard', {
 						id: 'end_7',
 						text: 'End date',
 						iconCls: 'calendar',
-						hidden: !me.feature,
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
 								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
