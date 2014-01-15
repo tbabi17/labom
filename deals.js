@@ -73,17 +73,7 @@ Ext.define('OCS.DealGrid', {
 				text: 'Add ...',
 				handler: function(widget, event) {
 					if (me.action) {
-						if (me.modelName == 'CRM_RETAIL') {
-							me.selected.set('firstName', me.selected.get('crm_name'));
-							me.selected.set('parent_crm_id', me.selected.get('crm_id'));
-							me.selected.set('customer_type', 1);
-							new OCS.ContactNewWindow({
-								record: me.selected,
-								title: 'Add contact',						
-								backgrid: me.grid
-							}).show();
-						}		
-						else if (me.modelName == 'CRM_DEAL_COMPETITORS') {
+						if (me.modelName == 'CRM_DEAL_COMPETITORS') {
 							new OCS.CompetitorWindow({
 								selected: me.selected,
 								backgrid: me.grid
@@ -105,27 +95,8 @@ Ext.define('OCS.DealGrid', {
 				handler: function(widget, event) {
 					if (me.action) {
 						var sel = me.grid.getView().getSelectionModel().getSelection();
-						if (sel.length > 0) {
-							if (me.modelName == 'CRM_RETAIL') {
-								Ext.Msg.confirm('Warning ','Remove from list ?',function(btn){
-									if(btn === 'yes'){
-										Ext.Ajax.request({
-										   url: 'avia.php',
-										   params: {handle: 'web', table: 'crm_customer', action: 'update', values: 'parent_crm_id=0', where: "crm_id="+sel[0].get('crm_id')},
-										   success: function(response, opts) {
-											  me.loadStore();
-										   },
-										   failure: function(response, opts) {										   
-											  Ext.MessageBox.alert('Status', 'Error !', function() {});
-										   }
-										});	
-									}else{
-										
-									}	
-								});		
-							}		
-							else
-								me.deleteRecord();											
+						if (sel.length > 0) {							
+							me.deleteRecord();											
 						} else
 							Ext.MessageBox.alert('Status', 'No selection !', function() {});
 					} else
@@ -244,6 +215,75 @@ Ext.define('OCS.DealContactGrid', {
 	modelName: 'CRM_RETAIL',
 	collapsed: false,
 
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'Add ...',
+				handler: function(widget, event) {
+					if (me.action) {
+						me.selected.set('firstName', me.selected.get('crm_name'));
+						me.selected.set('parent_crm_id', me.selected.get('crm_id'));
+						me.selected.set('customer_type', 1);
+						new OCS.ContactNewWindow({
+							record: me.selected,
+							title: 'Add contact',						
+							backgrid: me.grid
+						}).show();												
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Remove from list',
+				handler: function(widget, event) {
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {
+							Ext.Msg.confirm('Warning ','Remove from list ?',function(btn){
+								if(btn === 'yes'){
+									Ext.Ajax.request({
+									   url: 'avia.php',
+									   params: {handle: 'web', table: 'crm_customer', action: 'update', values: 'parent_crm_id=0', where: "crm_id="+sel[0].get('crm_id')},
+									   success: function(response, opts) {
+										  me.loadStore();
+									   },
+									   failure: function(response, opts) {										   
+										  Ext.MessageBox.alert('Status', 'Error !', function() {});
+									   }
+									});	
+								}else{
+									
+								}	
+							});																	
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal_won',
+				text: 'Commission ...',
+				handler: function(widget, event) {
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {
+																	
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
+		];
+
+		return me.actions;
+	},
+		
 	updateSource: function(rec) {
 		var me = this;
 		me.selected = rec;
