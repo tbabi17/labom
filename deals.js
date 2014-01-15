@@ -678,14 +678,14 @@ Ext.define('OCS.DealCommissionGrid', {
 	createColumns: function() {
 		var me = this;
 		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
-			text: 'Customer',
+			text: 'Contact',
 			dataIndex: 'crm_name',
 			flex: 1,			
 			sortable: false
 		},{
 			text: 'Amount',
 			dataIndex: 'amount',
-			width: 100,
+			width: 110,
 			align: 'right',
 			renderer: renderMoney,
 			sortable: true
@@ -698,7 +698,7 @@ Ext.define('OCS.DealCommissionGrid', {
 		},{
 			text: 'Created on',
 			dataIndex: '_date',
-			width: 120,
+			width: 130,
 			sortable: true
 		}];
 	}
