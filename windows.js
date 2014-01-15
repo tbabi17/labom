@@ -1567,7 +1567,7 @@ Ext.define('OCS.CommissionWindow', {
 	extend: 'OCS.Window',
 	title: 'Commission',
 	maximizable: true,
-	height: 520,
+	height: 320,
 	modal: false,
 	width: 400,	
 	modal: true,
@@ -1604,7 +1604,6 @@ Ext.define('OCS.CommissionWindow', {
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Descr',	
-				readOnly: true,
 				height: 200,
 				name: 'descr'
 			}],
