@@ -97,7 +97,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		var me = this;
 
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['owner', 'actual_revenue', 'expected_revenue', 'target_revenue'],
+			fields: ['owner', 'team', 'actual_revenue', 'expected_revenue', 'target_revenue'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -134,7 +134,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		}, {
 			type: 'Category',
 			position: 'bottom',
-			fields: ['owner'],
+			fields: ['owner', 'team'],
 			label   : {
 	             rotation:{
 					 degrees:345
