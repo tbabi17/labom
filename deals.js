@@ -717,7 +717,16 @@ Ext.define('OCS.DealCommissionGrid', {
 
 		return me.actions;
 	},
-
+	
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.action = rec.get('owner')==logged;
+		me.where = rec.get('deal_id');
+		me.values = 'deal_id';
+		me.loadStore();
+	},
+	
 	createGrid: function() {
 		var me = this;	
 		me.createActions();
