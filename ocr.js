@@ -2441,6 +2441,7 @@ Ext.define('OCS.DealAction', {
 		me.dealActivity = new OCS.DealActivityGrid();
 		me.dealProduct = new OCS.DealProductGrid();
 		me.dealCompotetor = new OCS.DealCompetitorGrid();
+		me.dealCommission = new OCS.DealCommissionGrid();
 		me.dealTeams = new OCS.DealSalesTeamGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
@@ -2454,6 +2455,7 @@ Ext.define('OCS.DealAction', {
 				me.dealActivity.createPanel(),
 				me.dealProduct.createPanel(),
 				me.dealCompotetor.createPanel(),
+				me.dealCommission.createPanel(),
 				me.dealTeams.createPanel()
 			]
 		});

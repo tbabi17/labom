@@ -637,6 +637,74 @@ Ext.define('OCS.DealCompetitorGrid', {
 });
 
 
+Ext.define('OCS.DealCommissionGrid', {
+	extend: 'OCS.DealGrid',
+	func: 'crm_deal_commission_list',
+	tab : 'deal_commission_property',
+	title: 'Commissions',
+	icon: 'import',
+	table: 'crm_comission',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_COMMISSION',
+	collapsed: false,
+	primary: 'id',
+		
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 0.75,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			feature: false,
+			actions: me.createActions(),
+			tbarable: false
+		});
+		
+		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
+			if (selectedRecord.length) {
+				me.form.updateSource(selectedRecord[0]);
+				me.form.setVisible(true);
+			}
+		});
+	},
+	
+	createColumns: function() {
+		var me = this;
+		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
+			text: 'Customer',
+			dataIndex: 'crm_name',
+			flex: 1,			
+			sortable: false
+		},{
+			text: 'Amount',
+			dataIndex: 'amount',
+			width: 100,
+			align: 'right',
+			renderer: renderMoney,
+			sortable: true
+		},{
+			text: 'Created by',
+			dataIndex: 'userCode',
+			width: 120,
+			renderer: renderOwner,
+			sortable: true
+		},{
+			text: 'Created on',
+			dataIndex: '_date',
+			width: 120,
+			sortable: true
+		}];
+	}
+});
+
+
 Ext.define('OCS.CompetitorDealCompetitorGrid', {
 	extend: 'OCS.DealCompetitorGrid',
 	tab : 'competitor_deal_competitor_property',	
