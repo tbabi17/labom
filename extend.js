@@ -1927,7 +1927,7 @@ Ext.define('OCS.GridView', {
 	split: true,
 	multiSelect: true,
 	columnLines: true,
-	stripeRows: false,	
+	stripeRows: true,	
 	stateful: false,
 	filter: false,
 	tbarable: false,
