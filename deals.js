@@ -685,7 +685,7 @@ Ext.define('OCS.DealCompetitorGrid', {
 
 Ext.define('OCS.DealCommissionGrid', {
 	extend: 'OCS.DealGrid',
-	func: 'crm_deal_commission_list',
+	func: 'crm_commission_list',
 	tab : 'deal_commission_property',
 	title: 'Commissions',
 	icon: 'import',
