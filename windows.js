@@ -1631,7 +1631,7 @@ Ext.define('OCS.CommissionWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					var values = form.getValues(true);
-					alert(values);
+					alert(form.findField('amount').getValue());
 					if (form.findField('amount').getValue() > 0) {					
 						Ext.Ajax.request({
 						   url: 'avia.php',
