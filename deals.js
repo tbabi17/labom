@@ -180,8 +180,10 @@ Ext.define('OCS.DealGrid', {
 		
 		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
 			if (selectedRecord.length) {
-				me.form.updateSource(selectedRecord[0]);
-				me.form.setVisible(true);
+				if (me.form) {
+					me.form.updateSource(selectedRecord[0]);
+					me.form.setVisible(true);
+				}
 			}
 		});
 	},
