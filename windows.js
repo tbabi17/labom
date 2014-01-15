@@ -1616,7 +1616,18 @@ Ext.define('OCS.CommissionWindow', {
 				iconCls: 'commit',
 				text: 'Commit',				
 				handler: function() {
-					
+					var form = this.up('form').getForm();
+					var values = form.getValues(true);
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
+					   success: function(response, opts) {							  
+						  me.close();
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
 				}
 			}]
 		});
