@@ -185,6 +185,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 			flex: 1,
 			columns : [
                 {text: "owner", width: 120, dataIndex: 'owner', renderer: renderOwner, sortable: true},
+                {text: "team", width: 120, dataIndex: 'team'},
                 {text: "actual_revenue", flex: 1, dataIndex: 'actual_revenue', align: 'right', renderer: renderMoney, sortable: true},
                 {text: "expected_revenue", width: 125, dataIndex: 'expected_revenue', align: 'right', renderer: renderMoney, sortable: true},
                 {text: "target_revenue", width: 125, dataIndex: 'target_revenue', renderer: renderMoney, align: 'right', sortable: true}
@@ -216,7 +217,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 		me.win = new Ext.create('Ext.Window', {
 			title: 'Filter',
-			width: 500,
+			width: 600,
 			height: 350,
 			layout: 'border',
 			items: me.grid
