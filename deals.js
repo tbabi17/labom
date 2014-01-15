@@ -650,6 +650,28 @@ Ext.define('OCS.DealCommissionGrid', {
 	collapsed: false,
 	primary: 'id',
 		
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Remove from list',
+				handler: function(widget, event) {
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {
+							me.deleteRecord();											
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
 	createGrid: function() {
 		var me = this;	
 		me.createActions();
