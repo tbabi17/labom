@@ -1631,16 +1631,19 @@ Ext.define('OCS.CommissionWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					var values = form.getValues(true);
-					Ext.Ajax.request({
-					   url: 'avia.php',
-					   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
-					   success: function(response, opts) {							  
-						  me.close();
-					   },
-					   failure: function(response, opts) {										   
-						  Ext.MessageBox.alert('Status', 'Error !', function() {});
-					   }
-					});	
+					if (form.findField('amount').getValue() > 0) {					
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {							  
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});	
+					} else
+						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
 				}
 			}]
 		});
