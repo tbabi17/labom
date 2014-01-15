@@ -5411,6 +5411,7 @@ Ext.define('OCS.ContactView', {
 	extend: 'OCS.Module',
 	func: 'crm_contact_list',	
 	table: 'crm_customer',
+	tab: 'none',
 	
 	createActions: function() {
 		var me = this;
