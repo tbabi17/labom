@@ -758,6 +758,7 @@ Ext.define('OCS.DealCommissionGrid', {
 			text: 'Contact',
 			dataIndex: 'crm_name',
 			flex: 1,			
+			renderer: renderCRMName,
 			sortable: false
 		},{
 			text: 'Amount',
