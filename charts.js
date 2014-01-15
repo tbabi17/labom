@@ -98,6 +98,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['owner', 'team', 'actual_revenue', 'expected_revenue', 'target_revenue'],
+			groupField: 'team',
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
