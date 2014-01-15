@@ -587,7 +587,7 @@ fields['CRM_COMMISSION_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'crm_id', text: '', hidden: true},
    {name: 'deal_id', text: '', hidden: true},
-   {name: 'crm_name', text: 'Contact', flex: 1},
+   {name: 'crm_name', text: 'Contact', flex: 1, renderer: renderCRMName},
    {name: 'amount', type: 'float', text: 'Amount', width: 150},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'userCode', text: 'Create by', width: 100, hidden: true},
