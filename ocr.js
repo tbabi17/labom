@@ -3621,7 +3621,7 @@ Ext.define('OCS.Dashboard', {
 							handler: function(dp, date){
 								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('start_7').setText(me.start);
-								me.charts[7].rangeData();
+								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
 							}
 						})
 					},
@@ -3634,7 +3634,7 @@ Ext.define('OCS.Dashboard', {
 							handler: function(dp, date){
 								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('end_7').setText(me.end);
-								me.charts[7].rangeData();
+								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
 							}
 						})
 					}],
