@@ -413,7 +413,7 @@ Ext.define('OCS.Module', {
 		    return Ext.Date.format(rec.get('value'), 'Y-m-d');
 		}
 		if (rec.get('name').indexOf('_time') != -1) {
-		    return Ext.Date.format(rec.get('value'), 'h:m');
+		    return Ext.Date.format(rec.get('value'), 'h:i');
 		}
 		if (rec.get('name').substring(2, rec.get('name').length) == 'password')
 		{
