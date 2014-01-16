@@ -736,6 +736,15 @@ Ext.define('CRM_PERSONAL_VIEW', {
 	fields: fields['CRM_PERSONAL_VIEW_FIELDS']
 });
 
+fields['CRM_REPORT_ANY_FIELDS'] = [
+   {name: 'crm_name', text: '', hidden: true}, 
+];
+
+Ext.define('CRM_REPORT_ANY', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_ANY_FIELDS']
+});
+
 fields['CRM_REPORT_FIELDS'] = [
    {name: 'crm_name', text: 'Potientail customer', width: 250}, 
    {name: 'product_name', text: 'Product name', width: 250}, 
