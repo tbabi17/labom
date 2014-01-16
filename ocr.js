@@ -2825,6 +2825,7 @@ Ext.define('OCS.CaseAction', {
 			me.selected = rec;
 			me.detail.update(me.tmplMarkup[rec.get('case_stage')].apply(rec.data));
 			
+			me.casePosts.updateSource(rec);
 			me.caseActivity.updateSource(rec);
 			me.caseProduct.updateSource(rec);
 			me.caseHistory.updateSource(rec);
