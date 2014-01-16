@@ -3466,7 +3466,6 @@ Ext.define('OCS.Reports', {
 				id: 'report_start',
 				text: 'Start date',
 				iconCls: 'calendar',
-				hidden: !me.feature,
 				menu: Ext.create('Ext.menu.DatePicker', {
 					handler: function(dp, date){
 						me.start = Ext.Date.format(date, 'Y-m-d');
@@ -3479,7 +3478,6 @@ Ext.define('OCS.Reports', {
 				id: 'report_end',
 				text: 'End date',
 				iconCls: 'calendar',
-				hidden: !me.feature,
 				menu: Ext.create('Ext.menu.DatePicker', {
 					handler: function(dp, date){
 						me.end = Ext.Date.format(date, 'Y-m-d');
