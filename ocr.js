@@ -3521,6 +3521,13 @@ Ext.define('OCS.Reports', {
 		return me.actions;
 	},
 
+	reconfigure: function(modelName) {
+		var me = this;
+		me.modelName = modelName;
+		me.createStore();
+		me.report.reconfigure(me.store, me.createColumns());
+	},
+
 	createPanel: function() {
 		var me = this;
 		
