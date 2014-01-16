@@ -409,11 +409,11 @@ Ext.define('OCS.DealPostGrid', {
 
 Ext.define('OCS.CasePostGrid', {
 	extend: 'OCS.DealPostGrid',
-	func: 'crm_case_post_list',
+	func: 'crm_post_list',
 	tab : 'case_post_list',
 	title: 'Posts',
 	icon: 'call',
-	table: 'crm_case_posts',
+	table: 'crm_posts',
 	dateField: '_date',
 	sortField: '_date',
 	modelName: 'CRM_POSTS',
