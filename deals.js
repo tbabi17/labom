@@ -733,7 +733,7 @@ Ext.define('OCS.DealCommissionGrid', {
 		});					
 
 		me.grid.on('itemclick', function(dv, record, item, index, e) {
-			me.form.updateSource(selectedRecord[0]);
+			me.form.updateSource(record);
 			me.form.setVisible(true);
 		});
 	},
@@ -812,7 +812,7 @@ Ext.define('OCS.DealSalesTeamGrid', {
 		});
 		
 		me.grid.on('itemclick', function(dv, record, item, index, e) {
-				me.form.updateSource(selectedRecord[0]);
+				me.form.updateSource(record);
 				me.form.setVisible(true);			
 			}
 		);	
