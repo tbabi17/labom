@@ -1815,15 +1815,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			}]
 		});
 	
-	
-		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
-				if (me.form) {
-					me.form.getForm().findField('price').setValue(record.get('price'));
-					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
-					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
-				}				
-			}
-		);
+
 
 		me.items = [{
 			xtype: 'panel',
@@ -1832,7 +1824,16 @@ Ext.define('OCS.DealAddProductWindow', {
 			flex: 1,
 			border: false,
 			items: me.productList.createGrid()
-		}, me.form];
+		}, me.form];	
+		
+		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					me.form.getForm().findField('price').setValue(record.get('price'));
+					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
+					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
+				}				
+			}
+		);
 
 		me.callParent(arguments);
 	}
