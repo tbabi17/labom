@@ -1694,7 +1694,7 @@ Ext.define('OCS.DealAddProductWindow', {
 	extend: 'OCS.Window',
 	title: 'Products',
 	maximizable: true,
-	height: 520,
+	height: 400,
 	modal: false,
 	width: 750,	
 	modal: true,
@@ -1725,7 +1725,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
-			flex: 1,
+			flex: 0.5,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -1830,6 +1830,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			region: 'west',
 			flex: 1,
 			border: false,
+			split: true,
 			items: me.productList.createGrid()
 		}, me.form];	
 		
