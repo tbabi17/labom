@@ -2517,5 +2517,12 @@ Ext.define('OCS.BGridView', {
 	loadStore: function() {
 		var me = this;
 		me.store.loadPage(1);
+	},
+
+	reconfigure: function(modelName) {
+		var me = this;
+		me.modelName = modelName;
+		me.createStore();
+		me.reconfigure(me.store, me.createColumns());
 	}
 });

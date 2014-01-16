@@ -3441,7 +3441,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals report',
 							handler: function(widget, event) {
-								me.filterData('Note List');
+								me.report.reconfigure('CRM_REPORT');
 							}
 						}),
 						Ext.create('Ext.Action', {
