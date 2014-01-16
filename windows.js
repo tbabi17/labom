@@ -1567,9 +1567,9 @@ Ext.define('OCS.CommissionWindow', {
 	extend: 'OCS.Window',
 	title: 'Commission',
 	maximizable: true,
-	height: 320,
+	height: 520,
 	modal: false,
-	width: 400,	
+	width: 500,	
 	modal: true,
 
 	initComponent: function() {
@@ -1586,15 +1586,23 @@ Ext.define('OCS.CommissionWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
 				readOnly: true,
+				disabled: true,
 				hidden: true,
+				allowBlank: false,
 				//value: me.selected.get('crm_id'),
 				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Customer',
+				readOnly: true,
+				name: 'crm_name'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
 				readOnly: true,
 				hidden: true,
-				//value: me.deal_id,
+				value: me.selected.get('deal_id'),
+				disabled: true,
 				name: 'deal_id'
 			},{
 				xtype: 'currencyfield',
@@ -1625,7 +1633,8 @@ Ext.define('OCS.CommissionWindow', {
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
-					me.form.reset();
+					var form = this.up('form').getForm();
+					form.reset();
 				}
 			},{
 				iconCls: 'commit',
@@ -1633,6 +1642,11 @@ Ext.define('OCS.CommissionWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					var values = form.getValues(true);
+					if (!form.findField('crm_id').getValue()) {
+						Ext.MessageBox.alert('Status', 'Please select a contact !', function() {});
+						return;
+					}
+
 					if (form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
 						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&amount="+form.findField('amount').getValue()+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
@@ -1651,14 +1665,26 @@ Ext.define('OCS.CommissionWindow', {
 				}
 			}]
 		});
-		
+	
+
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'north',
+			region: 'south',
 			flex: 1,
+			border: false,
 			items: me.dealContact.createPanel()
 		}, me.form];
+
+		me.dealContact.updateSource(me.selected);
+		me.dealContact.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					me.form.getForm().findField('crm_id').setValue(record.get('crm_id'));
+					me.form.getForm().findField('crm_name').setValue(record.get('crm_name'));				
+				}				
+			}
+		);
+
 		me.callParent(arguments);
 	}
 });

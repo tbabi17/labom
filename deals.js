@@ -178,13 +178,11 @@ Ext.define('OCS.DealGrid', {
 			}
 		});
 		
-		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length) {
-				if (me.form) {
-					me.form.updateSource(selectedRecord[0]);
-					me.form.setVisible(true);
-				}
-			}
+		me.grid.getSelectionModel().on('itemclick', function(dv, record, item, index, e) {
+			if (me.form) {
+				me.form.updateSource(record);
+				me.form.setVisible(true);
+			}			
 		});
 	},
 
@@ -265,25 +263,7 @@ Ext.define('OCS.DealContactGrid', {
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
-			}),
-			'-',
-			Ext.create('Ext.Action', {
-				iconCls   : 'deal_won',
-				text: 'Commission ...',
-				handler: function(widget, event) {
-					if (me.action) {
-						var sel = me.grid.getView().getSelectionModel().getSelection();
-						if (sel.length > 0) {
-							new OCS.CommissionWindow({
-								selected: sel[0],
-								deal_id: me.deal_id
-							}).show();										
-						} else
-							Ext.MessageBox.alert('Status', 'No selection !', function() {});
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
-			})
+			})			
 		];
 
 		return me.actions;
@@ -571,12 +551,11 @@ Ext.define('OCS.DealProductGrid', {
 			tbarable: false
 		});
 		
-		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length) {
-				me.form.updateSource(selectedRecord[0]);
-				me.form.setVisible(true);
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
+				me.form.updateSource(record);
+				me.form.setVisible(true);				
 			}
-		});
+		);
 	},
 	
 	createColumns: function() {
@@ -650,12 +629,11 @@ Ext.define('OCS.DealCompetitorGrid', {
 			tbarable: false
 		});
 		
-		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length) {
-				me.form.updateSource(selectedRecord[0]);
-				me.form.setVisible(true);
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
+				me.form.updateSource(record);
+				me.form.setVisible(true);				
 			}
-		});
+		);
 	},
 	
 	createColumns: function() {
@@ -704,7 +682,8 @@ Ext.define('OCS.DealCommissionGrid', {
 				text: 'Add ...',
 				handler: function(widget, event) {
 					new OCS.CommissionWindow({
-
+						selected: me.selected,
+						backgrid: me.grid
 					}).show();
 				}
 			}),
@@ -751,13 +730,11 @@ Ext.define('OCS.DealCommissionGrid', {
 			feature: false,
 			actions: me.createActions(),
 			tbarable: false
-		});
-		
-		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length && me.form) {
-				me.form.updateSource(selectedRecord[0]);
-				me.form.setVisible(true);
-			}
+		});					
+
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
+			me.form.updateSource(selectedRecord[0]);
+			me.form.setVisible(true);
 		});
 	},
 	
@@ -834,12 +811,11 @@ Ext.define('OCS.DealSalesTeamGrid', {
 			tbarable: false
 		});
 		
-		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length) {
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
 				me.form.updateSource(selectedRecord[0]);
-				me.form.setVisible(true);
+				me.form.setVisible(true);			
 			}
-		});
+		);	
 	},
 	
 	createColumns: function() {

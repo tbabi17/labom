@@ -782,17 +782,17 @@ Ext.define('OCS.Window', {
 	closable: true,
 	modal: true,
 	minWidth: 350,
+	listeners : {
+		'close': function() {
+			var me = this;
+			if (me.backgrid)
+				me.backgrid.getStore().reload();
+		}
+	},
 
 	constructor: function(cnfg) {
         this.callParent(arguments);
-        this.initConfig(cnfg);
-
-		this.listeners = {
-			'close': function() {
-				if (me.backgrid)
-					me.backgrid.getStore().reload();
-			}
-		};
+        this.initConfig(cnfg);		
     },
 
 	commitRecord: function(values) {
