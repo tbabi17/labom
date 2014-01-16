@@ -3426,7 +3426,7 @@ Ext.define('OCS.Competitors', {
 
 Ext.define('OCS.Reports', {
 	extend: 'OCS.Module',	
-	func: 'CRM_REPORT',
+	modelName: 'CRM_REPORT',
 
 	createActions: function() {
 		var me = this;
