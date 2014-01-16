@@ -1039,7 +1039,10 @@ function renderTPrecent(v) {
 }
 
 function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {	
-	return v+' '+record.data['notify'];
+	if (record.data && record.data['notify'])
+		return v+' '+record.data['notify'];
+
+	return v;
 }
 
 
