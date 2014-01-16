@@ -4033,6 +4033,11 @@ Ext.define('OCS.CampaignPanel', {
 						return;
 					}
 					
+					if (record.get('campaign_type') == '') {
+						Ext.MessageBox.alert('Status', 'Campaign type is not set !', function() {});
+						return;
+					}
+
 					var box = Ext.MessageBox.wait('Please wait while I do something or other', 'Performing Actions');
 					Ext.Ajax.request({
 					   url: 'avia.php',					   
