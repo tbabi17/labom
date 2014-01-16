@@ -3542,6 +3542,8 @@ Ext.define('OCS.Reports', {
 		});
 
 		me.panel = Ext.create('Ext.Panel', {	
+			title: 'Report',
+			tab: 'report_tab_list',
 			layout: 'border',
 			region: 'center',
 			border: false,
