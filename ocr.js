@@ -2274,6 +2274,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Account:</td><td><b>{[this.renderCRMName(values.crm_name)]}</b></td></tr>',
 			'<tr><td>Phone:</td><td><b>{phone}</b></td></tr>',
 			'<tr><td>Description:</td><td><b>{descr}</b></td></tr></table>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			{
 				renderCRMName: function(v) {
 					if (v.indexOf(',') != -1)
@@ -2297,6 +2298,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
 			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
 			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'</table>',
 			{
 				renderCRMName: function(v) {
@@ -2332,6 +2334,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
 			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
 			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'</table>',
 			{
 				renderCRMName: function(v) {
@@ -2366,6 +2369,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
 			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
 			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'</table>',
 			{
 				renderCRMName: function(v) {
@@ -2397,6 +2401,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Account:</td><td><b>{[this.renderCRMName(values.crm_name)]}</b></td></tr>',
 			'<tr><td>Disqualified date:</td><td><b>{closing_date}</b></td></tr>',
 			'<tr><td>Description:</td><td><b>{descr}</b></td></tr></table>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			{
 				renderCRMName: function(v) {
 					if (v.indexOf(',') != -1)
@@ -2416,6 +2421,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Account:</td><td><b>{crm_name}</b></td></tr>',
 			'<tr><td>Disqualified date:</td><td><b>{closing_date}</b></td></tr>',
 			'<tr><td>Description:</td><td><b>{descr}</b></td></tr></table>',
+			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			{
 				renderCRMName: function(v) {
 					if (v.indexOf(',') != -1)
