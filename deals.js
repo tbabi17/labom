@@ -752,7 +752,7 @@ Ext.define('OCS.DealCommissionGrid', {
 		});
 		
 		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
-			if (selectedRecord.length) {
+			if (selectedRecord.length && me.form) {
 				me.form.updateSource(selectedRecord[0]);
 				me.form.setVisible(true);
 			}
