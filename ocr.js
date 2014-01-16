@@ -3460,6 +3460,61 @@ Ext.define('OCS.Reports', {
 						})
 					]
 				}		
+			}),
+			'-',
+			{
+				id: 'report_start',
+				text: 'Start date',
+				iconCls: 'calendar',
+				hidden: !me.feature,
+				menu: Ext.create('Ext.menu.DatePicker', {
+					handler: function(dp, date){
+						me.start = Ext.Date.format(date, 'Y-m-d');
+						Ext.getCmp('report_start').setText(me.start);
+						me.rangeData();
+					}
+				})
+			},
+			{
+				id: 'report_end',
+				text: 'End date',
+				iconCls: 'calendar',
+				hidden: !me.feature,
+				menu: Ext.create('Ext.menu.DatePicker', {
+					handler: function(dp, date){
+						me.end = Ext.Date.format(date, 'Y-m-d');
+						Ext.getCmp('report_end').setText(me.end);
+						me.rangeData();
+					}
+				})
+			},
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'export',
+				text: 'Export...',
+				disabled: (user_level == '0'),
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
+					}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.xlsName},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
 			})
 		];
 			
