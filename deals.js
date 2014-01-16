@@ -681,10 +681,13 @@ Ext.define('OCS.DealCommissionGrid', {
 				iconCls: 'add',
 				text: 'Add ...',
 				handler: function(widget, event) {
-					new OCS.CommissionWindow({
-						selected: me.selected,
-						backgrid: me.grid
-					}).show();
+					if (me.action)
+						new OCS.CommissionWindow({
+							selected: me.selected,
+							backgrid: me.grid
+						}).show();
+					else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
