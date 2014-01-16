@@ -1574,7 +1574,8 @@ Ext.define('OCS.CommissionWindow', {
 
 	initComponent: function() {
 		var me = this;				
-
+		
+		me.dealContact = new OCS.DealContactGrid();
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
 			hidden: false,
@@ -1650,7 +1651,12 @@ Ext.define('OCS.CommissionWindow', {
 			}]
 		});
 		
-		me.items = [me.form];
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'north',
+			items: [me.dealContact.createPanel()]
+		}, me.form];
 		me.callParent(arguments);
 	}
 });

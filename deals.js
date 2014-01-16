@@ -700,6 +700,13 @@ Ext.define('OCS.DealCommissionGrid', {
 		var me = this;
 		me.actions = [			
 			Ext.create('Ext.Action', {
+				iconCls: 'add',
+				text: 'Add ...',
+				handler: function(widget, event) {
+					
+				}
+			}),
+			Ext.create('Ext.Action', {
 				iconCls   : 'delete',
 				text: 'Remove from list',
 				handler: function(widget, event) {
