@@ -3429,23 +3429,19 @@ Ext.define('OCS.Reports', {
 	
 	reload: function() {
 		var me = this;
-		me.competitor.reload();
+
 	},
 
 	createPanel: function() {
 		var me = this;
 		
-		me.competitor = new Ext.create('OCS.CompetitorProfile', {
-			modelName: 'CRM_CALENDAR',
-			func: 'crm_calendar_list'
-		});
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			region: 'center',
 			border: false,
 			items: [
-				me.competitor.createPanel()
+
 			]
 		});
 
