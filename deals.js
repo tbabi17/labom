@@ -575,7 +575,7 @@ Ext.define('OCS.DealProductGrid', {
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
-			feature: false,
+			feature: true,
 			actions: me.createActions(),
 			tbarable: false
 		});
