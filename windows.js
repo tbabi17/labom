@@ -1586,14 +1586,14 @@ Ext.define('OCS.CommissionWindow', {
 				fieldLabel: 'CRM ID',
 				readOnly: true,
 				hidden: true,
-				value: me.selected.get('crm_id'),
+				//value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
 				readOnly: true,
 				hidden: true,
-				value: me.deal_id,
+				//value: me.deal_id,
 				name: 'deal_id'
 			},{
 				xtype: 'currencyfield',

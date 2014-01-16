@@ -703,7 +703,9 @@ Ext.define('OCS.DealCommissionGrid', {
 				iconCls: 'add',
 				text: 'Add ...',
 				handler: function(widget, event) {
-					new OCS.CommissionWindow().show();
+					new OCS.CommissionWindow({
+
+					}).show();
 				}
 			}),
 			Ext.create('Ext.Action', {
