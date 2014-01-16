@@ -510,7 +510,7 @@ Ext.define('OCS.DealProductGrid', {
 						new OCS.DealAddProductWindow({
 							selected: me.selected,
 							backgrid: me.grid
-						});
+						}).show();
 /*
 						new OCS.ProductWindow({
 							selected: me.selected,
