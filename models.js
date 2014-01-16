@@ -736,6 +736,21 @@ Ext.define('CRM_PERSONAL_VIEW', {
 	fields: fields['CRM_PERSONAL_VIEW_FIELDS']
 });
 
+fields['CRM_REPORT_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden: true}, 
+   {name: 'personal', text: 'View name', width: 200}, 
+   {name: 'field', text: 'Field', width: 100}, 
+   {name: 'equals', text: 'IF', width: 100}, 
+   {name: 'value', text: 'Value', width: 190},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', hidden: true, width: 80},
+   {name: 'userCode', text: 'Created by', width: 120, hidden: true}
+];
+
+Ext.define('CRM_REPORT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_FIELDS']
+});
+
 
 function renderClass(v) {
 	if (v == 'CORPORATE' || v == 'RETAIL') 
