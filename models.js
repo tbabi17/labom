@@ -299,7 +299,8 @@ fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'resolution', text: 'Resolution', width: 220, hidden: true},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 80},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120},
-   {name: 'groupId', text: 'Case ID', width: 100}
+   {name: 'groupId', text: 'Case ID', width: 100},
+   {name: 'notify', text: 'Notify', hidden: true}
 ];
 
 Ext.define('CRM_COMPLAIN', {
@@ -646,7 +647,8 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
    {name: 'competitor_name', text: 'Competitor', width: 200},
    {name: 'campaign', text: 'Campaign', width: 200},   
-   {name: 'userCode', text: 'Created by', width: 80, hidden: true}
+   {name: 'userCode', text: 'Created by', width: 80, hidden: true},
+   {name: 'notify', text: 'Notify', hidden: true}
 ];
 
 Ext.define('CRM_DEAL', {
