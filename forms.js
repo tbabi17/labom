@@ -760,7 +760,7 @@ Ext.define('OCS.CorporateForm', {
 						value: 'CORPORATE',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'CORPORATE'},{value: 'SME'},{value: 'RESELLER'},{value: 'BROKER'}]
+						  data: [{value: 'TOP100'},{value: 'CORPORATE'},{value: 'SME'},{value: 'RESELLER'},{value: 'BROKER'}]
 						}),
 						queryMode: 'local',
 						displayField: 'value',
