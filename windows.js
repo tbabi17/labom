@@ -1827,7 +1827,7 @@ Ext.define('OCS.DealAddProductWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'south',
+			region: 'west',
 			flex: 1,
 			border: false,
 			items: me.productList.createGrid()
