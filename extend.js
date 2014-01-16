@@ -2373,7 +2373,7 @@ Ext.define('OCS.AGridView', {
 			items: [{
 					id: 'post_here',
 					xtype: 'textfield',
-					width: 350,					
+					width: 400,					
 					emptyText: 'Enter post here ...',
 					enableKeyEvents: true,
 					listeners: {
