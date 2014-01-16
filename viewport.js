@@ -47,6 +47,9 @@ Ext.define('OCS.Viewport', {
 		 if (pk == 'competitor')
 			 views['competitor'] = new OCS.Competitors();
 
+		 if (pk == 'reports')
+			 views['reports'] = new OCS.Reports();
+
 		 if (pk == 'deals')
 			 views['deals'] = new OCS.Deals();
 
