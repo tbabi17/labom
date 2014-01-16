@@ -284,7 +284,7 @@ Ext.define('CRM_MESSAGE', {
 fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'case_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'complain_status', text: 'Status', width: 65, align: 'center', renderer: renderComplainStatus},   
-   {name: 'complain_reason', text: 'Case Reason', width: 200, primary: true},   
+   {name: 'complain_reason', text: 'Case Reason', width: 200, primary: true, renderer: renderTopicName},   
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'case_stage', text: 'Stage', width: 70, renderer: renderCaseLevel},
@@ -631,7 +631,7 @@ Ext.define('CRM_ALARM', {
 fields['CRM_DEAL_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'status', text: 'Status', width: 80, align: 'center'},
-   {name: 'deal', text: 'Topic Name', width: 200, primary: true},   
+   {name: 'deal', text: 'Topic Name', width: 200, primary: true, renderer: renderTopicName},   
    {name: 'stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
@@ -1037,6 +1037,11 @@ function renderPrecent(v) {
 function renderTPrecent(v) {	
 	return '<strong>'+v+'%</strong>';
 }
+
+function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {	
+	return v+' '+record.data'notify'];
+}
+
 
 function renderTMoney(v) {
 	return '<strong>'+Ext.util.Format.number(v, '00,00,000.00')+'₮</strong>';
