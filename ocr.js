@@ -467,16 +467,20 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'deal_assign',
 				text: 'Assign...',
-				handler: function(widget, event) {
-					if (user_level > 0 ) {												
-						if (me.recordSelected())						
+				handler: function(widget, event) {										
+					if (me.recordSelected()) {						
+						var rec = me.grid.getView().getSelectionModel().getSelection()[0];
+						if (rec.get('owner') == logged || user_level > 0)
 							new OCS.CustomerAssignWindow({
 								selected: me.grid.getView().getSelectionModel().getSelection()[0],
 								ids: me.selectedIds(),
 								direction: me.xlsName
 							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						else
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+					else
+						Ext.MessageBox.alert('Error', 'No selection !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
@@ -2089,15 +2093,19 @@ Ext.define('OCS.DealView', {
 				iconCls   : 'deal_assign',
 				text: 'Assign ...',
 				handler: function(widget, event) {
-					if (user_level > 0 ) {												
-						if (me.recordSelected())						
+					if (me.recordSelected()) {						
+						var rec = me.grid.getView().getSelectionModel().getSelection()[0];
+						if (rec.get('owner') == logged || user_level > 0)
 							new OCS.DealAssignWindow({
-								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								selected: rec,
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						else
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+					else
+						Ext.MessageBox.alert('Error', 'No selection !', function() {});
 				}
 			}),
 			,'-',
