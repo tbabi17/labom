@@ -2478,6 +2478,10 @@ Ext.define('OCS.BGridView', {
 	
 	initComponent: function() {
 		var me = this;			
+		
+		me.tbar = Ext.create('Ext.Toolbar', {
+			items: me.actions
+		});		
 
 		me.contextMenu = Ext.create('Ext.menu.Menu', {
 			items: me.actions
