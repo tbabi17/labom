@@ -1736,9 +1736,9 @@ Ext.define('OCS.DealAddProductWindow', {
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
-				fieldLabel: 'Customer',
+				fieldLabel: 'Product',
 				readOnly: true,
-				name: 'crm_name'
+				name: 'product_name'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
@@ -1747,6 +1747,18 @@ Ext.define('OCS.DealAddProductWindow', {
 				value: me.selected.get('deal_id'),
 				disabled: true,
 				name: 'deal_id'
+			},{
+				xtype: 'numberfield',
+				value: 0,
+				fieldLabel: 'Count',
+				allowBlank: false,
+				name: 'qty' 
+			},{
+				xtype: 'currencyfield',
+				value: 0,
+				fieldLabel: 'Price',
+				allowBlank: false,
+				name: 'price' 
 			},{
 				xtype: 'currencyfield',
 				value: 0,
@@ -1760,12 +1772,6 @@ Ext.define('OCS.DealAddProductWindow', {
 				hidden: true,
 				value: logged,
 				name: 'userCode'
-			},{
-				xtype: 'textfield',
-				fieldLabel: 'Owner',				
-				readOnly: true,
-				value: logged,
-				name: 'owner'
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Description',	
