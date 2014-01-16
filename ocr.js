@@ -3431,7 +3431,36 @@ Ext.define('OCS.Reports', {
 	createActions: function() {
 		var me = this;
 		me.actions = [		
-			
+			Ext.create('Ext.Action', {
+				iconCls: 'list',
+				text: 'Report list',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Deals report',
+							handler: function(widget, event) {
+								me.filterData('Note List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Activity report',
+							handler: function(widget, event) {
+								me.filterData('Task List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Product Report',
+							handler: function(widget, event) {
+								me.filterData('Appointment List');
+							}
+						})
+					]
+				}		
+			})
 		];
 			
 		return me.actions;
