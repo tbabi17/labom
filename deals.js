@@ -424,7 +424,7 @@ Ext.define('OCS.CasePostGrid', {
 		me.selected = rec;
 		me.where = rec.get('case_id');
 		me.values = 'case_id';
-		me.grid.initSource(rec.get('case_id'), 0);
+		me.grid.initSource(0, rec.get('case_id'));
 		me.grid.owner = rec.get('owner');
 		me.loadStore();
 	}
