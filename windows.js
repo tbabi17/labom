@@ -1752,7 +1752,13 @@ Ext.define('OCS.DealAddProductWindow', {
 				value: 0,
 				fieldLabel: 'Qty',
 				allowBlank: false,
-				name: 'qty' 
+				name: 'qty',
+				listeners: {
+					'change': function(v) {
+						var form = this.up('form').getForm();
+						form.findField('amount').setValue(v.getValue()*form.findField('price').getValue());
+					}
+				}
 			},{
 				xtype: 'currencyfield',
 				value: 0,
