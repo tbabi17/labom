@@ -737,13 +737,12 @@ Ext.define('CRM_PERSONAL_VIEW', {
 });
 
 fields['CRM_REPORT_FIELDS'] = [
-   {name: 'id', text: 'ID', width: 50, hidden: true}, 
-   {name: 'personal', text: 'View name', width: 200}, 
-   {name: 'field', text: 'Field', width: 100}, 
-   {name: 'equals', text: 'IF', width: 100}, 
-   {name: 'value', text: 'Value', width: 190},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', hidden: true, width: 80},
-   {name: 'userCode', text: 'Created by', width: 120, hidden: true}
+   {name: 'crm_name', text: 'Potientail customer', width: 200}, 
+   {name: 'product_name', text: 'Product name', width: 150}, 
+   {name: 'expected_revenue', align: 'right', text: 'Expected revenue', width: 100, align: 'right'}, 
+   {name: 'probablity', text: 'Probablity', width: 190, align: 'center', renderer: renderPrecent},
+   {name: 'descr', text: 'Description', width: 180},
+   {name: 'owner', text: 'Owner', width: 120}
 ];
 
 Ext.define('CRM_REPORT', {
