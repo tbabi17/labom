@@ -406,6 +406,30 @@ Ext.define('OCS.DealPostGrid', {
 	}
 });
 
+
+Ext.define('OCS.CasePostGrid', {
+	extend: 'OCS.DealPostGrid',
+	func: 'crm_case_post_list',
+	tab : 'case_post_list',
+	title: 'Posts',
+	icon: 'call',
+	table: 'crm_case_posts',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_POSTS',
+	collapsed: false,
+
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.where = rec.get('case_id');
+		me.values = 'case_id';
+		me.grid.initSource(rec.get('case_id'), 0);
+		me.grid.owner = rec.get('owner');
+		me.loadStore();
+	}
+});
+
 Ext.define('OCS.CompetitorDealPostGrid', {
 	extend: 'OCS.DealPostGrid',
 	func: 'crm_post_list',

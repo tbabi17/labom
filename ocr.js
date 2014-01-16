@@ -2926,7 +2926,8 @@ Ext.define('OCS.CaseAction', {
 	createPanel: function() {
 		var me = this;
 		me.createTmpl();
-				
+
+		me.casePosts = new OCS.CasePostGrid();
 		me.caseActivity = new OCS.CaseActivityGrid();
 		me.caseProduct = new OCS.CaseProductGrid();
 		me.caseHistory = new OCS.CaseHistoryGrid();
@@ -2937,6 +2938,7 @@ Ext.define('OCS.CaseAction', {
 			region: 'center',
 			tabPosition: 'top',	
 			items: [			
+				me.casePosts.createPanel(),
 				me.caseActivity.createPanel(),
 				me.caseProduct.createPanel(),
 				me.caseHistory.createPanel()
