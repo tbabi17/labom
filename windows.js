@@ -1581,6 +1581,7 @@ Ext.define('OCS.CommissionWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
+			flex: 1,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -1655,7 +1656,8 @@ Ext.define('OCS.CommissionWindow', {
 			xtype: 'panel',
 			layout: 'border',
 			region: 'north',
-			items: [me.dealContact.createPanel()]
+			flex: 1,
+			items: me.dealContact.createPanel()
 		}, me.form];
 		me.callParent(arguments);
 	}
