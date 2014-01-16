@@ -2459,3 +2459,60 @@ Ext.define('OCS.AGridView', {
 		me.store.loadPage(1);
 	}
 });
+
+Ext.define('OCS.BGridView', {
+	extend: 'Ext.grid.Panel',	
+	border: false,
+	region: 'center',
+	split: true,
+	multiSelect: true,
+	columnLines: true,
+	stripeRows: true,	
+	stateful: false,
+	emptyText: 'No records.',
+	
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },
+	
+	initComponent: function() {
+		var me = this;			
+
+		me.contextMenu = Ext.create('Ext.menu.Menu', {
+			items: me.actions
+		});
+
+		me.viewConfig = {
+			emptyText: me.emptyText,
+			trackMouseOver: true,
+			trackOver: true,
+			stripeRows: false,
+			listeners: {
+				itemcontextmenu: function(view, rec, node, index, e) {
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(e.getXY());
+					return false;
+				},
+				containercontextmenu: function(grid, e) {
+					var position = e.getXY();
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(position);
+				}
+			},
+			getRowClass: function (record, rowIndex, rowParams, store) {
+                may = record.get('mayDuplicate') != '0' ? 'may-duplicate' : '';
+				return may;
+            }
+		};
+			
+		me.callParent(arguments);
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.loadPage(1);
+	}
+});

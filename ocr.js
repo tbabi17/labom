@@ -3426,22 +3426,17 @@ Ext.define('OCS.Competitors', {
 
 Ext.define('OCS.Reports', {
 	extend: 'OCS.Module',		
-	
-	reload: function() {
-		var me = this;
-
-	},
 
 	createPanel: function() {
 		var me = this;
 		
-
+		me.report = new OCS.BGridView();
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			region: 'center',
 			border: false,
 			items: [
-
+				me.report
 			]
 		});
 
