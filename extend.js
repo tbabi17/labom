@@ -2479,9 +2479,8 @@ Ext.define('OCS.BGridView', {
 	initComponent: function() {
 		var me = this;			
 		
-		me.tbar = Ext.create('Ext.Toolbar', {
-			items: me.actions
-		});		
+		if (me.actions.length > 0)		
+			me.tbar = me.actions;
 
 		me.contextMenu = Ext.create('Ext.menu.Menu', {
 			items: me.actions
