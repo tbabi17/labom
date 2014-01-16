@@ -1688,3 +1688,137 @@ Ext.define('OCS.CommissionWindow', {
 		me.callParent(arguments);
 	}
 });
+
+
+Ext.define('OCS.DealAddProductWindow', {
+	extend: 'OCS.Window',
+	title: 'Products',
+	maximizable: true,
+	height: 520,
+	modal: false,
+	width: 500,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.productList = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_PRODUCT',
+			func:'crm_product_list',
+			title: 'Products',
+			table: 'crm_products',
+			tab: 'deal_crm_product_list',
+			buttons: true,
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					product_id: '0',
+					price: '0'
+				}
+			}
+		});
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 1,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				//value: me.selected.get('crm_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Customer',
+				readOnly: true,
+				name: 'crm_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('deal_id'),
+				disabled: true,
+				name: 'deal_id'
+			},{
+				xtype: 'currencyfield',
+				value: 0,
+				fieldLabel: 'Amount',
+				allowBlank: false,
+				name: 'amount' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				hidden: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Owner',				
+				readOnly: true,
+				value: logged,
+				name: 'owner'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Description',	
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					var values = form.getValues(true);
+					if (!form.findField('crm_id').getValue()) {
+						Ext.MessageBox.alert('Status', 'Please select a contact !', function() {});
+						return;
+					}
+
+					if (form.findField('amount').getValue() > 0) {					
+						var descr = form.findField('descr').getValue();
+						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&amount="+form.findField('amount').getValue()+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {							  
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});	
+					} else
+						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+				}
+			}]
+		});
+	
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'south',
+			flex: 1,
+			border: false,
+			items: me.productList.createGrid()
+		}, me.form];
+
+		me.callParent(arguments);
+	}
+});

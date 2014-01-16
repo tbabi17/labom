@@ -507,10 +507,15 @@ Ext.define('OCS.DealProductGrid', {
 				text: 'Add ...',
 				handler: function(widget, event) {		
 					if (me.action)
+						new OCS.DealAddProductWindow({
+							selected: me.selected,
+							backgrid: me.grid
+						});
+/*
 						new OCS.ProductWindow({
 							selected: me.selected,
 							backgrid: me.grid
-						}).createWindow();
+						}).createWindow();*/
 					else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
