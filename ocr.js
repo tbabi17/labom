@@ -3425,12 +3425,30 @@ Ext.define('OCS.Competitors', {
 
 
 Ext.define('OCS.Reports', {
-	extend: 'OCS.Module',		
+	extend: 'OCS.Module',	
+
+	createActions: function() {
+		var me = this;
+		me.actions = [		
+			
+		];
+			
+		return me.actions;
+	},
 
 	createPanel: function() {
 		var me = this;
 		
-		me.report = new OCS.BGridView();
+		me.report = new OCS.BGridView({
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 0.75,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			actions: me.createActions(),
+		});
+
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
 			region: 'center',
