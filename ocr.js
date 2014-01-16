@@ -3441,7 +3441,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals report',
 							handler: function(widget, event) {
-								me.reconfigure('CRM_REPORT');
+								me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
 							}
 						}),
 						Ext.create('Ext.Action', {
@@ -3519,9 +3519,10 @@ Ext.define('OCS.Reports', {
 		return me.actions;
 	},
 
-	reconfigure: function(modelName) {
+	reconfigure: function(modelName, func) {
 		var me = this;
 		me.modelName = modelName;
+		me.func = func;
 		me.createStore();
 		me.report.reconfigure(me.store, me.createColumns());
 	},
