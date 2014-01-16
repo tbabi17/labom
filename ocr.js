@@ -3995,7 +3995,7 @@ Ext.define('OCS.CampaignPanel', {
 	modelName: 'CRM_CAMPAIGN',
 	func: 'crm_campaign_list',
 	autoSelect: true,
-	buttons: false,
+	buttons: true,
 	title: 'Campaign',
 	table: 'crm_campaign',
 	tab: 'my_crm_campaign_list',
