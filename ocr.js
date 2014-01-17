@@ -342,13 +342,6 @@ Ext.define('OCS.RetailPanel', {
 			'-',
 			Ext.create('Ext.Action', {
 				icon   : '',  
-				text: 'TOP 100 List',
-				handler: function(widget, event) {
-					me.filterData('TOP 100 List');
-				}
-			}),
-			Ext.create('Ext.Action', {
-				icon   : '',  
 				text: 'VIP List',
 				handler: function(widget, event) {
 					me.filterData('VIP List');
@@ -801,6 +794,13 @@ Ext.define('OCS.CorporatePanel', {
 				}
 			}),
 			'-',
+			Ext.create('Ext.Action', {
+				icon   : '',  
+				text: 'TOP 100 List',
+				handler: function(widget, event) {
+					me.filterData('TOP 100 List');
+				}
+			}),
 			Ext.create('Ext.Action', {
 				icon   : '',  
 				text: 'Corporate List',
