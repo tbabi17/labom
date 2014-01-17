@@ -359,7 +359,7 @@ Ext.define('OCS.RetailPanel', {
 				icon   : '',  
 				text: 'All '+me.xlsName+' List',
 				handler: function(widget, event) {
-					me.filterData('');
+					me.filterData('All '+me.xlsName+' List');
 				}
 			}),
 			Ext.create('Ext.Action', {
