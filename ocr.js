@@ -2728,6 +2728,13 @@ Ext.define('OCS.CaseView', {
 						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'My Linked Cases',
+							handler: function(widget, event) {
+								me.filterData('My Linked Cases');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'My Resolved Cases',
 							handler: function(widget, event) {
 								me.filterData('My Resolved Cases');
