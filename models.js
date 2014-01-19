@@ -61,8 +61,6 @@ Ext.define('CRM_RETAIL', {
 	fields: fields['CRM_RETAIL_FIELDS']
 });
 
-
-
 fields['CRM_CONTACT_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
    {name: 'regNo', text: 'Register', width: 80, hidden: true},   
@@ -84,22 +82,6 @@ fields['CRM_CONTACT_FIELDS'] = [
 Ext.define('CRM_CONTACT', {
 	extend: 'Ext.data.Model',
 	fields: fields['CRM_CONTACT_FIELDS']
-});
-
-fields['CRM_RESELLER_CUSTOMER_FIELDS'] = [
-   {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
-   {name: 'crm_name', text: 'Full name', width: 180, hidden: true},
-   {name: 'engName', text: 'Latin', width: 140, hidden: true},
-   {name: 'phone', text: 'Phone', width: 80, align: 'center', renderer: renderPhone},
-   {name: 'phone1', text: 'Phone B', width: 70, align: 'center', renderer: renderPhone},
-   {name: 'email', text: 'Email', width: 120, renderer: renderMail},
-   {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
-];
-
-Ext.define('CRM_RESELLER_CUSTOMER', {
-	extend: 'Ext.data.Model',
-	fields: fields['CRM_RESELLER_CUSTOMER_FIELDS']
 });
 
 fields['CRM_CORPORATE_FIELDS'] = [

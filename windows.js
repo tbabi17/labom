@@ -1857,12 +1857,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	modal: true,
 
 	initComponent: function() {
-		var me = this;				
-		
-		me.resellerList = Ext.create('OCS.ResellerContactView', {
-			flex: 1,
-			region: 'center'
-		});
+		var me = this;
 
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
@@ -1939,14 +1934,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	
 
 
-		me.items = [{
-			xtype: 'panel',
-			layout: 'border',
-			region: 'south',
-			flex: 1,
-			border: false,
-			items: me.resellerList.createView()
-		}, me.form];		
+		me.items = [me.form];		
 
 		me.callParent(arguments);
 	}
