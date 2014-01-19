@@ -1845,3 +1845,145 @@ Ext.define('OCS.DealAddProductWindow', {
 		me.callParent(arguments);
 	}
 });
+
+
+Ext.define('OCS.ResellerCreateWindow', {
+	extend: 'OCS.Window',
+	title: 'Products',
+	maximizable: true,
+	height: 550,
+	modal: false,
+	width: 500,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.resellerList = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_PRODUCT',
+			func:'crm_reseller_list',
+			title: 'Reseller list',
+			table: 'crm_customer',
+			tab: 'reseller_crm_reseller_list',
+			buttons: true,
+			feature: false,
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					product_id: '0',
+					price: '0'
+				}
+			}
+		});
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 0.75,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Product',
+				readOnly: true,
+				name: 'product_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',
+				readOnly: true,
+				hidden: true,
+				value: '0',
+				disabled: true,
+				name: 'deal_id'
+			},{
+				xtype: 'currencyfield',
+				value: 0,
+				fieldLabel: 'Price',
+				allowBlank: false,
+				name: 'price' 
+			},{
+				xtype: 'currencyfield',
+				value: 0,
+				fieldLabel: 'Amount',
+				allowBlank: false,
+				name: 'amount' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				hidden: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Description',	
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					var values = form.getValues(true);
+					if (!form.findField('product_name').getValue()) {
+						Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
+						return;
+					}
+
+					if (form.findField('amount').getValue() > 0) {					
+						var descr = form.findField('descr').getValue();
+						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();//+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {							  
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});	
+					} else
+						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+				}
+			}]
+		});
+	
+
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'south',
+			flex: 1,
+			border: false,
+			items: me.resellerList.createGrid()
+		}, me.form];	
+		
+		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					
+				}				
+			}
+		);
+
+		me.callParent(arguments);
+	}
+});

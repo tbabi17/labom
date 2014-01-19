@@ -2706,7 +2706,9 @@ Ext.define('OCS.ResellerView', {
 				iconCls   : 'add',
 				text: 'Create...',
 				handler: function(widget, event) {
-					
+					new OCS.ResellerCreateWindow({
+						
+					}).show();
 				}
 			}),
 			Ext.create('Ext.Action', {
