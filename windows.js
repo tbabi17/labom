@@ -1977,7 +1977,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 			items: me.resellerList.createGrid()
 		}, me.form];	
 		
-		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
+		me.resellerList.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {
 					
 				}				
