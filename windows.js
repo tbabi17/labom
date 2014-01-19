@@ -1849,7 +1849,7 @@ Ext.define('OCS.DealAddProductWindow', {
 
 Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
-	title: 'Products',
+	title: 'Create reseller',
 	maximizable: true,
 	height: 550,
 	modal: false,
@@ -1971,7 +1971,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'south',
+			region: 'north',
 			flex: 1,
 			border: false,
 			items: me.resellerList.createGrid()
