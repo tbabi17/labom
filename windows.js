@@ -1942,7 +1942,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'north',
+			region: 'south',
 			flex: 1,
 			border: false,
 			items: me.resellerList.createView()
