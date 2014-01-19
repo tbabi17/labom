@@ -2649,8 +2649,8 @@ Ext.define('OCS.ResellerAction', {
 				},'-',
 				{
 					iconCls: 'deal_won',
-					text: 'Close as won',
-					id: 'deal_closewon',
+					text: 'Close',
+					id: 'reseller_closewon',
 					scope: this,
 					handler: function() {
 						if (me.dealActivity.openActivityCount() > 0) {
