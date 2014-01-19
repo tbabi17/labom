@@ -2645,7 +2645,7 @@ Ext.define('OCS.ResellerAction', {
 			items: [me.tabs],
 			dockedItems:[{
 				xtype: 'toolbar',
-				dock: 'bottom',
+				dock: 'top',
 				items: [{
 					iconCls: 'deal_assign',
 					text: 'Assign...',
