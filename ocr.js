@@ -2629,7 +2629,20 @@ Ext.define('OCS.ResellerAction', {
 				me.resellerActivity.createPanel(),
 				me.resellerProduct.createPanel(),
 				me.resellerCommission.createPanel()
-			],
+			]			
+		});				
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			border: true,
+			flex: 0.45,
+			region: 'east',
+			title: 'Actions',
+			collapsible: true,
+			collapsed: true,
+			split: true,
+			bodyPadding: 4,
+			items: [me.tabs],
 			dockedItems:[{
 				xtype: 'toolbar',
 				dock: 'bottom',
@@ -2673,19 +2686,6 @@ Ext.define('OCS.ResellerAction', {
 					}
 				}]
 			}]
-		});				
-
-		me.panel = Ext.create('Ext.Panel', {	
-			layout: 'border',
-			border: true,
-			flex: 0.45,
-			region: 'east',
-			title: 'Actions',
-			collapsible: true,
-			collapsed: true,
-			split: true,
-			bodyPadding: 4,
-			items: [me.tabs]
 		});		
 
 		return me.panel;
