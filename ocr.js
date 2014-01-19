@@ -2772,7 +2772,7 @@ Ext.define('OCS.Reseller', {
 	createPanel: function() {
 		var me = this;
 		
-		me.reseller = new OCS.DealView();
+		me.reseller = new OCS.ResellerView();
 		me.action = new OCS.DealAction();
 
 		me.panel = Ext.create('Ext.Panel', {	
