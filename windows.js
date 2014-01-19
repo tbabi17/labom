@@ -1860,7 +1860,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 		var me = this;				
 		
 		me.resellerList = new Ext.create('OCS.GridWithFormPanel', {
-			modelName:'CRM_PRODUCT',
+			modelName:'CRM_CONTACT',
 			func:'crm_reseller_list',
 			title: 'Reseller list',
 			table: 'crm_customer',
