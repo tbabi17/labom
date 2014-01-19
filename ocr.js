@@ -2206,7 +2206,6 @@ Ext.define('OCS.Deals', {
 	}
 });
 
-
 Ext.define('OCS.DealAction', {
 	extend: 'OCS.Module',
 
@@ -2589,6 +2588,73 @@ Ext.define('OCS.DealAction', {
 	}
 });
 
+
+Ext.define('OCS.ResellerAction', {
+	extend: 'OCS.DealAction',
+
+	select: function(rec) {
+		var me = this;
+		if (rec) {		
+			me.selected = rec;
+			
+			me.dealContact.updateSource(rec);
+			me.dealPosts.updateSource(rec);
+			me.dealActivity.updateSource(rec);
+			me.dealProduct.updateSource(rec);
+			me.dealCompotetor.updateSource(rec);
+			me.dealTeams.updateSource(rec);
+			me.dealCommission.updateSource(rec);
+
+			me.panel.expand();			
+		} else
+			me.panel.collapse();
+	},
+
+	createPanel: function() {
+		var me = this;
+		me.createTmpl();
+				
+		me.dealPosts = new OCS.DealPostGrid();
+		me.dealContact = new OCS.DealContactGrid();
+		me.dealActivity = new OCS.DealActivityGrid();
+		me.dealProduct = new OCS.DealProductGrid();
+		me.dealCompotetor = new OCS.DealCompetitorGrid();
+		me.dealCommission = new OCS.DealCommissionGrid();
+		me.dealTeams = new OCS.DealSalesTeamGrid();
+
+		me.tabs = Ext.widget('tabpanel', {
+			activeTab: 0,
+			flex: 1,			
+			region: 'center',
+			tabPosition: 'top',	
+			items: [
+				me.dealPosts.createPanel(),
+				me.dealContact.createPanel(),			
+				me.dealActivity.createPanel(),
+				me.dealProduct.createPanel(),
+				me.dealCompotetor.createPanel(),
+				me.dealCommission.createPanel(),
+				me.dealTeams.createPanel()
+			]
+		});				
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			border: true,
+			flex: 0.45,
+			region: 'east',
+			title: 'Stage',
+			collapsible: true,
+			collapsed: true,
+			split: true,
+			bodyPadding: 4,
+			items: [me.tabs]
+		});		
+
+		return me.panel;
+	}
+});
+
 Ext.define('OCS.ResellerView', {
 	extend: 'OCS.DealView',
 	func: 'crm_deal_list',	
@@ -2773,7 +2839,7 @@ Ext.define('OCS.Reseller', {
 		var me = this;
 		
 		me.reseller = new OCS.ResellerView();
-		me.action = new OCS.DealAction();
+		me.action = new OCS.ResellerAction();
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
