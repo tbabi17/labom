@@ -1851,9 +1851,9 @@ Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
 	title: 'Create reseller',
 	maximizable: true,
-	height: 550,
+	height: 250,
 	modal: false,
-	width: 500,	
+	width: 300,	
 	modal: true,
 
 	initComponent: function() {
