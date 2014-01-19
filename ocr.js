@@ -2666,12 +2666,8 @@ Ext.define('OCS.ResellerAction', {
 					id: 'reseller_closewon',
 					scope: this,
 					handler: function() {
-						if (me.dealActivity.openActivityCount() > 0) {
+						if (me.resellerActivity.openActivityCount() > 0) {
 							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
-							return;
-						}
-						if (me.dealProduct.productCount() == 0) {
-							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are no products !', function() {});
 							return;
 						}
 
