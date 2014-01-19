@@ -5935,7 +5935,7 @@ Ext.define('OCS.ResellerContactView', {
 		
 	createView: function() {
 		var me = this;
-		me.modelName = 'CRM_CONTACT';
+		me.modelName = 'CRM_RESELLER_CUSTOMER';
 		me.createStore();
 
 		me.grid = Ext.create('OCS.GridView', {	
