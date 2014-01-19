@@ -2637,7 +2637,7 @@ Ext.define('OCS.ResellerAction', {
 			border: true,
 			flex: 0.45,
 			region: 'east',
-			title: 'Stage',
+			title: 'Actions',
 			collapsible: true,
 			collapsed: true,
 			split: true,
