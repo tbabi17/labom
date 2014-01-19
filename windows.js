@@ -1872,13 +1872,13 @@ Ext.define('OCS.ResellerCreateWindow', {
 				name: 'deal'
 			},{
 				xtype: 'numberfield',
-				value: 0,
+				value: me.yearValue(),
 				fieldLabel: 'Year',
 				allowBlank: false,
-				name: 'year' 
+				name: 'year'
 			},{
 				xtype: 'numberfield',
-				value: 0,
+				value: me.monthValue(),
 				fieldLabel: 'Month',
 				allowBlank: false,
 				name: 'month' 
@@ -1937,5 +1937,13 @@ Ext.define('OCS.ResellerCreateWindow', {
 		me.items = [me.form];		
 
 		me.callParent(arguments);
+	},
+
+	yearValue: function() {
+		return new Date().getFullYear();
+	},
+	
+	monthValue: function() {
+		return new Date().getMonth()+1;
 	}
 });
