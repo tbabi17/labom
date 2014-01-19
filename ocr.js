@@ -5927,6 +5927,31 @@ Ext.define('OCS.ContactView', {
 	}
 });
 
+Ext.define('OCS.ResellerContactView', {
+	extend: 'OCS.ContactView',
+	func: 'crm_reseller_list',	
+	table: 'crm_customer',
+	tab: 'none',
+		
+	createView: function() {
+		var me = this;
+		me.modelName = 'CRM_CONTACT';
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {	
+			title: 'Reseller list',
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			func: me.func,
+			search: true,
+			tbarable: true
+		});						
+
+		return me.grid;
+	}
+});
+
 Ext.define('OCS.PotentialWindow', {
 	extend: 'OCS.Window',
 	

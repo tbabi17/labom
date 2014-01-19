@@ -1859,22 +1859,9 @@ Ext.define('OCS.ResellerCreateWindow', {
 	initComponent: function() {
 		var me = this;				
 		
-		me.resellerList = new Ext.create('OCS.GridWithFormPanel', {
-			modelName:'CRM_CONTACT',
-			func:'crm_reseller_list',
-			title: 'Reseller list',
-			table: 'crm_customer',
-			tab: 'reseller_crm_reseller_list',
-			buttons: false,
-			feature: false,
-			insert: (user_level==0),
-			remove: (user_level==0),	
-			defaultRec: {
-				data: {
-					product_id: '0',
-					price: '0'
-				}
-			}
+		me.resellerList = Ext.create('OCS.ContactView', {
+			flex: 1,
+			region: 'center'
 		});
 
 		me.form = Ext.create('OCS.FormPanel', {
@@ -1958,15 +1945,8 @@ Ext.define('OCS.ResellerCreateWindow', {
 			region: 'north',
 			flex: 1,
 			border: false,
-			items: me.resellerList.createGrid()
-		}, me.form];	
-		
-		me.resellerList.grid.on('itemclick', function(dv, record, item, index, e) {
-				if (me.form) {
-					
-				}				
-			}
-		);
+			items: me.resellerList.createView()
+		}, me.form];		
 
 		me.callParent(arguments);
 	}
