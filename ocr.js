@@ -2590,7 +2590,7 @@ Ext.define('OCS.DealAction', {
 });
 
 Ext.define('OCS.ResellerView', {
-	extend: 'OCS.GridWithFormPanel',
+	extend: 'OCS.DealView',
 	func: 'crm_deal_list',	
 	sortField: 'closing_date',
 	table: 'crm_deals',
