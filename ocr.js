@@ -2601,7 +2601,6 @@ Ext.define('OCS.ResellerAction', {
 			me.resellerPosts.updateSource(rec);
 			me.resellerActivity.updateSource(rec);
 			me.resellerProduct.updateSource(rec);
-			me.resellerTeams.updateSource(rec);
 			me.resellerCommission.updateSource(rec);
 
 			me.panel.expand();			
@@ -2618,7 +2617,6 @@ Ext.define('OCS.ResellerAction', {
 		me.resellerActivity = new OCS.DealActivityGrid();
 		me.resellerProduct = new OCS.DealProductGrid();
 		me.resellerCommission = new OCS.DealCommissionGrid();
-		me.resellerTeams = new OCS.DealSalesTeamGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -2630,8 +2628,7 @@ Ext.define('OCS.ResellerAction', {
 				me.dealContact.createPanel(),			
 				me.dealActivity.createPanel(),
 				me.dealProduct.createPanel(),
-				me.dealCommission.createPanel(),
-				me.dealTeams.createPanel()
+				me.dealCommission.createPanel()
 			]
 		});				
 
