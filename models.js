@@ -656,6 +656,26 @@ Ext.define('CRM_DEAL', {
 	fields: fields['CRM_DEAL_FIELDS']
 });
 
+fields['CRM_RESELLER_FIELDS'] = [
+   {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'status', text: 'Status', width: 80, align: 'center'},
+   {name: 'deal', text: 'Topic Name', width: 200, primary: true, renderer: renderTopicName},
+   {name: 'stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
+   {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
+   {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
+   {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
+   {name: '_date', text: 'Created on', width: 120},
+   {name: 'descr', text: 'Description', width: 200, hidden: true},
+   {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
+   {name: 'userCode', text: 'Created by', width: 80, hidden: true},
+   {name: 'notify', text: 'Notify', hidden: true}
+];
+
+Ext.define('CRM_RESELLER', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_RESELLER_FIELDS']
+});
+
 
 fields['CRM_POTENTIAL_FIELDS'] = [
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},

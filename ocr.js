@@ -2589,6 +2589,177 @@ Ext.define('OCS.DealAction', {
 	}
 });
 
+Ext.define('OCS.ResellerView', {
+	extend: 'OCS.GridWithFormPanel',
+	func: 'crm_deal_list',	
+	sortField: 'closing_date',
+	table: 'crm_deals',
+	tab: 'my_deal_list',
+	title: 'All Deals',
+	sub: 'my_open_leads',
+	primary: 'deal_id',
+	xlsName: 'Deal',
+
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls: 'list',
+				text: 'Views',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Open Deals',
+							handler: function(widget, event) {
+								me.filterData('Open Deals');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Closed Deals',
+							handler: function(widget, event) {
+								me.filterData('Closed Deals');
+							}
+						}),						
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Deals',
+							handler: function(widget, event) {
+								me.filterData('All Deals');
+							}
+						}),
+						'-',
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'My Deals',
+							handler: function(widget, event) {
+								me.filterData('My Deals');
+							}
+						})
+					]
+				}		
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					if (me.grid.getView().getSelectionModel().getSelection().length > 0) {
+						new OCS.NewDealWindow({
+							selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						}).createWindow();
+					} else 
+						Ext.MessageBox.alert('Status', 'No selection !', function() {});
+				}
+			}),			
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Delete',
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'import',
+				text: 'Import...',
+				handler: function(widget, event) {
+					new OCS.UploadWindow({
+						name: me.xlsName						
+					}).show();
+				}
+			}),	
+			Ext.create('Ext.Action', {
+				iconCls  : 'export',
+				text: 'Export...',
+				disabled: (user_level == '0'),
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
+					}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.xlsName},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal_assign',
+				text: 'Assign ...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealAssignWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								ids: me.selectedIds('deal_id'),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			,'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: 'crm_reseller_process'
+					}).show();
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
+	createView: function() {
+		var me = this;
+		me.modelName = 'CRM_RESELLER';
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {	
+			id: me.tab,
+			title: me.title,
+			store: me.store,
+			flex: 1,
+			func: me.func,
+			feature: true,
+			actions: me.createActions(),
+			columns: me.createColumns(),
+			viewConfig: {
+				itemclick: function(dv, record, item, index, e) {
+					views['reseller'].action.select(record);
+				}
+			}
+		});
+
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
+				views['reseller'].action.select(record);				
+			}
+		);
+
+		me.filterData('Open Deals');
+		return me.grid;
+	}
+});
+
 Ext.define('OCS.Reseller', {
 	extend: 'OCS.Module',
 	
