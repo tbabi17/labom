@@ -2624,11 +2624,11 @@ Ext.define('OCS.ResellerAction', {
 			region: 'center',
 			tabPosition: 'top',	
 			items: [
-				me.dealPosts.createPanel(),
-				me.dealContact.createPanel(),			
-				me.dealActivity.createPanel(),
-				me.dealProduct.createPanel(),
-				me.dealCommission.createPanel()
+				me.resellerPosts.createPanel(),
+				me.resellerContact.createPanel(),			
+				me.resellerActivity.createPanel(),
+				me.resellerProduct.createPanel(),
+				me.resellerCommission.createPanel()
 			]
 		});				
 
