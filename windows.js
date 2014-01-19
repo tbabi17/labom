@@ -1865,7 +1865,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 			title: 'Reseller list',
 			table: 'crm_customer',
 			tab: 'reseller_crm_reseller_list',
-			buttons: true,
+			buttons: false,
 			feature: false,
 			insert: (user_level==0),
 			remove: (user_level==0),	
