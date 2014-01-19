@@ -1859,7 +1859,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	initComponent: function() {
 		var me = this;				
 		
-		me.resellerList = Ext.create('OCS.ContactView', {
+		me.resellerList = Ext.create('OCS.ResellerContactView', {
 			flex: 1,
 			region: 'center'
 		});
