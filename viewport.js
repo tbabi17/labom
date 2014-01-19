@@ -53,6 +53,9 @@ Ext.define('OCS.Viewport', {
 		 if (pk == 'deals')
 			 views['deals'] = new OCS.Deals();
 
+		 if (pk == 'reseller')
+			 views['reseller'] = new OCS.Reseller();
+
 		 if (pk == 'quotes')
 			 views['quotes'] = new OCS.QuotePanel();
 
@@ -67,6 +70,7 @@ Ext.define('OCS.Viewport', {
 
 		 if (pk == 'product')
 			 views['product'] = new OCS.ProductPanel();
+
 
 		 me.items = [			
 			views['topbar'],

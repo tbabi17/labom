@@ -2589,6 +2589,54 @@ Ext.define('OCS.DealAction', {
 	}
 });
 
+Ext.define('OCS.Reseller', {
+	extend: 'OCS.Module',
+	
+	reload: function(rec) {
+		var me = this;
+		me.reseller.reload();
+		me.action.select(rec);
+	},
+
+	createPanel: function() {
+		var me = this;
+		
+		me.reseller = new OCS.DealView();
+		me.action = new OCS.DealAction();
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			region: 'center',
+			border: false,
+			bodyPadding: 2,
+			defaults: {
+				collapsible: true,
+				split: true,
+				border: false
+			},
+			items: [{	
+				region: 'center',
+				layout: 'border',				
+				title: '',
+				border: false,
+				collapsible: false,
+				items: [
+					{
+						region: 'center',	
+						flex: 0.6,
+						layout: 'border',						
+						items: [me.reseller.createView()]
+					}, me.action.createPanel()
+				]
+			}]
+		});
+		
+
+		return me.panel;
+	}
+});
+
+
 Ext.define('OCS.Cases', {
 	extend: 'OCS.Module',
 		
