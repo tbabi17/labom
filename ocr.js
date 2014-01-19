@@ -2597,13 +2597,12 @@ Ext.define('OCS.ResellerAction', {
 		if (rec) {		
 			me.selected = rec;
 			
-			me.dealContact.updateSource(rec);
-			me.dealPosts.updateSource(rec);
-			me.dealActivity.updateSource(rec);
-			me.dealProduct.updateSource(rec);
-			me.dealCompotetor.updateSource(rec);
-			me.dealTeams.updateSource(rec);
-			me.dealCommission.updateSource(rec);
+			me.resellerContact.updateSource(rec);
+			me.resellerPosts.updateSource(rec);
+			me.resellerActivity.updateSource(rec);
+			me.resellerProduct.updateSource(rec);
+			me.resellerTeams.updateSource(rec);
+			me.resellerCommission.updateSource(rec);
 
 			me.panel.expand();			
 		} else
@@ -2614,13 +2613,12 @@ Ext.define('OCS.ResellerAction', {
 		var me = this;
 		me.createTmpl();
 				
-		me.dealPosts = new OCS.DealPostGrid();
-		me.dealContact = new OCS.DealContactGrid();
-		me.dealActivity = new OCS.DealActivityGrid();
-		me.dealProduct = new OCS.DealProductGrid();
-		me.dealCompotetor = new OCS.DealCompetitorGrid();
-		me.dealCommission = new OCS.DealCommissionGrid();
-		me.dealTeams = new OCS.DealSalesTeamGrid();
+		me.resellerPosts = new OCS.DealPostGrid();
+		me.resellerContact = new OCS.DealContactGrid();
+		me.resellerActivity = new OCS.DealActivityGrid();
+		me.resellerProduct = new OCS.DealProductGrid();
+		me.resellerCommission = new OCS.DealCommissionGrid();
+		me.resellerTeams = new OCS.DealSalesTeamGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -2632,7 +2630,6 @@ Ext.define('OCS.ResellerAction', {
 				me.dealContact.createPanel(),			
 				me.dealActivity.createPanel(),
 				me.dealProduct.createPanel(),
-				me.dealCompotetor.createPanel(),
 				me.dealCommission.createPanel(),
 				me.dealTeams.createPanel()
 			]
