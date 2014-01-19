@@ -1885,37 +1885,21 @@ Ext.define('OCS.ResellerCreateWindow', {
 			flex: 0.75,
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: 'CRM ID',
+				fieldLabel: 'Topic name',
 				readOnly: true,
-				disabled: true,
-				hidden: true,
-				allowBlank: false,
-				name: 'crm_id'
+				name: 'deal'
 			},{
-				xtype: 'textfield',
-				fieldLabel: 'Product',
-				readOnly: true,
-				name: 'product_name'
-			},{
-				xtype: 'textfield',
-				fieldLabel: 'Deal ID',
-				readOnly: true,
-				hidden: true,
-				value: '0',
-				disabled: true,
-				name: 'deal_id'
-			},{
-				xtype: 'currencyfield',
+				xtype: 'numberfield',
 				value: 0,
-				fieldLabel: 'Price',
+				fieldLabel: 'Year',
 				allowBlank: false,
-				name: 'price' 
+				name: 'year' 
 			},{
-				xtype: 'currencyfield',
+				xtype: 'numberfield',
 				value: 0,
-				fieldLabel: 'Amount',
+				fieldLabel: 'Month',
 				allowBlank: false,
-				name: 'amount' 
+				name: 'month' 
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Created by',				
