@@ -2703,6 +2703,13 @@ Ext.define('OCS.ResellerView', {
 			}),
 			'-',
 			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'Create...',
+				handler: function(widget, event) {
+					
+				}
+			}),
+			Ext.create('Ext.Action', {
 				iconCls   : 'edit',
 				text: 'Expand...',
 				handler: function(widget, event) {
