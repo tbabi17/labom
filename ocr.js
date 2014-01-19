@@ -2714,31 +2714,31 @@ Ext.define('OCS.ResellerView', {
 					items: [
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'Open Deals',
+							text: 'Open Connections',
 							handler: function(widget, event) {
-								me.filterData('Open Deals');
+								me.filterData('Open Connections');
 							}
 						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'Closed Deals',
+							text: 'Closed Connections',
 							handler: function(widget, event) {
-								me.filterData('Closed Deals');
+								me.filterData('Closed Connections');
 							}
 						}),						
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'All Deals',
+							text: 'All Connections',
 							handler: function(widget, event) {
-								me.filterData('All Deals');
+								me.filterData('All Connections');
 							}
 						}),
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'My Deals',
+							text: 'My Connections',
 							handler: function(widget, event) {
-								me.filterData('My Deals');
+								me.filterData('My Connections');
 							}
 						})
 					]
@@ -2867,7 +2867,7 @@ Ext.define('OCS.ResellerView', {
 			}
 		);
 
-		me.filterData('Open Deals');
+		me.filterData('Open Connections');
 		return me.grid;
 	}
 });
