@@ -2481,7 +2481,7 @@ Ext.define('OCS.DealAction', {
 				dockedItems:[{
 					xtype: 'toolbar',
 					dock: 'bottom',
-					items: [ {
+					items: [{
 						iconCls: 'deal_qualify',
 						text: 'Disqualify',
 						id: 'deal_delete',
@@ -2629,7 +2629,50 @@ Ext.define('OCS.ResellerAction', {
 				me.resellerActivity.createPanel(),
 				me.resellerProduct.createPanel(),
 				me.resellerCommission.createPanel()
-			]
+			],
+			dockedItems:[{
+				xtype: 'toolbar',
+				dock: 'bottom',
+				items: [{
+					iconCls: 'deal_assign',
+					text: 'Assign...',
+					id: 'deal_assign',
+					scope: this,
+					handler: function() {
+						if (me.selected.get('owner') == logged || user_level > 0)
+							new OCS.AssignWindow({
+								selected: me.selected
+							}).show();
+						else
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+				},'-',
+				{
+					iconCls: 'deal_won',
+					text: 'Close as won',
+					id: 'deal_closewon',
+					scope: this,
+					handler: function() {
+						if (me.dealActivity.openActivityCount() > 0) {
+							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
+							return;
+						}
+						if (me.dealProduct.productCount() == 0) {
+							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are no products !', function() {});
+							return;
+						}
+
+						if (me.selected.get('owner') == logged) {				
+							new OCS.DealDescrWindow({
+								selected: me.selected,
+								stage: 'close as won',
+								title: 'Close as won'
+							}).show();
+						} else 
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+				}]
+			}]
 		});				
 
 		me.panel = Ext.create('Ext.Panel', {	
