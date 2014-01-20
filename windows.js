@@ -1710,6 +1710,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			tab: 'deal_crm_product_list',
 			buttons: true,
 			feature: false,
+			tbar: false,
 			insert: (user_level==0),
 			remove: (user_level==0),	
 			defaultRec: {

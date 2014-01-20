@@ -514,6 +514,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	remove: false,
 	hidden: false,
 	feature: true,
+	tbar: true,
 
 	constructor: function(config) {
         this.initConfig(config);
@@ -598,6 +599,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			func: me.func,
 			feature: me.feature,
 			hidden: me.hidden,
+			tbarable: me.tbar,
 			listeners : {
 				scope: this,
 				single: true,
