@@ -1284,7 +1284,8 @@ function customerInfo(crm_id) {
 			data: {
 				crm_id: crm_id,
 				parent_crm_id: crm_id,
-				type: 'БАЙГУУЛЛГА'
+				type: 'БАЙГУУЛЛГА',
+				firstName: ''
 			}
 		}
 	}).show();
