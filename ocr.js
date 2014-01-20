@@ -4482,7 +4482,7 @@ Ext.define('OCS.Campaigns', {
 							layout:'border',
 							region: 'south',
 							border: false,
-							flex: 1,
+							flex: 0.5,
 							items: [me.contacts.createView()]
 						}]
 					},
