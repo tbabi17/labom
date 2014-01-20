@@ -518,7 +518,7 @@ Ext.define('CRM_SALES', {
 
 fields['CRM_PRODUCT_FIELDS'] = [
    {name: 'product_id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'product_name', text: 'Name', width: 250, primary: true}, 
+   {name: 'product_name', text: 'Name', width: 450, primary: true}, 
    {name: 'product_type', text: 'Type', width: 100},
    {name: 'price', text: 'Unit price', type: 'float', width: 90, renderer: renderMoney, align: 'right'}
 ];
