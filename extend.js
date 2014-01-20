@@ -2178,6 +2178,15 @@ Ext.define('OCS.GridView', {
 		}).show();
 	},
 
+	selectedRecord: function() {
+		var me = this;
+		var recs = me.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0];
+		
+		return 0;
+	},
+
 	initSorterBar: function() {
 		var me = this;
 		me.reorderer = Ext.create('Ext.ux.BoxReorderer', {
