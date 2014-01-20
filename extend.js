@@ -2094,8 +2094,8 @@ Ext.define('OCS.GridView', {
 						me.contextMenu.showAt(position);
 				},				
 				itemclick: function(dv, record, item, index, e) {
-					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
-						if (Ext.getCmp('contact_form') && me.func == 'crm_retail_list')						
+					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list' || me.func == 'crm_contact_list') {
+						if (Ext.getCmp('contact_form') && (me.func == 'crm_retail_list' || me.func == 'crm_contact_list'))						
 							Ext.getCmp('contact_form').getForm().loadRecord(record);
 					}
 
