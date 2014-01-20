@@ -1441,7 +1441,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 		
 		if (!me.selected) {
 			me.selected = views[pk].selectedRecord();
-			title: me.getCustomerName(me.selected)
+			me.title = me.getCustomerName(me.selected)
 		}
 
 		me.property = new OCS.DetailGrid();
