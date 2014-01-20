@@ -200,16 +200,7 @@ Ext.define('OCS.DealGrid', {
 		});
 
 		return me.panel;
-	},
-
-	selectedRecord: function() {
-		var me = this;
-		var recs = me.grid.getView().getSelectionModel().getSelection();
-		if (recs && recs.length > 0)
-			return recs[0];
-		
-		return 0;
-	}
+	}	
 });
 
 Ext.define('OCS.DealContactGrid', {
