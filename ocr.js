@@ -1852,8 +1852,7 @@ Ext.define('OCS.DetailGrid', {
 				handler: function(widget, event) {
 					if (me.selected.get('type') == 'БАЙГУУЛЛАГА') {
 						new OCS.ContactNewWindow({
-							record: me.selected,
-							title: 'Add contact to - '+me.selected.get('firstName'),
+							record: me.selected,							
 							backgrid: me.grid
 						}).show();
 					} else
@@ -5555,6 +5554,13 @@ Ext.define('OCS.ContactNewWindow', {
 	initComponent: function() {
 		var me = this;
 		
+		if (me.selected) {
+			if (me.selected.get('crm_name'))
+				me.title = 'Add contact to - '+me.selected.get('crm_name').split(',')[0];
+			else
+				me.title = 'Add contact to - '+me.selected.get('firstName');
+		}
+
 		me.form = Ext.create('OCS.ContactForm', {
 			id: 'contact_form',
 			region: 'center',
