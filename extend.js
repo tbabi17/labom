@@ -1964,7 +1964,7 @@ Ext.define('OCS.GridView', {
 		var me = this;
 		
 //		me.tbar = me.initSorterBar();
-		if (me.actions.length > 0 && me.tbarable)		
+		if (me.actions.length > 0 && !me.tbarable)		
 			me.tbar = me.actions;
 
 		me.searchField = new Ext.ux.form.SearchField({
