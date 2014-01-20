@@ -4481,8 +4481,9 @@ Ext.define('OCS.Campaigns', {
 							xtype: 'panel',
 							layout:'border',
 							region: 'south',
+							split: true,
 							border: false,
-							flex: 0.5,
+							flex: 0.75,
 							items: [me.contacts.createView()]
 						}]
 					},
