@@ -498,6 +498,8 @@ Ext.define('OCS.DealProductGrid', {
 	sortField: 'product_name',
 	modelName: 'CRM_DEAL_PRODUCTS',
 	collapsed: false,
+	primary: 'id',
+	values: 'id',
 	
 	createActions: function() {
 		var me = this;
