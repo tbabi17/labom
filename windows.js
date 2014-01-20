@@ -1919,10 +1919,9 @@ Ext.define('OCS.ResellerCreateWindow', {
 				text: 'Commit',				
 				handler: function() {
 					var form = this.up('form').getForm();
-					var values = form.getValues(true);
+					if (form.isValid())	{
+						var values = form.getValues(true);
 
-					if (form.findField('amount').getValue() > 0) {					
-						var descr = form.findField('descr').getValue();
 						values = form.findField('deal').getValue()+"&"+form.findField('owner').getValue()+"&"+form.findField('descr').getValue()+"&"+form.findField('year').getValue()+"&"+form.findField('month').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
@@ -1934,9 +1933,8 @@ Ext.define('OCS.ResellerCreateWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});	
-					} else
-						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+						});
+					}
 				}
 			}]
 		});
