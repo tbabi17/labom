@@ -1875,6 +1875,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'Topic name',
+				allowBlank: false,
 				name: 'deal'
 			},{
 				xtype: 'numberfield',
