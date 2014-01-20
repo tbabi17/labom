@@ -259,6 +259,10 @@ Ext.define('OCS.Module', {
 				action = 'update';
 				captcha = 'case_id='+rec.get('value');
 			} else
+			if (me.table == 'crm_products' && rec.get('name').substring(2, rec.get('name').length) == 'product_id' && rec.get('value') != '0') {
+				action = 'update';
+				captcha = 'product_id='+rec.get('value');
+			} else
 			if (rec.get('name').substring(2, rec.get('name').length) == 'id' && rec.get('value') != '0') {
 				action = 'update';
 				captcha = 'id='+rec.get('value');
