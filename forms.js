@@ -1437,6 +1437,14 @@ Ext.define('OCS.ContactForm', {
 						name: 'job_title',
 						margins: '0 0 0 6',
 						flex: 0.5
+					},{
+						hidden: true,
+						name: 'userCode',
+						value: logged
+					},{
+						hidden: true,
+						name: 'owner',
+						value: logged
 					}]
 				}]
 			}
