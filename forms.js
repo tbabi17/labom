@@ -1208,7 +1208,7 @@ Ext.define('OCS.ContactForm', {
 		var me = this;	
 		var name = '';
 		if (me.record.data['crm_name'])
-			name = me.record.data['crm_name'];
+			name = me.record.data['crm_name'].split(',')[0];
 		else
 			name = me.record.data['firstName'];
 
