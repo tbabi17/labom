@@ -4452,8 +4452,7 @@ Ext.define('OCS.Campaigns', {
 		me.campaignActivity = new OCS.CampaignActivityGrid();
 		me.contacts = Ext.create('OCS.ContactView', {
 			flex: 1,
-			region: 'center',
-			search: true
+			region: 'south'
 		});
 
 
@@ -4478,13 +4477,7 @@ Ext.define('OCS.Campaigns', {
 						region: 'center',	
 						flex: 0.7,
 						layout: 'border',						
-						items: [me.campaigns.createGrid(), {
-							xtype: 'panel',
-							region: 'south',
-							border: false,
-							flex: 1,
-							items: [me.contacts.createView()]
-						}]
+						items: [me.campaigns.createGrid(),me.contacts.createView()]
 					},
 					{
 						region: 'west',	
