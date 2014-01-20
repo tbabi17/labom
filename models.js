@@ -1279,15 +1279,16 @@ Ext.override('Ext.data.Store', {
 }); 
 
 function customerInfo(crm_id) {
+	var store = Ext.getCmp('retail_list').getStore();
+	var record = new store.recordType({
+		crm_id: crm_id,
+		parent_crm_id: crm_id,
+		type: 'БАЙГУУЛЛГА',
+		firstName: ''
+	});
+
 	new OCS.CustomerDetailWindow({
-		selected: {
-			data: {
-				crm_id: crm_id,
-				parent_crm_id: crm_id,
-				type: 'БАЙГУУЛЛГА',
-				firstName: ''
-			}
-		}
+		selected: record
 	}).show();
 }
 

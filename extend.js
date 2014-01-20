@@ -1945,8 +1945,7 @@ Ext.define('OCS.GridView', {
 	search : true,
 	emptyText: 'No records.',
 	cls : 'custom-grid',
-	trackMouseOver: true,
-	
+	trackMouseOver: true,	
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);

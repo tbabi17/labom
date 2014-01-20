@@ -902,6 +902,7 @@ Ext.define('OCS.CorporatePanel', {
 		};
 
 		me.grid = Ext.create('OCS.GridView', {	
+			id: 'retail_list',
 			store: me.store,
 			columns: me.createColumns(),
 			features: [me.filters],
@@ -1841,7 +1842,7 @@ Ext.define('OCS.DetailGrid', {
 				iconCls   : 'add',
 				text: 'Add ...',
 				handler: function(widget, event) {
-					if (me.selected.data['type'] == 'БАЙГУУЛЛАГА' || me.selected.get('type') == 'БАЙГУУЛЛАГА') {
+					if (me.selected.get('type') == 'БАЙГУУЛЛАГА') {
 						new OCS.ContactNewWindow({
 							record: me.selected,
 							title: 'Add contact to - '+me.selected.get('firstName'),
