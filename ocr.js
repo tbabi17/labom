@@ -4452,7 +4452,8 @@ Ext.define('OCS.Campaigns', {
 		me.campaignActivity = new OCS.CampaignActivityGrid();
 		me.contacts = Ext.create('OCS.ContactView', {
 			flex: 1,
-			region: 'center'
+			region: 'center',
+			search: true
 		});
 
 
