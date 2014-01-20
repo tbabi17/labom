@@ -2100,7 +2100,6 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func == 'crm_contact_list' && me.tab == 'none') {
-						alert('1');
 						Ext.getCmp('contact_form').getForm().findField('crm_id').setValue(record.get('crm_id'));
 						Ext.getCmp('contact_form').getForm().findField('firstName').setValue(record.get('firstName'));
 						Ext.getCmp('contact_form').getForm().findField('lastName').setValue(record.get('lastName'));
