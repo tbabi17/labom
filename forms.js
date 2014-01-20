@@ -1205,8 +1205,13 @@ Ext.define('OCS.ContactForm', {
 
 
 	initComponent: function() {
-		var me = this;
-		var name = me.record.data['firstName'];
+		var me = this;	
+		var name = '';
+		if (me.record.data['crm_name'])
+			name = me.record.data['crm_name'];
+		else
+			name = me.record.data['firstName'];
+
 		var companyName = name;
 		if (name.indexOf('<g>') != -1) {
 			companyName = name.substring(name.indexOf('<g>')+3, name.indexOf('</g'));			
