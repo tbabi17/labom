@@ -815,6 +815,12 @@ Ext.define('OCS.Window', {
 			  Ext.MessageBox.alert('Status', 'Error !', function() {});
 		   }
 		});
+	},
+
+	getCustomerName: function(rec) {
+		v = rec.get('level');
+		if (rec.data['_class'] && rec.data['_class'].indexOf('VIP') != -1) v = 'vip';
+		return '<span class="circle '+v+'">&nbsp;</span> '+rec.get('firstName')+' <span style="color:gray">'+rec.get('lastName')+'</span>';
 	}
 });
 
