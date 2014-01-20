@@ -511,15 +511,21 @@ Ext.define('OCS.DealProductGrid', {
 							selected: me.selected,
 							backgrid: me.grid
 						}).show();
-/*
-						new OCS.ProductWindow({
-							selected: me.selected,
-							backgrid: me.grid
-						}).createWindow();*/
 					else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'delete',
+				text: 'Remove from list ...',
+				handler: function(widget, event) {		
+					if (me.action)
+						me.deleteRecord();
+					else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'sales',
 				text: 'Create invoice ...',
