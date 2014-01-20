@@ -900,9 +900,9 @@ Ext.define('OCS.CorporatePanel', {
 				dataIndex: 'level'
 			}]
 		};
-
+		
+		views['retail_list'] = me.store;
 		me.grid = Ext.create('OCS.GridView', {	
-			id: 'retail_list',
 			store: me.store,
 			columns: me.createColumns(),
 			features: [me.filters],
