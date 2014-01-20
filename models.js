@@ -1279,16 +1279,16 @@ Ext.override('Ext.data.Store', {
 }); 
 
 function customerInfo(crm_id) {
-	var store = views['retail_list'];
+/*	var store = views['retail_list'];
 	var record = new store.recordType({
 		crm_id: crm_id,
 		parent_crm_id: crm_id,
 		type: 'БАЙГУУЛЛГА',
 		firstName: ''
-	});
+	});*/
 
 	new OCS.CustomerDetailWindow({
-		selected: record
+		
 	}).show();
 }
 
