@@ -1928,6 +1928,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 						   params: {handle: 'web', table: 'crm_deals', action: 'insert_reseller_deals', values: values, where: ''},
 						   success: function(response, opts) {							  
 							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
+							   views['reseller'].reload();
 							   me.close();
 						   },
 						   failure: function(response, opts) {										   
