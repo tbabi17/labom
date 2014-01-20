@@ -5982,6 +5982,7 @@ Ext.define('OCS.ContactView', {
 			columns: me.createColumns(),
 			actions: me.createActions(),
 			func: me.func,
+			tab: me.tab,
 			search: true,
 			tbarable: true
 		});						
