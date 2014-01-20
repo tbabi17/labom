@@ -1808,10 +1808,10 @@ Ext.define('OCS.DealAddProductWindow', {
 						Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
 						return;
 					}
-					alert(form.findField('amount').getValue()+' '+form.findField('amount').getRawValue());
+
 					if (form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
-						values = "deal_id="+me.deal_id+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();//+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();//+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
