@@ -225,16 +225,7 @@ Ext.define('OCS.Module', {
 
 		if (me.form)
 			me.form.loadRecord(rec);
-	},
-	
-	selectedRecord: function() {
-		var me = this;
-		var recs = me.grid.getView().getSelectionModel().getSelection();
-		if (recs && recs.length > 0)
-			return recs[0];
-		
-		return 0;
-	},
+	},	
 
 	commitRecord: function() {		
 		var me = this;
