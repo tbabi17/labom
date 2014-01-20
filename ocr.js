@@ -2176,6 +2176,15 @@ Ext.define('OCS.Deals', {
 		me.deals.reload();
 		me.action.select(rec);
 	},
+	
+	selectedRecord: function() {
+		var me = this;
+		var recs = me.deals.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0];
+		
+		return 0;
+	},
 
 	createPanel: function() {
 		var me = this;
