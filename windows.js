@@ -1856,7 +1856,7 @@ Ext.define('OCS.DealAddProductWindow', {
 
 Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
-	title: 'Create reseller',
+	title: 'Create connections',
 	maximizable: true,
 	height: 250,
 	modal: false,
