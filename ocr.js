@@ -1850,13 +1850,13 @@ Ext.define('OCS.DetailGrid', {
 				iconCls   : 'add',
 				text: 'Add ...',
 				handler: function(widget, event) {
-					if (me.selected.get('type') == 'БАЙГУУЛЛАГА') {
+//					if (me.selected.get('type') == 'БАЙГУУЛЛАГА') {
 						new OCS.ContactNewWindow({
 							record: me.selected,							
 							backgrid: me.grid
 						}).show();
-					} else
-						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+//					} else
+//						Ext.MessageBox.alert('Status', 'Not available !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
