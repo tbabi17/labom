@@ -519,9 +519,13 @@ Ext.define('OCS.DealProductGrid', {
 				iconCls : 'delete',
 				text: 'Remove from list ...',
 				handler: function(widget, event) {		
-					if (me.action)
-						me.deleteRecord();
-					else
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {							
+							me.deleteRecord();											
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
