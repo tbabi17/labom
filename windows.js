@@ -1439,8 +1439,10 @@ Ext.define('OCS.CustomerDetailWindow', {
 	initComponent: function() {
 		var me = this;			
 		
-		if (!me.selected)
+		if (!me.selected) {
 			me.selected = views[pk].selectedRecord();
+			title: me.getCustomerName(me.selected)
+		}
 
 		me.property = new OCS.DetailGrid();
 		me.activity = new OCS.DetailActivityGrid();
