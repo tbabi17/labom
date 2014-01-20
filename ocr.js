@@ -699,7 +699,6 @@ Ext.define('OCS.RetailPanel', {
 		var me = this;
 		me.createStore();		
 
-		views['retail_list'] = me.store;
 		me.grid = Ext.create('OCS.GridView', {
 			store: me.store,
 			columns: me.createColumns(),
@@ -901,8 +900,7 @@ Ext.define('OCS.CorporatePanel', {
 				dataIndex: 'level'
 			}]
 		};
-		
-		views['retail_list'] = me.store;
+
 		me.grid = Ext.create('OCS.GridView', {	
 			store: me.store,
 			columns: me.createColumns(),
