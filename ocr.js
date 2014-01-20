@@ -5970,7 +5970,8 @@ Ext.define('OCS.ContactView', {
 	func: 'crm_contact_list',	
 	table: 'crm_customer',
 	tab: 'none',
-	
+	title: 'Search contact',
+
 	createActions: function() {
 		var me = this;
 		me.actions = [
@@ -5991,7 +5992,7 @@ Ext.define('OCS.ContactView', {
 		me.createStore();
 
 		me.grid = Ext.create('OCS.GridView', {	
-			title: 'Search contact',
+			title: me.title,
 			store: me.store,
 			columns: me.createColumns(),
 			actions: me.createActions(),
