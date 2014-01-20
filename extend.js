@@ -830,7 +830,7 @@ Ext.define('OCS.Window', {
 		v = rec.get('level');
 		if (rec.data['_class'] && rec.data['_class'].indexOf('VIP') != -1) v = 'vip';
 		if (rec.data['crm_name'])
-			return rec.data['crm_name'];
+			return rec.get('crm_name').split(',')[0];
 
 		return '<span class="circle '+v+'">&nbsp;</span> '+rec.get('firstName')+' <span style="color:gray">'+rec.get('lastName')+'</span>';
 	}
