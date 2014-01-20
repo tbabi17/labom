@@ -4521,7 +4521,7 @@ Ext.define('OCS.CampaignPanel', {
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls  : 'cmem',
-				text: 'Create members',
+				text: 'Create activities',
 				handler: function(widget, event) {
 					var record = me.grid.getView().getSelectionModel().getSelection()[0];
 					if (record.lenght == 0) {
@@ -4558,7 +4558,7 @@ Ext.define('OCS.CampaignPanel', {
 			}),
 			Ext.create('Ext.Action', {
 				iconCls  : 'dmem',
-				text: 'Remove members',
+				text: 'Remove activities',
 				handler: function(widget, event) {
 					var record = me.grid.getView().getSelectionModel().getSelection()[0];
 					if (record.lenght == 0) {
