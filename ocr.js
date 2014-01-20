@@ -4472,7 +4472,11 @@ Ext.define('OCS.Campaigns', {
 						region: 'center',	
 						flex: 0.7,
 						layout: 'border',						
-						items: [me.campaigns.createGrid()]
+						items: [me.campaigns.createGrid(), {
+							xtype: 'panel',
+							region: 'north',
+							flex: 1
+						}]
 					},
 					{
 						region: 'west',	
