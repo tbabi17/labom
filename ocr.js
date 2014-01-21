@@ -3904,7 +3904,8 @@ Ext.define('OCS.Reports', {
 
 	createPanel: function() {
 		var me = this;
-		
+		me.start = me.month();
+		me.end = me.nextmonth();
 		me.report = new OCS.BGridView({
 			store: me.store,
 			columns: me.createColumns(),
