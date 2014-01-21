@@ -205,6 +205,33 @@ Ext.define('OCS.Module', {
 
 		return v1.toUpperCase();//this.capitalise(v1)+' '+this.capitalise(v2);
 	},		
+	
+	month: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+	
+	prevmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m-1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	nextmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m+1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
 
 	getCustomerName: function(rec) {
 		if (rec.get('firstName'))
