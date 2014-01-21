@@ -253,6 +253,22 @@ Ext.define('OCS.RetailForm', {
 					    allowBlank: false,
 						flex: 0.5
 					},{
+						fieldLabel: 'Priority',
+						xtype: 'combo',
+						name: 'priority',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+						}),	
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						triggerAction: 'all',
+						value: 'medium',
+						editable: false,
+					    allowBlank: false,
+						flex: 0.5
+					},{
 						fieldLabel: 'Type',
 						xtype: 'combo',
 						name: '_class',
@@ -767,6 +783,22 @@ Ext.define('OCS.CorporateForm', {
 						valueField: 'value',
 						triggerAction: 'all',
 						editable: false,
+						flex: 0.5
+					},{
+						fieldLabel: 'Priority',
+						xtype: 'combo',
+						name: 'priority',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+						}),	
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						triggerAction: 'all',
+						value: 'medium',
+						editable: false,
+					    allowBlank: false,
 						flex: 0.5
 					},{
 						fieldLabel: 'Level',
