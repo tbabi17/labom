@@ -1178,7 +1178,7 @@ function renderNumber(v) {
 function renderReportNumber(v) {
 	if (v == 0)
 		return '';
-	return Ext.util.Format.number(v, '00,00,000.00');
+	return Ext.util.Format.number(v, '00,00,000');
 }
 
 function renderDate(v) {
