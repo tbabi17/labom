@@ -824,31 +824,31 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
 	   text: 'Meeting',
 	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'meeting_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
+				 {dataIndex:'meeting_t', text: '%', width: 40, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Quote',
 	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'quote_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
+				 {dataIndex:'quote_t', text: '%', width: 40, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'New Customer',
 	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'newcus_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
+				 {dataIndex:'newcus_t', text: '%', width: 40, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Expat Customer',
 	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'expat_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
+				 {dataIndex:'expat_t', text: '%', width: 40, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'VIP Customer',
 	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'vip_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
+				 {dataIndex:'vip_t', text: '%', width: 40, align: 'center', renderer: renderPrecent}]
    }
 ];
 
