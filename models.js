@@ -798,14 +798,19 @@ fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'meeting_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'meeting_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'meeting_t', text: '%', align: 'center', width: 90}, 
    {name: 'quote_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'quote_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'quote_t', text: '%', align: 'center', width: 90}, 
    {name: 'newcus_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'newcus_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'newcus_t', text: '%', align: 'center', width: 90}, 
    {name: 'expat_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'expat_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'expat_t', text: '%', align: 'center', width: 90}, 
    {name: 'vip_p', text: 'Plan', align: 'center', width: 90}, 
-   {name: 'vip_q', text: 'Success', align: 'center', width: 90}
+   {name: 'vip_q', text: 'Success', align: 'center', width: 90},
+   {name: 'vip_t', text: '%', align: 'center', width: 90} 
 ];
 
 Ext.define('CRM_REPORT_ACTIVITY', {
