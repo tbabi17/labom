@@ -814,7 +814,7 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 });
 
 columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
-   {dataIndex: 'owner', text: 'Owner', width: 250}, 
+   {dataIndex: 'owner', text: 'Owner', width: 150}, 
    {
 	   text: 'Meeting',
 	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center'},
