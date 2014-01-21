@@ -6005,12 +6005,32 @@ Ext.define('OCS.CampaignContactView', {
 	extend: 'OCS.ContactView',
 	func: 'crm_campaign_customer_list',
 	title: 'Campaign members',
-
+	
 	loadStore: function(where) {
 		var me = this;
 		me.where = where;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
 		me.store.loadPage(1);
+	},
+
+	createView: function() {
+		var me = this;
+		me.modelName = 'CRM_CONTACT';
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {	
+			title: me.title,
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			func: me.func,
+			tab: me.tab,
+			feature: false,
+			search: true,
+			tbarable: true
+		});						
+
+		return me.grid;
 	}
 });
 
