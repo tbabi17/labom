@@ -23,7 +23,6 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'level', text: '#', width: 30, align: 'center', lock: true, renderer: renderCustomerLevel},
 //   {name: 'campaign', text: 'Active campaign', width: 180, hidden: true, renderer: renderCampaign},
    {name: '_class', text: 'Class', width: 50, align: 'center', renderer: renderClass},     
-   {name: 'priority', text: 'Priority', width: 60, align: 'center'},     
    {name: 'regNo', text: 'Register', width: 80, hidden: true},   
    {name: 'firstName', text: 'First name', width: 100, renderer: renderTip, primary: true},
    {name: 'lastName', text: 'Last name', width: 100},
@@ -54,7 +53,8 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: '_date', type: 'datetime', text: 'Created on', width: 80, align: 'center'},
-   {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent}
+   {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
+   {name: 'priority', text: 'Priority', width: 60, align: 'center'}
 ];
 
 Ext.define('CRM_RETAIL', {
@@ -90,7 +90,6 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'type', text: 'CRM Type', width: 50, hidden:true},   
    {name: 'level', text: '#', width: 30, align: 'center', lock: true, renderer: renderCustomerLevel},
    {name: '_class', text: 'Class', width: 60, align: 'center', renderer: renderClass},      
-   {name: 'priority', text: 'Priority', width: 60, align: 'center'},     
    {name: 'regNo', text: 'Register', width: 65, align: 'center'},   
    {name: 'firstName', text: 'Name', width: 180, renderer: renderTip, primary: true},
    {name: 'lastName', text: 'Parent name', width: 120},
@@ -121,7 +120,8 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: '_date', type: 'datetime', text: 'Created on', width: 80, align: 'center'},
-   {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'}
+   {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'},
+   {name: 'priority', text: 'Priority', width: 60, align: 'center'}
 ];
 
 Ext.define('CRM_CORPORATE', {
