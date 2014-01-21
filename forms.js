@@ -820,7 +820,7 @@ Ext.define('OCS.CorporateForm', {
 						name: 'regNo',
 						fieldLabel: 'Register №',
 						hideLabel: false,
-						width: 220,
+						width: 180,
 						labelWidth: 70,
 						margins: '0 0 0 6',
 						emptyText: '',
