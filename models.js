@@ -817,33 +817,33 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
    {
 	   text: 'Meeting',
-	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center'},
-				 {dataIndex:'meeting_t', text: '%', width: 40, align: 'center'}]
+	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'meeting_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
    },
    {
 	   text: 'Quote',
-	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center'},
-				 {dataIndex:'quote_t', text: '%', width: 40, align: 'center'}]
+	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'quote_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
    },
    {
 	   text: 'New Customer',
-	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center'},
-				 {dataIndex:'newcus_t', text: '%', width: 40, align: 'center'}]
+	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'newcus_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
    },
    {
 	   text: 'Expat Customer',
-	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center'},
-				 {dataIndex:'expat_t', text: '%', width: 40, align: 'center'}]
+	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'expat_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
    },
    {
 	   text: 'VIP Customer',
-	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center'},
-				 {dataIndex:'vip_t', text: '%', width: 40, align: 'center'}]
+	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'vip_t', text: '%', width: 40, align: 'center', renderer: renderReportNumber}]
    }
 ];
 
@@ -1172,6 +1172,12 @@ function renderTNumber(v) {
 }
 
 function renderNumber(v) {
+	return Ext.util.Format.number(v, '00,00,000.00');
+}
+
+function renderReportNumber(v) {
+	if (v == 0)
+		return '';
 	return Ext.util.Format.number(v, '00,00,000.00');
 }
 
