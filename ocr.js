@@ -5047,6 +5047,17 @@ Ext.define('OCS.SalesPanel', {
 			}),
 			'-',			
 			Ext.create('Ext.Action', {
+				iconCls : 'deal_lost',
+				text: 'Terminate...',
+				handler: function(widget, event) {
+					var selection = me.grid.getSelectionModel().getSelection();
+					if (selection.length > 0) {
+
+					} else
+					  Ext.MessageBox.alert('Status', 'No selection !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
 				iconCls : 'deal',
 				text: 'Deal...',
 				handler: function(widget, event) {
