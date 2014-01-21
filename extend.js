@@ -2548,6 +2548,32 @@ Ext.define('OCS.BGridView', {
             }
 		};
 			
+		if (me.feature)
+		{		
+			me.features = [{
+				ftype: 'filters',
+				encode: true, 
+				local: false				
+			},{
+				id: 'group',
+				ftype: 'groupingsummary',				
+				groupHeaderTpl: Ext.create('Ext.XTemplate',
+					'{name:this.formatName} ({rows.length})',
+					{
+						formatName: function(name) {
+							if (name.indexOf(',') != -1)
+								return name.split(',')[0];
+							return name;
+						}
+					}
+				)
+			},{
+				id: 'summary',
+				ftype: 'summary',
+			}];
+		} else
+			me.features = [];
+
 		me.callParent(arguments);
 	},
 

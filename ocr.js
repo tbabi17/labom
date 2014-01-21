@@ -3904,6 +3904,7 @@ Ext.define('OCS.Reports', {
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
+			feature: true,
 			actions: me.createActions(),
 		});
 
