@@ -818,31 +818,31 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {
 	   text: 'Meeting',
 	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'meeting_q', text: 'Perf', width: 60, align: 'center'},
+				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center'},
 				 {dataIndex:'meeting_t', text: '%', width: 40, align: 'center'}]
    },
    {
 	   text: 'Quote',
 	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'quote_q', text: 'Perf', width: 60, align: 'center'},
+				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center'},
 				 {dataIndex:'quote_t', text: '%', width: 40, align: 'center'}]
    },
    {
 	   text: 'New Customer',
 	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'newcus_q', text: 'Perf', width: 60, align: 'center'},
+				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center'},
 				 {dataIndex:'newcus_t', text: '%', width: 40, align: 'center'}]
    },
    {
 	   text: 'Expat Customer',
 	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'expat_q', text: 'Perf', width: 60, align: 'center'},
+				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center'},
 				 {dataIndex:'expat_t', text: '%', width: 40, align: 'center'}]
    },
    {
 	   text: 'VIP Customer',
 	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center'},
-				 {dataIndex:'vip_q', text: 'Perf', width: 60, align: 'center'},
+				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center'},
 				 {dataIndex:'vip_t', text: '%', width: 40, align: 'center'}]
    }
 ];
