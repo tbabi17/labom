@@ -3919,6 +3919,8 @@ Ext.define('OCS.Reports', {
 			]
 		});
 
+		me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
+
 		return me.panel;
 	}
 });
