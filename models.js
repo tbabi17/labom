@@ -1141,17 +1141,17 @@ function renderPrecent(v) {
 		return '';
 
 	if (v < 20)
-		return '<span style="color:red">'+v+'%</span>';
+		return '<span style="color:red">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
 	if (v >= 20 && v < 75)
-		return '<span style="color:orange">'+v+'%</span>';
+		return '<span style="color:orange">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
 	if (v >= 75)
-		return '<span style="color:green">'+v+'%</span>';
+		return '<span style="color:green">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
 	
 	return v;
-}
+} 
 
 function renderTPrecent(v) {	
-	return '<strong>'+v+'%</strong>';
+	return '<strong>'+Ext.util.Format.number(v, '00,00,000')+'%</strong>';
 }
 
 function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {	
