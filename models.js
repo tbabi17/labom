@@ -764,7 +764,7 @@ Ext.define('CRM_REPORT_ANY', {
 });
 
 fields['CRM_REPORT_FIELDS'] = [
-   {name: 'crm_name', text: 'Potientail customer', width: 250}, 
+   {name: 'crm_name', text: 'Potientail customer', width: 250, summaryType: 'count'}, 
    {name: 'product_name', text: 'Product name', width: 250}, 
    {name: 'expected_revenue', align: 'right', type:'float',  text: 'Expected revenue', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
    {name: 'probablity', text: 'Probablity', type:'int',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent},
@@ -779,7 +779,7 @@ Ext.define('CRM_REPORT', {
 
 
 fields['CRM_REPORT_RESELLER_FIELDS'] = [
-   {name: 'crm_name', text: 'Reseller name', width: 250}, 
+   {name: 'crm_name', text: 'Reseller name', width: 250, summaryType: 'count'}, 
    {name: 'owner', text: 'Owner', width: 130}, 
    {name: 'meeting', text: 'Meeting', align: 'center', width: 90}, 
    {name: 'phonecall', text: 'Call', width: 90, align: 'center'},
