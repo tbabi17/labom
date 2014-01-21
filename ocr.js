@@ -4637,19 +4637,13 @@ Ext.define('OCS.CampaignPanel', {
 		};
 		
 		me.form.updateSource(me.defaultRec);
-
-		me.grid.getSelectionModel().on({
-			selectionchange: function(sm, selections) {
-				if (selections.length) {
-					me.form.updateSource(selections[0]);
-					views['campaigns'].reload(selections[0]);
-					views['campaign_contacts'].loadStore(selections[0].get('id'));
-				} else {
-					me.form.updateSource(me.defaultRec);
-					me.form.setVisible(false);
-				}
+		
+		me.grid.on('itemclick', function(dv, record, item, index, e) {
+				me.form.updateSource(record);
+				views['campaigns'].reload(record);
+				views['campaign_contacts'].loadStore(record.get('id'));
 			}
-		});
+		);
 	}
 });
 
