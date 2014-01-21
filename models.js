@@ -766,8 +766,8 @@ Ext.define('CRM_REPORT_ANY', {
 fields['CRM_REPORT_FIELDS'] = [
    {name: 'crm_name', text: 'Potientail customer', width: 250}, 
    {name: 'product_name', text: 'Product name', width: 250}, 
-   {name: 'expected_revenue', align: 'right', text: 'Expected revenue', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
-   {name: 'probablity', text: 'Probablity', width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent},
+   {name: 'expected_revenue', align: 'right', type:'float',  text: 'Expected revenue', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
+   {name: 'probablity', text: 'Probablity', type:'int',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent},
    {name: 'descr', text: 'Description', width: 250},
    {name: 'owner', text: 'Owner', width: 120}
 ];
@@ -784,7 +784,7 @@ fields['CRM_REPORT_RESELLER_FIELDS'] = [
    {name: 'meeting', text: 'Meeting', align: 'center', width: 90}, 
    {name: 'phonecall', text: 'Call', width: 90, align: 'center'},
    {name: 'email', text: 'Email', width: 90, align: 'center'},
-   {name: 'amount', text: 'Amount', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
+   {name: 'amount', text: 'Amount', type:'float', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
    {name: 'qty', text: 'Qty', align: 'right', width: 80, summaryType: 'sum', summaryRenderer: renderTNumber}
 ];
 
