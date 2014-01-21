@@ -6010,7 +6010,8 @@ Ext.define('OCS.ContactView', {
 Ext.define('OCS.CampaignContactView', {
 	extend: 'OCS.ContactView',
 	func: 'crm_campaign_customer_list',
-	
+	title: 'Campaign members',
+
 	createView: function() {
 		var me = this;
 		me.modelName = 'CRM_CONTACT';
