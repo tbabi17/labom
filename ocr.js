@@ -3808,7 +3808,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Activity report',
 							handler: function(widget, event) {
-								me.reconfigureStatic('CRM_REPORT_ACTIVITY', 'crm_report_deal_list');
+								me.reconfigureStatic('CRM_REPORT_ACTIVITY', 'crm_report_activity_list');
 							}
 						}),
 						Ext.create('Ext.Action', {
