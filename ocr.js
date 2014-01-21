@@ -3892,6 +3892,7 @@ Ext.define('OCS.Reports', {
 		me.func = func;
 		me.createStore();
 		me.report.reconfigure(me.store, me.createColumns());
+		me.rangeData();
 	},
 
 	reconfigureStatic: function(modelName, func) {
@@ -3900,6 +3901,7 @@ Ext.define('OCS.Reports', {
 		me.func = func;
 		me.createStore();
 		me.report.reconfigure(me.store, columns[modelName+'_COLUMNS']);
+		me.rangeData();
 	},
 
 	createPanel: function() {
