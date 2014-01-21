@@ -4450,12 +4450,12 @@ Ext.define('OCS.Campaigns', {
 		
 		me.campaigns = new OCS.CampaignPanel();
 		me.campaignActivity = new OCS.CampaignActivityGrid();
-		me.contacts = Ext.create('OCS.ContactView', {
+		
+		views['campaign_contacts'] = Ext.create('OCS.CampaignContactView', {
 			flex: 1,
 			title: 'Campaign members',
 			region: 'center'
 		});
-
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
@@ -4485,7 +4485,7 @@ Ext.define('OCS.Campaigns', {
 							split: true,
 							border: false,
 							flex: 0.75,
-							items: [me.contacts.createView()]
+							items: [views['campaign_contacts'].createView()]
 						}]
 					},
 					{
@@ -4643,6 +4643,7 @@ Ext.define('OCS.CampaignPanel', {
 				if (selections.length) {
 					me.form.updateSource(selections[0]);
 					views['campaigns'].reload(selections[0]);
+					views['campaign_contacts'].loadStore(selections[0].get('id'));
 				} else {
 					me.form.updateSource(me.defaultRec);
 					me.form.setVisible(false);
@@ -6003,6 +6004,18 @@ Ext.define('OCS.ContactView', {
 		});						
 
 		return me.grid;
+	}
+});
+
+Ext.define('OCS.CampaignContactView', {
+	extend: 'OCS.ContactView',
+	func: 'crm_campaign_customer_list',
+
+	loadStore: function(where) {
+		var me = this;
+		me.where = where;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+		me.store.loadPage(1);
 	}
 });
 
