@@ -804,6 +804,7 @@ Ext.define('OCS.CorporateForm', {
 						fieldLabel: 'Level',
 						xtype: 'combo',
 						name: 'level',
+						labelWidth: 70,
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
 						  data: [{value: 'customer'},{value: 'prospect'},{value: 'suspect'}]
