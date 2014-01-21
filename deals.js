@@ -37,10 +37,16 @@ Ext.define('OCS.InvoiceActivityGrid', {
 	tab : 'invoice_activity_property',
 	dateField: '_date',
 	title: 'Activities',
-	icon: 'task',
+	icon: 'task',	
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,		
 	
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	},
+
 	updateSource: function(rec) {
 		var me = this;
 		me.action = rec.get('owner') == logged;
