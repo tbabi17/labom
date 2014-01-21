@@ -3930,6 +3930,17 @@ Ext.define('OCS.Reports', {
 		me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
 
 		return me.panel;
+	},
+
+	rangeData: function() {
+		var me = this;
+		if (me.start.length > 0) {
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, start_date: me.start, end_date: me.end, values: me.values, where: me.where};
+			me.store.load();
+		} else {
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+			me.store.load();
+		}
 	}
 });
 
