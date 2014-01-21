@@ -6012,25 +6012,6 @@ Ext.define('OCS.CampaignContactView', {
 	func: 'crm_campaign_customer_list',
 	title: 'Campaign members',
 
-	createView: function() {
-		var me = this;
-		me.modelName = 'CRM_CONTACT';
-		me.createStore();
-
-		me.grid = Ext.create('OCS.GridView', {	
-			title: me.title,
-			store: me.store,
-			columns: me.createColumns(),
-			actions: me.createActions(),
-			func: me.func,
-			tab: me.tab,
-			search: true,
-			tbarable: true
-		});						
-
-		return me.grid;
-	},
-
 	loadStore: function(where) {
 		var me = this;
 		me.where = where;
