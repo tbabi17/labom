@@ -4484,7 +4484,7 @@ Ext.define('OCS.Campaigns', {
 							region: 'south',
 							split: true,
 							border: false,
-							flex: 0.75,
+							flex: 1.5,
 							items: [views['campaign_contacts'].createView()]
 						}]
 					},
