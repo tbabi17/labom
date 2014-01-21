@@ -849,7 +849,14 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
 	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
 				 {dataIndex:'vip_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
-   }
+   },
+   {
+	   text: 'Extended contracts',
+	   columns: [{dataIndex:'ext_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'ext_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'ext_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
+   },
+   {dataIndex:'term_p', text: 'Termination', width: 90, align: 'center', renderer: renderReportNumber}
 ];
 
 
