@@ -3894,6 +3894,14 @@ Ext.define('OCS.Reports', {
 		me.report.reconfigure(me.store, me.createColumns());
 	},
 
+	reconfigureStatic: function(modelName, func) {
+		var me = this;
+		me.modelName = modelName;
+		me.func = func;
+		me.createStore();
+		me.report.reconfigure(me.store, me.createColumns());
+	},
+
 	createPanel: function() {
 		var me = this;
 		
