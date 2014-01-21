@@ -6005,6 +6005,7 @@ Ext.define('OCS.CampaignContactView', {
 	extend: 'OCS.ContactView',
 	func: 'crm_campaign_customer_list',
 	title: 'Campaign members',
+	tab: 'campaign_members_tab',
 	
 	loadStore: function(where) {
 		var me = this;
