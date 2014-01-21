@@ -765,8 +765,8 @@ fields['CRM_REPORT_FIELDS'] = [
    {name: 'crm_name', text: 'Potientail customer', width: 250}, 
    {name: 'product_name', text: 'Product name', width: 250}, 
    {name: 'expected_revenue', align: 'right', text: 'Expected revenue', width: 120, align: 'right', renderer: renderMoney}, 
-   {name: 'probablity', text: 'Probablity', width: 190, align: 'center', renderer: renderPrecent},
-   {name: 'descr', text: 'Description', width: 180},
+   {name: 'probablity', text: 'Probablity', width: 80, align: 'center', renderer: renderPrecent},
+   {name: 'descr', text: 'Description', width: 250},
    {name: 'owner', text: 'Owner', width: 120}
 ];
 
