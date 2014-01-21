@@ -131,9 +131,6 @@ Ext.define('OCS.Module', {
 
 	createStandardColumns: function() {	
 		var me = this;
-		if (columns[me.modelName+'_COLUMNS'])
-			return columns[me.modelName+'_COLUMNS'];
-
 		var columns = fields[me.modelName+'_FIELDS'];
 		var headers = [];
 		for (i = 0; i < columns.length; i++) {							
@@ -160,9 +157,6 @@ Ext.define('OCS.Module', {
 
 	createColumns: function() {	
 		var me = this;
-		if (columns[me.modelName+'_COLUMNS'])
-			return columns[me.modelName+'_COLUMNS'];
-
 		var columns = fields[me.modelName+'_FIELDS'];
 		var headers = [];//Ext.create('Ext.grid.RowNumberer', {width: 32})];
 		for (i = 0; i < columns.length; i++) {							
