@@ -256,6 +256,7 @@ Ext.define('OCS.RetailForm', {
 						fieldLabel: 'Priority',
 						xtype: 'combo',
 						name: 'priority',
+						labelWidth: 50,
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
 						  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
@@ -273,6 +274,7 @@ Ext.define('OCS.RetailForm', {
 						xtype: 'combo',
 						name: '_class',
 						margins: '0 0 0 6',
+						labelWidth: 50,
 						value: 'RETAIL',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
@@ -288,6 +290,7 @@ Ext.define('OCS.RetailForm', {
 						name: 'source',
 						fieldLabel: 'Source',
 						xtype: 'combo',
+						labelWidth: 50,
 						value: 'employee referral',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
@@ -298,7 +301,7 @@ Ext.define('OCS.RetailForm', {
 						valueField: 'value',
 						triggerAction: 'all',
 						editable: false,
-						flex: 0.5
+						flex: 0.6
 					}]
 				},{
 					xtype: 'container',
