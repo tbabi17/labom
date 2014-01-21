@@ -783,7 +783,7 @@ fields['CRM_REPORT_RESELLER_FIELDS'] = [
    {name: 'phonecall', text: 'Call', width: 90, align: 'center'},
    {name: 'email', text: 'Email', width: 90, align: 'center'},
    {name: 'amount', text: 'Amount', width: 120, align: 'right', renderer: renderMoney},
-   {name: 'qty', text: 'Qty', align: 'right', width: 100}
+   {name: 'qty', text: 'Qty', align: 'right', width: 80}
 ];
 
 Ext.define('CRM_REPORT_RESELLER', {
