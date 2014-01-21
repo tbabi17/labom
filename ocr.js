@@ -3818,6 +3818,7 @@ Ext.define('OCS.Reports', {
 								me.filterData('Appointment List');
 							}
 						}),
+						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
 							text: 'Reseller Report',
