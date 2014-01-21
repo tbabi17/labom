@@ -4,6 +4,7 @@ var selectedLead;
 var selectedQuote;
 var selectedOwner;
 var fields = [];
+var columns = [];
 var customers = [];
 var campaigns = [];
 
@@ -811,6 +812,40 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 	extend: 'Ext.data.Model',
 	fields: fields['CRM_REPORT_ACTIVITY_FIELDS']
 });
+
+columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
+   {dataIndex: 'owner', text: 'Owner', width: 250}, 
+   {
+	   text: 'Meeting',
+	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60},
+				 {dataIndex:'meeting_q', text: 'Success', width: 60},
+				 {dataIndex:'meeting_t', text: 'Success', width: 60}]
+   },
+   {
+	   text: 'Quote',
+	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60},
+				 {dataIndex:'quote_q', text: 'Success', width: 60},
+				 {dataIndex:'quote_t', text: 'Success', width: 60}]
+   },
+   {
+	   text: 'New Customer',
+	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60},
+				 {dataIndex:'newcus_q', text: 'Success', width: 60},
+				 {dataIndex:'newcus_t', text: 'Success', width: 60}]
+   },
+   {
+	   text: 'Expat Customer',
+	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60},
+				 {dataIndex:'expat_q', text: 'Success', width: 60},
+				 {dataIndex:'expat_t', text: 'Success', width: 60}]
+   },
+   {
+	   text: 'VIP Customer',
+	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60},
+				 {dataIndex:'vip_q', text: 'Success', width: 60},
+				 {dataIndex:'vip_t', text: 'Success', width: 60}]
+   }
+];
 
 
 function renderClass(v) {
