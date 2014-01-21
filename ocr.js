@@ -3808,7 +3808,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Activity report',
 							handler: function(widget, event) {
-								me.reconfigure('CRM_REPORT_ACTIVITY', 'crm_report_deal_list');
+								me.reconfigureStatic('CRM_REPORT_ACTIVITY', 'crm_report_deal_list');
 							}
 						}),
 						Ext.create('Ext.Action', {
@@ -3899,7 +3899,7 @@ Ext.define('OCS.Reports', {
 		me.modelName = modelName;
 		me.func = func;
 		me.createStore();
-		me.report.reconfigure(me.store, me.createColumns());
+		me.report.reconfigure(me.store, columns[modelName+'_COLUMNS']);
 	},
 
 	createPanel: function() {
