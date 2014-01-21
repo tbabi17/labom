@@ -776,6 +776,22 @@ Ext.define('CRM_REPORT', {
 });
 
 
+fields['CRM_REPORT_RESELLER_FIELDS'] = [
+   {name: 'crm_name', text: 'Reseller name', width: 250}, 
+   {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'appointment', text: 'Meeting', align: 'center' width: 90}, 
+   {name: 'call', text: 'Call', width: 90, align: 'center'},
+   {name: 'email', text: 'Email', width: 90, align: 'center'},
+   {name: 'amount', text: 'Amount', width: 120, align: 'right', renderer: renderMoney},
+   {name: 'qty', text: 'Qty', align: 'right', width: 100}
+];
+
+Ext.define('CRM_REPORT_RESELLER', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_RESELLER_FIELDS']
+});
+
+
 function renderClass(v) {
 	if (v == 'CORPORATE' || v == 'RETAIL') 
 		return '';

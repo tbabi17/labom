@@ -3817,6 +3817,13 @@ Ext.define('OCS.Reports', {
 							handler: function(widget, event) {
 								me.filterData('Appointment List');
 							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Reseller Report',
+							handler: function(widget, event) {
+								me.reconfigure('CRM_REPORT_RESELLER', 'crm_report_deal_list');
+							}
 						})
 					]
 				}		
