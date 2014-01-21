@@ -793,6 +793,25 @@ Ext.define('CRM_REPORT_RESELLER', {
 	fields: fields['CRM_REPORT_RESELLER_FIELDS']
 });
 
+fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'meeting_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'meeting_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'quote_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'quote_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'newcus_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'newcus_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'expat_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'expat_q', text: 'Success', align: 'center', width: 90}, 
+   {name: 'vip_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'vip_q', text: 'Success', align: 'center', width: 90}
+];
+
+Ext.define('CRM_REPORT_ACTIVITY', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_ACTIVITY_FIELDS']
+});
+
 
 function renderClass(v) {
 	if (v == 'CORPORATE' || v == 'RETAIL') 

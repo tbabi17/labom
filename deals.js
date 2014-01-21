@@ -1280,7 +1280,7 @@ Ext.define('OCS.DealDescrWindow', {
 		var me = this;
 		if (me.title == 'Close as won') {
 			me.stage = 'close as won';
-			me.rem = true;
+			me.rem = false;
 			me.comp = true;
 			me.status = '';
 			me.status = 'won';
