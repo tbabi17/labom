@@ -3822,7 +3822,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Reseller Report',
 							handler: function(widget, event) {
-								me.reconfigure('CRM_REPORT_RESELLER', 'crm_report_deal_list');
+								me.reconfigure('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
 							}
 						})
 					]
