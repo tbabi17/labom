@@ -1234,7 +1234,6 @@ Ext.define('OCS.DealUndoWindow', {
 				valueField: 'value',
 				displayField: 'value',
 				name: 'stage',
-				flex: 1,
 				value: 'lead',
 				allowBlank: false,
 				forceSelection: true,
