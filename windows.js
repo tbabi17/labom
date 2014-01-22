@@ -1615,6 +1615,11 @@ Ext.define('OCS.ActivityDetailWindow', {
 				readOnly: true,
 				name: 'owner'
 			},{
+				xtype: 'displayfield',
+				fieldLabel: 'Activity source',
+				readOnly: true,
+				name: 'source'
+			},{
 				xtype: 'textarea',
 				fieldLabel: 'Descr',	
 				readOnly: true,
@@ -1672,7 +1677,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+id},
 			   success: function(response, opts) {
-				   me.store.reload();
+				   me.close();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1688,7 +1693,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+id},
 			   success: function(response, opts) {
-				   me.store.reload();
+				   me.close();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
