@@ -2121,8 +2121,7 @@ Ext.define('OCS.DealView', {
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
-							new OCS.DealAssignWindow({
-								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+							new OCS.DealUndoWindow({
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
