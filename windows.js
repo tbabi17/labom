@@ -1639,7 +1639,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	extend: 'OCS.Window',
 	title: 'Activity Detail',
 	maximizable: true,
-	height: 520,
+	height: 500,
 	modal: false,
 	width: 400,	
 	modal: true,
@@ -1696,7 +1696,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				xtype: 'textarea',
 				fieldLabel: 'Descr',	
 				readOnly: true,
-				height: 200,
+				height: 180,
 				name: 'descr'
 			}],
 			buttons: [{
