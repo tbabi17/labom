@@ -783,11 +783,21 @@ Ext.define('CRM_REPORT', {
 fields['CRM_REPORT_RESELLER_FIELDS'] = [
    {name: 'crm_name', text: 'Reseller name', width: 250, summaryType: 'count', summaryRenderer: renderTReportNumber}, 
    {name: 'owner', text: 'Owner', width: 130}, 
-   {name: 'meeting', text: 'Meeting', align: 'center', width: 90}, 
-   {name: 'phonecall', text: 'Call', width: 90, align: 'center'},
-   {name: 'email', text: 'Email', width: 90, align: 'center'},
+   {name: 'meeting', text: 'Meeting', type:'int', align: 'center', width: 90}, 
+   {name: 'phonecall', text: 'Call', type:'int', width: 90, align: 'center'},
+   {name: 'email', text: 'Email', type:'int', width: 90, align: 'center'},
+   {name: 'p1_qty', type:'int'},
+   {name: 'p1_amount', type:'float'},
+   {name: 'p2_qty', type:'int'},
+   {name: 'p2_amount', type:'float'},
+   {name: 'p3_qty', type:'int'},
+   {name: 'p3_amount', type:'float'},
+   {name: 'p4_qty', type:'int'},
+   {name: 'p4_amount', type:'float'},
+   {name: 'p5_qty', type:'int'},
+   {name: 'p5_amount', type:'float'},
    {name: 'amount', text: 'Amount', type:'float', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
-   {name: 'qty', text: 'Qty', align: 'right', width: 80, summaryType: 'sum', summaryRenderer: renderTNumber}
+   {name: 'qty', text: 'Qty', type:'int', align: 'right', width: 80, summaryType: 'sum', summaryRenderer: renderTNumber}
 ];
 
 Ext.define('CRM_REPORT_RESELLER', {
