@@ -5684,7 +5684,7 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 	maximizable: true,
 	modal: false,
 	width: 800,
-	height: 500,
+	height: 550,
 	layout: 'border',
 
 	initComponent: function() {
@@ -5710,12 +5710,12 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 
 		me.items = [{
 			region: 'center',
-			flex: 1,
+			flex: 1.5,
 			border: false,
 			layout: 'border',
 			items: [me.views.createView()]
 		}, {
-			flex: 1.5,
+			flex: 1,
 			split: true,
 			border: false,
 			region: 'north',
