@@ -3874,7 +3874,6 @@ Ext.define('OCS.Reports', {
 			},
 			{
 				text: 'Reset',
-				hidden: !me.feature,
 				iconCls: 'reset',
 				handler: function() {
 					me.report.getView().getFeature('group').disable();
