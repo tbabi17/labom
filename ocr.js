@@ -5690,7 +5690,7 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 	initComponent: function() {
 		var me = this;
 
-		me.form = Ext.create('OCS.ContactForm', {
+		me.form = Ext.create('OCS.ContactFormWithDeal', {
 			id: 'contact_form_with_deal',
 			region: 'center',
 			record: me.record,
