@@ -1630,7 +1630,90 @@ Ext.define('OCS.CustomerCampaignForm', {
 
 
 Ext.define('OCS.ContactFormWithDeal', {
-	extend: 'OCS.ContactForm',
+	extend: 'Ext.form.Panel',
+	border: false,
+	region: 'center',
+	height: 410,
+	autoScroll: true,
+	closeAction: 'hide',	
+	split: true,
+	bodyPadding: '10 10 0',	
+	fieldDefaults: {
+		labelAlign: 'right',
+		labelWidth: 70,
+		msgTarget: 'qtip'
+	},
+
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },		
+	
+	onTextFieldChange: function(v) {
+		var me = this;			
+		if (v && 1==0) {
+			me.duplicateCheck = true;
+			me.query = v;
+			views['retail'].store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, query: me.query};
+			views['retail'].store.loadPage(1, {callback: function() {
+				if (me.up().down("#customer_duplicate_warning")) {												
+					if (me.duplicateCheck && views['retail'].store.getCount() > 0)						
+						me.up().down("#customer_duplicate_warning").setText('Ижил мэдээлэл '+views['retail'].store.getTotalCount()+' ширхэг байна !');
+					else
+						me.up().down("#customer_duplicate_warning").setText('');
+				}
+			}});
+		} else {
+			me.duplicateCheck = false;
+			views['retail'].store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func};
+			views['retail'].store.loadPage(1);
+		}
+	},
+
+	
+	convertLatin: function(value, value1) {
+		if (typeof value == 'undefined') value = '';
+		if (typeof value1 == 'undefined') value1 = '';
+		
+		value = value.toLowerCase();
+		value1 = value1.toLowerCase();
+		value = value.trim();
+		value1 = value1.trim();
+
+		chrs = [];
+		chrs['а'] = 'a';chrs['ж'] = 'j';chrs['ө'] = 'u';chrs['ц'] = 'ts';chrs['ю'] = 'yu';
+		chrs['б'] = 'b';chrs['и'] = 'i';chrs['п'] = 'p';chrs['ч'] = 'ch';chrs['я'] = 'ya';
+		chrs['в'] = 'v';chrs['й'] = 'i';chrs['р'] = 'r';chrs['ш'] = 'sh';chrs['ф'] = 'f';
+		chrs['г'] = 'g';chrs['к'] = 'k';chrs['с'] = 's';chrs['щ'] = 'sch';
+		chrs['д'] = 'd';chrs['л'] = 'l';chrs['т'] = 't';chrs['ь'] = 'i';
+		chrs['е'] = 'е';chrs['м'] = 'm';chrs['у'] = 'u';chrs['ъ'] = 'i';
+		chrs['ё'] = 'yo';chrs['н'] = 'n';chrs['ү'] = 'u';chrs['ы'] = 'i';
+		chrs['з'] = 'z';chrs['о'] = 'o';chrs['х'] = 'kh';chrs['э'] = 'e';
+		chrs['.'] = '.';chrs['-'] = '-';;chrs[' '] = ' ';
+		
+		v1 = ''; v2 = '';
+		if (value.length > 0)
+		{
+			for (i = 0; i < value.length; i++) {
+				if (chrs[value.charAt(i)])
+					v1 = v1 + chrs[value.charAt(i)];
+				else
+					v1 = v1 + value.charAt(i);
+			}
+		}
+
+		if (value1.length > 0)
+		{		
+			for (i = 0; i < value1.length; i++) {
+				if (chrs[value1.charAt(i)])
+					v2 = v2 + chrs[value1.charAt(i)];
+				else
+					v2 = v2 + value1.charAt(i);
+			}
+		}
+
+		return v1.toUpperCase()+' '+v2.toUpperCase(); //this.capitalise(v1)+' '+this.capitalise(v2);
+	},
 		
 	initComponent: function() {
 		var me = this;	
