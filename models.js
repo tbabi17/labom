@@ -870,27 +870,27 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 				 {dataIndex:'email', text: 'Email', width: 70, align: 'center', renderer: renderPrecent}]
    },
    {
-	   text: 'Product 1',
+	   text: 'АВТОТЭЭВРИЙН ХЭРЭГСЛИЙН',
 	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
 				 {dataIndex:'p1_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
    },
    {
-	   text: 'Product 2',
+	   text: 'АЛБАН ЖУРМЫН ЖОЛООЧИЙН',
 	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
 				 {dataIndex:'p2_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
    },
    {
-	   text: 'Product 3',
+	   text: 'ЭД ХӨРӨНГИЙН',
 	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
 				 {dataIndex:'p3_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
    },
    {
-	   text: 'Product 4',
+	   text: 'ЗЭЭЛДЭГЧИЙН ГЭНЭТИЙН ОСЛЫН',
 	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
 				 {dataIndex:'p4_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
    },
    {
-	   text: 'Product 5',
+	   text: 'ГАДААД ЗОРЧИГЧИЙН',
 	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
 				 {dataIndex:'p1_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
    },
