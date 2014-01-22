@@ -862,6 +862,7 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
 
 
 columns['CRM_REPORT_RESELLER_COLUMNS'] = [
+   {dataIndex: 'crm_name', text: 'Reseller name', width: 250}, 
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
    {
 	   text: 'Activity',
