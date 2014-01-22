@@ -47,7 +47,6 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'horoo', text: 'Khoroo', width: 100, hidden: true},
    {name: 'address', text: 'Address', width: 150, hidden: true},
    {name: 'descr', text: 'Note', width: 120, hidden: true},
-   {name: 'source', text: 'Source', width: 90, hidden: true},
    {name: 'decision_maker', text: 'Decision', width: 120, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner, hidden: true},
 //   {name: 'parent_crm_id', text: 'Parent CRM ID', width: 120, hidden: true},
@@ -55,7 +54,8 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: '_date', type: 'datetime', text: 'Created on', width: 80, align: 'center'},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
-   {name: 'priority', text: 'Priority', width: 60, align: 'center'}
+   {name: 'priority', text: 'Priority', width: 60, align: 'center'},
+   {name: 'source', text: 'Source', width: 250}
 ];
 
 Ext.define('CRM_RETAIL', {
