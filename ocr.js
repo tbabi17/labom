@@ -4657,7 +4657,7 @@ Ext.define('OCS.CampaignPanel', {
 				iconCls   : 'help',
 				text: 'Test',
 				handler: function(widget, event) {
-					new OCS.DealCreateWindow().show();
+					new OCS.ContactNewWithDealWindow().show();
 				}
 			}),				
 			'-',
@@ -5654,6 +5654,57 @@ Ext.define('OCS.ContactNewWindow', {
 		}
 		
 		me.views = Ext.create('OCS.ContactView', {
+			flex: 1,
+			region: 'center'
+		});
+
+		me.items = [{
+			region: 'center',
+			flex: 1,
+			border: false,
+			layout: 'border',
+			items: [me.views.createView()]
+		}, {
+			flex: 1,
+			split: true,
+			border: false,
+			region: 'north',
+			layout: 'border',
+			items:[me.form]
+		}];
+
+		me.callParent(arguments);
+	}
+});
+
+Ext.define('OCS.ContactNewWithDealWindow', {
+	extend: 'OCS.Window',
+	title: 'New contact',
+	table: 'crm_customer',
+	maximizable: true,
+	modal: false,
+	width: 750,
+	height: 450,
+	layout: 'border',
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.ContactForm', {
+			id: 'contact_form_with_deal',
+			region: 'center',
+			record: me.record,
+			win: this
+		});
+
+		me.listeners = {
+			'close': function() {
+				if (me.backgrid)
+					me.backgrid.getStore().reload();
+			}
+		}
+		
+		me.views = Ext.create('OCS.ContactViewWithDeal', {
 			flex: 1,
 			region: 'center'
 		});

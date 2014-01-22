@@ -1629,6 +1629,308 @@ Ext.define('OCS.CustomerCampaignForm', {
 });
 
 
+Ext.define('OCS.ContactFormWithDeal', {
+	extend: 'OCS.ContactForm',
+		
+
+	initComponent: function() {
+		var me = this;	
+		var name = '';
+		if (me.record.data['crm_name'])
+			name = me.record.data['crm_name'].split(',')[0];
+		else
+			name = me.record.data['firstName'];
+
+		var companyName = name;
+		if (name.indexOf('<g>') != -1) {
+			companyName = name.substring(name.indexOf('<g>')+3, name.indexOf('</g'));			
+			companyName = companyName.trim();
+		}
+		me.crm_id = 0;
+		if (me.record)
+			me.parent_crm_id = me.record.data['crm_id'];
+
+		me.items = [{
+				xtype: 'fieldset',
+				title: 'Main information',
+				collapsible: true,
+				defaultType: 'textfield',
+				layout: 'anchor',
+				defaults: {
+					anchor: '100%',
+					margin: '20 20 20 20'
+				},
+				items: [{
+					xtype: 'fieldcontainer',
+					fieldLabel: 'Contact',
+					layout: 'hbox',
+					combineErrors: true,
+					defaultType: 'textfield',
+					defaults: {
+						hideLabel: 'true'
+					},
+					items: [{
+						id: 'firstName',
+						name: 'firstName',
+						fieldLabel: 'Нэр',
+						flex: 0.5,
+						value: '',
+						focused: true,
+						maskRe : /[а-яөүА-ЯӨҮёЁ]/,
+						emptyText: 'Нэр',
+						allowBlank: false,
+						listeners: {
+							keyup: {
+								element: 'el',
+								fn: function() {
+									me.firstName = Ext.getCmp('contact_form').getForm().findField('firstName').getValue();
+									me.lastName = Ext.getCmp('contact_form').getForm().findField('lastName').getValue();
+									Ext.getCmp('contact_form').getForm().findField("engName").setValue(me.convertLatin(me.firstName, me.lastName));
+								},
+								scope: this,
+								buffer: 100
+							},
+							afterrender: function(field) {
+								field.focus();
+							}
+						}
+					},{
+						id: 'lastName',
+						name: 'lastName',
+						fieldLabel: 'Нэр',
+						flex: 0.5,
+						value: '',
+						margins: '0 0 0 6',
+						maskRe : /[а-яөүА-ЯӨҮёЁ]/,
+						emptyText: 'Овог',
+						allowBlank: true,
+						listeners: {
+							keyup: {
+								element: 'el',
+								fn: function() {
+									me.firstName = Ext.getCmp('contact_form').getForm().findField('firstName').getValue();
+									me.lastName = Ext.getCmp('contact_form').getForm().findField('lastName').getValue();
+									Ext.getCmp('contact_form').getForm().findField("engName").setValue(me.convertLatin(me.firstName, me.lastName));									
+								},
+								scope: this,
+								buffer: 100
+							},
+							afterrender: function(field) {
+								field.focus();
+							}
+						}
+					},{
+						name: 'engName',
+						fieldLabel: 'engName',
+						flex: 0.5,
+						margins: '0 0 0 6',
+						emptyText: 'Latin'
+					},{
+						name: 'gender',
+						width: 60,
+						emptyText: 'Gender',
+						margins: '0 0 0 6',
+						xtype: 'combo',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'эр'},{value: 'эм'}]
+						}),
+						queryMode: 'local',
+						displayField: 'value',
+						value: 'эр',
+						valueField: 'value',
+						triggerAction: 'all',
+						editable: false
+					}]
+				}, {
+					xtype: 'container',
+					layout: 'hbox',
+					defaultType: 'textfield',
+					items: [{
+						fieldLabel: 'Email',
+						name: 'email',
+						vtype: 'email',
+						maxLength: 32,
+						flex: 0.5
+					}, {
+						id: 'phone',
+						fieldLabel: 'Phone 1',
+						labelWidth: 60,
+						name: 'phone',
+						width: 160,
+						emptyText: 'xxxxxxxx',
+						maxLength: 8,
+						maskRe: /[\d\-]/,
+						regex: /^\d{8}$/,
+						allowBlank: false,
+						regexText: 'Must be in the format xxx-xxx-xxxx',
+						listeners: {
+							keyup: {
+								element: 'el',
+								fn: function(e) {
+//									me.onTextFieldChange(Ext.getCmp('contact_form').getForm().findField('phone1').getValue(), 'phone');
+								},
+								scope: this,
+								buffer: 100
+							}
+						}
+					},{
+						name: 'source',
+						labelWidth: 50,
+						flex: 0.5,
+						fieldLabel: 'Source',
+						margins: '0 0 0 6',
+						xtype: 'combo',
+						value: 'employee referral',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'partner'},{value: 'employee referral'},{value: 'external referral'},{value: 'public relations'},{value: 'party'},{value: 'advertisement'},{value: 'cold call'},{value: 'web research'}]
+						}),							  
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						triggerAction: 'all',
+						editable: false
+					}]
+				}, {
+					xtype: 'container',
+					layout: 'hbox',
+					defaultType: 'textfield',
+					items: [{
+						fieldLabel: 'Level',
+						xtype: 'combo',
+						value: 'suspect',
+						name: 'level',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'customer'},{value: 'prospect'},{value: 'suspect'}]
+						}),
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						hidden: true,
+						triggerAction: 'all',
+						editable: false,
+						flex: 0.5
+					},{
+						fieldLabel: 'Rank',
+						xtype: 'combo',
+						allowBlank: false,
+						name: 'decision_maker',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'manager'}, {value: 'decision maker'}]
+						}),
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						triggerAction: 'all',
+						editable: false,
+						flex: 0.6
+					},{
+						fieldLabel: 'Social status',
+						xtype: 'combo',
+						value: 'ажилладаг',
+						name: 'work_status',
+						store: Ext.create('Ext.data.Store', {
+						  model: 'CRM_ITEM',
+						  data: [{value: 'ажилладаг'},{value: 'сурдаг'},{value: 'тэтгэвэрт'},{value:'бусад'}]
+						}),
+						queryMode: 'local',
+						displayField: 'value',
+						valueField: 'value',
+						triggerAction: 'all',
+						hidden: true,
+						editable: false,
+						flex: 0.5
+					},{
+						xtype: 'searchcombo',
+						name: 'title',
+						margins: '0 0 0 6',
+						readOnly: true,
+						value: companyName,
+						flex: 0.75
+					},{
+						name: 'crm_id',
+						margins: '0 0 0 6',
+						readOnly: true,
+						hidden: true,
+						width: 40,
+						value: me.crm_id
+					},{
+						name: 'parent_crm_id',
+						margins: '0 0 0 6',
+						readOnly: true,
+						hidden: true,
+						width: 40,
+						value: me.parent_crm_id
+					},{
+						emptyText: 'Position',
+						xtype: 'searchcombo',
+						table: 'crm_customer',
+						name: 'job_title',
+						margins: '0 0 0 6',
+						flex: 0.5
+					},{
+						hidden: true,
+						name: 'userCode',
+						value: logged
+					},{
+						hidden: true,
+						name: 'owner',
+						value: logged
+					}]
+				}]
+			}
+		];
+
+		me.buttons = [{
+			text : 'Reset',
+			iconCls: 'reset',
+			handler: function() {
+				var form = this.up('form').getForm();
+				form.reset();
+			}
+		},{
+			text: 'Commit with Deal',
+			iconCls: 'commit',
+			handler: function() {
+				var form = this.up('form').getForm();
+				if (form.isValid())	{
+					var values = form.getValues(true);	
+					if (form.findField('crm_id').getValue() > 0) {					
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'update', table: 'crm_customer', func: '', values: "decision_maker='"+me.form.findField('decision_maker').getValue()+"',parent_crm_id="+me.parent_crm_id, fields: '', where: 'crm_id='+form.findField('crm_id').getValue()},
+						   success: function(response, opts) {
+								if (me.win) me.win.close();
+								form.reset();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					} else {
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', action: 'insert', table: 'crm_customer', func: '', values: values, fields: '', where: ''},
+						   success: function(response, opts) {
+								if (me.win) me.win.close();
+								form.reset();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					}
+				}
+			}
+		}];
+
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.CompotetorForm', {
 	extend: 'Ext.form.Panel',
 	border: false,
