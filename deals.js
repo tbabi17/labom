@@ -1203,6 +1203,19 @@ Ext.define('OCS.StageWindow', {
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
 			   }
 			});		
+		} else
+		if (stage == 'quote')
+		{						
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='prospect'", where: "crm_id="+me.selected.get('crm_id')+" and level='suspect'"},
+			   success: function(response, opts) {
+				  views['deals'].reload(me.selected);
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});		
 		}
 	}
 });
