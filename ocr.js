@@ -2115,7 +2115,22 @@ Ext.define('OCS.DealView', {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
-			,'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal_undo',
+				text: 'Undo ...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealAssignWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								ids: me.selectedIds('deal_id'),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
 				text: 'Help',
