@@ -5683,8 +5683,8 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 	table: 'crm_customer',
 	maximizable: true,
 	modal: false,
-	width: 750,
-	height: 450,
+	width: 800,
+	height: 500,
 	layout: 'border',
 
 	initComponent: function() {
@@ -5715,7 +5715,7 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 			layout: 'border',
 			items: [me.views.createView()]
 		}, {
-			flex: 1,
+			flex: 1.5,
 			split: true,
 			border: false,
 			region: 'north',
