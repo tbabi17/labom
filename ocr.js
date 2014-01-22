@@ -5693,7 +5693,6 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 		me.form = Ext.create('OCS.ContactFormWithDeal', {
 			id: 'contact_form_with_deal',
 			region: 'center',
-			record: me.record,
 			win: this
 		});
 
