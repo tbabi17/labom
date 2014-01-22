@@ -796,8 +796,8 @@ fields['CRM_REPORT_RESELLER_FIELDS'] = [
    {name: 'p4_amount', type:'float'},
    {name: 'p5_qty', type:'int'},
    {name: 'p5_amount', type:'float'},
-   {name: 'amount', text: 'Amount', type:'float', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
-   {name: 'qty', text: 'Qty', type:'int', align: 'right', width: 80, summaryType: 'sum', summaryRenderer: renderTNumber}
+   {name: 'total_amount', text: 'Amount', type:'float', width: 120, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
+   {name: 'total_qty', text: 'Qty', type:'int', align: 'right', width: 80, summaryType: 'sum', summaryRenderer: renderTNumber}
 ];
 
 Ext.define('CRM_REPORT_RESELLER', {
