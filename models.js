@@ -872,33 +872,33 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
    },
    {
 	   text: 'АВТОТЭЭВРИЙН ХЭРЭГСЛИЙН',
-	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'АЛБАН ЖУРМЫН ЖОЛООЧИЙН',
-	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 60, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'p2_amount', text: 'Amount', width: 110, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p2_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'ЭД ХӨРӨНГИЙН',
-	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 60, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'p3_amount', text: 'Amount', width: 110, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p3_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'ЗЭЭЛДЭГЧИЙН ГЭНЭТИЙН ОСЛЫН',
-	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 60, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'p4_amount', text: 'Amount', width: 110, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p4_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'ГАДААД ЗОРЧИГЧИЙН',
-	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'Total',
-	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', renderer: renderReportNumber},
-				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', renderer: renderMoney}]
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    }
 ];
 
