@@ -1616,6 +1616,11 @@ Ext.define('OCS.ActivityDetailWindow', {
 				name: 'owner'
 			},{
 				xtype: 'displayfield',
+				fieldLabel: 'Campaign',
+				readOnly: true,
+				name: 'campaign'
+			},{
+				xtype: 'displayfield',
 				fieldLabel: 'Activity source',
 				readOnly: true,
 				name: 'source'
