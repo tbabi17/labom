@@ -5684,7 +5684,7 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 	maximizable: true,
 	modal: false,
 	width: 800,
-	height: 550,
+	height: 570,
 	layout: 'border',
 
 	initComponent: function() {
