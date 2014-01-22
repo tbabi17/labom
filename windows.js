@@ -1296,14 +1296,17 @@ Ext.define('OCS.DealCreateWindow', {
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
+				allowBlank: false,
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Topic name',
+				allowBlank: false,
 				name: 'deal'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Phone',
+				allowBlank: false,
 				name: 'phone'
 			},{
 				xtype: 'textfield',
@@ -1347,7 +1350,26 @@ Ext.define('OCS.DealCreateWindow', {
 			}]
 		});
 		
-		me.items = [me.form];		
+		me.views = Ext.create('OCS.ContactView', {
+			flex: 1,
+			region: 'center'
+		});
+
+		me.items = [{
+			region: 'center',
+			flex: 1,
+			border: false,
+			layout: 'border',
+			items: [me.views.createView()]
+		}, {
+			flex: 1,
+			split: true,
+			border: false,
+			region: 'north',
+			layout: 'border',
+			items:[me.form]
+		}];		
+
 		me.callParent(arguments);
 	}
 });
