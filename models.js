@@ -861,6 +861,47 @@ columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
 ];
 
 
+columns['CRM_REPORT_RESELLER_COLUMNS'] = [
+   {dataIndex: 'owner', text: 'Owner', width: 150}, 
+   {
+	   text: 'Activity',
+	   columns: [{dataIndex:'meeting', text: 'Meeting', width: 70, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'phonecall', text: 'Phone call', width: 70, align: 'center', renderer: renderReportNumber},
+				 {dataIndex:'email', text: 'Email', width: 70, align: 'center', renderer: renderPrecent}]
+   },
+   {
+	   text: 'Product 1',
+	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'p1_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   },
+   {
+	   text: 'Product 2',
+	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'p2_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   },
+   {
+	   text: 'Product 3',
+	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'p3_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   },
+   {
+	   text: 'Product 4',
+	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'p4_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   },
+   {
+	   text: 'Product 5',
+	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'p1_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   },
+   {
+	   text: 'Total',
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 40, align: 'right', renderer: renderReportNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 90, align: 'right', renderer: renderMoney}]
+   }
+];
+
+
 function renderClass(v) {
 	if (v == 'CORPORATE' || v == 'RETAIL') 
 		return '';
