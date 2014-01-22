@@ -1669,7 +1669,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			
 			if (me.selected.get('source') == 'campaign') {
 				new OCS.NewDealWindow({
-					selected: selection[0]
+					selected: me.selected
 				}).createWindow();
 			}
 
