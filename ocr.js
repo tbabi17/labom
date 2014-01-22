@@ -5679,7 +5679,7 @@ Ext.define('OCS.ContactNewWindow', {
 
 Ext.define('OCS.ContactNewWithDealWindow', {
 	extend: 'OCS.Window',
-	title: 'New contact',
+	title: 'New contact (from Campaign)',
 	table: 'crm_customer',
 	maximizable: true,
 	modal: false,
