@@ -991,7 +991,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			
 			if (me.selected.get('source') == 'campaign') {
-				new OCS.DealCreateWindow().show();
+//				new OCS.DealCreateWindow().show();
 			}
 
 			Ext.Ajax.request({
@@ -4653,6 +4653,13 @@ Ext.define('OCS.CampaignPanel', {
 					});		
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Test',
+				handler: function(widget, event) {
+					new OCS.DealCreateWindow().show();
+				}
+			}),				
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',

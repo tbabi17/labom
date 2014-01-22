@@ -1300,14 +1300,34 @@ Ext.define('OCS.DealCreateWindow', {
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
-				fieldLabel: 'Topic name',
+				fieldLabel: 'First name',
 				allowBlank: false,
-				name: 'deal'
+				name: 'firstName'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Last name',
+				allowBlank: false,
+				name: 'lastName'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Phone',
 				allowBlank: false,
 				name: 'phone'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Email',
+				allowBlank: false,
+				name: 'email'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'source',
+				allowBlank: false,
+				name: 'source'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Topic name',
+				allowBlank: false,
+				name: 'deal'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Campaign',
