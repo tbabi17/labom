@@ -5703,7 +5703,7 @@ Ext.define('OCS.ContactNewWithDealWindow', {
 			}
 		}
 		
-		me.views = Ext.create('OCS.ContactViewWithDeal', {
+		me.views = Ext.create('OCS.ContactView', {
 			flex: 1,
 			region: 'center'
 		});
