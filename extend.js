@@ -2139,7 +2139,8 @@ Ext.define('OCS.GridView', {
 					if (me.func.indexOf('_activity_list') != -1)
 						new OCS.ActivityDetailWindow({
 							title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
-							record: record
+							record: record,
+							backgrid: me.grid
 						}).show();				
 				},
 				itemdblclick: function(dv, record, item, index, e) {
