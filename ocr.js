@@ -3872,6 +3872,18 @@ Ext.define('OCS.Reports', {
 					}
 				})
 			},
+			{
+				text: 'Reset',
+				hidden: !me.feature,
+				iconCls: 'reset',
+				handler: function() {
+					me.report.getView().getFeature('group').disable();
+					Ext.getCmp('report_start').setText(me.month());
+					Ext.getCmp('report_end').setText(me.nextmonth());
+					me.start = me.month(); me.end = me.nextmonth();
+					me.rangeData();
+				}
+			},			
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'export',
