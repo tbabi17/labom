@@ -989,6 +989,10 @@ Ext.define('OCS.ActivityGrid', {
 				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
 				return;
 			}
+			
+			if (me.selected.get('source') == 'campaign') {
+				new OCS.DealCreateWindow().show();
+			}
 
 			Ext.Ajax.request({
 			   url: 'avia.php',
