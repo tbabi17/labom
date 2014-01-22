@@ -1705,13 +1705,104 @@ Ext.define('OCS.ActivityDetailWindow', {
 				handler: function() {
 					me.close();
 				}
+			},{
+				iconCls: 'save',
+				text: 'Complete',				
+				handler: function() {
+					me.completeActivity();
+				}
 			}]
 		});
 		
+		me.selected = me.record;
 		me.form.getForm().loadRecord(me.record);
 
 		me.items = [me.form];
 		me.callParent(arguments);
+	},
+
+	completeActivity: function() {
+		var me = this;
+		if (me.selected.get('owner') != logged) {
+			Ext.MessageBox.alert('Error', 'Not available !', function() {});
+			return;
+		}
+		
+		var id = me.selected.get('id');
+		if (id.indexOf('_') != -1) {
+			var sp = id.split('_');
+			id = sp[0];
+		}
+
+		if (me.selected.get('work_type') == 'phone call') {
+			if (me.selected.get('status') == 'success') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+			
+			if (me.selected.get('source') == 'campaign') {
+				new OCS.DealCreateWindow().show();
+			}
+
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+id},
+			   success: function(response, opts) {
+				   me.store.reload();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		} else
+		if (me.selected.get('work_type') == 'email') {
+			if (me.selected.get('status') == 'sent') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+id},
+			   success: function(response, opts) {
+				   me.store.reload();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		} else
+		if (me.selected.get('work_type') == 'appointment') {
+			if (me.selected.get('status') == 'completed') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+id},
+			   success: function(response, opts) {
+				   me.store.reload();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		}  else
+		if (me.selected.get('work_type') == 'task') {
+			if (me.selected.get('status') == 'completed') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+id},
+			   success: function(response, opts) {
+				   me.store.reload();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		}
 	}
 });
 
