@@ -1210,7 +1210,7 @@ Ext.define('OCS.DealUndoWindow', {
 	
 	title: 'Undo',
 	maximizable: false,
-	height: 250,
+	height: 150,
 	width: 300,	
 
 	initComponent: function() {
