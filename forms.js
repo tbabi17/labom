@@ -259,7 +259,7 @@ Ext.define('OCS.RetailForm', {
 						labelWidth: 50,
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+						  data: [{value: 'low'},{value: 'medium'},{value: 'top100'}]
 						}),	
 						queryMode: 'local',
 						displayField: 'value',
@@ -794,7 +794,7 @@ Ext.define('OCS.CorporateForm', {
 						labelWidth: 50,
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+						  data: [{value: 'low'},{value: 'medium'},{value: 'top100'}]
 						}),	
 						queryMode: 'local',
 						displayField: 'value',
