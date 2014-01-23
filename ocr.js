@@ -4369,15 +4369,32 @@ Ext.define('OCS.CampaignActivityGrid', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'deal_assign',
 				text: 'Assign...',
-				handler: function(widget, event) {
-					if (user_level > 0 ) {
-						if (me.recordSelected())
-							new OCS.CampaignActivityAssignWindow({
-								ids: me.selectedIds('id')
-							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
+				menu: {
+					xtype: 'menu',
+					items: [{
+						text: 'For selected records',
+						handler: function(widget, event) {		
+							if (user_level > 0 ) {
+								if (me.recordSelected())
+									new OCS.CampaignActivityAssignWindow({
+										ids: me.selectedIds('id')
+									}).show();
+							} else
+								Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						}
+					},{
+						text: 'For all records',
+						handler: function(widget, event) {		
+							if (user_level > 0 ) {
+								if (me.recordSelected())
+									new OCS.CampaignActivityAssignWindow({
+										ids: 'all'
+									}).show();
+							} else
+								Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						}
+					}]
+				}	
 			}),
 			Ext.create('Ext.Action', {
 				iconCls : 'save',
