@@ -2129,7 +2129,6 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 						return;
 					}
 
-					var descr = form.findField('descr').getValue();
 					values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&competitor_name="+
 						form.findField('competitor_name').getValue()+"&reported_revenue="+form.findField('reported_revenue').getValue()+"&strength="+form.findField('strength').getValue()
 						+"&weakness="+form.findField('weakness').getValue()+"&www="+form.findField('www').getValue();
