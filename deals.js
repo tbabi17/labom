@@ -683,8 +683,10 @@ Ext.define('OCS.DealCompetitorGrid', {
 		});
 		
 		me.grid.on('itemclick', function(dv, record, item, index, e) {
-				me.form.updateSource(record);
-				me.form.setVisible(true);				
+				if (me.form) {				
+					me.form.updateSource(record);
+					me.form.setVisible(true);				
+				}
 			}
 		);
 	},
