@@ -491,7 +491,7 @@ Ext.define('OSS.SearchCombo', {
     hideLabel: false,
     hideTrigger: false,
 	minChars: 1,
-	anchor: '100%',		
+	anchor: '120%',		
 	table: 'crm_customer',
 	listConfig : {
 		width: 500,
