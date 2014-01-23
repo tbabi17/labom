@@ -4383,11 +4383,11 @@ Ext.define('OCS.CampaignActivityGrid', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
-					if (me.type == 'email')
+/*					if (me.type == 'email')
 						new OCS.MassMailWindow({
 							emails: me.getEmailList()
 						}).show();
-					else
+					else*/
 						me.completeActivity();
 				}
 			}),			
