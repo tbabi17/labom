@@ -4371,7 +4371,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 				text: 'Assign...',
 				handler: function(widget, event) {
 					if (user_level > 0 ) {
-						if (me.recordSelected())						
+						if (me.recordSelected())
 							new OCS.CampaignActivityAssignWindow({
 								ids: me.selectedIds()
 							}).show();
@@ -4467,6 +4467,16 @@ Ext.define('OCS.CampaignActivityGrid', {
 			hidden: true,
 			sortable: true
 		}];
+	},
+
+	recordSelected: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return true;
+		
+		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
 	},
 
 	updateSource: function(rec) {
