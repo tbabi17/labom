@@ -4377,6 +4377,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 							if (user_level > 0 ) {
 								if (me.recordSelected())
 									new OCS.CampaignActivityAssignWindow({
+										direction: me.selected.get('campaign'),
 										ids: me.selectedIds('id')
 									}).show();
 							} else
@@ -4388,6 +4389,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 							if (user_level > 0 ) {
 								if (me.recordSelected())
 									new OCS.CampaignActivityAssignWindow({
+										direction: me.selected.get('campaign'),
 										ids: 'all'
 									}).show();
 							} else
