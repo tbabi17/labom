@@ -88,7 +88,7 @@ Ext.define('OCS.DealGrid', {
 							new OCS.DealAddCompetitorWindow({
 								selected: me.selected,
 								backgrid: me.grid
-							}).createWindow();
+							}).show();
 						}
 						else if (me.modelName == 'CRM_DEAL_SALES_TEAM') {
 							new OCS.SalesTeamWindow({
