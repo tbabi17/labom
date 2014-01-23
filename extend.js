@@ -494,6 +494,7 @@ Ext.define('OSS.SearchCombo', {
 	anchor: '100%',		
 	table: 'crm_customer',
 	listConfig : {
+		width: 500,
 		loadingText: 'Хайж байна...',
 		emptyText: '<span class="search_result">илэрц байхгүй !</span>',
 		getInnerTpl: function() {
