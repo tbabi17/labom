@@ -4358,9 +4358,9 @@ Ext.define('OCS.CampaignActivityGrid', {
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'Without Owner List',
+							text: 'Without Owner Activity List',
 							handler: function(widget, event) {
-								me.filterData('Without Owner List');
+								me.filterData('Without Owner Activity List');
 							}
 						}),
 						Ext.create('Ext.Action', {
