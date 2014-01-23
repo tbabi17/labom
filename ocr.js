@@ -4479,6 +4479,17 @@ Ext.define('OCS.CampaignActivityGrid', {
 		return false;
 	},
 
+	selectedIds: function(id) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			result += recs[i].get(id)+':';
+		}
+
+		return result;
+	},
+
 	updateSource: function(rec) {
 		var me = this;
 		me.selected = rec;
