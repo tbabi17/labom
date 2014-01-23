@@ -4584,6 +4584,7 @@ Ext.define('OCS.Campaigns', {
 	},
 	
 	selectedRecord: function() {
+		var me = this;
 		return me.campaignActivity.selectedRecord();
 	},
 
