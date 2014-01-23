@@ -2138,11 +2138,14 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func.indexOf('_activity_list') != -1)
-						new OCS.ActivityDetailWindow({
-							title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
-							record: record,
-							backgrid: me.grid
-						}).show();				
+						if (record.get('owner')) {
+							new OCS.ActivityDetailWindow({
+								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
+								record: record,
+								backgrid: me.grid
+							}).show();
+						} else 
+							alert('empty owner !');
 				},
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
