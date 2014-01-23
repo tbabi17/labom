@@ -2092,9 +2092,7 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 				name: 'deal_id'
 			},{
 				xtype: 'textfield',
-				value: 0,
 				fieldLabel: 'WWW',
-				allowBlank: false,
 				name: 'www'				
 			},{
 				xtype: 'currencyfield',
@@ -2170,9 +2168,7 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 		
 		me.competitorList.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {
-					me.form.getForm().findField('price').setValue(record.get('price'));
-					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
-					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
+					me.form.getForm().findField('competitor_name').setValue(record.get('product_name'));				
 				}				
 			}
 		);
