@@ -2138,7 +2138,7 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func.indexOf('_activity_list') != -1)
-						if (record.get('owner')) {
+						if (record.get('owner') && me.isSuccess(record)) {
 							new OCS.ActivityDetailWindow({
 								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
 								record: record,
@@ -2194,6 +2194,10 @@ Ext.define('OCS.GridView', {
 		me.callParent(arguments);
 	},
 	
+	isSuccess: function(rec) {
+		return (rec.get('status') == 'success' || rec.get('status') == 'completed' || rec.get('status') == 'sent');
+	},
+
 	onTextFieldChange_: function(e) {
 		var me = this;		
 		var v = e.getValue();
