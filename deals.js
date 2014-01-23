@@ -80,7 +80,12 @@ Ext.define('OCS.DealGrid', {
 				handler: function(widget, event) {
 					if (me.action) {
 						if (me.modelName == 'CRM_DEAL_COMPETITORS') {
-							new OCS.CompetitorWindow({
+/*							new OCS.CompetitorWindow({
+								selected: me.selected,
+								backgrid: me.grid
+							}).createWindow();*/
+
+							new OCS.DealAddCompetitorWindow({
 								selected: me.selected,
 								backgrid: me.grid
 							}).createWindow();

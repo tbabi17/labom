@@ -2031,6 +2031,155 @@ Ext.define('OCS.DealAddProductWindow', {
 	}
 });
 
+Ext.define('OCS.DealAddCompetitorWindow', {
+	extend: 'OCS.Window',
+	title: 'Competitor',
+	maximizable: true,
+	height: 550,
+	modal: false,
+	width: 500,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.competitorList = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_COMPETITOR',
+			func:'crm_competitor_list',
+			title: 'Competitor',
+			table: 'crm_competitors',
+			tab: 'deal_crm_competitors_list',
+			buttons: true,
+			feature: false,
+			tbar: false,
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					product_id: '0',
+					price: '0'
+				}
+			}
+		});
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 0.75,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				//value: me.selected.get('crm_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Competitor',
+				readOnly: true,
+				name: 'competitor_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('deal_id'),
+				disabled: true,
+				name: 'deal_id'
+			},{
+				xtype: 'textfield',
+				value: 0,
+				fieldLabel: 'WWW',
+				allowBlank: false,
+				name: 'www'				
+			},{
+				xtype: 'currencyfield',
+				value: 0,
+				fieldLabel: 'Reported Revenue',
+				allowBlank: false,
+				name: 'reported_revenue' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				hidden: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Strength',	
+				flex: 1,
+				name: 'strength'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Weakness',	
+				flex: 1,
+				name: 'weakness'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					var values = form.getValues(true);
+					if (!form.findField('product_name').getValue()) {
+						Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
+						return;
+					}
+
+					if (form.findField('amount').getValue() > 0) {					
+						var descr = form.findField('descr').getValue();
+						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();//+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {							  
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});	
+					} else
+						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+				}
+			}]
+		});
+	
+
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'south',
+			flex: 1,
+			border: false,
+			items: me.competitorList.createGrid()
+		}, me.form];	
+		
+		me.competitorList.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					me.form.getForm().findField('price').setValue(record.get('price'));
+					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
+					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
+				}				
+			}
+		);
+
+		me.callParent(arguments);
+	}
+});
 
 Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
