@@ -964,6 +964,15 @@ Ext.define('OCS.ActivityGrid', {
 		return count;
 	},
 	
+	selectedRecord: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0];
+		
+		return 0;
+	},
+
 	completeActivity: function() {
 		var me = this;
 		var records = me.grid.getView().getSelectionModel().getSelection();
@@ -4576,7 +4585,7 @@ Ext.define('OCS.Campaigns', {
 	
 	selectedRecord: function() {
 		var me = this;
-		var recs = me.campaigns.grid.getView().getSelectionModel().getSelection();
+		var recs = me.campaignActivity.grid.getView().getSelectionModel().getSelection();
 		if (recs && recs.length > 0)
 			return recs[0];
 		
