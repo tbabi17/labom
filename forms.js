@@ -300,7 +300,7 @@ Ext.define('OCS.RetailForm', {
 						displayField: 'value',
 						valueField: 'value',
 						triggerAction: 'all',
-						editable: false,
+						editable: true,
 						flex: 0.6
 					}]
 				},{
@@ -1398,7 +1398,7 @@ Ext.define('OCS.ContactForm', {
 						displayField: 'value',
 						valueField: 'value',
 						triggerAction: 'all',
-						editable: false
+						editable: true
 					}]
 				}, {
 					xtype: 'container',
