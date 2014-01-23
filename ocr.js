@@ -4584,12 +4584,7 @@ Ext.define('OCS.Campaigns', {
 	},
 	
 	selectedRecord: function() {
-		var me = this;
-		var recs = me.campaignActivity.grid.getView().getSelectionModel().getSelection();
-		if (recs && recs.length > 0)
-			return recs[0];
-		
-		return 0;
+		return me.campaignActivity.selectedRecord();
 	},
 
 	createPanel: function() {
