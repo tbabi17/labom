@@ -2075,7 +2075,7 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 				disabled: true,
 				hidden: true,
 				allowBlank: false,
-				//value: me.selected.get('crm_id'),
+				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
@@ -2100,13 +2100,6 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 				fieldLabel: 'Reported Revenue',
 				allowBlank: false,
 				name: 'reported_revenue' 
-			},{
-				xtype: 'textfield',
-				fieldLabel: 'Created by',				
-				readOnly: true,
-				hidden: true,
-				value: logged,
-				name: 'userCode'
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Strength',	
