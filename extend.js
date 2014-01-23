@@ -2138,6 +2138,13 @@ Ext.define('OCS.GridView', {
 					}
 
 					if (me.func.indexOf('_activity_list') != -1)
+						if (!record.get('owner')) {
+							new OCS.CampaignActivityAssignWindow({
+								ids: me.selectedIds('id'),
+								direction: record.get('work_type')
+							}).show();
+							return;
+						}
 						if (record.get('owner') && me.isSuccess(record)) {
 							new OCS.ActivityDetailWindow({
 								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
@@ -2193,6 +2200,17 @@ Ext.define('OCS.GridView', {
 		me.callParent(arguments);
 	},
 	
+	selectedIds: function(id) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			result += recs[i].get(id)+':';
+		}
+
+		return result;
+	},
+
 	isSuccess: function(rec) {
 		return (rec.get('status') == 'success' || rec.get('status') == 'completed' || rec.get('status') == 'sent');
 	},

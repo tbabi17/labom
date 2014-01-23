@@ -1205,6 +1205,68 @@ Ext.define('OCS.DealAssignWindow', {
 	}
 });
 
+Ext.define('OCS.CampaignActivityAssignWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Assign to',
+	maximizable: false,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'deal_assign_to',				
+			title: 'Assign to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',				
+				name: 'owner',
+				value: logged
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_owner', values: values},
+						   success: function(response, opts) {
+								views['deals'].reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.DealUndoWindow', {
 	extend: 'OCS.Window',
 	
