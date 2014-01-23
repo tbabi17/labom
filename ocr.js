@@ -4373,7 +4373,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 					if (user_level > 0 ) {
 						if (me.recordSelected())
 							new OCS.CampaignActivityAssignWindow({
-								ids: me.selectedIds()
+								ids: me.selectedIds('id')
 							}).show();
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
