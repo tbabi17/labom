@@ -2161,6 +2161,7 @@ Ext.define('OCS.DealAddCompetitorWindow', {
 		me.competitorList.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {
 					me.form.getForm().findField('competitor_name').setValue(record.get('competitor_name'));				
+					me.form.getForm().findField('www').setValue(record.get('www'));				
 				}				
 			}
 		);
