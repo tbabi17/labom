@@ -325,7 +325,7 @@ Ext.define('OCS.RetailForm', {
 						flex: 0.5
 					},{
 						fieldLabel: 'Company',
-						labelWidth: 80,
+						labelWidth: 60,
 						xtype: 'searchcombo',
 						name: 'title',
 						table: 'crm_customer',
