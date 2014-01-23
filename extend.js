@@ -489,7 +489,7 @@ Ext.define('OSS.SearchCombo', {
 	displayField: 'value',
     typeAhead: false,
     hideLabel: false,
-    hideTrigger:false,
+    hideTrigger: false,
 	minChars: 1,
 	anchor: '100%',		
 	table: 'crm_customer',

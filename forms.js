@@ -274,7 +274,7 @@ Ext.define('OCS.RetailForm', {
 						xtype: 'combo',
 						name: '_class',
 						margins: '0 0 0 6',
-						labelWidth: 40,
+						labelWidth: 30,
 						value: 'RETAIL',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
