@@ -2202,7 +2202,7 @@ Ext.define('OCS.GridView', {
 	
 	selectedIds: function(id) {
 		var me = this;
-		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var recs = me.getView().getSelectionModel().getSelection();
 		var result = '';
 		for (i = 0; i < recs.length; i++) {
 			result += recs[i].get(id)+':';
