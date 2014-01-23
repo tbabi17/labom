@@ -1210,7 +1210,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 	
 	title: 'Assign to',
 	maximizable: false,
-	height: 250,
+	height: 150,
 	width: 300,	
 
 	initComponent: function() {
@@ -1225,7 +1225,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 			title: '',
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: 'Selected '+me.direction,				
+				fieldLabel: 'Selected activities',				
 				name: 'selected',
 				value: me.ids
 			},{

@@ -2140,8 +2140,7 @@ Ext.define('OCS.GridView', {
 					if (me.func.indexOf('_activity_list') != -1)
 						if (!record.get('owner') || !me.isSucess(record)) {
 							new OCS.CampaignActivityAssignWindow({
-								ids: me.selectedIds('id'),
-								direction: record.get('work_type')
+								ids: me.selectedIds('id')
 							}).show();
 							return;
 						}
