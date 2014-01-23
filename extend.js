@@ -2144,8 +2144,7 @@ Ext.define('OCS.GridView', {
 								record: record,
 								backgrid: me.grid
 							}).show();
-						} else 
-							alert('empty owner !');
+						}
 				},
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
