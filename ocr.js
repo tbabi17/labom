@@ -4367,6 +4367,19 @@ Ext.define('OCS.CampaignActivityGrid', {
 				}		
 			}),'-',
 			Ext.create('Ext.Action', {
+				iconCls   : 'deal_assign',
+				text: 'Assign...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {
+						if (me.recordSelected())						
+							new OCS.CampaignActivityAssignWindow({
+								ids: me.selectedIds()
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
