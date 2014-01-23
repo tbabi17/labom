@@ -1225,7 +1225,8 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 			title: '',
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: 'Selected activities',				
+				fieldLabel: 'Selected activities',			
+				readOnly: true,
 				name: 'selected',
 				value: me.ids
 			},{
