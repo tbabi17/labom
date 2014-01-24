@@ -2352,6 +2352,20 @@ Ext.define('OCS.PermissionWindow', {
 	initComponent: function() {
 		var me = this;				
 		
+		me.ds = Ext.create('Ext.data.ArrayStore', {
+			fields: ['value','text'],
+			proxy: {
+				type: 'ajax',
+				url: 'Numbers',
+				reader: 'array'
+			},
+			autoLoad: true,
+			sortInfo: {
+				field: 'value',
+				direction: 'ASC'
+			}
+		});
+
 		me.form = Ext.widget('form', {
 			title: 'ItemSelector Test',
 			width: 700,
@@ -2365,7 +2379,7 @@ Ext.define('OCS.PermissionWindow', {
 				anchor: '100%',
 				fieldLabel: 'ItemSelector',
 				imagePath: '../ux/images/',
-//				store: ds,
+				store: me.ds,
 				displayField: 'text',
 				valueField: 'value',
 				value: ['3', '4', '6'],
