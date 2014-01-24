@@ -2373,7 +2373,7 @@ Ext.define('OCS.PermissionWindow', {
 		me.store.loadData(me.perm);
 		me.values = [];
 		if (me.selected.get('permission'))
-			me.values = me.selected.get('permission').split(':');
+			me.values = me.selected.get('permission').split(',');
 
 		me.form = Ext.widget('form', {
 			region: 'center',
@@ -2412,12 +2412,8 @@ Ext.define('OCS.PermissionWindow', {
                     if (form.isValid()){
                         var values = form.getValues(true);
 						var v = form.findField('permission').getValue();
-						alert(v);
-						v = replaceAll(',', ':', v);
-						values = "permission='"+v+"'";
-						alert(values);
-						/*
-					
+						values = "permission='"+v+"'";						
+				
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_users', action: 'update', values: values, where: "owner='"+me.selected.get('owner')+"'"},
@@ -2427,7 +2423,7 @@ Ext.define('OCS.PermissionWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});*/
+						});
                     }
 				}
 			}]
