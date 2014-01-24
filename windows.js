@@ -2351,20 +2351,20 @@ Ext.define('OCS.PermissionWindow', {
 
 	initComponent: function() {
 		var me = this;				
-		
-		me.ds = Ext.create('Ext.data.ArrayStore', {
-			fields: ['value','text'],
-			proxy: {
-				type: 'ajax',
-				url: 'Numbers',
-				reader: 'array'
-			},
-			autoLoad: true,
-			sortInfo: {
-				field: 'value',
-				direction: 'ASC'
-			}
+
+		me.perm = [
+			['contact-new','Contact-New'],
+			['contact-delete','Contact-Delete'],
+			['contact-expand','Contact-Expand']
+		];
+
+		me.store = new Ext.data.ArrayStore({
+			fields: [
+			   {name: 'value'},
+			   {name: 'text'}
+			]
 		});
+		me.store.loadData(me.perm);
 
 		me.form = Ext.widget('form', {
 			region: 'center',
@@ -2379,10 +2379,10 @@ Ext.define('OCS.PermissionWindow', {
 				flex: 1,
 				fieldLabel: 'Action list',
 				imagePath: 'ux/css/images/',
-				store: me.ds,
+				store: me.store,
 				displayField: 'text',
 				valueField: 'value',
-				value: ['3', '4', '6'],
+				value: [],
 				allowBlank: false,
 				msgTarget: 'side',
 				fromTitle: 'Accepted',
