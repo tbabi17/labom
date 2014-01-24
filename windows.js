@@ -2355,7 +2355,10 @@ Ext.define('OCS.PermissionWindow', {
 		me.perm = [
 			['contact-new','Contact-New'],
 			['contact-delete','Contact-Delete'],
-			['contact-expand','Contact-Expand']
+			['contact-expand','Contact-Expand'],
+			['account-new','Account-New'],
+			['account-delete','Account-Delete'],
+			['account-expand','Account-Expand'],
 		];
 
 		me.store = new Ext.data.ArrayStore({
