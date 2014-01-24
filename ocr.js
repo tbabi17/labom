@@ -3526,7 +3526,7 @@ Ext.define('OCS.SettingsPanel', {
 								id : 'users_list',
 								title: 'Users',
 								region: 'center',
-								flex: 1,
+								flex: 1.5,
 								split: true,
 								closable: false,
 								layout: 'border',
