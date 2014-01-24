@@ -2351,7 +2351,7 @@ Ext.define('OCS.PermissionWindow', {
 
 	initComponent: function() {
 		var me = this;				
-		/*
+		
 		me.form = Ext.widget('form', {
 			title: 'ItemSelector Test',
 			width: 700,
@@ -2377,7 +2377,7 @@ Ext.define('OCS.PermissionWindow', {
 		});
 
 
-		me.items = [me.form];*/
+		me.items = [me.form];
 
 		me.callParent(arguments);
 	}
