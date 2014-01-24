@@ -23,7 +23,8 @@ Ext.require([
 	'Ext.ux.data.PagingMemoryProxy',
 	'Ext.slider.Multi',
 	'Ext.ux.CellDragDrop',
-	'Ext.ux.form.SearchField'
+	'Ext.ux.form.SearchField',
+	'Ext.ux.form.ItemSelector'
 ]);
 
 function getCookie(c_name) {
