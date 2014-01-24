@@ -854,7 +854,6 @@ Ext.define('OCS.UserGridWithFormPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'case_grid',
 				text: 'Permission ...',
-				disabled: me.remove,
 				handler: function(widget, event) {
 					new OCS.PermissionWindow().show();
 				}
