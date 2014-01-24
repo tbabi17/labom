@@ -855,7 +855,10 @@ Ext.define('OCS.UserGridWithFormPanel', {
 				iconCls   : 'case_grid',
 				text: 'Permission ...',
 				handler: function(widget, event) {
-					new OCS.PermissionWindow().show();
+					if (me.recordSelected())
+						new OCS.PermissionWindow({
+							selected: me.selectedRecord()
+						}).show();
 				}
 			}),
 			'-',

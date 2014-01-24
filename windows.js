@@ -2376,7 +2376,7 @@ Ext.define('OCS.PermissionWindow', {
 			border: false,
 			items:[{
 				xtype: 'itemselector',
-				name: 'itemselector',
+				name: 'sel',
 				id: 'itemselector-field',
 				region: 'center',
 				flex: 1,
@@ -2404,7 +2404,7 @@ Ext.define('OCS.PermissionWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
                     if (form.isValid()){
-                        alert(form.getValues(true));
+                        var values = form.getValues(true);
                     }
 				}
 			}]
