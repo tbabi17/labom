@@ -8,6 +8,7 @@ Ext.define('OCS.ComplainWindow', {
 	buttons: true,
 	modelName: 'CRM_COMPLAIN',
 	primary: 'case_id',
+	xlsName: 'case',
 	
 	filterData: function(views) {
 		var me = this;		
@@ -22,6 +23,7 @@ Ext.define('OCS.ComplainWindow', {
 			Ext.create('Ext.Action', {
 				iconCls : 'add',
 				text: 'New ...',
+				disabled: permit(me.xlsName+'_new'),
 				handler: function(widget, event) {
 					me.updateSource(me.defaultRec);
 					me.initSource();
@@ -129,6 +131,7 @@ Ext.define('OCS.NewDealWindow', {
 	sortField: 'closing_date',
 	modelName: 'CRM_DEAL',
 	primary: 'deal_id',
+	xlsName: 'deal',
 
 	createActions: function() {
 		var me = this;
@@ -136,6 +139,7 @@ Ext.define('OCS.NewDealWindow', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',
 				text: 'New ...',
+				disabled: permit(me.xlsName+'-new'),
 				handler: function(widget, event) {
 					me.updateSource(me.defaultRec);
 					me.initSource();
@@ -2361,9 +2365,11 @@ Ext.define('OCS.PermissionWindow', {
 			['account-delete','Account-Delete'],
 			['account-expand','Account-Expand'],
 			['account-assign','Account-Assign'],
-			['deal-create','Deal create'],
-			['case-create','Case create'],
-			['campaign-create','Campaign create']
+			['deal-create','Deal-New'],
+			['deal-assign','Deal-Assign'],
+			['deal-delete','Deal-Delete'],
+			['case-create','Case-New'],
+			['campaign-create','Campaign-New']
 		];
 
 		me.store = new Ext.data.ArrayStore({
