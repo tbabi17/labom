@@ -2412,6 +2412,7 @@ Ext.define('OCS.PermissionWindow', {
                     if (form.isValid()){
                         var values = form.getValues(true);
 						var v = form.findField('permission').getValue();
+						alert(v);
 						v = replaceAll(',', ':', v);
 						values = "permission='"+v+"'";
 						alert(values);
