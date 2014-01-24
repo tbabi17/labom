@@ -3,7 +3,10 @@ function replaceAll(find, replace, str) {
 }
 
 function permit(id) {
-	return (permissions.indexOf(id+',') != -1);
+	if (typeof permissions != undefined)
+		return (permissions.indexOf(id+',') != -1);
+
+	return false;
 }
 
 function googleEventDynamic(rec) {	
@@ -433,6 +436,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',
 				text: 'New...',
+				disabled: permit('contact-new'),
 				handler: function(widget, event) {
 					if (me.modelName == 'CRM_RETAIL')					
 						new OCS.RetailNewWindow({							
@@ -445,6 +449,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'edit',
 				text: 'Expand...',
+				disabled: permit('contact-expand'),
 				handler: function(widget, event) {					
 					if (me.recordSelected()) {					
 						if (me.modelName == 'CRM_RETAIL')					
@@ -463,6 +468,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls  : 'delete',
 				text: 'Delete',
+				disabled: permit('contact-delete'),
 				handler: function(widget, event) {
 					me.deleteRecord();
 				}
@@ -471,6 +477,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'deal_assign',
 				text: 'Assign...',
+				disabled: permit('contact-assign'),
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
@@ -486,6 +493,7 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'merge',
 				text: 'Merge...',
+				disabled: permit('contact-merge'),
 				handler: function(widget, event) {
 					if (user_level > 0) {					
 						if (me.grid.getView().getSelectionModel().getSelection().length == 2){					

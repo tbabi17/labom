@@ -2356,9 +2356,11 @@ Ext.define('OCS.PermissionWindow', {
 			['contact-new','Contact-New'],
 			['contact-delete','Contact-Delete'],
 			['contact-expand','Contact-Expand'],
+			['contact-assign','Contact-Assign'],
 			['account-new','Account-New'],
 			['account-delete','Account-Delete'],
 			['account-expand','Account-Expand'],
+			['account-assign','Account-Assign'],
 			['deal-create','Deal create'],
 			['case-create','Case create'],
 			['campaign-create','Campaign create']
