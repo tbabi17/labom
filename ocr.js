@@ -2,6 +2,10 @@ function replaceAll(find, replace, str) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
+function permit(id) {
+	return (permissions.indexOf(id+',') != -1);
+}
+
 function googleEventDynamic(rec) {	
 	_location = '';		
 		
