@@ -2406,6 +2406,7 @@ Ext.define('OCS.PermissionWindow', {
                     if (form.isValid()){
                         var values = form.getValues(true);
 						values = replaceAll('&', ':', values);
+						values = replaceAll('%2C', ':', values);
 						alert(values);
 						/*
 						Ext.Ajax.request({
