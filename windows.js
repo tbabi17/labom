@@ -2369,13 +2369,15 @@ Ext.define('OCS.PermissionWindow', {
 		me.form = Ext.widget('form', {
 			region: 'center',
 			layout: 'border',
+			bodyPadding: 10,
+			border: false,
 			items:[{
 				xtype: 'itemselector',
 				name: 'itemselector',
 				id: 'itemselector-field',
 				region: 'center',
 				flex: 1,
-				fieldLabel: 'ItemSelector',
+				fieldLabel: 'Action list',
 				imagePath: '../ux/images/',
 				store: me.ds,
 				displayField: 'text',
@@ -2383,7 +2385,7 @@ Ext.define('OCS.PermissionWindow', {
 				value: ['3', '4', '6'],
 				allowBlank: false,
 				msgTarget: 'side',
-				fromTitle: 'Available',
+				fromTitle: 'All',
 				toTitle: 'Selected'
 			}],
 			buttons: [{
