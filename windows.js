@@ -2395,7 +2395,8 @@ Ext.define('OCS.PermissionWindow', {
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
-					
+					var form = Ext.getCmp(fieldId).up('form').getForm();
+					form.reset();
 				}
 			},{
 				iconCls: 'commit',
