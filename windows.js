@@ -2358,7 +2358,7 @@ Ext.define('OCS.PermissionWindow', {
 			['contact-expand','Contact-Expand'],
 			['account-new','Account-New'],
 			['account-delete','Account-Delete'],
-			['account-expand','Account-Expand'],
+			['account-expand','Account-Expand']
 		];
 
 		me.store = new Ext.data.ArrayStore({
@@ -2395,14 +2395,14 @@ Ext.define('OCS.PermissionWindow', {
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
-					var form = Ext.getCmp(fieldId).up('form').getForm();
+					var form = this.up('form').getForm();
 					form.reset();
 				}
 			},{
 				iconCls: 'commit',
 				text: 'Commit',				
 				handler: function() {
-					var form = Ext.getCmp(fieldId).up('form').getForm();
+					var form = this.up('form').getForm();
                     if (form.isValid()){
                         alert(form.getValues(true));
                     }
