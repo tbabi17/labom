@@ -2368,7 +2368,9 @@ Ext.define('OCS.PermissionWindow', {
 			]
 		});
 		me.store.loadData(me.perm);
-		me.values = me.selected.get('permission').split(':');
+		me.values = [];
+		if (me.selected.get('permission'))
+			me.values = me.selected.get('permission').split(':');
 
 		me.form = Ext.widget('form', {
 			region: 'center',
