@@ -2411,8 +2411,10 @@ Ext.define('OCS.PermissionWindow', {
 					var form = this.up('form').getForm();
                     if (form.isValid()){
                         var values = form.getValues(true);
-						values = replaceAll('&', ':', values);
-						values = replaceAll('%2C', ':', values);
+						var v = form.findField('permission').getValue();
+						v = replaceAll(',', ':', v);
+						values = "permission='"+v+"'";
+						/*
 					
 						Ext.Ajax.request({
 						   url: 'avia.php',
@@ -2423,7 +2425,7 @@ Ext.define('OCS.PermissionWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});
+						});*/
                     }
 				}
 			}]
