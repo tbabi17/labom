@@ -2401,7 +2401,10 @@ Ext.define('OCS.PermissionWindow', {
 				iconCls: 'commit',
 				text: 'Commit',				
 				handler: function() {
-					
+					var form = Ext.getCmp(fieldId).up('form').getForm();
+                    if (form.isValid()){
+                        alert(form.getValues(true));
+                    }
 				}
 			}]
 		});
