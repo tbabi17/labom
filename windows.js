@@ -2360,7 +2360,8 @@ Ext.define('OCS.PermissionWindow', {
 			['account-delete','Account-Delete'],
 			['account-expand','Account-Expand'],
 			['deal-create','Deal create'],
-			['case-create','Case create']
+			['case-create','Case create'],
+			['campaign-create','Campaign create']
 		];
 
 		me.store = new Ext.data.ArrayStore({
@@ -2415,7 +2416,7 @@ Ext.define('OCS.PermissionWindow', {
 					
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_users', action: 'update', values: values, where: "owner="+me.selected.get('owner')},
+						   params: {handle: 'web', table: 'crm_users', action: 'update', values: values, where: "owner='"+me.selected.get('owner')+"'"},
 						   success: function(response, opts) {
 							  me.close();
 						   },
