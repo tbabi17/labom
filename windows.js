@@ -2367,11 +2367,7 @@ Ext.define('OCS.PermissionWindow', {
 		});
 
 		me.form = Ext.widget('form', {
-			title: 'ItemSelector Test',
-			width: 700,
-			bodyPadding: 10,
-			height: 300,
-			layout: 'fit',
+			region: 'center',
 			items:[{
 				xtype: 'itemselector',
 				name: 'itemselector',
@@ -2387,12 +2383,24 @@ Ext.define('OCS.PermissionWindow', {
 				msgTarget: 'side',
 				fromTitle: 'Available',
 				toTitle: 'Selected'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					
+				}
 			}]
 		});
 
 
 		me.items = [me.form];
-
 		me.callParent(arguments);
 	}
 });
