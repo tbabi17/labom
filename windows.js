@@ -2378,7 +2378,7 @@ Ext.define('OCS.PermissionWindow', {
 				region: 'center',
 				flex: 1,
 				fieldLabel: 'Action list',
-				imagePath: '../ux/images/',
+				imagePath: 'ux/css/images/',
 				store: me.ds,
 				displayField: 'text',
 				valueField: 'value',
