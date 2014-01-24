@@ -2339,3 +2339,46 @@ Ext.define('OCS.ResellerCreateWindow', {
 		return new Date().getMonth()+1;
 	}
 });
+
+Ext.define('OCS.PermissionWindow', {
+	extend: 'OCS.Window',
+	title: 'Permission table',
+	maximizable: true,
+	height: 320,
+	modal: false,
+	width: 570,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		/*
+		me.form = Ext.widget('form', {
+			title: 'ItemSelector Test',
+			width: 700,
+			bodyPadding: 10,
+			height: 300,
+			layout: 'fit',
+			items:[{
+				xtype: 'itemselector',
+				name: 'itemselector',
+				id: 'itemselector-field',
+				anchor: '100%',
+				fieldLabel: 'ItemSelector',
+				imagePath: '../ux/images/',
+//				store: ds,
+				displayField: 'text',
+				valueField: 'value',
+				value: ['3', '4', '6'],
+				allowBlank: false,
+				msgTarget: 'side',
+				fromTitle: 'Available',
+				toTitle: 'Selected'
+			}]
+		});
+
+
+		me.items = [me.form];*/
+
+		me.callParent(arguments);
+	}
+});
