@@ -2385,8 +2385,8 @@ Ext.define('OCS.PermissionWindow', {
 				value: ['3', '4', '6'],
 				allowBlank: false,
 				msgTarget: 'side',
-				fromTitle: 'All',
-				toTitle: 'Selected'
+				fromTitle: 'Accepted',
+				toTitle: 'Denied'
 			}],
 			buttons: [{
 				iconCls: 'reset',
