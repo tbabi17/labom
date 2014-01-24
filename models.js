@@ -564,7 +564,8 @@ fields['CRM_USERS_FIELDS'] = [
    {name: 'company', text: 'Company', width: 150},
    {name: 'gmailAccount', text: 'Goolge Account', width: 120},
    {name: 'user_type', text: 'Direction', width: 100, hidden: true},
-   {name: 'user_level', text: 'Level', width: 80, renderer: renderUserLevel}
+   {name: 'user_level', text: 'Level', width: 80, renderer: renderUserLevel},
+   {name: 'permission', text: 'Permissions', width: 250, hidden: true}   
 ];
 
 Ext.define('CRM_USERS', {

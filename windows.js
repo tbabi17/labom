@@ -2368,6 +2368,7 @@ Ext.define('OCS.PermissionWindow', {
 			]
 		});
 		me.store.loadData(me.perm);
+		me.values = me.selected.get('permission').split(':');
 
 		me.form = Ext.widget('form', {
 			region: 'center',
@@ -2385,7 +2386,7 @@ Ext.define('OCS.PermissionWindow', {
 				store: me.store,
 				displayField: 'text',
 				valueField: 'value',
-				value: [],
+				value: me.values,
 				allowBlank: false,
 				msgTarget: 'side',
 				fromTitle: 'Accepted',
@@ -2407,19 +2408,17 @@ Ext.define('OCS.PermissionWindow', {
                         var values = form.getValues(true);
 						values = replaceAll('&', ':', values);
 						values = replaceAll('%2C', ':', values);
-						alert(values);
-						/*
+					
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_users', action: 'update', values: values_deals, where: "owner="+me.selected.get('owner')},
+						   params: {handle: 'web', table: 'crm_users', action: 'update', values: values, where: "owner="+me.selected.get('owner')},
 						   success: function(response, opts) {
 							  me.close();
-							  views['cases'].reload(me.selected);
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});*/
+						});
                     }
 				}
 			}]
