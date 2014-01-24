@@ -26,8 +26,7 @@ Ext.require([
 	'Ext.ux.form.SearchField'
 ]);
 
-function getCookie(c_name)
-{
+function getCookie(c_name) {
 	var c_value = document.cookie;
 	var c_start = c_value.indexOf(" " + c_name + "=");
 	if (c_start == -1) {

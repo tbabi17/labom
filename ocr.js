@@ -3464,7 +3464,7 @@ Ext.define('OCS.SettingsPanel', {
 	createPanel: function() {
 		var me = this;
 
-		me.userList = new Ext.create('OCS.GridWithFormPanel', {
+		me.userList = new Ext.create('OCS.UserGridWithFormPanel', {
 							modelName:'CRM_USERS',
 							func:'crm_users_list',
 							table: 'crm_users',
