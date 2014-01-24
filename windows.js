@@ -2344,9 +2344,9 @@ Ext.define('OCS.PermissionWindow', {
 	extend: 'OCS.Window',
 	title: 'Permission table',
 	maximizable: true,
-	height: 320,
+	height: 520,
 	modal: false,
-	width: 570,	
+	width: 700,	
 	modal: true,
 
 	initComponent: function() {
@@ -2368,11 +2368,13 @@ Ext.define('OCS.PermissionWindow', {
 
 		me.form = Ext.widget('form', {
 			region: 'center',
+			layout: 'border',
 			items:[{
 				xtype: 'itemselector',
 				name: 'itemselector',
 				id: 'itemselector-field',
-				anchor: '100%',
+				region: 'center',
+				flex: 1,
 				fieldLabel: 'ItemSelector',
 				imagePath: '../ux/images/',
 				store: me.ds,
