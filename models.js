@@ -879,7 +879,7 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 	   text: 'Activity',
 	   columns: [{dataIndex:'meeting', text: 'Meeting', width: 70, align: 'center', summaryType: 'sum', renderer: renderReportNumber},
 				 {dataIndex:'phonecall', text: 'Phone call', width: 70, align: 'center', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'email', text: 'Email', width: 70, align: 'center', summaryType: 'sum', renderer: renderPrecent}]
+				 {dataIndex:'email', text: 'Email', width: 70, align: 'center', summaryType: 'sum', renderer: renderReportNumber}]
    },
    {
 	   text: 'АВТОТЭЭВРИЙН ХЭРЭГСЛИЙН',
