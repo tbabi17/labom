@@ -2,11 +2,11 @@ function replaceAll(find, replace, str) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
-function permit(id) {/*
+function permit(id) {
 	if (typeof permissions != undefined) {
 		id = id.toLowerCase();
 		return (permissions.indexOf(id+',') != -1);
-	}*/
+	}
 
 	return false;
 }
