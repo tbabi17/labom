@@ -2200,6 +2200,8 @@ Ext.define('OCS.GridView', {
 					e.stopEvent();
 					if (me.actions.length > 0)
 						me.contextMenu.showAt(e.getXY());
+
+					me.getSelectionModel().select(node);
 					return false;
 				},
 				containercontextmenu: function(grid, e) {
