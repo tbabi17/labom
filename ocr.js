@@ -965,6 +965,7 @@ Ext.define('OCS.ActivityGrid', {
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
+		me.views = views;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
 		me.store.loadPage(1);
 	},
@@ -1991,6 +1992,7 @@ Ext.define('OCS.DealView', {
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
+		me.views = views;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
 		me.store.loadPage(1);
 	},
@@ -3064,6 +3066,7 @@ Ext.define('OCS.CaseView', {
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
+		me.views = views;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
 		me.store.loadPage(1);
 	},
