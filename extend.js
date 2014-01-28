@@ -547,6 +547,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	hidden: false,
 	feature: true,
 	tbar: true,
+	views: '',
 
 	constructor: function(config) {
         this.initConfig(config);
