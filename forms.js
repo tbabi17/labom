@@ -363,7 +363,7 @@ Ext.define('OCS.RetailForm', {
 						layout: 'hbox',
 						defaultType: 'textfield',
 						items: [{
-							id: 'phone1',
+							id: 'phone',
 							fieldLabel: 'Phone 1',
 							labelWidth: 70,
 							name: 'phone',
