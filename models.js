@@ -32,7 +32,7 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'birthday', text: 'Birth date', width: 70, align: 'center'},
    {name: 'gender', text: 'Gender', width: 60, hidden: true},
    {name: 'work_status', text: 'Social status', width: 140, hidden: true},
-   {name: 'title', text: 'Company', width: 200},
+   {name: 'title', text: 'Company', width: 250},
    {name: 'job_title', text: 'Position', width: 150},
    {name: 'job_type', text: 'Job', width: 100, hidden: true},
    {name: 'phone', text: 'Phone', width: 80, align: 'center', renderer: renderPhone},
