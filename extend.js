@@ -2263,6 +2263,7 @@ Ext.define('OCS.GridView', {
 		};
 		
 		me.on('beforeitemmousedown', function(grid, record, item, index, event, eOpts) { 
+			me.doSelect(record, true, false);
 			if (event.button==0) allowStreetSelection=true; else allowSelection=false; 
 		});
 
