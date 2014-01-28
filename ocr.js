@@ -5787,7 +5787,7 @@ Ext.define('OCS.CorporateNewWindow', {
 	title: 'New account',
 	table: 'crm_customer',
 	maximizable: true,
-	modal : false,
+	modal : true,
 	width: 650,
 	height: 560,
 
