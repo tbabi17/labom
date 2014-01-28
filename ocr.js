@@ -5704,10 +5704,10 @@ Ext.define('OCS.RetailNewWindow', {
 	title: 'New contact',
 	table: 'crm_customer',
 	maximizable: true,
-	modal: false,
+	modal: true,
 	width: 650,
 	height: 555,
-
+	
 	initComponent: function() {
 		var me = this;
 
