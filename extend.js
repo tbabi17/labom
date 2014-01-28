@@ -2202,7 +2202,7 @@ Ext.define('OCS.GridView', {
 					var selModel = me.getSelectionModel();
 					if (selModel instanceof Ext.selection.RowModel) {
 						if (!selModel.isSelected(rec)) {
-							selModel.select(record);
+							selModel.select(rec);
 							this.fireEvent('itemclick', this, rec, item, index, e);
 						}
 						if (me.actions.length > 0)
