@@ -2198,10 +2198,17 @@ Ext.define('OCS.GridView', {
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
 					e.stopEvent();
-					if (me.actions.length > 0)
-						me.contextMenu.showAt(e.getXY());
 
-					me.getSelectionModel().select(node);
+					var selModel = me.getSelectionModel();
+					if (selModel instanceof Ext.selection.RowModel) {
+						if (!selModel.isSelected(record)) {
+							selModel.select(record);
+							this.fireEvent('itemclick', this, record, item, index, e);
+						}
+						if (me.actions.length > 0)
+							me.contextMenu.showAt(e.getXY());
+					}
+
 					return false;
 				},
 				containercontextmenu: function(grid, e) {
@@ -2263,7 +2270,6 @@ Ext.define('OCS.GridView', {
 		};
 		
 		me.on('beforeitemmousedown', function(grid, record, item, index, event, eOpts) { 
-			alert(event.button);
 			if (event.button==0) allowSelection=true ;
 			else {
 			  allowSelection=false;
