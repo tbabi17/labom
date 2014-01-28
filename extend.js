@@ -2203,7 +2203,7 @@ Ext.define('OCS.GridView', {
 					if (selModel instanceof Ext.selection.RowModel) {
 						if (!selModel.isSelected(rec)) {
 							selModel.select(rec);
-							this.fireEvent('itemclick', this, rec, item, index, e);
+							this.fireEvent('itemclick', this, rec, node, index, e);
 						}
 						if (me.actions.length > 0)
 							me.contextMenu.showAt(e.getXY());
