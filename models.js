@@ -633,7 +633,7 @@ Ext.define('CRM_ALARM', {
 fields['CRM_DEAL_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'status', text: 'Status', width: 80, align: 'center'},
-   {name: 'deal', text: 'Topic Name', width: 200, primary: true, renderer: renderTopicName},   
+   {name: 'deal', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},   
    {name: 'stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
