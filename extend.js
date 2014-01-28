@@ -2201,9 +2201,9 @@ Ext.define('OCS.GridView', {
 
 					var selModel = me.getSelectionModel();
 					if (selModel instanceof Ext.selection.RowModel) {
-						if (!selModel.isSelected(record)) {
+						if (!selModel.isSelected(rec)) {
 							selModel.select(record);
-							this.fireEvent('itemclick', this, record, item, index, e);
+							this.fireEvent('itemclick', this, rec, item, index, e);
 						}
 						if (me.actions.length > 0)
 							me.contextMenu.showAt(e.getXY());
