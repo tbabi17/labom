@@ -358,7 +358,7 @@ Ext.define('OCS.DealPostGrid', {
 
 	renderTitle: function(value, p, record) {
         return Ext.String.format(
-            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title" style="text-wrap: suppress;">{0}</span></b></br><span class="gray">to : {1}&nbsp;|&nbsp;from : {2}</br>{3}</br></span></td></tr></table>',
+            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title" style="white-space:normal !important;">{0}</span></b></br><span class="gray">to : {1}&nbsp;|&nbsp;from : {2}</br>{3}</br></span></td></tr></table>',
             value,
             record.data.owner,
             record.data.userCode,
