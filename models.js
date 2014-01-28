@@ -32,7 +32,7 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'birthday', text: 'Birth date', width: 70, align: 'center'},
    {name: 'gender', text: 'Gender', width: 60, hidden: true},
    {name: 'work_status', text: 'Social status', width: 140, hidden: true},
-   {name: 'title', text: 'Company', width: 250},
+   {name: 'title', text: 'Company', width: 270},
    {name: 'job_title', text: 'Position', width: 200},
    {name: 'job_type', text: 'Job', width: 100, hidden: true},
    {name: 'phone', text: 'Phone', width: 80, align: 'center', renderer: renderPhone},
@@ -52,7 +52,7 @@ fields['CRM_RETAIL_FIELDS'] = [
 //   {name: 'parent_crm_id', text: 'Parent CRM ID', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 140, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center'},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
    {name: 'source', text: 'Source', width: 250}
@@ -120,7 +120,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 140, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center'},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'}
 ];
