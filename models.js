@@ -52,7 +52,7 @@ fields['CRM_RETAIL_FIELDS'] = [
 //   {name: 'parent_crm_id', text: 'Parent CRM ID', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 180, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 140, align: 'center'},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
    {name: 'source', text: 'Source', width: 250}
@@ -118,9 +118,9 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'source', text: 'Source', width: 90, hidden: true},
    {name: 'descr', text: 'Note', width: 120, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 180, hidden: true},
+   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 80, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 140, align: 'center'},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'}
 ];
