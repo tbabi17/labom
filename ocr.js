@@ -5811,7 +5811,7 @@ Ext.define('OCS.CustomerCampaignWindowCheckList', {
 	title: 'Campaign list',
 	table: 'crm_campaign',
 	maximizable: true,
-	modal : false,
+	modal : true,
 	width: 300,
 	height: 350,
 
