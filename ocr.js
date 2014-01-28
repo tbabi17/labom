@@ -5681,6 +5681,7 @@ Ext.define('OCS.MergeRecordsWindow', {
 	maximizable: true,
 	width: 950,
 	height: 450,
+	modal: true,
 
 	initComponent: function() {
 		var me = this;
@@ -5728,7 +5729,7 @@ Ext.define('OCS.ContactNewWindow', {
 	title: 'New contact',
 	table: 'crm_customer',
 	maximizable: true,
-	modal: false,
+	modal: true,
 	width: 750,
 	height: 450,
 	layout: 'border',
