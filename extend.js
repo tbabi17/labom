@@ -2320,7 +2320,7 @@ Ext.define('OCS.GridView', {
 		var v = e.getValue();
 		if (v) {			
 			me.query = v;
-			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, query: me.query, views: me.views;
+			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, query: me.query, views: me.views};
 			me.store.loadPage(1);
 		} else {
 			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: me.views};
