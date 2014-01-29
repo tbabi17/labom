@@ -649,6 +649,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
    {name: 'competitor_name', text: 'Competitor', width: 200},
    {name: 'campaign', text: 'Campaign', width: 200},   
+   {name: 'company', text: 'Company', width: 200},
    {name: 'userCode', text: 'Created by', width: 80, hidden: true},
    {name: 'notify', text: 'Notify', hidden: true}
 ];
