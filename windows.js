@@ -2066,7 +2066,7 @@ Ext.define('OCS.DealAddProductWindow', {
 
 					if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
-						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
