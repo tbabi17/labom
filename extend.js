@@ -1345,7 +1345,15 @@ Ext.define('OCS.PropertyGrid', {
 				name: 'product_name',
 				table: 'crm_products'
 			};
-		}								  
+		}
+		
+		if (name == 'company') {
+			return {
+				xtype: 'searchcombo',
+				name: 'company',
+				table: 'crm_users'
+			};
+		}	
 
 		if (name == 'customer_type')
 		{
