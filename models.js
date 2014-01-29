@@ -646,7 +646,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'proposed_solution', text: 'Proposed solution', width: 200, hidden: true},
    {name: '_date', text: 'Created on', width: 120},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
-   {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
+   {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
    {name: 'competitor_name', text: 'Competitor', width: 200},
    {name: 'campaign', text: 'Campaign', width: 200},   
    {name: 'company', text: 'Company', width: 200},
@@ -664,11 +664,11 @@ fields['CRM_RESELLER_FIELDS'] = [
    {name: 'status', text: 'Status', width: 80, align: 'center'},
    {name: 'deal', text: 'Topic Name', width: 200, primary: true, renderer: renderTopicName},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
-   {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
+   {name: 'crm_name', text: 'Potential customer', width: 250, renderer: renderCRMName},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
    {name: '_date', text: 'Created on', width: 120},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
-   {name: 'owner', text: 'Owner', width: 120, renderer: renderOwner},
+   {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
    {name: 'userCode', text: 'Created by', width: 80, hidden: true},
    {name: 'notify', text: 'Notify', hidden: true}
 ];
