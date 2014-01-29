@@ -1222,7 +1222,7 @@ Ext.define('OCS.ActivityGrid', {
 	        return Ext.String.format(
 				'<table class="{2}"><tr><td width="50px"><div class="c-task" title="Phone Call"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
-				record.data.descr,
+				record.data.descr.substring(0, Math.min(record.data.descr.length, 300)),
 	            record.data.status,
 				record.data.owner,
 				record.data._date,
@@ -1235,7 +1235,7 @@ Ext.define('OCS.ActivityGrid', {
 			return Ext.String.format(
 		        '<table class="{2}"><tr><td width="50px"><div class="c-call" title="Task"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
-				record.data.descr,
+				record.data.descr.substring(0, Math.min(record.data.descr.length, 300)),
 	            record.data.status,
 				record.data.owner,
 				record.data._date,
@@ -1248,7 +1248,7 @@ Ext.define('OCS.ActivityGrid', {
 			return Ext.String.format(
 				'<table class="{2}"><tr><td width="50px"><div class="c-event" title="Appointment"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
-				record.data.descr,
+				record.data.descr.substring(0, Math.min(record.data.descr.length, 300)),
 	            record.data.status,
 				record.data.owner,
 				record.data._date,
@@ -1261,7 +1261,7 @@ Ext.define('OCS.ActivityGrid', {
 			return Ext.String.format(
 				'<table class="{2}"><tr><td width="50px"><div class="c-note" title="Note"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
-				record.data.descr,
+				record.data.descr.substring(0, Math.min(record.data.descr.length, 300)),
 	            record.data.status,
 				record.data.owner,
 				record.data._date,
@@ -1274,7 +1274,7 @@ Ext.define('OCS.ActivityGrid', {
 			return Ext.String.format(
 				'<table class="{2}"><tr><td width="50px"><div class="c-email" title="Email"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
-				record.data.descr,
+				record.data.descr.substring(0, Math.min(record.data.descr.length, 300)),
 	            record.data.status,
 				record.data.owner,
 				record.data._date,
