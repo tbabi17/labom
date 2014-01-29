@@ -410,6 +410,7 @@ fields['CRM_DEAL_PRODUCTS_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', hidden: true},
    {name: 'crm_id', text: 'CRM ID', hidden: true},
    {name: 'product_name', text: 'Product name', width: 200}, 
+   {name: 'precent',  type:'float', text: 'Precent', width: 100, align: 'right'}, 
    {name: 'qty', text: 'Qty', type:'float', align: 'right', width: 80, summaryType: 'sum'},
    {name: 'price', text: 'Price', width: 90, type: 'float', align: 'right', renderer: renderMoney,},
    {name: 'amount', text: 'Amount (Discount)', type: 'float', width: 100, align: 'right', renderer: renderMoney, summaryRenderer: renderTMoney, summaryType: 'sum'}
