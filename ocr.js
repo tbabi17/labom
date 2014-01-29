@@ -3208,7 +3208,7 @@ Ext.define('OCS.CaseView', {
 			}
 		);
 
-		me.filterData('Open Cases');
+		me.filterData('Recent Opened Cases');
 		return me.grid;
 	},
 		
