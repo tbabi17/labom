@@ -619,6 +619,13 @@ Ext.define('OCS.DealProductGrid', {
 			flex: 1,			
 			sortable: false
 		},{
+			text: 'Precent',
+			dataIndex: 'precent',
+			width: 100,
+			renderer: renderPrecent,
+			align: 'right',
+			sortable: true
+		},{
 			text: 'Qty',
 			dataIndex: 'qty',
 			width: 60,
