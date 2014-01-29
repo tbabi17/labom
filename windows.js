@@ -1945,7 +1945,7 @@ Ext.define('OCS.DealAddProductWindow', {
 	extend: 'OCS.Window',
 	title: 'Products',
 	maximizable: true,
-	height: 550,
+	height: 600,
 	modal: false,
 	width: 500,	
 	modal: true,
@@ -1977,7 +1977,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
-			flex: 0.75,
+			flex: 1,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
