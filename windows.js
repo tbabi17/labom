@@ -2003,8 +2003,12 @@ Ext.define('OCS.DealAddProductWindow', {
 			},{
 				xtype: 'numberfield',
 				value: 0,
+				fieldLabel: 'Precent',
+				name: 'precent'				
+			},{
+				xtype: 'numberfield',
+				value: 0,
 				fieldLabel: 'Qty',
-				allowBlank: false,
 				name: 'qty',
 				listeners: {
 					'change': function(v) {
@@ -2016,7 +2020,6 @@ Ext.define('OCS.DealAddProductWindow', {
 				xtype: 'currencyfield',
 				value: 0,
 				fieldLabel: 'Price',
-				allowBlank: false,
 				name: 'price',
 				listeners: {
 					'change': function(v) {
@@ -2028,7 +2031,6 @@ Ext.define('OCS.DealAddProductWindow', {
 				xtype: 'currencyfield',
 				value: 0,
 				fieldLabel: 'Amount',
-				allowBlank: false,
 				name: 'amount' 
 			},{
 				xtype: 'textfield',
@@ -2061,9 +2063,9 @@ Ext.define('OCS.DealAddProductWindow', {
 						return;
 					}
 
-					if (form.findField('amount').getValue() > 0) {					
+					if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
-						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();//+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
