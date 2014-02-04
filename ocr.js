@@ -3700,7 +3700,6 @@ Ext.define('OCS.GoalsPanel', {
 						items: [
 							{
 								id : 'owner_plan_list',
-								title: 'Planning',
 								flex: 1,
 								region: 'east',
 								split: true,
@@ -3731,7 +3730,6 @@ Ext.define('OCS.GoalsPanel', {
 								]
 							}, {
 								id : 'user_planning_list',
-								title: 'Goals',
 								region: 'center',
 								flex: 1,
 								split: true,
