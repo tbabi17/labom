@@ -1473,7 +1473,7 @@ Ext.define('OCS.MyActivityGrid', {
 				iconCls : 'calendar',
 				text: 'Calendar',
 				handler: function(widget, event) {
-
+					googleEventDynamic(me.selected);
 				}
 			}),
 			'-',
