@@ -1473,6 +1473,11 @@ Ext.define('OCS.MyActivityGrid', {
 				iconCls : 'calendar',
 				text: 'Calendar',
 				handler: function(widget, event) {
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					if (records.length == 0) {
+						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
+						 return;
+					}
 					googleEventDynamic(me.selected);
 				}
 			}),
