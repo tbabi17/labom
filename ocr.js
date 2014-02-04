@@ -1478,7 +1478,7 @@ Ext.define('OCS.MyActivityGrid', {
 						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
 						 return;
 					}
-					googleEventDynamic(me.selected);
+					googleEventDynamic(records[0]);
 				}
 			}),
 			'-',
