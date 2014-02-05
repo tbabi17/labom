@@ -1577,7 +1577,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 	maximizable: true,
 	height: 600,
 	modal: true,
-	width: 650,	
+	width: 580,	
 
 	initComponent: function() {
 		var me = this;			
