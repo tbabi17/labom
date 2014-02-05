@@ -1591,6 +1591,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 		me.activity = new OCS.DetailActivityGrid();
 		me.opportunity = new OCS.OpportunityGrid();
 		me.customer_campaings = new OCS.CustomerCampaigns();
+		me.customer_company = new OCS.CustomerCompany();
 	    me.csales = new OCS.CustomerSalesPanel();
 		me.ccase = new OCS.CaseGrid();
 
@@ -1607,6 +1608,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 				me.ccase.createPanel(),
 				me.opportunity.createPanel(),
 				me.csales.createPanel(),
+				me.customer_company.createPanel(),
 				me.customer_campaings.createPanel()
 			]
 		}];	

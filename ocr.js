@@ -1710,6 +1710,87 @@ Ext.define('OCS.OpportunityGrid', {
 	}
 });
 
+Ext.define('OCS.CustomerCompany', {
+	extend: 'OCS.CaseGrid',
+	func: 'crm_customer_company_list',
+	sortField: 'campaign',
+	tab : 'customer_company_property',
+	dateField: '_date',
+	title: 'Company list',
+	icon: 'sales',
+	modelName: 'CRM_CUSTOMER_COMPANY',
+	collapsed : false,
+	region: 'center',
+	table: 'crm_customer_company',
+	primary: 'crm_id',	
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls  : 'add',  
+				text: 'Add ...',
+				handler: function(widget, event) {
+					if (campaigns_static.length > 0)
+						new OCS.CustomerCompanyWindowCheckList({
+							crm_id: me.selected.get('crm_id'),
+							backgrid: me.grid
+						}).show();
+					else
+						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls  : 'delete',  
+				text: 'Delete',
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			})
+		];
+			
+		return me.actions;
+	},
+
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: "Company",
+			dataIndex: 'company',
+			width: 200,
+			sortable: true
+		},{
+			text: "Created by",
+			dataIndex: 'userCode',
+			renderer: renderOwner,
+			width: 100,
+			sortable: true
+		},{
+			text: "Created on",
+			dataIndex: '_date',
+			width: 100,
+			sortable: true
+		}];
+	},
+
+	createGrid: function() {
+		var me = this;			
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			region: me.region,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			tbarable: false,
+			feature: false,
+			emptyText: 'No Company records found.'
+		});	
+	}
+});
 
 Ext.define('OCS.CustomerCampaigns', {
 	extend: 'OCS.CaseGrid',
@@ -5823,6 +5904,38 @@ Ext.define('OCS.CustomerCampaignWindowCheckList', {
 
 		me.form = Ext.create('OCS.CustomerCampaignForm', {
 			id : 'customer_campaign_form',
+			region: 'center',
+			crm_id: this.crm_id,
+			win : this
+		});
+		
+		me.listeners = {
+			'close': function() {
+				if (me.backgrid)
+					me.backgrid.getStore().reload();
+			}
+		}
+
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
+
+
+Ext.define('OCS.CustomerCompanyWindowCheckList', {
+	extend: 'OCS.Window',
+	title: 'Company list',
+	table: 'crm_customer_company',
+	maximizable: true,
+	modal : true,
+	width: 300,
+	height: 350,
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.CustomerCompanyForm', {
+			id : 'customer_company_form',
 			region: 'center',
 			crm_id: this.crm_id,
 			win : this

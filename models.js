@@ -478,6 +478,20 @@ Ext.define('CRM_CUSTOMER_CAMPAIGN', {
 	fields: fields['CRM_CUSTOMER_CAMPAIGN_FIELDS']
 });
 
+fields['CRM_CUSTOMER_COMPANY_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'crm_id', text: 'CRM ID', hidden: true},
+   {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
+   {name: 'company', text: 'Company', width: 200},
+   {name: 'userCode', text: 'Created by', width: 100},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+];
+
+Ext.define('CRM_CUSTOMER_COMPANY', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_CUSTOMER_COMPANY_FIELDS']
+});
+
 
 fields['CRM_DEAL_COMPETITORS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 

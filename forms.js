@@ -1628,6 +1628,94 @@ Ext.define('OCS.CustomerCampaignForm', {
 	}
 });
 
+Ext.define('OCS.CustomerCompanyForm', {
+	extend: 'Ext.form.Panel',
+	border: false,
+	region: 'center',
+	height: 410,
+	autoScroll: true,
+	closeAction: 'hide',	
+	split: true,
+	bodyPadding: '10 10 0',	
+	fieldDefaults: {
+		labelAlign: 'right',
+		labelWidth: 70,
+		msgTarget: 'qtip'
+	},
+
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },			
+
+	initComponent: function() {
+		var me = this;
+		
+		me.company_list = [];
+		me.array = campaigns_static.split(":");
+		for (i = 0; i < me.array.length; i++) {
+			if (me.array[i].length > 0)						
+				me.company_list.push({
+					xtype: 'checkbox',
+					boxLabel: me.array[i],
+					flex: 1,
+					checked: true,
+					name: 'checkbox'+i,
+					inputValue: me.array[i]
+				});
+		}
+
+		me.items = [{
+				xtype: 'fieldset',
+				title: 'Company list',
+				collapsible: true,
+				defaultType: 'checkbox',
+				layout: 'anchor',
+				defaults: {
+					anchor: '100%',
+					margin: '15 15 15 15'
+				},
+				items: [{
+					xtype: 'container',
+					layout: 'vbox',
+					defaultType: 'checkbox',
+					items: me.company_list
+				}]
+			}
+		];
+
+		me.buttons = [{
+			text : 'Reset',
+			iconCls: 'reset',
+			handler: function() {
+				var form = this.up('form').getForm();
+				form.reset();
+			}
+		},{
+			text: 'Commit',
+			iconCls: 'commit',
+			handler: function() {
+				var form = this.up('form').getForm();
+				if (form.isValid())	{					
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', action: 'insert_customer_company', table: 'crm_customer_company', func: '', values: form.getValues(true), fields: '', where: me.crm_id},
+					   success: function(response, opts) {
+						    me.win.close();
+							form.reset();
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});
+				}
+			}
+		}];
+
+		me.callParent(arguments);
+	}
+});
+
 
 Ext.define('OCS.ContactFormWithDeal', {
 	extend: 'Ext.form.Panel',
