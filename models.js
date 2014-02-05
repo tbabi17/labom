@@ -470,7 +470,7 @@ fields['CRM_CUSTOMER_CAMPAIGN_FIELDS'] = [
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'campaign', text: 'Campaign', width: 200},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140}
 ];
 
 Ext.define('CRM_CUSTOMER_CAMPAIGN', {
@@ -484,7 +484,7 @@ fields['CRM_CUSTOMER_COMPANY_FIELDS'] = [
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'company', text: 'Company', width: 200},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140}
 ];
 
 Ext.define('CRM_CUSTOMER_COMPANY', {
