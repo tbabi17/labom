@@ -1713,7 +1713,7 @@ Ext.define('OCS.OpportunityGrid', {
 Ext.define('OCS.CustomerCompany', {
 	extend: 'OCS.CaseGrid',
 	func: 'crm_customer_company_list',
-	sortField: 'campaign',
+	sortField: 'company',
 	tab : 'customer_company_property',
 	dateField: '_date',
 	title: 'Company list',
