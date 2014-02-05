@@ -132,7 +132,7 @@ Ext.define('OCS.AnimateView', {
 						'<span class="tag Demo">{status}</span>',
 						'</div>',
 						'</br>',
-						'<div class="tag-wrapper"><span class="tag Code Snippet">{type}</span></div>',	
+						'<div class="tag-wrapper"><span class="tag Code Snippet">{type}</span></div>',
 					'</div>',
 				'</tpl>'
 			),

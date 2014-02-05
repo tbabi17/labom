@@ -735,7 +735,7 @@ fields['CRM_USER_PLANNING_FIELDS'] = [
    {name: 'end_date', text: 'End date', width: 80},
    {name: 'amountTheshold', text: 'Target', type: 'float', width: 120, renderer: renderMoney, align: 'right'},
    {name: 'userCode', text: 'Created By', width: 80, hidden: true, renderer:renderOwner},   
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', hidden: true, width: 80}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
 
 Ext.define('CRM_USER_PLANNING', {
