@@ -731,10 +731,10 @@ Ext.define('CRM_CAMPAIGN', {
 fields['CRM_USER_PLANNING_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'owner', text: 'Owner', width: 150}, 
-   {name: 'start_date', text: 'Start date', width: 80},
-   {name: 'end_date', text: 'End date', width: 80},
+   {name: 'start_date', text: 'Start date', dateFormat: 'Y-m-d', width: 80},
+   {name: 'end_date', text: 'End date', dateFormat: 'Y-m-d',width: 80},
    {name: 'amountTheshold', text: 'Target', type: 'float', width: 120, renderer: renderMoney, align: 'right'},
-   {name: 'userCode', text: 'Created By', width: 80, hidden: true, renderer:renderOwner},   
+   {name: 'userCode', text: 'Created By', width: 80, renderer:renderOwner},   
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
 
