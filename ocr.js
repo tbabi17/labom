@@ -1,4 +1,5 @@
 var allowSelection=true;
+var company = '';
 
 function replaceAll(find, replace, str) {
   return str.replace(new RegExp(find, 'g'), replace);
