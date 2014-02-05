@@ -1624,6 +1624,7 @@ Ext.define('OCS.CustomerDetailWindow', {
 		me.activity.updateSource(rec);
 		me.opportunity.updateSource(rec);
 		me.customer_campaings.updateSource(rec);
+		me.customer_company.updateSource(rec);
 		me.ccase.updateSource(rec);
 		me.csales.updateSource(rec);
 
