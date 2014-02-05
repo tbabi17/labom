@@ -1652,7 +1652,7 @@ Ext.define('OCS.CustomerCompanyForm', {
 		var me = this;
 		
 		me.company_list = [];
-		me.array = campaigns_static.split(":");
+		me.array = company.split(":");
 		for (i = 0; i < me.array.length; i++) {
 			if (me.array[i].length > 0)						
 				me.company_list.push({
