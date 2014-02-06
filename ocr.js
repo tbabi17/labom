@@ -368,6 +368,13 @@ Ext.define('OCS.RetailPanel', {
 			'-',
 			Ext.create('Ext.Action', {
 				icon   : '',  
+				text: 'My Company List',
+				handler: function(widget, event) {
+					me.filterData('My Company List');
+				}
+			}),
+			Ext.create('Ext.Action', {
+				icon   : '',  
 				text: 'All '+me.xlsName+' List',
 				handler: function(widget, event) {
 					me.filterData('All '+me.xlsName+' List');
