@@ -3731,7 +3731,7 @@ Ext.define('OCS.ProductPanel', {
 								layout: 'border',
 								items: [{
 										id : 'product_list',
-										title: 'Products',
+										title: '',
 										flex: 1,
 										region: 'center',
 										split: true,
