@@ -1378,7 +1378,7 @@ Ext.define('OCS.ResellerUndoWindow', {
 				valueField: 'value',
 				displayField: 'value',
 				name: 'stage',
-				value: 'lead',
+				value: 'quote',
 				allowBlank: false,
 				forceSelection: true,
 				queryMode: 'local',
