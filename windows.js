@@ -1349,6 +1349,76 @@ Ext.define('OCS.DealUndoWindow', {
 	}
 });
 
+Ext.define('OCS.ResellerUndoWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Undo',
+	maximizable: false,
+	height: 150,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'deal_undo_to',				
+			title: 'Undo',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'combo',
+				fieldLabel: 'Stage',
+				valueField: 'value',
+				displayField: 'value',
+				name: 'stage',
+				value: 'lead',
+				allowBlank: false,
+				forceSelection: true,
+				queryMode: 'local',
+				store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_ITEM',
+				  data: [{value: 'quote'},{value: 'close as won'}]
+				})
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('stage').getValue()+","+form.findField('selected').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_undo', values: values},
+						   success: function(response, opts) {
+								views['reseller'].reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.CaseResolveWindow', {
 	extend: 'OCS.Window',	
 	title: 'Case resolve',

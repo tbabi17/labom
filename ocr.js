@@ -2985,6 +2985,20 @@ Ext.define('OCS.ResellerView', {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'reseller_undo',
+				text: 'Undo ...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.ResellerUndoWindow({
+								ids: me.selectedIds('deal_id'),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
 			,'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
