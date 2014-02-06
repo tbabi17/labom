@@ -1654,15 +1654,16 @@ Ext.define('OCS.CustomerCompanyForm', {
 		me.company_list = [];
 		me.array = company.split(":");
 		for (i = 0; i < me.array.length; i++) {
-			if (me.array[i].length > 0)						
+			if (me.array[i].length > 0) {
 				me.company_list.push({
 					xtype: 'checkbox',
 					boxLabel: me.array[i],
 					flex: 1,
-					checked: false,
+					checked: (company == me.array[i]),
 					name: 'checkbox'+i,
 					inputValue: me.array[i]
 				});
+			}
 		}
 
 		me.items = [{
