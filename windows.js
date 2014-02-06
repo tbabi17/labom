@@ -9,6 +9,7 @@ Ext.define('OCS.ComplainWindow', {
 	modelName: 'CRM_COMPLAIN',
 	primary: 'case_id',
 	xlsName: 'case',
+	windowed: true,
 	
 	filterData: function(views) {
 		var me = this;		

@@ -547,6 +547,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	hidden: false,
 	feature: true,
 	tbar: true,
+	windowed: false,
 	views: '',
 	title: '',
 
@@ -634,7 +635,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			feature: me.feature,
 			hidden: me.hidden,
 			tbarable: me.tbar,
-			title: me.title,
+			title: (me.windowed?'':me.title),
 			listeners : {
 				scope: this,
 				single: true,
