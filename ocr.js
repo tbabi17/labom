@@ -746,7 +746,8 @@ Ext.define('OCS.RetailPanel', {
 			region: 'center',
 			items : [me.grid]			
 		});
-
+		
+		me.filterData('My Company List');
 		return me.panel;
 	}
 });
