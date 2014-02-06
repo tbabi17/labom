@@ -1659,7 +1659,7 @@ Ext.define('OCS.CustomerCompanyForm', {
 					xtype: 'checkbox',
 					boxLabel: me.array[i],
 					flex: 1,
-					checked: true,
+					checked: false,
 					name: 'checkbox'+i,
 					inputValue: me.array[i]
 				});
