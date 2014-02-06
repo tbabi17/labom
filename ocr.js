@@ -2986,7 +2986,7 @@ Ext.define('OCS.ResellerView', {
 				}
 			}),
 			Ext.create('Ext.Action', {
-				iconCls   : 'reseller_undo',
+				iconCls   : 'deal_undo',
 				text: 'Undo ...',
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
