@@ -280,6 +280,16 @@ Ext.define('OCS.RetailForm', {
 						  model: 'CRM_ITEM',
 						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'AGENT'},{value: 'EXPAT'}]
 						}),
+						listeners: {
+							change: {
+								element: 'el',
+								fn: function() {
+									alert(Ext.getCmp('retail_form').getForm().findField('_class').getValue());
+								},
+								scope: this,
+								buffer: 100
+							}
+						},
 						queryMode: 'local',
 						displayField: 'value',
 						valueField: 'value',
