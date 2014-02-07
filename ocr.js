@@ -5375,6 +5375,18 @@ Ext.define('OCS.MyGridWithFormPanel', {
 			}),
 			'-',
 			Ext.create('Ext.Action', {
+				iconCls   : 'calendar',
+				text: 'Calendar',
+				handler: function(widget, event) {
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					if (records.length == 0) {
+						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
+						 return;
+					}
+					googleEventDynamic(records[0]);
+				}
+			}),	
+			Ext.create('Ext.Action', {
 				iconCls   : 'save',
 				text: 'Mark complete',
 				handler: function(widget, event) {
