@@ -919,8 +919,8 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
    },
    {
 	   text: 'ГАДААД ЗОРЧИГЧИЙН',
-	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'p5_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'p5_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
    },
    {
 	   text: 'Total',
