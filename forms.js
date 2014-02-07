@@ -282,7 +282,10 @@ Ext.define('OCS.RetailForm', {
 						}),
 						listeners: {
 							change:    function(field, newValue, oldValue) {
-								alert(newValue);
+								if (newValue == 'EXPAT' || newValue == 'AGENT') 
+									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9A-Za-z]/;
+								else
+									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9А-ЯӨҮа-яөү]/;
 							}
 						},
 						queryMode: 'local',
