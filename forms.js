@@ -281,13 +281,8 @@ Ext.define('OCS.RetailForm', {
 						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'AGENT'},{value: 'EXPAT'}]
 						}),
 						listeners: {
-							change: {
-								element: 'el',
-								fn: function() {
-									alert(Ext.getCmp('retail_form').getForm().findField('_class').getValue());
-								},
-								scope: this,
-								buffer: 100
+							change:    function(field, newValue, oldValue) {
+								alert(newValue);
 							}
 						},
 						queryMode: 'local',
