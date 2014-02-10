@@ -2335,10 +2335,10 @@ Ext.define('OCS.ResellerCreateWindow', {
 			flex: 1,
 			region: 'center'
 		});
-
+		
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'east',
-			hidden: false,
+			hidden: true,
 			closable: false,			
 			title: '',
 			flex: 0.75,
@@ -2415,14 +2415,9 @@ Ext.define('OCS.ResellerCreateWindow', {
 				}
 			}]
 		});
-	
+		
+		me.views.form = me.form;
 		me.items = [me.views.createView(), me.form];		
-
-		me.views.grid.on('itemclick', function(dv, record, item, index, e) {
-				if (me.form)
-					me.form.getForm().findField('selected').setValue(me.views.grid.selectedIds('crm_id'));
-			}
-		);
 
 		me.callParent(arguments);
 	},
