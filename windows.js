@@ -2323,13 +2323,19 @@ Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
 	title: 'Create connections',
 	maximizable: true,
-	height: 280,
+	height: 400,
 	modal: false,
-	width: 350,	
+	width: 800,	
 	modal: true,
 
 	initComponent: function() {
 		var me = this;
+		
+		me.views = Ext.create('OCS.ResellerContactView', {
+			flex: 1,
+			region: 'center'
+		});
+
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'east',
 			hidden: false,
@@ -2410,7 +2416,15 @@ Ext.define('OCS.ResellerCreateWindow', {
 			}]
 		});
 	
-		me.items = [me.form];		
+		me.items = [me.views.createView(), me.form];		
+
+		me.views.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					alert(1);
+				}				
+			}
+		);
+
 
 		me.callParent(arguments);
 	},
