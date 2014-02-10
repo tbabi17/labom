@@ -797,6 +797,19 @@ Ext.define('CRM_REPORT', {
 });
 
 
+fields['CRM_REPORT_REVENUE_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'team', text: 'Team', width: 250}, 
+   {name: 'actual_revenue', text: 'Actual revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
+   {name: 'expected_revenue', text: 'Expected revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
+   {name: 'target_revenue', text: 'Target revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}  
+];
+
+Ext.define('CRM_REPORT_REVENUE', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_REVENUE_FIELDS']
+});
+
 fields['CRM_REPORT_RESELLER_FIELDS'] = [
    {name: 'crm_name', text: 'Reseller name', width: 250, summaryType: 'count', summaryRenderer: renderTReportNumber}, 
    {name: 'owner', text: 'Owner', width: 130}, 

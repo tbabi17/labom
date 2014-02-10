@@ -3958,6 +3958,13 @@ Ext.define('OCS.Reports', {
 					items: [
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'Deals revenue report',
+							handler: function(widget, event) {
+								me.reconfigure('CRM_REPORT_REVENUE', 'crm_opportunity_by_revenue_list');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'Deals report',
 							handler: function(widget, event) {
 								me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
