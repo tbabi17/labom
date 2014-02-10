@@ -2420,7 +2420,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 
 		me.views.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form)
-					me.form.getForm().findField('selected').setValue(me.views.grid.selectedIds('crm_id')));
+					me.form.getForm().findField('selected').setValue(me.views.grid.selectedIds('crm_id'));
 			}
 		);
 
