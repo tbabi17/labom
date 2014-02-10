@@ -2419,12 +2419,10 @@ Ext.define('OCS.ResellerCreateWindow', {
 		me.items = [me.views.createView(), me.form];		
 
 		me.views.grid.on('itemclick', function(dv, record, item, index, e) {
-				if (me.form) {
-					alert(1);
-				}				
+				if (me.form)
+					me.form.getForm().findField('selected').setValue(me.views.grid.selectedIds('crm_id')));
 			}
 		);
-
 
 		me.callParent(arguments);
 	},
