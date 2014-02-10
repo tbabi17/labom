@@ -2323,7 +2323,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
 	title: 'Create connections',
 	maximizable: true,
-	height: 250,
+	height: 350,
 	modal: false,
 	width: 800,	
 	modal: true,
