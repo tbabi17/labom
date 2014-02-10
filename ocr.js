@@ -6351,7 +6351,7 @@ Ext.define('OCS.ResellerContactView', {
 			text: 'For selected records',
 			handler: function(widget, event) {		
 				Ext.getCmp('connection_form').getForm().findField('selected').setValue(me.grid.selectedIds('crm_id'));
-				Ext.getCmp('connection_form').form.show();
+				Ext.getCmp('connection_form').show();
 			}
 		},{
 			iconCls: 'select-node-all',
