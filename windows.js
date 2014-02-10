@@ -2337,6 +2337,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 		});
 		
 		me.form = Ext.create('OCS.FormPanel', {
+			id: 'connection_form',
 			region: 'east',
 			hidden: true,
 			closable: false,			
