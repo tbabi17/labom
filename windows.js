@@ -2410,9 +2410,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 			}]
 		});
 	
-
-
-		me.items = [me.views, me.form];		
+		me.items = [me.views.createView(), me.form];		
 
 		me.callParent(arguments);
 	},
