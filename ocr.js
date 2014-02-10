@@ -5317,7 +5317,7 @@ Ext.define('OCS.SalesPanel', {
 					} else
 					  Ext.MessageBox.alert('Status', 'No selection !', function() {});
 				}
-			}),
+			}),			
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
@@ -6336,6 +6336,34 @@ Ext.define('OCS.ContactView', {
 		return me.grid;
 	}
 });
+
+Ext.define('OCS.ResellerContactView', {
+	extend: 'OCS.ContactView',
+	func: 'crm_reseller_list',	
+	table: 'crm_customer',
+	tab: 'none',
+	title: 'Reseller list',
+
+	createView: function() {
+		var me = this;
+		me.modelName = 'CRM_CONTACT';
+		me.createStore();
+
+		me.grid = Ext.create('OCS.GridView', {	
+			title: me.title,
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			func: me.func,
+			tab: me.tab,
+			search: true,
+			tbarable: true
+		});						
+
+		return me.grid;
+	}
+});
+
 
 Ext.define('OCS.CampaignContactView', {
 	extend: 'OCS.ContactView',
