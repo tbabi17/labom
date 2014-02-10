@@ -6337,7 +6337,7 @@ Ext.define('OCS.ContactView', {
 	}
 });
 
-Ext.define('OCS.ResellerContactView', {
+Ext.define('OCS.ResellerContactView', { 
 	extend: 'OCS.ContactView',
 	func: 'crm_reseller_list',	
 	table: 'crm_customer',

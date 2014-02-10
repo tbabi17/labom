@@ -2325,14 +2325,19 @@ Ext.define('OCS.ResellerCreateWindow', {
 	maximizable: true,
 	height: 250,
 	modal: false,
-	width: 300,	
+	width: 800,	
 	modal: true,
 
 	initComponent: function() {
 		var me = this;
+		
+		me.views = Ext.create('OCS.ResellerContactView', {
+			flex: 1,
+			region: 'center'
+		});
 
 		me.form = Ext.create('OCS.FormPanel', {
-			region: 'center',
+			region: 'east',
 			hidden: false,
 			closable: false,			
 			title: '',
@@ -2407,7 +2412,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	
 
 
-		me.items = [me.form];		
+		me.items = [me.views, me.form];		
 
 		me.callParent(arguments);
 	},
