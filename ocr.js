@@ -6347,11 +6347,13 @@ Ext.define('OCS.ResellerContactView', {
 	createActions: function() {
 		var me = this;
 		me.actions = [{
+			iconCls: 'select-node',
 			text: 'For selected records',
 			handler: function(widget, event) {		
 				
 			}
 		},{
+			iconCls: 'select-node-all',
 			text: 'For all records',
 			handler: function(widget, event) {		
 				
