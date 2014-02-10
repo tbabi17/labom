@@ -2402,7 +2402,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 						values = form.findField('deal').getValue()+"&"+form.findField('owner').getValue()+"&"+form.findField('descr').getValue()+"&"+form.findField('year').getValue()+"&"+form.findField('month').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_deals', action: 'insert_reseller_deals', values: values, where: ''},
+						   params: {handle: 'web', table: 'crm_deals', action: 'insert_reseller_deals', values: values, where: form.findField('selected').getValue()},
 						   success: function(response, opts) {							  
 							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
 							   views['reseller'].reload();
