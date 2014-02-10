@@ -636,7 +636,7 @@ Ext.define('OCS.RetailPanel', {
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 				}
-			}),			
+			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'campaign', 
 				text: 'Campaign ...',
@@ -6346,7 +6346,19 @@ Ext.define('OCS.ResellerContactView', {
 	
 	createActions: function() {
 		var me = this;
-		me.actions = [];
+		me.actions = [{
+			iconCls: 'select-node',
+			text: 'For selected records',
+			handler: function(widget, event) {		
+				
+			}
+		},{
+			iconCls: 'select-node-all',
+			text: 'For all records',
+			handler: function(widget, event) {		
+				
+			}
+		}];
 
 		return me.actions;
 	},
