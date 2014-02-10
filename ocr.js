@@ -6350,8 +6350,12 @@ Ext.define('OCS.ResellerContactView', {
 			iconCls: 'select-node',
 			text: 'For selected records',
 			handler: function(widget, event) {		
-				Ext.getCmp('connection_form').getForm().findField('selected').setValue(me.grid.selectedIds('crm_id'));
-				Ext.getCmp('connection_form').show();
+				if (me.grid.recordSelected())
+				{				
+					Ext.getCmp('connection_form').getForm().findField('selected').setValue(me.grid.selectedIds('crm_id'));
+					Ext.getCmp('connection_form').show();
+				} else
+					Ext.MessageBox.alert('Status', 'No selection !', function() {});
 			}
 		},{
 			iconCls: 'select-node-all',
