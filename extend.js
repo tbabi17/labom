@@ -717,6 +717,16 @@ Ext.define('OCS.GridWithFormPanel', {
 		return me.panel;
 	},
 
+	recordSelected: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return true;
+		
+		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
+	},
+
 	selectedRecord: function() {
 		var me = this;
 		var recs = me.grid.getView().getSelectionModel().getSelection();
