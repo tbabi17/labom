@@ -3658,7 +3658,6 @@ Ext.define('OCS.SettingsPanel', {
 						items: [
 							{
 								id : 'users_list',
-								title: 'Users',
 								region: 'center',
 								flex: 1.5,
 								split: true,
@@ -3669,7 +3668,6 @@ Ext.define('OCS.SettingsPanel', {
 								]
 							}, {
 								id : 'user_group_list',
-								title: 'Group members',
 								hidden: !(user_level > 0),
 								region: 'east',
 								flex: 1,
