@@ -6343,6 +6343,23 @@ Ext.define('OCS.ResellerContactView', {
 	table: 'crm_customer',
 	tab: 'none',
 	title: 'Reseller list',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [{
+			text: 'For selected records',
+			handler: function(widget, event) {		
+				
+			}
+		},{
+			text: 'For all records',
+			handler: function(widget, event) {		
+				
+			}
+		}];
+
+		return me.actions;
+	},
 
 	createView: function() {
 		var me = this;

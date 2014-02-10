@@ -2323,7 +2323,7 @@ Ext.define('OCS.ResellerCreateWindow', {
 	extend: 'OCS.Window',
 	title: 'Create connections',
 	maximizable: true,
-	height: 350,
+	height: 400,
 	modal: false,
 	width: 800,	
 	modal: true,
@@ -2343,6 +2343,12 @@ Ext.define('OCS.ResellerCreateWindow', {
 			title: '',
 			flex: 0.75,
 			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected',
+				allowBlank: false,
+				readOnly: true,
+				name: 'selected'
+			},{
 				xtype: 'textfield',
 				fieldLabel: 'Topic name',
 				allowBlank: false,
