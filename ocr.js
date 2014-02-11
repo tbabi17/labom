@@ -2288,6 +2288,9 @@ Ext.define('OCS.DealView', {
 				iconCls   : 'help',
 				text: 'Help',
 				handler: function(widget, event) {
+					var rowIndex = me.deals.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
+					me.deals.grid.getView().select(rowIndex);
+
 					new OCS.HelpWindow({
 						id: 'crm_deal_process'
 					}).show();
@@ -2324,7 +2327,8 @@ Ext.define('OCS.DealView', {
 			}
 		);
 
-		me.filterData('Open Deals');
+		me.filterData('Open Deals');	
+
 		return me.grid;
 	},
 		
@@ -2342,8 +2346,6 @@ Ext.define('OCS.Deals', {
 		var me = this;
 		me.deals.reload();		
 		me.action.select(rec);
-		var rowIndex = me.deals.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
-        me.deals.grid.getView().select(rowIndex);
 	},
 	
 	selectedRecord: function() {
