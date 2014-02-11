@@ -476,6 +476,10 @@ Ext.define('OCS.Module', {
 		}
 		if (value == null)
 			return '';
+		
+		if (value.indexOf('&') != -1) {
+			value = replaceAll('&', '##', value);
+		}
 
 		return value;
 	}
