@@ -477,9 +477,8 @@ Ext.define('OCS.Module', {
 		if (value == null)
 			return '';
 		
-		if (value.indexOf('&') != -1 || value.indexOf('%26') != -1) {
+		if (value.indexOf('&') != -1) {
 			value = replaceAll('&', 'and7', value);
-			value = replaceAll('%26', 'and7', value);
 		}
 
 		return value;
