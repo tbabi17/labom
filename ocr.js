@@ -2302,6 +2302,7 @@ Ext.define('OCS.DealView', {
 		var me = this;
 		me.modelName = 'CRM_DEAL';
 		me.createStore();
+		me.storeExtend();
 
 		me.grid = Ext.create('OCS.GridView', {	
 			id: me.tab,
@@ -2329,6 +2330,13 @@ Ext.define('OCS.DealView', {
 		return me.grid;
 	},
 		
+	storeExtend: function() {
+		var me = this;
+		me.store.on('reload', function() {
+			alert('reloaded');
+		});
+	},
+
 	reload: function() {
 		var me = this;
 		me.store.reload();
