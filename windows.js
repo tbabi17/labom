@@ -1861,7 +1861,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
-				   me.store.reload();
+				   me.close();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1877,7 +1877,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
-				   me.store.reload();
+				   me.close();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
