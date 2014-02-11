@@ -1548,6 +1548,7 @@ Ext.define('OCS.ContactForm', {
 						   }
 						});
 					} else {
+						values = values.replaceAll("%26", "and7");
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'insert', table: 'crm_customer', func: '', values: values, fields: '', where: ''},
