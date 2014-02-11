@@ -1428,7 +1428,7 @@ Ext.define('OCS.MyActivityGrid', {
 	sortDirection: 'desc',
 	tab : 'my_activity_property',
 	dateField: '_date',
-	title: 'My Activities',
+	title: 'Activities',
 	icon: 'task',
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,	
@@ -1470,14 +1470,7 @@ Ext.define('OCS.MyActivityGrid', {
 								me.filterData('Email List');
 							}
 						}),
-						'-',
-						Ext.create('Ext.Action', {
-							icon   : '',  
-							text: 'My Activity List',
-							handler: function(widget, event) {
-								me.filterData('My Activity List');
-							}
-						}),
+						'-',						
 						Ext.create('Ext.Action', {
 							icon   : '',  
 							text: 'All Activity List (Case)',
