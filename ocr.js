@@ -2288,7 +2288,6 @@ Ext.define('OCS.DealView', {
 				iconCls   : 'help',
 				text: 'Help',
 				handler: function(widget, event) {
-					me.reload();
 					new OCS.HelpWindow({
 						id: 'crm_deal_process'
 					}).show();

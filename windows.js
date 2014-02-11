@@ -1830,6 +1830,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.close();
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1846,6 +1848,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.close();
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1862,6 +1866,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.close();
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1878,6 +1884,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.close();
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
 			   },
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
