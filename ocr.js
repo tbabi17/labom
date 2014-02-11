@@ -2342,7 +2342,7 @@ Ext.define('OCS.Deals', {
 		var me = this;
 		me.deals.reload();		
 		me.action.select(rec);
-		var rowIndex = this.find('deal_id', record.get('deal_id'));
+		var rowIndex = me.deals.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
         me.deals.grid.getView().select(rowIndex);
 	},
 	
