@@ -2264,7 +2264,7 @@ Ext.define('OCS.GridView', {
 							new OCS.ActivityDetailWindow({
 								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
 								record: record,
-								backgrid: me.grid
+								backgrid: me
 							}).show();
 						}
 				},
