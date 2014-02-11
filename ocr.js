@@ -1428,7 +1428,7 @@ Ext.define('OCS.MyActivityGrid', {
 	sortDirection: 'desc',
 	tab : 'my_activity_property',
 	dateField: '_date',
-	title: 'Activities',
+	title: 'Recent Activities',
 	icon: 'task',
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,	
