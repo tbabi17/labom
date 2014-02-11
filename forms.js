@@ -588,6 +588,7 @@ Ext.define('OCS.RetailForm', {
 						   }
 						});
 					} else {	
+						alert(values);
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'insert', func: '', table: 'crm_customer', values:values},
