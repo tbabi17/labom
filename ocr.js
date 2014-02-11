@@ -1432,6 +1432,7 @@ Ext.define('OCS.MyActivityGrid', {
 	icon: 'task',
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,	
+	feature: true,
 	values: '',
 	
 	createActions: function() {
