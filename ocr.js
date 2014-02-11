@@ -13,6 +13,28 @@ function permit(id) {
 	return false;
 }
 
+function googleEventDynamic1(rec) {	
+	_location = '';		
+		
+	subject = rec.get('subject');
+	if (typeof subject == 'undefined') {
+		subject = rec.get('subject')+' - Task';
+	}
+
+	subject = subject + ' [from CRM]';
+
+	start_date = rec.get("start_date");
+	start_date = replaceAll('-', '', start_date);
+
+	end_date = rec.get("start_date");
+	end_date = replaceAll('-', '', end_date);
+
+	htmlContent= rec.get('descr');
+
+	descr = rec.get('work_type')+':'+htmlContent+', '+rec.get('descr');
+	window.open("https://www.google.com/calendar/render?action=TEMPLATE&trp=false&text="+subject+"&dates="+start_date+"T020000Z/"+end_date+"T030000Z&location="+_location+"&details="+descr+"&sprop&sf=true&output=xml","_blank","toolbar=no, scrollbars=yes, resizable=yes, top=100, left=100, width=850, height=500");	
+}
+
 function googleEventDynamic(rec) {	
 	_location = '';		
 		
@@ -5388,7 +5410,7 @@ Ext.define('OCS.MyGridWithFormPanel', {
 						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
 						 return;
 					}
-					googleEventDynamic(records[0]);
+					googleEventDynamic1(records[0]);
 				}
 			}),	
 			Ext.create('Ext.Action', {
