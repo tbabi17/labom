@@ -1423,7 +1423,6 @@ Ext.define('OCS.DealDescrWindow', {
 							  me.close();
 							  me.competitorWrite();
 							  me.customerLevelDetection();
-							  views['deals'].reload(me.selected);
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
