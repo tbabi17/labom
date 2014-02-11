@@ -2288,9 +2288,9 @@ Ext.define('OCS.DealView', {
 				iconCls   : 'help',
 				text: 'Help',
 				handler: function(widget, event) {
-					var rowIndex = me.deals.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
+					var rowIndex = me.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
 					alert(rowIndex);
-					me.deals.grid.getView().select(rowIndex);
+					me.grid.getView().select(rowIndex);
 
 					new OCS.HelpWindow({
 						id: 'crm_deal_process'
