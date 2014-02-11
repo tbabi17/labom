@@ -2340,8 +2340,10 @@ Ext.define('OCS.Deals', {
 	
 	reload: function(rec) {
 		var me = this;
-		me.deals.reload();
+		me.deals.reload();		
 		me.action.select(rec);
+		var rowIndex = this.find('deal_id', record.get('deal_id'));
+        me.deals.grid.getView().select(rowIndex);
 	},
 	
 	selectedRecord: function() {
