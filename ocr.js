@@ -2289,6 +2289,7 @@ Ext.define('OCS.DealView', {
 				text: 'Help',
 				handler: function(widget, event) {
 					var rowIndex = me.deals.grid.getStore().find('deal_id', 18);// record.get('deal_id'));
+					alert(rowIndex);
 					me.deals.grid.getView().select(rowIndex);
 
 					new OCS.HelpWindow({
