@@ -1473,6 +1473,13 @@ Ext.define('OCS.MyActivityGrid', {
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'My Activity List',
+							handler: function(widget, event) {
+								me.filterData('My Activity List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'All Activity List (Case)',
 							handler: function(widget, event) {
 								me.filterData('All Activity List (Case)');
