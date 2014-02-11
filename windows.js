@@ -1713,6 +1713,14 @@ Ext.define('OCS.ActivityDetailWindow', {
 	width: 400,	
 	modal: true,
 
+	listeners : {
+		'close': function() {
+			var me = this;
+			if (me.backgrid)
+				me.backgrid.getStore().reload();
+		}
+	},
+
 	initComponent: function() {
 		var me = this;				
 
