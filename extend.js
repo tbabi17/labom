@@ -2260,7 +2260,7 @@ Ext.define('OCS.GridView', {
 						}
 						*/
 
-						if (record.get('owner') && me.isSuccess(record)) {
+						if (record.get('owner') /*&& me.isSuccess(record)*/) {
 							new OCS.ActivityDetailWindow({
 								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
 								record: record,
