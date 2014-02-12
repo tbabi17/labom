@@ -730,7 +730,7 @@ fields['CRM_CAMPAIGN_FIELDS'] = [
    {name: 'budgeted_cost', text: 'Budgeted cost', type: 'float', align: 'center', align: 'right', hidden: true, width: 110, summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney},
    {name: 'start_date', text: 'Start date', dateFormat: 'Y-m-d', align: 'center', width: 75},
    {name: 'end_date', text: 'End date', dateFormat: 'Y-m-d', align: 'center', width: 75},
-   {name: 'owner', text: 'Owner', width: 80, renderer:renderOwner},   
+   {name: 'owner', text: 'Owner', width: 100, renderer:renderOwner},   
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120},
    {name: 'descr', text: 'Description', width: 250, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true}
