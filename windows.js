@@ -1531,7 +1531,7 @@ Ext.define('OCS.MarkCompleteWindow', {
 					xtype: 'combo',
 					store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'processing'},{value: 'completed'}]
+						  data: [{value: 'processing'},{value: 'completed'},{value: 'closed'}]
 					}),
 					fieldLabel: 'Status',
 					name: 'workflow_status',
