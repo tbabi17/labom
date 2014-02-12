@@ -1536,10 +1536,6 @@ Ext.define('OCS.ContactForm', {
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'update', table: 'crm_customer', func: '', values: "decision_maker='"+me.form.findField('decision_maker').getValue()+"',parent_crm_id="+me.parent_crm_id, fields: '', where: 'crm_id='+form.findField('crm_id').getValue()},
 						   success: function(response, opts) {
-							    if (response.responseText == '0') {
-								  Ext.MessageBox.alert('Status', 'Error !', function() {});
-								  return;
-								}
 								if (me.win) me.win.close();
 								form.reset();
 						   },
@@ -1552,11 +1548,7 @@ Ext.define('OCS.ContactForm', {
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', action: 'insert', table: 'crm_customer', func: '', values: values, fields: '', where: ''},
-						   success: function(response, opts) {
-							    if (response.responseText == '0') {
-								  Ext.MessageBox.alert('Status', 'Error !', function() {});
-								  return;
-								}
+						   success: function(response, opts) {							   
 								if (me.win) me.win.close();
 								form.reset();
 						   },
