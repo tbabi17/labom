@@ -873,7 +873,7 @@ Ext.define('OCS.CorporateForm', {
 						displayField: 'value',
 						valueField: 'value',
 						triggerAction: 'all',
-						editable: false
+						editable: true
 					},{
 						flex: 0.7,
 						margins: '0 0 0 6',
