@@ -790,7 +790,7 @@ Ext.define('OCS.CorporateForm', {
 						fieldLabel: 'Type',
 						xtype: 'combo',
 						name: '_class',
-						value: 'CORPORATE',
+						allowBlank: false,
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
 						  data: [{value: 'CORPORATE'},{value: 'SME'},{value: 'RESELLER'},{value: 'BROKER'}]
