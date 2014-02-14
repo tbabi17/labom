@@ -944,8 +944,8 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 
 
 function renderClass(v) {
-	if (v == 'CORPORATE' || v == 'RETAIL') 
-		return '';
+/*	if (v == 'CORPORATE' || v == 'RETAIL') 
+		return '';*/
 	return v;
 }
 
