@@ -732,6 +732,7 @@ Ext.define('OCS.GridWithFormPanel', {
 
 	createActions: function(actions) {
 		var me = this;
+
 		me.actions = [
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',

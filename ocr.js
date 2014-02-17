@@ -3851,7 +3851,7 @@ Ext.define('OCS.GoalsPanel', {
 								layout: 'border',
 								//hidden: !(user_level == 0),
 								items: [
-									new Ext.create('OCS.GridWithFormPanel', {
+									new Ext.create('OCS.MyPlanningWithFormPanel', {
 										modelName:'CRM_STAT',
 										func:'crm_stat_list',
 										title: 'Planning',
@@ -5604,6 +5604,86 @@ Ext.define('OCS.MyGoalWithFormPanel', {
 		
 
 		me.filterData('Active Goals');
+		return me.actions;
+	}
+});
+
+Ext.define('OCS.MyPlanningWithFormPanel', {	
+	extend: 'OCS.MyGridWithFormPanel',
+	
+	createActions: function(actions) {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls: 'list',
+				text: 'Views',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Active Plan',
+							handler: function(widget, event) {
+								me.filterData('Active Plan');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Closed Plang',
+							handler: function(widget, event) {
+								me.filterData('Closed Plan');
+							}
+						}),
+						'-',
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Plan',
+							handler: function(widget, event) {
+								me.filterData('All Plan');
+							}
+						})
+					]
+				}		
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'New...',
+				disabled: me.insert,
+				handler: function(widget, event) {
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(true);
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					me.showForm();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Delete',
+				disabled: me.remove,
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			}),			
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})			
+		];
+		
+
+		me.filterData('Active Plan');
 		return me.actions;
 	}
 });
