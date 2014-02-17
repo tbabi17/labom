@@ -911,6 +911,11 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 				 {dataIndex:'email', text: 'Email', width: 70, align: 'center', summaryType: 'sum', renderer: renderReportNumber}]
    },
    {
+	   text: 'Total',
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+   },
+   {
 	   text: 'АВТОТЭЭВРИЙН ХЭРЭГСЛИЙН',
 	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
 				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
@@ -934,12 +939,7 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 	   text: 'ГАДААД ЗОРЧИГЧИЙН',
 	   columns: [{dataIndex:'p5_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
 				 {dataIndex:'p5_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
-   },
-   {
-	   text: 'Total',
-	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', summaryType: 'sum', renderer: renderMoney}]
-   }
+   }   
 ];
 
 

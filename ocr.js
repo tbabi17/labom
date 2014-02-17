@@ -5629,7 +5629,7 @@ Ext.define('OCS.MyPlanningWithFormPanel', {
 						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'Closed Plang',
+							text: 'Closed Plan',
 							handler: function(widget, event) {
 								me.filterData('Closed Plan');
 							}
