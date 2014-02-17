@@ -1257,6 +1257,9 @@ function renderTMoney(v) {
 }
 
 function renderMoney(v) {
+	if (logged == 'batbileg@mxc')
+		return '--.---';
+
 	if (v == 0)
 		return '';
 	return Ext.util.Format.number(v, '00,00,000.00')+'₮';
