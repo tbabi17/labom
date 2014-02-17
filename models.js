@@ -1253,6 +1253,8 @@ function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {
 
 
 function renderTMoney(v) {
+	if (logged == 'batbileg@mxc')
+		return '--.---';
 	return '<strong>'+Ext.util.Format.number(v, '00,00,000.00')+'₮</strong>';
 }
 
