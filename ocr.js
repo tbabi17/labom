@@ -5420,7 +5420,15 @@ Ext.define('OCS.MyGridWithFormPanel', {
 							handler: function(widget, event) {
 								me.filterData('Closed Task List');
 							}
-						})						
+						}),
+						'-',
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Task List',
+							handler: function(widget, event) {
+								me.filterData('All Task List');
+							}
+						})
 					]
 				}		
 			}),
