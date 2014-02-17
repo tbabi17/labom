@@ -11,7 +11,7 @@ Ext.define('OCS.DealActivityGrid', {
 	
 	updateSource: function(rec) {
 		var me = this;
-		me.action = rec.get('owner') == logged;
+		me.action = (rec.get('owner') == logged || user_level >= 2);
 		me.selected = rec;
 		me.where = rec.get('crm_id')+','+rec.get('deal_id');
 		me.values = 'crm_id,deal_id';
