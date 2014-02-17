@@ -5395,6 +5395,30 @@ Ext.define('OCS.MyGridWithFormPanel', {
 		var me = this;
 		me.actions = [
 			Ext.create('Ext.Action', {
+				iconCls: 'list',
+				text: 'Views',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Open Task List',
+							handler: function(widget, event) {
+								me.filterData('Open Task List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Closed Task List',
+							handler: function(widget, event) {
+								me.filterData('Closed Task List');
+							}
+						})						
+					]
+				}		
+			}),
+			'-',
+			Ext.create('Ext.Action', {
 				iconCls   : 'add',
 				text: 'New...',
 				disabled: me.insert,
