@@ -5379,6 +5379,13 @@ Ext.define('OCS.MyGridWithFormPanel', {
 	extend: 'OCS.GridWithFormPanel',
 	filter: false,	
 	
+	filterData: function(views) {
+		var me = this;		
+		me.title = views;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
+		me.store.loadPage(1);
+	},
+
 	reload: function() {
 		var me = this;
 		me.store.reload();
@@ -5506,7 +5513,9 @@ Ext.define('OCS.MyGridWithFormPanel', {
 				}
 			})			
 		];
+		
 
+		me.filterData('Open Task List');
 		return me.actions;
 	}
 });
