@@ -124,7 +124,7 @@ Ext.define('OCS.ComplainWindow', {
 Ext.define('OCS.NewDealWindow', {
 	extend: 'OCS.GridWithFormPanel',
 	func : 'crm_deal_list', 
-	title: '',
+	title: 'New deal',
 	table: 'crm_deals',
 	values: 'crm_id',
 	groupField: '',
@@ -133,6 +133,7 @@ Ext.define('OCS.NewDealWindow', {
 	modelName: 'CRM_DEAL',
 	primary: 'deal_id',
 	xlsName: 'deal',
+	windowed: true,
 
 	createActions: function() {
 		var me = this;
