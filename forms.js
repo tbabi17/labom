@@ -284,11 +284,11 @@ Ext.define('OCS.RetailForm', {
 							change:    function(field, newValue, oldValue) {
 								if (newValue == 'EXPAT' || newValue == 'AGENT') {
 									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9A-Za-z]/;
-									Ext.getCmp('retail_form').getForm().findField('phone1').maxLength = 16;
+									Ext.getCmp('retail_form').getForm().findField('phone').maxLength = 16;
 								}
 								else {
 									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9А-ЯӨҮа-яөү]/;
-									Ext.getCmp('retail_form').getForm().findField('phone1').maxLength = 16;
+									Ext.getCmp('retail_form').getForm().findField('phone').maxLength = 16;
 								}
 							}
 						},
