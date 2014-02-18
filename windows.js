@@ -1061,7 +1061,7 @@ Ext.define('OCS.CustomerAssignWindow', {
 	
 	title: 'Assign to',
 	maximizable: false,
-	height: 150,
+	height: 350,
 	width: 300,	
 
 	initComponent: function() {
