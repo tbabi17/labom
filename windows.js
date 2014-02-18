@@ -2042,7 +2042,6 @@ Ext.define('OCS.DealAddProductWindow', {
 	modal: false,
 	width: 500,	
 	modal: true,
-	id: 0,		
 
 	initComponent: function() {
 		var me = this;				
@@ -2158,10 +2157,6 @@ Ext.define('OCS.DealAddProductWindow', {
 						return;
 					}
 					
-					if (me.id != '0')
-					{
-						alert('update');
-					} else
 					if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
 						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
@@ -2180,10 +2175,6 @@ Ext.define('OCS.DealAddProductWindow', {
 				}
 			}]
 		});
-	
-		if (me.record) {
-			me.form.getForm().loadRecord(me.record);
-		}
 
 		me.items = [{
 			xtype: 'panel',
