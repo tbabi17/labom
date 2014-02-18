@@ -1628,6 +1628,7 @@ Ext.define('OCS.CaseProductGrid', {
 	}
 });
 
+
 Ext.define('OCS.CaseHistoryGrid', {
 	extend: 'OCS.DealProductGrid',
 	func: 'crm_case_transfer_list',
