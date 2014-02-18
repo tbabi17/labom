@@ -628,6 +628,7 @@ Ext.define('OCS.DealProductGrid', {
 		});	
 
 		me.grid.on('itemclick', function(dv, record, item, index, e) {
+			alert('yes');
 				if (me.form) {
 					me.form.updateSource(record);
 					me.form.setVisible(true);				
