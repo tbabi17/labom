@@ -2480,7 +2480,7 @@ Ext.define('OCS.DealAction', {
 			'<table class="deals"><tr><td width="120px">Topic:</td><td><b>{deal}</b></td></tr>',
 			'<tr><td>Account:</td><td><b>{[this.renderCRMName(values.crm_name)]}</b></td></tr>',
 			'<tr><td>Phone:</td><td><b>{phone}</b></td></tr>',
-			'<tr><td>Description:</td><td><b>{descr}</b></td></tr></table>',
+			'<tr><td>Description:</td><td><b>{descr}</b></td></tr>',
 			'<tr><td>Expected revenue:</td><td><b>{[this.renderMoney(values.expected_revenue)]}</b></td></tr>',
 			'<tr><td>Identify competitor:</td><td><b>{[this.renderIsEmpty(values.competitor_name)]}</b></td></tr>',
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
