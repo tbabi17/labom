@@ -2184,6 +2184,9 @@ Ext.define('OCS.DealAddProductWindow', {
 			border: false,
 			items: me.productList.createGrid()
 		}, me.form];	
+
+		if (me.record)
+			me.form.getForm().loadRecord(me.record);
 		
 		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {

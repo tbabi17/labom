@@ -602,37 +602,19 @@ Ext.define('OCS.DealProductGrid', {
 			actions: me.createActions(),
 			tbarable: false
 		});
-		
-		me.form = new OCS.PropertyGrid({
-			modelName: me.modelName,
-			title: '',
-			iconCls: '',
-			region: 'east',
-			split: true,
-			hidden: true,
-			closable: true,
-			flex: 0.5,
-			sealedColumns: true,
-			buttons: [{
-				text : 'Reset',
-				iconCls: 'reset',
-				handler: function() {
-
-				}
-			},'->',{
-				text: 'Commit',
-				iconCls: 'commit',
-				handler: function() {
-					me.commitRecord();
-				}
-			}]
-		});	
 
 		me.grid.on('itemclick', function(dv, record, item, index, e) {		
 				if (me.form) {
 					me.form.updateSource(record);
 					me.form.setVisible(true);				
 				}
+
+				if (me.action)
+					new OCS.DealAddProductWindow({
+						selected: me.selected,
+						backgrid: me.grid,
+						record: record
+					}).show();
 		});
 	},
 	
@@ -668,22 +650,6 @@ Ext.define('OCS.DealProductGrid', {
 			align: 'right',
 			sortable: true
 		}];
-	},
-
-	createPanel: function() {
-		var me = this;
-		me.createGrid();
-
-		me.panel = Ext.create('Ext.Panel', {
-			id: me.tab,
-			title: me.title,
-			border: false,
-			layout: 'border',
-			region: 'center',
-			items: [me.grid, me.form]
-		});
-
-		return me.panel;
 	}
 });
 
