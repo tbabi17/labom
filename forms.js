@@ -422,7 +422,7 @@ Ext.define('OCS.RetailForm', {
 							labelWidth: 70,
 							name: 'email',
 							vtype: 'email',
-							maxLength: 32,
+							maxLength: 60,
 							flex: 1
 						}, {
 							fieldLabel: 'Social link',
@@ -990,7 +990,7 @@ Ext.define('OCS.CorporateForm', {
 								fieldLabel: 'Email',
 								name: 'email',
 								vtype: 'email',
-								maxLength: 32,
+								maxLength: 60,
 								flex: 0.5
 							}, {
 								fieldLabel: 'Web',
@@ -1383,7 +1383,7 @@ Ext.define('OCS.ContactForm', {
 						fieldLabel: 'Email',
 						name: 'email',
 						vtype: 'email',
-						maxLength: 32,
+						maxLength: 60,
 						flex: 0.5
 					}, {
 						id: 'phone',
@@ -1932,7 +1932,7 @@ Ext.define('OCS.ContactFormWithDeal', {
 						fieldLabel: 'Email',
 						name: 'email',
 						vtype: 'email',
-						maxLength: 32,
+						maxLength: 60,
 						flex: 0.5
 					}, {
 						id: 'phone',
