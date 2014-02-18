@@ -1259,8 +1259,8 @@ function renderTMoney(v) {
 }
 
 function renderMoney(v) {
-	if (logged == 'batbileg@mxc')
-		return '--.---';
+	/*if (logged == 'batbileg@mxc')
+		return '--.---';*/
 
 	if (v == 0)
 		return '';
