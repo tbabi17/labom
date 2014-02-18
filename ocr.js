@@ -2486,6 +2486,7 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
 			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
 			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
+			'<tr><td>Assigned ling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'</table>',
 			{
@@ -2671,7 +2672,6 @@ Ext.define('OCS.DealAction', {
 		me.dealCompotetor = new OCS.DealCompetitorGrid();
 		me.dealCommission = new OCS.DealCommissionGrid();
 		me.dealTeams = new OCS.DealSalesTeamGrid();
-		me.dealHistory = new OCS.DealHistoryGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -2685,8 +2685,7 @@ Ext.define('OCS.DealAction', {
 				me.dealProduct.createPanel(),
 				me.dealCompotetor.createPanel(),
 				me.dealCommission.createPanel(),
-				me.dealTeams.createPanel(),
-				me.dealHistory.createPanel()
+				me.dealTeams.createPanel()
 			]
 		});
 		
@@ -5942,7 +5941,6 @@ Ext.define('OCS.CompetitorProfile', {
 		me.cdealProduct = new OCS.CompetitorDealProductGrid();
 		me.cdealCompotetor = new OCS.CompetitorDealCompetitorGrid();
 		me.cdealTeams = new OCS.CompetitorDealSalesTeamGrid();
-		me.cdealHistory = new OCS.DealHistoryGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
