@@ -356,6 +356,7 @@ Ext.define('OCS.TaskWindow', {
 	table: 'crm_tasks',
 	groupField: '',
 	modelName: 'CRM_TASK',	
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
