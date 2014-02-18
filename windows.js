@@ -2181,7 +2181,9 @@ Ext.define('OCS.DealAddProductWindow', {
 			}]
 		});
 	
-
+		if (me.record) {
+			me.form.getForm().loadRecord(me.record);
+		}
 
 		me.items = [{
 			xtype: 'panel',

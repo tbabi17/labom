@@ -613,6 +613,7 @@ Ext.define('OCS.DealProductGrid', {
 					new OCS.DealAddProductWindow({
 						selected: me.selected,
 						id: record.get('id'),
+						record: record,
 						backgrid: me.grid
 					}).show();
 		});
