@@ -608,6 +608,13 @@ Ext.define('OCS.DealProductGrid', {
 					me.form.updateSource(record);
 					me.form.setVisible(true);				
 				}
+
+				if (me.action)
+					new OCS.DealAddProductWindow({
+						selected: me.selected,
+						id: record.get('id'),
+						backgrid: me.grid
+					}).show();
 		});
 	},
 	
