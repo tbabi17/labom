@@ -603,6 +603,30 @@ Ext.define('OCS.DealProductGrid', {
 			tbarable: false
 		});
 		
+		me.form = new OCS.PropertyGrid({
+			modelName: me.modelName,
+			title: '',
+			iconCls: '',
+			region: 'center',
+			split: true,
+			closable: false,
+			flex: 1,
+			sealedColumns: true,
+			buttons: [{
+				text : 'Reset',
+				iconCls: 'reset',
+				handler: function() {
+
+				}
+			},'->',{
+				text: 'Commit',
+				iconCls: 'commit',
+				handler: function() {
+					me.commitRecord();
+				}
+			}]
+		});	
+
 		me.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {
 					me.form.updateSource(record);
