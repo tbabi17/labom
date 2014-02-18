@@ -2181,9 +2181,16 @@ Ext.define('OCS.DealView', {
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
-							text: 'My Deals',
+							text: 'My Owned Deals',
 							handler: function(widget, event) {
-								me.filterData('My Deals');
+								me.filterData('My Owned Deals');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'My Created Deals',
+							handler: function(widget, event) {
+								me.filterData('My Created Deals');
 							}
 						}),
 						Ext.create('Ext.Action', {
