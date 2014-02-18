@@ -610,7 +610,7 @@ Ext.define('OCS.DealProductGrid', {
 			region: 'east',
 			split: true,
 			hidden: true,
-			closable: false,
+			closable: true,
 			flex: 0.5,
 			sealedColumns: true,
 			buttons: [{
