@@ -2500,13 +2500,16 @@ Ext.define('OCS.MergeRecordForm', {
 					   success: function(response, opts) {						  
 						  Ext.MessageBox.alert('Status', 'Success !', function() {
 							  views['retail'].store.loadPage(1);
-							  me.win.close();
+							  views['corporate'].store.loadPage(1);
+							   me.win.close();
 						  });
 					   },
 					   failure: function(response, opts) {										   
 						  Ext.MessageBox.alert('Status', 'Error !', function() {});
 					   }
 					});		
+
+					
                 }
             }
         },{
