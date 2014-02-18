@@ -282,10 +282,14 @@ Ext.define('OCS.RetailForm', {
 						}),
 						listeners: {
 							change:    function(field, newValue, oldValue) {
-								if (newValue == 'EXPAT' || newValue == 'AGENT') 
+								if (newValue == 'EXPAT' || newValue == 'AGENT') {
 									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9A-Za-z]/;
-								else
+									Ext.getCmp('retail_form').getForm().findField('phone1').maxLength = 16;
+								}
+								else {
 									Ext.getCmp('retail_form').getForm().findField('regNo').maskRe = /[0-9А-ЯӨҮа-яөү]/;
+									Ext.getCmp('retail_form').getForm().findField('phone1').maxLength = 16;
+								}
 							}
 						},
 						queryMode: 'local',
