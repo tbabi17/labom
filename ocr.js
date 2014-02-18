@@ -2496,6 +2496,17 @@ Ext.define('OCS.DealAction', {
 					}
 
 					return v;
+				},
+				
+				renderMoney: function(v) {
+					return Ext.util.Format.number(v, '00,00,000.00')+'₮';
+				},
+
+				renderIsEmpty: function(v) {
+					if (!v)
+						return '<i>not complete</i>';
+
+					return v;
 				}
 			}
 		);
