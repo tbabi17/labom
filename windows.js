@@ -2158,7 +2158,7 @@ Ext.define('OCS.DealAddProductWindow', {
 					}
 					
 					if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
-						if (me.record && me.record.get('id'))  {
+						if (me.record && me.record.get('id')) {
 							var descr = form.findField('descr').getValue();
 							values = "product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
 							Ext.Ajax.request({
