@@ -631,6 +631,7 @@ Ext.define('OCS.EventWindow', {
 	table: 'crm_events',
 	groupField: '',
 	modelName: 'CRM_EVENT',
+	primary: 'id',
 
 	initSource: function() {
 		var me = this;
