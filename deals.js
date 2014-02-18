@@ -607,10 +607,10 @@ Ext.define('OCS.DealProductGrid', {
 			modelName: me.modelName,
 			title: '',
 			iconCls: '',
-			region: 'center',
+			region: 'east',
 			split: true,
 			closable: false,
-			flex: 1,
+			width: 200,
 			sealedColumns: true,
 			buttons: [{
 				text : 'Reset',
@@ -627,8 +627,7 @@ Ext.define('OCS.DealProductGrid', {
 			}]
 		});	
 
-		me.grid.on('itemclick', function(dv, record, item, index, e) {
-			alert('yes');
+		me.grid.on('itemclick', function(dv, record, item, index, e) {		
 				if (me.form) {
 					me.form.updateSource(record);
 					me.form.setVisible(true);				
@@ -668,6 +667,22 @@ Ext.define('OCS.DealProductGrid', {
 			align: 'right',
 			sortable: true
 		}];
+	},
+
+	createPanel: function() {
+		var me = this;
+		me.createGrid();
+
+		me.panel = Ext.create('Ext.Panel', {
+			id: me.tab,
+			title: me.title,
+			border: false,
+			layout: 'border',
+			region: 'center',
+			items: [me.grid, me.form]
+		});
+
+		return me.panel;
 	}
 });
 
