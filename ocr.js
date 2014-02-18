@@ -2474,6 +2474,11 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Account:</td><td><b>{[this.renderCRMName(values.crm_name)]}</b></td></tr>',
 			'<tr><td>Phone:</td><td><b>{phone}</b></td></tr>',
 			'<tr><td>Description:</td><td><b>{descr}</b></td></tr></table>',
+			'<tr><td>Expected revenue:</td><td><b>{[this.renderMoney(values.expected_revenue)]}</b></td></tr>',
+			'<tr><td>Identify competitor:</td><td><b>{[this.renderIsEmpty(values.competitor_name)]}</b></td></tr>',
+			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
+			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
+			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
 			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			{
 				renderCRMName: function(v) {
