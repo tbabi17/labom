@@ -2486,7 +2486,6 @@ Ext.define('OCS.DealAction', {
 			'<tr><td>Current Situation:</td><td><b>{[this.renderIsEmpty(values.current_situation)]}</b></td></tr>',
 			'<tr><td>Customer Need:</td><td><b>{[this.renderIsEmpty(values.customer_need)]}</b></td></tr>',
 			'<tr><td>Proposed solution:</td><td><b>{[this.renderIsEmpty(values.proposed_solution)]}</b></td></tr>',
-			'<tr><td>Assigned ling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'<tr><td>Cross selling:</td><td><b>{[this.renderIsEmpty(values.userCode)]}</b></td></tr>',
 			'</table>',
 			{
