@@ -594,7 +594,7 @@ Ext.define('OCS.DealProductGrid', {
 		me.grid = Ext.create('OCS.GridView', {
 			store: me.store,
 			columns: me.createColumns(),
-			flex: 0.75,
+			flex: 1,
 			animCollapse: true,
 			collapsed: me.collapsed,
 			func: me.func,
@@ -609,8 +609,9 @@ Ext.define('OCS.DealProductGrid', {
 			iconCls: '',
 			region: 'east',
 			split: true,
+			hidden: true,
 			closable: false,
-			width: 200,
+			flex: 0.5,
 			sealedColumns: true,
 			buttons: [{
 				text : 'Reset',
