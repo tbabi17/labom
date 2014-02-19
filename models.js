@@ -1244,17 +1244,17 @@ function renderPrecent(v) {
 		return '';
 
 	if (v < 20)
-		return '<span style="color:red">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
+		return '<span style="color:red">'+Ext.util.Format.number(v, '00,00,000.00')+'%</span>';
 	if (v >= 20 && v < 75)
-		return '<span style="color:orange">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
+		return '<span style="color:orange">'+Ext.util.Format.number(v, '00,00,000.00')+'%</span>';
 	if (v >= 75)
-		return '<span style="color:green">'+Ext.util.Format.number(v, '00,00,000')+'%</span>';
+		return '<span style="color:green">'+Ext.util.Format.number(v, '00,00,000.00')+'%</span>';
 	
 	return v;
 } 
 
 function renderTPrecent(v) {	
-	return '<strong>'+Ext.util.Format.number(v, '00,00,000')+'%</strong>';
+	return '<strong>'+Ext.util.Format.number(v, '00,00,000.00')+'%</strong>';
 }
 
 function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {	
@@ -1291,13 +1291,13 @@ function renderNumber(v) {
 function renderReportNumber(v) {
 	if (v == 0)
 		return '';
-	return Ext.util.Format.number(v, '00,00,000');
+	return Ext.util.Format.number(v, '00,00,000.00');
 }
 
 function renderTReportNumber(v) {
 	if (v == 0)
 		return '';
-	return '<strong>'+Ext.util.Format.number(v, '00,00,000')+'</strong>';
+	return '<strong>'+Ext.util.Format.number(v, '00,00,000.00')+'</strong>';
 }
 
 
