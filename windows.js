@@ -1381,7 +1381,7 @@ Ext.define('OCS.DealMoveWindow', {
 				valueField: 'key',
 				displayField: 'value',
 				name: 'move_day',
-				value: '-15',
+				value: -15,
 				allowBlank: false,
 				forceSelection: true,
 				queryMode: 'local',
