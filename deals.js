@@ -1689,6 +1689,59 @@ Ext.define('OCS.CaseHistoryGrid', {
 	}
 });
 
+
+Ext.define('OCS.DealHistoryGrid', {
+	extend: 'OCS.DealProductGrid',
+	func: 'crm_deal_transfer_list',
+	tab : 'deal_transfer_property',
+	title: 'History',
+	icon: 'call',
+	table: 'crm_complain_transfer',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_DEAL_TRANSFER',
+	collapsed: false,
+	primary: 'id',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+		];
+
+		return me.actions;
+	},
+
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.action = rec.get('owner') == logged;
+		me.where = rec.get('deal_id');
+		me.values = 'deal_id';
+		me.loadStore();
+	},	
+	
+	renderTitle: function(value, p, record) {
+		return Ext.String.format(
+			'<table class="{2}"><tr><td width="50px"><div class="c-assign" title="Assign"></div></td><td><b><span class="title">{2}</span></b></br><span class="lightgray">{1}</span></br><span class="gray">assigned&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span></td></tr></table>',
+			value,
+			record.data.descr,
+			record.data.owner,
+			record.data._date
+		);		
+	},
+
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: 'Note',
+			dataIndex: 'descr',
+			flex: 1,			
+			renderer: me.renderTitle,
+			sortable: false
+		}];
+	}
+});
+
 Ext.define('OCS.ContactGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_contact_list',
