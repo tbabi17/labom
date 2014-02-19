@@ -1403,7 +1403,10 @@ Ext.define('OCS.DealMoveWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_move', values: values},
 						   success: function(response, opts) {
+							   if (me.xlsName = 'Deals')							   
 								views['deals'].reload();
+							   else
+								views['reseller'].reload();
 								me.close();
 						   },
 						   failure: function(response, opts) {										   

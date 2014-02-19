@@ -2929,7 +2929,7 @@ Ext.define('OCS.ResellerView', {
 	title: 'All Deals',
 	sub: 'my_open_leads',
 	primary: 'deal_id',
-	xlsName: 'Deal',
+	xlsName: 'Reseller',
 
 	createActions: function() {
 		var me = this;
@@ -3076,7 +3076,7 @@ Ext.define('OCS.ResellerView', {
 						if (me.recordSelected())						
 							new OCS.DealMoveWindow({
 								ids: me.selectedIds('deal_id'),
-								direction: me.xlsName
+								direction: me.xlsName								
 							}).show();
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
