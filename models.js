@@ -1338,8 +1338,8 @@ Ext.define('Ext.ux.form.NumericField', {
         if (this.useThousandSeparator && this.decimalSeparator == ',' && this.thousandSeparator == ',') 
             this.thousandSeparator = '.';
         else 
-            if (this.allowDecimals && this.thousandSeparator == '.' && this.decimalSeparator == '.') 
-                this.decimalSeparator = ',';
+            if (this.allowDecimals && this.thousandSeparator == ',' && this.decimalSeparator == '.') 
+                this.decimalSeparator = '.';
         
         this.callParent(arguments);
     },
