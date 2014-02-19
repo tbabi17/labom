@@ -966,7 +966,7 @@ Ext.define('OCS.CaseAssignWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'case_assign_to',				
 			title: 'Assign to',	
@@ -1066,7 +1066,7 @@ Ext.define('OCS.CustomerAssignWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'customer_assign_to',				
 			title: 'Assign to',	
@@ -1146,7 +1146,7 @@ Ext.define('OCS.DealAssignWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'deal_assign_to',				
 			title: 'Assign to',	
@@ -1223,7 +1223,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'deal_assign_to',				
 			title: 'Assign to',	
@@ -1292,7 +1292,7 @@ Ext.define('OCS.DealUndoWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Undo ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'deal_undo_to',				
 			title: 'Undo',	
