@@ -2104,7 +2104,7 @@ Ext.define('OCS.DetailGrid', {
 Ext.define('OCS.DealView', {
 	extend: 'OCS.GridWithFormPanel',
 	func: 'crm_deal_list',	
-	sortField: 'closing_date',
+	sortField: '_date',
 	table: 'crm_deals',
 	tab: 'my_deal_list',
 	title: 'All Deals',
