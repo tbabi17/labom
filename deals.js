@@ -1722,7 +1722,7 @@ Ext.define('OCS.DealHistoryGrid', {
 	
 	renderTitle: function(value, p, record) {
 		return Ext.String.format(
-			'<table class="{2}"><tr><td width="50px"><div class="c-assign" title="Assign"></div></td><td><b><span class="title">{0}</span></b></br><span class="lightgray">{1}</span></br><span class="gray">assigned&nbsp;by&nbsp;</span><span class="purple">{2}</span>&nbsp;<span class="gray">{3}</span></td></tr></table>',
+			'<table class="{2}"><tr><td width="50px"><div class="c-assign" title="Assign"></div></td><td><b><span class="title">{0}</span></b></br><span class="lightgray">{1}</span></br><span class="gray">assigned&nbsp;by&nbsp;</span><span class="purple">{1}, owner: {2}</span>&nbsp;<span class="gray">{3}</span></td></tr></table>',
 			value,
 			record.data.owner,
 			record.data.userCode,
