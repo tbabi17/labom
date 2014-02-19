@@ -1738,6 +1738,23 @@ Ext.define('OCS.DealHistoryGrid', {
 			flex: 1,			
 			renderer: me.renderTitle,
 			sortable: false
+		},{
+			text: 'Owner',
+			dataIndex: 'owner',
+			width: 120,			
+			renderer: me.renderOwner,
+			sortable: false
+		},{
+			text: 'Created on',
+			dataIndex: '_date',
+			width: 120,			
+			sortable: false
+		},{
+			text: 'Created by',
+			dataIndex: 'userCode',
+			width: 120,			
+			renderer: me.renderOwner,
+			sortable: false
 		}];
 	}
 });
