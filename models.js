@@ -1332,7 +1332,8 @@ Ext.define('Ext.ux.form.NumericField', {
     alwaysDisplayDecimals: true,
     fieldStyle: 'text-align: right;',
     hideTrigger: true,
-    
+    allowDecimals: true,
+
     initComponent: function(){
         if (this.useThousandSeparator && this.decimalSeparator == ',' && this.thousandSeparator == ',') 
             this.thousandSeparator = '.';
@@ -1342,36 +1343,12 @@ Ext.define('Ext.ux.form.NumericField', {
         
         this.callParent(arguments);
     },
-		/*
+	
     setValue: function(value){
         Ext.ux.form.NumericField.superclass.setValue.call(this, value !=  null ? value.toString().replace('.', this.decimalSeparator) : value);
         
         this.setRawValue(this.getFormattedValue(this.getValue()));
-    },*/
-
-	setValue : function ( value ) {
-		this._rawValue = value; 
-		value = typeof value == 'number' ? value : String ( value ).replace ( this.decimalSeparator, '.' ).replace ( ',', '' );
-		//value = Ext.isNumber ( value ) ? this.fixPrecision ( String ( value ).replace ( '.', this.decimalSeparator ) ) : '';
-		value = Ext.isNumber ( value ) ? Ext.util.Format.usMoney ( value ) : value;
-		return Ext.form.NumberField.superclass.setValue.call ( this, value ); 
-	},
-
-	fixPrecision : function ( value ) {
-		var nan = Ext.isNumber ( value ); 
-		if( ! this.allowDecimals || this.decimalPrecision == -1 || nan || ! value ) {
-			return ( nan ) ? '' : value; 
-		} 
-		return parseFloat ( value ).toFixed ( this.decimalPrecision ); 
-	},
-
-	getValue: function ( ) {
-		return this._rawValue;
-	}, 
-	
-	processValue: function ( ) { 
-		return this._rawValue;
-	}, 	
+    },	
 
     getFormattedValue: function(value){
         if (Ext.isEmpty(value) || !this.hasFormat()) 
