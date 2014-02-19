@@ -2291,7 +2291,7 @@ Ext.define('OCS.DealView', {
 				}
 			}),
 			Ext.create('Ext.Action', {
-				iconCls   : 'deal_back',
+				iconCls   : 'deal_move',
 				text: 'Move to ...',
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
