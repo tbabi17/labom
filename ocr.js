@@ -2685,6 +2685,7 @@ Ext.define('OCS.DealAction', {
 		me.dealCompotetor = new OCS.DealCompetitorGrid();
 		me.dealCommission = new OCS.DealCommissionGrid();
 		me.dealTeams = new OCS.DealSalesTeamGrid();
+		me.dealHistory = new OCS.DealHistoryGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -2692,9 +2693,10 @@ Ext.define('OCS.DealAction', {
 			region: 'center',
 			tabPosition: 'top',	
 			items: [
-				me.dealPosts.createPanel(),
+				me.dealPosts.createPanel(),			
 				me.dealContact.createPanel(),			
 				me.dealActivity.createPanel(),
+				me.dealHistory.createPanel(),
 				me.dealProduct.createPanel(),
 				me.dealCompotetor.createPanel(),
 				me.dealCommission.createPanel(),
