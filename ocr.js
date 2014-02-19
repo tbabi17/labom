@@ -2923,10 +2923,10 @@ Ext.define('OCS.ResellerAction', {
 Ext.define('OCS.ResellerView', {
 	extend: 'OCS.DealView',
 	func: 'crm_deal_list',	
-	sortField: 'closing_date',
+	sortField: '_date',
 	table: 'crm_deals',
 	tab: 'my_deal_list',
-	title: 'All Deals',
+	title: 'All Connections',
 	sub: 'my_open_leads',
 	primary: 'deal_id',
 	xlsName: 'Reseller',
