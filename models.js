@@ -453,6 +453,7 @@ fields['CRM_DEAL_TRANSFER_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', hidden: true},
    {name: 'descr', text: 'Note', width: 200, primary: true},
    {name: 'owner', text: 'Owner', width: 120, primary: true}, 
+   {name: 'userCode', text: 'Created by', width: 120}, 
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
 
