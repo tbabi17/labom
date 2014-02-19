@@ -1363,7 +1363,7 @@ Ext.define('OCS.DealMoveWindow', {
 
 	initComponent: function() {
 		var me = this;
-		me.title = 'Move to ('+me.ids.split(':').length+' record selected)';
+		me.title = 'Move to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'deal_move_to',				
 			title: 'Move to',	
