@@ -1352,6 +1352,76 @@ Ext.define('OCS.DealUndoWindow', {
 	}
 });
 
+Ext.define('OCS.DealMoveWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Move to',
+	maximizable: false,
+	height: 150,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'deal_move_to',				
+			title: 'Move to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'combo',
+				fieldLabel: 'Set to',
+				valueField: 'key',
+				displayField: 'value',
+				name: 'move_day',
+				value: '-15',
+				allowBlank: false,
+				forceSelection: true,
+				queryMode: 'local',
+				store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_OBJECT',
+				  data: [{key: -5, value: '5 days ago'},{key: -10, value: '10 days ago'},{key: -15, value: '15 days ago'},{key: 5, value: '5 days after'},{key: 10, value: '10 days after'},{key: 15, value: '15 days after'}, {key: 20, value: '20 days after'}]
+				})
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('move_day').getValue()+","+form.findField('selected').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_move', values: values},
+						   success: function(response, opts) {
+								views['deals'].reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.ResellerUndoWindow', {
 	extend: 'OCS.Window',
 	

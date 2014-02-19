@@ -2290,6 +2290,20 @@ Ext.define('OCS.DealView', {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'deal_back',
+				text: 'Move to ...',
+				handler: function(widget, event) {
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealMoveWindow({
+								ids: me.selectedIds('deal_id'),
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
