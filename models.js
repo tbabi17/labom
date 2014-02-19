@@ -1328,6 +1328,7 @@ Ext.define('Ext.ux.form.NumericField', {
     useThousandSeparator: true,
     thousandSeparator: ',',
 	decimalPrecision:2,
+	decimalSeparator:'.',
     alwaysDisplayDecimals: true,
     fieldStyle: 'text-align: right;',
     hideTrigger: true,
