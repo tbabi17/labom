@@ -1362,7 +1362,7 @@ Ext.define('OCS.DealMoveWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.title = 'Move to ('+me.count+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'deal_move_to',				
 			title: 'Move to',	

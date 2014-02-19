@@ -2297,6 +2297,7 @@ Ext.define('OCS.DealView', {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
 							new OCS.DealMoveWindow({
+								count: me.grid.getView().getSelectionModel().getSelection().length,
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
@@ -3075,6 +3076,7 @@ Ext.define('OCS.ResellerView', {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
 							new OCS.DealMoveWindow({
+								count: me.grid.getView().getSelectionModel().getSelection().length,
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName								
 							}).show();
