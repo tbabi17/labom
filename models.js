@@ -1383,7 +1383,7 @@ Ext.define('Ext.ux.form.NumericField', {
                 while (r.test(whole)) 
                     whole = whole.replace(r, '$1' + ts + '$2');
                 
-                value = whole;
+                value = whole + (ps[1] ? this.decimalSeparator + ps[1] : '');
                 
             }
             
@@ -1423,6 +1423,11 @@ Ext.define('Ext.ux.form.NumericField', {
         return this.decimalSeparator != '.' ||  (this.useThousandSeparator == true && this.getRawValue() !=  null) || !Ext.isEmpty(this.currencySymbol) ||  this.alwaysDisplayDecimals;
     },
     
+	onFocus: function(){
+        this.setRawValue(this.removeFormat(this.getRawValue()));
+        
+        this.callParent(arguments);
+    },
     listeners:{
       'change':function(){
           val=this.getFormattedValue(this.parseValue(this.getRawValue()));
