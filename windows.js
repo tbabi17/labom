@@ -1381,13 +1381,13 @@ Ext.define('OCS.DealMoveWindow', {
 				valueField: 'id',
 				displayField: 'value',
 				name: 'move_day',
-				value: -15,
+				value: 15,
 				allowBlank: false,
 				forceSelection: true,
 				queryMode: 'local',
 				store: Ext.create('Ext.data.Store', {
 				  model: 'CRM_OBJECT',
-				  data: [{id: -5, value: '5 days ago'},{id: -10, value: '10 days ago'},{id: -15, value: '15 days ago'},{id: 5, value: '5 days after'},{id: 10, value: '10 days after'},{id: 15, value: '15 days after'}, {id: 20, value: '20 days after'}]
+				  data: [{id: 5, value: '5 days ago'},{id: 10, value: '10 days ago'},{id: 15, value: '15 days ago'},{id: 20, value: '20 days ago'},{id:25, value: '25 days ago'},{id: -5, value: '5 days after'},{id: -10, value: '10 days after'},{id: -15, value: '15 days after'}, {id:-20, value: '20 days after'}, {id:-25, value: '25 days after'}]
 				})
 			}],
 			buttons: [{
