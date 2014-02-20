@@ -1464,6 +1464,8 @@ Ext.define('OCS.DealDescrWindow', {
 	},
 	
 	competitorWrite : function() {
+		var me = this;
+			
 	},
 
 	customerLevelDetection: function() {
