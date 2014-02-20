@@ -928,7 +928,15 @@ Ext.define('OCS.Window', {
 			var me = this;
 			if (me.backgrid)
 				me.backgrid.getStore().reload({callback: function() {
-					console.log(me.title);
+					if (me.title == 'Products') {
+						var amount = 0;
+						me.backgrid.getStore().each(function(rec){
+							amount += rec.get('amount');
+						});
+
+						me.selected.set('expected_revenue', amount);
+						views['deals'].action.update(me.selected);
+					}
 				}});
 		}
 	},
