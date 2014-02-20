@@ -2423,6 +2423,11 @@ Ext.define('OCS.Deals', {
 
 Ext.define('OCS.DealAction', {
 	extend: 'OCS.Module',
+	
+	update: function(rec) {
+		var me = this;
+		me.detail.update(me.tmplMarkup[rec.get('stage')].apply(rec.data));
+	},
 
 	select: function(rec) {
 		var me = this;

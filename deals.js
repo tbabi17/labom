@@ -602,6 +602,10 @@ Ext.define('OCS.DealProductGrid', {
 			actions: me.createActions(),
 			tbarable: false
 		});
+		
+		me.store.on('load', function() {
+			console.log('1');
+		}, this, {single:true});
 
 		me.grid.on('itemclick', function(dv, record, item, index, e) {		
 				if (me.form) {
