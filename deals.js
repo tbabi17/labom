@@ -1469,7 +1469,7 @@ Ext.define('OCS.DealDescrWindow', {
 		{
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='customer'", where: "crm_id="+me.selected.get('crm_id')+" and level='suspect'"},
+			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='customer'", where: "crm_id="+me.selected.get('crm_id')+" and (level='suspect' or level='prospect')"},
 			   success: function(response, opts) {
 				  me.close();
 				  views['deals'].reload(me.selected);
