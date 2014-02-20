@@ -1413,12 +1413,12 @@ Ext.define('Ext.ux.form.NumericField', {
     currencySymbolPos : 'left', 
     useThousandSeparator: true,
     thousandSeparator: ',',
-	decimalPrecision:2,
-	decimalSeparator:'.',
+	//decimalPrecision:2,
+	//decimalSeparator:'.',
     alwaysDisplayDecimals: true,
     fieldStyle: 'text-align: right;',
     hideTrigger: true,
-    allowDecimals: true,
+    //allowDecimals: true,
 
     initComponent: function(){
         if (this.useThousandSeparator && this.decimalSeparator == ',' && this.thousandSeparator == ',') 
