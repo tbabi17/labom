@@ -1355,7 +1355,7 @@ function renderCreatedDate(time) {
 		token = 'ago', list_choice = 1;
 
 	if (seconds == 0) {
-		return 'Just now'
+		return '<span class="gray">Just now</span>'
 	}
 	if (seconds < 0) {
 		seconds = Math.abs(seconds);
@@ -1366,12 +1366,12 @@ function renderCreatedDate(time) {
 	while (format = time_formats[i++])
 		if (seconds < format[0]) {
 			if (typeof format[2] == 'string')
-				return format[list_choice];
+				return '<span class="gray">'+format[list_choice]+'</span>';
 			else
-				return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token;
+				return '<span class="gray">'+Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token+'</span>';
 		}
 
-	return '<span class="gray">time</span>';	
+	return '<span class="gray">'+time+'</span>';	
 }
 
 function renderTime(v) {
