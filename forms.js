@@ -531,6 +531,10 @@ Ext.define('OCS.RetailForm', {
 					hidden: true,
 					name: 'userCode',
 					value: logged
+				},{
+					hidden: true,
+					name: 'owner',
+					value: logged
 				}]					
 			}
 		];		
@@ -2501,7 +2505,7 @@ Ext.define('OCS.MergeRecordForm', {
 						  Ext.MessageBox.alert('Status', 'Success !', function() {
 							  views['retail'].store.loadPage(1);
 							  views['corporate'].store.loadPage(1);
-							   me.win.close();
+							  me.win.close();
 						  });
 					   },
 					   failure: function(response, opts) {										   
