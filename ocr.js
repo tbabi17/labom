@@ -4472,6 +4472,39 @@ Ext.define('OCS.Dashboard', {
 								}
 							}]
 						}
+					},'->',
+					{
+						id: 'start_7',
+						text: me.month(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('start_7').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+							}
+						})
+					},
+					{
+						id: 'end_7',
+						text: me.nextmonth(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('end_7').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[7].rangeData(me.month(), me.nextmonth());
+							}
+						})
+					},{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							Ext.getCmp('start_7').setText('Start date');
+							Ext.getCmp('end_7').setText('End date');
+							me.start = ''; me.end = '';
+							me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+						}
 					}],
 					items: me.charts[4]
 				}]
