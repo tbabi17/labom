@@ -95,7 +95,8 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.start = me.month();
+		me.end = me.nextmonth();
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['owner', 'team', 'actual_revenue', 'expected_revenue', 'target_revenue'],
 			groupField: 'team',
@@ -323,6 +324,9 @@ Ext.define('OCS.StatUserChart', {
 
 	initComponent: function() {
 		var me = this;
+		
+		me.start = me.month();
+		me.end = me.nextmonth();
 
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['stat_type', 'actual', 'planning'],
