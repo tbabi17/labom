@@ -1323,11 +1323,6 @@ Date.daysBetween = function( date1, date2 ) {
 }
 
 function renderCreatedDate(time) {
-	if (Math.abs(Date.daysBetween(new Date(), time)) >= 10) {
-		var date = new Date(time);
-		return Ext.Date.format(date,'Y-m-d');
-	}	
-
 	switch (typeof time) {
 		case 'number': break;
 		case 'string': time = +new Date(time); break;
