@@ -1754,7 +1754,7 @@ Ext.define('OCS.DealHistoryGrid', {
 });
 
 Ext.define('OCS.DealPayrollGrid', {
-	extend: 'OCS.DealGrid',
+	extend: 'OCS.DealSalesTeamGrid',
 	func: 'crm_deal_payroll_list',
 	tab : 'deal_pay_roll',
 	title: 'Payments',
