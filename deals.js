@@ -70,13 +70,14 @@ Ext.define('OCS.DealGrid', {
 	values: 'crm_id',
 	where: '0',
 	action: true,
+	title_add: 'Add ...',
 	
 	createActions: function() {
 		var me = this;
 		me.actions = [
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',
-				text: 'Add ...',
+				text: me.title_add,
 				handler: function(widget, event) {
 					if (me.action) {
 						if (me.modelName == 'CRM_DEAL_COMPETITORS') {
@@ -867,7 +868,8 @@ Ext.define('OCS.DealSalesTeamGrid', {
 	modelName: 'CRM_DEAL_SALES_TEAM',
 	collapsed: false,
 	primary: 'id',
-	
+	title_add: 'Add/Expand ...',
+
 	createGrid: function() {
 		var me = this;	
 		me.createActions();
