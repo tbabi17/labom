@@ -19,7 +19,7 @@ Ext.define('OCS.Module', {
 		var me = this;
 		me.store = Ext.create('Ext.data.Store', {
 			model: me.modelName,
-			pageSize: 100,
+			pageSize: 50,
 			autoLoad: true,
 			remoteSort: me.remoteSort,
 			groupField: me.groupField,
