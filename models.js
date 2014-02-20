@@ -1409,7 +1409,7 @@ Ext.define('Ext.ux.form.CurrencyField', {
     extend: 'Ext.form.field.Number',
     alias: ['widget.currencyfieldex'],
     config: {
-        thousandSeparator: ' ',
+        thousandSeparator: ',',
         currencyAtEnd: true,
         currencySign: '₮'
     },
