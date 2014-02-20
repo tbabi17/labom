@@ -4419,7 +4419,7 @@ Ext.define('OCS.Dashboard', {
 					},'->',
 					{
 						id: 'start_7',
-						text: 'Start date',
+						text: me.month(),
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
@@ -4431,7 +4431,7 @@ Ext.define('OCS.Dashboard', {
 					},
 					{
 						id: 'end_7',
-						text: 'End date',
+						text: me.nextmonth(),
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
