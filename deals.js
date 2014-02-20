@@ -900,6 +900,13 @@ Ext.define('OCS.DealSalesTeamGrid', {
 			flex: 1,			
 			sortable: false
 		},{
+			text: 'Precent',
+			dataIndex: 'precent',
+			width: 80,
+			align: 'right',
+			renderer: renderPrecent,
+			sortable: true
+		},{
 			text: 'Created on',
 			dataIndex: '_date',
 			width: 180,
