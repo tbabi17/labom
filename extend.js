@@ -126,7 +126,13 @@ Ext.define('OCS.Module', {
 	loadStore: function() {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
-		me.store.loadPage(1);
+		me.store.loadPage(1, {
+			callback: function() {
+				if (me.modelName == 'CRM_DEAL_PRODUCTS') {
+					console.log('yes');
+				}
+			}
+		});
 	},
 
 	createStandardColumns: function() {	
