@@ -966,7 +966,7 @@ Ext.define('OCS.CaseAssignWindow', {
 
 	initComponent: function() {
 		var me = this;
-		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
+		me.title = 'Assign to';
 		me.form = Ext.create('OCS.FormPanel', {
 			id : 'case_assign_to',				
 			title: 'Assign to',	
