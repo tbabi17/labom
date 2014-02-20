@@ -1506,6 +1506,8 @@ Ext.define('OCS.DealDescrWindow', {
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
 			   }
 			});		
+		} else {
+			views['deals'].reload(me.selected);
 		}
 	}
 });
