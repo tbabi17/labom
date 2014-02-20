@@ -1785,14 +1785,17 @@ Ext.define('OCS.DealPayrollGrid', {
 	createColumns: function() {
 		var me = this;
 		return [{
-			text: 'Amount',
-			dataIndex: 'amount',
-			flex: 1,			
-			sortable: false
-		},{
 			text: 'Date',
 			dataIndex: 'pay_date',
 			width: 120,			
+			sortable: false
+		},{
+			text: 'Amount',
+			dataIndex: 'amount',
+			flex: 1,		
+			renderer: renderMoney,
+			summaryType: 'sum',
+			summaryRenderer: renderTMoney,
 			sortable: false
 		},{
 			text: 'Created by',
