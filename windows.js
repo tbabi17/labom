@@ -738,7 +738,7 @@ Ext.define('OCS.CompetitorWindow', {
 Ext.define('OCS.SalesTeamWindow', {
 	extend: 'OCS.ComplainWindow',
 	func : 'crm_deal_sales_team_list', 
-	title: 'Sales team',
+	title: 'Sales-team',
 	table: 'crm_deal_sales_team',
 	groupField: '',
 	values: 'deal_id',
