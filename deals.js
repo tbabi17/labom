@@ -1369,7 +1369,7 @@ Ext.define('OCS.DealDescrWindow', {
 			items: [{
 				xtype: 'datefield',
 				fieldLabel: 'Remind date',				
-				name: 'closing_date',
+				name: 'remind_date',
 				value: new Date(),
 				hidden: me.rem,
 				format: 'Y-m-d'
@@ -1428,13 +1428,13 @@ Ext.define('OCS.DealDescrWindow', {
 
 							values_deals = "stage='"+me.stage+"'"+
 										   ",probablity='"+me.probablity+"'"+
-										   ",closing_date='"+Ext.Date.format(form.findField('closing_date').getValue(),'Y-m-d')+"'"+
+										   ",remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
 										   ",competitor_name='"+form.findField('competitor_name').getValue()+"'"+
 										   ",status='"+form.findField('status').getValue()+"'"+
 										   ",descr='"+form.findField('descr').getValue()+"'";
 							me.selected.data['stage'] = me.stage;
 						} else {
-							values_deals = "closing_date='"+Ext.Date.format(form.findField('closing_date').getValue(),'Y-m-d')+"'"+
+							values_deals = "remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
 										   ",competitor_name='"+form.findField('competitor_name').getValue()+"'"+
 										   ",status='"+form.findField('status').getValue()+"'"+
 										   ",descr='"+form.findField('descr').getValue()+"'";							
