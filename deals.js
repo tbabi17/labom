@@ -603,7 +603,7 @@ Ext.define('OCS.DealProductGrid', {
 			tbarable: false
 		});
 		
-		me.store.on('load', function() {
+		me.store.on('reload', function() {
 			console.log('1');
 		}, this, {single:true});
 
