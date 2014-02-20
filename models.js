@@ -427,7 +427,6 @@ fields['CRM_DEAL_PAYROLL_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', hidden: true},
    {name: 'pay_date', text: 'Date', width: 100}, 
    {name: 'amount', text: 'Amount', type:'float', align: 'right', width: 80, summaryType: 'sum'},
-   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
