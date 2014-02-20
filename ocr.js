@@ -1262,7 +1262,7 @@ Ext.define('OCS.ActivityGrid', {
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
 				record.data.owner,
-				record.data._date,
+				record.data.days,
 				record.data.crm_name.split(',')[0],
 				record.data.source
 		    );
@@ -1275,7 +1275,7 @@ Ext.define('OCS.ActivityGrid', {
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
 				record.data.owner,
-				record.data._date,
+				record.data.days,
 				record.data.crm_name.split(',')[0],
 				record.data.source
 		    );
@@ -1288,7 +1288,7 @@ Ext.define('OCS.ActivityGrid', {
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
 				record.data.owner,
-				record.data._date,
+				record.data.days,
 				record.data.crm_name.split(',')[0],
 				record.data.source
 		    );
@@ -1301,7 +1301,7 @@ Ext.define('OCS.ActivityGrid', {
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
 				record.data.owner,
-				record.data._date,
+				record.data.days,
 				record.data.crm_name.split(',')[0],
 				record.data.source
 		    );
@@ -1314,7 +1314,7 @@ Ext.define('OCS.ActivityGrid', {
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
 				record.data.owner,
-				record.data._date,
+				record.data.days,
 				record.data.crm_name.split(',')[0],
 				record.data.source
 		    );
