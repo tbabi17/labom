@@ -52,7 +52,7 @@ fields['CRM_RETAIL_FIELDS'] = [
 //   {name: 'parent_crm_id', text: 'Parent CRM ID', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center', renderer: renderCreatedDate},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
    {name: 'source', text: 'Source', width: 250}
@@ -120,7 +120,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center'},
+   {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center', renderer: renderCreatedDate},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'}
 ];
@@ -257,7 +257,7 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, primary: true},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', width: 120}
+   {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_WORKFLOW', {
@@ -299,7 +299,7 @@ fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'resolution_type', text: 'Resolution type', width: 120, hidden: true},
    {name: 'resolution', text: 'Resolution', width: 220, hidden: true},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 80},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate},
    {name: 'groupId', text: 'Case ID', width: 100},
    {name: 'notify', text: 'Notify', hidden: true}
 ];
@@ -695,7 +695,7 @@ fields['CRM_RESELLER_FIELDS'] = [
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Potential customer', width: 250, renderer: renderCRMName},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
-   {name: '_date', text: 'Created on', width: 120},
+   {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
    {name: 'userCode', text: 'Created by', width: 80, hidden: true},
