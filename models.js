@@ -1508,12 +1508,14 @@ Ext.define('Ext.ux.form.NumericField', {
     hasFormat: function(){
         return this.decimalSeparator != '.' ||  (this.useThousandSeparator == true && this.getRawValue() !=  null) || !Ext.isEmpty(this.currencySymbol) ||  this.alwaysDisplayDecimals;
     },
+
+	/*
     
 	onFocus: function(){
         this.setRawValue(this.removeFormat(this.getRawValue()));
         
         this.callParent(arguments);
-    },
+    },*/
     listeners:{
       'change':function(){
           val=this.getFormattedValue(this.parseValue(this.getRawValue()));
