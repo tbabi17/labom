@@ -1804,6 +1804,24 @@ Ext.define('OCS.DealPayrollGrid', {
 			width: 130,			
 			sortable: false
 		}];
+	},
+	
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 1,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			feature: true,
+			actions: me.createActions(),
+			tbarable: false
+		});
 	}
 });
 
