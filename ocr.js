@@ -4503,6 +4503,11 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									me.charts[4].rangeData(me.yearValue(), me.monthValue());
 								}
+							},{
+								text: 'This year',
+								handler: function() {
+									me.charts[4].rangeData(me.year(), me.nextyear());
+								}
 							}]
 						}
 					},'->',
