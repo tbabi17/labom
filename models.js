@@ -694,7 +694,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
-   {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
+   {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center', renderer: renderDate},   
    {name: 'competitor_name', text: 'Competitor', width: 200},
    {name: 'campaign', text: 'Campaign', width: 200},   
    {name: 'company', text: 'Company', width: 200},
@@ -1322,6 +1322,8 @@ function renderTReportNumber(v) {
 
 
 function renderDate(v) {
+	if (v == '0000-00-00') return '';
+	
 	var date = new Date(v);
 	return Ext.Date.format(date,'Y-m-d');
 }
