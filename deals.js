@@ -97,6 +97,12 @@ Ext.define('OCS.DealGrid', {
 								backgrid: me.grid
 							}).createWindow();
 						}
+						else if (me.modelName == 'CRM_DEAL_PAYROLL') {
+							new OCS.SalesTeamWindow({
+								selected: me.selected,								
+								backgrid: me.grid
+							}).createWindow();
+						}
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
