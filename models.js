@@ -468,8 +468,9 @@ fields['CRM_DEAL_SALES_TEAM_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', hidden: true},
    {name: 'crm_id', text: 'CRM ID', hidden: true},
    {name: 'deal_name', text: 'Topic Name', width: 200, renderer: renderDealName},
-   {name: 'owner', text: 'Sales manager', width: 150, renderer: renderOwner, primary: true}, 
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'owner', text: 'Member', width: 150, renderer: renderOwner, primary: true}, 
+   {name: 'precent', text: 'Precent', width: 70, renderer: renderPrecent, align: 'right'}, 
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
 ];
 
