@@ -2115,7 +2115,7 @@ Ext.define('OCS.DealAddProductWindow', {
 	height: 600,
 	modal: false,
 	width: 500,	
-	modal: true,
+	modal: true,	
 
 	initComponent: function() {
 		var me = this;				

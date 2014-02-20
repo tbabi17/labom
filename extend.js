@@ -126,13 +126,7 @@ Ext.define('OCS.Module', {
 	loadStore: function() {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
-		me.store.loadPage(1, {
-			callback: function() {
-				if (me.modelName == 'CRM_DEAL_PRODUCTS') {
-					console.log('yes');
-				}
-			}
-		});
+		me.store.loadPage(1);
 	},
 
 	createStandardColumns: function() {	
@@ -933,7 +927,9 @@ Ext.define('OCS.Window', {
 		'close': function() {
 			var me = this;
 			if (me.backgrid)
-				me.backgrid.getStore().reload();
+				me.backgrid.getStore().reload({callback: function() {
+					console.log(me.title);
+				}});
 		}
 	},
 
