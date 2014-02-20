@@ -98,7 +98,7 @@ Ext.define('OCS.DealGrid', {
 							}).createWindow();
 						}
 						else if (me.modelName == 'CRM_DEAL_PAYROLL') {
-							new OCS.SalesTeamWindow({
+							new OCS.PayRollWindow({
 								selected: me.selected,								
 								backgrid: me.grid
 							}).createWindow();
@@ -1760,7 +1760,7 @@ Ext.define('OCS.DealHistoryGrid', {
 });
 
 Ext.define('OCS.DealPayrollGrid', {
-	extend: 'OCS.DealSalesTeamGrid',
+	extend: 'OCS.DealGrid',
 	func: 'crm_deal_payroll_list',
 	tab : 'deal_pay_roll',
 	title: 'Payments',
