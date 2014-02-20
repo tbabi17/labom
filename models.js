@@ -688,6 +688,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'probablity', text: 'Probablity', width: 70, type:'int', summaryType:'average', summaryRenderer:renderTPrecent, align: 'right', renderer: renderPrecent},
    {name: 'expected_revenue', text: 'Expected revenue', type:'float', width: 120, align: 'right', summaryType:'sum', summaryRenderer: renderTMoney, renderer: renderMoney},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
+   {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
    {name: 'current_situation', text: 'Current situation', width: 200, hidden: true},
    {name: 'customer_need', text: 'Customer need', width: 200, hidden: true},
    {name: 'proposed_solution', text: 'Proposed solution', width: 200, hidden: true},
