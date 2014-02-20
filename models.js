@@ -471,7 +471,7 @@ fields['CRM_DEAL_SALES_TEAM_FIELDS'] = [
    {name: 'owner', text: 'Member', width: 150, renderer: renderOwner, primary: true}, 
    {name: 'precent', text: 'Precent', width: 70, renderer: renderPrecent, align: 'right'}, 
    {name: 'userCode', text: 'Created by', width: 100, hidden: true},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_DEAL_SALES_TEAM', {
@@ -485,7 +485,7 @@ fields['CRM_CUSTOMER_CAMPAIGN_FIELDS'] = [
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'campaign', text: 'Campaign', width: 200},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_CUSTOMER_CAMPAIGN', {
@@ -499,7 +499,7 @@ fields['CRM_CUSTOMER_COMPANY_FIELDS'] = [
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'company', text: 'Company', width: 200},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_CUSTOMER_COMPANY', {
@@ -542,7 +542,7 @@ fields['CRM_SALES_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'status', text: 'Status', width: 100, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_SALES', {
@@ -574,7 +574,7 @@ fields['CRM_STAT_FIELDS'] = [
    {name: 'vip_p', type: 'int', text: 'VIP customer', width: 90, align: 'right'},
    {name: 'extend_p', type: 'int', text: 'Extension', width: 90, align: 'right'},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', hidden: true, width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_STAT', {
@@ -746,7 +746,7 @@ fields['CRM_CAMPAIGN_FIELDS'] = [
    {name: 'start_date', text: 'Start date', dateFormat: 'Y-m-d', align: 'center', width: 75},
    {name: 'end_date', text: 'End date', dateFormat: 'Y-m-d', align: 'center', width: 75},
    {name: 'owner', text: 'Owner', width: 100, renderer:renderOwner},   
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate},
    {name: 'descr', text: 'Description', width: 250, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true}
 ];
@@ -764,7 +764,7 @@ fields['CRM_USER_PLANNING_FIELDS'] = [
    {name: 'end_date', text: 'End date', dateFormat: 'Y-m-d',width: 80},
    {name: 'amountTheshold', text: 'Target', type: 'float', width: 120, renderer: renderMoney, align: 'right'},
    {name: 'userCode', text: 'Created By', width: 100, renderer:renderOwner},   
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, hidden: true}
 ];
 
 Ext.define('CRM_USER_PLANNING', {
