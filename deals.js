@@ -1462,6 +1462,9 @@ Ext.define('OCS.DealDescrWindow', {
 		me.items = [me.form];		
 		me.callParent(arguments);
 	},
+	
+	competitorWrite : function() {
+	},
 
 	customerLevelDetection: function() {
 		var me = this;
