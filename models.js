@@ -1371,7 +1371,7 @@ function renderCreatedDate(time) {
 				return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token;
 		}
 
-	return time;	
+	return '<span class="gray">time</span>';	
 }
 
 function renderTime(v) {
