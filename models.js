@@ -421,6 +421,23 @@ Ext.define('CRM_DEAL_PRODUCTS', {
 	fields: fields['CRM_DEAL_PRODUCTS_FIELDS']
 });
 
+
+fields['CRM_DEAL_PAYROLL_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'deal_id', text: 'Deal ID', hidden: true},
+   {name: 'pay_date', text: 'Date', width: 100}, 
+   {name: 'amount', text: 'Amount', type:'float', align: 'right', width: 80, summaryType: 'sum'},
+   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+];
+
+Ext.define('CRM_DEAL_PAYROLL', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_DEAL_PAYROLL_FIELDS']
+});
+
+
 fields['CRM_CASE_PRODUCTS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'case_id', text: 'Case ID', hidden: true},

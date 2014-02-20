@@ -2443,6 +2443,7 @@ Ext.define('OCS.DealAction', {
 			me.dealTeams.updateSource(rec);
 			me.dealCommission.updateSource(rec);
 			me.dealHistory.updateSource(rec);
+			me.dealPayroll.updateSource(rec);
 
 			me.panel.expand();
 			Ext.getCmp('deal_next_stage').setText('Next Stage');
@@ -2692,6 +2693,7 @@ Ext.define('OCS.DealAction', {
 		me.dealCommission = new OCS.DealCommissionGrid();
 		me.dealTeams = new OCS.DealSalesTeamGrid();
 		me.dealHistory = new OCS.DealHistoryGrid();
+		me.dealPayroll = new OCS.DealPayrollGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -2704,6 +2706,7 @@ Ext.define('OCS.DealAction', {
 				me.dealActivity.createPanel(),
 				me.dealHistory.createPanel(),
 				me.dealProduct.createPanel(),
+				me.dealPayroll.createPanel(),
 				me.dealCompotetor.createPanel(),
 				me.dealCommission.createPanel(),
 				me.dealTeams.createPanel()

@@ -1753,6 +1753,49 @@ Ext.define('OCS.DealHistoryGrid', {
 	}
 });
 
+Ext.define('OCS.DealPayrollGrid', {
+	extend: 'OCS.DealProductGrid',
+	func: 'crm_deal_payroll_list',
+	tab : 'deal_pay_roll',
+	title: 'Payments',
+	icon: 'call',
+	table: 'crm_deal_payroll',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_DEAL_PAYROLL',
+	collapsed: false,
+	primary: 'id',
+	
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.action = rec.get('owner') == logged;
+		me.where = rec.get('deal_id');
+		me.values = 'deal_id';
+		me.loadStore();
+	},	
+
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: 'Amount',
+			dataIndex: 'amount',
+			flex: 1,			
+			sortable: false
+		},{
+			text: 'Date',
+			dataIndex: 'pay_date',
+			width: 120,			
+			sortable: false
+		},{
+			text: 'Created by',
+			dataIndex: 'userCode',
+			width: 130,			
+			sortable: false
+		}];
+	}
+});
+
 Ext.define('OCS.ContactGrid', {
 	extend: 'OCS.DealGrid',
 	func: 'crm_contact_list',
