@@ -4512,36 +4512,36 @@ Ext.define('OCS.Dashboard', {
 						}
 					},'->',
 					{
-						id: 'start_7',
+						id: 'start_4',
 						text: me.month(),
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
-								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('start_7').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+								me.charts[4].start = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('start_4').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[4].rangeData(me.charts[4].start, me.charts[4].end);
 							}
 						})
 					},
 					{
-						id: 'end_7',
+						id: 'end_4',
 						text: me.nextmonth(),
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
-								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('end_7').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[7].rangeData(me.month(), me.nextmonth());
+								me.charts[4].end = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('end_4').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[4].rangeData(me.month(), me.nextmonth());
 							}
 						})
 					},{
 						text: 'Reset',
 						iconCls: 'reset',
 						handler: function() {
-							Ext.getCmp('start_7').setText('Start date');
-							Ext.getCmp('end_7').setText('End date');
+							Ext.getCmp('start_4').setText('Start date');
+							Ext.getCmp('end_4').setText('End date');
 							me.start = ''; me.end = '';
-							me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+							me.charts[4].rangeData(me.charts[4].start, me.charts[4].end);
 						}
 					}],
 					items: me.charts[4]
