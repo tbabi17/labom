@@ -4155,6 +4155,7 @@ Ext.define('OCS.Reports', {
 
 	reconfigure: function(modelName, func) {
 		var me = this;
+		me.xlsName = modelName;
 		me.modelName = modelName;
 		me.func = func;
 		me.createStore();
@@ -4164,6 +4165,7 @@ Ext.define('OCS.Reports', {
 
 	reconfigureStatic: function(modelName, func) {
 		var me = this;
+		me.xlsName = modelName;
 		me.modelName = modelName;
 		me.func = func;
 		me.createStore();
