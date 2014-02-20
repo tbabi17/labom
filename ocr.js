@@ -2713,7 +2713,7 @@ Ext.define('OCS.DealAction', {
 		me.detail = Ext.create('Ext.Panel', {
 				border: false,
 				region: 'north',
-				height: 250,
+				height: 280,
 				border: true,
 				autoScroll: true,
 				split: true,
