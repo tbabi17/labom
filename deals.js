@@ -1719,6 +1719,7 @@ Ext.define('OCS.DealHistoryGrid', {
 	modelName: 'CRM_DEAL_TRANSFER',
 	collapsed: false,
 	primary: 'id',
+	title_add : 'Add/Expand ...',
 	
 	createActions: function() {
 		var me = this;
