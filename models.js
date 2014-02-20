@@ -1405,9 +1405,9 @@ function renderAny(v) {
 }
 
 
-Ext.define('Ext.ux.form.NumericField', {
+Ext.define('Ext.ux.form.CurrencyField', {
     extend: 'Ext.form.field.Number',
-    alias: ['widget.currencyfield'],
+    alias: ['widget.currencyfieldex'],
     config: {
         thousandSeparator: ' ',
         currencyAtEnd: true,
@@ -1481,7 +1481,7 @@ Ext.define('Ext.ux.form.NumericField', {
     }
 });
 
-/*
+
 Ext.define('Ext.ux.form.NumericField', {
     extend: 'Ext.form.field.Number',
     alias: 'widget.currencyfield',
@@ -1601,7 +1601,7 @@ Ext.define('Ext.ux.form.NumericField', {
         return this.removeFormat(value);
     }
 });
-*/
+
 
 Ext.override('Ext.data.Store', {
 
