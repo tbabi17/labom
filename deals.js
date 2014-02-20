@@ -1795,6 +1795,7 @@ Ext.define('OCS.DealPayrollGrid', {
 			flex: 1,		
 			renderer: renderMoney,
 			summaryType: 'sum',
+			align: 'right',
 			summaryRenderer: renderTMoney,
 			sortable: false
 		},{
