@@ -1354,7 +1354,7 @@ function renderCreatedDate(time) {
 	var seconds = (+new Date() - time) / 1000,
 		token = 'ago', list_choice = 1;
 
-	if (seconds == 0) {
+	if (seconds < 5*60) {
 		return '<span class="gray">Just now</span>'
 	}
 	if (seconds < 0) {
