@@ -4073,7 +4073,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Product Report',
 							handler: function(widget, event) {
-								me.reconfigureStatic('CRM_REPORT_PRODUCT', 'crm_report_product_list');
+								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_product_list');
 							}
 						}),
 						'-',
