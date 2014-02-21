@@ -101,7 +101,7 @@ function googleEvent(rec, func) {
 
 		subject = subject + ' [from CRM]';
 
-		start_date = rec.get("duedate");
+		start_date = rec.get("days");
 		start_date = replaceAll('-', '', start_date);
 		
 		name = rec.get('crm_name');
