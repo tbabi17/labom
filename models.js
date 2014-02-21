@@ -756,7 +756,7 @@ fields['CRM_CAMPAIGN_FIELDS'] = [
    {name: 'campaign', text: 'Campaign name', width: 200, primary: true},
    {name: 'total_members', type: 'int', text: 'Members', width: 70, align: 'right'},
    {name: 'campaign_live', text: 'Define', width: 60, align: 'center'},
-   {name: 'campaign_type', text: 'Type', width: 80},
+   {name: 'campaign_type', text: 'Type', width: 80, primary: true},
    {name: 'personal', text: 'Personal view', width: 150, hidden: true},
    {name: 'product_name', text: 'Product name', width: 150},
    {name: 'expected_revenue', text: 'Expected Revenue', type: 'float', width: 120, summaryType: 'sum', align: 'right', renderer: renderMoney, summaryRenderer: renderTMoney},
