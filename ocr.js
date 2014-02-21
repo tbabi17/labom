@@ -45,7 +45,7 @@ function googleEventDynamic(rec) {
 
 	subject = subject + ' [from CRM]';
 
-	start_date = rec.get("_date");
+	start_date = rec.get("days");
 	start_date = replaceAll('-', '', start_date);
 	htmlContent= rec.get('crm_name').substring(rec.get('crm_name').indexOf('<b>')+3, rec.get('crm_name').indexOf('</b>'));
 
