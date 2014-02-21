@@ -73,7 +73,7 @@ Ext.onReady(function() {
 			   if (response.responseText == 'logged')			   
 				   location.reload();
 			   else
-				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+				  Ext.MessageBox.alert('Status', response.responseText, function() {});
 		   },
 		   failure: function(response, opts) {
 				alert('error');
