@@ -1043,6 +1043,8 @@ function renderExpiredDate1(v) {
 }
 
 function renderUserLevel(v) {
+	if (v == -1)
+		return 'unemployed man';
 	if (v == 0)
 		return 'sales man';
 	if (v == 1)
