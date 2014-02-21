@@ -837,7 +837,7 @@ fields['CRM_REPORT_REVENUE_FIELDS'] = [
    {name: 'actual_revenue', text: 'Actual revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
    {name: 'expected_revenue', text: 'Expected revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
    {name: 'target_revenue', text: 'Target revenue', type:'float', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
-   {name: 'perform', text: 'Performance', type:'float', width: 150, align: 'right', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}  
+   {name: 'perform', text: 'Performance', type:'float', width: 100, align: 'right', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}  
 ];
 
 Ext.define('CRM_REPORT_REVENUE', {
