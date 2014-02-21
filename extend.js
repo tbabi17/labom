@@ -872,6 +872,18 @@ Ext.define('OCS.UserGridWithFormPanel', {
 						}).show();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'lic_key',
+				text: 'License key ...',
+				disabled: (user_level < 2),
+				handler: function(widget, event) {
+					if (me.recordSelected())
+						new OCS.PermissionWindow({
+							selected: me.selectedRecord(),
+							backgrid: me.grid
+						}).show();
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'export',
