@@ -2771,6 +2771,6 @@ Ext.define('OCS.BGridView', {
 
 	loadStore: function() {
 		var me = this;
-		me.store.loadPage(1);
+		me.store.load();
 	}	
 });
