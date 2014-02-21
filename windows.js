@@ -1269,6 +1269,12 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 				readOnly: true,
 				name: 'campaign',
 				value: me.direction
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',				
+				name: 'owner',
+				value: logged
 			},
 			{
 				xtype: 'textarea',
