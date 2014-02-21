@@ -1904,6 +1904,12 @@ Ext.define('OCS.ActivityDetailWindow', {
 					me.close();
 				}
 			},{
+				iconCls: 'calendar',
+				text: 'Calendar',				
+				handler: function() {
+					googleEventDynamic(me.selected);
+				}
+			},{
 				iconCls: 'save',
 				text: 'Complete',				
 				handler: function() {
