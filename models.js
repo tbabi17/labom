@@ -831,6 +831,18 @@ Ext.define('CRM_REPORT', {
 });
 
 
+fields['CRM_REPORT_PRODUCT_FIELDS'] = [
+   {name: 'product_name', text: 'Product name', width: 250}, 
+   {name: 'stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
+   {name: 'expected_revenue', align: 'right', type:'float', text: 'Expected revenue', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
+   {name: 'probablity', text: 'Probablity', type:'int',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}
+];
+
+Ext.define('CRM_REPORT_PRODUCT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_PRODUCT_FIELDS']
+});
+
 fields['CRM_REPORT_REVENUE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'team', text: 'Team', width: 250}, 
