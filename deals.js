@@ -656,6 +656,13 @@ Ext.define('OCS.DealProductGrid', {
 			summaryRenderer: renderTMoney,
 			align: 'right',
 			sortable: true
+		},{
+			text: 'Created on',
+			dataIndex: '_date',
+			width: 120,
+			hidden: true,
+			renderer: renderDate,
+			sortable: true
 		}];
 	}
 });
