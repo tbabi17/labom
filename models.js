@@ -1763,6 +1763,8 @@ Ext.define('Ext.ux.window.Notification', {
 	// Pixels from the managers borders to start the first notification
 	paddingX: 30,
 	paddingY: 10,
+	
+	minWidth: 200,
 
 	slideInAnimation: 'easeIn',
 	slideBackAnimation: 'bounceOut',
