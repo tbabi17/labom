@@ -95,7 +95,7 @@ Ext.define('OCS.Module', {
 											manager: 'demo1',
 											useXAxis: false,
 											stickWhileHover: false,
-											iconCls: 'ux-notification-icon-information',
+											iconCls: 'ux-notification-icon-message',
 											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
 									}
