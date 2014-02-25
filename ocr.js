@@ -4306,24 +4306,57 @@ Ext.define('OCS.Dashboard', {
 							items: [{
 								text: 'Today',
 								handler: function() {
-									me.charts[2].rangeData(me.today(), me.tommorow());
+									me.charts[8].rangeData(me.today(), me.tommorow());
 								}
 							},{
 								text: 'This week',
 								handler: function() {
-									me.charts[2].rangeData(me.monday(), me.tommorow());
+									me.charts[8].rangeData(me.monday(), me.tommorow());
 								}
 							},{
 								text: 'This month',
 								handler: function() {
-									me.charts[2].rangeData(me.month(), me.nextmonth());
+									me.charts[8].rangeData(me.month(), me.nextmonth());
 								}
 							},{
 								text: 'This year',
 								handler: function() {
-									me.charts[2].rangeData(me.year(), me.nextyear());
+									me.charts[8].rangeData(me.year(), me.nextyear());
 								}
 							}]
+						}
+					},'->',
+					{
+						id: 'start_8',
+						text: me.month(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[8].start = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('start_8').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[8].rangeData(me.charts[8].start, me.charts[8].end);
+							}
+						})
+					},
+					{
+						id: 'end_8',
+						text: me.nextmonth(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[8].end = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('end_8').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[8].rangeData(me.month(), me.nextmonth());
+							}
+						})
+					},{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							Ext.getCmp('start_8').setText('Start date');
+							Ext.getCmp('end_8').setText('End date');
+							me.start = ''; me.end = '';
+							me.charts[8].rangeData(me.charts[8].start, me.charts[8].end);
 						}
 					}],
 					items: /*{
