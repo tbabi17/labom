@@ -43,7 +43,7 @@ Ext.define('OCS.SalesFunnel', {
 			  width: 140,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('name') + ': ' + storeItem.get('value'));
+				this.setTitle(storeItem.get('name') + ': ' + renderMoney(storeItem.get('value')));
 			  }
 			},
 			highlight: {
