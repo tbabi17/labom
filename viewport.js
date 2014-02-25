@@ -86,7 +86,7 @@ Ext.define('OCS.Viewport', {
 			iconCls: 'ux-notification-icon-information',
 			html: 'Notification demo,Notification demo,Notification demo,Notification demo,Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000)
 		});
-		me.notify.update('Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000));
+		me.notify.update('Notification demo,Notification demo,Notification demo,Notification demo,Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000));
 		me.notify.show();
 
 				
