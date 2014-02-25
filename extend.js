@@ -65,7 +65,7 @@ Ext.define('OCS.Module', {
 
 									if (rec.data['status'] == 'assigned') {									
 										me.notify = Ext.create('widget.uxNotification', {
-											title: 'Notification',
+											title: rec.data['type']+' '+rec.data['status'],
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
