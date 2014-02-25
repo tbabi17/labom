@@ -71,7 +71,7 @@ Ext.define('OCS.Module', {
 											manager: 'demo1',
 											useXAxis: false,
 											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (deal)</br> assigned by '+rec.data['owner'];//+' <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> assigned by '+rec.data['owner']//+' <a href="?pl=deals">Go to</a>'
 										});
 										me.notify.update(rec.data['subject']+'</br>'+rec.data['owner']);
 										me.notify.show();
