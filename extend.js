@@ -65,13 +65,13 @@ Ext.define('OCS.Module', {
 
 									if (rec.data['status'] == 'assigned') {									
 										me.notify = Ext.create('widget.uxNotification', {
-											title: rec.data['type']+' '+rec.data['status'],
+											title: 'Notifaction',
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
 											useXAxis: false,
 											iconCls: 'ux-notification-icon-information',
-											html: (rec.data['subject']+'</br>'+rec.data['owner'])
+											html: (rec.data['subject']+'</br> assigned by'+rec.data['owner'])
 										});
 										me.notify.update(rec.data['subject']+'</br>'+rec.data['owner']);
 										me.notify.show();
