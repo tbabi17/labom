@@ -682,6 +682,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'status', text: 'Status', width: 80, align: 'center'},
    {name: 'deal', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},   
+   {name: 'deal_origin', text: 'Origin', primary: true},
    {name: 'stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
@@ -885,6 +886,8 @@ Ext.define('CRM_REPORT_RESELLER', {
 
 fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'call_p', text: 'Phone call', align: 'center', width: 60}, 
+   {name: 'email_p', text: 'Email', align: 'center', width: 60}, 
    {name: 'meeting_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'meeting_q', text: 'Success', align: 'center', width: 90}, 
    {name: 'meeting_t', text: '%', align: 'center', width: 90}, 
@@ -909,6 +912,8 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 
 columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
+   {daatIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60}, 
+   {daatIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60}, 
    {
 	   text: 'Meeting',
 	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},

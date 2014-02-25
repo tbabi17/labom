@@ -1436,6 +1436,24 @@ Ext.define('OCS.PropertyGrid', {
 			};
 		}
 
+		if (name == 'deal_origin')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'new'},{value: 'extension'}]
+              }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'value',
+			  valueField: 'value',
+			  triggerAction: 'all',
+			  disabled: true,
+			  editable: false
+			};
+		}
+
 		if (name == 'gender')
 		{
 			return {
