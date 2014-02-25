@@ -12,7 +12,7 @@ Ext.define('OCS.SalesFunnel', {
 		var me = this;
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['stage', 'value'],
+			fields: ['name', 'value'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -43,7 +43,7 @@ Ext.define('OCS.SalesFunnel', {
 			  width: 140,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('stage') + ': ' + storeItem.get('value'));
+				this.setTitle(storeItem.get('name') + ': ' + storeItem.get('value'));
 			  }
 			},
 			highlight: {
@@ -52,7 +52,7 @@ Ext.define('OCS.SalesFunnel', {
 			  }
 			},
 			label: {
-				field: 'stage',
+				field: 'name',
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'		
