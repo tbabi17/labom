@@ -912,8 +912,8 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 
 columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
-   {daatIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60}, 
-   {daatIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60}, 
+   {dataIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60}, 
+   {dataIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60}, 
    {
 	   text: 'Meeting',
 	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
