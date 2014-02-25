@@ -103,7 +103,21 @@ Ext.define('OCS.Module', {
 								if (rec.data['type'] == 'case')
 									ccase++;
 								else
+								{
+									if (rec.data['status'] == 'workflow') {										
+										Ext.create('widget.uxNotification', {
+											title: 'Task',
+											closeAction: 'hide',
+											position: 'br',
+											manager: 'demo1',
+											useXAxis: false,
+											stickWhileHover: false,
+											iconCls: 'ux-notification-icon-task',
+											html: rec.data['subject']+' (task)</br> assigned <b>'+rec.data['owner']+'</b> <a href="?pl=workspace">Go to</a>'
+										}).show();
+									}
 									activity++;
+								}
 							});
 
 							views['topbar'].update('<div class="caption">'+
