@@ -78,13 +78,14 @@ Ext.define('OCS.Viewport', {
 		];
 
 		me.notify = Ext.create('widget.uxNotification', {
-					title: 'Notification',
-					closeAction: 'hide',
-					position: 'br',
-					manager: 'demo1',
-					useXAxis: false,
-					iconCls: 'ux-notification-icon-information'
+			title: 'Notification',
+			closeAction: 'hide',
+			position: 'br',
+			manager: 'demo1',
+			useXAxis: false,
+			iconCls: 'ux-notification-icon-information'
 		});
+		me.notify.update('Entering from the component\'s bl corner. Reusing a single notification with closeAction set to hide.<br />Random number: ' + Math.floor(Math.random()*10000));
 		me.notify.show();
 
 				
