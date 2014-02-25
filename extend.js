@@ -60,8 +60,23 @@ Ext.define('OCS.Module', {
 						if (me.func == 'crm_alarm_list' && me.store.getCount() > 0) {
 							var deal = 0, ccase = 0, activity = 0;
 							me.store.each(function(rec){
-								if (rec.data['type'] == 'deal')
+								if (rec.data['type'] == 'deal') {
 									deal++;
+
+									if (rec.data['status'] == 'assigned') {									
+										me.notify = Ext.create('widget.uxNotification', {
+											title: 'Notification',
+											closeAction: 'hide',
+											position: 'br',
+											manager: 'demo1',
+											useXAxis: false,
+											iconCls: 'ux-notification-icon-information',
+											html: 'Notification demo,Notification demo,Notification demo,Notification demo,Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000)
+										});
+										me.notify.update('Notification demo,Notification demo,Notification demo,Notification demo,Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000));
+										me.notify.show();
+									}
+								}
 								else
 								if (rec.data['type'] == 'case')
 									ccase++;
