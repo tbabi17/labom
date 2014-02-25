@@ -63,18 +63,29 @@ Ext.define('OCS.Module', {
 								if (rec.data['type'] == 'deal') {
 									deal++;
 
-									if (rec.data['status'] == 'assigned') {									
-										me.notify = Ext.create('widget.uxNotification', {
+									if (rec.data['status'] == 'assigned') {										
+										Ext.create('widget.uxNotification', {
 											title: 'Notifaction',
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
 											useXAxis: false,
+											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-information',
 											html: rec.data['subject']+' (deal)</br> assigned by '+rec.data['owner']+' <a href="?pl=deals">Go to</a>'
-										});
-//										me.notify.update(rec.data['subject']+'</br>'+rec.data['owner']);
-										me.notify.show();
+										}).show();
+									} else
+									if (rec.data['status'] == 'remind') {										
+										Ext.create('widget.uxNotification', {
+											title: 'Notifaction',
+											closeAction: 'hide',
+											position: 'br',
+											manager: 'demo1',
+											useXAxis: false,
+											stickWhileHover: false,
+											iconCls: 'ux-notification-icon-information',
+											html: rec.data['subject']+' (deal)</br> remind '+rec.data['owner']+' <a href="?pl=deals">Go to</a>'
+										}).show();
 									}
 								}
 								else
