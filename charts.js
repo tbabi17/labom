@@ -76,6 +76,13 @@ Ext.define('OCS.Chart', {
 		 var nextDate= new Date(y+1, 0, 1);
 		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
 		 return ndate;
+	},
+
+	reloadData: function() {
+		var me = this;
+		me.start = me.month();
+		me.end = me.nextmonth();
+		me.store.load();
 	}
 });
 
@@ -143,13 +150,6 @@ Ext.define('OCS.SalesFunnel', {
 		me.callParent(arguments);
 	},
 
-	reloadData: function() {
-		var me = this;
-		me.start = me.month();
-		me.end = me.nextmonth();
-		me.store.load();
-	},
-
 	rangeData: function(e1, e2) {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_deal_funnel_list', start_date: e1, end_date: e2};
@@ -158,7 +158,7 @@ Ext.define('OCS.SalesFunnel', {
 });
 
 Ext.define('OCS.CampaignChartRevenue', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	insetPadding: 50,
@@ -230,11 +230,6 @@ Ext.define('OCS.CampaignChartRevenue', {
 		me.callParent(arguments);
 	},
 
-	reloadData: function() {
-		var me = this;
-		me.store.load();
-	},
-
 	rangeData: function(e1, e2) {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_campaign_by_revenue_list', start_date: e1, end_date: e2};
@@ -244,7 +239,7 @@ Ext.define('OCS.CampaignChartRevenue', {
 
 
 Ext.define('OCS.OpportunityRevenueChart', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	insetPadding: 50,
@@ -324,11 +319,6 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		me.callParent(arguments);
 	},
 
-	reloadData: function() {
-		var me = this;
-		me.store.load();
-	},
-
 	rangeData: function(e1, e2) {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
@@ -392,88 +382,11 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		});
 		
 		me.win.show();
-	},
-
-	yearValue: function() {
-		return new Date().getFullYear();
-	},
-
-	monthValue: function() {
-		return new Date().getMonth()+1;
-	},
-
-	today: function() {
-		var now = new Date();
-		return Ext.Date.format(now, 'Y-m-d');
-	},
-
-	tommorow: function() {
-		 var today = new Date();
-		 var d = today.getDate();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m, d+1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	month: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-	
-	prevmonth: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m-1, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	nextmonth: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m+1, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	monday: function() {
-		var today = new Date();
-		var day = today.getDay() || 7;
-		if( day !== 1 )
-		    today.setHours(-24 * (day - 1)); 
-		var ndate=Ext.Date.format(today, 'Y-m-d');
-		return ndate;
-	},
-
-	year: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, 0, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	nextyear: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y+1, 0, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	}
+	}	
 });
 
 Ext.define('OCS.StatUserChart', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	insetPadding: 50,
@@ -546,11 +459,6 @@ Ext.define('OCS.StatUserChart', {
 		me.callParent(arguments);
 	},
 
-	reloadData: function() {
-		var me = this;
-		me.store.load();
-	},
-
 	rangeData: function(e1, e2) {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', start_date: e1, end_date: e2, values: '', where: 0};
@@ -606,88 +514,11 @@ Ext.define('OCS.StatUserChart', {
 		});
 		
 		me.win.show();
-	},
-	
-	yearValue: function() {
-		return new Date().getFullYear();
-	},
-
-	monthValue: function() {
-		return new Date().getMonth()+1;
-	},
-
-	today: function() {
-		var now = new Date();
-		return Ext.Date.format(now, 'Y-m-d');
-	},
-
-	tommorow: function() {
-		 var today = new Date();
-		 var d = today.getDate();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m, d+1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	month: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-	
-	prevmonth: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m-1, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	nextmonth: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, m+1, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	monday: function() {
-		var today = new Date();
-		var day = today.getDay() || 7;
-		if( day !== 1 )
-		    today.setHours(-24 * (day - 1)); 
-		var ndate=Ext.Date.format(today, 'Y-m-d');
-		return ndate;
-	},
-
-	year: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y, 0, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	},
-
-	nextyear: function() {
-		 var today = new Date();
-		 var m = today.getMonth();
-		 var y = today.getFullYear();
-		 var nextDate= new Date(y+1, 0, 1);
-		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
-		 return ndate;
-	}
+	}	
 });
 
 Ext.define('OCS.CampaignChartSuccess', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: true,
 	insetPadding: 50,
@@ -763,7 +594,7 @@ Ext.define('OCS.CampaignChartSuccess', {
 
 
 Ext.define('OCS.CasesByStatus', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	insetPadding: 30,
@@ -828,11 +659,6 @@ Ext.define('OCS.CasesByStatus', {
 		me.callParent(arguments);
 	},
 
-	reloadData: function() {
-		var me = this;
-		me.store.load();
-	},
-
 	rangeData: function(e1, e2) {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_complain_by_status_list', start_date: e1, end_date: e2};
@@ -841,7 +667,7 @@ Ext.define('OCS.CasesByStatus', {
 });
 
 Ext.define('OCS.SalesStagePipeLine', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	legend: {
@@ -902,17 +728,12 @@ Ext.define('OCS.SalesStagePipeLine', {
 		}];
 
 		me.callParent(arguments);
-	},
-
-	reloadData: function() {
-		var me = this;
-		me.store.load();
 	}
 });
 
 
 Ext.define('OCS.AccountByIndustry', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	legend: {
@@ -973,16 +794,11 @@ Ext.define('OCS.AccountByIndustry', {
 		}];
 
 		me.callParent(arguments);
-	},
-
-	reloadData: function() {
-		var me = this;
-		me.store.load();
 	}
 });
 
 Ext.define('OCS.OpportunityByProbability', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	legend: {
@@ -1043,16 +859,11 @@ Ext.define('OCS.OpportunityByProbability', {
 		}];
 
 		me.callParent(arguments);
-	},
-
-	reloadData: function() {
-		var me = this;
-		me.store.load();
 	}
 });
 
 Ext.define('OCS.LeadBySource', {
-	extend: 'Ext.chart.Chart',
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	legend: {
@@ -1113,11 +924,6 @@ Ext.define('OCS.LeadBySource', {
 		}];
 
 		me.callParent(arguments);
-	},
-
-	reloadData: function() {
-		var me = this;
-		me.store.load();
 	}
 });
 
