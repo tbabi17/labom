@@ -1,5 +1,86 @@
-Ext.define('OCS.SalesFunnel', {
+Ext.define('OCS.Chart', {
 	extend: 'Ext.chart.Chart',
+
+	yearValue: function() {
+		return new Date().getFullYear();
+	},
+
+	monthValue: function() {
+		return new Date().getMonth()+1;
+	},
+
+	today: function() {
+		var now = new Date();
+		return Ext.Date.format(now, 'Y-m-d');
+	},
+
+	tommorow: function() {
+		 var today = new Date();
+		 var d = today.getDate();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m, d+1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	month: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+	
+	prevmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m-1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	nextmonth: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, m+1, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	monday: function() {
+		var today = new Date();
+		var day = today.getDay() || 7;
+		if( day !== 1 )
+		    today.setHours(-24 * (day - 1)); 
+		var ndate=Ext.Date.format(today, 'Y-m-d');
+		return ndate;
+	},
+
+	year: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y, 0, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	nextyear: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y+1, 0, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	}
+});
+
+Ext.define('OCS.SalesFunnel', {
+	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
 	legend: {
@@ -64,6 +145,8 @@ Ext.define('OCS.SalesFunnel', {
 
 	reloadData: function() {
 		var me = this;
+		me.start = me.month();
+		me.end = me.nextmonth();
 		me.store.load();
 	},
 
