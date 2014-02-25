@@ -1,3 +1,73 @@
+Ext.define('OCS.SalesFunnel', {
+	extend: 'Ext.chart.Chart',
+	animate: true,
+	shadow: false,
+	legend: {
+		position: 'right'
+	},
+	insetPadding: 50,
+	theme: 'Base:gradients',
+
+	initComponent: function() {
+		var me = this;
+		
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['stage', 'value'],
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_deal_funnel_list'}
+			}
+		});
+		
+		me.reloadData();
+
+		me.series = [{
+			type: 'pie',
+			field: 'value',
+			showInLegend: true,
+			donut: false,
+			tips: {
+			  trackMouse: true,
+			  width: 140,
+			  height: 28,
+			  renderer: function(storeItem, item) {				
+				this.setTitle(storeItem.get('stage') + ': ' + storeItem.get('value'));
+			  }
+			},
+			highlight: {
+			  segment: {
+				margin: 5
+			  }
+			},
+			label: {
+				field: 'stage',
+				display: 'rotate',
+				contrast: true,
+				font: '11px Segoe UI'		
+			}
+		}];
+
+		me.callParent(arguments);
+	},
+
+	reloadData: function() {
+		var me = this;
+		me.store.load();
+	}
+});
+
 Ext.define('OCS.CampaignChartRevenue', {
 	extend: 'Ext.chart.Chart',
 	animate: true,

@@ -4264,6 +4264,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts[4] = new OCS.StatUserChart();
 		me.charts[5] = new OCS.SalesStagePipeLine();
 		me.charts[6] = new OCS.AccountByIndustry();	
+		me.charts[8] = new OCS.SalesFunnel();
 	},
 
 	reloadCharts: function() {
@@ -4325,7 +4326,7 @@ Ext.define('OCS.Dashboard', {
 							}]
 						}
 					}],
-					items: [{
+					items: /*{
 						xtype: 'panel',
 						bodyPadding: 30,
 						border: false,
@@ -4333,7 +4334,7 @@ Ext.define('OCS.Dashboard', {
 							url: 'funnel.php',
 							scripts: true
 						}
-					}]
+					}*/me.charts[8]
 				},{
 					title:'Leads by Source',		
 					layout: 'fit',
