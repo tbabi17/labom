@@ -886,6 +886,7 @@ Ext.define('CRM_REPORT_RESELLER', {
 
 fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'section', text: 'Section', width: 150}, 
    {name: 'call_p', text: 'Phone call', align: 'center', width: 60}, 
    {name: 'email_p', text: 'Email', align: 'center', width: 60}, 
    {name: 'meeting_p', text: 'Plan', align: 'center', width: 90}, 
