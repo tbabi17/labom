@@ -72,7 +72,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (deal)</br> assigned by '+rec.data['owner']+' <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> assigned by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
 									} else
 									if (rec.data['status'] == 'remind') {										
@@ -84,7 +84,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (deal)</br> remind '+rec.data['owner']+' <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
 									}
 								}
