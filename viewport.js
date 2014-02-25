@@ -85,7 +85,7 @@ Ext.define('OCS.Viewport', {
 					useXAxis: false,
 					iconCls: 'ux-notification-icon-information'
 		});
-		me.show();
+		me.notify.show();
 
 				
 		me.callParent(arguments);
