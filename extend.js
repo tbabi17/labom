@@ -1449,7 +1449,6 @@ Ext.define('OCS.PropertyGrid', {
 		      displayField: 'value',
 			  valueField: 'value',
 			  triggerAction: 'all',
-			  disabled: true,
 			  editable: false
 			};
 		}
