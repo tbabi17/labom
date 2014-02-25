@@ -902,7 +902,10 @@ fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'expat_t', text: '%', align: 'center', width: 90}, 
    {name: 'vip_p', text: 'Plan', align: 'center', width: 90}, 
    {name: 'vip_q', text: 'Success', align: 'center', width: 90},
-   {name: 'vip_t', text: '%', align: 'center', width: 90} 
+   {name: 'vip_t', text: '%', align: 'center', width: 90},
+   {name: 'ext_p', text: 'Plan', align: 'center', width: 90}, 
+   {name: 'ext_q', text: 'Success', align: 'center', width: 90},
+   {name: 'ext_t', text: '%', align: 'center', width: 90}   
 ];
 
 Ext.define('CRM_REPORT_ACTIVITY', {
@@ -912,42 +915,42 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 
 columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
-   {dataIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60}, 
-   {dataIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60}, 
+   {dataIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum'}, 
+   {dataIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum'}, 
    {
 	   text: 'Meeting',
-	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'meeting_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Quote',
-	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'quote_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'New Customer',
-	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'newcus_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Expat Customer',
-	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'expat_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'VIP Customer',
-	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'vip_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Extended contracts',
-	   columns: [{dataIndex:'ext_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber},
-				 {dataIndex:'ext_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber},
+	   columns: [{dataIndex:'ext_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+				 {dataIndex:'ext_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
 				 {dataIndex:'ext_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {dataIndex:'term_p', text: 'Termination', width: 90, align: 'center', renderer: renderReportNumber}
