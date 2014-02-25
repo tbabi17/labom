@@ -65,7 +65,7 @@ Ext.define('OCS.Module', {
 
 									if (rec.data['status'] == 'assigned') {										
 										Ext.create('widget.uxNotification', {
-											title: 'Notifaction',
+											title: 'Assigned',
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
@@ -77,7 +77,7 @@ Ext.define('OCS.Module', {
 									} else
 									if (rec.data['status'] == 'remind') {										
 										Ext.create('widget.uxNotification', {
-											title: 'Notifaction',
+											title: 'Remind',
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
@@ -89,7 +89,7 @@ Ext.define('OCS.Module', {
 									} else
 									if (rec.data['status'] == 'message') {										
 										Ext.create('widget.uxNotification', {
-											title: 'Notifaction',
+											title: 'Message',
 											closeAction: 'hide',
 											position: 'br',
 											manager: 'demo1',
