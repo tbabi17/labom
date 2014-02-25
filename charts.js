@@ -924,6 +924,12 @@ Ext.define('OCS.LeadBySource', {
 		}];
 
 		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_lead_by_source_list', start_date: e1, end_date: e2};
+		me.store.load();
 	}
 });
 
