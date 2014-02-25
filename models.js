@@ -1768,10 +1768,10 @@ Ext.define('Ext.ux.window.Notification', {
 
 	slideInAnimation: 'easeIn',
 	slideBackAnimation: 'bounceOut',
-	slideInDuration: 1500,
+	slideInDuration: 500,
 	slideBackDuration: 1000,
 	hideDuration: 500,
-	autoCloseDelay: 7000,
+	autoCloseDelay: 30000,
 	stickOnClick: true,
 	stickWhileHover: true,
 
