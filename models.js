@@ -915,42 +915,42 @@ Ext.define('CRM_REPORT_ACTIVITY', {
 
 columns['CRM_REPORT_ACTIVITY_COLUMNS'] = [
    {dataIndex: 'owner', text: 'Owner', width: 150}, 
-   {dataIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum'}, 
-   {dataIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum'}, 
+   {dataIndex: 'call_p', text: 'Phone call', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}, 
+   {dataIndex: 'email_p', text: 'Email', type:'int', align: 'center', width: 60, renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}, 
    {
 	   text: 'Meeting',
-	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'meeting_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'meeting_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'meeting_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Quote',
-	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'quote_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'quote_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'quote_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'New Customer',
-	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'newcus_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'newcus_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'newcus_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Expat Customer',
-	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'expat_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'expat_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'expat_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'VIP Customer',
-	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'vip_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'vip_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'vip_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Extended contracts',
-	   columns: [{dataIndex:'ext_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
-				 {dataIndex:'ext_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum'},
+	   columns: [{dataIndex:'ext_p', text: 'Plan', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'ext_q', text: 'Perform', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'ext_t', text: '%', width: 50, align: 'center', renderer: renderPrecent}]
    },
    {dataIndex:'term_p', text: 'Termination', width: 90, align: 'center', renderer: renderReportNumber}
@@ -968,33 +968,33 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
    },
    {
 	   text: 'Total',
-	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 70, align: 'right', summaryType: 'sum', renderer: renderReportNumber, summaryRenderer: renderTNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 130, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    },
    {
 	   text: 'АВТОТЭЭВРИЙН ХЭРЭГСЛИЙН',
-	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'p1_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber, summaryRenderer: renderTNumber},
+				 {dataIndex:'p1_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    },
    {
 	   text: 'АЛБАН ЖУРМЫН ЖОЛООЧИЙН',
-	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p2_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'p2_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber, summaryRenderer: renderTNumber},
+				 {dataIndex:'p2_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    },
    {
 	   text: 'ЭД ХӨРӨНГИЙН',
-	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p3_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'p3_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber, summaryRenderer: renderTNumber},
+				 {dataIndex:'p3_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    },
    {
 	   text: 'ЗЭЭЛДЭГЧИЙН ГЭНЭТИЙН ОСЛЫН',
-	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p4_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+	   columns: [{dataIndex:'p4_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber, summaryRenderer: renderTNumber},
+				 {dataIndex:'p4_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    },
    {
 	   text: 'ГАДААД ЗОРЧИГЧИЙН',
 	   columns: [{dataIndex:'p5_qty', text: 'Qty', width: 60, align: 'right', summaryType: 'sum', renderer: renderReportNumber},
-				 {dataIndex:'p5_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney}]
+				 {dataIndex:'p5_amount', text: 'Amount', width: 110, align: 'right', summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney}]
    }   
 ];
 
