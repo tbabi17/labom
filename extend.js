@@ -61,8 +61,6 @@ Ext.define('OCS.Module', {
 							var deal = 0, ccase = 0, activity = 0;
 							me.store.each(function(rec){
 								if (rec.data['type'] == 'deal') {
-									deal++;
-
 									if (rec.data['status'] == 'assigned') {										
 										Ext.create('widget.uxNotification', {
 											title: 'Assigned',
@@ -98,7 +96,8 @@ Ext.define('OCS.Module', {
 											iconCls: 'ux-notification-icon-message',
 											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
-									}
+									} else
+										deal++;
 								}
 								else
 								if (rec.data['type'] == 'case')
