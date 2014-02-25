@@ -86,6 +86,18 @@ Ext.define('OCS.Module', {
 											iconCls: 'ux-notification-icon-information',
 											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
+									} else
+									if (rec.data['status'] == 'message') {										
+										Ext.create('widget.uxNotification', {
+											title: 'Notifaction',
+											closeAction: 'hide',
+											position: 'br',
+											manager: 'demo1',
+											useXAxis: false,
+											stickWhileHover: false,
+											iconCls: 'ux-notification-icon-information',
+											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
+										}).show();
 									}
 								}
 								else
