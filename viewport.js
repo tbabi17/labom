@@ -76,7 +76,7 @@ Ext.define('OCS.Viewport', {
 			views['topbar'],
 			views[pk].createPanel()	
 		];
-/*
+
 		me.notify = Ext.create('widget.uxNotification', {
 					title: 'Notification',
 					closeAction: 'hide',
@@ -85,7 +85,7 @@ Ext.define('OCS.Viewport', {
 					useXAxis: false,
 					iconCls: 'ux-notification-icon-information'
 		});
-		me.show();*/
+		me.show();
 
 				
 		me.callParent(arguments);
