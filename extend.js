@@ -71,7 +71,7 @@ Ext.define('OCS.Module', {
 											manager: 'demo1',
 											useXAxis: false,
 											iconCls: 'ux-notification-icon-information',
-											html: 'Notification demo,Notification demo,Notification demo,Notification demo,Notification demo .<br />Random number: ' + Math.floor(Math.random()*10000)
+											html: (rec.data['subject']+'</br>'+rec.data['owner'])
 										});
 										me.notify.update(rec.data['subject']+'</br>'+rec.data['owner']);
 										me.notify.show();
