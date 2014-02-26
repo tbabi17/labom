@@ -1452,6 +1452,12 @@ Ext.define('Teller.ext.CurrencyField', {
             this.setRawValue(Ext.util.Format.currency(this.getValue()));
         }
     },
+	
+	onFocus: function(){
+        this.setRawValue(this.removeFormat(this.getRawValue()));
+        
+        this.callParent(arguments);
+    },
 
     removeFormat: function (v) {
         if (Ext.isEmpty(v)) {
