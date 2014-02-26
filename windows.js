@@ -2225,8 +2225,12 @@ Ext.define('OCS.DealAddProductWindow', {
 					}
 				}
 			},{
-				xtype: 'currencyfield',
+				xtype: 'numericfield',
 				value: 0,
+				decimalPrecision: 2,
+			    allowNegative: true,
+				useThousandSeparator: true,
+		        currencySymbol:'₮',
 				fieldLabel: 'Price',
 				name: 'price',
 				listeners: {
@@ -2238,6 +2242,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			},{
 				xtype: 'currencyfield',
 				value: 0,
+				readOnly: true,
 				fieldLabel: 'Amount',
 				name: 'amount' 
 			},{
