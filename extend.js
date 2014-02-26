@@ -2117,6 +2117,9 @@ Ext.define('OCS.PropertyGrid', {
 			return {
 				xtype: 'numericfield',
 				value: 0,
+				decimalPrecision: 2,
+			    allowNegative: true,
+		        currencySymbol:'₮',
 				name: name,
 				id: name
 			};
