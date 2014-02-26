@@ -2117,8 +2117,6 @@ Ext.define('OCS.PropertyGrid', {
 			return {
 				xtype: 'currencyfield',
 				value: 0,
-				decimalSeparator: ',',
-				allowDecimals: false,
 				name: name,
 				id: name
 			};
