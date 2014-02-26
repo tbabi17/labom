@@ -85,7 +85,7 @@ Ext.define('OCS.Module', {
 											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
 										}).show();
 									} else
-									if (rec.data['status'] == 'message') {										
+									if (rec.data['status'] == 'commented') {										
 										Ext.create('widget.uxNotification', {
 											title: 'Message',
 											closeAction: 'hide',
