@@ -2240,8 +2240,12 @@ Ext.define('OCS.DealAddProductWindow', {
 					}
 				} 
 			},{
-				xtype: 'currencyfield',
+				xtype: 'numericfield',
 				value: 0,
+				decimalPrecision: 2,
+			    allowNegative: true,
+				useThousandSeparator: true,
+		        currencySymbol:'₮',
 				readOnly: true,
 				fieldLabel: 'Amount',
 				name: 'amount' 
