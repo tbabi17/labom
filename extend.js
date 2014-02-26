@@ -2115,7 +2115,7 @@ Ext.define('OCS.PropertyGrid', {
 
 		if (name == 'price' || name == 'amount' || name == 'budgeted_cost' || name == 'reported_revenue' || name == 'actual_cost' || name == 'expected_revenue' || name == 'amountTheshold')
 			return {
-				xtype: 'numericfield',
+				xtype: 'currencyfield',
 				value: 0,
 				decimalSeparator: ',',
 				allowDecimals: false,
