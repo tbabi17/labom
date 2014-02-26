@@ -1717,6 +1717,7 @@ Ext.ux.NumericField = function(config){
 Ext.extend(Ext.ux.NumericField, Ext.form.NumberField, 
 {
     currencySymbol: null,
+	alias: 'numericfield',
     useThousandSeparator: true,
     thousandSeparator: ',',
     alwaysDisplayDecimals: false,
@@ -1812,7 +1813,7 @@ Ext.extend(Ext.ux.NumericField, Ext.form.NumberField,
         this.setRawValue(this.removeFormat(this.getRawValue()));
     }
 });
-Ext.reg('numericfield', Ext.ux.NumericField);
+
 
 
 Ext.override('Ext.data.Store', {
