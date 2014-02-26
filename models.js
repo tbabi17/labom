@@ -1437,6 +1437,11 @@ function renderAny(v) {
 Ext.define('Teller.ext.CurrencyField', {
     extend: 'Ext.form.field.Number',
     alias: 'widget.currencyfield1',
+	config: {
+        thousandSeparator: ',',
+        currencyAtEnd: true,
+        currencySign: '₮'
+    },
 
     hideTrigger: true,
 
