@@ -278,7 +278,7 @@ Ext.define('OCS.RetailForm', {
 						value: 'RETAIL',
 						store: Ext.create('Ext.data.Store', {
 						  model: 'CRM_ITEM',
-						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'AGENT'},{value: 'EXPAT'}]
+						  data: [{value: 'RETAIL'},{value: 'VIP'},{value: 'SME'},{value: 'AGENT'},{value: 'EXPAT'}]
 						}),
 						listeners: {
 							change:    function(field, newValue, oldValue) {
