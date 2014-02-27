@@ -839,7 +839,7 @@ fields['CRM_REPORT_PRODUCT_FIELDS'] = [
    {name: 'product_name', text: 'Product name', width: 250}, 
    {name: 'qty', text: 'Qty', type: 'float', width: 85, align: 'right', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
    {name: 'amount', align: 'right', type:'float', text: 'Amount', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
-   {name: 'precent', text: 'Precent', type:'float',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}
+   {name: 'precent', hidden: true, text: 'Precent', type:'float',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}
 ];
 
 Ext.define('CRM_REPORT_PRODUCT', {
