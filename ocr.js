@@ -2145,6 +2145,13 @@ Ext.define('OCS.DealView', {
 						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'Closed Deals (Lost)',
+							handler: function(widget, event) {
+								me.filterData('Closed Deals (Lost)');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'Opportunity List',
 							handler: function(widget, event) {
 								me.filterData('Opportunity List');
