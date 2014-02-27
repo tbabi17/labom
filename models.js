@@ -824,7 +824,7 @@ fields['CRM_REPORT_FIELDS'] = [
    {name: 'expected_revenue', align: 'right', type:'float', text: 'Expected revenue', width: 150, align: 'right', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
    {name: 'probablity', text: 'Probablity', type:'int',  width: 80, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent},
    {name: 'descr', text: 'Description', width: 250},
-   {name: 'owner', text: 'Owner', width: 120}
+   {name: 'owner', text: 'Owner', width: 160}
 ];
 
 Ext.define('CRM_REPORT', {
