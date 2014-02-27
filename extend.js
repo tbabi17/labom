@@ -70,7 +70,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (deal)</br> assigned by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> assigned by <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
 										}).show();
 									} else
 									if (rec.data['status'] == 'remind') {										
@@ -82,7 +82,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-remind',
-											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
 										}).show();
 									} else
 									if (rec.data['status'] == 'commented') {										
@@ -94,7 +94,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-message',
-											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pl=deals">Go to</a>'
+											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
 										}).show();
 									} else
 										deal++;
@@ -113,7 +113,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-task',
-											html: rec.data['subject']+' (task)</br> assigned <b>'+rec.data['owner']+'</b> <a href="?pl=workspace">Go to</a>'
+											html: rec.data['subject']+' (task)</br> assigned <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
 										}).show();
 									}
 									activity++;
