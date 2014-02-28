@@ -4226,9 +4226,9 @@ Ext.define('OCS.Reports', {
 		var me = this;
 		if (me.start.length > 0) {
 			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, start_date: me.start, end_date: me.end, values: me.values, where: me.where};
+			me.chart.rangeData(me.start, me.end);
 			me.store.load({callback: function() {
-				me.chart.setStore(me.store);
-				console.log(1);
+				me.chart.setStore(me.store);				
 			}});
 		} else {
 			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
