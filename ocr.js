@@ -4208,7 +4208,7 @@ Ext.define('OCS.Reports', {
 			border: false,
 			items: [
 				me.report, {
-					layout: 'border',
+					layout: 'fit',
 					region: 'east',
 					flex: 0.25,
 					items: [me.chart]
