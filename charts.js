@@ -977,7 +977,7 @@ Ext.define('OCS.ProductChart', {
 			donut: false,
 			tips: {
 			  trackMouse: true,
-			  width: 140,
+			  width: 240,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
 				this.setTitle(storeItem.get('product_name') + ': ' + storeItem.get('amount'));
@@ -1004,6 +1004,7 @@ Ext.define('OCS.ProductChart', {
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_report_product_list', start_date: e1, end_date: e2};
 		me.store.load({callback: function() {
 				me.refresh();
+				me.redraw();
 			}
 		});
 	},
