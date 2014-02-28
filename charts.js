@@ -1014,7 +1014,6 @@ Ext.define('OCS.ProductChart', {
 		store.each(function(rec){
 
 		});
-		me.store = store;
 	}
 });
 
