@@ -1007,7 +1007,9 @@ Ext.define('OCS.ProductChart', {
 
 	setStore: function(store) {
 		var me = this;
-		me.store = store;
+		store.each(function(rec){
+			console.log(rec.get('product_name'));
+		});
 	}
 });
 
