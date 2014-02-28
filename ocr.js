@@ -4208,8 +4208,8 @@ Ext.define('OCS.Reports', {
 		me.panelW = Ext.create('Ext.Panel', {			
 			layout: 'fit',
 			region: 'east',
-			height: 500,
-			flex: 0.4,
+			height: 1200,
+			flex: 0.75,
 			hidden: true,
 			split: true,
 			items: me.chart
