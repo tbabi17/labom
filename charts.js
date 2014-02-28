@@ -1012,7 +1012,7 @@ Ext.define('OCS.ProductChart', {
 	setStore: function(store) {
 		var me = this;
 		store.each(function(rec){
-			if (me.get('product_name')){
+			if (rec.get('product_name')){
 				me.store.add({
 					name: rec.get('product_name'),
 					value: rec.get('amount')
