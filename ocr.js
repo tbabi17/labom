@@ -4231,6 +4231,8 @@ Ext.define('OCS.Reports', {
 			me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
 			me.store.load();
 		}
+
+		me.chart.reloadData();
 	}
 });
 
