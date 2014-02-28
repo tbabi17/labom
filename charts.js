@@ -942,8 +942,7 @@ Ext.define('OCS.ProductChart', {
 		position: 'right'
 	},
 	insetPadding: 50,
-	region: 'east',
-	flex: 0.5,
+	region: 'center',
 	theme: 'Base:gradients',
 
 	initComponent: function() {
