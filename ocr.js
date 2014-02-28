@@ -4059,6 +4059,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals revenue report',
 							handler: function(widget, event) {
+								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT_REVENUE', 'crm_opportunity_by_revenue_list');
 							}
 						}),
@@ -4066,6 +4067,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals report',
 							handler: function(widget, event) {
+								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
 							}
 						}),
@@ -4073,6 +4075,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Activity report',
 							handler: function(widget, event) {
+								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_ACTIVITY', 'crm_report_activity_list');
 							}
 						}),
@@ -4080,6 +4083,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Product Report',
 							handler: function(widget, event) {
+								me.panelW.setVisible(true);
 								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_product_list');
 							}
 						}),
@@ -4088,6 +4092,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Reseller Report',
 							handler: function(widget, event) {
+								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
 							}
 						})
@@ -4199,6 +4204,16 @@ Ext.define('OCS.Reports', {
 		});
 
 		me.chart = new OCS.ProductChart();
+		
+		me.panelW = Ext.create('Ext.Panel', {			
+			layout: 'fit',
+			region: 'east',
+			height: 500,
+			flex: 0.4,
+			hidden: true,
+			split: true,
+			items: me.chart
+		});
 
 		me.panel = Ext.create('Ext.Panel', {	
 			title: 'Report',
@@ -4207,13 +4222,7 @@ Ext.define('OCS.Reports', {
 			region: 'center',
 			border: false,
 			items: [
-				me.report, {
-					layout: 'fit',
-					region: 'east',
-					height: 500,
-					flex: 0.4,
-					items: me.chart
-				}
+				me.report, me.panelW
 			]
 		});
 
