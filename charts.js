@@ -980,7 +980,7 @@ Ext.define('OCS.ProductChart', {
 			  width: 640,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('name') + ': ' + storeItem.get('value'));
+				this.setTitle(storeItem.get('name') + ': </br>' + storeItem.get('value'));
 			  }
 			},
 			highlight: {
