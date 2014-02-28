@@ -2215,7 +2215,7 @@ Ext.define('OCS.DealAddProductWindow', {
 				name: 'precent'				
 			},{
 				xtype: 'numberfield',
-				value: 0,
+				value: 1,
 				fieldLabel: 'Qty',
 				name: 'qty',
 				listeners: {
