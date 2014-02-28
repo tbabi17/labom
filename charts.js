@@ -949,7 +949,7 @@ Ext.define('OCS.ProductChart', {
 		var me = this;
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['product_name', 'qty', 'amount', 'precent'],
+			fields: ['name', 'value'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -972,7 +972,7 @@ Ext.define('OCS.ProductChart', {
 
 		me.series = [{
 			type: 'pie',
-			field: 'amount',
+			field: 'value',
 			showInLegend: true,
 			donut: false,
 			tips: {
@@ -980,7 +980,7 @@ Ext.define('OCS.ProductChart', {
 			  width: 240,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('product_name') + ': ' + storeItem.get('amount'));
+				this.setTitle(storeItem.get('name') + ': ' + storeItem.get('value'));
 			  }
 			},
 			highlight: {
@@ -989,7 +989,7 @@ Ext.define('OCS.ProductChart', {
 			  }
 			},
 			label: {
-				field: 'product_name',
+				field: 'name',
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'				
