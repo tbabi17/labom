@@ -4198,6 +4198,8 @@ Ext.define('OCS.Reports', {
 			actions: me.createActions(),
 		});
 
+		me.chart = new OCS.ProductChart();
+
 		me.panel = Ext.create('Ext.Panel', {	
 			title: 'Report',
 			tab: 'report_tab_list',
@@ -4205,7 +4207,7 @@ Ext.define('OCS.Reports', {
 			region: 'center',
 			border: false,
 			items: [
-				me.report
+				me.report, me.chart
 			]
 		});
 

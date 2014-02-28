@@ -933,3 +933,77 @@ Ext.define('OCS.LeadBySource', {
 	}
 });
 
+
+Ext.define('OCS.ProductChart', {
+	extend: 'OCS.Chart',
+	animate: true,
+	shadow: false,
+	legend: {
+		position: 'right'
+	},
+	insetPadding: 50,
+	region: 'east',
+	flex: 0.5,
+	theme: 'Base:gradients',
+
+	initComponent: function() {
+		var me = this;
+		
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['product_name', 'qty', 'amount', 'precent'],
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_report_product_list'}
+			}
+		});
+		
+		me.reloadData();
+
+		me.series = [{
+			type: 'pie',
+			field: 'amount',
+			showInLegend: true,
+			donut: false,
+			tips: {
+			  trackMouse: true,
+			  width: 140,
+			  height: 28,
+			  renderer: function(storeItem, item) {				
+				this.setTitle(storeItem.get('product_name') + ': ' + storeItem.get('amount'));
+			  }
+			},
+			highlight: {
+			  segment: {
+				margin: 5
+			  }
+			},
+			label: {
+				field: 'product_name',
+				display: 'rotate',
+				contrast: true,
+				font: '11px Segoe UI'				
+			}
+		}];
+
+		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_report_product_list', start_date: e1, end_date: e2};
+		me.store.load();
+	}
+});
+
