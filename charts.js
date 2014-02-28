@@ -1012,7 +1012,10 @@ Ext.define('OCS.ProductChart', {
 	setStore: function(store) {
 		var me = this;
 		store.each(function(rec){
-
+			me.store.add({
+				name: rec.get('product_name'),
+				value: rec.get('amount')
+			});
 		});
 	}
 });
