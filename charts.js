@@ -356,14 +356,18 @@ Ext.define('OCS.OpportunityRevenueChart', {
 						if (e.getKey() == e.ENTER) {
 							var g = field.up('grid'),
 							value = field.getValue(); 
-							g.store.filter({scope: this, filterFn: function(rec) { 
-									var rege = new RegExp(".*" + value + ".*"); 
-									if (rege.test(rec.data.owner) || rege.test(rec.data.team)) {
-										return true;
-									}
-									return false;
-								} 
-							});
+							if (value) {							
+								g.store.filter({scope: this, filterFn: function(rec) { 
+										var rege = new RegExp(".*" + value + ".*"); 
+										if (rege.test(rec.data.owner) || rege.test(rec.data.team)) {
+											return true;
+										}
+										return false;
+									} 
+								});
+							} else {
+								g.store.clearFilter();
+							}
 						}
 					}
 				}
