@@ -5172,6 +5172,7 @@ Ext.define('OCS.QuotePanel', {
 	autoSelect: true,
 	table: 'crm_quotes',
 	title: 'Quote',
+	startAction: 'Closed Quotes',
 	quoteList: false,
 
 	filterData: function(views) {
@@ -5454,10 +5455,9 @@ Ext.define('OCS.QuotePanel', {
 			border: false,
 			region: 'center',
 			items : [me.grid, me.subpanel]
-		});
+		});				
 		
-		me.filterData('Closed Quotes');
-
+		me.filterData(me.startAction);
 		return me.panel;
 	}
 });
@@ -5470,6 +5470,7 @@ Ext.define('OCS.SalesPanel', {
 	tab: 'my_crm_sales_list',
 	title: 'Sales',
 	quoteList: true,
+	startAction: 'Service is expiring',
 	
 	filterData: function(views) {
 		var me = this;		
