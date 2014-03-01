@@ -5353,7 +5353,7 @@ Ext.define('OCS.QuotePanel', {
 		});				
 		
 		me.grid.on('itemclick', function(dv, record, item, index, e) {			
-		/*	if (record) {
+			if (record) {
 				selectedQuote = record;
 				me.form.updateSource(record);
 				me.invoiceActivity.updateSource(record);
@@ -5361,10 +5361,10 @@ Ext.define('OCS.QuotePanel', {
 				if (!me.quoteList)
 					me.gridQuoteList.loadStore(selectedQuote.get('id'));				
 
-				me.subpanel.setVisible(true);
+			//	me.subpanel.setVisible(true);
 			} else {
-				me.subpanel.setVisible(false);					
-			}*/			
+			//	me.subpanel.setVisible(false);					
+			}	
 		});
 								
 		me.form = new OCS.PropertyGrid({
