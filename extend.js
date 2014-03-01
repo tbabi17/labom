@@ -465,7 +465,7 @@ Ext.define('OCS.Module', {
 				return;
 			}	
 		}
-		Ext.Msg.confirm('Warning ','Устгах уу ?',function(btn){
+		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				var id = selection[0].get(me.primary);
 				Ext.getBody().mask('Deleting...');
