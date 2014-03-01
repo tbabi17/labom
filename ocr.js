@@ -5168,6 +5168,7 @@ Ext.define('OCS.QuotePanel', {
 	extend: 'OCS.GridWithFormPanel',			
 	modelName: 'CRM_QUOTE',
 	func: 'crm_quote_list',
+	tab: 'my_crm_quote_list',
 	autoSelect: true,
 	table: 'crm_quotes',
 	title: 'Quote',
@@ -5449,7 +5450,7 @@ Ext.define('OCS.QuotePanel', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			title: 'Quotes',
 			layout: 'border',
-			tab: 'crm_quote_list',
+			tab: 'my_crm_quote_list',
 			border: false,
 			region: 'center',
 			items : [me.grid, me.subpanel]
