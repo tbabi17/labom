@@ -7016,7 +7016,8 @@ Ext.define('OCS.GoogleCalendarWindow', {
 			xtype:'panel',
 			region: 'center',
 			autoLoad: {
-				url: 'calendar.php'
+				url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+logged+'&ctz=Asia/Ulaanbaatar'
+				//url: 'calendar.php'
 			}
 		}];
 		me.callParent(arguments);
