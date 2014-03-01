@@ -416,7 +416,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 		me.win = new Ext.create('Ext.Window', {
 			title: 'Filter',
-			width: 600,
+			width: 650,
 			height: 350,
 			layout: 'border',
 			items: me.grid
