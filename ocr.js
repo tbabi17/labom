@@ -6031,7 +6031,7 @@ Ext.define('OCS.MyProfile', {
 			items : [{
 				xtype: 'panel',
 				layout: 'border',
-				width: 530,				
+				width: 480,				
 				border: false,
 				split: true,
 				minWidth: 300,
