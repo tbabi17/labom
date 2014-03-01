@@ -6214,7 +6214,7 @@ Ext.define('OCS.MyCalendar', {
 	loadPanel: function(account) {
 		var me = this;
 		Ext.Ajax.request({
-			url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+account+'&ctz=Asia/Ulaanbaatar'
+			url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+account+'&ctz=Asia/Ulaanbaatar',
 //			url: 'calenar.php?account='+account,
 			success: function (response) {
 				me.frame.update(response.responseText);
