@@ -6194,7 +6194,9 @@ Ext.define('OCS.MyCalendar', {
 			border: false,
 			height: 600,
 			autoLoad: {
-				url: 'calenar.php?account='+gmailAccount
+				url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+gmailAccount+'&ctz=Asia/Ulaanbaatar'
+
+				//url: 'calenar.php?account='+gmailAccount
 			}
 		});
 
