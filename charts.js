@@ -353,7 +353,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 				emptyText: 'filter',
 				listeners: {
 					specialkey: function(field, e){
-						if (e.getKey() == e.ENTER) {
+						//if (e.getKey() == e.ENTER) {
 							var g = field.up('grid'),
 							value = field.getValue(); 
 							if (value.length > 0) {							
@@ -368,7 +368,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 							} else {
 								g.store.clearFilter();
 							}
-						}
+						//}
 					}
 				}
 			}],
