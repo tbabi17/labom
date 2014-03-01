@@ -5449,7 +5449,7 @@ Ext.define('OCS.QuotePanel', {
 		});
 
 		me.panel = Ext.create('Ext.panel.Panel', {
-			title: 'Quotes',
+			title: me.title,
 			layout: 'border',
 			id: me.tab,
 			border: false,
