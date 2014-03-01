@@ -468,7 +468,7 @@ Ext.define('OCS.Module', {
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				//var id = selection[0].get(me.primary);
-				var ids = me.selectedOwnedIds(me.primary);
+				var ids = me.selectedMyCreatedIds(me.primary);
 				Ext.getBody().mask('Deleting...');
 				Ext.Ajax.request({
 				   url: 'avia.php',					   
