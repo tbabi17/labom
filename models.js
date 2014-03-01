@@ -118,7 +118,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'source', text: 'Source', width: 90, hidden: true},
    {name: 'descr', text: 'Note', width: 120, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
    {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center', renderer: renderCreatedDate},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, renderer: renderPrecent, align: 'right'},
