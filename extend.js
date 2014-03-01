@@ -450,6 +450,18 @@ Ext.define('OCS.Module', {
 			});			
 		}
 	},
+	
+	selectedMyCreatedIds: function(id) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			if (recs[i].get('userCode') == logged)			
+				result += recs[i].get(id)+':';
+		}
+
+		return result;
+	},
 
 	deleteRecord: function() {		
 		var me = this;
