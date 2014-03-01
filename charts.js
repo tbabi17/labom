@@ -119,7 +119,7 @@ Ext.define('OCS.SalesFunnel', {
 			}
 		});
 		
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 
 		me.series = [{
 			type: 'pie',
