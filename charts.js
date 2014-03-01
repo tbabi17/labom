@@ -358,7 +358,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 							value = field.getValue(); 
 							g.store.filter({scope: this, filterFn: function(rec) { 
 									var rege = new RegExp(".*" + value + ".*"); 
-									if (rege.test(rec.data.name) || rege.test(rec.data.email)) {
+									if (rege.test(rec.data.owner) || rege.test(rec.data.team)) {
 										return true;
 									}
 									return false;
