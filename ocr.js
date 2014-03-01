@@ -5344,8 +5344,7 @@ Ext.define('OCS.QuotePanel', {
 		var me = this;
 		me.createStore();
 
-		me.grid = Ext.create('OCS.GridView', {	
-			title: 'Closed Quotes',
+		me.grid = Ext.create('OCS.GridView', {				
 			store: me.store,
 			flex: 1,
 			actions: me.createActions(),
@@ -5448,6 +5447,7 @@ Ext.define('OCS.QuotePanel', {
 		});
 
 		me.panel = Ext.create('Ext.panel.Panel', {
+			title: 'Quotes',
 			layout: 'border',
 			border: false,
 			region: 'center',
