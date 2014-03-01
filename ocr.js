@@ -6212,7 +6212,7 @@ Ext.define('OCS.MyCalendar', {
 	loadPanel: function(account) {
 		var me = this;
 		Ext.Ajax.request({
-			url: 'calenar.php?account='+account,
+			url: 'cal.php?account='+account,
 			success: function (response) {
 				me.frame.update(response.responseText);
 			}
