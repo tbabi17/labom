@@ -5450,7 +5450,7 @@ Ext.define('OCS.QuotePanel', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			title: 'Quotes',
 			layout: 'border',
-			tab: 'my_crm_quote_list',
+			id: 'my_crm_quote_list',
 			border: false,
 			region: 'center',
 			items : [me.grid, me.subpanel]
