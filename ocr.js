@@ -6194,8 +6194,7 @@ Ext.define('OCS.MyCalendar', {
 			border: false,
 			height: 600,
 			autoLoad: {
-				url: 'calenar.php?account='+gmailAccount,
-				scripts: true
+				url: 'calenar.php?account='+gmailAccount
 			}
 		});
 
@@ -6213,7 +6212,7 @@ Ext.define('OCS.MyCalendar', {
 	loadPanel: function(account) {
 		var me = this;
 		Ext.Ajax.request({
-			url: 'cal.php?account='+account,
+			url: 'calenar.php?account='+account,
 			success: function (response) {
 				me.frame.update(response.responseText);
 			}
