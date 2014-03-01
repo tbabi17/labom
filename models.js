@@ -51,7 +51,7 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner, hidden: true},
 //   {name: 'parent_crm_id', text: 'Parent CRM ID', width: 120, hidden: true},
    {name: 'customer_type', text: 'c', width: 0, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 120},
    {name: '_date', type: 'datetime', text: 'Created on', width: 120, align: 'center', renderer: renderCreatedDate},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},

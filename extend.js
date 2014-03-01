@@ -468,7 +468,7 @@ Ext.define('OCS.Module', {
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				//var id = selection[0].get(me.primary);
-				var ids = me.selectedIds(me.primary);
+				var ids = me.selectedOwnedIds(me.primary);
 				Ext.getBody().mask('Deleting...');
 				Ext.Ajax.request({
 				   url: 'avia.php',					   
@@ -651,6 +651,18 @@ Ext.define('OCS.GridWithFormPanel', {
 		var result = '';
 		for (i = 0; i < recs.length; i++) {
 			result += recs[i].get(id)+':';
+		}
+
+		return result;
+	},
+	
+	selectedMyCreatedIds: function(id) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			if (recs[i].get('userCode') == logged)			
+				result += recs[i].get(id)+':';
 		}
 
 		return result;
