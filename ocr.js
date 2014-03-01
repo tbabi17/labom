@@ -5343,8 +5343,7 @@ Ext.define('OCS.QuotePanel', {
 	createPanel: function() {
 		var me = this;
 		me.createStore();
-		me.store.groupField = 'quote_status';
-		me.store.group('quote_status');
+
 		me.grid = Ext.create('OCS.GridView', {	
 			store: me.store,
 			flex: 1,
