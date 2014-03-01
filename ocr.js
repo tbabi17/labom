@@ -5453,6 +5453,8 @@ Ext.define('OCS.QuotePanel', {
 			region: 'center',
 			items : [me.grid, me.subpanel]
 		});
+		
+		me.filterData('Closed Quotes');
 
 		return me.panel;
 	}
