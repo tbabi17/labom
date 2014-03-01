@@ -2503,8 +2503,10 @@ Ext.define('OCS.MergeRecordForm', {
 					   params : {handle: 'web', action: 'merge_records', func: '',values:values, where: me.master.get('crm_id')+','+me.slave.get('crm_id')},
 					   success: function(response, opts) {						  
 						  Ext.MessageBox.alert('Status', 'Success !', function() {
-							  views['retail'].store.loadPage(1);
-							  views['corporate'].store.loadPage(1);
+							  if (pk == 'retail')							  
+								  views['retail'].store.loadPage(1);
+							  else
+								  views['corporate'].store.loadPage(1);
 							  me.win.close();
 						  });
 					   },
