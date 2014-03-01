@@ -6194,9 +6194,7 @@ Ext.define('OCS.MyCalendar', {
 			border: false,
 			height: 600,
 			autoLoad: {
-				url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+gmailAccount+'&ctz=Asia/Ulaanbaatar'
-
-				//url: 'calenar.php?account='+gmailAccount
+				url: 'calenar.php?account='+gmailAccount
 			}
 		});
 
@@ -6214,8 +6212,7 @@ Ext.define('OCS.MyCalendar', {
 	loadPanel: function(account) {
 		var me = this;
 		Ext.Ajax.request({
-			url: 'https://www.google.com/calendar/embed?bgcolor=%23ccccff&output=embed&src='+account+'&ctz=Asia/Ulaanbaatar',
-//			url: 'calenar.php?account='+account,
+			url: 'calenar.php?account='+account,
 			success: function (response) {
 				me.frame.update(response.responseText);
 			}
