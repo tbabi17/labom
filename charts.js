@@ -348,6 +348,26 @@ Ext.define('OCS.OpportunityRevenueChart', {
                 {text: "expected_revenue", width: 115, dataIndex: 'expected_revenue', align: 'right', renderer: renderMoney, sortable: true},
                 {text: "target_revenue", width: 115, dataIndex: 'target_revenue', renderer: renderMoney, align: 'right', sortable: true}
             ],
+			tbar: [{
+				xtype: 'textfield',
+				emptyText: 'filter',
+				listeners: {
+					specialkey: function(field, e){
+						if (e.getKey() == e.ENTER) {
+							var g = field.up('grid'),
+							value = field.getValue(); 
+							g.store.filter({scope: this, filterFn: function(rec) { 
+									var rege = new RegExp(".*" + value + ".*"); 
+									if (rege.test(rec.data.name) || rege.test(rec.data.email)) {
+										return true;
+									}
+									return false;
+								} 
+							});
+						}
+					}
+				}
+			}],
 			buttons: [{
 				text: 'Reset',
 				iconCls: 'reset',
