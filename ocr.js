@@ -5450,7 +5450,7 @@ Ext.define('OCS.QuotePanel', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			title: 'Quotes',
 			layout: 'border',
-			id: 'my_crm_quote_list',
+			id: me.tab,
 			border: false,
 			region: 'center',
 			items : [me.grid, me.subpanel]
@@ -5467,6 +5467,7 @@ Ext.define('OCS.SalesPanel', {
 	modelName: 'CRM_SALES',
 	func: 'crm_sales_list',
 	table: 'crm_sales',
+	tab: 'my_crm_sales_list',
 	title: 'Sales',
 	quoteList: true,
 	
