@@ -5250,7 +5250,27 @@ Ext.define('OCS.QuotePanel', {
 					} else
 					  Ext.MessageBox.alert('Status', 'Харилцагч сонгоно уу ! Харилцагч сонгохын тулд Accounts хэсэгт тухайн харилцагч дээр дарна уу !', function() {});
 				}
-			}),			
+			}),	
+			Ext.create('Ext.Action', {
+				iconCls : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					var selection = me.grid.getSelectionModel().getSelection();
+					if (selection && selection.length == 1) {
+						record = selection[0];
+						selectedQuote = record;
+						me.form.updateSource(record);
+						me.invoiceActivity.updateSource(record);
+						
+						if (!me.quoteList)
+							me.gridQuoteList.loadStore(selectedQuote.get('id'));				
+
+						me.subpanel.setVisible(true);
+					} else {
+						me.subpanel.setVisible(false);					
+					}
+				}
+			}),	
 			Ext.create('Ext.Action', {
 				iconCls : 'delete',
 				text: 'Delete',
