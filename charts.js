@@ -336,7 +336,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 			features : [{
 				ftype: 'grouping',
 				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
-				hideGroupedHeader: true,
+				hideGroupedHeader: false,
 				startCollapsed: false,
 				id: 'grouping_opportunity_chart'
 			}],
