@@ -372,6 +372,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 					},
 					change: function (radio2, newvalue, oldvalue) {				
 						if (newvalue) {	
+							me.store.clearFilter();
 							me.store.filter({scope: this, filterFn: function(rec) { 
 									var rege = new RegExp(".*" + newvalue + ".*"); 
 									if (rege.test(rec.data.owner) || rege.test(rec.data.team)) {
@@ -381,7 +382,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 								} 
 							});
 						} else {
-							me.store.clearFilter();					
+							me.store.clearFilter();
 						}
 					}
 				}
