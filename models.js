@@ -382,7 +382,7 @@ fields['CRM_QUOTE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_QUOTE', {
