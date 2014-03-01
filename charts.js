@@ -353,7 +353,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 				emptyText: 'filter',
 				listeners: {
 					specialkey: function(field, e){
-						//if (e.getKey() == e.ENTER) {
+						if (e.getKey() == e.ENTER) {
 							var g = field.up('grid'),
 							value = field.getValue(); 
 							if (value.length > 0) {							
@@ -368,9 +368,25 @@ Ext.define('OCS.OpportunityRevenueChart', {
 							} else {
 								g.store.clearFilter();
 							}
-						//}
+						}
+					},
+					change: function (radio2, newvalue, oldvalue) {				
+						if (newvalue) {	
+							me.store.filter({scope: this, filterFn: function(rec) { 
+									var rege = new RegExp(".*" + newvalue + ".*"); 
+									if (rege.test(rec.data.owner) || rege.test(rec.data.team)) {
+										return true;
+									}
+									return false;
+								} 
+							});
+						} else {
+							me.store.clearFilter();					
+						}
 					}
 				}
+			},{
+
 			}],
 			buttons: [{
 				text: 'Reset',
