@@ -6194,7 +6194,8 @@ Ext.define('OCS.MyCalendar', {
 			border: false,
 			height: 600,
 			autoLoad: {
-				url: 'calenar.php?account='+gmailAccount
+				url: 'calenar.php?account='+gmailAccount,
+				scripts: true
 			}
 		});
 
