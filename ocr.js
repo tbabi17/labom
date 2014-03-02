@@ -4292,6 +4292,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts[5] = new OCS.SalesStagePipeLine();
 		me.charts[6] = new OCS.AccountByIndustry();	
 		me.charts[8] = new OCS.SalesFunnel();
+		me.charts[9] = new OCS.ProductChart();
 	},
 
 	reloadCharts: function() {
@@ -4583,6 +4584,47 @@ Ext.define('OCS.Dashboard', {
 						}
 					}],
 					items: me.charts[4]
+				}]
+			},{
+				columnWidth: 1,
+				padding: '5 5 5 5',
+				border: false,
+				items:[{
+					title:'Revenue of products',		
+					layout: 'fit',
+					height: 500,
+					tbar: [{
+						text: 'Views',
+						iconCls: 'list',
+						menu: {
+							xtype: 'menu',
+							items: [{
+								text: 'This month',
+								handler: function() {
+									me.charts[4].rangeData(me.yearValue(), me.monthValue());
+								}
+							},{
+								text: 'Last month',
+								handler: function() {
+									me.charts[4].rangeData(me.yearValue(), me.prevmonthValue());
+								}
+							},'-',
+							{
+								text: 'Filter ...',
+								handler: function() {
+									me.charts[4].createWindow();
+								}
+							}]
+						}
+					},'->',
+					{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							me.charts[9].rangeData(me.charts[9].yearValue(), me.charts[9].monthValue());
+						}
+					}],
+					items: me.charts[9]
 				}]
 			}]
 		});
