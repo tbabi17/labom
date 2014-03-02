@@ -6063,8 +6063,7 @@ Ext.define('OCS.MyProfile', {
 					{
 						xtype: 'panel',
 						layout: 'border',
-						split: true,
-						collapsible: true,
+						split: true,						
 						region: 'south',
 						flex: 0.7,
 						items: [views['workflow'].createGrid()]	
@@ -6198,6 +6197,8 @@ Ext.define('OCS.MyCalendar', {
 			bodyPadding: 0,
 			frame: false,
 			border: false,
+			collapsible: true,
+			title: 'Calendar',
 			height: 600,
 			autoLoad: {
 				url: 'calenar.php?account='+gmailAccount
