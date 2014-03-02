@@ -4566,11 +4566,6 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									me.charts[4].rangeData(me.yearValue(), me.prevmonthValue());
 								}
-							},{
-								text: 'Custom ...',
-								handler: function() {
-									
-								}
 							},'-',
 							{
 								text: 'Filter ...',
