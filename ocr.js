@@ -4373,7 +4373,7 @@ Ext.define('OCS.Dashboard', {
 							handler: function(dp, date){
 								me.charts[8].end = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('end_8').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[8].rangeData(me.month(), me.nextmonth());
+								me.charts[8].rangeData(me.charts[8].start, me.charts[8].end);
 							}
 						})
 					},{
@@ -4383,7 +4383,7 @@ Ext.define('OCS.Dashboard', {
 							Ext.getCmp('start_8').setText('Start date');
 							Ext.getCmp('end_8').setText('End date');
 							me.start = ''; me.end = '';
-							me.charts[8].rangeData(me.charts[8].start, me.charts[8].end);
+							me.charts[8].rangeData(me.charts[8].month(), me.charts[8].nextmonth());
 						}
 					}],
 					items: /*{
