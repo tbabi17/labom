@@ -152,7 +152,9 @@ Ext.define('OCS.SalesFunnel', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_deal_funnel_list', start_date: e1, end_date: e2};
+		me.start = e1;
+		me.end = e2;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_deal_funnel_list', start_date: me.start, end_date: me.end};
 		me.store.load();
 	}
 });
