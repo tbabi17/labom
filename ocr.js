@@ -4626,13 +4626,6 @@ Ext.define('OCS.Dashboard', {
 									Ext.getCmp('end_9').setText( me.nextyear());
 									me.charts[9].rangeData(me.year(), me.nextyear());
 								}
-							}
-							,'-',
-							{
-								text: 'Filter ...',
-								handler: function() {
-									me.charts[9].createWindow();
-								}
 							}]
 						}
 					},'->',
