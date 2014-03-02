@@ -692,7 +692,7 @@ Ext.define('OCS.CasesByStatus', {
 		me.rangeData(me.month(), me.nextmonth());
 		
 		me.series = [{
-			type: 'pie',
+			type: 'column',
 			field: 'value',
 			showInLegend: true,
 			donut: false,
