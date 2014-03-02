@@ -4590,7 +4590,7 @@ Ext.define('OCS.Dashboard', {
 				padding: '5 5 5 5',
 				border: false,
 				items:[{
-					title:'Revenue of products',		
+					title:'Products by revenue',		
 					layout: 'fit',
 					height: 600,
 					tbar: [{
