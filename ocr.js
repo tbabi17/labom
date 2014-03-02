@@ -6197,8 +6197,6 @@ Ext.define('OCS.MyCalendar', {
 			bodyPadding: 0,
 			frame: false,
 			border: false,
-			collapsible: true,
-			title: 'Calendar',
 			height: 600,
 			autoLoad: {
 				url: 'calenar.php?account='+gmailAccount
@@ -6208,6 +6206,7 @@ Ext.define('OCS.MyCalendar', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'border',
 			border: true,
+			collapsible: true,
 			region: 'center',
 			autoScroll: true,
 			items : [me.frame]
