@@ -191,7 +191,7 @@ Ext.define('OCS.CampaignChartRevenue', {
 			}
 		});	
 
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 
 		me.axes = [{
 			type: 'Numeric',
@@ -234,6 +234,8 @@ Ext.define('OCS.CampaignChartRevenue', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_campaign_by_revenue_list', start_date: e1, end_date: e2};
 		me.store.load();
 	}
@@ -323,6 +325,8 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2, values: 'user_level', where: 0};
 		me.store.load();
 	},
@@ -504,6 +508,8 @@ Ext.define('OCS.StatUserChart', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', start_date: e1, end_date: e2, values: '', where: 0};
 		me.store.load();
 	},
@@ -668,7 +674,7 @@ Ext.define('OCS.CasesByStatus', {
 			}
 		});
 		
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 		
 		me.series = [{
 			type: 'pie',
@@ -704,6 +710,8 @@ Ext.define('OCS.CasesByStatus', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_complain_by_status_list', start_date: e1, end_date: e2};
 		me.store.load();
 	}
@@ -742,7 +750,7 @@ Ext.define('OCS.SalesStagePipeLine', {
 			}
 		});
 		
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 
 		me.series = [{
 			type: 'pie',
@@ -771,6 +779,14 @@ Ext.define('OCS.SalesStagePipeLine', {
 		}];
 
 		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.start = e1;
+		me.end = e2;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_stage_of_sales_pipeline_list', start_date: e1, end_date: e2};
+		me.store.load();
 	}
 });
 
@@ -808,7 +824,7 @@ Ext.define('OCS.AccountByIndustry', {
 			}
 		});
 		
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 
 		me.series = [{
 			type: 'pie',
@@ -837,6 +853,14 @@ Ext.define('OCS.AccountByIndustry', {
 		}];
 
 		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.start = e1;
+		me.end = e2;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_account_by_industry_list', start_date: e1, end_date: e2};
+		me.store.load();
 	}
 });
 
@@ -971,6 +995,8 @@ Ext.define('OCS.LeadBySource', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_lead_by_source_list', start_date: e1, end_date: e2};
 		me.store.load();
 	}
@@ -1011,7 +1037,7 @@ Ext.define('OCS.ProductChart', {
 			}
 		});
 		
-		me.reloadData();
+		me.rangeData(me.month(), me.nextmonth());
 
 		me.series = [{
 			type: 'pie',
@@ -1044,6 +1070,8 @@ Ext.define('OCS.ProductChart', {
 
 	rangeData: function(e1, e2) {
 		var me = this;
+		me.start = e1;
+		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_chart_product_list', start_date: e1, end_date: e2};
 		me.store.load({callback: function() {
 				me.refresh();
