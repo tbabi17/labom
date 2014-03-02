@@ -1034,7 +1034,7 @@ Ext.define('OCS.ProductChart', {
 		var me = this;
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['name', 'value'],
+			fields: ['product_name', 'amount'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -1057,7 +1057,7 @@ Ext.define('OCS.ProductChart', {
 
 		me.series = [{
 			type: 'pie',
-			field: 'value',
+			field: 'amount',
 			showInLegend: true,
 			donut: false,
 			tips: {
@@ -1065,7 +1065,7 @@ Ext.define('OCS.ProductChart', {
 			  width: 250,
 			  height: 28,
 			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('name') + ': </br>' + renderMoney(storeItem.get('value'))+'</br>');
+				this.setTitle(storeItem.get('product_name') + ': </br>' + renderMoney(storeItem.get('amount'))+'</br>');
 			  }
 			},
 			highlight: {
@@ -1074,7 +1074,7 @@ Ext.define('OCS.ProductChart', {
 			  }
 			},
 			label: {
-				field: 'name',
+				field: 'product_name',
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'				
@@ -1101,8 +1101,8 @@ Ext.define('OCS.ProductChart', {
 		store.each(function(rec){
 			if (rec.get('product_name')){
 				me.store.add({
-					name: rec.get('product_name'),
-					value: rec.get('amount')
+					product_name: rec.get('product_name'),
+					amount: rec.get('amount')
 				});
 			}
 		});
