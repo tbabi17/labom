@@ -4571,7 +4571,20 @@ Ext.define('OCS.Dashboard', {
 								handler: function() {
 									
 								}
+							},'-',
+							{
+								text: 'Filter ...',
+								handler: function() {
+									me.charts[4].createWindow();
+								}
 							}]
+						}
+					},'->',
+					{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							me.charts[4].rangeData(me.charts[4].yearValue(), me.charts[7].monthValue());
 						}
 					}],
 					items: me.charts[4]
