@@ -437,6 +437,8 @@ Ext.define('OCS.StatUserChart', {
 	animate: true,
 	shadow: false,
 	insetPadding: 50,
+	values: '',
+	where: '',
 	legend: {
 		position: 'bottom'
 	},
@@ -510,7 +512,7 @@ Ext.define('OCS.StatUserChart', {
 		var me = this;
 		me.start = e1;
 		me.end = e2;
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', start_date: e1, end_date: e2, values: '', where: 0};
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_user_stat_by_summary_list', start_date: e1, end_date: e2, values: me.values, where: me.where};
 		me.store.load();
 	},
 
@@ -549,6 +551,14 @@ Ext.define('OCS.StatUserChart', {
 					if (form.isValid())	{
 						me.start = form.findField('year').getValue();
 						me.end = form.findField('month').getValue();
+						if (form.findField('owner').getValue()) {
+							me.values = 'owner';
+							me.where = form.findField('owner').getValue();
+						} else {
+							me.values = '';
+							me.where = '';
+						}
+						
 						me.rangeData(me.start, me.end);
 						me.win.close();
 					}
