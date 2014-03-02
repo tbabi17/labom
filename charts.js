@@ -1062,8 +1062,8 @@ Ext.define('OCS.ProductChart', {
 			donut: false,
 			tips: {
 			  trackMouse: true,
-			  width: 250,
-			  height: 28,
+			  width: 200,
+			  height: 32,
 			  renderer: function(storeItem, item) {				
 				this.setTitle(storeItem.get('product_name') + ': </br>' + renderMoney(storeItem.get('amount'))+'</br>');
 			  }
