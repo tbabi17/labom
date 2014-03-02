@@ -790,7 +790,6 @@ Ext.define('OCS.GridWithFormPanel', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'border',
 			border: false,
-			collapsible: true,
 			region: me.region,
 			items : [me.grid, me.form]	
 		});

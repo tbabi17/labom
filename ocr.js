@@ -6064,6 +6064,7 @@ Ext.define('OCS.MyProfile', {
 						xtype: 'panel',
 						layout: 'border',
 						split: true,
+						collapsible: true,
 						region: 'south',
 						flex: 0.7,
 						items: [views['workflow'].createGrid()]	
