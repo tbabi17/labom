@@ -1024,7 +1024,7 @@ Ext.define('OCS.ProductChart', {
 	shadow: false,
 	legend: {
 		position: 'right',
-		font: '10px Segoe UI'
+		labelFont: '10px Segoe UI'
 	},
 	insetPadding: 50,
 	region: 'center',
