@@ -4626,6 +4626,13 @@ Ext.define('OCS.Dashboard', {
 									Ext.getCmp('end_9').setText( me.nextyear());
 									me.charts[9].rangeData(me.year(), me.nextyear());
 								}
+							},{
+								text: 'Last year',
+								handler: function() {
+									Ext.getCmp('start_9').setText(me.prevyear());
+									Ext.getCmp('end_9').setText( me.year());
+									me.charts[9].rangeData(me.prevyear(), me.year());
+								}
 							}]
 						}
 					},'->',
@@ -4748,6 +4755,15 @@ Ext.define('OCS.Dashboard', {
 		 var m = today.getMonth();
 		 var y = today.getFullYear();
 		 var nextDate= new Date(y+1, 0, 1);
+		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
+		 return ndate;
+	},
+
+	prevyear: function() {
+		 var today = new Date();
+		 var m = today.getMonth();
+		 var y = today.getFullYear();
+		 var nextDate= new Date(y-1, 0, 1);
 		 var ndate=Ext.Date.format(nextDate, 'Y-m-d');
 		 return ndate;
 	}
