@@ -4381,7 +4381,7 @@ Ext.define('OCS.Dashboard', {
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_8').setText(me.month());
-							Ext.getCmp('end_8').setText(me.nextmonth);
+							Ext.getCmp('end_8').setText(me.nextmonth());
 							me.charts[8].rangeData(me.charts[8].month(), me.charts[8].nextmonth());
 						}
 					}],
@@ -4454,7 +4454,7 @@ Ext.define('OCS.Dashboard', {
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_3').setText(me.month());
-							Ext.getCmp('end_3').setText(me.nextmonth);
+							Ext.getCmp('end_3').setText(me.nextmonth());
 							me.charts[3].rangeData(me.charts[3].month(), me.charts[3].nextmonth());
 						}
 					}],
