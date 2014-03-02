@@ -561,8 +561,8 @@ Ext.define('OCS.StatUserChart', {
 
 		me.win = new Ext.create('Ext.Window', {
 			title: 'Filter',
-			width: 500,
-			height: 350,
+			width: 280,
+			height: 180,
 			layout: 'border',
 			items: me.form
 		});
