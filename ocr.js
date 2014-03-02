@@ -4564,7 +4564,7 @@ Ext.define('OCS.Dashboard', {
 							},{
 								text: 'Last month',
 								handler: function() {
-									me.charts[4].rangeData(me.yearValue(), me.monthValue());
+									me.charts[4].rangeData(me.yearValue(), me.prevmonthValue());
 								}
 							},{
 								text: 'Custom ...',
@@ -4588,6 +4588,12 @@ Ext.define('OCS.Dashboard', {
 
 	monthValue: function() {
 		return new Date().getMonth()+1;
+	},
+
+	prevmonthValue: function() {
+		month =  new Date().getMonth() - 1;
+		if (month < 0) month = 12;		
+		return month;
 	},
 
 	today: function() {
