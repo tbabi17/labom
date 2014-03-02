@@ -4567,43 +4567,11 @@ Ext.define('OCS.Dashboard', {
 									me.charts[4].rangeData(me.yearValue(), me.monthValue());
 								}
 							},{
-								text: 'This year',
+								text: 'Custom ...',
 								handler: function() {
-									me.charts[4].rangeData(me.year(), me.nextyear());
+									
 								}
 							}]
-						}
-					},'->',
-					{
-						id: 'start_4',
-						text: me.month(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								me.charts[4].start = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('start_4').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[4].rangeData(me.charts[4].start, me.charts[4].end);
-							}
-						})
-					},
-					{
-						id: 'end_4',
-						text: me.nextmonth(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								me.charts[4].end = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('end_4').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[4].rangeData(me.charts[4].start, me.charts[4].end);
-							}
-						})
-					},{
-						text: 'Reset',
-						iconCls: 'reset',
-						handler: function() {
-							Ext.getCmp('start_4').setText(me.month());
-							Ext.getCmp('end_4').setText(me.nextmonth());
-							me.charts[4].rangeData(me.charts[4].month(), me.charts[4].nextmonth());
 						}
 					}],
 					items: me.charts[4]
