@@ -6206,6 +6206,7 @@ Ext.define('OCS.MyCalendar', {
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'border',
 			border: true,
+			title: 'Calendar',
 			collapsible: true,
 			region: 'center',
 			autoScroll: true,
