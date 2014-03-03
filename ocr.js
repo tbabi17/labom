@@ -284,7 +284,10 @@ Ext.define('OCS.CompetitorView', {
 
 	selectAction: function(selections) {
 		var me = this;
-		views['competitor_deals'].updateSource(selections[0].get('competitor_name'));
+		if (selections[0].get('competitor_name')=='Бусад')
+			views['competitor_deals'].updateSource('');
+		else
+			views['competitor_deals'].updateSource(selections[0].get('competitor_name'));
 	}
 });
 
