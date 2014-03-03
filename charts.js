@@ -1023,7 +1023,7 @@ Ext.define('OCS.ProductChart', {
 	animate: true,
 	shadow: false,
 	legend: {
-		position: 'right',
+		position: 'bottom',
 		hidden: true,
 		labelFont: '10px Segoe UI'
 	},
