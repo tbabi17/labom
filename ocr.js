@@ -6195,6 +6195,7 @@ Ext.define('OCS.CompetitorProfile', {
 			table: 'crm_deals',
 			sortField: '_date',			
 			dateField: '_date',
+			values: 'competitor_name',
 			sortDirection: 'desc',
 			filter: false,
 			searchBar : false,
