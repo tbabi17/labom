@@ -4407,7 +4407,6 @@ Ext.define('OCS.Dashboard', {
 					columnWidth: 1/2,
 					autoScroll: true,
 					height: 400,
-					margin: '0 0 10 0',
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',
@@ -4488,6 +4487,7 @@ Ext.define('OCS.Dashboard', {
 			},{
 				columnWidth: 1/2,
 				padding: '5 5 5 5',
+				margin: '0 0 10 0',
 				border: false,
 				items:[{
 					title:'Leads by Source',		
