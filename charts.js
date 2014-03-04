@@ -283,7 +283,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 			type: 'Numeric',
 			position: 'left',
 			fields: ['actual_revenue', 'expected_revenue', 'target_revenue'],
-			title: false,
+			title: true,
 			grid: false,
 			majorTickSteps: 0,
 			minimum: 0,
