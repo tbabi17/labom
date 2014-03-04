@@ -306,7 +306,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 
 		me.series = [{
 			type: 'column',
-			axis: 'bottom',
+			axis: 'top',
 			gutter: 80,
 			xField: 'owner',
 			yField: ['actual_revenue', 'expected_revenue', 'target_revenue'],
