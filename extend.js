@@ -1336,7 +1336,7 @@ Ext.define('OCS.PropertyGrid', {
 			stripeRows: false, 
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
-				alert(this.modelName);
+				console.log(record);
 				//if (this.modelName == 'CRM_STAT' || this.modelName == 'CRM_USER_PLANNING') {
 					if (name == 'team')
 						return 'zero-adult-row';
