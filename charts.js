@@ -298,7 +298,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 			fields: ['owner', 'team'],
 			label   : {
 	             rotation:{
-					 degrees:90
+					 degrees:0
 				 }
 	        },
 			title: true
