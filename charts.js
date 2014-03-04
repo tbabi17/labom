@@ -246,7 +246,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
-	insetPadding: 20,
+	insetPadding: 30,
 	legend: {
 		position: 'bottom'
 	},
