@@ -1360,7 +1360,7 @@ Ext.define('OCS.PropertyGrid', {
 		for (i = 0; i < fields[me.modelName+'_FIELDS'].length; i++) {
 			f = fields[me.modelName+'_FIELDS'][i];
 			if (me.modelName == 'CRM_STAT' || me.modelName == 'CRM_USER_PLANNING'){
-				if (f.name = 'team') continue;
+				if (f.name == 'team') continue;
 			}
 			if (f.name == 'crm_name' || f.name == 'deal_name' || f.name == 'notify') continue;
 			me.array[(i < 10?'0'+i:i)+f.name] = '';
@@ -1380,7 +1380,7 @@ Ext.define('OCS.PropertyGrid', {
 		for (i = 0; i < fields[me.modelName+'_FIELDS'].length; i++) {
 			f = fields[me.modelName+'_FIELDS'][i];
 			if (me.modelName == 'CRM_STAT' || me.modelName == 'CRM_USER_PLANNING'){
-				if (f.name = 'team') continue;
+				if (f.name == 'team') continue;
 			}
 			if (f.name == 'crm_name' || f.name == 'deal_name' || f.name == 'notify') continue;
 			me.array[(i < 10?'0'+i:i)+f.name] = (rec.data[f.name]?rec.data[f.name]:''); 
