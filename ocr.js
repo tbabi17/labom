@@ -4086,7 +4086,7 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Product Report',
 							handler: function(widget, event) {
-								me.panelW.setVisible(true);
+								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_product_list');
 							}
 						}),
