@@ -1076,6 +1076,11 @@ Ext.define('OCS.ProductChart', {
 			},
 			label: {
 				field: 'product_name',
+				renderer: function(v) {
+					if (v.length > 32)
+						return v.substring(0, 32)+'...';
+					return v;
+				},
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'				
