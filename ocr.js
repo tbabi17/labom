@@ -4595,7 +4595,7 @@ Ext.define('OCS.Dashboard', {
 				items:[{
 					title:'Products by revenue',		
 					layout: 'fit',
-					height: 600,
+					height: 700,
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',

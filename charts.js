@@ -1027,7 +1027,7 @@ Ext.define('OCS.ProductChart', {
 		visible: false,
 		labelFont: '10px Segoe UI'
 	},
-	insetPadding: 50,
+	insetPadding: 20,
 	region: 'center',
 	theme: 'Base:gradients',
 
