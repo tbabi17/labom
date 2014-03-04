@@ -2165,6 +2165,7 @@ Ext.define('OCS.PropertyGrid', {
 		return {
 			xtype: 'textfield',
 			name: name,
+			modelName: this.modelName,
 			listeners: {
 				keypress : function(field, e){
 					
