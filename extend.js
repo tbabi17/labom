@@ -1336,11 +1336,7 @@ Ext.define('OCS.PropertyGrid', {
 			stripeRows: false, 
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
-				console.log(record);
-				//if (this.modelName == 'CRM_STAT' || this.modelName == 'CRM_USER_PLANNING') {
-					if (name == 'team')
-						return 'zero-adult-row';
-				//}
+				
 				if (name == 'notify' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
 					return 'zero-adult-row';
 				
@@ -1363,6 +1359,9 @@ Ext.define('OCS.PropertyGrid', {
 		me.render = [];
 		for (i = 0; i < fields[me.modelName+'_FIELDS'].length; i++) {
 			f = fields[me.modelName+'_FIELDS'][i];
+			if (me.modelName == 'CRM_STAT' || me.modelName == 'CRM_USER_PLANNING'){
+				if (f.name = 'team') continue;
+			}
 			if (f.name == 'crm_name' || f.name == 'deal_name' || f.name == 'notify') continue;
 			me.array[(i < 10?'0'+i:i)+f.name] = '';
 			me.render[(i < 10?'0'+i:i)+f.name] = {
@@ -2165,7 +2164,6 @@ Ext.define('OCS.PropertyGrid', {
 		return {
 			xtype: 'textfield',
 			name: name,
-			modelName: this.modelName,
 			listeners: {
 				keypress : function(field, e){
 					
