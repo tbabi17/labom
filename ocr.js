@@ -4330,6 +4330,7 @@ Ext.define('OCS.Dashboard', {
 					height: 400,
 					margin: '0 0 10 0',
 					columnWidth: 1/2,
+					collapsible: true,
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',
