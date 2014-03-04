@@ -4403,6 +4403,7 @@ Ext.define('OCS.Dashboard', {
 				},{
 					title:'Leads by Source',		
 					layout: 'fit',
+					collapsible: true,
 					height: 400,
 					tbar: [{
 						text: 'Views',
@@ -4472,7 +4473,8 @@ Ext.define('OCS.Dashboard', {
 				border: false,
 				items:[{
 					layout: 'fit',
-					title:'Deals by revenue',		
+					title:'Deals by revenue',
+					collapsible: true,						
 					columnWidth: 1/2,
 					autoScroll: true,
 					height: 400,
@@ -4554,7 +4556,8 @@ Ext.define('OCS.Dashboard', {
 					}],
 					items: [me.charts[7]]
 				},{
-					title:'Plan & Summary',		
+					title:'Plan & Summary',	
+					collapsible: true,						
 					layout: 'fit',
 					height: 400,
 					tbar: [{
