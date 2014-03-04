@@ -295,7 +295,12 @@ Ext.define('OCS.OpportunityRevenueChart', {
 		}, {
 			type: 'Category',
 			position: 'bottom',
-			fields: ['owner']
+			fields: ['owner'],
+			label   : {
+	             rotation:{
+					 degrees:345
+				 }
+	        }
 		}];
 
 		me.series = [{
