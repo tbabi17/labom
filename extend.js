@@ -1336,10 +1336,10 @@ Ext.define('OCS.PropertyGrid', {
 			stripeRows: false, 
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
-				if (this.modelName == 'CRM_STAT' || this.modelName == 'CRM_USER_PLANNING') {
+				//if (this.modelName == 'CRM_STAT' || this.modelName == 'CRM_USER_PLANNING') {
 					if (name == 'team')
 						return 'zero-adult-row';
-				}
+				//}
 				if (name == 'notify' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date')
 					return 'zero-adult-row';
 				
