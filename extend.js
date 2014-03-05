@@ -484,6 +484,7 @@ Ext.define('OCS.Module', {
 			if(btn === 'yes'){
 				//var id = selection[0].get(me.primary);
 				var ids = me.selectedMyCreatedIds(me.primary);
+				alert(ids);/*
 				Ext.getBody().mask('Deleting...');
 				Ext.Ajax.request({
 				   url: 'avia.php',					   
@@ -495,7 +496,7 @@ Ext.define('OCS.Module', {
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
 				   }
-				});
+				});*/
 			}else{
 				
 			}	
