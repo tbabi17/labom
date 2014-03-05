@@ -94,7 +94,7 @@ Ext.define('OCS.SalesFunnel', {
 		position: 'right',
 
 	},
-	insetPadding: 50,
+	insetPadding: 30,
 	theme: 'Base:gradients',
 
 	initComponent: function() {
