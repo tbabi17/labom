@@ -964,6 +964,24 @@ Ext.define('OCS.UserGridWithFormPanel', {
 						}).show();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'backup',
+				text: 'Backup...',
+				handler: function(widget, event) {
+					Ext.getBody().mask('Backup processing...');
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', table: 'crm_complain', action: 'update', values: "complain_status='open'", where: "case_id="+me.selected.get('case_id')},
+					   success: function(response, opts) {
+						   Ext.getBody().unmask();
+						  Ext.MessageBox.alert('Status', 'Complete !', function() {});
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});
+				}
+			}),			
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'export',
