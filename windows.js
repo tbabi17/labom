@@ -2246,7 +2246,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			    allowNegative: true,
 				useThousandSeparator: true,
 		        currencySymbol:'₮',
-				readOnly: true,
+//				readOnly: true,
 				fieldLabel: 'Amount',
 				name: 'amount' 
 			},{
