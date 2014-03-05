@@ -57,7 +57,7 @@ Ext.define('OCS.Module', {
 							});
 						}
 						
-						if (me.func == 'crm_alarm_list' && me.store.getCount() > 0) {
+						if (me.func == 'crm_alarm_list' && me.store.getCount() > 0 && pk == 'dashboard') {
 							var deal = 0, ccase = 0, activity = 0;
 							me.store.each(function(rec){
 								if (rec.data['type'] == 'deal') {
