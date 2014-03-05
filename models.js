@@ -1930,7 +1930,7 @@ Ext.define('Ext.ux.window.Notification', {
 	slideInDuration: 500,
 	slideBackDuration: 1000,
 	hideDuration: 500,
-	autoCloseDelay: 30000,
+	autoCloseDelay: 10000,
 	stickOnClick: true,
 	stickWhileHover: true,
 
