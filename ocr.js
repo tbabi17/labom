@@ -2114,6 +2114,7 @@ Ext.define('OCS.DealView', {
 	sub: 'my_open_leads',
 	primary: 'deal_id',
 	xlsName: 'Deal',
+	primary: 'deal_id',
 	
 	filterData: function(views) {
 		var me = this;		
