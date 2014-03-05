@@ -483,6 +483,7 @@ Ext.define('OCS.Module', {
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				var id = selection[0].get(me.primary);
+				if (id == '') return;
 //				var ids = me.selectedMyCreatedIds(me.primary);
 //				alert(ids);
 				Ext.getBody().mask('Deleting...');
