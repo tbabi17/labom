@@ -141,7 +141,7 @@ Ext.define('OCS.SalesFunnel', {
 			  }
 			},
 			label: {
-				field: 'name',
+				field: 'value',
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'		
