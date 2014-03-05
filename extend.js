@@ -971,7 +971,7 @@ Ext.define('OCS.UserGridWithFormPanel', {
 					Ext.getBody().mask('Backup processing...');
 					Ext.Ajax.request({
 					   url: 'avia.php',
-					   params: {handle: 'web', table: 'crm_complain', action: 'update', values: "complain_status='open'", where: "case_id="+me.selected.get('case_id')},
+					   params: {handle: 'web', action: 'backup'},
 					   success: function(response, opts) {
 						   Ext.getBody().unmask();
 						  Ext.MessageBox.alert('Status', 'Complete !', function() {});
