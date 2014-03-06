@@ -124,7 +124,7 @@ Ext.define('OCS.SalesFunnel', {
 
 		me.series = [{
 			type: 'pie',
-			field: 'value',
+			field: 'name',
 			showInLegend: true,
 			donut: false,
 			tips: {
