@@ -124,7 +124,7 @@ Ext.define('OCS.SalesFunnel', {
 
 		me.series = [{
 			type: 'pie',
-			field: 'name',
+			field: 'value',
 			showInLegend: true,
 			donut: false,
 			tips: {
@@ -141,7 +141,7 @@ Ext.define('OCS.SalesFunnel', {
 			  }
 			},
 			label: {
-				field: 'value',
+				field: 'name',
 				display: 'rotate',
 				contrast: true,
 				font: '11px Segoe UI'		
