@@ -473,16 +473,15 @@ Ext.define('OCS.Module', {
 			Ext.MessageBox.alert('Status', 'Not selected !', function() {});
 			return;
 		}
-		
-		if (user_level == 0) {		
-			if (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
-				Ext.MessageBox.alert('Status', 'Not available !', function() {});
-				return;
-			}	
-		}
+				
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				if (selection.length == 1) {
+					if (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
+						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+						return;
+					}
+
 					var id = selection[0].get(me.primary);
 					if (id == '' || id == '0') return;
 				
