@@ -482,22 +482,43 @@ Ext.define('OCS.Module', {
 		}
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
-				var id = selection[0].get(me.primary);
-				if (id == '' || id == '0') return;
-//				var ids = me.selectedMyCreatedIds(me.primary);
-//				alert(ids);
-				Ext.getBody().mask('Deleting...');
-				Ext.Ajax.request({
-				   url: 'avia.php',					   
-				   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id},
-				   success: function(response, opts) {
-					    Ext.getBody().unmask();
-						me.store.reload();
-				   },
-				   failure: function(response, opts) {										   
-					  Ext.MessageBox.alert('Status', 'Error !', function() {});
-				   }
-				});
+				if (selection.length == 1) {
+					var id = selection[0].get(me.primary);
+					if (id == '' || id == '0') return;
+				
+					Ext.getBody().mask('Deleting...');
+					Ext.Ajax.request({
+					   url: 'avia.php',					   
+					   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: ids},
+					   success: function(response, opts) {
+							Ext.getBody().unmask();
+							me.store.reload();
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});
+				} else {
+					Ext.Msg.confirm('Warning ','You are delete too many records !',function(btn){
+						if(btn === 'yes'){
+							var ids = me.selectedMyCreatedIds(me.primary);
+							if (ids == '' || ids == '0')				
+								return;
+			
+							Ext.getBody().mask('Deleting...');
+							Ext.Ajax.request({
+							   url: 'avia.php',					   
+							   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: ids},
+							   success: function(response, opts) {
+									Ext.getBody().unmask();
+									me.store.reload();
+							   },
+							   failure: function(response, opts) {										   
+								  Ext.MessageBox.alert('Status', 'Error !', function() {});
+							   }
+							});
+					});
+				}
 			}else{
 				
 			}	
