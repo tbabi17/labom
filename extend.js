@@ -507,7 +507,7 @@ Ext.define('OCS.Module', {
 					Ext.getBody().mask('Deleting...');
 					Ext.Ajax.request({
 					   url: 'avia.php',					   
-					   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: ids},
+					   params : {handle: 'web', action: 'delete', func: me.func, table: me.table, where: id},
 					   success: function(response, opts) {
 							Ext.getBody().unmask();
 							me.store.reload();
