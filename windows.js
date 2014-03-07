@@ -1295,7 +1295,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 								
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_owner', values: values},
+						   params: {handle: 'web', table: 'crm_campaign', action: 'update_campaign_activity_owner', values: values},
 						   success: function(response, opts) {
 								views['campaigns'].refresh();
 								me.close();
