@@ -1006,7 +1006,7 @@ columns['CRM_REPORT_RESELLER_COLUMNS'] = [
 function renderClass(v) {
 /*	if (v == 'CORPORATE' || v == 'RETAIL') 
 		return '';*/
-	return v;
+	return '<span style="font-size:10px">'+v+'</span>';
 }
 
 function renderTip(v, metadata, record, rowIndex, colIndex, store) {
