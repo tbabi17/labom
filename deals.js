@@ -1085,6 +1085,7 @@ Ext.define('OCS.StageWindow', {
 							value: me.selected.get('competitor_name'),
 							margins: '0 0 0 6',
 							flex: 1,
+							readOnly: true,
 							table: 'crm_competitors',
 							name: 'competitor_name'							
 						},{
@@ -1385,6 +1386,7 @@ Ext.define('OCS.DealDescrWindow', {
 				fieldLabel: 'Competitor',				
 				name: 'competitor_name',
 				hidden: me.comp,
+				readOnly: true,
 				value: me.selected.get('competitor_name'),
 				table: 'crm_competitors'
 			},{
