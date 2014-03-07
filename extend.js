@@ -2448,17 +2448,17 @@ Ext.define('OCS.GridView', {
 							}).show();
 							return;
 						}
-						*/
-
-						if (record.get('owner') /*&& me.isSuccess(record)*/) {
-							new OCS.ActivityDetailWindow({
-								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
-								record: record,
-								backgrid: me
-							}).show();
-						}
+						*/						
 				},
 				itemdblclick: function(dv, record, item, index, e) {
+					if (record.get('owner') /*&& me.isSuccess(record)*/) {
+						new OCS.ActivityDetailWindow({
+							title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
+							record: record,
+							backgrid: me
+						}).show();
+					}
+
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
 						me.selectCustomer(record);						
 					}
