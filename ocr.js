@@ -5123,7 +5123,7 @@ Ext.define('OCS.CampaignPanel', {
 	table: 'crm_campaign',
 	tab: 'my_crm_campaign_list',
 	primary: 'id',
-
+	
 	createActions: function() {
 		var me = this;
 		me.actions = [			
