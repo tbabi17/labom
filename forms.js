@@ -2436,7 +2436,10 @@ Ext.define('OCS.UploadForm', {
 								if (me.name == 'Deal')								
 									views['deals'].reload();
 							});
-                        }
+                        },
+						failure: function(form, action) {
+							alert('failed');
+						}
                     });
                 }
             }
