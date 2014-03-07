@@ -314,6 +314,7 @@ Ext.define('OCS.Module', {
 		var action = 'insert';
 		var captcha = '';
 		var owner = '';
+		var walue = '';
 		me.form.getStore().each(function(rec){
 			var name = rec.get('name').substring(2, rec.get('name').length);
 
@@ -331,29 +332,34 @@ Ext.define('OCS.Module', {
 			{
 				action = 'update';
 				captcha = 'crm_id='+rec.get('value');
+				walue = rec.get('value');
 			} else
 			if (me.table == 'crm_deals' && rec.get('name').substring(2, rec.get('name').length) == 'deal_id' && rec.get('value') != '0') {
 				action = 'update';
 				captcha = 'deal_id='+rec.get('value');
+				walue = rec.get('value');
 			} else
 			if (me.table == 'crm_complain' && rec.get('name').substring(2, rec.get('name').length) == 'case_id' && rec.get('value') != '0') {
 				action = 'update';
 				captcha = 'case_id='+rec.get('value');
+				walue = rec.get('value');
 			} else
 			if (me.table == 'crm_products' && rec.get('name').substring(2, rec.get('name').length) == 'product_id' && rec.get('value') != '0') {
 				action = 'update';
 				captcha = 'product_id='+rec.get('value');
+				walue = rec.get('value');
 			} else
 			if (rec.get('name').substring(2, rec.get('name').length) == 'id' && rec.get('value') != '0') {
 				action = 'update';
 				captcha = 'id='+rec.get('value');
+				walue = rec.get('value');
 			}
 
 			if (rec.get('name').substring(2, rec.get('name').length) == 'owner') {
 				owner = rec.get('value');
 			}
-        });
-		
+        });								
+
 		if (action == 'fail')
 			return;
 		
@@ -375,7 +381,11 @@ Ext.define('OCS.Module', {
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
 			   }
 			});
-		} else {				
+		} else {			
+			if (walue.length == 0 || walue == '0') {
+				 Ext.MessageBox.alert('Status', 'Access denied !', function() {});
+				 return;
+			}	
 			values1 = values1.substring(0, values1.length - 1);
 			Ext.Ajax.request({
 			   url: 'avia.php',
@@ -413,28 +423,37 @@ Ext.define('OCS.Module', {
 		var values = '', values1 = '';
 		var action = 'insert';
 		var captcha = '';
+		var walue = '';
 		me.form.getStore().each(function(rec){
 			values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
 			values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
-
+			
 			if (me.table == 'crm_customer' && rec.get('name').substring(2, rec.get('name').length) == 'crm_id' && rec.get('value') != '0')
 			{
 				action = 'update';
 				captcha = 'crm_id='+rec.get('value');
+				walue = rec.get('value');
 			} else
 			if (me.table == 'crm_deals' && rec.get('name').substring(2, rec.get('name').length) == 'deal_id' && rec.get('value') != '0')
 			{
 				action = 'update';
+				walue = rec.get('value');
 				captcha = 'deal_id='+rec.get('value');
 			} else
 			if (me.table == 'crm_complain' && rec.get('name').substring(2, rec.get('name').length) == 'case_id' && rec.get('value') != '0')
 			{
 				action = 'update';
+				walue = rec.get('value');
 				captcha = 'case_id='+rec.get('value');
 			}
         });	
+		if (walue.length == 0 || walue == '0') {
+			 Ext.MessageBox.alert('Status', 'Access denied !', function() {});
+			 return;
+		}			
+		
 		Ext.getBody().mask('Saving...');
-		if (action == 'update') {			
+		if (action == 'update') {					
 			values1 = values1.substring(0, values1.length - 1);
 			Ext.Ajax.request({
 			   url: 'avia.php',					   
