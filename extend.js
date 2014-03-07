@@ -2441,8 +2441,6 @@ Ext.define('OCS.GridView', {
 					}
 				},
 				itemdblclick: function(dv, record, item, index, e) {
-
-					if (me.func.indexOf('_activity_list') != -1)
 						/*
 						if (!record.get('owner') || !me.isSucess(record)) {
 							new OCS.CampaignActivityAssignWindow({
@@ -2451,7 +2449,7 @@ Ext.define('OCS.GridView', {
 							return;
 						}
 						*/
-
+					if (me.func.indexOf('_activity_list') != -1)
 						if (record.get('owner') /*&& me.isSuccess(record)*/) {
 							new OCS.ActivityDetailWindow({
 								title: 'Activity detail ['+record.get('crm_name').split(',')[0]+']',
