@@ -90,7 +90,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
    {name: 'type', text: 'CRM Type', width: 50, hidden:true},   
    {name: 'level', text: '#', width: 30, align: 'center', lock: true, renderer: renderCustomerLevel},
-   {name: '_class', text: 'Class', width: 70, align: 'center', renderer: renderClass},      
+   {name: '_class', text: 'Class', width: 75, align: 'center', renderer: renderClass},      
    {name: 'regNo', text: 'Register', width: 65, align: 'center'},   
    {name: 'firstName', text: 'Name', width: 180, renderer: renderTip, primary: true},
    {name: 'lastName', text: 'Parent name', width: 120},
