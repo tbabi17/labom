@@ -517,6 +517,7 @@ Ext.define('OCS.Module', {
 								  Ext.MessageBox.alert('Status', 'Error !', function() {});
 							   }
 							});
+						}
 					});
 				}
 			}else{
