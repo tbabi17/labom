@@ -2424,7 +2424,8 @@ Ext.define('OCS.UploadForm', {
                         url: 'avia.php',
 						params: {handle: 'file', action:'import', where: form.findField('upload-name').getValue()},
                         waitMsg: 'Uploading your data...',
-                        success: function(fp, o) {				
+                        success: function(fp, o) {
+							alert(1);
 							var data = Ext.decode(o.response.responseText);
 							me.win.close();
                   			Ext.MessageBox.alert('Status', data.msg, function() {
