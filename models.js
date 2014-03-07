@@ -115,7 +115,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'district', text: 'District', width: 100, hidden: true},
    {name: 'horoo', text: 'Khoroo', width: 100, hidden: true},
    {name: 'address', text: 'Address', width: 150, hidden: true},   
-   {name: 'source', text: 'Source', width: 90, hidden: true},
+   {name: 'source', text: 'Source', width: 120},
    {name: 'descr', text: 'Note', width: 120, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner},
    {name: 'userCode', text: 'Created by', width: 120, hidden: true},
