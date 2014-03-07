@@ -5241,7 +5241,7 @@ Ext.define('OCS.CampaignPanel', {
 				expected_revenue: '0',
 				start_date: Ext.Date.format(new Date(),'Y-m-d'),
 				end_date: Ext.Date.format(new Date(),'Y-m-d'),
-				campaign_status: 'planning'
+				campaign_status: 'active'
 			}			
 		};
 		
