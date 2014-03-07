@@ -1251,7 +1251,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 		var me = this;
 		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
 		me.form = Ext.create('OCS.FormPanel', {
-			id : 'deal_assign_to',				
+			id : 'campaign_assign_to',				
 			title: 'Assign to',	
 			region: 'center',
 			hidden: false,
