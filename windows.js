@@ -1297,7 +1297,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_deals', action: 'update_deals_owner', values: values},
 						   success: function(response, opts) {
-								views['deals'].reload();
+								views['campaigns'].refresh();
 								me.close();
 						   },
 						   failure: function(response, opts) {										   
