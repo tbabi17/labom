@@ -2661,6 +2661,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 		});
 		
 		me.items = [{
+			xtype: 'panel',
 			layout: 'border',
 			region: 'east',
 			flex: 0.5,
