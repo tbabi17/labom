@@ -2793,7 +2793,7 @@ Ext.define('OCS.AddNoteWindow', {
 	extend: 'OCS.Window',
 	title: 'Add note',
 	maximizable: true,
-	height: 350,
+	height: 250,
 	modal: false,
 	width: 500,	
 	modal: true,
@@ -2829,13 +2829,6 @@ Ext.define('OCS.AddNoteWindow', {
 				fieldLabel: 'Note',	
 				flex: 1,
 				name: 'descr'
-			},{
-				id: 'upload-name',
-				name: 'upload-name',
-				xtype: 'textfield',
-				fieldLabel: 'Name',
-				value: this.name,
-				width: 430
 			},{
 				xtype: 'filefield',
 				id: 'form-file',
