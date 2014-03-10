@@ -28,6 +28,7 @@ Ext.define('OCS.ComplainWindow', {
 				handler: function(widget, event) {
 					if (me.modelName == 'CRM_NOTES') {
 						new OCS.AddNoteWindow({
+							selected: me.selected
 						}).show();
 					} else {
 						me.updateSource(me.defaultRec);
@@ -2814,14 +2815,14 @@ Ext.define('OCS.AddNoteWindow', {
 				disabled: true,
 				hidden: true,
 				allowBlank: false,
-				//value: me.selected.get('crm_id'),
+				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
 				readOnly: true,
 				hidden: true,
-			//	value: me.selected.get('deal_id'),
+				value: me.selected.get('deal_id'),
 				disabled: true,
 				name: 'deal_id'
 			},{
@@ -2853,7 +2854,24 @@ Ext.define('OCS.AddNoteWindow', {
 				text: 'Commit',				
 				handler: function() {
 					var form = this.up('form').getForm();
-					
+					if(form.isValid()){
+						form.submit({
+							url: 'avia.php',
+							params: {handle: 'file', action:'attach', where: form.findField('descr').getValue()},
+							waitMsg: 'Uploading your data...',
+							standardSubmit: false,
+							success: function(fp, o) {
+								var data = Ext.decode(o.response.responseText);
+								me.win.close();
+								Ext.MessageBox.alert('Status', data.msg, function() {
+									
+								});
+							},
+							failure: function(form, action) {
+								alert('failed');
+							}
+						});
+					}
 				}
 			}]
 		});
