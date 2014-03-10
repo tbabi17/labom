@@ -590,17 +590,11 @@ Ext.define('OCS.RetailPanel', {
 						Ext.create('Ext.Action', {
 							iconCls   : 'notes',  
 							text: 'Notes ...',
-							handler: function(widget, event) {
-								if (me.recordSelected())
-									new OCS.AddNoteWindow({
-										selected: me.grid.getView().getSelectionModel().getSelection()[0]
-									}).show();
-								
-								/*
+							handler: function(widget, event) {																
 								if (me.recordSelected())
 									new OCS.NotesWindow({
 										selected: me.grid.getView().getSelectionModel().getSelection()[0]
-									}).createWindow();*/
+									}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {

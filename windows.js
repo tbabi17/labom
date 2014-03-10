@@ -2825,10 +2825,6 @@ Ext.define('OCS.AddNoteWindow', {
 				flex: 1,
 				name: 'descr'
 			},{
-				xtype: 'textfield',
-				fieldLabel: 'Link',
-				name: 'www'				
-			},{
 				id: 'upload-name',
 				name: 'upload-name',
 				xtype: 'textfield',
