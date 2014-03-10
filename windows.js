@@ -2801,7 +2801,7 @@ Ext.define('OCS.AddNoteWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
-			flex: 0.75,
+			flex: 1,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -2869,7 +2869,7 @@ Ext.define('OCS.AddNoteWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'east',
+			region: 'north',
 			flex: 1,
 			border: false,
 			items: []
