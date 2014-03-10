@@ -2821,7 +2821,7 @@ Ext.define('OCS.AddNoteWindow', {
 				fieldLabel: 'Deal ID',
 				readOnly: true,
 				hidden: true,
-				value: me.selected.get('deal_id'),
+			//	value: me.selected.get('deal_id'),
 				disabled: true,
 				name: 'deal_id'
 			},{
