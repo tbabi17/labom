@@ -2612,7 +2612,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 
 		me.form = Ext.create('OCS.FormPanel', {
 			id: 'add_to_campaign_form',
-			region: 'center',		
+			region: 'center',
 			flex: 0.5,
 			closable: false,
 			border: true,

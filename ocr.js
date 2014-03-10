@@ -6962,7 +6962,23 @@ Ext.define('OCS.CampaignContactView', {
 	func: 'crm_campaign_customer_list',
 	title: 'Campaign members',
 	tab: 'campaign_members_tab',
+	border: false,
 	
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls  : 'delete',
+				text: 'Remove member',
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
 	loadStore: function(where) {
 		var me = this;
 		me.where = where;
@@ -6984,7 +7000,8 @@ Ext.define('OCS.CampaignContactView', {
 			tab: me.tab,
 			feature: false,
 			search: true,
-			tbarable: true
+			tbarable: true,
+			border: me.border
 		});						
 
 		return me.grid;
