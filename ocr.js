@@ -1015,7 +1015,8 @@ Ext.define('OCS.ActivityGrid', {
 	teamOn: function(ownerList) {
 		var me = this;
 		me.ownerList = ownerList;
-		me.action = (ownerList.indexOf(logged) != -1);
+		if (!me.action)		
+			me.action = (ownerList.indexOf(logged) != -1);
 	},
 
 	filterData: function(views) {
