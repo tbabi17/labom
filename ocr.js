@@ -6969,7 +6969,7 @@ Ext.define('OCS.CampaignContactView', {
 		me.actions = [
 			Ext.create('Ext.Action', {
 				iconCls  : 'delete',
-				text: 'Remove member',
+				text: 'Remove selected members',
 				handler: function(widget, event) {
 					var ids = me.selectedIds('crm_id');
 					alert(ids);
