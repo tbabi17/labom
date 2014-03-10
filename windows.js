@@ -2606,6 +2606,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 			id: 'add_to_campaign_form',
 			region: 'center',		
 			flex: 1,
+			hidden : false,
 			title: '',
 			items: [{
 				xtype: 'textfield',
