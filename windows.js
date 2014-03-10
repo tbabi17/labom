@@ -2857,7 +2857,7 @@ Ext.define('OCS.AddNoteWindow', {
 					if(form.isValid()){
 						form.submit({
 							url: 'avia.php',
-							params: {handle: 'file', action:'attach', where: form.findField('descr').getValue()},
+							params: {handle: 'file', action:'attach', where: form.findField('crm_id').getValue()+','+form.findField('deal_id').getValue()+','+form.findField('descr').getValue()},
 							waitMsg: 'Uploading your data...',
 							standardSubmit: false,
 							success: function(fp, o) {
