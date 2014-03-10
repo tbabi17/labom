@@ -2627,7 +2627,12 @@ Ext.define('OCS.AddToCampaignWindow', {
 				fieldLabel: 'Campaign name',
 				allowBlank: false,
 				table: 'crm_campaign',
-				name: 'campaign'
+				name: 'campaign',
+				listeners: {
+					change: function(field, newValue, oldValue) {
+						me.view.loadStore(newValue);
+					}
+				}
 			}],
 			buttons: [{
 				iconCls: 'reset',
