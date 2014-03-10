@@ -2594,18 +2594,24 @@ Ext.define('OCS.AddToCampaignWindow', {
 	extend: 'OCS.Window',
 	title: 'Add to Campaign',
 	maximizable: true,
-	height: 200,
+	height: 500,
 	modal: false,
-	width: 350,	
+	width: 650,	
 	modal: true, 
 
 	initComponent: function() {
 		var me = this;				
 		
+		me.view = Ext.create('OCS.CampaignContactView', {
+			flex: 1,
+			title: 'Campaign members',
+			region: 'east'
+		});
+
 		me.form = Ext.create('OCS.FormPanel', {
 			id: 'add_to_campaign_form',
 			region: 'center',		
-			flex: 1,
+			flex: 0.5,
 			closable: false,
 			hidden : false,
 			title: '',
@@ -2642,7 +2648,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_campaign', action: 'add_to_campaign_customer', values: ids, where: form.findField('campaign').getValue()},
 						   success: function(response, opts) {							  
-							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
+							   Ext.MessageBox.alert('Status', response.responseText, function() {});
 							   me.close();
 						   },
 						   failure: function(response, opts) {										   
@@ -2654,7 +2660,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 			}]
 		});
 		
-		me.items = [me.form];		
+		me.items = [me.view, me.form];		
 
 		me.callParent(arguments);
 	}
