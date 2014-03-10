@@ -2828,6 +2828,24 @@ Ext.define('OCS.AddNoteWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Link',
 				name: 'www'				
+			},{
+				id: 'upload-name',
+				name: 'upload-name',
+				xtype: 'textfield',
+				fieldLabel: 'Name',
+				value: this.name,
+				width: 430
+			},{
+				xtype: 'filefield',
+				id: 'form-file',
+				emptyText: 'Select an file',
+				fieldLabel: 'File',
+				name: 'xls-path',
+				width: 430,
+				buttonText: '',
+				buttonConfig: {
+					iconCls: 'upload-icon'
+				}
 			}],
 			buttons: [{
 				iconCls: 'reset',
