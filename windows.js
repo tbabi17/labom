@@ -2598,6 +2598,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 	modal: false,
 	width: 650,	
 	modal: true, 
+	border: false,
 
 	initComponent: function() {
 		var me = this;				
@@ -2605,7 +2606,8 @@ Ext.define('OCS.AddToCampaignWindow', {
 		me.view = Ext.create('OCS.CampaignContactView', {
 			flex: 1,
 			title: 'Campaign members',
-			region: 'center'
+			region: 'center',
+			border: true
 		});
 
 		me.form = Ext.create('OCS.FormPanel', {
@@ -2613,6 +2615,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 			region: 'center',		
 			flex: 0.5,
 			closable: false,
+			border: true,
 			hidden : false,
 			title: '',
 			items: [{
