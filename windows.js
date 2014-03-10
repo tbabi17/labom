@@ -2617,11 +2617,10 @@ Ext.define('OCS.AddToCampaignWindow', {
 				readOnly: true,
 				name: 'selected'
 			},{
-				xtype: 'textfield',
+				xtype: 'searchcombo',
 				fieldLabel: 'Campaign name',
 				allowBlank: false,
 				table: 'crm_campaign',
-				xtype: 'searchcombo',
 				name: 'campaign'
 			}],
 			buttons: [{
@@ -2638,11 +2637,10 @@ Ext.define('OCS.AddToCampaignWindow', {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);
-
-						values = form.findField('deal').getValue()+"&"+form.findField('owner').getValue()+"&"+form.findField('descr').getValue()+"&"+form.findField('year').getValue()+"&"+form.findField('month').getValue();
+						var ids = me.ids;
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_deals', action: 'insert_reseller_deals', values: values, where: form.findField('selected').getValue()},
+						   params: {handle: 'web', table: 'crm_campaign', action: 'add_to_campaign_customer', values: ids, where: form.findField('campaign').getValue()},
 						   success: function(response, opts) {							  
 							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
 							   views['reseller'].reload();
