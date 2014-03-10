@@ -2597,14 +2597,15 @@ Ext.define('OCS.AddToCampaignWindow', {
 	height: 200,
 	modal: false,
 	width: 350,	
-	modal: true,
+	modal: true, 
 
 	initComponent: function() {
 		var me = this;				
 		
 		me.form = Ext.create('OCS.FormPanel', {
 			id: 'add_to_campaign_form',
-			region: 'center',			
+			region: 'center',		
+			flex: 1,
 			title: '',
 			items: [{
 				xtype: 'textfield',
