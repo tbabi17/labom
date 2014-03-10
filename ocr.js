@@ -6972,7 +6972,7 @@ Ext.define('OCS.CampaignContactView', {
 				text: 'Remove selected members',
 				handler: function(widget, event) {
 					if (me.recordSelected()) {	
-						Ext.Msg.confirm('Warning ','Are you sure you want to remove? ('+selection.length+' records)',function(btn){
+						Ext.Msg.confirm('Warning ','Are you sure you want to remove selected records? ('+selection.length+' records)',function(btn){
 							var ids = me.selectedIds('crm_id');
 							alert(ids);
 							/*
