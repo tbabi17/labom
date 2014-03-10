@@ -2643,7 +2643,6 @@ Ext.define('OCS.AddToCampaignWindow', {
 						   params: {handle: 'web', table: 'crm_campaign', action: 'add_to_campaign_customer', values: ids, where: form.findField('campaign').getValue()},
 						   success: function(response, opts) {							  
 							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
-							   views['reseller'].reload();
 							   me.close();
 						   },
 						   failure: function(response, opts) {										   
