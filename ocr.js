@@ -6971,22 +6971,24 @@ Ext.define('OCS.CampaignContactView', {
 				iconCls  : 'delete',
 				text: 'Remove selected members',
 				handler: function(widget, event) {
-					var ids = me.selectedIds('crm_id');
-					alert(ids);
-					/*
-					Ext.Ajax.request({
-					   url: 'avia.php',
-					   params: {handle: 'web', table: 'crm_campaign', action: 'remove_from_campaign_customer', values: ids, where: me.where},
-					   success: function(response, opts) {							  
-						   Ext.MessageBox.alert('Status', response.responseText, function() {
-							   me.loadStore(me.campaign);
-						   });								
-					   },
-					   failure: function(response, opts) {										   
-						  Ext.MessageBox.alert('Status', 'Error !', function() {});
-					   }
-					});
-					*/
+					if (me.recordSelected()) {					
+						var ids = me.selectedIds('crm_id');
+						alert(ids);
+						/*
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_campaign', action: 'remove_from_campaign_customer', values: ids, where: me.where},
+						   success: function(response, opts) {							  
+							   Ext.MessageBox.alert('Status', response.responseText, function() {
+								   me.loadStore(me.campaign);
+							   });								
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+						*/
+					}
 				}
 			})
 		];
