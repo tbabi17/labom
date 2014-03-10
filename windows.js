@@ -2864,8 +2864,6 @@ Ext.define('OCS.AddNoteWindow', {
 				}
 			}]
 		});
-	
-
 
 		me.items = [me.form];	
 	
