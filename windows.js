@@ -2655,7 +2655,6 @@ Ext.define('OCS.AddToCampaignWindow', {
 			}]
 		});
 		
-		me.views.form = me.form;
 		me.items = [me.form];		
 
 		me.callParent(arguments);
