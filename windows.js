@@ -2649,12 +2649,14 @@ Ext.define('OCS.AddToCampaignWindow', {
 					if (form.isValid())	{
 						var values = form.getValues(true);
 						var ids = me.ids;
+						me.campaign = form.findField('campaign').getValue();
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_campaign', action: 'add_to_campaign_customer', values: ids, where: form.findField('campaign').getValue()},
 						   success: function(response, opts) {							  
-							   Ext.MessageBox.alert('Status', response.responseText, function() {});
-							   me.close();
+							   Ext.MessageBox.alert('Status', response.responseText, function() {
+								   me.view.loadStore(me.campaign);
+							   });								
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
