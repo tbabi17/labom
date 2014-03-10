@@ -28,7 +28,8 @@ Ext.define('OCS.ComplainWindow', {
 				handler: function(widget, event) {
 					if (me.modelName == 'CRM_NOTES') {
 						new OCS.AddNoteWindow({
-							selected: me.selected
+							selected: me.selected,
+							backgrid: me.grid
 						}).show();
 					} else {
 						me.updateSource(me.defaultRec);
@@ -2869,10 +2870,9 @@ Ext.define('OCS.AddNoteWindow', {
 							waitMsg: 'Uploading your data...',
 							standardSubmit: false,
 							success: function(fp, o) {
-								var data = Ext.decode(o.response.responseText);
-								me.win.close();
+								var data = Ext.decode(o.response.responseText);								
 								Ext.MessageBox.alert('Status', data.msg, function() {
-									
+									me.close();
 								});
 							},
 							failure: function(form, action) {
