@@ -693,7 +693,7 @@ Ext.define('OCS.RetailPanel', {
 								direction: me.xlsName,
 								title: 'Campaigns ('+me.store.getTotalCount()+' '+me.xlsName+')',
 								ids: me.selectedIds()
-							}).createWindow();
+							}).show();
 						}
 					}]
 				}				
