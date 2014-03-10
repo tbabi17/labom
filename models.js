@@ -1118,7 +1118,7 @@ function renderLink(v) {
 	if (v != '' && v.substring(0, input.length) != input)
 		v = 'http://'+v;
 
-	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+Attachment+'</span></a>';
+	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">Attachment</span></a>';
 }
 
 function renderCampaign(v, metadata, record, rowIndex, colIndex, store) {	
