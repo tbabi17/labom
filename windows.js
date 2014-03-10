@@ -2590,6 +2590,78 @@ Ext.define('OCS.ResellerCreateWindow', {
 	}
 });
 
+Ext.define('OCS.AddToCampaignWindow', {
+	extend: 'OCS.Window',
+	title: 'Add to Campaign',
+	maximizable: true,
+	height: 200,
+	modal: false,
+	width: 350,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.form = Ext.create('OCS.FormPanel', {
+			id: 'add_to_campaign_form',
+			region: 'east',
+			hidden: true,
+			closable: false,			
+			title: '',
+			flex: 0.75,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected',
+				allowBlank: false,
+				readOnly: true,
+				name: 'selected'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Campaign name',
+				allowBlank: false,
+				xtype: 'searchcombo',
+				name: 'campaign'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+
+						values = form.findField('deal').getValue()+"&"+form.findField('owner').getValue()+"&"+form.findField('descr').getValue()+"&"+form.findField('year').getValue()+"&"+form.findField('month').getValue();
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deals', action: 'insert_reseller_deals', values: values, where: form.findField('selected').getValue()},
+						   success: function(response, opts) {							  
+							   Ext.MessageBox.alert('Status', response.responseText+' records', function() {});
+							   views['reseller'].reload();
+							   me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					}
+				}
+			}]
+		});
+		
+		me.views.form = me.form;
+		me.items = [me.form];		
+
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.PermissionWindow', {
 	extend: 'OCS.Window',
 	title: 'Permission table',
