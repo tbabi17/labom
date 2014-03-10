@@ -6971,9 +6971,9 @@ Ext.define('OCS.CampaignContactView', {
 				iconCls  : 'delete',
 				text: 'Remove selected members',
 				handler: function(widget, event) {
-					if (me.recordSelected()) {	
+					if (me.grid.recordSelected()) {	
 						Ext.Msg.confirm('Warning ','Are you sure you want to remove selected records? ('+selection.length+' records)',function(btn){
-							var ids = me.selectedIds('crm_id');
+							var ids = me.grid.selectedIds('crm_id');
 							alert(ids);
 							/*
 							Ext.Ajax.request({
