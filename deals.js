@@ -909,6 +909,11 @@ Ext.define('OCS.DealSalesTeamGrid', {
 		);	
 	},
 	
+	callBack: function() {
+		var me = this;
+		alert(me.store.getCount());
+	},
+
 	createColumns: function() {
 		var me = this;
 		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
