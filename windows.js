@@ -2663,8 +2663,9 @@ Ext.define('OCS.AddToCampaignWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'east',
-			flex: 0.5,
+			region: 'north',
+			flex: 0.25,
+			split: true,
 			items: [me.form]				
 		}, me.view.createView()];		
 
