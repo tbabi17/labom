@@ -2869,7 +2869,7 @@ Ext.define('OCS.AddNoteWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'center',
+			region: 'east',
 			flex: 1,
 			border: false,
 			items: []
