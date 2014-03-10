@@ -2463,7 +2463,8 @@ Ext.define('OCS.GridView', {
 					}
 				},
 				itemkeydown:function(view, record, item, index, e){
-					alert('The press key is' + e.getKey());
+					if (Ext.EventObject.DELETE == e.getKey())
+						me.deleteRecord();
 				}
 			},
 			getRowClass: function (record, rowIndex, rowParams, store) {
