@@ -2820,14 +2820,14 @@ Ext.define('OCS.AddNoteWindow', {
 				disabled: true,
 				name: 'deal_id'
 			},{
-				xtype: 'textfield',
-				fieldLabel: 'WWW',
-				name: 'www'				
-			},{
 				xtype: 'textarea',
 				fieldLabel: 'Note',	
 				flex: 1,
 				name: 'descr'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Link',
+				name: 'www'				
 			}],
 			buttons: [{
 				iconCls: 'reset',
