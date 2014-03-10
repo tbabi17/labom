@@ -6974,8 +6974,6 @@ Ext.define('OCS.CampaignContactView', {
 					if (me.grid.recordSelected()) {	
 						Ext.Msg.confirm('Warning ','Are you sure you want to remove selected records?',function(btn){
 							var ids = me.grid.selectedIds('crm_id');
-							alert(ids);
-							/*
 							Ext.Ajax.request({
 							   url: 'avia.php',
 							   params: {handle: 'web', table: 'crm_campaign', action: 'remove_from_campaign_customer', values: ids, where: me.where},
@@ -6987,8 +6985,7 @@ Ext.define('OCS.CampaignContactView', {
 							   failure: function(response, opts) {										   
 								  Ext.MessageBox.alert('Status', 'Error !', function() {});
 							   }
-							});
-							*/
+							});							
 						});
 					}
 				}
