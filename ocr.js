@@ -1010,7 +1010,14 @@ Ext.define('OCS.ActivityGrid', {
 	modelName: 'CRM_CALENDAR',
 	collapsed : false,
 	action: true,
+	ownerList: '',
 	
+	teamOn: function(ownerList) {
+		var me = this;
+		me.ownerList = ownerList;
+		me.action = (ownerList.indexOf(logged) != -1);
+	},
+
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
@@ -2446,6 +2453,11 @@ Ext.define('OCS.DealAction', {
 	update: function(rec) {
 		var me = this;
 		me.detail.update(me.tmplMarkup[rec.get('stage')].apply(rec.data));
+	},
+	
+	teamOn: function(ownerList) {
+		var me = this;
+		me.dealActivity.teamOn(ownerList);
 	},
 
 	select: function(rec) {

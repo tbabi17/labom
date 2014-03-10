@@ -911,8 +911,11 @@ Ext.define('OCS.DealSalesTeamGrid', {
 	
 	callBack: function() {
 		var me = this;
-		alert(me.store.getCount());
-		views['deals'].action.teamOn('');
+		var ownerList = '';
+		me.store.each(function(rec){
+			ownerList += rec.get('owner');
+		});
+		views['deals'].action.teamOn(ownerList);
 	},
 
 	createColumns: function() {
