@@ -546,7 +546,7 @@ Ext.define('OCS.Module', {
 
 	rawValue: function(rec) {
 		if (rec.get('name').indexOf('birthday') != -1 || rec.get('name').indexOf('date') != -1 || rec.get('name').substring(2, rec.get('name').length) == 'remind_at') {
-			if (rec.get('value').length == 10)
+			if (rec.get('value') && rec.get('value').length == 10)
 				return rec.get('value');
 			if (rec.get('name').substring(2, rec.get('name').length) == '_date')
 				return rec.get('value');
