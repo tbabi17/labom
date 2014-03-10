@@ -2620,6 +2620,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Campaign name',
 				allowBlank: false,
+				table: 'crm_campaign',
 				xtype: 'searchcombo',
 				name: 'campaign'
 			}],
