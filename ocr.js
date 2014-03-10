@@ -691,7 +691,7 @@ Ext.define('OCS.RetailPanel', {
 						handler: function(widget, event) {		
 							new OCS.AddToCampaignWindow({
 								direction: me.xlsName,
-								title: 'Campaigns ('+me.store.getTotalCount()+' '+me.xlsName+')',
+								title: 'Campaigns ('+me.grid.getView().getSelectionModel().getSelection().length+' '+me.xlsName+')',
 								ids: me.selectedIds()
 							}).show();
 						}
