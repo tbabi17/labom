@@ -2461,6 +2461,9 @@ Ext.define('OCS.GridView', {
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
 						me.selectCustomer(record);						
 					}
+				},
+				itemkeydown:function(view, record, item, index, e){
+					alert('The press key is' + e.getKey());
 				}
 			},
 			getRowClass: function (record, rowIndex, rowParams, store) {
