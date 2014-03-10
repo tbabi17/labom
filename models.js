@@ -317,7 +317,7 @@ fields['CRM_NOTES_FIELDS'] = [
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'deal_name', text: 'Topic Name', width: 200, renderer: renderDealName},
    {name: 'descr', text: 'Note', width: 200, primary: true},
-   {name: 'www', text: 'Attach link', width: 150},
+   {name: 'www', text: 'Attach link', width: 150, renderer: renderWWW},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
