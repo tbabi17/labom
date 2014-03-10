@@ -686,6 +686,11 @@ Ext.define('OCS.RetailPanel', {
 								ids: me.xlsName
 							}).createWindow();
 						}
+					},'-',{
+						text: 'Add to campaign',
+						handler: function(widget, event) {		
+
+						}
 					}]
 				}				
 			}),
