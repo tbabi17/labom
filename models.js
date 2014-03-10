@@ -317,7 +317,7 @@ fields['CRM_NOTES_FIELDS'] = [
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
    {name: 'deal_name', text: 'Topic Name', width: 200, renderer: renderDealName},
    {name: 'descr', text: 'Note', width: 200, primary: true},
-   {name: 'www', text: 'Attach link', width: 150, renderer: renderWWW},
+   {name: 'www', text: 'Attach link', width: 150, renderer: renderLink},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, hidden: true},
    {name: 'userCode', text: 'Created by', width: 100, renderer: renderOwner},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
@@ -1111,6 +1111,14 @@ function renderWWW(v) {
 		v = 'http://'+v;
 
 	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+v+'</span></a>';
+}
+
+function renderLink(v) {
+	var input = 'http';
+	if (v != '' && v.substring(0, input.length) != input)
+		v = 'http://'+v;
+
+	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+Attachment+'</span></a>';
 }
 
 function renderCampaign(v, metadata, record, rowIndex, colIndex, store) {	
