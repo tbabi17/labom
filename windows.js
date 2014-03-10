@@ -2793,7 +2793,7 @@ Ext.define('OCS.AddNoteWindow', {
 	extend: 'OCS.Window',
 	title: 'Add note',
 	maximizable: true,
-	height: 250,
+	height: 300,
 	modal: false,
 	width: 500,	
 	modal: true,
