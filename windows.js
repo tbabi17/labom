@@ -2826,6 +2826,14 @@ Ext.define('OCS.AddNoteWindow', {
 				disabled: true,
 				name: 'deal_id'
 			},{
+				xtype: 'textfield',
+				fieldLabel: 'Case ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('case_id'),
+				disabled: true,
+				name: 'case_id'
+			},{
 				xtype: 'textarea',
 				fieldLabel: 'Note',	
 				flex: 1,
@@ -2835,7 +2843,7 @@ Ext.define('OCS.AddNoteWindow', {
 				id: 'form-file',
 				emptyText: 'Select an file',
 				fieldLabel: 'File',
-				name: 'xls-path',
+				name: 'file-path',
 				width: 430,
 				buttonText: '',
 				buttonConfig: {
@@ -2857,7 +2865,7 @@ Ext.define('OCS.AddNoteWindow', {
 					if(form.isValid()){
 						form.submit({
 							url: 'avia.php',
-							params: {handle: 'file', action:'attach', table: 'crm_notes', values: form.findField('descr').getValue(), where: form.findField('crm_id').getValue()+','+form.findField('deal_id').getValue()},
+							params: {handle: 'file', action:'attach', values: form.findField('crm_id').getValue()+','+form.findField('deal_id').getValue()+','+form.findField('case_id').getValue()+','+form.findField('descr').getValue()},
 							waitMsg: 'Uploading your data...',
 							standardSubmit: false,
 							success: function(fp, o) {
