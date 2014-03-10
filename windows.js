@@ -2665,7 +2665,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 			region: 'east',
 			flex: 0.5,
 			items: [me.form]				
-		}, me.view];		
+		}, me.view.createView()];		
 
 		me.callParent(arguments);
 	}
