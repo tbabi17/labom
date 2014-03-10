@@ -2613,6 +2613,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Selected',
 				allowBlank: false,
+				value: me.ids,
 				readOnly: true,
 				name: 'selected'
 			},{
