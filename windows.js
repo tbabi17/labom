@@ -2782,3 +2782,81 @@ Ext.define('OCS.PermissionWindow', {
 		me.callParent(arguments);
 	}
 });
+
+
+Ext.define('OCS.AddNoteWindow', {
+	extend: 'OCS.Window',
+	title: 'Add note',
+	maximizable: true,
+	height: 550,
+	modal: false,
+	width: 500,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 0.75,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				//value: me.selected.get('crm_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('deal_id'),
+				disabled: true,
+				name: 'deal_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'WWW',
+				name: 'www'				
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Note',	
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					
+				}
+			}]
+		});
+	
+
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'south',
+			flex: 1,
+			border: false,
+			items: []
+		}, me.form];	
+	
+		me.callParent(arguments);
+	}
+});
