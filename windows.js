@@ -26,8 +26,13 @@ Ext.define('OCS.ComplainWindow', {
 				text: 'New ...',
 				disabled: permit(me.xlsName+'_new'),
 				handler: function(widget, event) {
-					me.updateSource(me.defaultRec);
-					me.initSource();
+					if (me.modelName == 'CRM_NOTES') {
+						new OCS.AddNoteWindow({
+						}).show();
+					} else {
+						me.updateSource(me.defaultRec);
+						me.initSource();
+					}
 				}
 			}),
 			Ext.create('Ext.Action', {
@@ -2788,7 +2793,7 @@ Ext.define('OCS.AddNoteWindow', {
 	extend: 'OCS.Window',
 	title: 'Add note',
 	maximizable: true,
-	height: 550,
+	height: 350,
 	modal: false,
 	width: 500,	
 	modal: true,
@@ -2862,14 +2867,7 @@ Ext.define('OCS.AddNoteWindow', {
 	
 
 
-		me.items = [{
-			xtype: 'panel',
-			layout: 'border',
-			region: 'north',
-			flex: 0,
-			border: false,
-			items: []
-		}, me.form];	
+		me.items = [me.form];	
 	
 		me.callParent(arguments);
 	}
