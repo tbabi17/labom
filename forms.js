@@ -2444,6 +2444,11 @@ Ext.define('OCS.UploadForm', {
                 }
             }
         },{
+			text: 'Download template',
+			iconCls: '',
+			handler: function() {
+			}
+		},{
             text: 'Reset',
 			iconCls: 'reset',
             handler: function() {
