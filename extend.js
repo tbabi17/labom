@@ -653,6 +653,43 @@ Ext.define('OSS.SearchCombo', {
 	}
 });
 
+Ext.define('OSS.CustomerSearchCombo', {
+    extend  : 'OSS.SearchCombo',
+    alias   : 'widget.customercombo',
+
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);
+    },
+
+	initComponent: function() {
+		var me = this;
+	
+		me.store = Ext.create('Ext.data.Store', {
+			pageSize: 10,
+			proxy: {
+				type: 'ajax',
+				url : 'avia.php',
+				reader: {
+					type:'json',
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+				extraParams: {handler: 'web', func: 'crm_customer_query_list', action: 'select', table: me.table, fields: me.name}
+			},
+			fields: [{name: me.name, name: 'value'}]
+		});
+
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.GridWithFormPanel', {	
 	extend: 'OCS.Module',
 	table: '',
