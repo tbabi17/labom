@@ -291,6 +291,8 @@ fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'case_stage', text: 'Stage', width: 70, renderer: renderCaseLevel},
    {name: 'complain_origin', text: 'Origin', width: 65, align: 'center'},   
    {name: 'complain_type', text: 'Type', width: 100, align: 'center'},
+   {name: 'calltype', text: 'Direction', align: 'center', width: 65},
+   {name: 'call_from', text: 'Call center', align: 'center', width: 65},
    {name: 'phone', text: 'Phone', align: 'center', width: 65},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
