@@ -654,9 +654,27 @@ Ext.define('OSS.SearchCombo', {
 });
 
 Ext.define('OSS.CustomerSearchCombo', {
-    extend  : 'OSS.SearchCombo',
+    extend  : 'Ext.form.field.ComboBox',
     alias   : 'widget.customercombo',
 
+	pageSize: 10,
+	valueField: 'crm_id',
+	displayField: 'crm_name',
+    typeAhead: false,
+    hideLabel: false,
+    hideTrigger: false,
+	minChars: 1,
+	anchor: '120%',		
+	table: 'crm_customer',
+	listConfig : {
+		width: 500,
+		loadingText: 'Хайж байна...',
+		emptyText: '<span class="search_result">илэрц байхгүй !</span>',
+		getInnerTpl: function() {
+			return '<span class="search_result">{value}</span>';
+		}
+	},
+	
 	constructor: function(cnfg) {
         this.callParent(arguments);
         this.initConfig(cnfg);
