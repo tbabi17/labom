@@ -2911,7 +2911,7 @@ Ext.define('OCS.NewCaseWindow', {
 			flex: 1,
 			items: [{
 				xtype: 'searchcombo',
-				fieldLabel: 'CRM ID',
+				fieldLabel: 'Customer',
 				allowBlank: false,
 				table: 'crm_customer',
 				name: 'crm_id'
