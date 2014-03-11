@@ -2930,12 +2930,14 @@ Ext.define('OCS.NewCaseWindow', {
               }),
 			  name: 'calltype',
 			  queryMode: 'local',
+			  fieldLabel: 'Direction',
 		      displayField: 'value',
 			  valueField: 'value',
 			  triggerAction: 'all',
 			  editable: false
 			},{
 			  xtype: 'combo',
+			  fieldLabel: 'Resolution type',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_ITEM',
 				 data: [{value: 'problem solved'},{value: 'information provided'},{value: 'customer car'},{value: 'enguiry'},{value: 'box'}] 
@@ -2948,6 +2950,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  editable: false
 			},{
 			  xtype: 'combo',
+ 			  fieldLabel: 'Call center',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_ITEM',
 				 data: [{value: '94097007'},{value: '70107007'}] 
