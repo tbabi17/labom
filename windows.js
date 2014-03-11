@@ -2916,7 +2916,6 @@ Ext.define('OCS.NewCaseWindow', {
 				disabled: true,
 				hidden: true,
 				allowBlank: false,
-				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textarea',
