@@ -2889,3 +2889,98 @@ Ext.define('OCS.AddNoteWindow', {
 		me.callParent(arguments);
 	}
 });
+
+
+Ext.define('OCS.NewCaseWindow', {
+	extend: 'OCS.Window',
+	title: 'Add note',
+	maximizable: true,
+	height: 550,
+	modal: false,
+	width: 350,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 1,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				value: me.selected.get('crm_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Note',	
+				flex: 1,
+				name: 'descr'
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'inbound'},{value: 'outbound'}]
+              }),
+			  name: 'calltype',
+			  queryMode: 'local',
+		      displayField: 'value',
+			  valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_ITEM',
+				 data: [{value: 'problem solved'},{value: 'information provided'},{value: 'customer car'},{value: 'enguiry'},{value: 'box'}] 
+			  }),
+			  name: 'resolution_type',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_ITEM',
+				 data: [{value: '94097007'},{value: '70107007'}] 
+			  }),
+			  name: 'call_from',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if(form.isValid()){
+						
+					}
+				}
+			}]
+		});
+
+		me.items = [me.form];	
+	
+		me.callParent(arguments);
+	}
+});

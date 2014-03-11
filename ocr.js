@@ -3387,7 +3387,7 @@ Ext.define('OCS.CaseView', {
 				text: 'New...',
 				handler: function(widget, event) {
 					new OCS.ComplainWindow({
-						selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						
 					}).createWindow();			
 				}
 			}),	
