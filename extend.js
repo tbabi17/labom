@@ -681,7 +681,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 					update : 'POST',
 					destroy: 'POST'
 				},
-				extraParams: {handler: 'web', func: 'crm_customer_query_list', action: 'select', table: me.table, fields: me.name}
+				extraParams: {handler: 'web', func: 'crm_customer_query_list', action: 'select'}
 			},
 			fields: [{name: 'crm_id', name: 'crm_name'}]
 		});
