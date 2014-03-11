@@ -2931,6 +2931,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  name: 'calltype',
 			  queryMode: 'local',
 			  fieldLabel: 'Direction',
+			  value: 'inbound',
 		      displayField: 'value',
 			  valueField: 'value',
 			  triggerAction: 'all',
@@ -2956,6 +2957,7 @@ Ext.define('OCS.NewCaseWindow', {
 				 data: [{value: '94097007'},{value: '70107007'}] 
 			  }),
 			  name: 'call_from',
+			  value: '94097007',
 			  queryMode: 'local',
 		      displayField: 'value',
 		      valueField: 'value',
