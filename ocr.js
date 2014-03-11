@@ -1644,7 +1644,7 @@ Ext.define('OCS.CaseGrid', {
 	createActions: function() {
 		var me = this;
 		me.actions = [
-			Ext.create('Ext.Action', {
+		/*	Ext.create('Ext.Action', {
 				iconCls : 'add',  
 				text: 'Add ...',
 				handler: function(widget, event) {
@@ -1652,7 +1652,7 @@ Ext.define('OCS.CaseGrid', {
 						selected: me.selected
 					}).createWindow();
 				}
-			})
+			})*/
 		];
 			
 		return me.actions;
@@ -3382,6 +3382,15 @@ Ext.define('OCS.CaseView', {
 				}		
 			}),
 			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'New...',
+				handler: function(widget, event) {
+					new OCS.ComplainWindow({
+						selected: me.grid.getView().getSelectionModel().getSelection()[0]
+					}).createWindow();			
+				}
+			}),	
 			Ext.create('Ext.Action', {
 				iconCls   : 'edit',
 				text: 'Expand...',
