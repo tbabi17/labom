@@ -2910,7 +2910,7 @@ Ext.define('OCS.NewCaseWindow', {
 			title: '',
 			flex: 1,
 			items: [{
-				xtype: 'searchcombo',
+				xtype: 'customercombo',
 				fieldLabel: 'Customer',
 				allowBlank: false,
 				table: 'crm_customer',
