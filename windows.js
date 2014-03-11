@@ -2895,7 +2895,7 @@ Ext.define('OCS.NewCaseWindow', {
 	extend: 'OCS.Window',
 	title: 'Create case',
 	maximizable: true,
-	height: 550,
+	height: 500,
 	modal: false,
 	width: 350,	
 	modal: true,
@@ -2910,12 +2910,10 @@ Ext.define('OCS.NewCaseWindow', {
 			title: '',
 			flex: 1,
 			items: [{
-				xtype: 'textfield',
+				xtype: 'searchcombo',
 				fieldLabel: 'CRM ID',
-				readOnly: true,
-				disabled: true,
-				hidden: true,
 				allowBlank: false,
+				table: 'crm_customer',
 				name: 'crm_id'
 			},{
 				xtype: 'textarea',
