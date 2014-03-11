@@ -671,7 +671,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 		loadingText: 'Хайж байна...',
 		emptyText: '<span class="search_result">илэрц байхгүй !</span>',
 		getInnerTpl: function() {
-			return '<span class="search_result">{value}</span>';
+			return '<span class="search_result">{crm_name}</span>';
 		}
 	},
 	
