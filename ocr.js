@@ -3386,9 +3386,8 @@ Ext.define('OCS.CaseView', {
 				iconCls   : 'add',
 				text: 'New...',
 				handler: function(widget, event) {
-					new OCS.ComplainWindow({
-						
-					}).createWindow();			
+					new OCS.NewCaseWindow({						
+					}).show();			
 				}
 			}),	
 			Ext.create('Ext.Action', {
