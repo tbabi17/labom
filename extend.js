@@ -177,13 +177,15 @@ Ext.define('OCS.Module', {
 //		me.store.loadPage(1);
 	},
 	
-	callBack: function() {
+	callBack: function(store) {
 	},
 
 	loadStore: function() {
 		var me = this;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
-		me.store.loadPage(1, {callback: me.callBack});
+		me.store.loadPage(1, {callback: function() {
+			me.callBack(me.store);
+		}});
 	},
 
 	createStandardColumns: function() {	
