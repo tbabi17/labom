@@ -2893,7 +2893,7 @@ Ext.define('OCS.AddNoteWindow', {
 
 Ext.define('OCS.NewCaseWindow', {
 	extend: 'OCS.Window',
-	title: 'Add note',
+	title: 'Create case',
 	maximizable: true,
 	height: 550,
 	modal: false,
