@@ -2979,7 +2979,6 @@ Ext.define('OCS.NewCaseWindow', {
 		});
 
 		me.items = [me.form];	
-	
 		me.callParent(arguments);
 	}
 });
