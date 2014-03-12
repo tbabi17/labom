@@ -3002,7 +3002,8 @@ Ext.define('OCS.NewCaseWindow', {
 					var form = this.up('form').getForm();
 					if(form.isValid()){
 						var values = form.getValues(true);
-				
+						alert(values);
+						/*
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
@@ -3013,7 +3014,7 @@ Ext.define('OCS.NewCaseWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});
+						});*/
 					}
 				}
 			}]
