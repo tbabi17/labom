@@ -2924,6 +2924,18 @@ Ext.define('OCS.NewCaseWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
   				  model: 'CRM_ITEM',
+ 				  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+              }),
+			  name: 'priority',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
  				  data: [{value: 'inbound'},{value: 'outbound'}]
               }),
 			  name: 'calltype',
@@ -2961,6 +2973,13 @@ Ext.define('OCS.NewCaseWindow', {
 		      valueField: 'value',
 			  triggerAction: 'all',
 			  editable: false
+			},
+			{
+				xtype: 'datefield',
+				fieldLabel: 'Close date',				
+				name: 'closing_date',
+				value: me.selected.get('closing_date'),
+				format: 'Y-m-d'
 			}],
 			buttons: [{
 				iconCls: 'add',
