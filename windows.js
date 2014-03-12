@@ -2895,9 +2895,9 @@ Ext.define('OCS.NewCaseWindow', {
 	extend: 'OCS.Window',
 	title: 'Create case',
 	maximizable: true,
-	height: 500,
+	height: 450,
 	modal: false,
-	width: 350,	
+	width: 400,	
 	modal: true,
 
 	initComponent: function() {
