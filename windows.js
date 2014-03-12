@@ -3006,6 +3006,7 @@ Ext.define('OCS.NewCaseWindow', {
 					var form = this.up('form').getForm();
 					if(form.isValid()){
 						var values = form.getValues(true);
+						alert(form.findField('crm_id').getValue());
 						alert(values);
 						/*
 						Ext.Ajax.request({

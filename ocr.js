@@ -7147,7 +7147,7 @@ Ext.define('OCS.PotentialWindow', {
 				text: 'Commit',
 				iconCls: 'commit',
 				handler: function() {
-					var form = this.up('form').getForm();
+					var form = this.up('form').getForm();					
 					if (form.isValid())	{
 						var values = form.getValues(true);
 
