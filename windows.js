@@ -2963,6 +2963,13 @@ Ext.define('OCS.NewCaseWindow', {
 			  editable: false
 			}],
 			buttons: [{
+				iconCls: 'add',
+				text: 'Create',				
+				handler: function() {
+					new OCS.RetailNewWindow({							
+					}).show();
+				}
+			},'->',{
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
