@@ -2922,6 +2922,7 @@ Ext.define('OCS.NewCaseWindow', {
 				name: 'descr'
 			},{
 			  xtype: 'combo',
+			  fieldLabel: 'Priority',
 			  store: Ext.create('Ext.data.Store', {
   				  model: 'CRM_ITEM',
  				  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
