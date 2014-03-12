@@ -2978,7 +2978,7 @@ Ext.define('OCS.NewCaseWindow', {
 				xtype: 'datefield',
 				fieldLabel: 'Close date',				
 				name: 'closing_date',
-				value: me.selected.get('closing_date'),
+				value: new Date(),
 				format: 'Y-m-d'
 			}],
 			buttons: [{
