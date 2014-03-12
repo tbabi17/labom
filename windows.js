@@ -2913,6 +2913,7 @@ Ext.define('OCS.NewCaseWindow', {
 				xtype: 'customercombo',
 				fieldLabel: 'Phone or Name',
 				allowBlank: false,
+				valueField: 'crm_id',
 				table: 'crm_customer',
 				name: 'crm_id'
 			},{
