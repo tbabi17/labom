@@ -1924,14 +1924,6 @@ Ext.define('OCS.ActivityDetailWindow', {
 			}]
 		});
 
-		me.property = new OCS.DetailGrid();
-		me.activity = new OCS.DetailActivityGrid();
-		me.opportunity = new OCS.OpportunityGrid();
-		me.customer_campaings = new OCS.CustomerCampaigns();
-		me.customer_company = new OCS.CustomerCompany();
-	    me.csales = new OCS.CustomerSalesPanel();
-		me.ccase = new OCS.CaseGrid();
-		
 		me.selected = me.record;
 		me.form.getForm().loadRecord(me.record);
 
