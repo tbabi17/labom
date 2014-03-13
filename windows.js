@@ -1828,7 +1828,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	maximizable: true,
 	height: 550,
 	modal: false,
-	width: 850,	
+	width: 450,	
 	modal: true,
 
 	listeners : {
@@ -1935,23 +1935,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		me.selected = me.record;
 		me.form.getForm().loadRecord(me.record);
 
-		me.items = [me.form,{
-			xtype: 'tabpanel',
-			region: 'east',
-			border: false,
-			activeTab: 0,
-			cls: 'MainPanel',
-			tabPosition: 'top',
-			items: [					
-				me.property.createPanel(),
-				me.activity.createPanel(),
-				me.ccase.createPanel(),
-				me.opportunity.createPanel(),
-				me.csales.createPanel(),
-				me.customer_company.createPanel(),
-				me.customer_campaings.createPanel()
-			]
-		}];
+		me.items = [me.form];
 		me.callParent(arguments);
 	},
 
