@@ -4022,6 +4022,11 @@ Ext.define('OCS.Workspace', {
 		var me = this;
 		me.workspace.reload();
 	},
+	
+	selectedRecord: function() {
+		var me = this;
+		return me.workspace.selectedRecord();
+	},
 
 	createPanel: function() {
 		var me = this;
@@ -6122,6 +6127,11 @@ Ext.define('OCS.MyProfile', {
 		var me = this;
 		views['mylog'].loadStore();
 		me.owners.loadStore();
+	},
+
+	selectedRecord: function() {
+		var me = this;
+		return views['mylog'].selectedRecord();
 	},
 
 	createPanel: function() {
