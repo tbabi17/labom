@@ -507,7 +507,10 @@ Ext.define('OCS.Module', {
 					}
 
 					var id = selection[0].get(me.primary);
-					if (id == '' || id == '0') return;
+					if (id == '' || id == '0') {
+					    Ext.MessageBox.alert('Status', 'Not available !', function() {});
+						return;
+					}
 				
 					Ext.getBody().mask('Deleting...');
 					Ext.Ajax.request({
