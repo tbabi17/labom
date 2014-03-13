@@ -1826,7 +1826,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	extend: 'OCS.Window',
 	title: 'Activity Detail',
 	maximizable: true,
-	height: 520,
+	height: 550,
 	modal: false,
 	width: 450,	
 	modal: true,
