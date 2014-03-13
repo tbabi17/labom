@@ -525,7 +525,6 @@ Ext.define('OCS.Module', {
 					Ext.Msg.confirm('Warning ','You are delete too many records !',function(btn){
 						if(btn === 'yes'){
 							var ids = me.selectedMyCreatedIds(me.primary);
-							alert(ids);
 							if (ids == '' || ids == '0')				
 								return;
 			
