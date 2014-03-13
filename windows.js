@@ -1954,7 +1954,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 					if(btn === 'yes'){
 					}
-				);
+				});
 
 				/*new OCS.NewDealWindow({
 					selected: me.selected
