@@ -1849,6 +1849,11 @@ Ext.define('OCS.ActivityDetailWindow', {
 			title: '',
 			items: [{
 				xtype: 'displayfield',
+				fieldLabel: 'Customer',
+				readOnly: true,
+				name: 'crm_name'
+			},{
+				xtype: 'displayfield',
 				fieldLabel: 'Activity type',
 				readOnly: true,
 				name: 'work_type'
@@ -1899,8 +1904,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				name: 'source'
 			},{
 				xtype: 'textarea',
-				fieldLabel: 'Descr',	
-				readOnly: true,
+				fieldLabel: 'Descr',					
 				height: 140,
 				name: 'descr'
 			}],
