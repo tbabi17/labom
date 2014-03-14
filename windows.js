@@ -1855,6 +1855,11 @@ Ext.define('OCS.ActivityDetailWindow', {
 				name: 'work_type'
 			},{
 				xtype: 'displayfield',
+				fieldLabel: 'Phone',				
+				readOnly: true,
+				name: 'phone'			
+			},{
+				xtype: 'displayfield',
 				fieldLabel: 'Deal name',				
 				readOnly: true,
 				name: 'deal_name'			
