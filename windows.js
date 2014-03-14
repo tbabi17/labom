@@ -1929,7 +1929,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 				}
 			}]
 		});
-
+		
+		me.detail = new OCS.DetailGrid();
 		me.property = new OCS.DetailGrid();
 		me.activity = new OCS.DetailActivityGrid();
 		me.opportunity = new OCS.OpportunityGrid();
@@ -1951,7 +1952,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			activeTab: 0,
 			cls: 'MainPanel',
 			tabPosition: 'top',			
-			items: [					
+			items: [			
+				me.detail.createPanel(),
 				me.property.createPanel(),
 				me.activity.createPanel(),
 				me.ccase.createPanel(),
