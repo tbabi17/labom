@@ -1828,7 +1828,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	maximizable: true,
 	height: 550,
 	modal: false,
-	width: 850,	
+	width: 870,	
 	modal: true,
 
 	listeners : {
@@ -1844,7 +1844,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'west',
-			flex: 1,
+			flex: 0.6,
 			hidden: false,
 			closable: false,			
 			title: '',
