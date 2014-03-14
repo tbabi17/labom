@@ -1828,7 +1828,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	maximizable: true,
 	height: 550,
 	modal: false,
-	width: 450,	
+	width: 850,	
 	modal: true,
 
 	listeners : {
@@ -1924,10 +1924,36 @@ Ext.define('OCS.ActivityDetailWindow', {
 			}]
 		});
 
+		me.property = new OCS.DetailGrid();
+		me.activity = new OCS.DetailActivityGrid();
+		me.opportunity = new OCS.OpportunityGrid();
+		me.customer_campaings = new OCS.CustomerCampaigns();
+		me.customer_company = new OCS.CustomerCompany();
+	    me.csales = new OCS.CustomerSalesPanel();
+		me.ccase = new OCS.CaseGrid();
+
+
+
 		me.selected = me.record;
 		me.form.getForm().loadRecord(me.record);
 
-		me.items = [me.form];
+		me.items = [me.form,{
+			xtype: 'tabpanel',
+			region: 'east',
+			border: false,
+			activeTab: 0,
+			cls: 'MainPanel',
+			tabPosition: 'top',			
+			items: [					
+				me.property.createPanel(),
+				me.activity.createPanel(),
+				me.ccase.createPanel(),
+				me.opportunity.createPanel(),
+				me.csales.createPanel(),
+				me.customer_company.createPanel(),
+				me.customer_campaings.createPanel()
+			]
+		}];
 		me.callParent(arguments);
 	},
 
