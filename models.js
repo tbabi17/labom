@@ -227,6 +227,7 @@ fields['CRM_CALENDAR_FIELDS'] = [
    {name: 'deal_id', text: 'Deal ID', width: 10, hidden: true},
    {name: 'case_id', text: 'Case ID', width: 50, hidden: true},
    {name: 'deal_name', text: 'Topic name', width: 200, hidden: true},
+   {name: 'phone', text: 'Phone', width: 60, align: 'center', hidden: true},
    {name: 'days', text: 'Duedate', width: 60, align: 'center', hidden: true},
    {name: 'times', text: 'Time', width: 60, align: 'center', hidden: true},
    {name: 'priority', text: 'Priority', width: 70, align: 'center', renderer: renderPriority},
