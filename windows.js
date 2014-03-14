@@ -1942,6 +1942,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			region: 'east',
 			border: false,
 			activeTab: 0,
+			flex: 1,
 			cls: 'MainPanel',
 			tabPosition: 'top',			
 			items: [					
