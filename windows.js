@@ -1843,7 +1843,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 		var me = this;				
 
 		me.form = Ext.create('OCS.FormPanel', {
-			region: 'center',
+			region: 'west',
+			flex: 1,
 			hidden: false,
 			closable: false,			
 			title: '',
@@ -1939,10 +1940,10 @@ Ext.define('OCS.ActivityDetailWindow', {
 
 		me.items = [me.form,{
 			xtype: 'tabpanel',
-			region: 'east',
+			region: 'center',
 			border: false,
-			activeTab: 0,
 			flex: 1,
+			activeTab: 0,
 			cls: 'MainPanel',
 			tabPosition: 'top',			
 			items: [					
