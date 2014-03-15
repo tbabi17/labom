@@ -1290,7 +1290,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 			{
 				xtype: 'textarea',
 				fieldLabel: 'Description',
-				name: 'descr',
+				name: 'descr',				
 				emptyText: 'Тайлбар',
 				style: 'margin:0', 
 				flex: 1
