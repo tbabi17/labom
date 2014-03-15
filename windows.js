@@ -2964,6 +2964,32 @@ Ext.define('OCS.NewCaseWindow', {
 				allowBlank: false,
 				name: 'descr'
 			},{
+			    xtype: 'combo',
+				store: Ext.create('Ext.data.Store', {
+					  model: 'CRM_ITEM',
+					  data: [{value: 'identify'},{value: 'research'},{value: 'resolve'}]
+				}),
+				name: 'case_stage',
+				value: 'identify',
+				queryMode: 'local',
+				displayField: 'value',
+				valueField: 'value',
+				triggerAction: 'all',
+				editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_ITEM',
+ 				  data: [{value: 'open'},{value: 'solved'}]
+              }),
+			  name: 'complain_status',
+			  value: 'open',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
 			  xtype: 'combo',
 			  fieldLabel: 'Priority',
 			  value: 'medium',
@@ -3027,6 +3053,12 @@ Ext.define('OCS.NewCaseWindow', {
 				name: 'closing_date',
 				value: new Date(),
 				format: 'Y-m-d'
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',
+				name: 'owner',			
+				value: logged
 			}],
 			buttons: [{
 				iconCls: 'add',
