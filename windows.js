@@ -1281,6 +1281,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 				table: 'crm_users',
 				fieldLabel: 'Owner (multiselect)',
 				multiSelect: true,
+				allowBlank: false,
 				forceSelection: true,
 				typeAhead: false,
 				name: 'owner',
