@@ -832,7 +832,7 @@ Ext.define('OCS.GridWithFormPanel', {
 				single: true,
 				itemdblclick: function(dv, record, item, index, e) {
 					if (me.form)				
-						me.form.setVisible(true);	
+						me.showForm();	
 				}
 			}
 		});				
