@@ -1300,9 +1300,10 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 				handler: function() {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
-						var values = form.getValues(true);
+						var values = form.getValues(true);						
 						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
-								
+						alert(values);
+						/*		
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_campaign', action: 'update_campaign_activity_owner', values: values},
@@ -1313,7 +1314,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});											
+						});*/											
 					}
 					else
 					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
