@@ -1251,8 +1251,8 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 	
 	title: 'Assign to',
 	maximizable: false,
-	height: 450,
-	width: 300,	
+	height: 350,
+	width: 500,	
 
 	initComponent: function() {
 		var me = this;
