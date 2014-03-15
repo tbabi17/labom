@@ -2957,7 +2957,7 @@ Ext.define('OCS.NewCaseWindow', {
 				allowBlank: false,
 				valueField: 'crm_id',
 				table: 'crm_customer',
-				name: 'crm_id'
+				name: 'crm_id'				
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Reason',	

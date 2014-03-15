@@ -3467,7 +3467,7 @@ Ext.define('OCS.CaseView', {
 			}
 		);
 
-		me.filterData('Recent Opened Cases');
+		me.filterData('Open Cases');
 		return me.grid;
 	},
 		
