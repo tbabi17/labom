@@ -676,7 +676,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 		loadingText: 'Хайж байна...',
 		emptyText: '<span class="search_result">илэрц байхгүй !</span>',
 		getInnerTpl: function() {
-			return '<span class="search_result">{crm_name}</span>';
+			return '<span class="search_result">{crm_name}</br><b>{phone}</b></span>';
 		}
 	},
 	
@@ -706,7 +706,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 				},
 				extraParams: {handler: 'web', func: 'crm_customer_query_list', action: 'select'}
 			},
-			fields: [{name: 'crm_id', name: 'crm_name'}]
+			fields: [{name: 'crm_id', name: 'crm_name', name: 'phone'}]
 		});
 
 		me.callParent(arguments);
