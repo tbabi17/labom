@@ -954,6 +954,8 @@ Ext.define('OCS.GridWithFormPanel', {
 					if (user_level > 0) {					
 						if (me.grid.getView().getSelectionModel().getSelection().length == 2){					
 							new OCS.MergeRecordsWindow({
+								width: 600,
+								height: 400,
 								name: me.xlsName,
 								master: me.grid.getView().getSelectionModel().getSelection()[0],
 								slave: me.grid.getView().getSelectionModel().getSelection()[1]
