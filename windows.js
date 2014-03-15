@@ -2945,6 +2945,7 @@ Ext.define('OCS.NewCaseWindow', {
 		var me = this;								
 
 		me.form = Ext.create('OCS.FormPanel', {
+			id: 'new_case_form',
 			region: 'center',
 			hidden: false,
 			closable: false,			
@@ -2973,6 +2974,14 @@ Ext.define('OCS.NewCaseWindow', {
 					  model: 'CRM_ITEM',
 					  data: [{value: 'identify'},{value: 'research'},{value: 'resolve'}]
 				}),
+				listeners: {
+					change:    function(field, newValue, oldValue) {
+						if (newValue == 'resolve')
+							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('solved');
+						else
+							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('open');
+					}
+				},
 				fieldLabel: 'Stage',
 				name: 'case_stage',
 				value: 'identify',
@@ -2994,6 +3003,7 @@ Ext.define('OCS.NewCaseWindow', {
 		      displayField: 'value',
 		      valueField: 'value',
 			  triggerAction: 'all',
+			  disabled: true,
 			  editable: false
 			},{
 			  xtype: 'combo',
