@@ -945,6 +945,7 @@ Ext.define('OCS.GridWithFormPanel', {
 					me.deleteRecord();
 				}
 			}),
+			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'merge',
 				text: 'Merge...',
