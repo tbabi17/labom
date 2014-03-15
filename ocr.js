@@ -2114,7 +2114,7 @@ Ext.define('OCS.DetailGrid', {
 			title: me.title,			
 			border: false,
 			layout: 'border',
-			items: [me.form, me.grid]
+			items: [me.grid]
 		});
 
 		return me.panel;
