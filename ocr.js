@@ -704,7 +704,7 @@ Ext.define('OCS.RetailPanel', {
 				menu: {
 					xtype: 'menu',
 					items: [{
-						text: 'GPS Location',
+						text: 'Location',
 						handler: function(widget, event) {		
 							
 						}
