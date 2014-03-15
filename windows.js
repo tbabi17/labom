@@ -1301,7 +1301,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 					var form = this.up('form').getForm();
 					if (form.isValid())	{
 						var values = form.getValues(true);						
-						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
+						values = form.findField('owner').getValue()+";"+form.findField('selected').getValue()+";"+form.findField('campaign').getValue()+";"+form.findField('descr').getValue();
 						alert(values);
 						/*		
 						Ext.Ajax.request({
