@@ -3902,6 +3902,7 @@ Ext.define('OCS.ProductPanel', {
 												tab: 'my_crm_product_list',
 												buttons: true,
 												feature: false,
+												merge: true,
 												insert: (user_level==0),
 												remove: (user_level==0),	
 												defaultRec: {

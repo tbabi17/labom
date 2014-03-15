@@ -724,6 +724,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	remove: false,
 	hidden: false,
 	feature: true,
+	merge: false,
 	tbar: true,
 	windowed: false,
 	views: '',
@@ -942,6 +943,14 @@ Ext.define('OCS.GridWithFormPanel', {
 				disabled: me.remove,
 				handler: function(widget, event) {
 					me.deleteRecord();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'merge',
+				text: 'Merge...',
+				disabled: !me.merge,
+				handler: function(widget, event) {
+					
 				}
 			}),
 			Ext.create('Ext.Action', {
