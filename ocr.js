@@ -3903,8 +3903,8 @@ Ext.define('OCS.ProductPanel', {
 												buttons: true,
 												feature: false,
 												merge: true,
-												insert: (user_level>=3),
-												remove: (user_level>=3),	
+												insert: (user_level==0),
+												remove: (user_level==0),	
 												defaultRec: {
 													data: {
 														product_id: '0',
