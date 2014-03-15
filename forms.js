@@ -2468,6 +2468,7 @@ Ext.define('OCS.MergeRecordForm', {
 	region: 'center',
 	autoScroll: true,
 	bodyPadding: '10 10 0',		
+	table: 'crm_customer',
 
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -2513,7 +2514,7 @@ Ext.define('OCS.MergeRecordForm', {
 					values = values.substring(0, values.length - 1);
 					Ext.Ajax.request({
 					   url: 'avia.php',					   
-					   params : {handle: 'web', action: 'merge_records', func: '',values:values, where: me.master.get('crm_id')+','+me.slave.get('crm_id')},
+					   params : {handle: 'web', action: 'merge_records', func: '', table: me.table, values:values, where: me.master.get('crm_id')+','+me.slave.get('crm_id')},
 					   success: function(response, opts) {						  
 						  Ext.MessageBox.alert('Status', 'Success !', function() {
 							  /*if (pk == 'retail')							  

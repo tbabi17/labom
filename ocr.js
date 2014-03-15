@@ -6431,6 +6431,7 @@ Ext.define('OCS.MergeRecordsWindow', {
 			region: 'center',
 			win: this,
 			name: me.name,
+			table: me.table,
 			master: me.master,
 			slave: me.slave
 		});
