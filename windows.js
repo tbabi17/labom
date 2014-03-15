@@ -2959,8 +2959,7 @@ Ext.define('OCS.NewCaseWindow', {
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
-				fieldLabel: 'Case reason',	
-				flex: 1,
+				fieldLabel: 'Reason',	
 				allowBlank: false,
 				name: 'complain_reason'
 			},{
@@ -2974,6 +2973,7 @@ Ext.define('OCS.NewCaseWindow', {
 					  model: 'CRM_ITEM',
 					  data: [{value: 'identify'},{value: 'research'},{value: 'resolve'}]
 				}),
+				fieldLabel: 'Stage',
 				name: 'case_stage',
 				value: 'identify',
 				queryMode: 'local',
@@ -2987,6 +2987,7 @@ Ext.define('OCS.NewCaseWindow', {
 				  model: 'CRM_ITEM',
  				  data: [{value: 'open'},{value: 'solved'}]
               }),
+			  fieldLabel: 'Status',
 			  name: 'complain_status',
 			  value: 'open',
 			  queryMode: 'local',
