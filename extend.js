@@ -689,7 +689,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 		var me = this;
 	
 		me.store = Ext.create('Ext.data.Store', {
-			pageSize: 10,
+			pageSize: 20,
 			proxy: {
 				type: 'ajax',
 				url : 'avia.php',
