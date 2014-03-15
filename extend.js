@@ -951,7 +951,17 @@ Ext.define('OCS.GridWithFormPanel', {
 				text: 'Merge...',
 				disabled: !me.merge,
 				handler: function(widget, event) {
-					
+					if (user_level > 0) {					
+						if (me.grid.getView().getSelectionModel().getSelection().length == 2){					
+							new OCS.MergeRecordsWindow({
+								name: me.xlsName,
+								master: me.grid.getView().getSelectionModel().getSelection()[0],
+								slave: me.grid.getView().getSelectionModel().getSelection()[1]
+							}).show();
+						} else
+							Ext.MessageBox.alert('Status', 'Master & Slave record !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
