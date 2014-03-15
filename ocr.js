@@ -699,14 +699,23 @@ Ext.define('OCS.RetailPanel', {
 				}				
 			}),
 			Ext.create('Ext.Action', {
-				iconCls   : 'email', 
-				text: 'Mail',
-				hidden: true,
-				handler: function(widget, event) {		
-					new OCS.MassMailWindow({
-					}).show();
-				}
-			}),			
+				iconCls   : 'tools', 
+				text: 'Tools ...',
+				menu: {
+					xtype: 'menu',
+					items: [{
+						text: 'GPS Location',
+						handler: function(widget, event) {		
+							
+						}
+					},{
+						text: 'Risk Management',
+						handler: function(widget, event) {		
+							
+						}
+					}]
+				}				
+			}),					
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help', 
