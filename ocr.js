@@ -4910,11 +4910,10 @@ Ext.define('OCS.CampaignActivityGrid', {
 						text: 'For all records',
 						handler: function(widget, event) {		
 							if (user_level > 0 ) {
-								if (me.recordSelected())
-									new OCS.CampaignActivityAssignWindow({
-										direction: me.selected.get('campaign'),
-										ids: 'all'
-									}).show();
+								new OCS.CampaignActivityAssignWindow({
+									direction: me.selected.get('campaign'),
+									ids: 'all'
+								}).show();
 							} else
 								Ext.MessageBox.alert('Error', 'Not available !', function() {});
 						}
