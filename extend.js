@@ -1016,8 +1016,16 @@ Ext.define('OCS.GridWithFormPanel', {
 
 	showForm: function() {
 		var me = this;
-		if (me.recordSelected())		
-			me.form.setVisible(true);
+		if (me.recordSelected()) {		
+			var selection = me.grid.getSelectionModel().getSelection();						
+			if (selection.length == 1) {
+				if (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
+					Ext.MessageBox.alert('Status', 'Not available !', function() {});
+					return;
+				}
+				me.form.setVisible(true);
+			}
+		}
 		else
 			Ext.MessageBox.alert('Status', 'No selection !', function() {});
 	},
