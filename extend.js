@@ -957,7 +957,7 @@ Ext.define('OCS.GridWithFormPanel', {
 								width: 600,
 								height: 400,
 								table: 'crm_products',
-								name: 'CRM_PRODUCT',
+								name: 'Product',
 								master: me.grid.getView().getSelectionModel().getSelection()[0],
 								slave: me.grid.getView().getSelectionModel().getSelection()[1]
 							}).show();

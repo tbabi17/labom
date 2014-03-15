@@ -2480,7 +2480,11 @@ Ext.define('OCS.MergeRecordForm', {
 		if (me.name == 'Contact')				
 			me.fields = 'firstName,lastName,gender,regNo,work_status,title,job_title,phone,phone1,email,country,city,district,horoo,address,descr,source';
 		else
+		if (me.name == 'Account')		
 			me.fields = 'firstName,lastName,company_torol,regNo,industry,industry_sub,capital,annual_revenue,tatvar,phone,phone1,fax,email,www,country,city,district,horoo,address,descr,source';
+		else
+		if (me.name == 'Product')
+			me.fields = 'product_name,product_type,price';
 
 		me.fs = me.fields.split(',');
 		me.items = [];
