@@ -4918,7 +4918,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 							} else
 								Ext.MessageBox.alert('Error', 'Not available !', function() {});
 						}
-					},{
+					},'-',{
 						text: 'Random assignment...',
 						handler: function(widget, event) {		
 							if (user_level > 0 ) {
