@@ -3059,6 +3059,13 @@ Ext.define('OCS.NewCaseWindow', {
 				fieldLabel: 'Owner',
 				name: 'owner',			
 				value: logged
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Created by',
+				name: 'userCode',			
+				value: logged,
+				hidden: true
 			}],
 			buttons: [{
 				iconCls: 'add',
