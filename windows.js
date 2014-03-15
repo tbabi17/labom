@@ -1279,7 +1279,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 			},{
 				xtype: 'searchcombo',
 				table: 'crm_users',
-				fieldLabel: 'Owner',
+				fieldLabel: 'Owner (multiselect)',
 				multiSelect: true,
 				forceSelection: true,
 				typeAhead: false,
