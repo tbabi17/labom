@@ -607,7 +607,7 @@ Ext.define('OCS.Module', {
 Ext.define('OSS.SearchCombo', {
     extend  : 'Ext.form.field.ComboBox',
     alias   : 'widget.searchcombo',
-	pageSize: 10,
+	pageSize: 20,
 	valueField: 'value',
 	displayField: 'value',
     typeAhead: false,
@@ -662,7 +662,7 @@ Ext.define('OSS.CustomerSearchCombo', {
     extend  : 'Ext.form.field.ComboBox',
     alias   : 'widget.customercombo',
 
-	pageSize: 10,
+	pageSize: 20,
 	valueField: 'crm_id',
 	displayField: 'crm_name',
     typeAhead: false,
