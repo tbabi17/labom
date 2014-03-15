@@ -2516,10 +2516,16 @@ Ext.define('OCS.MergeRecordForm', {
 					   params : {handle: 'web', action: 'merge_records', func: '',values:values, where: me.master.get('crm_id')+','+me.slave.get('crm_id')},
 					   success: function(response, opts) {						  
 						  Ext.MessageBox.alert('Status', 'Success !', function() {
-							  if (pk == 'retail')							  
+							  /*if (pk == 'retail')							  
 								  views['retail'].store.loadPage(1);
 							  else
+							  if (pk == 'corporate')							  
 								  views['corporate'].store.loadPage(1);
+							  else
+							  if (pk == 'product')
+								  views['product'].store.loadPage(1);*/
+
+							  views[pk].store.loadPage(1);
 							  me.win.close();
 						  });
 					   },
