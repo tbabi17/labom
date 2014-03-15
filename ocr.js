@@ -3222,6 +3222,15 @@ Ext.define('OCS.Reseller', {
 Ext.define('OCS.Cases', {
 	extend: 'OCS.Module',
 		
+	selectedRecord: function() {
+		var me = this;
+		var recs = me.cases.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0];
+		
+		return 0;
+	},
+
 	reload: function() {
 		var me = this;
 		me.cases.reload();
@@ -3304,6 +3313,7 @@ Ext.define('OCS.CaseView', {
 	sub: 'my_open_cases',
 	primary: 'case_id',
 	
+
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
