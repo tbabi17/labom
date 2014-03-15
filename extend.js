@@ -933,6 +933,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			Ext.create('Ext.Action', {
 				iconCls   : 'edit',
 				text: 'Expand...',
+				disabled: me.insert,
 				handler: function(widget, event) {
 					me.showForm();
 				}
