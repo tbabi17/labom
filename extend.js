@@ -706,7 +706,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 				},
 				extraParams: {handler: 'web', func: 'crm_customer_query_list', action: 'select'}
 			},
-			fields: [{name: 'crm_id', name: 'crm_name', name: 'phone'}]
+			fields: [{name: 'crm_id'}, {name: 'crm_name'}, {name: 'phone'}]
 		});
 
 		me.callParent(arguments);
