@@ -2958,6 +2958,12 @@ Ext.define('OCS.NewCaseWindow', {
 				table: 'crm_customer',
 				name: 'crm_id'
 			},{
+				xtype: 'textfield',
+				fieldLabel: 'Case reason',	
+				flex: 1,
+				allowBlank: false,
+				name: 'complain_reason'
+			},{
 				xtype: 'textarea',
 				fieldLabel: 'Note',	
 				flex: 1,
