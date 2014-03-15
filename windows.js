@@ -2967,7 +2967,6 @@ Ext.define('OCS.NewCaseWindow', {
 				xtype: 'textarea',
 				fieldLabel: 'Note',	
 				flex: 1,
-				allowBlank: false,
 				name: 'descr'
 			},{
 			    xtype: 'combo',
