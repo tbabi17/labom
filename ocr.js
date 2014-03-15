@@ -4918,6 +4918,18 @@ Ext.define('OCS.CampaignActivityGrid', {
 							} else
 								Ext.MessageBox.alert('Error', 'Not available !', function() {});
 						}
+					},{
+						text: 'Random assignment...',
+						handler: function(widget, event) {		
+							if (user_level > 0 ) {
+								if (me.recordSelected())
+									new OCS.CampaignActivityAssignWindow({
+										direction: me.selected.get('campaign'),
+										ids: 'all'
+									}).show();
+							} else
+								Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						}
 					}]
 				}	
 			}),
