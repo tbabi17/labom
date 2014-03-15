@@ -1194,7 +1194,7 @@ Ext.define('OCS.StageWindow', {
 						   }
 						});	
 
-						if (me.selected.data['stage'] == 'quote') {
+						if (me.selected.data['stage'] == 'quote' || me.selected.data['stage'] == 'close as won') {
 							Ext.Ajax.request({
 							   url: 'avia.php',
 							   params: {handle: 'web', action: 'create_quote', where: me.selected.get('deal_id')},
@@ -1450,6 +1450,19 @@ Ext.define('OCS.DealDescrWindow', {
 										   ",status='"+form.findField('status').getValue()+"'"+
 										   ",descr='"+form.findField('descr').getValue()+"'";
 							me.selected.data['stage'] = me.stage;
+
+							if (me.stage == 'close as won') {
+								Ext.Ajax.request({
+								   url: 'avia.php',
+								   params: {handle: 'web', action: 'create_quote', where: me.selected.get('deal_id')},
+								   success: function(response, opts) {
+									  Ext.MessageBox.alert('Status', 'Success !', function() {});
+								   },
+								   failure: function(response, opts) {										   
+									  Ext.MessageBox.alert('Status', 'Error !', function() {});
+								   }
+								});	
+							}
 						} else {
 							values_deals = "remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
 										   ",competitor_name='"+form.findField('competitor_name').getValue()+"'"+
@@ -1468,7 +1481,7 @@ Ext.define('OCS.DealDescrWindow', {
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
-						});													
+						});														
 					}
 					else
 					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
