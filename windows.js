@@ -3138,21 +3138,6 @@ Ext.define('OCS.GMapWindow', {
 
 	initComponent: function() {
 		var me = this;				
-		
-		me.tbar = [
-			{
-				iconCls: 'commit',
-				text: 'Commit',
-				handler: function() {
-				}
-			},
-			{
-				iconCls: 'reset',
-				text: 'Reset',
-				handler: function() {
-				}
-			}
-		];
 
 		me.items = [{
 			region: 'center',
@@ -3160,7 +3145,21 @@ Ext.define('OCS.GMapWindow', {
 			center: {
 				geoCodeAddr: '15171, Ulaanbaatar, Mongolia'
 			},
-			markers: me.markers
+			markers: me.markers,
+			tbar : [
+				{
+					iconCls: 'commit',
+					text: 'Commit',
+					handler: function() {
+					}
+				},
+				{
+					iconCls: 'reset',
+					text: 'Reset',
+					handler: function() {
+					}
+				}
+			]
 		}];
 		
 		me.callParent(arguments);
