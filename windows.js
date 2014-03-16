@@ -3146,7 +3146,7 @@ Ext.define('OCS.GMapWindow', {
 				geoCodeAddr: '15171, Ulaanbaatar, Mongolia'
 			},
 			markers: me.markers,
-			tbar : [
+			bbar : ['->',
 				{
 					iconCls: 'commit',
 					text: 'Commit',
