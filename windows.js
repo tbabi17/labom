@@ -3143,8 +3143,7 @@ Ext.define('OCS.GMapWindow', {
 			region: 'center',
 			xtype: 'gmappanel',
 			center: {
-				geoCodeAddr: '15171, Ulaanbaatar, Mongolia',
-				marker: {title: 'Ulaanbaatar, Mongolia'}
+				geoCodeAddr: '15171, Ulaanbaatar, Mongolia'
 			},
 			markers: me.markers
 		}];
