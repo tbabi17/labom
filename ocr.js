@@ -706,7 +706,7 @@ Ext.define('OCS.RetailPanel', {
 					items: [{
 						text: 'Location map',
 						handler: function(widget, event) {		
-							
+							new OCS.GMapWindow().show();
 						}
 					},{
 						text: 'Risk Management',
