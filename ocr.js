@@ -710,7 +710,7 @@ Ext.define('OCS.RetailPanel', {
 								markers: [{
 									lat: 47.92332,
 									lng: 106.916767,
-									dragable: true,
+									draggable: true,
 									title: 'Sukhbaatar Square'									
 								}]
 							}).show();
