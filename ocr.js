@@ -689,11 +689,12 @@ Ext.define('OCS.RetailPanel', {
 					},'-',{
 						text: 'Add to campaign for selected',
 						handler: function(widget, event) {		
-							new OCS.AddToCampaignWindow({
-								direction: me.xlsName,
-								title: 'Campaigns ('+me.grid.getView().getSelectionModel().getSelection().length+' '+me.xlsName+')',
-								ids: me.selectedIds()
-							}).show();
+							if (me.recordSelected())
+								new OCS.AddToCampaignWindow({
+									direction: me.xlsName,
+									title: 'Campaigns ('+me.grid.getView().getSelectionModel().getSelection().length+' '+me.xlsName+')',
+									ids: me.selectedIds()
+								}).show();
 						}
 					}]
 				}				
@@ -705,16 +706,17 @@ Ext.define('OCS.RetailPanel', {
 					xtype: 'menu',
 					items: [{
 						text: 'Location map',
-						handler: function(widget, event) {		
-							new OCS.GMapWindow({
-								ids: me.selectedIds(),
-								markers: [{
-									lat: 47.92332,
-									lng: 106.916767,
-									draggable: true,
-									title: 'Sukhbaatar Square'									
-								}]
-							}).show();
+						handler: function(widget, event) {
+							if (me.recordSelected())
+								new OCS.GMapWindow({
+									ids: me.selectedIds(),
+									markers: [{
+										lat: 47.92332,
+										lng: 106.916767,
+										draggable: true,
+										title: 'Sukhbaatar Square'									
+									}]
+								}).show();
 						}
 					},{
 						text: 'Risk Management',
