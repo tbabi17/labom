@@ -711,8 +711,8 @@ Ext.define('OCS.RetailPanel', {
 								new OCS.GMapWindow({
 									ids: me.selectedIds(),
 									markers: [{
-										lat: 47.92332,
-										lng: 106.916767,
+										lat: 47.919078,
+										lng: 106.91754,
 										draggable: true,
 										title: 'Sukhbaatar Square'									
 									}]
