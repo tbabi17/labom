@@ -3139,6 +3139,21 @@ Ext.define('OCS.GMapWindow', {
 	initComponent: function() {
 		var me = this;				
 		
+		me.tbar = [
+			{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+				}
+			},
+			{
+				iconCls: 'reset',
+				text: 'Reset',
+				handler: function() {
+				}
+			}
+		];
+
 		me.items = [{
 			region: 'center',
 			xtype: 'gmappanel',
@@ -3147,6 +3162,7 @@ Ext.define('OCS.GMapWindow', {
 			},
 			markers: me.markers
 		}];
+		
 		me.callParent(arguments);
 	}	
 });
