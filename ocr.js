@@ -707,7 +707,11 @@ Ext.define('OCS.RetailPanel', {
 						text: 'Location map',
 						handler: function(widget, event) {		
 							new OCS.GMapWindow({
-								latlng: 
+								markers: [{
+									lat: 47.92332,
+									lng: 106.916767,
+									title: 'Sukhbaatar Square'									
+								}]
 							}).show();
 						}
 					},{
