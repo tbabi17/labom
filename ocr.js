@@ -705,6 +705,7 @@ Ext.define('OCS.RetailPanel', {
 				menu: {
 					xtype: 'menu',
 					items: [{
+						iconCls: 'marker',
 						text: 'Location map...',
 						handler: function(widget, event) {
 							if (me.recordSelected())
