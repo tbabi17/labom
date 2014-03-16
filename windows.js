@@ -3128,7 +3128,7 @@ Ext.define('OCS.NewCaseWindow', {
 Ext.define('OCS.GMapWindow', {
 	extend: 'OCS.Window',
 	autoShow: true,
-	layout: 'fit',
+	layout: 'border',
 	title: 'GMap Window',
 	closeAction: 'hide',
 	width:450,
@@ -3139,6 +3139,7 @@ Ext.define('OCS.GMapWindow', {
 		var me = this;				
 		
 		me.items = [{
+			region: 'center',
 			xtype: 'gmappanel',
 			center: {
 				geoCodeAddr: '4 Yawkey Way, Boston, MA, 02215-3409, USA',
