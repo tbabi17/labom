@@ -705,7 +705,7 @@ Ext.define('OCS.RetailPanel', {
 				menu: {
 					xtype: 'menu',
 					items: [{
-						text: 'Location map',
+						text: 'Location map...',
 						handler: function(widget, event) {
 							if (me.recordSelected())
 								new OCS.GMapWindow({
@@ -719,7 +719,7 @@ Ext.define('OCS.RetailPanel', {
 								}).show();
 						}
 					},{
-						text: 'Risk Management',
+						text: 'Risk Management...',
 						handler: function(widget, event) {		
 							
 						}
