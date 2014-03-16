@@ -25,7 +25,8 @@ Ext.require([
 	'Ext.ux.CellDragDrop',
 	'Ext.ux.form.SearchField',
 	'Ext.ux.form.ItemSelector',
-	'Ext.ux.window.Notification'
+	'Ext.ux.window.Notification',
+	'Ext.ux.GMapPanel'
 ]);
 
 function getCookie(c_name) {
