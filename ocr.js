@@ -1160,7 +1160,12 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			
 			if (me.selected.get('source') == 'campaign') {
-//				new OCS.DealCreateWindow().show();
+//				
+				Ext.Msg.confirm('Warning ','Are you sure you want to create deal? ('+selection.length+' records)',function(btn){
+					if(btn === 'yes'){
+						new OCS.CreateDealWindow().show();
+					}
+				});
 			}
 
 			Ext.Ajax.request({
@@ -4835,7 +4840,7 @@ Ext.define('OCS.Dashboard', {
 	},
 
 	prevmonthValue: function() {
-		month =  new Date().getMonth() - 1;
+		month =  new Date().getMonth();
 		if (month < 0) month = 12;		
 		return month;
 	},

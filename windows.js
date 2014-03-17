@@ -2931,6 +2931,198 @@ Ext.define('OCS.AddNoteWindow', {
 	}
 });
 
+Ext.define('OCS.CreateDealWindow', {
+	extend: 'OCS.Window',
+	title: 'Create deal',
+	maximizable: true,
+	height: 450,
+	modal: false,
+	width: 400,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id: 'new_deal_form',
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 1,
+			items: [{
+				xtype: 'customercombo',
+				fieldLabel: 'Phone or Name',
+				allowBlank: false,
+				valueField: 'crm_id',
+				table: 'crm_customer',
+				name: 'crm_id'				
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Subject',	
+				allowBlank: false,
+				name: 'deal'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Note',	
+				flex: 1,
+				name: 'descr'
+			},{
+			    xtype: 'combo',
+				store: Ext.create('Ext.data.Store', {
+					  model: 'CRM_ITEM',
+					  data: [{value: 'identify'},{value: 'research'},{value: 'resolve'}]
+				}),
+				listeners: {
+					change:    function(field, newValue, oldValue) {
+						if (newValue == 'resolve')
+							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('solved');
+						else
+							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('open');
+					}
+				},
+				fieldLabel: 'Stage',
+				name: 'case_stage',
+				value: 'identify',
+				queryMode: 'local',
+				displayField: 'value',
+				valueField: 'value',
+				triggerAction: 'all',
+				editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_ITEM',
+ 				  data: [{value: 'open'},{value: 'solved'}]
+              }),
+			  fieldLabel: 'Status',
+			  name: 'complain_status',
+			  value: 'open',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  disabled: true,
+			  editable: false
+			},{
+			  xtype: 'combo',
+			  fieldLabel: 'Priority',
+			  value: 'medium',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
+              }),
+			  name: 'priority',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'inbound'},{value: 'outbound'}]
+              }),
+			  name: 'calltype',
+			  queryMode: 'local',
+			  fieldLabel: 'Direction',
+			  value: 'inbound',
+		      displayField: 'value',
+			  valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+			  xtype: 'combo',
+ 			  fieldLabel: 'Call center',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_ITEM',
+				 data: [{value: '94097007'},{value: '70107007'}] 
+			  }),
+			  name: 'call_from',
+			  value: '94097007',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},
+			{
+			  xtype: 'combo',
+			  fieldLabel: 'Resolution type',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_ITEM',
+				 data: [{value: 'problem solved'},{value: 'information provided'},{value: 'customer car'},{value: 'inquiry'},{value: 'box'}] 
+			  }),
+			  name: 'resolution_type',
+			  queryMode: 'local',
+		      displayField: 'value',
+  			  allowBlank: false,				
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},
+			{
+				xtype: 'datefield',
+				fieldLabel: 'Close date',				
+				name: 'closing_date',
+				value: new Date(),
+				format: 'Y-m-d'
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',
+				name: 'owner',			
+				value: logged
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Created by',
+				name: 'userCode',			
+				value: logged,
+				hidden: true
+			}],
+			buttons: [{
+				iconCls: 'add',
+				text: 'Create',				
+				handler: function() {
+					new OCS.RetailNewWindow({							
+					}).show();
+				}
+			},'->',{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if(form.isValid()){
+						var values = form.getValues(true);						
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {
+							  views['cases'].reload();
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});
+					}
+				}
+			}]
+		});
+
+		me.items = [me.form];	
+		me.callParent(arguments);
+	}
+});
 
 Ext.define('OCS.NewCaseWindow', {
 	extend: 'OCS.Window',
