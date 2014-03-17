@@ -257,7 +257,13 @@ Ext.define('OCS.OwnerView', {
 				selectionchange : function(item, selections){
 					me.selectAction(selections);
 				}
-			}
+			},
+			features : [{
+				ftype: 'grouping',
+				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
+				hideGroupedHeader: true,
+				startCollapsed: true
+			}]
 		});
 				
 		me.panel = Ext.create('Ext.panel.Panel', {
