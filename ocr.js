@@ -325,6 +325,35 @@ Ext.define('OCS.CompetitorView', {
 			views['competitor_deals'].updateSource('');
 		else
 			views['competitor_deals'].updateSource(selections[0].get('competitor_name'));
+	},
+	
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.dataview = Ext.create('Ext.view.View', {
+			deferInitialRefresh: false,
+			store: me.store,
+			tpl  : me.createTmpl(),
+			id: me.cls,
+			itemSelector: 'div.phone',
+			overItemCls : 'phone-hover',
+			multiSelect : true,
+			autoScroll  : true,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			}
+		});
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.dataview,		
+			region: 'center'
+		});			
+		return me.panel;
 	}
 });
 
