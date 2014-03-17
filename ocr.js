@@ -238,7 +238,7 @@ Ext.define('OCS.OwnerView', {
 				},{
 					text: "Gmail",
 					dataIndex: 'gmailAccount',
-					width: 120,
+					width: 140,
 					sortable: true
 				},{
 					text: "Section",
