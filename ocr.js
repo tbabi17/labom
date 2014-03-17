@@ -1161,9 +1161,11 @@ Ext.define('OCS.ActivityGrid', {
 			
 			if (me.selected.get('source') == 'campaign') {
 //				
-				Ext.Msg.confirm('Warning ','Are you sure you want to create deal? ('+selection.length+' records)',function(btn){
+				Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
 					if(btn === 'yes'){
-						new OCS.CreateDealWindow().show();
+						new OCS.CreateDealWindow({
+							selected: me.selected
+						}).show();
 					}
 				});
 			}

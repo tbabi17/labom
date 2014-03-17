@@ -2968,22 +2968,24 @@ Ext.define('OCS.CreateDealWindow', {
 				flex: 1,
 				name: 'descr'
 			},{
+				xtype: 'textarea',
+				fieldLabel: 'Current situation',	
+				flex: 1,
+				name: 'current_situation'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Customer need',	
+				flex: 1,
+				name: 'customer_need'
+			},{
 			    xtype: 'combo',
 				store: Ext.create('Ext.data.Store', {
 					  model: 'CRM_ITEM',
-					  data: [{value: 'identify'},{value: 'research'},{value: 'resolve'}]
-				}),
-				listeners: {
-					change:    function(field, newValue, oldValue) {
-						if (newValue == 'resolve')
-							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('solved');
-						else
-							Ext.getCmp('new_case_form').getForm().findField('complain_status').setValue('open');
-					}
-				},
+					  data: [{value: 'lead'},{value: 'opportunity'},{value: 'quote'},{value: 'close as lost'},{value: 'close as won'}]
+				}),				
 				fieldLabel: 'Stage',
-				name: 'case_stage',
-				value: 'identify',
+				name: 'stage',
+				value: 'opportunity',
 				queryMode: 'local',
 				displayField: 'value',
 				valueField: 'value',
@@ -2993,75 +2995,34 @@ Ext.define('OCS.CreateDealWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
 				  model: 'CRM_ITEM',
- 				  data: [{value: 'open'},{value: 'solved'}]
+ 				  data: [{value: 'new'},{value: 'extend'}]
               }),
-			  fieldLabel: 'Status',
-			  name: 'complain_status',
-			  value: 'open',
-			  queryMode: 'local',
-		      displayField: 'value',
-		      valueField: 'value',
-			  triggerAction: 'all',
-			  disabled: true,
-			  editable: false
-			},{
-			  xtype: 'combo',
-			  fieldLabel: 'Priority',
-			  value: 'medium',
-			  store: Ext.create('Ext.data.Store', {
-  				  model: 'CRM_ITEM',
- 				  data: [{value: 'low'},{value: 'medium'},{value: 'high'}]
-              }),
-			  name: 'priority',
+			  fieldLabel: 'Origin',
+			  name: 'deal_origin',
+			  value: 'new',
 			  queryMode: 'local',
 		      displayField: 'value',
 		      valueField: 'value',
 			  triggerAction: 'all',
 			  editable: false
 			},{
-			  xtype: 'combo',
-			  store: Ext.create('Ext.data.Store', {
-  				  model: 'CRM_ITEM',
- 				  data: [{value: 'inbound'},{value: 'outbound'}]
-              }),
-			  name: 'calltype',
-			  queryMode: 'local',
-			  fieldLabel: 'Direction',
-			  value: 'inbound',
-		      displayField: 'value',
-			  valueField: 'value',
-			  triggerAction: 'all',
-			  editable: false
+			  xtype: 'currencyfield',
+			  fieldLabel: 'Expected revenue',
+			  value: 0,
+			  name: 'expected_revenue'
 			},{
-			  xtype: 'combo',
- 			  fieldLabel: 'Call center',
-			  store: Ext.create('Ext.data.Store', {
-				 model: 'CRM_ITEM',
-				 data: [{value: '94097007'},{value: '70107007'}] 
-			  }),
-			  name: 'call_from',
-			  value: '94097007',
-			  queryMode: 'local',
-		      displayField: 'value',
-		      valueField: 'value',
-			  triggerAction: 'all',
+			  xtype: 'numberfield',
+			  name: 'probablity',
+			  fieldLabel: 'Probablity',
+			  value: 0
+			},{
+			  xtype: 'textfield',
+ 			  fieldLabel: 'Campaign',
+			  name: 'campaign',
+			  value: me.selected.get('campaign'),
+			  readOnly: true,
 			  editable: false
-			},
-			{
-			  xtype: 'combo',
-			  fieldLabel: 'Resolution type',
-			  store: Ext.create('Ext.data.Store', {
-				 model: 'CRM_ITEM',
-				 data: [{value: 'problem solved'},{value: 'information provided'},{value: 'customer car'},{value: 'inquiry'},{value: 'box'}] 
-			  }),
-			  name: 'resolution_type',
-			  queryMode: 'local',
-		      displayField: 'value',
-  			  allowBlank: false,				
-		      valueField: 'value',
-			  triggerAction: 'all',
-			  editable: false
-			},
+			},			
 			{
 				xtype: 'datefield',
 				fieldLabel: 'Close date',				
@@ -3083,13 +3044,6 @@ Ext.define('OCS.CreateDealWindow', {
 				hidden: true
 			}],
 			buttons: [{
-				iconCls: 'add',
-				text: 'Create',				
-				handler: function() {
-					new OCS.RetailNewWindow({							
-					}).show();
-				}
-			},'->',{
 				iconCls: 'reset',
 				text: 'Reset',				
 				handler: function() {
@@ -3105,9 +3059,8 @@ Ext.define('OCS.CreateDealWindow', {
 						var values = form.getValues(true);						
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
+						   params: {handle: 'web', table: 'crm_deals', action: 'insert', values: values, where: ''},
 						   success: function(response, opts) {
-							  views['cases'].reload();
 							  me.close();
 						   },
 						   failure: function(response, opts) {										   
