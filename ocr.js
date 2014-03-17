@@ -228,6 +228,7 @@ Ext.define('OCS.OwnerView', {
 		});
 
 		me.grid = Ext.create('Ext.grid.Panel', {
+			border: false,
 			columns: [{
 					text: "Owner",
 					dataIndex: 'owner',
