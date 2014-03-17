@@ -226,11 +226,38 @@ Ext.define('OCS.OwnerView', {
 				}
 			}
 		});
+
+		me.grid = Ext.create('Ext.grid.Panel', {
+			columns: [{
+					text: "Owner",
+					dataIndex: 'owner',
+					flex: 1,
+					renderer: renderOwner,
+					sortable: true
+				},{
+					text: "Section",
+					dataIndex: 'section',
+					width: 60,
+					sortable: true
+				},{
+					text: "Team",
+					dataIndex: 'team',
+					width: 100,
+					sortable: true
+				}
+			],
+			store: me.store,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			}
+		});
 				
 		me.panel = Ext.create('Ext.panel.Panel', {
 			layout: 'fit',
 			border: false,
-			items : me.dataview,		
+			items : me.grid,		
 			region: 'center'
 		});			
 		return me.panel;
