@@ -2964,11 +2964,6 @@ Ext.define('OCS.CreateDealWindow', {
 				name: 'deal'
 			},{
 				xtype: 'textarea',
-				fieldLabel: 'Note',	
-				flex: 1,
-				name: 'descr'
-			},{
-				xtype: 'textarea',
 				fieldLabel: 'Current situation',	
 				flex: 1,
 				name: 'current_situation'
@@ -3042,6 +3037,11 @@ Ext.define('OCS.CreateDealWindow', {
 				name: 'userCode',			
 				value: logged,
 				hidden: true
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Note',	
+				flex: 1,
+				name: 'descr'
 			}],
 			buttons: [{
 				iconCls: 'reset',
