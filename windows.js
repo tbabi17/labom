@@ -2951,11 +2951,11 @@ Ext.define('OCS.CreateDealWindow', {
 			title: '',
 			flex: 1,
 			items: [{
-				xtype: 'customercombo',
-				fieldLabel: 'Phone or Name',
+				xtype: 'textfield',
+				fieldLabel: 'CRM_ID',
 				allowBlank: false,
-				valueField: 'crm_id',
-				table: 'crm_customer',
+				readOnly: true,
+				value: me.selected.get('crm_id'),
 				name: 'crm_id'				
 			},{
 				xtype: 'textfield',
