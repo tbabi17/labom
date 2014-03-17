@@ -2021,6 +2021,24 @@ Ext.define('OCS.PropertyGrid', {
 			};
 		}
 
+		if (name == 'issue')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: '1'},{value: '2'},{value: '3'},{value: '4'},{value: '5'}]
+              }),
+			  name: name,
+			  value: 1,
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			};
+		}
+
 		if (name == 'priority')
 		{
 			return {
