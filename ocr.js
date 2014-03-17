@@ -261,8 +261,7 @@ Ext.define('OCS.OwnerView', {
 			features : [{
 				ftype: 'grouping',
 				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
-				hideGroupedHeader: true,
-				startCollapsed: true
+				hideGroupedHeader: true
 			}]
 		});
 				
