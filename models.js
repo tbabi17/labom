@@ -251,7 +251,7 @@ fields['CRM_WORKFLOW_FIELDS'] = [
    {name: 'subject', text: 'Subject', width: 200, primary: true},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'precent', text: 'Precent', width: 60, align: 'center', renderer: renderPrecent},
-   {name: 'issue', type: 'int', text: 'Issue', width: 60, align: 'center'},
+   {name: 'issue', type: 'int', text: 'Urgency', width: 60, align: 'center'},
    {name: 'start_date', text: 'Start date', width: 70, align: 'center', renderer: renderDate},
    {name: 'start_time', text: 'Start time', width: 65, align: 'center', renderer: renderTime},
    {name: 'end_date', text: 'End date', width: 70, align: 'center', renderer: renderDate},
