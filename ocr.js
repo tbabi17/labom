@@ -226,7 +226,7 @@ Ext.define('OCS.OwnerView', {
 				}
 			}
 		});
-
+		me.store.groupField = 'team';
 		me.grid = Ext.create('Ext.grid.Panel', {
 			border: false,
 			columns: [{
@@ -260,8 +260,7 @@ Ext.define('OCS.OwnerView', {
 			},
 			features : [{
 				ftype: 'grouping',
-				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)',
-				hideGroupedHeader: true
+				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)'
 			}]
 		});
 				
