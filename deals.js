@@ -549,6 +549,21 @@ Ext.define('OCS.DealProductGrid', {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'deal_move',
+				text: 'Move to ...',
+				handler: function(widget, event) {		
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealProductMoveWindow({
+								ids: me.selectedIds('id'),
+								backgrid: me.grid,
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'sales',

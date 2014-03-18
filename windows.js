@@ -1471,6 +1471,76 @@ Ext.define('OCS.DealMoveWindow', {
 	}
 });
 
+Ext.define('OCS.DealProductMoveWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Move to',
+	maximizable: false,
+	height: 150,
+	width: 300,	
+	count: 0,
+
+	initComponent: function() {
+		var me = this;
+		me.title = 'Move to ('+(me.ids.split(':').length-1)+' record selected)';
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'deal_move_to',				
+			title: 'Move to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'combo',
+				fieldLabel: 'Set to',
+				valueField: 'id',
+				displayField: 'value',
+				name: 'move_day',
+				value: 15,
+				allowBlank: false,
+				forceSelection: true,
+				queryMode: 'local',
+				store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_OBJECT',
+				  data: [{id: 5, value: '5 days ago'},{id: 10, value: '10 days ago'},{id: 15, value: '15 days ago'},{id: 20, value: '20 days ago'},{id:25, value: '25 days ago'},{id: -5, value: 'after 5 days'},{id: -10, value: 'after 10 days'},{id: -15, value: 'after 15 days'}, {id:-20, value: 'after 20 days'}, {id:-25, value: 'after 25 days'}]
+				})
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('move_day').getValue()+","+form.findField('selected').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_deal_products', action: 'update_deal_products_move', values: values},
+						   success: function(response, opts) {
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.ResellerUndoWindow', {
 	extend: 'OCS.Window',
 	
