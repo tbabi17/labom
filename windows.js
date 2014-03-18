@@ -1869,7 +1869,10 @@ Ext.define('OCS.ActivityDetailWindow', {
 				xtype: 'displayfield',
 				fieldLabel: 'Phone/Email',				
 				readOnly: true,
-				name: 'phone'			
+				name: 'phone',
+				renderer: function(v) {
+					return '<b>'+v+'</b>';
+				}
 			},{
 				xtype: 'displayfield',
 				fieldLabel: 'Deal name',				
