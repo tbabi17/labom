@@ -2935,7 +2935,7 @@ Ext.define('OCS.CreateDealWindow', {
 	extend: 'OCS.Window',
 	title: 'Create deal',
 	maximizable: true,
-	height: 450,
+	height: 500,
 	modal: false,
 	width: 400,	
 	modal: true,
