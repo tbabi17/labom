@@ -1858,7 +1858,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				readOnly: true,
 				name: 'crm_name',
 				renderer: function(v) {
-					return '<b>'+v+'</b>';
+					return '<b>'+v.split(',')[0]+'</b>';
 				}
 			},{
 				xtype: 'displayfield',
