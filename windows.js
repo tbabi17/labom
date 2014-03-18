@@ -1848,7 +1848,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'west',
-			flex: 0.6,
+			flex: 0.75,
 			hidden: false,
 			closable: false,			
 			title: '',
