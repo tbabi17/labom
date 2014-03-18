@@ -1960,8 +1960,6 @@ Ext.define('OCS.ActivityDetailWindow', {
 	    me.csales = new OCS.CustomerSalesPanel();
 		me.ccase = new OCS.CaseGrid();
 
-
-
 		me.selected = me.record;
 		me.form.getForm().loadRecord(me.record);
 
@@ -2009,7 +2007,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 				Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
 					if(btn === 'yes'){
 						Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
-							if(btn === 'yes'){
+							if(btn === 'yes') {
 								new OCS.CreateDealWindow({
 									selected: me.selected
 								}).show();
@@ -2017,10 +2015,6 @@ Ext.define('OCS.ActivityDetailWindow', {
 						});
 					}
 				});
-
-				/*new OCS.NewDealWindow({
-					selected: me.selected
-				}).createWindow();*/
 			}
 
 			Ext.Ajax.request({

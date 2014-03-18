@@ -235,7 +235,7 @@ fields['CRM_CALENDAR_FIELDS'] = [
    {name: 'subject', text: 'Subject', width: 200},
    {name: 'source', text: 'Source', hidden: true, width: 150},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
-   {name: 'userCpde', text: 'Created by', width: 100, renderer: renderOwner, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, renderer: renderOwner, hidden: true},
    {name: '_date', text: 'Created on', width: 80},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'campaign', text: 'Campaign', hidden: true, width: 150},
