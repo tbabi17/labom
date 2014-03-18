@@ -1914,12 +1914,6 @@ Ext.define('OCS.ActivityDetailWindow', {
 				name: 'descr'
 			}],
 			buttons: [{
-				iconCls: 'close',
-				text: 'Close',				
-				handler: function() {
-					me.close();
-				}
-			},{
 				iconCls: 'calendar',
 				text: 'Calendar',				
 				handler: function() {
