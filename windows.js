@@ -1982,8 +1982,15 @@ Ext.define('OCS.ActivityDetailWindow', {
 			}
 			
 			if (me.selected.get('source') == 'campaign') {
-				Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
+				Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
 					if(btn === 'yes'){
+						Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
+							if(btn === 'yes'){
+								new OCS.CreateDealWindow({
+									selected: me.selected
+								}).show();
+							}
+						});
 					}
 				});
 
