@@ -1492,7 +1492,7 @@ Ext.define('OCS.DealProductMoveWindow', {
 			title: '',
 			items: [{
 				xtype: 'textfield',
-				fieldLabel: 'Selected '+me.direction,				
+				fieldLabel: 'Selected ',				
 				name: 'selected',
 				value: me.ids
 			},{
