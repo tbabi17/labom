@@ -218,7 +218,28 @@ Ext.define('OCS.DealGrid', {
 		});
 
 		return me.panel;
-	}	
+	},
+	
+	selectedIds: function(id) {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		var result = '';
+		for (i = 0; i < recs.length; i++) {
+			result += recs[i].get(id)+':';
+		}
+
+		return result;
+	},
+
+	recordSelected: function() {
+		var me = this;
+		var recs = me.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return true;
+		
+		Ext.MessageBox.alert('Status', 'No Selection !', function() {});
+		return false;
+	}
 });
 
 Ext.define('OCS.DealContactGrid', {
@@ -679,7 +700,7 @@ Ext.define('OCS.DealProductGrid', {
 			renderer: renderDate,
 			sortable: true
 		}];
-	}
+	}	
 });
 
 Ext.define('OCS.CompetitorDealProductGrid', {
