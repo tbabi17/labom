@@ -237,7 +237,8 @@ fields['CRM_CALENDAR_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: '_date', text: 'Created on', width: 80},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
-   {name: 'campaign', text: 'Campaign', hidden: true, width: 150}
+   {name: 'campaign', text: 'Campaign', hidden: true, width: 150},
+   {name: 'phone', text: 'Phone/Email', hidden: true, width: 150}
 ];
 
 Ext.define('CRM_CALENDAR', {
