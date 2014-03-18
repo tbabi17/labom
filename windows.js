@@ -1907,12 +1907,25 @@ Ext.define('OCS.ActivityDetailWindow', {
 				xtype: 'displayfield',
 				fieldLabel: 'Owner',				
 				readOnly: true,
-				name: 'owner'
+				name: 'owner',
+				renderer: renderOwner
 			},{
 				xtype: 'displayfield',
 				fieldLabel: 'Campaign',
 				readOnly: true,
 				name: 'campaign'
+			},{
+				xtype: 'displayfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				name: 'userCode',
+				renderer: renderOwner
+			},{
+				xtype: 'displayfield',
+				fieldLabel: 'Created on',				
+				readOnly: true,
+				name: '_date',
+				renderer: renderCreatedDate
 			},{
 				xtype: 'displayfield',
 				fieldLabel: 'Activity source',
