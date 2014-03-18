@@ -1856,7 +1856,10 @@ Ext.define('OCS.ActivityDetailWindow', {
 				xtype: 'displayfield',
 				fieldLabel: 'Potential Customer',
 				readOnly: true,
-				name: 'crm_name'
+				name: 'crm_name',
+				renderer: function(v) {
+					return '<b>'+v+'</b>';
+				}
 			},{
 				xtype: 'displayfield',
 				fieldLabel: 'Activity type',
