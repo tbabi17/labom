@@ -2588,11 +2588,7 @@ Ext.define('OCS.GridView', {
 								title: 'Activity detail',
 								record: record,
 								backgrid: me
-							}).show();
-
-							new OCS.CreateDealWindow({
-								selected: record
-							}).show();
+							}).show();							
 						}
 
 					if (me.func == 'crm_corporate_list' || me.func == 'crm_retail_list') {
