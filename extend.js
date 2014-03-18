@@ -1019,7 +1019,7 @@ Ext.define('OCS.GridWithFormPanel', {
 		if (me.recordSelected()) {		
 			var selection = me.grid.getSelectionModel().getSelection();						
 			if (selection.length == 1) {
-				if (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
+				if (user_level < 3 && selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged) {
 					Ext.MessageBox.alert('Status', 'Not available !', function() {});
 					return;
 				}
