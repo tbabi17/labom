@@ -781,7 +781,13 @@ Ext.define('OCS.RetailPanel', {
 										lat: 47.919078,
 										lng: 106.91754,
 										draggable: true,
-										title: 'Sukhbaatar Square'									
+										title: 'Sukhbaatar Square',
+										listeners: {
+											'dragend': function(marker) {
+												var latLng = marker.latLng;
+												alert(latLng.lat);
+											}
+										}
 									}]
 								}).show();
 						}
