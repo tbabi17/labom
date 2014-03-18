@@ -2956,6 +2956,7 @@ Ext.define('OCS.CreateDealWindow', {
 				fieldLabel: 'CRM_ID',
 				allowBlank: false,
 				readOnly: true,
+				hidden: true,
 				value: me.selected.get('crm_id'),
 				name: 'crm_id'				
 			},{
