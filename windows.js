@@ -1832,7 +1832,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	maximizable: true,
 	height: 550,
 	modal: false,
-	width: 870,	
+	width: 900,	
 	modal: true,
 
 	listeners : {
