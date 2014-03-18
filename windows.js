@@ -1934,7 +1934,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Descr',					
-				height: 140,
+				flex: 1,
 				name: 'descr'
 			}],
 			buttons: [{
