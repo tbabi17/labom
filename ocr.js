@@ -788,7 +788,7 @@ Ext.define('OCS.RetailPanel', {
 												var latLng = marker.latLng;
 												var lat = latLng.lat();
 												var lng = latLng.lng();
-												alert(marker.crm_id);
+												alert(marker.title);
 											}
 										}
 									}]
