@@ -3026,17 +3026,17 @@ Ext.define('OCS.CreateDealWindow', {
 	maximizable: true,
 	height: 550,
 	modal: false,
-	width: 400,	
+	width: 400,
 	modal: true,
 
 	initComponent: function() {
-		var me = this;								
+		var me = this;	
 
 		me.form = Ext.create('OCS.FormPanel', {
 			id: 'new_deal_form',
 			region: 'center',
 			hidden: false,
-			closable: false,			
+			closable: false,
 			title: '',
 			flex: 1,
 			items: [{
@@ -3046,7 +3046,7 @@ Ext.define('OCS.CreateDealWindow', {
 				readOnly: true,
 				hidden: true,
 				value: me.selected.get('crm_id'),
-				name: 'crm_id'				
+				name: 'crm_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Subject',	
