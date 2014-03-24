@@ -3195,6 +3195,11 @@ Ext.define('OCS.NewCaseWindow', {
 				name: 'crm_id'				
 			},{
 				xtype: 'textfield',
+				fieldLabel: 'Phone',	
+				allowBlank: false,
+				name: 'phone'
+			},{
+				xtype: 'textfield',
 				fieldLabel: 'Reason',	
 				allowBlank: false,
 				name: 'complain_reason'
