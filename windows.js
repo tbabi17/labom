@@ -3188,7 +3188,7 @@ Ext.define('OCS.NewCaseWindow', {
 			flex: 1,
 			items: [{
 				xtype: 'customercombo',
-				fieldLabel: 'Phone or Name',
+				fieldLabel: 'Customer',
 				allowBlank: false,
 				valueField: 'crm_id',
 				table: 'crm_customer',
