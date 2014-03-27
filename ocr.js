@@ -3194,14 +3194,8 @@ Ext.define('OCS.ResellerView', {
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
-					} else {
-						if (me.recordSelected())						
-							new OCS.DealAssignWindow({
-								selected: me.grid.getView().getSelectionModel().getSelection()[0],
-								ids: me.selectedMyCreatedIds('deal_id'),
-								direction: me.xlsName
-							}).show();
-					}
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
 			}),
 			Ext.create('Ext.Action', {
