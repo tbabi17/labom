@@ -3187,15 +3187,21 @@ Ext.define('OCS.ResellerView', {
 				iconCls   : 'deal_assign',
 				text: 'Assign ...',
 				handler: function(widget, event) {
-					if (user_level > 0 ) {												
+					if (user_level > 0) {												
 						if (me.recordSelected())						
 							new OCS.DealAssignWindow({
 								selected: me.grid.getView().getSelectionModel().getSelection()[0],
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					} else {
+						if (me.recordSelected())						
+							new OCS.DealAssignWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0],
+								ids: me.selectedMyCreatedIds('deal_id'),
+								direction: me.xlsName
+							}).show();
+					}
 				}
 			}),
 			Ext.create('Ext.Action', {
