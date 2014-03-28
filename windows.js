@@ -3347,14 +3347,14 @@ Ext.define('OCS.NewCaseWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
 						   success: function(response, opts) {							  
-							  me.close();
-							  me.close();
 							  views['cases'].reload();
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
 						});
+
+						me.close();
 					}
 				}
 			}]
