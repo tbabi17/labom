@@ -3517,8 +3517,8 @@ Ext.define('OCS.ScatterWindow', {
             series: [{
                 type: 'scatter',
                 axis: false,
-                xField: 'data1',
-                yField: 'data2',
+                xField: '_repeat',
+                yField: 'score',
                 color: '#ccc',
                 markerConfig: {
                     type: 'circle',
