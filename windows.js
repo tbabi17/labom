@@ -3431,8 +3431,8 @@ Ext.define('OCS.RiskResultWindow', {
 		var me = this;
 		me.actions = [						
 			Ext.create('Ext.Action', {
-				iconCls   : 'calendar',
-				text: 'Calendar',
+				iconCls : 'graph',
+				text: 'Chart',
 				handler: function(widget, event) {
 					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
 					googleEvent(rec, me.func);
