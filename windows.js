@@ -3532,7 +3532,6 @@ Ext.define('OCS.ScatterWindow', {
             animate: true,
             store: me.store,
             axes: false,
-			flex: 1,
             insetPadding: 150,
             series: [{
                 type: 'scatter',
@@ -3551,7 +3550,7 @@ Ext.define('OCS.ScatterWindow', {
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', sort: '_date'};
 		me.store.load();
 
-		me.items = [me.chart];	
+		me.items = me.chart;	
 		me.callParent(arguments);
 	}
 });
