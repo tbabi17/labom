@@ -3533,7 +3533,7 @@ Ext.define('OCS.ScatterWindow', {
             store: me.store,
             axes: false,
 			flex: 1,
-            insetPadding: 50,
+            insetPadding: 150,
             series: [{
                 type: 'scatter',
                 axis: true,
@@ -3542,8 +3542,8 @@ Ext.define('OCS.ScatterWindow', {
                 color: '#ccc',
                 markerConfig: {
                     type: 'circle',
-                    radius: 20,
-                    size: 20
+                    radius: 10,
+                    size: 10
                 }
             }]
         });
