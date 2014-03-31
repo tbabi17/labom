@@ -3546,7 +3546,8 @@ Ext.define('OCS.ScatterWindow', {
                 }
             }]
         });
-
+		
+		me.store.load();
 		me.items = [me.chart];	
 		me.callParent(arguments);
 	}
