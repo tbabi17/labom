@@ -3435,6 +3435,7 @@ Ext.define('OCS.RiskResultWindow', {
 				text: 'Chart',
 				handler: function(widget, event) {
 					new OCS.ScatterWindow({
+						selected: me.selected
 					}).show();
 				}
 			}),
@@ -3549,7 +3550,7 @@ Ext.define('OCS.ScatterWindow', {
             }]
         });
 		
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', sort: '_date'};
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', where: me.selected.get('crm_id'), values: 'crm_id', sort: '_date'};
 		me.store.load();
 
 		me.items = me.chart;	
