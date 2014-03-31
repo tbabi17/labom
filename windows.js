@@ -3431,7 +3431,7 @@ Ext.define('OCS.RiskResultWindow', {
 		var me = this;
 		me.actions = [						
 			Ext.create('Ext.Action', {
-				iconCls : 'graph',
+				iconCls : 'chart',
 				text: 'Chart',
 				handler: function(widget, event) {
 					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
