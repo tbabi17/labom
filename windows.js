@@ -3434,7 +3434,9 @@ Ext.define('OCS.RiskResultWindow', {
 				iconCls : 'chart',
 				text: 'Chart',
 				handler: function(widget, event) {
-					new OCS.ScatterWindow().show();
+					new OCS.ScatterWindow({
+						stor: me.store
+					}).show();
 				}
 			}),
 			'-',
@@ -3508,7 +3510,7 @@ Ext.define('OCS.ScatterWindow', {
 		me.chart = Ext.create('Ext.chart.Chart', {
             style: 'background:#fff',
             animate: true,
-//            store: store1,
+            store: me.store,
             axes: false,
 			region: 'center',
             insetPadding: 50,
