@@ -3346,14 +3346,15 @@ Ext.define('OCS.NewCaseWindow', {
 						Ext.Ajax.request({
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
-						   success: function(response, opts) {							  
-							  views['cases'].reload();
+						   success: function(response, opts) {							  							  
+							   views['cases'].reload();
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
 						});
-
+						
+						views['cases'].reload();
 						me.close();
 					}
 				}
