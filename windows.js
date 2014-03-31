@@ -3537,17 +3537,22 @@ Ext.define('OCS.ScatterWindow', {
 			height: 500,
             insetPadding: 150,
             series: [{
-                type: 'scatter',
-                axis: true,
-                xField: 'score',
-                yField: '_repeat',
-                color: '#333',
-                markerConfig: {
-                    type: 'circle',
-                    radius: 10,
-                    size: 10
-                }
-            }]
+				type: 'line',
+				highlight: {
+					size: 7,
+					radius: 7
+				},
+				axis: 'left',
+				fill: true,
+				xField: 'score',
+				yField: '_repeat',
+				markerCfg: {
+					type: 'circle',
+					size: 4,
+					radius: 4,
+					'stroke-width': 0
+				}
+			}]
         });
 		
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', where: me.selected.get('crm_id'), values: 'crm_id', sort: '_date'};
