@@ -3509,7 +3509,7 @@ Ext.define('OCS.ScatterWindow', {
 		var me = this;								
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['crm_name', '_repeat', 'score', 'status'],
+			fields: ['id', 'crm_id', 'crm_name', 'category', 'section', 'question', '_repeat', 'score', 'status'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
