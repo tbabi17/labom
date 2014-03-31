@@ -3547,7 +3547,9 @@ Ext.define('OCS.ScatterWindow', {
             }]
         });
 		
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', sort: '_date'};
 		me.store.load();
+
 		me.items = [me.chart];	
 		me.callParent(arguments);
 	}
