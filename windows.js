@@ -3413,7 +3413,7 @@ Ext.define('OCS.RiskResultWindow', {
 	title: 'Risk results',
 	table: 'crm_risk_resutls',	
 	values: 'crm_id',
-//	groupField: 'groupId',
+	groupField: 'category',
 	buttons: true,
 	modelName: 'CRM_RISK_RESULT',
 	primary: 'id',
