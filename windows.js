@@ -3507,7 +3507,7 @@ Ext.define('OCS.ScatterWindow', {
 		var me = this;								
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['name', 'value'],
+			fields: ['crm_name', '_repeat', 'score', 'status'],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -3522,7 +3522,7 @@ Ext.define('OCS.ScatterWindow', {
     	            totalProperty: 'results'
     	        },				
 				simpleSortMode: true,
-				extraParams: {handle: 'web', action: 'select', func: 'crm_deal_funnel_list'}
+				extraParams: {handle: 'web', action: 'select', func: 'crm_risk_result_list'}
 			}
 		});
 
