@@ -3501,7 +3501,8 @@ Ext.define('OCS.ScatterWindow', {
 	height: 500,
 	modal: false,
 	width: 650,	
-	modal: true,
+	modal: true,	
+	layout: 'fit',
 
 	initComponent: function() {
 		var me = this;								
@@ -3531,7 +3532,6 @@ Ext.define('OCS.ScatterWindow', {
             animate: true,
             store: me.store,
             axes: false,
-			region: 'center',
 			flex: 1,
             insetPadding: 50,
             series: [{
