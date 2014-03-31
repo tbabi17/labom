@@ -3434,8 +3434,7 @@ Ext.define('OCS.RiskResultWindow', {
 				iconCls : 'chart',
 				text: 'Chart',
 				handler: function(widget, event) {
-					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
-					googleEvent(rec, me.func);
+					new OCS.ScatterWindow().show();
 				}
 			}),
 			'-',
@@ -3491,5 +3490,43 @@ Ext.define('OCS.RiskResultWindow', {
 		});
 
 		me.win.show();
+	}
+});
+
+Ext.define('OCS.ScatterWindow', {
+	extend: 'OCS.Window',
+	title: 'Scatter window',
+	maximizable: true,
+	height: 500,
+	modal: false,
+	width: 650,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+		
+		me.chart = Ext.create('Ext.chart.Chart', {
+            style: 'background:#fff',
+            animate: true,
+//            store: store1,
+            axes: false,
+			region: 'center',
+            insetPadding: 50,
+            series: [{
+                type: 'scatter',
+                axis: false,
+                xField: 'data1',
+                yField: 'data2',
+                color: '#ccc',
+                markerConfig: {
+                    type: 'circle',
+                    radius: 20,
+                    size: 20
+                }
+            }]
+        });
+
+		me.items = [me.chart];	
+		me.callParent(arguments);
 	}
 });
