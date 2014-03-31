@@ -3541,7 +3541,7 @@ Ext.define('OCS.ScatterWindow', {
                 axis: true,
                 xField: 'score',
                 yField: '_repeat',
-                color: '#ccc',
+                color: '#333',
                 markerConfig: {
                     type: 'circle',
                     radius: 10,
