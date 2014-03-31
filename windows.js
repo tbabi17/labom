@@ -3507,6 +3507,26 @@ Ext.define('OCS.ScatterWindow', {
 	initComponent: function() {
 		var me = this;								
 		
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['name', 'value'],
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_deal_funnel_list'}
+			}
+		});
+
 		me.chart = Ext.create('Ext.chart.Chart', {
             style: 'background:#fff',
             animate: true,
