@@ -3298,7 +3298,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  name: 'resolution_type',
 			  queryMode: 'local',
 		      displayField: 'value',
-  			  allowBlank: false,				
+  			  allowBlank: false,
 		      valueField: 'value',
 			  triggerAction: 'all',
 			  editable: false
@@ -3405,4 +3405,91 @@ Ext.define('OCS.GMapWindow', {
 		
 		me.callParent(arguments);
 	}	
+});
+
+Ext.define('OCS.RiskResultWindow', {
+	extend: 'OCS.GridWithFormPanel',
+	func : 'crm_risk_result_list', 
+	title: 'Risk results',
+	table: 'crm_risk_resutls',	
+	values: 'crm_id',
+//	groupField: 'groupId',
+	buttons: true,
+	modelName: 'CRM_RISK_RESULT',
+	primary: 'id',
+	xlsName: 'risk',
+	windowed: true,
+	
+	filterData: function(views) {
+		var me = this;		
+		me.title = views;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
+		me.store.loadPage(1);
+	},
+
+	createActions: function() {
+		var me = this;
+		me.actions = [						
+			Ext.create('Ext.Action', {
+				iconCls   : 'calendar',
+				text: 'Calendar',
+				handler: function(widget, event) {
+					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
+					googleEvent(rec, me.func);
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				
+			}			
+		}
+
+		me.where = me.selected.get('crm_id');
+	},
+
+	createWindow: function() {
+		var me = this;
+		me.initSource();
+		me.panel = me.createGrid();
+		me.form.updateSource(me.defaultRec);
+		//me.showForm();
+
+		me.win = Ext.create('widget.window', {
+			title: me.getCustomerName(me.selected)+' - '+me.title.split(' ')[0],
+			closable: true,
+			maximizable: true,
+			minimizable: true,
+			width: 950,
+			modal: true,
+			minWidth: 650,
+			height: 500,
+			layout: 'border',
+			items: [me.panel],
+			listeners: {
+				'close': function() {
+					if (me.backgrid)
+						me.backgrid.getStore().reload();
+				}
+			}
+		});
+
+		me.win.show();
+	}
 });

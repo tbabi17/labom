@@ -684,6 +684,22 @@ Ext.define('CRM_ALARM', {
 	fields: fields['CRM_ALARM_FIELDS']
 });
 
+fields['CRM_RISK_RESULT_FIELDS'] = [
+   {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
+   {name: 'crm_name', text: 'Potential Customer', width: 250},
+   {name: 'category', text: 'Category', width: 140, hidden: true},
+   {name: 'section', text: 'Section', width: 60, hidden: true},
+   {name: 'question', text: 'Question', width: 200},
+   {name: 'score', text: 'Score', width: 150},
+   {name: '_repeat', text: 'Repeat', width: 80, align: 'center'},
+   {name: 'status', text: 'Status', width: 70, align: 'center'}
+];
+
+Ext.define('CRM_RISK_RESULT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_RISK_RESULT_FIELDS']
+});
+
 
 fields['CRM_DEAL_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 

@@ -796,7 +796,9 @@ Ext.define('OCS.RetailPanel', {
 					},{
 						text: 'Risk Management...',
 						handler: function(widget, event) {		
-							
+							new OCS.RiskResultWindow({
+								selected: me.grid.getView().getSelectionModel().getSelection()[0]
+							}).createWindow();
 						}
 					}]
 				}				
