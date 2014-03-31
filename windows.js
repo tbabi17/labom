@@ -3532,6 +3532,7 @@ Ext.define('OCS.ScatterWindow', {
             store: me.store,
             axes: false,
 			region: 'center',
+			flex: 1,
             insetPadding: 50,
             series: [{
                 type: 'scatter',
