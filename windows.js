@@ -3435,7 +3435,6 @@ Ext.define('OCS.RiskResultWindow', {
 				text: 'Chart',
 				handler: function(widget, event) {
 					new OCS.ScatterWindow({
-						store: me.store
 					}).show();
 				}
 			}),
