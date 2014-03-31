@@ -686,7 +686,7 @@ Ext.define('CRM_ALARM', {
 
 fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
-   {name: 'crm_name', text: 'Potential Customer', width: 250},
+   {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
    {name: 'category', text: 'Category', width: 140, hidden: true},
    {name: 'section', text: 'Section', width: 60, hidden: true},
    {name: 'question', text: 'Question', width: 200},
