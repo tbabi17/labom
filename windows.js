@@ -3595,3 +3595,103 @@ Ext.define('OCS.ScatterWindow', {
 		me.callParent(arguments);
 	}
 });
+
+
+Ext.define('OCS.UrgencyWindow', {
+	extend: 'OCS.Window',
+	title: 'Urgency window',
+	maximizable: true,
+	height: 500,
+	modal: false,
+	width: 650,	
+	modal: true,	
+	layout: 'fit',
+
+	initComponent: function() {
+		var me = this;								
+		
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['id', 'subject', 'issue', 'priority'],
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_workflow_list'}
+			}
+		});
+		
+		me.panel = Ext.create('Ext.Panel', {			
+			xtype: 'panel',
+			flex: 1,
+			html: ''			
+		});
+
+		me.chart = Ext.create('Ext.chart.Chart', {
+            style: 'background:#fff',
+            animate: true,
+            store: me.store,
+            axes: true,
+			width: 500,
+			height: 500,
+			theme: 'Category2',
+            insetPadding: 50,
+			axes: [{
+				type: 'Numeric',
+				position: 'left',
+				fields: ['issue'],
+				title: 'Urgency',
+				grid: true,
+				minimum: 0,
+				maximum: 5
+			}, {
+				type: 'Category',
+				position: 'bottom',
+				fields: ['priority'],
+				grid: true,
+				title: 'Importance'
+			}],
+            series: [{
+				type: 'scatter',
+				markerConfig: {
+					radius: 5,
+					size: 5
+				},
+				axis: 'left',
+				xField: 'issue',
+				yField: 'priority',
+				tips: {
+                    trackMouse: true,
+                    width: 350,
+                    height: 100,
+                    layout: 'fit',
+                    items: {
+                        xtype: 'container',
+                        layout: 'fit',
+                        items: [me.panel]
+                    },
+                    renderer: function(klass, item) {            
+						var storeItem = item.storeItem;
+//						me.panel.update(storeItem.get('question')+'</br>Repeat :'+storeItem.get('_repeat')+'</br>Score :'+storeItem.get('score'));
+                        this.setTitle('Detail');
+                    }
+                }
+			}]
+        });
+		
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_workflow_list', where: '', values: '', sort: '_date'};
+		me.store.load();
+
+		me.items = me.chart;	
+		me.callParent(arguments);
+	}
+});

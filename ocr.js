@@ -5939,7 +5939,7 @@ Ext.define('OCS.MyGridWithFormPanel', {
 				iconCls: 'chart',
 				text: 'Chart',
 				handler: function(widget, event) {
-
+					new OCS.UrgencyWindow().show();
 				}
 			}),
 			Ext.create('Ext.Action', {
