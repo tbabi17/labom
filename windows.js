@@ -3536,19 +3536,19 @@ Ext.define('OCS.ScatterWindow', {
 			width: 500,
 			height: 500,
 			theme: 'Category2',
-            insetPadding: 150,
+            insetPadding: 50,
 			axes: [{
 				type: 'Numeric',
 				position: 'left',
 				fields: ['score', '_repeat'],
-				title: 'Sample Values',
+				title: 'Score',
 				grid: true,
 				minimum: 0
 			}, {
 				type: 'Category',
 				position: 'bottom',
 				fields: ['name'],
-				title: 'Sample Metrics'
+				title: 'Repeat'
 			}],
             series: [{
 				type: 'scatter',
