@@ -3526,7 +3526,13 @@ Ext.define('OCS.ScatterWindow', {
 				simpleSortMode: true,
 				extraParams: {handle: 'web', action: 'select', func: 'crm_risk_result_list'}
 			}
-		});				
+		});			
+		
+		me.panel = Ext.create('Ext.Panel', {			
+			xtype: 'panel',
+			flex: 1,
+			html: ''			
+		});
 
 		me.chart = Ext.create('Ext.chart.Chart', {
             style: 'background:#fff',
@@ -3571,14 +3577,11 @@ Ext.define('OCS.ScatterWindow', {
                     items: {
                         xtype: 'container',
                         layout: 'fit',
-                        items: [{
-							xtype: 'panel',
-							flex: 1,
-							html: ''
-						}]
+                        items: [me.panel]
                     },
                     renderer: function(klass, item) {            
 						var storeItem = item.storeItem;
+						me.panel.update(storeItem.get('question'));
                         this.setTitle(storeItem.get('question'));
                     }
                 }
