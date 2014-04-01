@@ -3543,12 +3543,16 @@ Ext.define('OCS.ScatterWindow', {
 				fields: ['score'],
 				title: 'Score',
 				grid: true,
-				minimum: 0
+				minimum: 0,
+				maximum: 0
 			}, {
 				type: 'Category',
 				position: 'bottom',
 				fields: ['_repeat'],
-				title: 'Repeat'
+				grid: true,
+				title: 'Repeat',
+				minimum: 0,
+				maximum: 0
 			}],
             series: [{
 				type: 'scatter',
