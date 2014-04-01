@@ -3562,7 +3562,21 @@ Ext.define('OCS.ScatterWindow', {
 				},
 				axis: 'left',
 				xField: 'score',
-				yField: '_repeat'
+				yField: '_repeat',
+				tips: {
+                    trackMouse: true,
+                    width: 580,
+                    height: 170,
+                    layout: 'fit',
+                    items: {
+                        xtype: 'container',
+                        layout: 'hbox',
+                        items: []
+                    },
+                    renderer: function(klass, item) {                                               
+                        this.setTitle("Information for " + storeItem.get('name'));
+                    }
+                }
 			}]
         });
 		
