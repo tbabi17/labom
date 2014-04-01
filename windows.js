@@ -3543,19 +3543,31 @@ Ext.define('OCS.ScatterWindow', {
 			height: 500,
 			theme: 'Category1',
             insetPadding: 50,
-			xtype: 'linechart',
-			xField: '_repeat',
-			xAxis: new Ext.chart.NumericAxis({
-				minimum : 0,
-				maximum : 5,
-				majorUnit :1
-			}),
-			yAxis: new Ext.chart.NumericAxis({
-				minimum : 0,
-				maximum : 5,
-				majorUnit :1
-			}),
-            series: [{				
+			axes: [{
+				type: 'Numeric',
+				position: 'left',
+				fields: ['score'],
+				title: 'Score',
+				grid: true,
+				minimum: 0,
+				maximum: 5
+			}, {
+				type: 'Numeric',
+				position: 'bottom',
+				fields: ['_repeat'],
+				grid: true,
+				title: 'Repeat',
+				minimum: 0,
+				maximum: 5
+			}],
+            series: [{
+				type: 'scatter',
+				markerConfig: {
+					radius: 5,
+					size: 5
+				},
+				axis: 'left',
+				xField: '_repeat',
 				yField: 'score',
 				tips: {
                     trackMouse: true,
