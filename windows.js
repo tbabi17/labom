@@ -3567,8 +3567,8 @@ Ext.define('OCS.ScatterWindow', {
 					size: 5
 				},
 				axis: 'left',
-				xField: 'score',
-				yField: '_repeat',
+				xField: '_repeat',
+				yField: 'score',
 				tips: {
                     trackMouse: true,
                     width: 350,
