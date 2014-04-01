@@ -3546,15 +3546,15 @@ Ext.define('OCS.ScatterWindow', {
 			axes: [{
 				type: 'Numeric',
 				position: 'left',
-				fields: ['score','_repeat'],
+				fields: ['score'],
 				title: 'Score',
 				grid: true,
 				minimum: 0,
 				maximum: 5
 			}, {
-				type: 'Numeric',
+				type: 'Category',
 				position: 'bottom',
-				fields: ['_repeat','score'],
+				fields: ['_repeat'],
 				grid: true,
 				title: 'Repeat',
 				minimum: 0,
