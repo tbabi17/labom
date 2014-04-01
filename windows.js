@@ -3579,7 +3579,7 @@ Ext.define('OCS.ScatterWindow', {
                     },
                     renderer: function(klass, item) {            
 						var storeItem = item.storeItem;
-                        this.setTitle("Information for "+storeItem.get('question'));
+                        this.setTitle(storeItem.get('question'));
                     }
                 }
 			}]
