@@ -3565,16 +3565,16 @@ Ext.define('OCS.ScatterWindow', {
 				yField: '_repeat',
 				tips: {
                     trackMouse: true,
-                    width: 250,
-                    height: 170,
+                    width: 350,
+                    height: 100,
                     layout: 'fit',
                     items: {
                         xtype: 'container',
-                        layout: 'hbox',
+                        layout: 'fit',
                         items: [{
 							xtype: 'panel',
-							width: 100,
-							height: 100							
+							flex: 1,
+							html: ''
 						}]
                     },
                     renderer: function(klass, item) {            
