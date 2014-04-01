@@ -5936,6 +5936,13 @@ Ext.define('OCS.MyGridWithFormPanel', {
 				}
 			}),	
 			Ext.create('Ext.Action', {
+				iconCls: 'chart',
+				text: 'Chart',
+				handler: function(widget, event) {
+
+				}
+			}),
+			Ext.create('Ext.Action', {
 				iconCls   : 'save',
 				text: 'Mark complete',
 				handler: function(widget, event) {
