@@ -3571,10 +3571,14 @@ Ext.define('OCS.ScatterWindow', {
                     items: {
                         xtype: 'container',
                         layout: 'hbox',
-                        items: []
+                        items: [{
+							xtype: 'panel',
+							width: 100,
+							height: 100							
+						}]
                     },
                     renderer: function(klass, item) {                                               
-                        this.setTitle("Information for " + storeItem.get('name'));
+                        this.setTitle("Information for ");
                     }
                 }
 			}]
