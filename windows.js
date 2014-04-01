@@ -3546,7 +3546,7 @@ Ext.define('OCS.ScatterWindow', {
 				minimum: 0,
 				maximum: 5
 			}, {
-				type: 'Category',
+				type: 'Numeric',
 				position: 'bottom',
 				fields: ['_repeat'],
 				grid: true,
