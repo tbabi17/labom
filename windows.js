@@ -3535,23 +3535,30 @@ Ext.define('OCS.ScatterWindow', {
             axes: true,
 			width: 500,
 			height: 500,
+			theme: 'Category2',
             insetPadding: 150,
+			axes: [{
+				type: 'Numeric',
+				position: 'left',
+				fields: ['score', '_repeat'],
+				title: 'Sample Values',
+				grid: true,
+				minimum: 0
+			}, {
+				type: 'Category',
+				position: 'bottom',
+				fields: ['name'],
+				title: 'Sample Metrics'
+			}],
             series: [{
-				type: 'line',
-				highlight: {
-					size: 7,
-					radius: 7
+				type: 'scatter',
+				markerConfig: {
+					radius: 5,
+					size: 5
 				},
 				axis: 'left',
-				fill: true,
 				xField: 'score',
-				yField: '_repeat',
-				markerCfg: {
-					type: 'circle',
-					size: 4,
-					radius: 4,
-					'stroke-width': 0
-				}
+				yField: '_repeat'
 			}]
         });
 		
