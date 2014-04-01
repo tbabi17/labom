@@ -3565,7 +3565,7 @@ Ext.define('OCS.ScatterWindow', {
 				yField: '_repeat',
 				tips: {
                     trackMouse: true,
-                    width: 580,
+                    width: 250,
                     height: 170,
                     layout: 'fit',
                     items: {
@@ -3577,8 +3577,9 @@ Ext.define('OCS.ScatterWindow', {
 							height: 100							
 						}]
                     },
-                    renderer: function(klass, item) {                                               
-                        this.setTitle("Information for ");
+                    renderer: function(klass, item) {            
+						var storeItem = item.storeItem;
+                        this.setTitle("Information for "+storeItem.get('question'));
                     }
                 }
 			}]
