@@ -3541,7 +3541,7 @@ Ext.define('OCS.ScatterWindow', {
             axes: true,
 			width: 500,
 			height: 500,
-			theme: 'Category2',
+			theme: 'Category1',
             insetPadding: 50,
 			axes: [{
 				type: 'Numeric',
