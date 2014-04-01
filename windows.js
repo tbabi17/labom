@@ -3544,7 +3544,7 @@ Ext.define('OCS.ScatterWindow', {
 				title: 'Score',
 				grid: true,
 				minimum: 0,
-				maximum: 0
+				maximum: 5
 			}, {
 				type: 'Category',
 				position: 'bottom',
@@ -3552,7 +3552,7 @@ Ext.define('OCS.ScatterWindow', {
 				grid: true,
 				title: 'Repeat',
 				minimum: 0,
-				maximum: 0
+				maximum: 5
 			}],
             series: [{
 				type: 'scatter',
