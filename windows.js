@@ -3581,8 +3581,8 @@ Ext.define('OCS.ScatterWindow', {
                     },
                     renderer: function(klass, item) {            
 						var storeItem = item.storeItem;
-						me.panel.update(storeItem.get('question'));
-                        this.setTitle(storeItem.get('question'));
+						me.panel.update(storeItem.get('question')+'</br>Repeat :'+storeItem.get('_repeat')+'</br>Score :'+storeItem.get('score'));
+                        this.setTitle('Detail');
                     }
                 }
 			}]
