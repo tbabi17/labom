@@ -3499,9 +3499,9 @@ Ext.define('OCS.ScatterWindow', {
 	extend: 'OCS.Window',
 	title: 'Scatter window',
 	maximizable: true,
-	height: 500,
+	height: 700,
 	modal: false,
-	width: 650,	
+	width: 700,	
 	modal: true,	
 	layout: 'fit',
 
