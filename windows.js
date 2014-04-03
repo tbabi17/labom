@@ -3601,9 +3601,9 @@ Ext.define('OCS.UrgencyWindow', {
 	extend: 'OCS.Window',
 	title: 'Urgency window',
 	maximizable: true,
-	height: 500,
+	height: 700,
 	modal: false,
-	width: 650,	
+	width: 750,	
 	modal: true,	
 	layout: 'fit',
 
@@ -3695,6 +3695,7 @@ Ext.define('OCS.UrgencyWindow', {
 		me.items = [{
 			xtype: 'panel',
 			region: 'center',
+			border: false,
 			autoLoad: {
 				url: 'scad.php'
 			}
