@@ -3597,7 +3597,7 @@ Ext.define('OCS.ScatterWindow', {
 			region: 'center',
 			border: false,
 			autoLoad: {
-				url: 'scad_1.php'
+				url: 'scad_1.php?crm='+me.selected.get('crm_id')
 			}
 		}];			
 		me.callParent(arguments);
