@@ -3609,7 +3609,7 @@ Ext.define('OCS.UrgencyWindow', {
 
 	initComponent: function() {
 		var me = this;								
-		
+		/*
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['id', 'subject', 'issue', 'priority'],
 			proxy: {				
@@ -3691,7 +3691,14 @@ Ext.define('OCS.UrgencyWindow', {
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_workflow_list', where: '', values: '', sort: '_date'};
 		me.store.load();
 
-		me.items = me.chart;	
+		me.items = me.chart;	*/
+		me.items = [{
+			xtype: 'panel',
+			region: 'center',
+			autoLoad: {
+				url: 'sca.php'
+			}
+		}];			
 		me.callParent(arguments);
 	}
 });
