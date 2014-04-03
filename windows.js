@@ -3696,7 +3696,7 @@ Ext.define('OCS.UrgencyWindow', {
 			xtype: 'panel',
 			region: 'center',
 			autoLoad: {
-				url: 'sca.php'
+				url: 'scad.php'
 			}
 		}];			
 		me.callParent(arguments);
