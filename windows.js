@@ -3599,7 +3599,7 @@ Ext.define('OCS.ScatterWindow', {
 
 Ext.define('OCS.UrgencyWindow', {
 	extend: 'OCS.Window',
-	title: 'Urgency window',
+	title: 'Urgency & Importance window',
 	maximizable: true,
 	height: 700,
 	modal: false,
