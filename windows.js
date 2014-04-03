@@ -3508,7 +3508,7 @@ Ext.define('OCS.ScatterWindow', {
 	initComponent: function() {
 		var me = this;								
 		
-		me.store = Ext.create('Ext.data.Store', {
+		/*me.store = Ext.create('Ext.data.Store', {
 			fields: ['id', 'crm_id', 'crm_name', 'category', 'section', 'question', '_repeat', 'score', 'status'],
 			proxy: {				
 				type: 'ajax',
@@ -3591,7 +3591,15 @@ Ext.define('OCS.ScatterWindow', {
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_risk_result_list', where: me.selected.get('crm_id'), values: 'crm_id', sort: '_date'};
 		me.store.load();
 
-		me.items = me.chart;	
+		me.items = me.chart;*/	
+		me.items = [{
+			xtype: 'panel',
+			region: 'center',
+			border: false,
+			autoLoad: {
+				url: 'scad_1.php'
+			}
+		}];			
 		me.callParent(arguments);
 	}
 });
