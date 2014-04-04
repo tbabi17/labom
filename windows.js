@@ -2184,6 +2184,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		var form = me.form.getForm();
 		descr = form.findField('descr').getValue();
 		remind_date = form.findField('remind_date').getValue();
+		remind_date = Ext.Date.format(remind_date,'Y-m-d');
 		alert(descr+' '+remind_date);
 
 		if (me.selected.get('work_type') == 'phone call') {
