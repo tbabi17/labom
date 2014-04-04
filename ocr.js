@@ -5040,7 +5040,14 @@ Ext.define('OCS.CampaignActivityGrid', {
 							handler: function(widget, event) {
 								me.filterData('My Activity List');
 							}
-						}),						
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'My Activity List (Pending)',
+							handler: function(widget, event) {
+								me.filterData('My Activity List (Pending)');
+							}
+						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
 							text: 'All Activity List',
