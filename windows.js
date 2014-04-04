@@ -2092,7 +2092,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 				Ext.Msg.confirm('Warning ','Are you sure you want to create deal?',function(btn){
 					if(btn === 'yes'){
 						new OCS.CreateDealWindow({
-							selected: me.selected
+							selected: me.selected,
+							descr: me.descr
 						}).show();
 					}
 				});
@@ -3189,6 +3190,7 @@ Ext.define('OCS.CreateDealWindow', {
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Note',	
+				value: me.descr,
 				flex: 1,
 				name: 'descr'
 			}],
