@@ -3111,6 +3111,13 @@ Ext.define('OCS.CreateDealWindow', {
 				name: 'closing_date',
 				value: new Date(),
 				format: 'Y-m-d'
+			},
+			{
+				xtype: 'datefield',
+				fieldLabel: 'Remind date',				
+				name: 'remind_date',
+				value: new Date(),
+				format: 'Y-m-d'
 			},{
 				xtype: 'searchcombo',
 				table: 'crm_users',
@@ -3168,7 +3175,7 @@ Ext.define('OCS.ActivityUpdateWindow', {
 	extend: 'OCS.Window',
 	title: 'Activitiy update',
 	maximizable: true,
-	height: 450,
+	height: 400,
 	modal: false,
 	width: 400,	
 	modal: true,
