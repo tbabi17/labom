@@ -1164,7 +1164,7 @@ Ext.define('OCS.ActivityGrid', {
 			id = sp[0];
 		}
 		
-		var form = this.up('form').getForm();
+		var form = me.form.getForm()
 		descr = form.findField('descr').getValue();
 
 		if (me.selected.get('work_type') == 'phone call') {
