@@ -2015,7 +2015,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 					googleEventDynamic(me.selected);
 				}
 			},{
-				iconCls: 'expand',
+				iconCls: 'edit',
 				text: 'Remind',				
 				handler: function() {
 					me.remindActivity();
