@@ -2093,7 +2093,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 					if(btn === 'yes'){
 						new OCS.CreateDealWindow({
 							selected: me.selected,
-							descr: me.descr
+							descr: descr
 						}).show();
 					}
 				});
