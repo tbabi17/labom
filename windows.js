@@ -3102,6 +3102,7 @@ Ext.define('OCS.CreateDealWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Subject',	
 				allowBlank: false,
+				value: me.selected.get('subject'),
 				name: 'deal'
 			},{
 				xtype: 'textarea',
