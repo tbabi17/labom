@@ -1619,7 +1619,9 @@ Ext.define('OCS.MyActivityGrid', {
 				iconCls : 'edit',
 				text: 'Expand',
 				handler: function(widget, event) {
-					new OCS.ActivityWindow().createWindow();
+					new OCS.ActivityUpdateWindow({
+						selected: me.grid.getView().getSelectionModel().getSelection()[0];
+					}).show();
 				}
 			}),	
 			'-',

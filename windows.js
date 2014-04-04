@@ -3164,6 +3164,88 @@ Ext.define('OCS.CreateDealWindow', {
 	}
 });
 
+Ext.define('OCS.ActivityUpdateWindow', {
+	extend: 'OCS.Window',
+	title: 'Activitiy update',
+	maximizable: true,
+	height: 450,
+	modal: false,
+	width: 400,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id: 'activity_update_form',
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 1,
+			items: [{
+				xtype: 'numberfield',
+				fieldLabel: 'Phone',	
+				allowBlank: false,
+				readOnly: 'true',
+				name: 'id',
+				value: me.selected.get('id')
+			},{
+				xtype: 'datefield',
+				fieldLabel: 'Remind date',	
+				allowBlank: false,
+				name: 'remind_date'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Note',	
+				flex: 1,
+				name: 'descr'
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',
+				name: 'owner'
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Created by',
+				name: 'userCode',			
+				value: logged,
+				hidden: true
+			}],
+			buttons: [{
+				iconCls: 'add',
+				text: 'Create',				
+				handler: function() {
+					new OCS.RetailNewWindow({							
+					}).show();
+				}
+			},'->',{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if(form.isValid()){
+						var values = form.getValues(true);						
+
+						me.close();
+					}
+				}
+			}]
+		});
+
+		me.items = [me.form];	
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.NewCaseWindow', {
 	extend: 'OCS.Window',
 	title: 'Create case',
