@@ -1604,6 +1604,13 @@ Ext.define('OCS.MyActivityGrid', {
 						}),
 						Ext.create('Ext.Action', {
 							icon   : '',  
+							text: 'All Activity List (Remind)',
+							handler: function(widget, event) {
+								me.filterData('All Activity List (Remind)');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
 							text: 'All Activity List',
 							handler: function(widget, event) {
 								me.where = '';
@@ -5029,6 +5036,13 @@ Ext.define('OCS.CampaignActivityGrid', {
 							text: 'My Activity List',
 							handler: function(widget, event) {
 								me.filterData('My Activity List');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'My Activity List (Remind)',
+							handler: function(widget, event) {
+								me.filterData('My Activity List (Remind)');
 							}
 						}),
 						Ext.create('Ext.Action', {
