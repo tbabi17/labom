@@ -1163,6 +1163,9 @@ Ext.define('OCS.ActivityGrid', {
 			var sp = id.split('_');
 			id = sp[0];
 		}
+		
+		var form = this.up('form').getForm();
+		descr = form.findField('descr').getValue();
 
 		if (me.selected.get('work_type') == 'phone call') {
 			if (me.selected.get('status') == 'success') {
@@ -1183,7 +1186,7 @@ Ext.define('OCS.ActivityGrid', {
 
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -1199,7 +1202,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_emails', action: 'update', values: "email_status='sent',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -1215,7 +1218,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_events', action: 'update', values: "event_status='completed',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -1231,7 +1234,7 @@ Ext.define('OCS.ActivityGrid', {
 			}
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_tasks', action: 'update', values: "task_status='completed',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
