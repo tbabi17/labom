@@ -2195,7 +2195,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='remind',remind_date='"+remind_date+"',descr='"+descr+"'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='remind',remind_at='"+remind_date+"',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
