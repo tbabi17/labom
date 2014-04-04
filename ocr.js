@@ -1619,9 +1619,45 @@ Ext.define('OCS.MyActivityGrid', {
 				iconCls : 'edit',
 				text: 'Expand',
 				handler: function(widget, event) {
-					new OCS.ActivityUpdateWindow({
-						selected: me.grid.getView().getSelectionModel().getSelection()[0];
-					}).show();
+//					new OCS.ActivityUpdateWindow({
+//						selected: me.grid.getView().getSelectionModel().getSelection()[0];
+//					}).show();
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					if (records.length == 0) {
+						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
+						 return;
+					}
+
+					if (me.owner != logged) {
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+						return;
+					}
+
+					me.selected = records[0];
+					if (me.selected.get('work_type') == 'task')										
+						new OCS.TaskWindow({
+							selected: me.selected
+						}).createWindow();
+					else if (me.selected.get('work_type') == 'appointment')											
+						new OCS.EventWindow({
+							selected: me.selected
+						}).createWindow();
+					else if (me.selected.get('work_type') == 'phone call')											
+						new OCS.CallLogWindow({
+							selected: me.selected
+						}).createWindow();
+					else if (me.selected.get('work_type') == 'email')											
+						new OCS.EmailWindow({
+							selected: me.selected
+						}).createWindow();
+					else if (me.selected.get('work_type') == 'note')											
+						new OCS.NotesWindow({
+							selected: me.selected
+						}).createWindow();
+					else if (me.selected.get('work_type') == 'case')											
+						new OCS.ComplainWindow({
+							selected: me.selected
+						}).createWindow();
 				}
 			}),	
 			'-',
