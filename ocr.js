@@ -5215,6 +5215,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 			items: [me.grid]
 		});
 		
+		me.filterData('My Activity List');
 		me.startSource();
 		return me.panel;
 	}
