@@ -634,7 +634,7 @@ Ext.define('OSS.SearchCombo', {
 		var me = this;
 	
 		me.store = Ext.create('Ext.data.Store', {
-			pageSize: 20,
+			pageSize: 60,
 			proxy: {
 				type: 'ajax',
 				url : 'avia.php',
@@ -662,7 +662,7 @@ Ext.define('OSS.CustomerSearchCombo', {
     extend  : 'Ext.form.field.ComboBox',
     alias   : 'widget.customercombo',
 
-	pageSize: 30,
+	pageSize: 60,
 	valueField: 'crm_id',
 	displayField: 'crm_name',
     typeAhead: false,
@@ -689,7 +689,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 		var me = this;
 	
 		me.store = Ext.create('Ext.data.Store', {
-			pageSize: 20,
+			pageSize:60,
 			proxy: {
 				type: 'ajax',
 				url : 'avia.php',
