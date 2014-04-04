@@ -239,7 +239,8 @@ fields['CRM_CALENDAR_FIELDS'] = [
    {name: '_date', text: 'Created on', width: 80},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'campaign', text: 'Campaign', hidden: true, width: 150},
-   {name: 'phone', text: 'Phone/Email', hidden: true, width: 150}
+   {name: 'phone', text: 'Phone/Email', hidden: true, width: 150},
+   {name: 'remind_at', text: 'Remind at', hidden: true, width: 150}
 ];
 
 Ext.define('CRM_CALENDAR', {
