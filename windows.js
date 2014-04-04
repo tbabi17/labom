@@ -2006,8 +2006,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			{
 				xtype: 'datefield',
 				fieldLabel: 'Remind date',				
-				name: 'remind_at',
-				format: 'Y-m-d'
+				name: 'remind_at'
 			},{
 				xtype: 'textarea',
 				fieldLabel: 'Descr',					
