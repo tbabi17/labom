@@ -2015,6 +2015,12 @@ Ext.define('OCS.ActivityDetailWindow', {
 					googleEventDynamic(me.selected);
 				}
 			},{
+				iconCls: 'expand',
+				text: 'Remind',				
+				handler: function() {
+					me.remindActivity();
+				}
+			},{
 				iconCls: 'save',
 				text: 'Complete',				
 				handler: function() {
@@ -2154,6 +2160,45 @@ Ext.define('OCS.ActivityDetailWindow', {
 			   }
 			});
 		}
+	},
+
+	remindActivity: function() {
+		var me = this;
+		if (me.selected.get('owner') != logged) {
+			Ext.MessageBox.alert('Error', 'Not available !', function() {});
+			return;
+		}
+		
+		var id = me.selected.get('id');
+		if (id.indexOf('_') != -1) {
+			var sp = id.split('_');
+			id = sp[0];
+		}
+		
+		var form = me.form.getForm();
+		descr = form.findField('descr').getValue();
+		remind_date = form.findField('remind_date').getValue();
+
+		if (me.selected.get('work_type') == 'phone call') {
+			if (me.selected.get('status') == 'success') {
+				Ext.MessageBox.alert('Error', 'Already completed !', function() {});
+				return;
+			}
+			
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='remind',remind_date='"+remind_date+"',descr='"+descr+"'", where: "id="+id},
+			   success: function(response, opts) {
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
+				   me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		} else
+			Ext.MessageBox.alert('Status', 'Not available !', function() {});
 	}
 });
 
