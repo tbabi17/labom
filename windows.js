@@ -1308,8 +1308,7 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_campaign', action: 'update_campaign_activity_owner', values: values},
 						   success: function(response, opts) {
-								views['campaigns'].refresh();
-								me.close();
+								views['campaigns'].refresh();								
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1318,6 +1317,8 @@ Ext.define('OCS.CampaignActivityAssignWindow', {
 					}
 					else
 					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+
+					me.close();
 				}
 			}]
 		});
