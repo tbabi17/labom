@@ -1627,7 +1627,7 @@ Ext.define('OCS.MyActivityGrid', {
 						 Ext.MessageBox.alert('Status', 'No selection !', function() {});
 						 return;
 					}
-
+					alert(records[0].get('owner'));
 					if (records[0].get('owner') != logged) {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 						return;
@@ -5095,7 +5095,7 @@ Ext.define('OCS.CampaignActivityGrid', {
 						 return;
 					}
 
-					if (me.owner != logged) {
+					if (records[0].get('owner') != logged) {
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 						return;
 					}
