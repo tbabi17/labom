@@ -2006,7 +2006,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			{
 				xtype: 'datefield',
 				fieldLabel: 'Remind date',				
-				name: 'remind_date',
+				name: 'remind_at',
 				format: 'Y-m-d'
 			},{
 				xtype: 'textarea',
@@ -2183,7 +2183,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		
 		var form = me.form.getForm();
 		descr = form.findField('descr').getValue();
-		remind_date = form.findField('remind_date').getValue();
+		remind_date = form.findField('remind_at').getValue();
 		remind_date = Ext.Date.format(remind_date,'Y-m-d');
 		alert(descr+' '+remind_date);
 
