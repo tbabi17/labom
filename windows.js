@@ -2930,7 +2930,13 @@ Ext.define('OCS.ChangePasswordWindow', {
 						var oldPass = form.findField('old').getValue();
 						var newPass = form.findField('new').getValue();
 						var retypePass = form.findField('retype').getValue();
-						if (oldPass.length != '' && me.checkSecurity(newPass, retypePass)) {						
+						if (oldPass.length != '' && me.checkSecurity(newPass, retypePass)) {	
+							var jsSha = new jsSHA(oldPass);
+							oldPass = jsSha.getHash("SHA-512", "HEX");							
+
+							var jsSha1 = new jsSHA(newPass);
+							newPass = jsSha1.getHash("SHA-512", "HEX");		
+
 							Ext.Ajax.request({
 							   url: 'avia.php',
 							   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "password='"+newPass+"'", where: "owner='"+me.selected.get('owner')+"' and password='"+oldPass+"'"},
