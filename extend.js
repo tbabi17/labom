@@ -1082,7 +1082,7 @@ Ext.define('OCS.UserGridWithFormPanel', {
 				disabled: (user_level < 2),
 				handler: function(widget, event) {
 					if (me.recordSelected())
-						new OCS.PermissionWindow({
+						new OCS.ChangePasswordWindow({
 							selected: me.selectedRecord(),
 							backgrid: me.grid
 						}).show();
@@ -1104,11 +1104,7 @@ Ext.define('OCS.UserGridWithFormPanel', {
 				iconCls   : 'lic_key',
 				text: 'License key ...',
 				handler: function(widget, event) {
-					if (me.recordSelected())
-						new OCS.PermissionWindow({
-							selected: me.selectedRecord(),
-							backgrid: me.grid
-						}).show();
+					
 				}
 			}),
 			Ext.create('Ext.Action', {
@@ -1583,7 +1579,7 @@ Ext.define('OCS.PropertyGrid', {
 			return {
 				xtype: 'textfield',
 				inputType: 'password',
-				disabled: true,
+				disabled: (user_level != 3),
 				name: name
 			};
 

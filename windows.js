@@ -2873,6 +2873,110 @@ Ext.define('OCS.AddToCampaignWindow', {
 	}
 });
 
+Ext.define('OCS.ChangePasswordWindow', {
+	extend: 'OCS.Window',
+	title: 'Change password',
+	maximizable: true,
+	height: 500,
+	modal: false,
+	width: 650,	
+	modal: true, 
+	border: false,
+
+	initComponent: function() {
+		var me = this;				
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id: 'change_password_form',
+			region: 'center',
+			flex: 0.5,
+			closable: false,
+			border: true,
+			hidden : false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Old',
+				inputType: 'password',
+				allowBlank: false,
+				name: 'old'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'New',
+				inputType: 'password',
+				allowBlank: false,
+				name: 'new'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Retype',
+				inputType: 'password',
+				allowBlank: false,
+				name: 'retype'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						var oldPass = form.findField('old').getValue();
+						var newPass = form.findField('new').getValue();
+						var retypePass = form.findField('retype').getValue();
+						if (oldPass.length != '' && me.checkSecurity(newPass, retypePass)) {						
+							Ext.Ajax.request({
+							   url: 'avia.php',
+							   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "password='"+newPass+"'", where: "owner='"+me.selected.get('owner')+"' and password='"+oldPass+"'"},
+							   success: function(response, opts) {							  
+								   Ext.MessageBox.alert('Status', response.responseText, function() {
+									   me.close();
+								   });								
+							   },
+							   failure: function(response, opts) {										   
+								  Ext.MessageBox.alert('Status', 'Error !', function() {});
+								  me.close();
+							   }
+							});
+						}
+					}
+				}
+			}]
+		});
+		
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'center',
+			flex: 1,
+			border: false,
+			items: [me.form]				
+		}];		
+
+		me.callParent(arguments);
+	},
+
+	checkSecurity: function(pass1, pass2) {
+		if (pass1.length < 6 || pass2.length < 6) {
+			Ext.MessageBox.alert('Status', 'Too short !', function() {});
+			return false;
+		}
+		
+		if (pass1 != pass2) {
+			Ext.MessageBox.alert('Status', 'Password is invalid !', function() {});
+			return false;
+		}
+
+		return true;
+	}
+});
+
 Ext.define('OCS.PermissionWindow', {
 	extend: 'OCS.Window',
 	title: 'Permission table',
