@@ -2876,7 +2876,7 @@ Ext.define('OCS.AddToCampaignWindow', {
 Ext.define('OCS.ChangePasswordWindow', {
 	extend: 'OCS.Window',
 	title: 'Change password',
-	maximizable: true,
+	maximizable: false,
 	height: 250,
 	modal: false,
 	width: 350,	
