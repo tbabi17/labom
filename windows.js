@@ -2889,7 +2889,7 @@ Ext.define('OCS.ChangePasswordWindow', {
 		me.form = Ext.create('OCS.FormPanel', {
 			id: 'change_password_form',
 			region: 'center',
-			flex: 0.5,
+			flex: 1,
 			closable: false,
 			border: true,
 			hidden : false,
