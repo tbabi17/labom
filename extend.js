@@ -1077,7 +1077,7 @@ Ext.define('OCS.UserGridWithFormPanel', {
 			}),
 			'-',
 			Ext.create('Ext.Action', {
-				iconCls   : 'case_grid',
+				iconCls   : 'password',
 				text: 'Change password ...',
 				disabled: (user_level < 2),
 				handler: function(widget, event) {
