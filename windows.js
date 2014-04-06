@@ -2877,9 +2877,9 @@ Ext.define('OCS.ChangePasswordWindow', {
 	extend: 'OCS.Window',
 	title: 'Change password',
 	maximizable: true,
-	height: 500,
+	height: 250,
 	modal: false,
-	width: 650,	
+	width: 350,	
 	modal: true, 
 	border: false,
 
