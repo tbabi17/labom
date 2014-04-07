@@ -1306,7 +1306,17 @@ Ext.define('OCS.ActivityGrid', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
-					me.completeActivity();
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					var record = records[0];
+					if (record.get('owner')) {
+						new OCS.ActivityDetailWindow({
+							title: 'Activity detail',
+							record: record,
+							backgrid: me
+						}).show();							
+					}
+
+					//me.completeActivity();
 				}
 			}),
 			'-',
@@ -1674,7 +1684,16 @@ Ext.define('OCS.MyActivityGrid', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
-					me.completeActivity();
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					var record = records[0];
+					if (record.get('owner')) {
+						new OCS.ActivityDetailWindow({
+							title: 'Activity detail',
+							record: record,
+							backgrid: me
+						}).show();							
+					}
+					//me.completeActivity();
 				}
 			}),
 			Ext.create('Ext.Action', {
