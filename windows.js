@@ -2941,8 +2941,14 @@ Ext.define('OCS.ChangePasswordWindow', {
 							   url: 'avia.php',
 							   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "password='"+newPass+"'", where: "owner='"+me.selected.get('owner')+"' and password='"+oldPass+"'"},
 							   success: function(response, opts) {							  
-								   Ext.MessageBox.alert('Status', response.responseText, function() {
-									   me.close();
+									   Ext.MessageBox.alert('Status', response.responseText, function() {
+										Ext.Msg.confirm('Warning','Мэдээлэл өөрчлөгдсөн тул дахин нэвтрэх шаардлагатай !',function(btn){
+											if(btn === 'yes'){
+												document.location.href = "logout.php";
+											} else {
+												
+											}	
+									   });	
 								   });								
 							   },
 							   failure: function(response, opts) {										   
@@ -2964,6 +2970,11 @@ Ext.define('OCS.ChangePasswordWindow', {
 	checkSecurity: function(pass1, pass2) {
 		if (pass1.length < 6 || pass2.length < 6) {
 			Ext.MessageBox.alert('Status', 'Too short !', function() {});
+			return false;
+		}
+
+		if (pass1 == logged || pass2 == logged || logged.indexOf(pass1) != -1) {
+			Ext.MessageBox.alert('Status', 'Security is low !', function() {});
 			return false;
 		}
 		
