@@ -1164,7 +1164,7 @@ Ext.define('OCS.ActivityGrid', {
 			id = sp[0];
 		}
 		
-		var form = me.form.getForm()
+		var form = me.form.getForm();
 		descr = form.findField('descr').getValue();
 
 		if (me.selected.get('work_type') == 'phone call') {
@@ -5100,12 +5100,15 @@ Ext.define('OCS.CampaignActivityGrid', {
 				iconCls : 'save',
 				text: 'Complete',
 				handler: function(widget, event) {
-/*					if (me.type == 'email')
-						new OCS.MassMailWindow({
-							emails: me.getEmailList()
-						}).show();
-					else*/
-						me.completeActivity();
+//					me.completeActivity();
+					var records = me.grid.getView().getSelectionModel().getSelection();
+					if (record.get('owner')) {
+						new OCS.ActivityDetailWindow({
+							title: 'Activity detail',
+							record: records[0],
+							backgrid: me
+						}).show();							
+					}
 				}
 			}),			
 			Ext.create('Ext.Action', {
