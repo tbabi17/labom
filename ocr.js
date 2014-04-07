@@ -5102,10 +5102,11 @@ Ext.define('OCS.CampaignActivityGrid', {
 				handler: function(widget, event) {
 //					me.completeActivity();
 					var records = me.grid.getView().getSelectionModel().getSelection();
+					var record = records[0];
 					if (record.get('owner')) {
 						new OCS.ActivityDetailWindow({
 							title: 'Activity detail',
-							record: records[0],
+							record: record,
 							backgrid: me
 						}).show();							
 					}
