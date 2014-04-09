@@ -872,6 +872,22 @@ Ext.define('CRM_REPORT_PRODUCT', {
 	fields: fields['CRM_REPORT_PRODUCT_FIELDS']
 });
 
+fields['CRM_CAMPAIGN_RESULT_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 120}, 
+   {name: 'team', text: 'Team', width: 120, hidden: true}, 
+   {name: 'pending', text: 'Pending', type:'float', width: 60, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}, 
+   {name: 'remind', text: 'Remind', type:'float', width: 60, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
+   {name: 'success', text: 'Success', type:'float', width: 60, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney},
+   {name: 'total', text: 'Total', type:'float', width: 70, align: 'center', renderer: renderPrecent, summaryType: 'sum', summaryRenderer: renderTPrecent},
+   {name: 'performance', text: 'Performance', type:'float', width: 70, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}  
+];
+
+Ext.define('CRM_CAMPAIGN_RESULT', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_CAMPAIGN_RESULT_FIELDS']
+});
+
+
 fields['CRM_REPORT_REVENUE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'team', text: 'Team', width: 250}, 
