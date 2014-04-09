@@ -5362,6 +5362,7 @@ Ext.define('OCS.Campaigns', {
 						items: [me.campaignActivity.createPanel(), {
 							xtype: 'panel',
 							layout: 'border',
+							region: 'south',
 							flex: 0.3,
 							split: true,
 							items: [me.perform.createGrid()]
