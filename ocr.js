@@ -5306,22 +5306,7 @@ Ext.define('OCS.Campaigns', {
 		me.campaigns = new OCS.CampaignPanel();
 		me.campaignActivity = new OCS.CampaignActivityGrid();
 		
-		me.perform = new Ext.create('OCS.GridWithFormPanel', {
-			modelName:'CRM_CAMPAIGN_RESULT',
-			func:'crm_campaign_result_list',
-			title: 'Campaign results',
-			insert: false,
-			tbarable: false,
-			remove: false,
-			tab: 'my_campaign_results_list',
-			values: '',
-
-			createActions: function(actions) {
-				var me = this;
-
-				return [];
-			}
-		});
+		me.perform = new Ext.create('OCS.CampaignResultGridWithFormPanel');
 
 		views['campaign_contacts'] = Ext.create('OCS.CampaignContactView', {
 			flex: 1,

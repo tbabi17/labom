@@ -1168,6 +1168,28 @@ Ext.define('OCS.UserGridWithFormPanel', {
 });
 
 
+Ext.define('OCS.CampaignResultGridWithFormPanel', {	
+	extend: 'OCS.GridWithFormPanel',	
+
+	modelName:'CRM_CAMPAIGN_RESULT',
+	func:'crm_campaign_result_list',
+	title: 'Campaign results',
+	insert: false,
+	tbarable: false,
+	remove: false,
+	tab: 'my_campaign_results_list',
+	values: '',
+
+	createActions: function(actions) {
+		var me = this;
+		me.actions = [			
+		];
+
+		return me.actions;
+	}
+});
+
+
 Ext.define('OCS.Window', {
 	extend : 'Ext.Window',
 	table: '',
