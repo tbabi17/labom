@@ -875,10 +875,10 @@ Ext.define('CRM_REPORT_PRODUCT', {
 fields['CRM_CAMPAIGN_RESULT_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 120}, 
    {name: 'team', text: 'Team', width: 120, hidden: true}, 
-   {name: 'pending', text: 'Pending', type:'float', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber}, 
-   {name: 'remind', text: 'Remind', type:'float', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-   {name: 'success', text: 'Success', type:'float', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-   {name: 'total', text: 'Total', type:'float', width: 70, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+   {name: 'pending', text: 'Pending', type:'int', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber}, 
+   {name: 'remind', text: 'Remind', type:'int', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+   {name: 'success', text: 'Success', type:'int', width: 60, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+   {name: 'total', text: 'Total', type:'int', width: 70, align: 'center', renderer: renderNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
    {name: 'performance', text: 'Performance', type:'float', width: 70, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}  
 ];
 
