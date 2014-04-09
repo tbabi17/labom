@@ -5314,7 +5314,13 @@ Ext.define('OCS.Campaigns', {
 			tbarable: false,
 			remove: false,
 			tab: 'my_campaign_results_list',
-			values: ''
+			values: '',
+
+			createActions: function(actions) {
+				var me = this;
+
+				return [];
+			}
 		});
 
 		views['campaign_contacts'] = Ext.create('OCS.CampaignContactView', {
