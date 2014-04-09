@@ -723,7 +723,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	hidden: false,
 	feature: true,
 	merge: false,
-	tbar: true,
+	tbarable: true,
 	windowed: false,
 	views: '',
 	title: '',
@@ -823,7 +823,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			func: me.func,
 			feature: me.feature,
 			hidden: me.hidden,
-			tbarable: me.tbar,
+			tbarable: me.tbarable,
 			title: (me.windowed?'':me.title),
 			listeners : {
 				scope: this,
