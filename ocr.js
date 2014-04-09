@@ -5287,6 +5287,7 @@ Ext.define('OCS.Campaigns', {
 	reload: function(rec) {
 		var me = this;
 		me.selected = rec;
+		me.perform.updateSource(rec);
 		me.campaignActivity.updateSource(rec);
 	},
 	
