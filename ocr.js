@@ -1467,6 +1467,8 @@ Ext.define('OCS.ActivityGrid', {
 		else
 			me.where = rec.get('crm_id');
 		me.values = 'crm_id';
+		me.grid.where = me.where;
+		me.grid.values = me.values;
 		me.loadStore();
 	},
 	
