@@ -5307,17 +5307,14 @@ Ext.define('OCS.Campaigns', {
 		me.campaignActivity = new OCS.CampaignActivityGrid();
 		
 		me.perform = new Ext.create('OCS.GridWithFormPanel', {
-							modelName:'CRM_CAMPAIGN_RESULT',
-							func:'crm_user_group_list',
-							title: 'Campaign results',
-							insert: false,
-							remove: false,
-							region: 'south',
-							flex: 0.3,
-							split: true,
-							tab: 'my_campaign_results_list',
-							values: ''
-						});
+			modelName:'CRM_CAMPAIGN_RESULT',
+			func:'crm_campaign_result_list',
+			title: 'Campaign results',
+			insert: false,
+			remove: false,
+			tab: 'my_campaign_results_list',
+			values: ''
+		});
 
 		views['campaign_contacts'] = Ext.create('OCS.CampaignContactView', {
 			flex: 1,
@@ -5362,7 +5359,13 @@ Ext.define('OCS.Campaigns', {
 						layout: 'border',						
 						split: true,
 						border: false,
-						items: [me.campaignActivity.createPanel(), me.perform]
+						items: [me.campaignActivity.createPanel(), {
+							xtype: 'panel',
+							layout: 'border',
+							flex: 0.3,
+							split: true,
+							items: [me.perform]
+						}]
 					}
 				]
 			}]
