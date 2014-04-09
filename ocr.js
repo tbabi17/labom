@@ -5311,6 +5311,7 @@ Ext.define('OCS.Campaigns', {
 			func:'crm_campaign_result_list',
 			title: 'Campaign results',
 			insert: false,
+			tbar: false,
 			remove: false,
 			tab: 'my_campaign_results_list',
 			values: ''
