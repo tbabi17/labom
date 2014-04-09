@@ -5070,13 +5070,28 @@ Ext.define('OCS.CampaignActivityGrid', {
 								me.filterData('My Activity List (Remind)');
 							}
 						}),
+						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
 							text: 'All Activity List',
 							handler: function(widget, event) {
 								me.filterData('All Activity List');
 							}
-						})
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Activity List (Pending)',
+							handler: function(widget, event) {
+								me.filterData('All Activity List (Pending)');
+							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'All Activity List (Remind)',
+							handler: function(widget, event) {
+								me.filterData('All Activity List (Remind)');
+							}
+						}),
 					]
 				}		
 			}),'-',
