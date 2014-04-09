@@ -5364,7 +5364,7 @@ Ext.define('OCS.Campaigns', {
 							layout: 'border',
 							flex: 0.3,
 							split: true,
-							items: [me.perform]
+							items: [me.perform.createGrid()]
 						}]
 					}
 				]
