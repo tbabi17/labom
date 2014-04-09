@@ -5231,6 +5231,8 @@ Ext.define('OCS.CampaignActivityGrid', {
 		me.owner = rec.get('owner');
 		me.type = rec.get('campaign_type');
 		me.values = 'campaign';
+		me.grid.where = me.where;
+		me.grid.values = me.values;
 		me.loadStore();
 	},		
 
