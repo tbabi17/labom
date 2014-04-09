@@ -1186,6 +1186,14 @@ Ext.define('OCS.CampaignResultGridWithFormPanel', {
 		];
 
 		return me.actions;
+	},
+
+	updateSource: function(where) {
+		var me = this;
+		me.where = where;
+		me.values = 'campaign';
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, where : me.where, values: me.values};
+		me.store.load();
 	}
 });
 
