@@ -1515,7 +1515,7 @@ Ext.define('OCS.ActivityGrid', {
 			func: me.func,
 			tbarable: false,
 			feature: true,
-			search: false,
+			search: true,
 			viewConfig: {
 				trackOver: false,
 				stripeRows: true,
