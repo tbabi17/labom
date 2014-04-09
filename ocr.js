@@ -5299,6 +5299,7 @@ Ext.define('OCS.Campaigns', {
 							remove: false,
 							region: 'south',
 							flex: 0.3,
+							split: true,
 							tab: 'my_campaign_results_list',
 							values: ''
 						});
