@@ -4317,6 +4317,14 @@ Ext.define('OCS.Reports', {
 								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
 							}
+						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Direct Sales Report',
+							handler: function(widget, event) {
+								me.panelW.setVisible(false);
+								me.reconfigureStatic('CRM_REPORT_DIRECT_SALES', 'crm_report_reseller_list');
+							}
 						})
 					]
 				}		
