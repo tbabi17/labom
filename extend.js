@@ -61,6 +61,18 @@ Ext.define('OCS.Module', {
 							var deal = 0, ccase = 0, activity = 0;
 							var show = (pk == 'dashboard');				
 							me.store.each(function(rec){
+								if (rec.data['type'] == 'phone call') {
+										Ext.create('widget.uxNotification', {
+											title: 'Phone call',
+											closeAction: 'hide',
+											position: 'br',
+											manager: 'demo1',
+											useXAxis: false,
+											stickWhileHover: false,
+											iconCls: 'ux-notification-icon-information',
+											html: rec.data['subject']+' (phone call)</br> reminded by <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
+										}).show();
+								} else
 								if (rec.data['type'] == 'deal') {
 									if (rec.data['status'] == 'assigned' && show) {										
 										Ext.create('widget.uxNotification', {
