@@ -4315,7 +4315,7 @@ Ext.define('OCS.Reports', {
 							text: 'Reseller Report',
 							handler: function(widget, event) {
 								me.panelW.setVisible(false);
-								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_direct_sales_list');
+								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
 							}
 						}),
 						Ext.create('Ext.Action', {
