@@ -930,14 +930,14 @@ Ext.define('CRM_REPORT_RESELLER', {
 fields['CRM_REPORT_DIRECT_SALES_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'section', text: 'Section', width: 150}, 
-   {name: 'c_p', text: 'Pending', align: 'center', width: 60}, 
-   {name: 'c_r', text: 'Remind', align: 'center', width: 60}, 
-   {name: 'c_s', text: 'Success', align: 'center', width: 90}, 
-   {name: 'a_m', text: 'Meeting', align: 'center', width: 90}, 
-   {name: 'a_p', text: 'Phone call', align: 'center', width: 90}, 
-   {name: 'a_e', text: 'Email', align: 'center', width: 90}, 
-   {name: 'total_qty', text: 'Qty', align: 'center', width: 90}, 
-   {name: 'total_amount', text: 'Amount', align: 'center', width: 90}
+   {name: 'c_p', type:'int', text: 'Pending', align: 'center', width: 60}, 
+   {name: 'c_r', type:'int', text: 'Remind', align: 'center', width: 60}, 
+   {name: 'c_s', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'a_m', type:'int', text: 'Meeting', align: 'center', width: 90}, 
+   {name: 'a_p', type:'int', text: 'Phone call', align: 'center', width: 90}, 
+   {name: 'a_e', type:'int', text: 'Email', align: 'center', width: 90}, 
+   {name: 'total_qty', type:'int', text: 'Qty', align: 'center', width: 90}, 
+   {name: 'total_amount', type:'int', text: 'Amount', align: 'center', width: 90}
 ];
 
 Ext.define('CRM_REPORT_DIRECT_SALES', {
@@ -952,7 +952,7 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
 	   text: 'Campaign',
 	   columns: [{dataIndex:'c_p', text: 'Pending', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c_r', text: 'Remind', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c_s', text: 'Success', width: 90, align: 'center', renderer: renderReportNumber,summaryType: 'sum', summaryRenderer: renderTNumber}]
+				 {dataIndex:'c_s', text: 'Success', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    },
    {
 	   text: 'Activity',
