@@ -61,7 +61,7 @@ Ext.define('OCS.Module', {
 							var deal = 0, ccase = 0, activity = 0;
 							var show = (pk == 'dashboard');				
 							me.store.each(function(rec){
-								if (rec.data['type'] == 'phone call') {
+								if (rec.data['type'] == 'phone call' || rec.data['type'] == 'appointment') {
 										Ext.create('widget.uxNotification', {
 											title: 'Phone call',
 											closeAction: 'hide',
@@ -70,7 +70,7 @@ Ext.define('OCS.Module', {
 											useXAxis: false,
 											stickWhileHover: false,
 											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (phone call)</br> reminded by <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
+											html: rec.data['subject']+' ('+rec.data['type']+')</br> reminded by <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
 										}).show();
 								} else
 								if (rec.data['type'] == 'deal') {
