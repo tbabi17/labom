@@ -5011,7 +5011,7 @@ Ext.define('OCS.Dashboard', {
 Ext.define('OCS.CampaignActivityGrid', {
 	extend: 'OCS.ActivityGrid',
 	func: 'crm_campaign_activity_list',
-	sortField: 'priority',
+	sortField: 'remind_at',
 	tab : 'campaign_activity_property',
 	dateField: '_date',
 	title: 'Campaign Activities',
