@@ -4281,6 +4281,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals revenue report',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT_REVENUE', 'crm_opportunity_by_revenue_list');
 							}
@@ -4289,6 +4291,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Deals report',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT', 'crm_report_deal_list');
 							}
@@ -4297,6 +4301,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Activity report',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_ACTIVITY', 'crm_report_activity_list');
 							}
@@ -4305,6 +4311,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Product Report',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.panelW.setVisible(false);
 								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_product_list');
 							}
@@ -4314,6 +4322,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Reseller Report',
 							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
 								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
 							}
@@ -4322,6 +4332,8 @@ Ext.define('OCS.Reports', {
 							icon   : '',  
 							text: 'Direct Sales Report',
 							handler: function(widget, event) {
+								me.where = 'direct sales';
+								me.values = 'team';
 								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_DIRECT_SALES', 'crm_report_direct_sales_list');
 							}
