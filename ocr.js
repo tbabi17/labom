@@ -4315,7 +4315,7 @@ Ext.define('OCS.Reports', {
 							text: 'Reseller Report',
 							handler: function(widget, event) {
 								me.panelW.setVisible(false);
-								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_reseller_list');
+								me.reconfigureStatic('CRM_REPORT_RESELLER', 'crm_report_direct_sales_list');
 							}
 						}),
 						Ext.create('Ext.Action', {
@@ -4323,7 +4323,7 @@ Ext.define('OCS.Reports', {
 							text: 'Direct Sales Report',
 							handler: function(widget, event) {
 								me.panelW.setVisible(false);
-								me.reconfigureStatic('CRM_REPORT_DIRECT_SALES', 'crm_report_reseller_list');
+								me.reconfigureStatic('CRM_REPORT_DIRECT_SALES', 'crm_report_direct_sales_list');
 							}
 						})
 					]
@@ -5216,6 +5216,12 @@ Ext.define('OCS.CampaignActivityGrid', {
 		},{
 			text: "Status",
 			dataIndex: 'status',
+			width: 100,
+			hidden: true,
+			sortable: true
+		},{
+			text: "Remind at",
+			dataIndex: 'remind_at',
 			width: 100,
 			hidden: true,
 			sortable: true
