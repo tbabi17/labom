@@ -950,20 +950,20 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
    {dataIndex: 'section', text: 'Team', width: 150}, 
    {
 	   text: 'Campaign',
-	   columns: [{dataIndex:'c_p', text: 'Pending', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c_r', text: 'Remind', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c_s', text: 'Success', width: 50, align: 'center', renderer: renderPrecent}]
+	   columns: [{dataIndex:'c_p', text: 'Pending', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c_r', text: 'Remind', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c_s', text: 'Success', width: 90, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Activity',
-	   columns: [{dataIndex:'a_m', text: 'Meting', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'a_p', text: 'Phone call', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'a_e', text: 'Email', width: 50, align: 'center', renderer: renderPrecent}]
+	   columns: [{dataIndex:'a_m', text: 'Meting', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'a_p', text: 'Phone call', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'a_e', text: 'Email', width: 90, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Total',
-	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'total_amount', text: 'Amount', width: 60, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}]
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 120, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}]
    }
 ];
 
