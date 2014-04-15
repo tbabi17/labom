@@ -927,6 +927,46 @@ Ext.define('CRM_REPORT_RESELLER', {
 	fields: fields['CRM_REPORT_RESELLER_FIELDS']
 });
 
+fields['CRM_REPORT_DIRECT_SALES_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'section', text: 'Section', width: 150}, 
+   {name: 'c_p', text: 'Pending', align: 'center', width: 60}, 
+   {name: 'c_r', text: 'Remind', align: 'center', width: 60}, 
+   {name: 'c_s', text: 'Success', align: 'center', width: 90}, 
+   {name: 'a_m', text: 'Meeting', align: 'center', width: 90}, 
+   {name: 'a_p', text: 'Phone call', align: 'center', width: 90}, 
+   {name: 'a_e', text: 'Email', align: 'center', width: 90}, 
+   {name: 'total_qty', text: 'Qty', align: 'center', width: 90}, 
+   {name: 'total_amount', text: 'Amount', align: 'center', width: 90}
+];
+
+Ext.define('CRM_REPORT_DIRECT_SALES', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_DIRECT_SALES_FIELDS']
+});
+
+columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
+   {dataIndex: 'owner', text: 'Owner', width: 150}, 
+   {dataIndex: 'section', text: 'Team', width: 150}, 
+   {
+	   text: 'Campaign',
+	   columns: [{dataIndex:'c_p', text: 'Pending', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c_r', text: 'Remind', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c_s', text: 'Success', width: 50, align: 'center', renderer: renderPrecent}]
+   },
+   {
+	   text: 'Activity',
+	   columns: [{dataIndex:'a_m', text: 'Meting', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'a_p', text: 'Phone call', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'a_e', text: 'Email', width: 50, align: 'center', renderer: renderPrecent}]
+   },
+   {
+	   text: 'Total',
+	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'total_amount', text: 'Amount', width: 60, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}]
+   }
+];
+
 fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'section', text: 'Section', width: 150}, 
