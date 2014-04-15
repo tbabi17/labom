@@ -952,7 +952,7 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
 	   text: 'Campaign',
 	   columns: [{dataIndex:'c_p', text: 'Pending', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c_r', text: 'Remind', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c_s', text: 'Success', width: 90, align: 'center', renderer: renderPrecent}]
+				 {dataIndex:'c_s', text: 'Success', width: 90, align: 'center', renderer: renderReportNumber,summaryType: 'sum', summaryRenderer: renderTNumber}]
    },
    {
 	   text: 'Activity',
