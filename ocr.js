@@ -570,9 +570,26 @@ Ext.define('OCS.RetailPanel', {
 			Ext.create('Ext.Action', {
 				iconCls  : 'delete',
 				text: 'Delete',
-				disabled: permit(me.xlsName+'-delete'),
-				handler: function(widget, event) {
-					me.deleteRecord();
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							iconCls   : 'delete',  
+							text: 'Delete for selected',
+							disabled: permit(me.xlsName+'-delete'),	
+							handler: function(widget, event) {
+								me.deleteRecord();
+							}
+						},
+						Ext.create('Ext.Action', {
+							iconCls   : 'delete',  
+							text: 'Delete all',
+							disabled: permit(me.xlsName+'-delete'),	
+							handler: function(widget, event) {
+								me.deleteRecord();
+							}
+						}
+					]
 				}
 			}),
 			'-',
