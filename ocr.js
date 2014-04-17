@@ -589,6 +589,7 @@ Ext.define('OCS.RetailPanel', {
 								me.deleteRecord();
 							}
 						})
+
 					]
 				}
 			}),
