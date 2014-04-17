@@ -580,7 +580,7 @@ Ext.define('OCS.RetailPanel', {
 							handler: function(widget, event) {
 								me.deleteRecord();
 							}
-						},
+						}),
 						Ext.create('Ext.Action', {
 							iconCls   : 'delete',  
 							text: 'Delete all',
@@ -588,7 +588,7 @@ Ext.define('OCS.RetailPanel', {
 							handler: function(widget, event) {
 								me.deleteRecord();
 							}
-						}
+						})
 					]
 				}
 			}),
