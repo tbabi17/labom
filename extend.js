@@ -674,7 +674,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 
 	pageSize: 100,
 	valueField: 'crm_id',
-	displayField: 'phone',
+	displayField: 'crm_name',
     typeAhead: false,
     hideLabel: false,
     hideTrigger: false,
@@ -720,6 +720,10 @@ Ext.define('OSS.CustomerSearchCombo', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	getPhoneValue: function() {
+
 	}
 });
 

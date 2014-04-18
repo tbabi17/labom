@@ -3452,7 +3452,9 @@ Ext.define('OCS.NewCaseWindow', {
 				name: 'crm_id',
 				listeners: {
 					change:    function(field, newValue, oldValue) {
-						Ext.getCmp('new_case_form').getForm().findField('phone').setValue(field.getRawValue());
+						var crm_id = field.getValue();
+						var record = field.store.findRecord(this.valueField, crm_id);
+						Ext.getCmp('new_case_form').getForm().findField('phone').setValue(record.get('phone'));
 					}
 				}
 			},{
