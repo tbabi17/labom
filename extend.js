@@ -674,7 +674,7 @@ Ext.define('OSS.CustomerSearchCombo', {
 
 	pageSize: 100,
 	valueField: 'crm_id',
-	displayField: 'crm_name',
+	displayField: 'phone',
     typeAhead: false,
     hideLabel: false,
     hideTrigger: false,

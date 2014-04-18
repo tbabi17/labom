@@ -3449,7 +3449,12 @@ Ext.define('OCS.NewCaseWindow', {
 				allowBlank: false,
 				valueField: 'crm_id',
 				table: 'crm_customer',
-				name: 'crm_id'				
+				name: 'crm_id',
+				listeners: {
+					change:    function(field, newValue, oldValue) {
+						Ext.getCmp('new_case_form').getForm().findField('phone').setValue(field.getRawValue());
+					}
+				}
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Phone',	
