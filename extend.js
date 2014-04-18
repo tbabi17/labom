@@ -69,6 +69,7 @@ Ext.define('OCS.Module', {
 											manager: 'demo1',
 											useXAxis: false,
 											stickWhileHover: false,
+											autoCloseDelay: 20000,
 											iconCls: 'ux-notification-icon-information',
 											html: rec.data['subject']+' ('+rec.data['type']+')</br> reminded by <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
 										}).show();
