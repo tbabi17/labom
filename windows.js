@@ -3557,7 +3557,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  fieldLabel: 'Resolution type',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_ITEM',
-				 data: [{value: 'calls'},{value: 'information request'},{value: 'complaints'},{value: 'information submitted'},{value: 'problem solved'},{value: 'information provided'}] 
+				 data: [{value: 'calls',name:'Дуудлагын бүртгэл'},{value: 'information request',name:'Мэдээлэл хүссэн хүмүүсийн бүртгэл'},{value: 'complaints',name:'Санал гомдлын бүртгэл'},{value: 'information submitted', name:'Мэдээлэл хүргүүлсэн бүртгэл'},{value: 'problem solved', name: 'Problem solved'},{value: 'information provided', name: 'Information provided'},{value: 'other', name: 'Бусад'}] 
 			  }),
 			  name: 'resolution_type',
 			  queryMode: 'local',
@@ -3577,7 +3577,8 @@ Ext.define('OCS.NewCaseWindow', {
 				xtype: 'searchcombo',
 				table: 'crm_users',
 				fieldLabel: 'Owner',
-				name: 'owner'
+				name: 'owner',
+				value: logged
 			},{
 				xtype: 'searchcombo',
 				table: 'crm_users',

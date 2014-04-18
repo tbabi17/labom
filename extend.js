@@ -2322,12 +2322,12 @@ Ext.define('OCS.PropertyGrid', {
 			return {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
-				 model: 'CRM_ITEM',
-				 data: [{value: 'calls'},{value: 'information request'},{value: 'complaints'},{value: 'information submitted'},{value: 'problem solved'},{value: 'information provided'}] 
+				 model: 'CRM_OBJECT',
+				 data: [{value: 'calls',name:'Дуудлагын бүртгэл'},{value: 'information request',name:'Мэдээлэл хүссэн хүмүүсийн бүртгэл'},{value: 'complaints',name:'Санал гомдлын бүртгэл'},{value: 'information submitted', name:'Мэдээлэл хүргүүлсэн бүртгэл'},{value: 'problem solved', name: 'Problem solved'},{value: 'information provided', name: 'Information provided'},{value: 'other', name: 'Бусад'}] 
 			  }),
 			  name: name,
 			  queryMode: 'local',
-		      displayField: 'value',
+		      displayField: 'name',
 		      valueField: 'value',
 			  triggerAction: 'all',
 			  editable: false
