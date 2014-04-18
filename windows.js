@@ -3561,7 +3561,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  }),
 			  name: 'resolution_type',
 			  queryMode: 'local',
-		      displayField: 'value',
+		      displayField: 'name',
   			  allowBlank: false,
 		      valueField: 'value',
 			  triggerAction: 'all',
