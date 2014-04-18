@@ -61,7 +61,7 @@ Ext.define('OCS.Module', {
 							var deal = 0, ccase = 0, activity = 0;
 							var show = (pk == 'dashboard');				
 							me.store.each(function(rec){
-								if (rec.data['type'] == 'phone call' || rec.data['type'] == 'appointment') {
+								if (show && rec.data['type'] == 'phone call' || rec.data['type'] == 'appointment') {
 										Ext.create('widget.uxNotification', {
 											title: 'Phone call',
 											closeAction: 'hide',
