@@ -3497,7 +3497,7 @@ Ext.define('OCS.CaseActivityGrid', {
 Ext.define('OCS.CaseView', {
 	extend: 'OCS.GridWithFormPanel',
 	func: 'crm_complain_list',	
-	sortField: 'closing_date',
+	sortField: '_date',
 	table: 'crm_complain',
 	tab: 'my_case_list',
 	title: 'All Cases',
