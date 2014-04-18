@@ -3610,8 +3610,7 @@ Ext.define('OCS.NewCaseWindow', {
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
 						});
-						
-						views['cases'].reload();
+												
 						me.close();
 					}
 				}
