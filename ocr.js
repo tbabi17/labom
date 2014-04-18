@@ -3486,7 +3486,7 @@ Ext.define('OCS.CaseActivityGrid', {
 	updateSource: function(rec) {
 		var me = this;
 		me.selected = rec;
-		me.action = rec.get('owner') == logged;
+		me.action = (rec.get('owner') == logged || rec.get('userCode') == logged);
 		me.where = rec.get('crm_id')+','+rec.get('case_id');
 		me.values = 'crm_id,case_id';
 		me.loadStore();
