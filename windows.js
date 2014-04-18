@@ -3557,7 +3557,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  fieldLabel: 'Resolution type',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_ITEM',
-				 data: [{value: 'calls'},{value: 'information request'},{value: 'complaints'},{value: 'information submitted'},{value: 'problem solved'},{value: 'information provided'},{value: 'customer car'},{value: 'box'}] 
+				 data: [{value: 'calls'},{value: 'information request'},{value: 'complaints'},{value: 'information submitted'},{value: 'problem solved'},{value: 'information provided'}] 
 			  }),
 			  name: 'resolution_type',
 			  queryMode: 'local',
