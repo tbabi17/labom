@@ -3556,7 +3556,7 @@ Ext.define('OCS.NewCaseWindow', {
 			  xtype: 'combo',
 			  fieldLabel: 'Resolution type',
 			  store: Ext.create('Ext.data.Store', {
-				 model: 'CRM_ITEM',
+				 model: 'CRM_OBJECT',
 				 data: [{value: 'calls',name:'Дуудлагын бүртгэл'},{value: 'information request',name:'Мэдээлэл хүссэн хүмүүсийн бүртгэл'},{value: 'complaints',name:'Санал гомдлын бүртгэл'},{value: 'information submitted', name:'Мэдээлэл хүргүүлсэн бүртгэл'},{value: 'problem solved', name: 'Problem solved'},{value: 'information provided', name: 'Information provided'},{value: 'other', name: 'Бусад'}] 
 			  }),
 			  name: 'resolution_type',
