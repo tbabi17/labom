@@ -3664,7 +3664,7 @@ Ext.define('OCS.CaseView', {
 		
 	reload: function() {
 		var me = this;
-		me.store.loadPage(1);
+		me.store.reload();
 		views['cases'].action.panel.collapse();			
 	}
 });
