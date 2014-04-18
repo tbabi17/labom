@@ -150,7 +150,7 @@ fields['CRM_TASK_FIELDS'] = [
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: 'descr', text: 'Description', width: 250},
    {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
-   {name: '_date', text: 'Created on', type: 'datetime', dateFormat: 'Y-m-d', hidden: true,  width: 200}
+   {name: '_date', text: 'Created on', type: 'datetime', dateFormat: 'Y-m-d', hidden: true,  width: 200, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_TASK', {
@@ -180,7 +180,7 @@ fields['CRM_EVENT_FIELDS'] = [
    {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
-   {name: '_date', type: 'datetime', text: 'Created on', hidden: true,  width: 200}
+   {name: '_date', type: 'datetime', text: 'Created on', hidden: true,  width: 200, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_EVENT', {
@@ -210,7 +210,7 @@ fields['CRM_CALLLOG_FIELDS'] = [
    {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
-   {name: '_date', type: 'datetime', text: 'Created on', width: 200}
+   {name: '_date', type: 'datetime', text: 'Created on', width: 200, renderer: renderCreatedDate} 
 ];
 
 Ext.define('CRM_CALLLOG', {
@@ -327,7 +327,7 @@ fields['CRM_NOTES_FIELDS'] = [
    {name: 'www', text: 'Attach link', width: 150, renderer: renderLink},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner, hidden: true},
    {name: 'userCode', text: 'Created by', width: 100, renderer: renderOwner},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_NOTES', {
@@ -343,7 +343,7 @@ fields['CRM_POSTS_FIELDS'] = [
    {name: 'level', type: 'int', text: 'level', width: 50, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_POSTS', {
@@ -367,7 +367,7 @@ fields['CRM_EMAIL_FIELDS'] = [
    {name: 'descr', text: 'Message body', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_EMAIL', {
@@ -421,7 +421,7 @@ fields['CRM_DEAL_PRODUCTS_FIELDS'] = [
    {name: 'qty', text: 'Qty', type:'float', align: 'right', width: 80, summaryType: 'sum'},
    {name: 'price', text: 'Price', width: 90, type: 'float', align: 'right', renderer: renderMoney},
    {name: 'amount', text: 'Amount (Discount)', type: 'float', width: 100, align: 'right', renderer: renderMoney, summaryRenderer: renderTMoney, summaryType: 'sum'},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_DEAL_PRODUCTS', {
@@ -437,7 +437,7 @@ fields['CRM_DEAL_PAYROLL_FIELDS'] = [
    {name: 'pay_date', text: 'Date', width: 120, align: 'center'}, 
    {name: 'amount', text: 'Amount', type:'float', align: 'right', width: 120, summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney},
    {name: 'userCode', text: 'Created by', width: 100, renderer: renderOwner},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_DEAL_PAYROLL', {
@@ -465,7 +465,7 @@ fields['CRM_CASE_TRANSFER_FIELDS'] = [
    {name: 'descr', text: 'Note', width: 200, primary: true},
    {name: 'owner', text: 'Owner', width: 120, primary: true}, 
    {name: '_from', text: 'From', width: 120},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_CASE_TRANSFER', {
@@ -479,7 +479,7 @@ fields['CRM_DEAL_TRANSFER_FIELDS'] = [
    {name: 'descr', text: 'Note', width: 200, primary: true},
    {name: 'owner', text: 'Owner', width: 120, primary: true}, 
    {name: 'userCode', text: 'Created by', width: 120}, 
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120}
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_DEAL_TRANSFER', {
@@ -634,7 +634,7 @@ fields['CRM_COMPETITOR_FIELDS'] = [
    {name: 'competitor_name', text: 'Competitor name', width: 120},
    {name: 'www', text: 'Web site', width: 150},
    {name: 'userCode', text: 'Create by', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_COMPETITOR', {
@@ -650,7 +650,7 @@ fields['CRM_COMMISSION_FIELDS'] = [
    {name: 'amount', type: 'float', text: 'Amount', width: 150},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'userCode', text: 'Create by', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_COMMISSION', {
@@ -695,7 +695,7 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: '_repeat', text: 'Repeat', width: 60, align: 'center'},
    {name: 'status', text: 'Status', width: 60, align: 'center'},
    {name: 'owner', text: 'Create by', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_RISK_RESULT', {
@@ -764,7 +764,7 @@ fields['CRM_POTENTIAL_FIELDS'] = [
    {name: 'next_step', text: 'Next Step',  width: 150},
    {name: 'amount', text: 'Amount', align: 'center', align: 'right', width: 80, renderer: renderMoney},
    {name: 'expected_revenue', text: 'Expected Revenue', align: 'right', width: 120, renderer: renderMoney},
-   {name: '_date', text: 'Огноо', dateFormat: 'Y-m-d', hidden: true, width: 80},
+   {name: '_date', text: 'Огноо', dateFormat: 'Y-m-d', hidden: true, width: 80, renderer: renderCreatedDate},
    {name: 'descr', text: 'Тайлбар', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 80, hidden: true, renderer:renderOwner},   
    {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true},
