@@ -1425,7 +1425,7 @@ Ext.define('OCS.ActivityGrid', {
 		if (record.data.work_type == 'phone call')	
 		{
 			return Ext.String.format(
-		        '<table class="{2}"><tr><td width="50px"><div class="c-call" title="Task"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;{5}</br><span class="lightgray">{7}&nbsp;{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
+		        '<table class="{2}"><tr><td width="50px"><div class="c-call" title="Task"></div></td><td><b><span class="title">{5}</span></b></br><span class="lightgray">{7}&nbsp;{1}</span></br><span class="gray">{2}&nbsp;by&nbsp;</span><span class="purple">{3}</span>&nbsp;<span class="gray">{4}</span>&nbsp;<img src="images/{6}.png" title="{6}" style="height:12px"/></td></tr></table>',
 			    value,
 				record.data.descr.substring(0, Math.min(record.data.descr.length, 80)),
 	            record.data.status,
