@@ -1043,6 +1043,16 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 	   text: 'Direction',
 	   columns: [{dataIndex:'d1', text: 'Inbound', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'d2', text: 'Outbound', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+   },
+   {
+	   text: 'Call center',
+	   columns: [{dataIndex:'e1', text: '94097007', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'e2', text: '70107007', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+   },
+   {
+	   text: 'Transfer',
+	   columns: [{dataIndex:'t1', text: 'sukh@mandal', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'t2', text: 'myagmartseren@madal', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    }
 ];
 
