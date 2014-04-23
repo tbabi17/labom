@@ -1240,7 +1240,7 @@ Ext.define('OCS.Window', {
 						});
 
 						me.selected.set('expected_revenue', amount);
-						views['deals'].action.update(me.selected);
+						views[pk].action.update(me.selected);
 					}
 				}});
 		}
