@@ -1870,7 +1870,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 
 	initComponent: function() {
 		var me = this;
-
+		me.callParent(arguments);
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
 			hidden: false,
@@ -1944,8 +1944,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 			}]
 		});
 		
-		me.items = [me.form];		
-		me.callParent(arguments);
+		me.items = [me.form];				
 	},
 
 	customerLevelDetection: function() {
