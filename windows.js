@@ -2813,7 +2813,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
 				   success: function(response, opts) {							  
-					  me.close();
+					  
 				   },
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -2826,7 +2826,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
 				   success: function(response, opts) {							  
-					  me.close();
+					  
 				   },
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
