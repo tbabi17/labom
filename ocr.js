@@ -2593,6 +2593,62 @@ Ext.define('OCS.DealView', {
 	}
 });
 
+Ext.define('OCS.Services', {
+	extend: 'OCS.Module',
+	
+	reload: function(rec) {
+		var me = this;
+		me.services.reload();
+		me.action.select(rec);
+	},
+	
+	selectedRecord: function() {
+		var me = this;
+		var recs = me.deals.grid.getView().getSelectionModel().getSelection();
+		if (recs && recs.length > 0)
+			return recs[0];
+		
+		return 0;
+	},
+
+	createPanel: function() {
+		var me = this;
+		
+		me.services = new OCS.DealView();
+		me.action = new OCS.DealAction();
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			region: 'center',
+			border: false,
+			bodyPadding: 2,
+			defaults: {
+				collapsible: true,
+				split: true,
+				border: false
+			},
+			items: [{	
+				region: 'center',
+				layout: 'border',				
+				title: '',
+				border: false,
+				collapsible: false,
+				items: [
+					{
+						region: 'center',	
+						flex: 0.6,
+						layout: 'border',						
+						items: [me.services.createView()]
+					}, me.action.createPanel()
+				]
+			}]
+		});
+		
+
+		return me.panel;
+	}
+});
+
 
 Ext.define('OCS.Deals', {
 	extend: 'OCS.Module',
