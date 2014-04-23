@@ -2069,7 +2069,7 @@ Ext.define('OCS.AssignWindow', {
 
 
 Ext.define('OCS.ServiceAssignWindow', {
-	extend: 'OCS.AssignWindow',
+	extend: 'OCS.Window',
 	
 	title: 'Assign to',
 	maximizable: true,
