@@ -853,7 +853,7 @@ Ext.define('OCS.ServiceProductGrid', {
 				text: 'Add ...',
 				handler: function(widget, event) {		
 					if (me.action)
-						new OCS.DealAddProductWindow({
+						new OCS.ServiceAddProductWindow({
 							selected: me.selected,
 							backgrid: me.grid
 						}).show();
@@ -874,47 +874,7 @@ Ext.define('OCS.ServiceProductGrid', {
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
-			}),
-			Ext.create('Ext.Action', {
-				iconCls : 'deal_move',
-				text: 'Move to ...',
-				handler: function(widget, event) {		
-					if (user_level > 0 ) {												
-						if (me.recordSelected())						
-							new OCS.DealProductMoveWindow({
-								ids: me.selectedIds('id'),
-								backgrid: me.grid,
-								direction: me.xlsName
-							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
-			}),
-			'-',
-			Ext.create('Ext.Action', {
-				iconCls   : 'sales',
-				text: 'Create invoice ...',
-				handler: function(widget, event) {
-					if (me.action) {
-						if (me.store.getCount() > 0)
-						{					
-							Ext.Ajax.request({
-							   url: 'avia.php',
-							   params: {handle: 'web', action: 'create_quote', where: me.selected.get('deal_id')},
-							   success: function(response, opts) {
-								  Ext.MessageBox.alert('Status', 'Success !', function() {});
-							   },
-							   failure: function(response, opts) {										   
-								  Ext.MessageBox.alert('Status', 'Error !', function() {});
-							   }
-							});	
-						} else {
-							Ext.MessageBox.alert('Status', 'Empty !', function() {});
-						}
-					} else 
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
-			})
+			})			
 		];
 
 		return me.actions;
