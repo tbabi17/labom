@@ -832,7 +832,7 @@ Ext.define('OCS.DealProductGrid', {
 });
 
 Ext.define('OCS.ServiceProductGrid', {
-	extend: 'OCS.DealGrid',
+	extend: 'OCS.DealProductGrid',
 	func: 'crm_service_product_list',
 	tab : 'service_product_property',
 	title: 'Products',
@@ -1153,6 +1153,64 @@ Ext.define('OCS.DealCommissionGrid', {
 			width: 130,
 			sortable: true
 		}];
+	}
+});
+
+Ext.define('OCS.ServiceCommissionGrid', {
+	extend: 'OCS.DealCommissionGrid',
+	func: 'crm_commission_list',
+	tab : 'service_commission_property',
+	title: 'Commissions',
+	icon: 'import',
+	table: 'crm_comission',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_COMMISSION',
+	collapsed: false,
+	primary: 'id',
+		
+	createActions: function() {
+		var me = this;
+		me.actions = [			
+			Ext.create('Ext.Action', {
+				iconCls: 'add',
+				text: 'Add ...',
+				handler: function(widget, event) {
+					if (me.action)
+						new OCS.CommissionWindow({
+							selected: me.selected,
+							backgrid: me.grid
+						}).show();
+					else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Remove from list',
+				handler: function(widget, event) {
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {
+							me.deleteRecord();											
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
+		];
+
+		return me.actions;
+	},
+	
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.action = rec.get('owner')==logged;
+		me.where = rec.get('service_id');
+		me.values = 'service_id';
+		me.loadStore();
 	}
 });
 
