@@ -735,10 +735,12 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'notify', text: 'Notify', hidden: true}
 ];
 
-Ext.define('CRM_SERVICE', {
+
+Ext.define('CRM_DEAL', {
 	extend: 'Ext.data.Model',
-	fields: fields['CRM_SERVICE_FIELDS']
+	fields: fields['CRM_DEAL_FIELDS']
 });
+
 
 fields['CRM_SERVICE_FIELDS'] = [
    {name: 'service_id', text: 'ID', width: 50, hidden:true}, 
@@ -757,10 +759,11 @@ fields['CRM_SERVICE_FIELDS'] = [
    {name: 'userCode', text: 'Created by', width: 80, hidden: true}
 ];
 
-Ext.define('CRM_DEAL', {
+Ext.define('CRM_SERVICE', {
 	extend: 'Ext.data.Model',
-	fields: fields['CRM_DEAL_FIELDS']
+	fields: fields['CRM_SERVICE_FIELDS']
 });
+
 
 fields['CRM_RESELLER_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
