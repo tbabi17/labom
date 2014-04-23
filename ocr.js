@@ -783,6 +783,17 @@ Ext.define('OCS.RetailPanel', {
 					}]
 				}				
 			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'service', 
+				text: 'Service ...',
+				handler: function(widget, event) {		
+					if (me.recordSelected())
+						new OCS.NewDealWindow({
+							selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						}).createWindow();
+				}
+			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'tools', 
 				text: 'Tools ...',
