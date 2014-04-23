@@ -3399,7 +3399,7 @@ Ext.define('OCS.ServiceAction', {
 			border: true,
 			flex: 0.45,
 			region: 'east',
-			title: 'Selected connection',
+			title: 'Selected service',
 			collapsible: true,
 			collapsed: true,
 			split: true,
