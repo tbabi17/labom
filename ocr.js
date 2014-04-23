@@ -789,7 +789,7 @@ Ext.define('OCS.RetailPanel', {
 				text: 'Service ...',
 				handler: function(widget, event) {		
 					if (me.recordSelected())
-						new OCS.NewDealWindow({
+						new OCS.NewServiceWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 				}

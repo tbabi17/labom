@@ -735,6 +735,28 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'notify', text: 'Notify', hidden: true}
 ];
 
+Ext.define('CRM_SERVICE', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_SERVICE_FIELDS']
+});
+
+fields['CRM_SERVICE_FIELDS'] = [
+   {name: 'service_id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'subject', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},   
+   {name: 'service_stage', text: 'Stage', width: 85, align: 'center', renderer: renderDealLevel},
+   {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
+   {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
+   {name: 'phone', text: 'Phone', width: 80, hidden: true, primary: true},
+   {name: 'service_revenue', text: 'Revenue', type:'float', width: 120, align: 'right', summaryType:'sum', summaryRenderer: renderTMoney, renderer: renderMoney},
+   {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
+   {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
+   {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center', renderer: renderDate}, 
+   {name: 'descr', text: 'Description', width: 200, hidden: true},
+   {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
+   {name: 'campaign', text: 'Campaign', width: 200},   
+   {name: 'userCode', text: 'Created by', width: 80, hidden: true}
+];
+
 Ext.define('CRM_DEAL', {
 	extend: 'Ext.data.Model',
 	fields: fields['CRM_DEAL_FIELDS']
