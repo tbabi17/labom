@@ -445,6 +445,90 @@ Ext.define('OCS.DealPostGrid', {
 	}
 });
 
+Ext.define('OCS.ServicePostGrid', {
+	extend: 'OCS.DealGrid',
+	func: 'crm_post_list',
+	tab : 'service_post_list',
+	title: 'Posts',
+	icon: 'call',
+	table: 'crm_posts',
+	dateField: '_date',
+	sortField: '_date',
+	modelName: 'CRM_POSTS',
+	collapsed: false,
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [];
+		return me.actions;
+	},
+
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.where = rec.get('service_id');
+		me.values = 'service_id';
+		me.grid.initSource(rec.get('service_id'), 0);
+		me.grid.owner = rec.get('owner');
+		me.loadStore();
+	},
+
+	renderTitle: function(value, p, record) {
+        return Ext.String.format(
+            '<table><tr><td><div class="c-contact"></div></td><td><b><span class="title" style="white-space:normal !important;">{0}</span></b></br><span class="gray">to : {1}&nbsp;|&nbsp;from : {2}</br>{3}</br></span></td></tr></table>',
+            value,
+            record.data.owner,
+            record.data.userCode,
+            record.data._date,
+			record.data.level*50
+        );
+    },
+		
+	createColumns: function() {
+		var me = this;
+		return [{
+			text: 'Messages',
+			dataIndex: 'message',
+			renderer: me.renderTitle,
+			flex: 1,
+			sortable: false
+		}];
+	},
+	
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.AGridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 0.75,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			actions: me.createActions(),
+			viewConfig: {
+				trackOver: false,
+				stripeRows: false,
+				plugins: [{
+					ptype: 'preview',
+					bodyField: 'descr',
+					expanded: true,
+					pluginId: 'preview'
+				}],
+			    emptyText: 'No records'    
+			}
+		});
+
+		me.grid.getSelectionModel().on('selectionchange', function(sm, selectedRecord) {
+			if (selectedRecord.length) {
+				var rec = selectedRecord[0];
+			}
+		});
+	}
+});
+
 
 Ext.define('OCS.CasePostGrid', {
 	extend: 'OCS.DealPostGrid',

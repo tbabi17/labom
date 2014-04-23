@@ -3374,7 +3374,7 @@ Ext.define('OCS.ServiceAction', {
 		var me = this;
 		me.createTmpl();
 				
-		me.servicePosts = new OCS.DealPostGrid();
+		me.servicePosts = new OCS.ServicePostGrid();
 		me.serviceContact = new OCS.DealContactGrid();
 		me.serviceActivity = new OCS.DealActivityGrid();
 		me.serviceProduct = new OCS.DealProductGrid();
