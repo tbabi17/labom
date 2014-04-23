@@ -3079,6 +3079,120 @@ Ext.define('OCS.AGridView', {
 	}
 });
 
+Ext.define('OCS.CGridView', {
+	extend: 'Ext.grid.Panel',	
+	border: false,
+	region: 'center',
+	split: true,
+	multiSelect: true,
+	columnLines: true,
+	stripeRows: true,	
+	stateful: false,
+	emptyText: 'No records.',
+	deal_id: 0,
+	case_id: 0,
+	postable: true,
+	owner: logged,
+	
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },
+	
+	initComponent: function() {
+		var me = this;
+	
+		me.tbar = Ext.create('Ext.Toolbar', {
+			hidden: !me.postable,
+			items: [{
+					id: 'post_here',
+					xtype: 'textfield',
+					width: 400,					
+					emptyText: 'Enter post here ...',
+					enableKeyEvents: true,
+					listeners: {
+						 keyup : function(textfield,eventObject){
+							if (eventObject.getCharCode() == Ext.EventObject.ENTER) {
+								var post = textfield.getValue();
+								if (post.length > 0) {								
+									textfield.setValue('');
+									me.postHere(post);
+								}
+							}
+						}
+					}
+				}, {
+					text: 'Post',
+					iconCls: 'replied',
+					handler: function() {
+						var post = Ext.getCmp('post_here').getValue();
+						if (post.length > 0) {
+							Ext.getCmp('post_here').setValue('');
+							me.postHere(post);
+						}
+					}
+				}
+			]
+		});		
+
+		me.contextMenu = Ext.create('Ext.menu.Menu', {
+			items: me.actions
+		});
+
+		me.viewConfig = {
+			emptyText: me.emptyText,
+			trackMouseOver: true,
+			trackOver: true,
+			stripeRows: false,
+			listeners: {
+				itemcontextmenu: function(view, rec, node, index, e) {
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(e.getXY());
+					return false;
+				},
+				containercontextmenu: function(grid, e) {
+					var position = e.getXY();
+					e.stopEvent();
+					if (me.actions.length > 0)
+						me.contextMenu.showAt(position);
+				}
+			},
+			getRowClass: function (record, rowIndex, rowParams, store) {
+                may = record.get('mayDuplicate') != '0' ? 'may-duplicate' : '';
+				return may;
+            }
+		};
+			
+		me.callParent(arguments);
+	},
+	
+	postHere: function(value) {
+		var me = this;
+		var values = 'service_id='+me.service_id+'&message='+value+'&owner='+me.owner+'&userCode='+logged;
+		Ext.Ajax.request({
+		   url: 'avia.php',
+		   params: {handle: 'web', action: 'insert', func: '', table: 'crm_posts', values:values, where: ''},
+		   success: function(response, opts) {
+			  me.loadStore();
+		   },
+		   failure: function(response, opts) {										   
+			  Ext.MessageBox.alert('Status', 'Error !', function() {});
+		   }
+		});
+	},
+
+	initSource: function(service_id) {
+		var me = this;
+		me.service_id = service_id;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.loadPage(1);
+	}
+});
+
 Ext.define('OCS.BGridView', {
 	extend: 'Ext.grid.Panel',	
 	border: false,

@@ -512,7 +512,7 @@ Ext.define('OCS.ServicePostGrid', {
 		me.selected = rec;
 		me.where = rec.get('service_id');
 		me.values = 'service_id';
-		me.grid.initSource(rec.get('service_id'), 0);
+		me.grid.initSource(rec.get('service_id'));
 		me.grid.owner = rec.get('owner');
 		me.loadStore();
 	},
@@ -544,7 +544,7 @@ Ext.define('OCS.ServicePostGrid', {
 		me.createActions();
 		me.createStore();
 		
-		me.grid = Ext.create('OCS.AGridView', {
+		me.grid = Ext.create('OCS.CGridView', {
 			store: me.store,
 			columns: me.createColumns(),
 			flex: 0.75,
