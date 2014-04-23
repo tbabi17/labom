@@ -837,10 +837,10 @@ Ext.define('OCS.ServiceProductGrid', {
 	tab : 'service_product_property',
 	title: 'Products',
 	icon: 'call',
-	table: 'crm_service_products',
+	table: 'crm_deal_products',
 	dateField: '_date',
 	sortField: 'product_name',
-	modelName: 'CRM_SERVICE_PRODUCTS',
+	modelName: 'CRM_DEAL_PRODUCTS',
 	collapsed: false,
 	primary: 'id',
 	values: 'id',
@@ -888,11 +888,6 @@ Ext.define('OCS.ServiceProductGrid', {
 		me.values = 'service_id';
 		me.loadStore();
 	},
-	
-	productCount: function() {
-		var me = this;
-		return me.store.getCount();
-	},
 
 	createGrid: function() {
 		var me = this;	
@@ -918,7 +913,7 @@ Ext.define('OCS.ServiceProductGrid', {
 				}
 
 				if (me.action)
-					new OCS.DealAddProductWindow({
+					new OCS.ServiceAddProductWindow({
 						selected: me.selected,
 						backgrid: me.grid,
 						record: record
