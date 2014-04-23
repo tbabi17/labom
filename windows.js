@@ -309,7 +309,7 @@ Ext.define('OCS.NewServiceWindow', {
 				closing_date : Ext.Date.format(new Date(),'Y-m-d'),
 				userCode : logged,				
 				owner: logged,
-				service_stage: 'receipt  ',
+				service_stage: 'receipt',
 				service_revenue: '0',
 				campaign: me.selected.get('campaign')
 			}			

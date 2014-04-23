@@ -1738,6 +1738,24 @@ Ext.define('OCS.PropertyGrid', {
 			};
 		}
 
+		if (name == 'service_stage')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'receipt'},{value: 'service'},{value: 'closed'}]
+              }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'value',
+			  valueField: 'value',
+			  triggerAction: 'all',
+			  disabled: true,
+			  editable: false
+			};
+		}
+
 		if (name == 'deal_origin')
 		{
 			return {
