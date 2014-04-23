@@ -833,7 +833,7 @@ Ext.define('OCS.DealProductGrid', {
 
 Ext.define('OCS.ServiceProductGrid', {
 	extend: 'OCS.DealProductGrid',
-	func: 'crm_service_product_list',
+	func: 'crm_deal_product_list',
 	tab : 'service_product_property',
 	title: 'Products',
 	icon: 'call',
