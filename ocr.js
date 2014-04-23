@@ -3434,10 +3434,10 @@ Ext.define('OCS.ServiceAction', {
 						}
 
 						if (me.selected.get('owner') == logged) {				
-							new OCS.DealDescrWindow({
+							new OCS.ServiceDescrWindow({
 								selected: me.selected,
-								stage: 'close as won',
-								title: 'Close as won'
+								service_stage: 'closed',
+								title: 'Close complete'
 							}).show();
 						} else 
 							Ext.MessageBox.alert('Error', 'Not available !', function() {});

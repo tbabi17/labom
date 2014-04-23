@@ -1584,6 +1584,129 @@ Ext.define('OCS.DealDescrWindow', {
 });
 
 
+Ext.define('OCS.ServiceDescrWindow', {
+	extend: 'OCS.DealDescrWindow',
+
+	maximizable: true,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'datefield',
+				fieldLabel: 'Remind date',				
+				name: 'remind_date',
+				value: new Date(),
+				format: 'Y-m-d'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				name: 'crm_id',
+				hidden: true,
+				value: me.selected.get('crm_id'),
+				readOnly: true
+			},				
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Бүртгэсэн',				
+				name: 'userCode',
+				value: logged,
+				hidden: true,
+				readOnly: true
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Тайлбар',
+				hideLabel: true,
+				name: 'descr',
+				value: me.selected.get('descr'),
+				emptyText: 'Note ...',
+				style: 'margin:0', 
+				flex: 1 
+			}],
+			buttons: [{
+				text: 'Commit',
+				iconCls: 'commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						var values_services = '';
+						if (me.service_stage != '') {
+							values_services = "service_stage='"+me.service_stage+"'"+
+										   ",remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
+										   ",descr='"+form.findField('descr').getValue()+"'";
+							me.selected.data['service_stage'] = me.service_stage;							
+						} else {
+							values_services = "remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
+										   ",descr='"+form.findField('descr').getValue()+"'";							
+						}
+
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_services', action: 'update', values: values_services, where: "service_id="+me.selected.get('service_id')},
+						   success: function(response, opts) {
+							  me.close();
+							  me.competitorWrite();
+							  me.customerLevelDetection();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});														
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	},
+
+	customerLevelDetection: function() {
+		var me = this;
+		if (me.stage == 'closed')
+		{
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='customer'", where: "crm_id="+me.selected.get('crm_id')+" and (level='suspect' or level='prospect')"},
+			   success: function(response, opts) {
+				  me.close();
+				  views['services'].reload(me.selected);
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});		
+		} else
+		if (me.stage == 'service')
+		{						
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='prospect'", where: "crm_id="+me.selected.get('crm_id')+" and level='suspect'"},
+			   success: function(response, opts) {
+				  me.close();
+				  views['services'].reload(me.selected);
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});		
+		} else {
+			views['services'].reload(me.selected);
+		}
+	}
+});
+
+
 Ext.define('OCS.AssignWindow', {
 	extend: 'OCS.Window',
 	
