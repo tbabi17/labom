@@ -1862,7 +1862,7 @@ Ext.define('OCS.DealDescrWindow', {
 
 
 Ext.define('OCS.ServiceDescrWindow', {
-	extend: 'OCS.DealDescrWindow',
+	extend: 'OCS.Window',
 
 	maximizable: true,
 	height: 250,
@@ -1870,7 +1870,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 
 	initComponent: function() {
 		var me = this;
-		me.callParent(arguments);
+
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
 			hidden: false,
@@ -1944,7 +1944,8 @@ Ext.define('OCS.ServiceDescrWindow', {
 			}]
 		});
 		
-		me.items = [me.form];				
+		me.items = [me.form];		
+		me.callParent(arguments);
 	},
 
 	customerLevelDetection: function() {
