@@ -2679,7 +2679,7 @@ Ext.define('OCS.ServiceView', {
 				text: 'Expand...',
 				handler: function(widget, event) {
 					if (me.grid.getView().getSelectionModel().getSelection().length > 0) {
-						new OCS.NewDealWindow({
+						new OCS.NewServiceWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
 						}).createWindow();
 					} else 
@@ -2753,7 +2753,7 @@ Ext.define('OCS.ServiceView', {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
 							new OCS.ServiceUndoWindow({
-								ids: me.selectedIds('deal_id'),
+								ids: me.selectedIds('service_id'),
 								direction: me.xlsName
 							}).show();
 					} else
