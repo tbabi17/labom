@@ -1892,7 +1892,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 			},				
 			{
 				xtype: 'textfield',
-				fieldLabel: 'Бүртгэсэн',				
+				fieldLabel: 'Created by',				
 				name: 'userCode',
 				value: logged,
 				hidden: true,
