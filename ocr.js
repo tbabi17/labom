@@ -2845,7 +2845,7 @@ Ext.define('OCS.Services', {
 		var me = this;
 		
 		me.services = new OCS.ServiceView();
-		me.action = new OCS.DealAction();
+		me.action = new OCS.ServiceAction();
 
 		me.panel = Ext.create('Ext.Panel', {	
 			layout: 'border',
@@ -3345,6 +3345,105 @@ Ext.define('OCS.DealAction', {
 			split: true,
 			bodyPadding: 4,
 			items: [me.detail, me.tabs]
+		});		
+
+		return me.panel;
+	}
+});
+
+Ext.define('OCS.ServiceAction', {
+	extend: 'OCS.DealAction',
+
+	select: function(rec) {
+		var me = this;
+		if (rec) {		
+			me.selected = rec;
+			
+			me.serviceContact.updateSource(rec);
+			me.servicePosts.updateSource(rec);
+			me.serviceActivity.updateSource(rec);
+			me.serviceProduct.updateSource(rec);
+			me.serviceCommission.updateSource(rec);
+
+			me.panel.expand();			
+		} else
+			me.panel.collapse();
+	},
+
+	createPanel: function() {
+		var me = this;
+		me.createTmpl();
+				
+		me.servicePosts = new OCS.DealPostGrid();
+		me.serviceContact = new OCS.DealContactGrid();
+		me.serviceActivity = new OCS.DealActivityGrid();
+		me.serviceProduct = new OCS.DealProductGrid();
+		me.serviceCommission = new OCS.DealCommissionGrid();
+
+		me.tabs = Ext.widget('tabpanel', {
+			activeTab: 0,
+			flex: 1,			
+			region: 'center',
+			tabPosition: 'top',	
+			items: [
+				me.servicePosts.createPanel(),
+				me.serviceContact.createPanel(),			
+				me.serviceActivity.createPanel(),
+				me.serviceProduct.createPanel(),
+				me.serviceCommission.createPanel()
+			]			
+		});				
+
+		me.panel = Ext.create('Ext.Panel', {	
+			layout: 'border',
+			border: true,
+			flex: 0.45,
+			region: 'east',
+			title: 'Selected connection',
+			collapsible: true,
+			collapsed: true,
+			split: true,
+			bodyPadding: 4,
+			items: [me.tabs],
+			dockedItems:[{
+				xtype: 'toolbar',
+				dock: 'top',
+				items: [{
+					iconCls: 'deal_assign',
+					text: 'Assign...',
+					id: 'deal_assign',
+					scope: this,
+					handler: function() {
+						if (me.selected.get('owner') == logged || user_level > 0)
+							new OCS.AssignWindow({
+								selected: me.selected
+							}).show();
+						else
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+				},'-',
+				{
+					iconCls: 'deal_won',
+					text: 'Close',
+					id: 'service_closewon',
+					scope: this,
+					handler: function() {
+						if (me.resellerActivity.openActivityCount() > 0) {
+							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
+							return;
+						}
+
+						if (me.selected.get('owner') == logged) {				
+							new OCS.DealDescrWindow({
+								selected: me.selected,
+								stage: 'close as won',
+								title: 'Close as won'
+							}).show();
+						} else 
+							Ext.MessageBox.alert('Error', 'Not available !', function() {});
+					}
+				}]
+			}]
 		});		
 
 		return me.panel;
