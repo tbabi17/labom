@@ -1021,28 +1021,28 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
    {dataIndex: 'section', text: 'Team', width: 150}, 
    {
 	   text: 'Дуудлагын төрөл',
-	   columns: [{dataIndex:'c1', text: 'Дуудлагын бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
+	   columns: [{dataIndex:'c1', text: 'Дуудлагын бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
 				]
    },
    {
 	   text: 'Priority',
-	   columns: [{dataIndex:'p1', text: 'Low', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'p2', text: 'Medium', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'p3', text: 'High', width: 90, align: 'center', renderer: renderPrecent}]
+	   columns: [{dataIndex:'p1', text: 'Low', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'p2', text: 'Medium', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'p3', text: 'High', width: 60, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Stage',
-	   columns: [{dataIndex:'s1', text: 'Identify', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'s2', text: 'Research', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'s3', text: 'Resolve', width: 90, align: 'center', renderer: renderPrecent}]
+	   columns: [{dataIndex:'s1', text: 'Identify', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'s2', text: 'Research', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'s3', text: 'Resolve', width: 70, align: 'center', renderer: renderPrecent}]
    },
    {
 	   text: 'Direction',
-	   columns: [{dataIndex:'d1', text: 'Inbound', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'d2', text: 'Outbound', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+	   columns: [{dataIndex:'d1', text: 'Inbound', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'d2', text: 'Outbound', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    }
 ];
 
