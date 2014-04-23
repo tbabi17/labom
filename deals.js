@@ -19,6 +19,28 @@ Ext.define('OCS.DealActivityGrid', {
 	}
 });
 
+Ext.define('OCS.ServiceActivityGrid', {
+	extend: 'OCS.ActivityGrid',
+	func: 'crm_customer_activity_list',
+	sortField: '_date',
+	tab : 'service_activity_property',
+	dateField: '_date',
+	title: 'Activities',
+	icon: 'task',
+	modelName: 'CRM_CALENDAR',
+	collapsed : false,		
+	
+	updateSource: function(rec) {
+		var me = this;
+		me.action = (rec.get('owner') == logged || user_level >= 2);
+		me.selected = rec;
+		me.where = rec.get('crm_id')+','+rec.get('service_id');
+		me.values = 'crm_id,service_id';
+		me.loadStore();
+	}
+});
+
+
 Ext.define('OCS.CompetitorDealActivityGrid', {
 	extend: 'OCS.DealActivityGrid',
 	tab : 'competitor_deal_activity_property',
@@ -343,6 +365,28 @@ Ext.define('OCS.DealContactGrid', {
 			sortable: true,
 			renderer: renderPhone
 		}];
+	}
+});
+
+Ext.define('OCS.ServiceContactGrid', {
+	extend: 'OCS.DealGrid',
+	func: 'crm_contact_list',
+	tab : 'service_detail_property',
+	title: 'Contacts',
+	icon: 'call',
+	table: 'crm_customer',
+	dateField: '_date',
+	sortField: 'crm_id',
+	modelName: 'CRM_RETAIL',
+	collapsed: false,	
+		
+	updateSource: function(rec) {
+		var me = this;
+		me.selected = rec;
+		me.service_id = rec.get('service_id');
+		me.where = rec.get('crm_id');
+		me.values = 'parent_crm_id';
+		me.loadStore();
 	}
 });
 
@@ -784,6 +828,142 @@ Ext.define('OCS.DealProductGrid', {
 			renderer: renderDate,
 			sortable: true
 		}];
+	}	
+});
+
+Ext.define('OCS.ServiceProductGrid', {
+	extend: 'OCS.DealGrid',
+	func: 'crm_service_product_list',
+	tab : 'service_product_property',
+	title: 'Products',
+	icon: 'call',
+	table: 'crm_service_products',
+	dateField: '_date',
+	sortField: 'product_name',
+	modelName: 'CRM_SERVICE_PRODUCTS',
+	collapsed: false,
+	primary: 'id',
+	values: 'id',
+	
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls : 'add',
+				text: 'Add ...',
+				handler: function(widget, event) {		
+					if (me.action)
+						new OCS.DealAddProductWindow({
+							selected: me.selected,
+							backgrid: me.grid
+						}).show();
+					else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'delete',
+				text: 'Remove from list ...',
+				handler: function(widget, event) {		
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {							
+							me.deleteRecord();											
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'deal_move',
+				text: 'Move to ...',
+				handler: function(widget, event) {		
+					if (user_level > 0 ) {												
+						if (me.recordSelected())						
+							new OCS.DealProductMoveWindow({
+								ids: me.selectedIds('id'),
+								backgrid: me.grid,
+								direction: me.xlsName
+							}).show();
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'sales',
+				text: 'Create invoice ...',
+				handler: function(widget, event) {
+					if (me.action) {
+						if (me.store.getCount() > 0)
+						{					
+							Ext.Ajax.request({
+							   url: 'avia.php',
+							   params: {handle: 'web', action: 'create_quote', where: me.selected.get('deal_id')},
+							   success: function(response, opts) {
+								  Ext.MessageBox.alert('Status', 'Success !', function() {});
+							   },
+							   failure: function(response, opts) {										   
+								  Ext.MessageBox.alert('Status', 'Error !', function() {});
+							   }
+							});	
+						} else {
+							Ext.MessageBox.alert('Status', 'Empty !', function() {});
+						}
+					} else 
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
+	updateSource: function(rec) {
+		var me = this;
+		me.action = rec.get('owner') == logged;
+		me.selected = rec;
+		me.where = rec.get('service_id');
+		me.values = 'service_id';
+		me.loadStore();
+	},
+	
+	productCount: function() {
+		var me = this;
+		return me.store.getCount();
+	},
+
+	createGrid: function() {
+		var me = this;	
+		me.createActions();
+		me.createStore();
+		
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			flex: 1,
+			animCollapse: true,
+			collapsed: me.collapsed,
+			func: me.func,
+			feature: true,
+			actions: me.createActions(),
+			tbarable: false
+		});
+			
+		me.grid.on('itemclick', function(dv, record, item, index, e) {		
+				if (me.form) {
+					me.form.updateSource(record);
+					me.form.setVisible(true);				
+				}
+
+				if (me.action)
+					new OCS.DealAddProductWindow({
+						selected: me.selected,
+						backgrid: me.grid,
+						record: record
+					}).show();
+		});
 	}	
 });
 
