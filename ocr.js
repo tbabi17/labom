@@ -3350,6 +3350,7 @@ Ext.define('OCS.ServiceAction', {
 			me.serviceActivity.updateSource(rec);
 			me.serviceProduct.updateSource(rec);
 			me.serviceCommission.updateSource(rec);
+			me.servicePayroll.updateSource(rec);
 
 			me.panel.expand();			
 		} else
@@ -3365,6 +3366,7 @@ Ext.define('OCS.ServiceAction', {
 		me.serviceActivity = new OCS.ServiceActivityGrid();
 		me.serviceProduct = new OCS.ServiceProductGrid();
 		me.serviceCommission = new OCS.ServiceCommissionGrid();
+		me.servicePayroll = new OCS.ServicePayrollGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
@@ -3376,6 +3378,7 @@ Ext.define('OCS.ServiceAction', {
 				me.serviceContact.createPanel(),			
 				me.serviceActivity.createPanel(),
 				me.serviceProduct.createPanel(),
+				me.servicePayroll.createPanel(),
 				me.serviceCommission.createPanel()
 			]			
 		});				
