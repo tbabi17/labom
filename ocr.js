@@ -2820,7 +2820,7 @@ Ext.define('OCS.Services', {
 	
 	selectedRecord: function() {
 		var me = this;
-		var recs = me.deals.grid.getView().getSelectionModel().getSelection();
+		var recs = me.services.grid.getView().getSelectionModel().getSelection();
 		if (recs && recs.length > 0)
 			return recs[0];
 		
