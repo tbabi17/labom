@@ -3417,7 +3417,7 @@ Ext.define('OCS.ServiceAction', {
 					id: 'service_closewon',
 					scope: this,
 					handler: function() {
-						if (me.resellerActivity.openActivityCount() > 0) {
+						if (me.serviceActivity.openActivityCount() > 0) {
 							Ext.MessageBox.alert('Error', 'This deal cannot be closed because there are open activities associated with it !', function() {});
 							return;
 						}
