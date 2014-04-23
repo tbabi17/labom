@@ -2715,7 +2715,8 @@ Ext.define('OCS.DealAddProductWindow', {
 				iconCls: 'commit',
 				text: 'Commit',				
 				handler: function() {
-					me.addProduct();
+					var form = this.up('form').getForm();
+					me.addProduct(form);
 				}
 			}]
 		});
@@ -2744,9 +2745,8 @@ Ext.define('OCS.DealAddProductWindow', {
 		me.callParent(arguments);
 	},
 
-	addProduct: function() {
+	addProduct: function(form) {
 		var me = this;
-		var form = this.up('form').getForm();
 		var values = form.getValues(true);
 		if (!form.findField('product_name').getValue()) {
 			Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
@@ -2796,9 +2796,8 @@ Ext.define('OCS.ServiceAddProductWindow', {
 	width: 500,	
 	modal: true,	
 		
-	addProduct: function() {
+	addProduct: function(form) {
 		var me = this;
-		var form = this.up('form').getForm();
 		var values = form.getValues(true);
 		if (!form.findField('product_name').getValue()) {
 			Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
