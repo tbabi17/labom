@@ -1031,13 +1031,13 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 	   text: 'Priority',
 	   columns: [{dataIndex:'p1', text: 'Low', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'p2', text: 'Medium', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'p3', text: 'High', width: 60, align: 'center', renderer: renderPrecent}]
+				 {dataIndex:'p3', text: 'High', width: 60, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    },
    {
 	   text: 'Stage',
 	   columns: [{dataIndex:'s1', text: 'Identify', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'s2', text: 'Research', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'s3', text: 'Resolve', width: 70, align: 'center', renderer: renderPrecent}]
+				 {dataIndex:'s3', text: 'Resolve', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    },
    {
 	   text: 'Direction',
