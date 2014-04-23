@@ -4713,6 +4713,16 @@ Ext.define('OCS.Reports', {
 								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_product_list');
 							}
 						}),
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Product Report (Reseller)',
+							handler: function(widget, event) {
+								me.where = '';
+								me.values = '';
+								me.panelW.setVisible(false);
+								me.reconfigure('CRM_REPORT_PRODUCT', 'crm_report_reseller_product_list');
+							}
+						}),
 						'-',
 						Ext.create('Ext.Action', {
 							icon   : '',  
