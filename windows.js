@@ -303,16 +303,14 @@ Ext.define('OCS.NewServiceWindow', {
 		var me = this;
 		me.defaultRec = {
 			data: {
-				deal_id: '0',
-				status: 'open',
+				service_id: '0',
 				crm_id : me.selected.get('crm_id'),
 				_date : Ext.Date.format(new Date(),'Y-m-d h:m:s'),
 				closing_date : Ext.Date.format(new Date(),'Y-m-d'),
 				userCode : logged,				
 				owner: logged,
-				stage: 'lead',
-				expected_revenue: '0',
-				probablity: '0',
+				service_stage: 'receipt  ',
+				service_revenue: '0',
 				campaign: me.selected.get('campaign')
 			}			
 		}
