@@ -997,6 +997,56 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
    }
 ];
 
+
+fields['CRM_REPORT_CASE_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 250}, 
+   {name: 'section', text: 'Section', width: 150}, 
+   {name: 'c_p', type:'int', text: 'Pending', align: 'center', width: 60}, 
+   {name: 'c_r', type:'int', text: 'Remind', align: 'center', width: 60}, 
+   {name: 'c_s', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'a_m', type:'int', text: 'Meeting', align: 'center', width: 90}, 
+   {name: 'a_p', type:'int', text: 'Phone call', align: 'center', width: 90}, 
+   {name: 'a_e', type:'int', text: 'Email', align: 'center', width: 90}, 
+   {name: 'total_qty', type:'int', text: 'Qty', align: 'center', width: 90}, 
+   {name: 'total_amount', type:'int', text: 'Amount', align: 'center', width: 90}
+];
+
+Ext.define('CRM_REPORT_CASE', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_REPORT_CASE_FIELDS']
+});
+
+columns['CRM_REPORT_CASE_COLUMNS'] = [
+   {dataIndex: 'owner', text: 'Owner', width: 150}, 
+   {dataIndex: 'section', text: 'Team', width: 150}, 
+   {
+	   text: 'Дуудлагын төрөл',
+	   columns: [{dataIndex:'c1', text: 'Дуудлагын бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
+				]
+   },
+   {
+	   text: 'Priority',
+	   columns: [{dataIndex:'p1', text: 'Low', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'p2', text: 'Medium', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'p3', text: 'High', width: 90, align: 'center', renderer: renderPrecent}]
+   },
+   {
+	   text: 'Stage',
+	   columns: [{dataIndex:'s1', text: 'Identify', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'s2', text: 'Research', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'s3', text: 'Resolve', width: 90, align: 'center', renderer: renderPrecent}]
+   },
+   {
+	   text: 'Direction',
+	   columns: [{dataIndex:'d1', text: 'Inbound', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'d2', text: 'Outbound', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+   }
+];
+
+
 fields['CRM_REPORT_ACTIVITY_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'section', text: 'Section', width: 150}, 

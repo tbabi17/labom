@@ -4743,6 +4743,15 @@ Ext.define('OCS.Reports', {
 								me.panelW.setVisible(false);
 								me.reconfigureStatic('CRM_REPORT_DIRECT_SALES', 'crm_report_direct_sales_list');
 							}
+						}),
+						'-',
+						Ext.create('Ext.Action', {
+							icon   : '',  
+							text: 'Case Report',
+							handler: function(widget, event) {
+								me.panelW.setVisible(false);
+								me.reconfigureStatic('CRM_REPORT_CASE', 'crm_report_case_list');
+							}
 						})
 					]
 				}		
