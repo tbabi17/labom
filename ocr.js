@@ -2737,9 +2737,9 @@ Ext.define('OCS.ServiceView', {
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
-							new OCS.DealAssignWindow({
+							new OCS.ServiceMultiAssignWindow({
 								selected: me.grid.getView().getSelectionModel().getSelection()[0],
-								ids: me.selectedIds('deal_id'),
+								ids: me.selectedIds('service_id'),
 								direction: me.xlsName
 							}).show();
 					} else
@@ -2752,28 +2752,14 @@ Ext.define('OCS.ServiceView', {
 				handler: function(widget, event) {
 					if (user_level > 0 ) {												
 						if (me.recordSelected())						
-							new OCS.DealUndoWindow({
+							new OCS.ServiceUndoWindow({
 								ids: me.selectedIds('deal_id'),
 								direction: me.xlsName
 							}).show();
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
-			}),
-			Ext.create('Ext.Action', {
-				iconCls   : 'deal_move',
-				text: 'Move to ...',
-				handler: function(widget, event) {
-					if (user_level > 0 ) {												
-						if (me.recordSelected())						
-							new OCS.DealMoveWindow({
-								ids: me.selectedIds('deal_id'),
-								direction: me.xlsName
-							}).show();
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
-			}),
+			}),			
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
@@ -3415,7 +3401,7 @@ Ext.define('OCS.ServiceAction', {
 					scope: this,
 					handler: function() {
 						if (me.selected.get('owner') == logged || user_level > 0)
-							new OCS.AssignWindow({
+							new OCS.ServiceAssignWindow({
 								selected: me.selected
 							}).show();
 						else

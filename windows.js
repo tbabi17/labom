@@ -1351,6 +1351,83 @@ Ext.define('OCS.DealAssignWindow', {
 	}
 });
 
+Ext.define('OCS.ServiceMultiAssignWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Assign to',
+	maximizable: false,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+		me.title = 'Assign to ('+(me.ids.split(':').length-1)+' record selected)';
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'service_assign_to',				
+			title: 'Assign to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',				
+				name: 'owner',
+				value: logged
+			},		
+			{
+				xtype: 'textarea',
+				fieldLabel: 'Description',				
+				name: 'descr',
+				flex: 1,
+				empty: 'Note...'
+			},		
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				name: 'userCode',
+				value: logged,
+				hidden: true,
+				readOnly: true
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('owner').getValue()+","+form.findField('selected').getValue()+","+form.findField('descr').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_services', action: 'update_services_owner', values: values},
+						   success: function(response, opts) {
+								views['services'].reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 Ext.define('OCS.CampaignActivityAssignWindow', {
 	extend: 'OCS.Window',
 	
@@ -1502,6 +1579,77 @@ Ext.define('OCS.DealUndoWindow', {
 		me.callParent(arguments);
 	}
 });
+
+Ext.define('OCS.ServiceUndoWindow', {
+	extend: 'OCS.Window',
+	
+	title: 'Undo',
+	maximizable: false,
+	height: 150,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+		me.title = 'Undo ('+(me.ids.split(':').length-1)+' record selected)';
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'service_undo_to',				
+			title: 'Undo',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Selected '+me.direction,				
+				name: 'selected',
+				value: me.ids
+			},{
+				xtype: 'combo',
+				fieldLabel: 'Stage',
+				valueField: 'value',
+				displayField: 'value',
+				name: 'service_stage',
+				value: 'receipt',
+				allowBlank: false,
+				forceSelection: true,
+				queryMode: 'local',
+				store: Ext.create('Ext.data.Store', {
+				  model: 'CRM_ITEM',
+				  data: [{value: 'receipt'},{value: 'service'},{value: 'closed'}]
+				})
+			}],
+			buttons: [{
+				iconCls: 'commit',
+				text: 'Commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						values = form.findField('service_stage').getValue()+","+form.findField('selected').getValue();
+								
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_services', action: 'update_services_undo', values: values},
+						   success: function(response, opts) {
+								views['services'].reload();
+								me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
 
 Ext.define('OCS.DealMoveWindow', {
 	extend: 'OCS.Window',

@@ -2073,6 +2073,90 @@ Ext.define('OCS.AssignWindow', {
 });
 
 
+Ext.define('OCS.ServiceAssignWindow', {
+	extend: 'OCS.AssignWindow',
+	
+	title: 'Assign to',
+	maximizable: true,
+	height: 250,
+	width: 300,	
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id : 'assign_to',				
+			title: 'Assign to',	
+			region: 'center',
+			hidden: false,
+			closable: false,
+			title: '',
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				name: 'crm_id',
+				hidden: true,
+				value: me.selected.get('crm_id'),
+				readOnly: true
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_users',
+				fieldLabel: 'Owner',				
+				name: 'owner',
+				labelWidth: 80,
+				value: logged
+			},				
+			{
+				xtype: 'textfield',
+				fieldLabel: 'Бүртгэсэн',				
+				name: 'userCode',
+				value: logged,
+				hidden: true,
+				readOnly: true
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Тайлбар',
+				hideLabel: true,
+				name: 'descr',
+				value: me.selected.get('descr'),
+				emptyText: 'Note ...',
+				style: 'margin:0', 
+				flex: 1 
+			}],
+			buttons: [{
+				text: 'Commit',
+				iconCls: 'commit',
+				handler: function() {
+					var form = this.up('form').getForm();
+					if (form.isValid())	{
+						var values = form.getValues(true);
+						var values_deals = "owner='"+form.findField('owner').getValue()+"'"+
+										   ",descr='"+form.findField('descr').getValue()+"'";
+
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_services', action: 'update', values: values_deals, where: "service_id="+me.selected.get('service_id')},
+						   success: function(response, opts) {
+							  me.close();
+							  views['services'].reload(me.selected);
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});											
+					}
+					else
+					  Ext.MessageBox.alert('Status', 'Invalid data !', function() {});
+				}
+			}]
+		});
+		
+		me.items = [me.form];		
+		me.callParent(arguments);
+	}
+});
+
+
 Ext.define('OCS.CaseProductGrid', {
 	extend: 'OCS.DealProductGrid',
 	func: 'crm_case_product_list',
