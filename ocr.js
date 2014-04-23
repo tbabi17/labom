@@ -3378,7 +3378,7 @@ Ext.define('OCS.ServiceAction', {
 		me.serviceContact = new OCS.ServiceContactGrid();
 		me.serviceActivity = new OCS.ServiceActivityGrid();
 		me.serviceProduct = new OCS.ServiceProductGrid();
-		me.serviceCommission = new OCS.DealCommissionGrid();
+		me.serviceCommission = new OCS.ServiceCommissionGrid();
 
 		me.tabs = Ext.widget('tabpanel', {
 			activeTab: 0,
