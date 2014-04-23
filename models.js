@@ -751,7 +751,7 @@ fields['CRM_SERVICE_FIELDS'] = [
    {name: 'phone', text: 'Phone', width: 80, hidden: true, primary: true},
    {name: 'service_revenue', text: 'Revenue', type:'float', width: 120, align: 'right', summaryType:'sum', summaryRenderer: renderTMoney, renderer: renderMoney},
    {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
-   {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
+   {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 120, align: 'center'},   
    {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center', renderer: renderDate}, 
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
