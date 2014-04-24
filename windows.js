@@ -2694,7 +2694,7 @@ Ext.define('OCS.ServiceCommissionWindow', {
 				disabled: true,
 				hidden: true,
 				allowBlank: false,
-				//value: me.selected.get('crm_id'),
+				value: me.selected.get('crm_id'),
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
