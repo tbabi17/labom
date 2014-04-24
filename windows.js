@@ -2670,7 +2670,7 @@ Ext.define('OCS.CommissionWindow', {
 
 Ext.define('OCS.ServiceCommissionWindow', {
 	extend: 'OCS.Window',
-	title: 'Commission',
+	title: 'Service commission',
 	maximizable: true,
 	height: 520,
 	modal: false,
