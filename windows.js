@@ -2400,7 +2400,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 	completeActivity: function() {
 		var me = this;
 		if (user_level != 3) {
-			if (me.selected.get('owner') == logged || me.selected.get('userCode') == logged)) {
+			if (!(me.selected.get('owner') == logged || me.selected.get('userCode') == logged)) {
 				Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				return;
 			}
