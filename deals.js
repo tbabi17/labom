@@ -125,6 +125,12 @@ Ext.define('OCS.DealGrid', {
 								backgrid: me.grid
 							}).createWindow();
 						}
+						else if (me.modelName == 'CRM_SERVICE_PAYROLL') {
+							new OCS.ServicePayRollWindow({
+								selected: me.selected,								
+								backgrid: me.grid
+							}).createWindow();
+						}
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}

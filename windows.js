@@ -899,6 +899,31 @@ Ext.define('OCS.PayRollWindow', {
 	}
 });
 
+Ext.define('OCS.ServicePayRollWindow', {
+	extend: 'OCS.ComplainWindow',
+	func : 'crm_service_payroll_list', 
+	title: 'Payments',
+	table: 'crm_service_payroll',
+	groupField: '',
+	values: 'service_id',
+	modelName: 'CRM_SERVICE_PAYROLL',
+	primary: 'id',
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				id: '0',
+				crm_id:  me.selected.get('crm_id'),
+				service_id: me.selected.get('deal_id'),
+				userCode: logged,				
+				_date: Ext.Date.format(new Date(),'Y-m-d H:m:s')
+			}			
+		}
+
+		me.where = me.selected.get('service_id');
+	}
+});
 
 Ext.define('OCS.CaseStageWindow', {
 	extend: 'OCS.Window',	
