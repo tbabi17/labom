@@ -2932,7 +2932,7 @@ Ext.define('OCS.DealAddProductWindow', {
 				name: 'userCode'
 			},{
 				xtype: 'textarea',
-				fieldLabel: 'Description',	
+				emptyText: 'Тайлбар...',
 				flex: 1,
 				name: 'descr'
 			}],
