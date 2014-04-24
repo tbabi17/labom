@@ -839,6 +839,7 @@ Ext.define('OCS.GridWithFormPanel', {
 		}
 				
 		me.grid = Ext.create('OCS.GridView', {	
+			parent: me,
 			store: me.store,
 			columns: me.createColumns(),
 			features: me.features,
@@ -2719,6 +2720,11 @@ Ext.define('OCS.GridView', {
 		me.callParent(arguments);
 	},
 	
+	deleteRecord: function() {
+		var me = this;
+		me.parent.deleteRecord();
+	},
+
 	selectedIds: function(id) {
 		var me = this;
 		var recs = me.getView().getSelectionModel().getSelection();
