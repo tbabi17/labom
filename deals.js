@@ -375,7 +375,7 @@ Ext.define('OCS.DealContactGrid', {
 });
 
 Ext.define('OCS.ServiceContactGrid', {
-	extend: 'OCS.DealGrid',
+	extend: 'OCS.DealContactGrid',
 	func: 'crm_contact_list',
 	tab : 'service_detail_property',
 	title: 'Contacts',
