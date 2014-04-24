@@ -2267,6 +2267,12 @@ Ext.define('OCS.ActivityDetailWindow', {
 				name: 'descr'
 			}],
 			buttons: [{
+				iconCls: 'delete',
+				text: 'Delete',				
+				handler: function() {
+					
+				}
+			},'->',{
 				iconCls: 'calendar',
 				text: 'Calendar',				
 				handler: function() {
