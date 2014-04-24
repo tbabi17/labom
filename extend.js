@@ -838,8 +838,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			}];
 		}
 				
-		me.grid = Ext.create('OCS.GridView', {	
-			parent: this,
+		me.grid = Ext.create('OCS.GridView', {				
 			store: me.store,
 			columns: me.createColumns(),
 			features: me.features,
@@ -856,9 +855,12 @@ Ext.define('OCS.GridWithFormPanel', {
 					if (me.form)				
 						me.showForm();	
 				}
+			},
+			deleteRecord: function() {
+				me.deleteRecord();
 			}
 		});				
-
+		
 		me.grid.getSelectionModel().on({
 			selectionchange: function(sm, selections) {
 				if (selections.length) {
@@ -2721,8 +2723,7 @@ Ext.define('OCS.GridView', {
 	},
 	
 	deleteRecord: function() {
-		var me = this;
-		me.parent.deleteRecord();
+		var me = this;		
 	},
 
 	selectedIds: function(id) {
