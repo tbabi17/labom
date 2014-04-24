@@ -2719,7 +2719,7 @@ Ext.define('OCS.GridView', {
 		me.getEl().addKeyMap({
 			eventName: "keyup",
 			binding: [{
-				key: 'P',
+				key: Ext.EventObject.DELETE,
 				fn:  function(){ console.log("Space key pressed"); }
 			}]
 		});
