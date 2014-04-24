@@ -90,7 +90,6 @@ Ext.define('OCS.SalesFunnel', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
-	xtype: 'pie-chart-3d',
 	legend: {
 		position: 'right',
 
@@ -124,7 +123,7 @@ Ext.define('OCS.SalesFunnel', {
 		me.rangeData(me.month(), me.nextmonth());
 
 		me.series = [{
-			type: 'polar',
+			type: 'pie',
 			field: 'value',
 			showInLegend: true,
 			donut: false,
