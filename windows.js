@@ -2342,7 +2342,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		if (me.selected.get('work_type') == 'phone call') {
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'delete', values: "", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'delete', where: id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
@@ -2356,7 +2356,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		if (me.selected.get('work_type') == 'email') {
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_emails', action: 'delete', values: "", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_emails', action: 'delete',where: id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
@@ -2370,7 +2370,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		if (me.selected.get('work_type') == 'appointment') {		
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_events', action: 'delete', values: "", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_events', action: 'delete', where: id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
@@ -2384,7 +2384,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 		if (me.selected.get('work_type') == 'task') {
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_tasks', action: 'delete', values: "", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_tasks', action: 'delete', where: id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
