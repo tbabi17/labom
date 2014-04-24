@@ -2826,9 +2826,9 @@ Ext.define('OCS.DealAddProductWindow', {
 	extend: 'OCS.Window',
 	title: 'Products',
 	maximizable: true,
-	height: 600,
+	height: 400,
 	modal: false,
-	width: 500,	
+	width: 800,	
 	modal: true,	
 
 	initComponent: function() {
@@ -2956,7 +2956,7 @@ Ext.define('OCS.DealAddProductWindow', {
 		me.items = [{
 			xtype: 'panel',
 			layout: 'border',
-			region: 'south',
+			region: 'west',
 			flex: 1,
 			border: false,
 			items: me.productList.createGrid()
