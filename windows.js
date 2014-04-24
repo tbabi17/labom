@@ -2680,7 +2680,7 @@ Ext.define('OCS.ServiceCommissionWindow', {
 	initComponent: function() {
 		var me = this;				
 		
-		me.dealContact = new OCS.DealContactGrid();
+		me.serviceContact = new OCS.ServiceContactGrid();
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
 			hidden: false,
@@ -2778,11 +2778,11 @@ Ext.define('OCS.ServiceCommissionWindow', {
 			region: 'south',
 			flex: 1,
 			border: false,
-			items: me.dealContact.createPanel()
+			items: me.serviceContact.createPanel()
 		}, me.form];
 
-		me.dealContact.updateSource(me.selected);
-		me.dealContact.grid.on('itemclick', function(dv, record, item, index, e) {
+		me.serviceContact.updateSource(me.selected);
+		me.serviceContact.grid.on('itemclick', function(dv, record, item, index, e) {
 				if (me.form) {
 					me.form.getForm().findField('crm_id').setValue(record.get('crm_id'));
 					me.form.getForm().findField('crm_name').setValue(record.get('crm_name'));				
