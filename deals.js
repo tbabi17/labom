@@ -181,7 +181,7 @@ Ext.define('OCS.DealGrid', {
 			renderer: me.renderTitle,
 			sortable: false
 		},{
-			text: "Хариуцагч",
+			text: "Owner",
 			dataIndex: 'userCode',
 			width: 120,
 			sortable: true
