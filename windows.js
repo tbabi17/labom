@@ -2269,8 +2269,8 @@ Ext.define('OCS.ActivityDetailWindow', {
 			buttons: [{
 				iconCls: 'delete',
 				text: 'Delete',				
-				handler: function() {
-					
+				handler: function() {//fqD1S4
+					me.deleteActivity();
 				}
 			},'->',{
 				iconCls: 'calendar',
@@ -2323,6 +2323,78 @@ Ext.define('OCS.ActivityDetailWindow', {
 			]
 		}];
 		me.callParent(arguments);
+	},
+	
+	deleteActivity: function() {
+		var me = this;
+		if (me.selected.get('owner') != logged) {
+			Ext.MessageBox.alert('Error', 'Not available !', function() {});
+			return;
+		}
+		
+		var id = me.selected.get('id');
+		if (id.indexOf('_') != -1) {
+			var sp = id.split('_');
+			id = sp[0];
+		}
+		
+
+		if (me.selected.get('work_type') == 'phone call') {
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_calllog', action: 'delete', values: "", where: "id="+id},
+			   success: function(response, opts) {
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
+				   me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		} else
+		if (me.selected.get('work_type') == 'email') {
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_emails', action: 'delete', values: "", where: "id="+id},
+			   success: function(response, opts) {
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
+				   me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		} else
+		if (me.selected.get('work_type') == 'appointment') {		
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_events', action: 'delete', values: "", where: "id="+id},
+			   success: function(response, opts) {
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
+				   me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		}  else
+		if (me.selected.get('work_type') == 'task') {
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', table: 'crm_tasks', action: 'delete', values: "", where: "id="+id},
+			   success: function(response, opts) {
+				   if (me.backgrid)
+					 me.backgrid.getStore().reload();
+				   me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});
+		}
 	},
 
 	completeActivity: function() {
