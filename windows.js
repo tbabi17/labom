@@ -2399,7 +2399,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 
 	completeActivity: function() {
 		var me = this;
-		if (me.selected.get('owner') != logged) {
+		if (!(me.selected.get('owner') == logged || me.selected.get('userCode') == logged)) {
 			Ext.MessageBox.alert('Error', 'Not available !', function() {});
 			return;
 		}

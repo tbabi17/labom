@@ -1182,7 +1182,7 @@ Ext.define('OCS.ActivityGrid', {
 		}
 
 		me.selected = me.grid.getView().getSelectionModel().getSelection()[0];
-		if (me.selected.get('owner') != logged) {
+		if (!(me.selected.get('owner') == logged || me.selected.get('userCode') == logged)) {
 			Ext.MessageBox.alert('Error', 'Not available !', function() {});
 			return;
 		}
