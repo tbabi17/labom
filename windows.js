@@ -2843,7 +2843,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			buttons: true,
 			feature: false,
 			tbar: false,
-			title: 'Available products',
+			title: '',
 			insert: (user_level==0),
 			remove: (user_level==0),	
 			defaultRec: {
