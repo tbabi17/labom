@@ -3326,7 +3326,7 @@ Ext.define('OCS.ChangePasswordWindow', {
 
 							Ext.Ajax.request({
 							   url: 'avia.php',
-							   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "password='"+newPass+"'", where: "owner='"+me.selected.get('owner')+"' and password='"+oldPass+"'"},
+							   params: {handle: 'web', table: 'crm_users', action: 'update', values: "password='"+newPass+"'", where: "owner='"+me.selected.get('owner')+"' and password='"+oldPass+"'"},
 							   success: function(response, opts) {							  
 									   Ext.MessageBox.alert('Status', response.responseText, function() {
 										Ext.Msg.confirm('Warning','Мэдээлэл өөрчлөгдсөн тул дахин нэвтрэх шаардлагатай !',function(btn){
