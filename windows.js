@@ -915,7 +915,7 @@ Ext.define('OCS.ServicePayRollWindow', {
 			data: {
 				id: '0',
 				crm_id:  me.selected.get('crm_id'),
-				service_id: me.selected.get('deal_id'),
+				service_id: me.selected.get('service_id'),
 				userCode: logged,				
 				_date: Ext.Date.format(new Date(),'Y-m-d H:m:s')
 			}			
