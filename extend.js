@@ -839,7 +839,7 @@ Ext.define('OCS.GridWithFormPanel', {
 		}
 				
 		me.grid = Ext.create('OCS.GridView', {	
-			parent: me,
+			parent: this,
 			store: me.store,
 			columns: me.createColumns(),
 			features: me.features,
