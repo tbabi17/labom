@@ -905,6 +905,7 @@ Ext.define('OCS.ServicePayRollWindow', {
 	title: 'Payments',
 	table: 'crm_service_payroll',
 	groupField: '',
+	sortField: '_date',
 	values: 'service_id',
 	modelName: 'CRM_SERVICE_PAYROLL',
 	primary: 'id',
