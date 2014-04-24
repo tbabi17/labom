@@ -2716,14 +2716,6 @@ Ext.define('OCS.GridView', {
 		} else
 			me.features = [];
 
-		me.getEl().addKeyMap({
-			eventName: "keyup",
-			binding: [{
-				key: Ext.EventObject.DELETE,
-				fn:  function(){ console.log("Space key pressed"); }
-			}]
-		});
-
 		me.callParent(arguments);
 	},
 	
