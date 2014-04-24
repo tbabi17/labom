@@ -83,7 +83,7 @@ fields['CRM_CONTACT_FIELDS'] = [
    {name: 'email', text: 'Email', width: 120, renderer: renderMail},
    {name: 'decision_maker', text: 'Decision', width: 120, hidden: true},
    {name: 'owner', text: 'Owner', width: 120, renderer:renderOwner, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 120, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 120, hidden: true},
 ];
 
 Ext.define('CRM_CONTACT', {
@@ -154,7 +154,7 @@ fields['CRM_TASK_FIELDS'] = [
    {name: 'remind_at', text: 'Remind', width: 90,align: 'center', dateFormat: 'Y-m-d'},
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: 'descr', text: 'Description', width: 250},
-   {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
+   {name: 'userCode', text: 'Created by', hidden: true, width: 200},
    {name: '_date', text: 'Created on', type: 'datetime', dateFormat: 'Y-m-d', hidden: true,  width: 200, renderer: renderCreatedDate}
 ];
 
@@ -184,7 +184,7 @@ fields['CRM_EVENT_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 80, hidden: true, renderer:renderOwner},
    {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
-   {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
+   {name: 'userCode', text: 'Created by', hidden: true, width: 200},
    {name: '_date', type: 'datetime', text: 'Created on', hidden: true,  width: 200, renderer: renderCreatedDate}
 ];
 
@@ -214,7 +214,7 @@ fields['CRM_CALLLOG_FIELDS'] = [
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
    {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
-   {name: 'userCode', text: 'Бүртгэсэн', hidden: true, width: 200},
+   {name: 'userCode', text: 'Created by', hidden: true, width: 200},
    {name: '_date', type: 'datetime', text: 'Created on', width: 200, renderer: renderCreatedDate} 
 ];
 
@@ -307,7 +307,7 @@ fields['CRM_COMPLAIN_FIELDS'] = [
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner},   
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: 'resolution_type', text: 'Resolution type', width: 120, hidden: true},
    {name: 'resolution', text: 'Resolution', width: 220, hidden: true},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 80},
@@ -347,7 +347,7 @@ fields['CRM_POSTS_FIELDS'] = [
    {name: 'message', text: 'Note', width: 200, primary: true},
    {name: 'level', type: 'int', text: 'level', width: 50, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
@@ -371,7 +371,7 @@ fields['CRM_EMAIL_FIELDS'] = [
    {name: 'campaign', text: 'Campaign', width: 150},
    {name: 'descr', text: 'Message body', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
@@ -393,7 +393,7 @@ fields['CRM_QUOTE_FIELDS'] = [
    {name: 'amount', text: 'Total Amount', align: 'right', type: 'float', width: 110, renderer: renderMoney, summaryRenderer: renderTMoney, summaryType: 'sum'},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'descr', text: 'Description', width: 200, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
@@ -586,7 +586,7 @@ fields['CRM_SALES_FIELDS'] = [
    {name: 'campaign', text: 'Campaign', width: 150},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'status', text: 'Status', width: 100, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
 
@@ -619,7 +619,7 @@ fields['CRM_STAT_FIELDS'] = [
    {name: 'expat_p', type: 'int', text: 'Expat Customer', width: 90, align: 'right'},
    {name: 'vip_p', type: 'int', text: 'VIP customer', width: 90, align: 'right'},
    {name: 'extend_p', type: 'int', text: 'Extension', width: 90, align: 'right'},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 100, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 100, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', hidden: true, width: 120, renderer: renderCreatedDate}
 ];
 
@@ -812,7 +812,7 @@ fields['CRM_POTENTIAL_FIELDS'] = [
    {name: '_date', text: 'Огноо', dateFormat: 'Y-m-d', hidden: true, width: 80, renderer: renderCreatedDate},
    {name: 'descr', text: 'Тайлбар', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 80, hidden: true, renderer:renderOwner},   
-   {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true},
+   {name: 'userCode', text: 'Created by', width: 80, hidden: true},
    {name: 'campaign', text: 'Campaign', width: 200},
    {name: 'deal_id', text: 'Deal ID', width: 50, hidden: true},
    {name: 'deal_name', text: 'Topic Name', width: 150, hidden: true}
@@ -839,7 +839,7 @@ fields['CRM_CAMPAIGN_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 100, renderer:renderOwner},   
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate},
    {name: 'descr', text: 'Description', width: 250, hidden: true},
-   {name: 'userCode', text: 'Бүртгэсэн', width: 80, hidden: true}
+   {name: 'userCode', text: 'Created by', width: 80, hidden: true}
 ];
 
 Ext.define('CRM_CAMPAIGN', {
