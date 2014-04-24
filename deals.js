@@ -1132,7 +1132,7 @@ Ext.define('OCS.ServiceCommissionGrid', {
 				text: 'Add ...',
 				handler: function(widget, event) {
 					if (me.action)
-						new OCS.CommissionWindow({
+						new OCS.ServiceCommissionWindow({
 							selected: me.selected,
 							backgrid: me.grid
 						}).show();
