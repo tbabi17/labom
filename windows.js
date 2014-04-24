@@ -2859,7 +2859,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
-			flex: 1,
+			flex: 0.5,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -2959,6 +2959,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			region: 'west',
 			flex: 1,
 			border: false,
+			split: true,
 			items: me.productList.createGrid()
 		}, me.form];	
 
@@ -3023,9 +3024,9 @@ Ext.define('OCS.ServiceAddProductWindow', {
 	extend: 'OCS.DealAddProductWindow',
 	title: 'Products',
 	maximizable: true,
-	height: 600,
+	height: 400,
 	modal: false,
-	width: 500,	
+	width: 800,	
 	modal: true,	
 		
 	addProduct: function(form) {
