@@ -451,6 +451,21 @@ Ext.define('CRM_DEAL_PAYROLL', {
 });
 
 
+fields['CRM_SERVICE_PAYROLL_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'service_id', text: 'Service ID', hidden: true},
+   {name: 'service_name', text: 'Topic Name', width: 250, renderer: renderDealName},
+   {name: 'pay_date', text: 'Date', width: 120, align: 'center'}, 
+   {name: 'amount', text: 'Amount', type:'float', align: 'right', width: 120, summaryType: 'sum', renderer: renderMoney, summaryRenderer: renderTMoney},
+   {name: 'userCode', text: 'Created by', width: 100, renderer: renderOwner},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
+];
+
+Ext.define('CRM_SERVICE_PAYROLL', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_SERVICE_PAYROLL_FIELDS']
+});
+
 fields['CRM_CASE_PRODUCTS_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'case_id', text: 'Case ID', hidden: true},

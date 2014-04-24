@@ -2384,14 +2384,14 @@ Ext.define('OCS.DealPayrollGrid', {
 
 Ext.define('OCS.ServicePayrollGrid', {
 	extend: 'OCS.DealPayrollGrid',
-	func: 'crm_deal_payroll_list',
-	tab : 'deal_pay_roll',
+	func: 'crm_service_payroll_list',
+	tab : 'service_pay_roll',
 	title: 'Payments',
 	icon: 'call',
-	table: 'crm_deal_payroll',
+	table: 'crm_service_payroll',
 	dateField: '_date',
 	sortField: '_date',
-	modelName: 'CRM_DEAL_PAYROLL',
+	modelName: 'CRM_SERVICE_PAYROLL',
 	collapsed: false,
 	primary: 'id',
 	
