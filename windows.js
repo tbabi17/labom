@@ -2828,7 +2828,7 @@ Ext.define('OCS.DealAddProductWindow', {
 	maximizable: true,
 	height: 400,
 	modal: false,
-	width: 800,	
+	width: 850,	
 	modal: true,	
 
 	initComponent: function() {
@@ -2859,7 +2859,7 @@ Ext.define('OCS.DealAddProductWindow', {
 			hidden: false,
 			closable: false,			
 			title: '',
-			flex: 0.5,
+			flex: 0.65,
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
@@ -3026,7 +3026,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 	maximizable: true,
 	height: 400,
 	modal: false,
-	width: 800,	
+	width: 850,	
 	modal: true,	
 		
 	addProduct: function(form) {
