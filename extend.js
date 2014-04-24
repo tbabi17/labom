@@ -1555,7 +1555,7 @@ Ext.define('OCS.PropertyGrid', {
 			getRowClass: function(record) { 
 				var name = record.data.name.substring(2, record.data.name.length);
 				
-				if (name == 'notify' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date' || name == 'personal')
+				if (name == 'notify' || name == 'mayDuplicate' || name == 'parent_crm_id' || name == 'customer_type' || name == 'crm_id' || name == 'case_id' || name == 'deal_id' || name == 'id' || name == 'userCode' || name == '_date' || name == 'personal' || name == 'service_id')
 					return 'zero-adult-row';
 				
 				if (name == 'descr')
