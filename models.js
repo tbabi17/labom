@@ -1048,7 +1048,7 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 	   columns: [{dataIndex:'c1', text: 'Дуудлагын бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
+				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c5', text: 'Бусад', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
 				]
    },
