@@ -1049,14 +1049,14 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'c5', text: 'Бусад', width: 120, align: 'center', renderer: renderIntNumber, renderIntNumber: 'sum', summaryRenderer: renderTNumber}
+				 {dataIndex:'c5', text: 'Бусад', width: 60, align: 'center', renderer: renderIntNumber, renderIntNumber: 'sum', summaryRenderer: renderTNumber}
 				]
    },
    {
 	   text: 'Priority',
-	   columns: [{dataIndex:'p1', text: 'Low', width: 60, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+	   columns: [{dataIndex:'p1', text: 'Low', width: 50, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'p2', text: 'Medium', width: 60, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
-				 {dataIndex:'p3', text: 'High', width: 60, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+				 {dataIndex:'p3', text: 'High', width: 50, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
    },
    {
 	   text: 'Stage',
