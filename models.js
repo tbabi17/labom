@@ -1545,6 +1545,7 @@ function renderTNumber(v) {
 }
 
 function renderIntNumber(v) {
+	if (v == 0) return '';	
 	return Ext.util.Format.number(v, '00,00,000');
 }
 
