@@ -1016,14 +1016,23 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
 fields['CRM_REPORT_CASE_FIELDS'] = [
    {name: 'owner', text: 'Owner', width: 250}, 
    {name: 'section', text: 'Section', width: 150}, 
-   {name: 'c_p', type:'int', text: 'Pending', align: 'center', width: 60}, 
-   {name: 'c_r', type:'int', text: 'Remind', align: 'center', width: 60}, 
-   {name: 'c_s', type:'int', text: 'Success', align: 'center', width: 90}, 
-   {name: 'a_m', type:'int', text: 'Meeting', align: 'center', width: 90}, 
-   {name: 'a_p', type:'int', text: 'Phone call', align: 'center', width: 90}, 
-   {name: 'a_e', type:'int', text: 'Email', align: 'center', width: 90}, 
-   {name: 'total_qty', type:'int', text: 'Qty', align: 'center', width: 90}, 
-   {name: 'total_amount', type:'int', text: 'Amount', align: 'center', width: 90}
+   {name: 'c1', type:'int', text: 'Pending', align: 'center', width: 60}, 
+   {name: 'c2', type:'int', text: 'Remind', align: 'center', width: 60}, 
+   {name: 'c3', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'c4', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'c5', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'p1', type:'int', text: 'Meeting', align: 'center', width: 90}, 
+   {name: 'p2', type:'int', text: 'Phone call', align: 'center', width: 90}, 
+   {name: 'p3', type:'int', text: 'Email', align: 'center', width: 90}, 
+   {name: 's1', type:'int', text: 'Qty', align: 'center', width: 90}, 
+   {name: 's2', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 's3', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 'd1', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 'd2', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 'e1', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 'e2', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 't1', type:'int', text: 'Amount', align: 'center', width: 90},
+   {name: 't2', type:'int', text: 'Amount', align: 'center', width: 90}
 ];
 
 Ext.define('CRM_REPORT_CASE', {
@@ -1040,6 +1049,7 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
+				 {dataIndex:'c5', text: 'Бусад', width: 120, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
 				]
    },
    {
