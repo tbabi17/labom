@@ -1350,9 +1350,12 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				text: 'Add...',
 				disabled: me.insert,
 				handler: function(widget, event) {
-					new OCS.StorageAddProductWindow({
-						selected: me.selected
-					}).show();
+					if (me.selected)
+						new OCS.StorageAddProductWindow({
+							selected: me.selected
+						}).show();
+					else
+						Ext.MessageBox.alert('Status', 'You must select a ware house !', function() {});
 				}
 			}),			
 			Ext.create('Ext.Action', {
