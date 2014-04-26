@@ -3222,6 +3222,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 				if (me.form) {
 					me.form.getForm().findField('product_id').setValue(record.get('product_id'));				
 					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
+					me.form.getForm().findField('unit_size').setValue(record.get('unit_size'));				
 				}				
 			}
 		);
