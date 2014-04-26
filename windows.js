@@ -3136,6 +3136,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 				 model: 'CRM_NEXT',
 				 data: [{value: '0',name:'"Дебит'},{value: '1',name:'Кредит'}] 
 			  }),
+			  fieldLabel: 'Type',
 			  name: 'type',
 			  queryMode: 'local',
 		      displayField: 'name',
