@@ -1340,20 +1340,13 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 		me.actions = [
 			Ext.create('Ext.Action', {
 				iconCls   : 'add',
-				text: 'New...',
+				text: 'Add...',
 				disabled: me.insert,
 				handler: function(widget, event) {
 					me.form.updateSource(me.defaultRec);
 					me.form.setVisible(true);
 				}
-			}),
-			Ext.create('Ext.Action', {
-				iconCls   : 'edit',
-				text: 'Expand...',
-				handler: function(widget, event) {
-					me.showForm();
-				}
-			}),
+			}),			
 			Ext.create('Ext.Action', {
 				iconCls   : 'delete',
 				text: 'Delete',
@@ -1362,15 +1355,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 					me.deleteRecord();
 				}
 			}),				
-			'-',
-			Ext.create('Ext.Action', {
-				iconCls   : 'merge',
-				text: 'Merge...',
-				disabled: !me.merge,
-				handler: function(widget, event) {
-					
-				}
-			}),
+			'-',			
 			Ext.create('Ext.Action', {
 				iconCls   : 'import',
 				text: 'Import',

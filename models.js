@@ -599,7 +599,7 @@ fields['CRM_PRODUCT_FIELDS'] = [
    {name: 'product_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'product_name', text: 'Name', width: 250, primary: true}, 
    {name: 'product_type', text: 'Type', width: 120},
-   {name: 'price', text: 'Unit price', type: 'float', width: 90, renderer: renderMoney, align: 'right'},
+   {name: 'price', text: 'Price', type: 'float', width: 90, renderer: renderMoney, align: 'right'},
    {name: 'company', text: 'Company', width: 120}
 ];
 
