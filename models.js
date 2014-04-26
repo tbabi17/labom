@@ -625,6 +625,23 @@ Ext.define('CRM_WAREHOUSE', {
 });
 
 
+fields['CRM_STORAGE_FIELDS'] = [
+   {name: 'warehouse_id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'warehouse_name', text: 'Ware house', width: 50}, 
+   {name: 'product_id', text: 'Product ID', width: 150, primary: true}, 
+   {name: 'product_name', text: 'Product name', width: 120},
+   {name: 'qty', text: 'Qty', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
+   {name: 'price', text: 'Price', width: 120},
+   {name: 'amount', text: 'Amount', width: 110, renderer:renderOwner}, 
+   {name: 'descr', text: 'Description', width: 120, hidden: true},
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
+];
+
+Ext.define('CRM_STORAGE', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_STORAGE_FIELDS']
+});
+
 fields['CRM_STAT_FIELDS'] = [
    {name: 'id', text: 'id', hidden: true}, 
    {name: 'owner', text: 'Owner', width: 120}, 
