@@ -1193,6 +1193,103 @@ Ext.define('OCS.UserGridWithFormPanel', {
 	}
 });
 
+Ext.define('OCS.WareHouseGridWithFormPanel', {	
+	extend: 'OCS.GridWithFormPanel',	
+	modelName:'CRM_WAREHOUSE',
+	func:'crm_warehouse_list',
+	title: 'Ware house',
+	table: 'crm_warehouse',
+	tab: 'my_crm_warehouse_list',
+	primary: 'warehouse_id',
+	buttons: !(user_level==0),
+	feature: false,
+	merge: true,
+	insert: (user_level==0),
+	remove: (user_level==0),	
+	defaultRec: {
+		data: {
+			warehouse_id: '0'
+		}
+	}
+
+	createActions: function(actions) {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'New...',
+				disabled: me.insert,
+				handler: function(widget, event) {
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(true);
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					me.showForm();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Delete',
+				disabled: me.remove,
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			}),				
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'merge',
+				text: 'Merge...',
+				disabled: !me.merge,
+				handler: function(widget, event) {
+					
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'export',
+				text: 'Export',
+				handler: function(widget, event) {
+					if (!Ext.fly('frmDummy')) {
+						var frm = document.createElement('form');
+						frm.id = 'frmDummy';
+						frm.name = 'url-post';
+						frm.className = 'x-hidden';
+						document.body.appendChild(frm);
+					}
+
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   isUpload: true,
+					   form: Ext.fly('frmDummy'),
+					   params: {handle: 'file', action:'export', where: me.title},					
+					   success: function(response, opts) {					
+						  Ext.MessageBox.alert('Status', 'Success !', function() {});
+					   },
+					   failure: function(response, opts) {
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});	
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help',
+				text: 'Help',
+				handler: function(widget, event) {
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})			
+		];
+
+		return me.actions;
+	}
+});
+
 
 Ext.define('OCS.CampaignResultGridWithFormPanel', {	
 	extend: 'OCS.GridWithFormPanel',	
