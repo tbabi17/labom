@@ -3098,6 +3098,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				 model: 'CRM_ITEM',
 				 data: [{value: 'cash'},{value: 'loan'}]
 			  }),
+			  fieldLabel: 'Type',
 			  value: 'cash',
 			  name: 'type',
 			  queryMode: 'local',
