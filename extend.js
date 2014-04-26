@@ -1305,7 +1305,7 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 					me.form.setVisible(false);
 				}				
 
-				views['products'].storageReload();
+				views['product'].storageReload();
 			},			
 			rowselect: function(sm, rowIdx, r) {
 				me.form.updateSource(selections[0]);				
