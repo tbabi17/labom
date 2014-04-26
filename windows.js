@@ -3131,6 +3131,18 @@ Ext.define('OCS.StorageAddProductWindow', {
 				disabled: true,
 				name: 'product_id'
 			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_NEXT',
+				 data: [{value: '0',name:'"Дебит'},{value: '1',name:'Кредит'}] 
+			  }),
+			  name: 'type',
+			  queryMode: 'local',
+		      displayField: 'name',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
 				xtype: 'numberfield',
 				value: 1,
 				fieldLabel: 'Qty',
