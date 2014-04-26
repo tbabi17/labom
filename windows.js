@@ -3108,13 +3108,18 @@ Ext.define('OCS.ServiceAddProductWindow', {
 			  editable: false
 			},{
 				xtype: 'numberfield',
+				readOnly: true,
+				fieldLabel: 'Unit',
+				name: 'unit_size'
+			},{
+				xtype: 'numberfield',
 				value: 1,
 				fieldLabel: 'Pty',
 				name: 'pty',
 				listeners: {
 					'change': function(v) {
 						var form = this.up('form').getForm();
-						//form.findField('amount').setValue(v.getValue()*form.findField('price').getValue());
+						form.findField('qty').setValue(v.getValue()*form.findField('unit_size').getValue());
 					}
 				}
 			},{
@@ -3202,6 +3207,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
 					me.form.getForm().findField('product_name').setValue(record.get('product_name'));	
 					me.form.getForm().findField('product_id').setValue(record.get('product_id'));
+					me.form.getForm().findField('unit_size').setValue(record.get('unit_size'));
 				}				
 			}
 		);
