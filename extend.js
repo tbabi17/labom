@@ -1324,7 +1324,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 	primary: 'id',
 	values: 'warehouse_id',
 	buttons: !(user_level==0),
-	feature: false,
+	feature: true,
 	merge: true,
 	insert: (user_level==0),
 	remove: (user_level==0),	
