@@ -1902,13 +1902,6 @@ Ext.define('OCS.ServiceDescrWindow', {
 			closable: false,
 			title: '',
 			items: [{
-				xtype: 'datefield',
-				fieldLabel: 'Remind date',				
-				name: 'remind_date',
-				value: new Date(),
-				hidden: true,
-				format: 'Y-m-d'
-			},{
 				xtype: 'textfield',
 				fieldLabel: 'CRM ID',
 				name: 'crm_id',
@@ -1936,6 +1929,14 @@ Ext.define('OCS.ServiceDescrWindow', {
 						form.findField('remind_date').setVisible(v.getValue() == 'remind');
 					}
 			  }
+			},
+			{
+				xtype: 'datefield',
+				fieldLabel: 'Remind date',				
+				name: 'remind_date',
+				value: new Date(),
+				hidden: true,
+				format: 'Y-m-d'
 			},
 			{
 				xtype: 'textfield',
