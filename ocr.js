@@ -4418,9 +4418,33 @@ Ext.define('OCS.SettingsPanel', {
 
 Ext.define('OCS.ProductPanel', {
 	extend: 'OCS.Module',
+	
+	storageReload: function() {
+		var me = this;
+		alert(2);
+	},
 
 	createPanel: function() {
 		var me = this;
+		
+		me.storagePanel = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_STORAGE',
+			func:'crm_storage_list',
+			title: 'Ware house detail',
+			table: 'crm_storage',
+			tab: 'my_crm_storage_list',
+			primary: 'id',
+			buttons: !(user_level==0),
+			feature: false,
+			merge: true,
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					warehouse_id: '0'
+				}
+			}
+		}).createGrid();
 
 		me.panel = Ext.create('Ext.Panel', {				
 			layout: 'border',
@@ -4511,24 +4535,7 @@ Ext.define('OCS.ProductPanel', {
 											border: false,											
 											layout: 'border',
 											items: [
-												new Ext.create('OCS.GridWithFormPanel', {
-													modelName:'CRM_STORAGE',
-													func:'crm_storage_list',
-													title: 'Ware house detail',
-													table: 'crm_storage',
-													tab: 'my_crm_storage_list',
-													primary: 'id',
-													buttons: !(user_level==0),
-													feature: false,
-													merge: true,
-													insert: (user_level==0),
-													remove: (user_level==0),	
-													defaultRec: {
-														data: {
-															warehouse_id: '0'
-														}
-													}
-												}).createGrid()
+												me.storagePanel
 											]
 										}]
 									}
