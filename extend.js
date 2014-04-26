@@ -859,22 +859,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			deleteRecord: function() {
 				me.deleteRecord();
 			}
-		});				
-		
-		me.grid.getSelectionModel().on({
-			selectionchange: function(sm, selections) {
-				if (selections.length) {
-					me.form.updateSource(selections[0]);
-//					me.form.setVisible(true);
-				} else {
-					me.form.updateSource(me.defaultRec);
-					me.form.setVisible(false);
-				}				
-			},			
-			rowselect: function(sm, rowIdx, r) {
-				me.form.updateSource(selections[0]);				
-			}
-		});
+		});								
 		
 		if (!me.buttons)
 			me.form = new OCS.PropertyGrid({
@@ -920,6 +905,7 @@ Ext.define('OCS.GridWithFormPanel', {
 				]
 			});
 		
+		me.selection();
 		me.initSource();
 
 		me.panel = Ext.create('Ext.panel.Panel', {
@@ -930,6 +916,24 @@ Ext.define('OCS.GridWithFormPanel', {
 		});
 
 		return me.panel;
+	},
+
+	selection: function() {
+		var me = this;
+		me.grid.getSelectionModel().on({
+			selectionchange: function(sm, selections) {
+				if (selections.length) {
+					me.form.updateSource(selections[0]);
+//					me.form.setVisible(true);
+				} else {
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(false);
+				}				
+			},			
+			rowselect: function(sm, rowIdx, r) {
+				me.form.updateSource(selections[0]);				
+			}
+		});
 	},
 
 	selectedRecord: function() {
@@ -1287,7 +1291,27 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 		];
 
 		return me.actions;
-	}
+	},
+		
+	selection: function() {
+		var me = this;
+		me.grid.getSelectionModel().on({
+			selectionchange: function(sm, selections) {
+				if (selections.length) {
+					me.form.updateSource(selections[0]);
+//					me.form.setVisible(true);
+				} else {
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(false);
+				}				
+
+				alert(1);
+			},			
+			rowselect: function(sm, rowIdx, r) {
+				me.form.updateSource(selections[0]);				
+			}
+		});
+	},
 });
 
 
