@@ -600,6 +600,8 @@ fields['CRM_PRODUCT_FIELDS'] = [
    {name: 'product_name', text: 'Name', width: 250, primary: true}, 
    {name: 'product_type', text: 'Type', width: 120},
    {name: 'price', text: 'Price', type: 'float', width: 90, renderer: renderMoney, align: 'right'},
+   {name: 'unit_type', text: 'Unit type', width: 60, hidden: true},
+   {name: 'unit_size', text: 'Unit size', type: 'float', width: 60, hidden: true},
    {name: 'company', text: 'Company', width: 120}
 ];
 
