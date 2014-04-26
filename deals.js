@@ -1906,6 +1906,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 				fieldLabel: 'Remind date',				
 				name: 'remind_date',
 				value: new Date(),
+				hidden: true,
 				format: 'Y-m-d'
 			},{
 				xtype: 'textfield',
@@ -1919,7 +1920,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
   				  model: 'CRM_ITEM',
- 				  data: [{value: 'receipt'},{value: 'service'},{value: 'closed'}]
+ 				  data: [{value: 'receipt'},{value: 'service'},{value: 'remind'},{value: 'closed'}]
               }),
 			  name: 'service_stage',
 			  queryMode: 'local',
@@ -1928,7 +1929,13 @@ Ext.define('OCS.ServiceDescrWindow', {
 			  valueField: 'value',
 			  triggerAction: 'all',
 			  fieldLabel: 'Stage',
-			  editable: false
+			  editable: false,
+			  listeners: {
+					'change': function(v) {
+						var form = this.up('form').getForm();
+						form.findField('remind_date').setVisible(v.getValue() == 'remind');
+					}
+			  }
 			},
 			{
 				xtype: 'textfield',
