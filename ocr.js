@@ -3424,8 +3424,7 @@ Ext.define('OCS.ServiceAction', {
 
 						if (me.selected.get('owner') == logged) {				
 							new OCS.ServiceDescrWindow({
-								selected: me.selected,
-								service_stage: 'closed',
+								selected: me.selected,								
 								title: 'Close complete'
 							}).show();
 						} else 

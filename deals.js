@@ -1914,7 +1914,22 @@ Ext.define('OCS.ServiceDescrWindow', {
 				hidden: true,
 				value: me.selected.get('crm_id'),
 				readOnly: true
-			},				
+			},	
+			{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_ITEM',
+ 				  data: [{value: 'receipt'},{value: 'service'},{value: 'closed'}]
+              }),
+			  name: 'service_stage',
+			  queryMode: 'local',
+			  value: me.selected.get('service_stage'),
+		      displayField: 'value',
+			  valueField: 'value',
+			  triggerAction: 'all',
+			  disabled: true,
+			  editable: false
+			},
 			{
 				xtype: 'textfield',
 				fieldLabel: 'Created by',				
@@ -1940,6 +1955,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 					if (form.isValid())	{
 						var values = form.getValues(true);
 						var values_services = '';
+						me.service_stage = form.findField('service_stage').getValue();
 						if (me.service_stage != '') {
 							values_services = "service_stage='"+me.service_stage+"'"+
 										   ",remind_date='"+Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d')+"'"+
@@ -2128,7 +2144,7 @@ Ext.define('OCS.ServiceAssignWindow', {
 			},				
 			{
 				xtype: 'textfield',
-				fieldLabel: 'Бүртгэсэн',				
+				fieldLabel: 'Created by',				
 				name: 'userCode',
 				value: logged,
 				hidden: true,
