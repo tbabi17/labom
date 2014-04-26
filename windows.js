@@ -3120,6 +3120,11 @@ Ext.define('OCS.StorageAddProductWindow', {
 				name: 'warehouse_id'
 			},{
 				xtype: 'textfield',
+				fieldLabel: 'Ware house',
+				readOnly: true,
+				name: 'warehouse_name'
+			},{
+				xtype: 'textfield',
 				fieldLabel: 'Product',
 				readOnly: true,
 				name: 'product_name'
