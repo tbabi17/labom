@@ -4498,6 +4498,7 @@ Ext.define('OCS.ProductPanel', {
 											flex: 0.5,
 											layout: 'border',
 											border: false,
+											split: true,
 											items: [
 												new Ext.create('OCS.GridWithFormPanel', {
 													modelName:'CRM_WAREHOUSE',
@@ -4521,18 +4522,17 @@ Ext.define('OCS.ProductPanel', {
 										}, {
 											xtype: 'panel',
 											region: 'center',
-											flex: 0.5,
-											border: false,
-											split: true,
+											flex: 1,
+											border: false,											
 											layout: 'border',
 											items: [
 												new Ext.create('OCS.GridWithFormPanel', {
-													modelName:'CRM_WAREHOUSE',
-													func:'crm_warehouse_list',
-													title: 'Ware house',
-													table: 'crm_warehouse',
-													tab: 'my_crm_warehouse_list',
-													primary: 'warehouse_id',
+													modelName:'CRM_STORAGE',
+													func:'crm_storage_list',
+													title: 'Ware house detail',
+													table: 'crm_storage',
+													tab: 'my_crm_storage_list',
+													primary: 'id',
 													buttons: !(user_level==0),
 													feature: false,
 													merge: true,
