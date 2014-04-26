@@ -1354,7 +1354,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				handler: function(widget, event) {
 					me.deleteRecord();
 				}
-			}),				
+			}),
 			'-',			
 			Ext.create('Ext.Action', {
 				iconCls   : 'import',
