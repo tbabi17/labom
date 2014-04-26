@@ -1322,6 +1322,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 	table: 'crm_storage',
 	tab: 'my_crm_storage_list',
 	primary: 'id',
+	values: 'warehouse_id',
 	buttons: !(user_level==0),
 	feature: false,
 	merge: true,
@@ -1408,10 +1409,6 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 		];
 
 		return me.actions;
-	},
-
-	loadStore: function() {
-
 	}
 });
 
