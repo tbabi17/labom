@@ -634,8 +634,8 @@ fields['CRM_STORAGE_FIELDS'] = [
    {name: 'product_id', text: 'Product ID', width: 50, primary: true, hidden:true}, 
    {name: 'product_name', text: 'Product name', width: 200},
    {name: 'qty', text: 'Qty', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
-   {name: 'price', text: 'Price', width: 120, renderer:rednerMoney, hidden: true},
-   {name: 'amount', text: 'Amount', width: 110, renderer:rednerMoney, hidden: true}, 
+   {name: 'price', text: 'Price', width: 120, renderer:renderMoney, hidden: true},
+   {name: 'amount', text: 'Amount', width: 110, renderer:renderMoney, hidden: true}, 
    {name: 'descr', text: 'Description', width: 120, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
