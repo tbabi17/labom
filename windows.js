@@ -3154,7 +3154,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_NEXT',
-				 data: [{value: 0,name:'Хайрцагаар'},{value: 1,name:'Ширхэгээр'}] 
+				 data: [{value: 0,name:'Ширхэгээр'},{value: 1,name:'Хайрцагаар'}] 
 			  }),
 			  fieldLabel: 'Unit',
 			  name: 'unit',
