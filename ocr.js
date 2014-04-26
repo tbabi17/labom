@@ -4421,29 +4421,14 @@ Ext.define('OCS.ProductPanel', {
 	
 	storageReload: function() {
 		var me = this;
-		alert(2);
+		me.storagePanel.loadStore();
 	},
 
 	createPanel: function() {
 		var me = this;
 		
-		me.storagePanel = new Ext.create('OCS.GridWithFormPanel', {
-			modelName:'CRM_STORAGE',
-			func:'crm_storage_list',
-			title: 'Ware house detail',
-			table: 'crm_storage',
-			tab: 'my_crm_storage_list',
-			primary: 'id',
-			buttons: !(user_level==0),
-			feature: false,
-			merge: true,
-			insert: (user_level==0),
-			remove: (user_level==0),	
-			defaultRec: {
-				data: {
-					warehouse_id: '0'
-				}
-			}
+		me.storagePanel = new Ext.create('OCS.StorageGridWithFormPanel', {
+			
 		}).createGrid();
 
 		me.panel = Ext.create('Ext.Panel', {				
