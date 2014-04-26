@@ -630,12 +630,12 @@ Ext.define('CRM_WAREHOUSE', {
 fields['CRM_STORAGE_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'warehouse_id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'warehouse_name', text: 'Ware house', width: 120}, 
-   {name: 'product_id', text: 'Product ID', width: 150, primary: true, hidden:true}, 
-   {name: 'product_name', text: 'Product name', width: 120},
+   {name: 'warehouse_name', text: 'Ware house', width: 150}, 
+   {name: 'product_id', text: 'Product ID', width: 50, primary: true, hidden:true}, 
+   {name: 'product_name', text: 'Product name', width: 200},
    {name: 'qty', text: 'Qty', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
-   {name: 'price', text: 'Price', width: 120},
-   {name: 'amount', text: 'Amount', width: 110, renderer:renderOwner}, 
+   {name: 'price', text: 'Price', width: 120, renderer:rednerMoney, hidden: true},
+   {name: 'amount', text: 'Amount', width: 110, renderer:rednerMoney, hidden: true}, 
    {name: 'descr', text: 'Description', width: 120, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
 ];
