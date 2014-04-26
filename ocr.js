@@ -4429,7 +4429,7 @@ Ext.define('OCS.ProductPanel', {
 		
 		me.storagePanel = new Ext.create('OCS.StorageGridWithFormPanel', {
 			
-		}).createGrid();
+		});
 
 		me.panel = Ext.create('Ext.Panel', {				
 			layout: 'border',
@@ -4520,7 +4520,7 @@ Ext.define('OCS.ProductPanel', {
 											border: false,											
 											layout: 'border',
 											items: [
-												me.storagePanel
+												me.storagePanel.createGrid()
 											]
 										}]
 									}
