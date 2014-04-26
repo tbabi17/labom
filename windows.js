@@ -3089,6 +3089,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 			},{
 				xtype: 'numberfield',
 				value: 0,
+				hidden: true,
 				fieldLabel: 'Precent',
 				name: 'precent'				
 			},{
