@@ -628,8 +628,8 @@ Ext.define('CRM_WAREHOUSE', {
 fields['CRM_STORAGE_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'warehouse_id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'warehouse_name', text: 'Ware house', width: 50}, 
-   {name: 'product_id', text: 'Product ID', width: 150, primary: true}, 
+   {name: 'warehouse_name', text: 'Ware house', width: 120}, 
+   {name: 'product_id', text: 'Product ID', width: 150, primary: true, hidden:true}, 
    {name: 'product_name', text: 'Product name', width: 120},
    {name: 'qty', text: 'Qty', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
    {name: 'price', text: 'Price', width: 120},
