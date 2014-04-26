@@ -1333,6 +1333,14 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 			warehouse_id: '0'
 		}
 	},
+	
+	loadStore: function(selected) {
+		var me = this;
+		me.selected = selected;
+		me.where = me.selected('warehouse_id');
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where};
+		me.store.loadPage(1);
+	},
 
 	createActions: function(actions) {
 		var me = this;
@@ -1342,7 +1350,9 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				text: 'Add...',
 				disabled: me.insert,
 				handler: function(widget, event) {
-					new OCS.StorageAddProductWindow().show();
+					new OCS.StorageAddProductWindow({
+						selected: me.selected
+					}).show();
 				}
 			}),			
 			Ext.create('Ext.Action', {

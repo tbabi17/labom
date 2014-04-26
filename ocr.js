@@ -4421,7 +4421,7 @@ Ext.define('OCS.ProductPanel', {
 	
 	storageReload: function(rec) {
 		var me = this;
-		me.storagePanel.loadStore(rec.get('warehouse_id'));
+		me.storagePanel.loadStore(rec);
 	},
 
 	createPanel: function() {
