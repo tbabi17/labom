@@ -4501,12 +4501,13 @@ Ext.define('OCS.ProductPanel', {
 										split: true,
 										closable: false,
 										layout: 'border',
+										border: false,
 										items: [{
 											xtype: 'panel',
 											region: 'north',
 											flex: 0.5,
 											layout: 'border',
-											border: false,
+											border: true,
 											split: true,
 											items: [
 												new Ext.create('OCS.WareHouseGridWithFormPanel', {
@@ -4517,7 +4518,7 @@ Ext.define('OCS.ProductPanel', {
 											xtype: 'panel',
 											region: 'center',
 											flex: 1,
-											border: false,											
+											border: true,											
 											layout: 'border',
 											items: [
 												me.storagePanel.createGrid()
