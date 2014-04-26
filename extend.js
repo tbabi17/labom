@@ -1308,10 +1308,11 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 				views['product'].storageReload(selections[0]);
 			},			
 			rowselect: function(sm, rowIdx, r) {
-				me.form.updateSource(selections[0]);				
+				me.form.updateSource(selections[0]);	
+				views['product'].storageReload(selections[0]);
 			}
 		});
-	},
+	}
 });
 
 Ext.define('OCS.StorageGridWithFormPanel', {	
