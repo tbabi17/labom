@@ -1377,7 +1377,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				handler: function(widget, event) {
 
 				}
-			},
+			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'export',
 				text: 'Export',
