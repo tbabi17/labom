@@ -4520,6 +4520,8 @@ Ext.define('OCS.ProductPanel', {
 											xtype: 'panel',
 											region: 'center',
 											flex: 0.5,
+											border: false,
+											split: true,
 											items: [
 												new Ext.create('OCS.GridWithFormPanel', {
 													modelName:'CRM_WAREHOUSE',
