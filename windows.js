@@ -3075,7 +3075,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 	extend: 'OCS.Window',
 	title: 'Products',
 	maximizable: true,
-	height: 400,
+	height: 500,
 	modal: false,
 	width: 850,	
 	modal: true,	
