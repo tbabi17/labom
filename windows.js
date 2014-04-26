@@ -3116,13 +3116,14 @@ Ext.define('OCS.StorageAddProductWindow', {
 				disabled: true,
 				hidden: true,
 				allowBlank: false,
-				//value: me.selected.get('crm_id'),
+				value: me.selected.get('warehouse_id'),
 				name: 'warehouse_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Ware house',
 				readOnly: true,
-				name: 'warehouse_name'
+				name: 'warehouse_name',
+				value: me.selected.get('warehouse_name')
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Product',
