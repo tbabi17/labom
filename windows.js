@@ -3230,8 +3230,9 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				Ext.Ajax.request({
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
-				   success: function(response, opts) {							  
-					  me.backgrid.getStore().reload();					  
+				   success: function(response, opts) {
+					  me.close();
+//					  me.backgrid.getStore().reload();					  
 				   },
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -3243,8 +3244,9 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				Ext.Ajax.request({
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
-				   success: function(response, opts) {							  
-					  me.backgrid.getStore().reload();
+				   success: function(response, opts) {			
+					  me.close();					   
+//					  me.backgrid.getStore().reload();
 				   },
 				   failure: function(response, opts) {										   
 					  Ext.MessageBox.alert('Status', 'Error !', function() {});
