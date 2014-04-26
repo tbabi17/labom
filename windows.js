@@ -3209,7 +3209,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 		if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 			if (me.record && me.record.get('id')) {
 				var descr = form.findField('descr').getValue();
-				values = "product_id="+form.findField('product_id').getValue()+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue()+"&type="+form.findField('type').getValue();
+				values = "product_id="+form.findField('product_id').getValue()+"&product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue()+"&type='"+form.findField('type').getValue()+"'";
 				Ext.Ajax.request({
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
