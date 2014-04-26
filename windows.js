@@ -3166,7 +3166,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 			  editable: false
 			},{
 				xtype: 'numberfield',
-				value: me.selected.get('unit_size'),
+				value: 0,
 				fieldLabel: 'Unit size',
 				readOnly: true,
 				name: 'unit_size'				
