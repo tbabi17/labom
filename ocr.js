@@ -4483,7 +4483,36 @@ Ext.define('OCS.ProductPanel', {
 												}
 											}).createGrid()
 										]
-									}		
+									},
+									{
+										id : 'warehouse_list',
+										title: '',
+										flex: 1,
+										region: 'east',
+										split: true,
+										closable: false,
+										layout: 'border',
+										items: [
+											new Ext.create('OCS.GridWithFormPanel', {
+												modelName:'CRM_WAREHOUSE',
+												func:'crm_product_list',
+												title: 'Ware house',
+												table: 'crm_warehouse',
+												tab: 'my_crm_warehouse_list',
+												primary: 'warehouse_id',
+												buttons: !(user_level==0),
+												feature: false,
+												merge: true,
+												insert: (user_level==0),
+												remove: (user_level==0),	
+												defaultRec: {
+													data: {
+														warehouse_id: '0'
+													}
+												}
+											}).createGrid()
+										]
+									}
 								]
 							}								
 						]
