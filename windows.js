@@ -3030,6 +3030,172 @@ Ext.define('OCS.ServiceAddProductWindow', {
 	width: 850,	
 	modal: true,	
 		
+	initComponent: function() {
+		var me = this;				
+		
+		me.productList = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_PRODUCT',
+			func:'crm_product_list',
+			title: 'Products',
+			table: 'crm_products',
+			tab: 'deal_crm_product_list',
+			buttons: true,
+			feature: false,
+			tbar: false,
+			title: '',
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					product_id: '0',
+					price: '0'
+				}
+			}
+		});
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 0.65,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'CRM ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				//value: me.selected.get('crm_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Product ID',
+				readOnly: true,
+				name: 'product_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Product',
+				readOnly: true,
+				name: 'product_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Service ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('service_id'),
+				disabled: true,
+				name: 'service_id'
+			},{
+				xtype: 'numberfield',
+				value: 0,
+				fieldLabel: 'Precent',
+				name: 'precent'				
+			},{
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_ITEM',
+				 data: [{value: 'cash'},{value: 'loan'}]
+			  }),
+			  value: 'cash',
+			  name: 'type',
+			  queryMode: 'local',
+		      displayField: 'value',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			},{
+				xtype: 'numberfield',
+				value: 1,
+				fieldLabel: 'Qty',
+				name: 'qty',
+				listeners: {
+					'change': function(v) {
+						var form = this.up('form').getForm();
+						form.findField('amount').setValue(v.getValue()*form.findField('price').getValue());
+					}
+				}
+			},{
+				xtype: 'numericfield',
+				value: 0,
+				decimalPrecision: 2,
+			    allowNegative: true,
+				useThousandSeparator: true,
+		        currencySymbol:'₮',
+				fieldLabel: 'Price',
+				name: 'price',
+				listeners: {
+					'change': function(v) {
+						var form = this.up('form').getForm();
+						form.findField('amount').setValue(v.getValue()*form.findField('qty').getValue());
+					}
+				} 
+			},{
+				xtype: 'numericfield',
+				value: 0,
+				decimalPrecision: 2,
+			    allowNegative: true,
+				useThousandSeparator: true,
+		        currencySymbol:'₮',
+//				readOnly: true,
+				fieldLabel: 'Amount',
+				name: 'amount' 
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				hidden: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textarea',
+				emptyText: 'Тайлбар...',
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					me.addProduct(form);
+				}
+			}]
+		});
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'west',
+			flex: 1,
+			border: false,
+			split: true,
+			items: me.productList.createGrid()
+		}, me.form];	
+
+		if (me.record)
+			me.form.getForm().loadRecord(me.record);
+		
+		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					me.form.getForm().findField('price').setValue(record.get('price'));
+					me.form.getForm().findField('amount').setValue(record.get('price')*me.form.getForm().findField('qty').getValue());
+					me.form.getForm().findField('product_name').setValue(record.get('product_name'));	
+					me.form.getForm().findField('product_id').setValue(record.get('product_id'));
+				}				
+			}
+		);
+
+		me.callParent(arguments);
+	},
+
 	addProduct: function(form) {
 		var me = this;
 		var values = form.getValues(true);
@@ -3041,7 +3207,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 		if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 			if (me.record && me.record.get('id')) {
 				var descr = form.findField('descr').getValue();
-				values = "product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+				values = "product_id="+form.findField('product_id').getValue()+"&product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue()+"&type="+form.findField('type').getValue();
 				Ext.Ajax.request({
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
@@ -3054,7 +3220,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				});	
 			} else {
 				var descr = form.findField('descr').getValue();
-				values = "service_id="+me.selected.get('service_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+				values = "product_id="+form.findField('product_id').getValue()+"&service_id="+me.selected.get('service_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue()+"&type="+form.findField('type').getValue();
 				Ext.Ajax.request({
 				   url: 'avia.php',
 				   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
