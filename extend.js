@@ -1214,7 +1214,7 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 		data: {
 			warehouse_id: '0'
 		}
-	}
+	},
 
 	createActions: function(actions) {
 		var me = this;
