@@ -3071,6 +3071,165 @@ Ext.define('OCS.ServiceAddProductWindow', {
 	}
 });
 
+Ext.define('OCS.StorageAddProductWindow', {
+	extend: 'OCS.Window',
+	title: 'Products',
+	maximizable: true,
+	height: 400,
+	modal: false,
+	width: 850,	
+	modal: true,	
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.productList = new Ext.create('OCS.GridWithFormPanel', {
+			modelName:'CRM_PRODUCT',
+			func:'crm_product_list',
+			title: 'Products',
+			table: 'crm_products',
+			tab: 'storage_crm_product_list',
+			buttons: true,
+			feature: false,
+			tbar: false,
+			title: '',
+			insert: (user_level==0),
+			remove: (user_level==0),	
+			defaultRec: {
+				data: {
+					product_id: '0',
+					price: '0'
+				}
+			}
+		});
+
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 0.65,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Warehouse ID',
+				readOnly: true,
+				disabled: true,
+				hidden: true,
+				allowBlank: false,
+				//value: me.selected.get('crm_id'),
+				name: 'warehouse_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Product',
+				readOnly: true,
+				name: 'product_name'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'product_id',
+				readOnly: true,
+				hidden: true,
+				disabled: true,
+				name: 'product_id'
+			},{
+				xtype: 'numberfield',
+				value: 1,
+				fieldLabel: 'Qty',
+				name: 'qty'				
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Created by',				
+				readOnly: true,
+				hidden: true,
+				value: logged,
+				name: 'userCode'
+			},{
+				xtype: 'textarea',
+				emptyText: 'Тайлбар...',
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					me.addProduct(form);
+				}
+			}]
+		});
+
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'west',
+			flex: 1,
+			border: false,
+			split: true,
+			items: me.productList.createGrid()
+		}, me.form];	
+
+		if (me.record)
+			me.form.getForm().loadRecord(me.record);
+		
+		me.productList.grid.on('itemclick', function(dv, record, item, index, e) {
+				if (me.form) {
+					me.form.getForm().findField('product_id').setValue(record.get('product_id'));				
+					me.form.getForm().findField('product_name').setValue(record.get('product_name'));				
+				}				
+			}
+		);
+
+		me.callParent(arguments);
+	},
+
+	addProduct: function(form) {
+		var me = this;
+		var values = form.getValues(true);
+		if (!form.findField('product_name').getValue()) {
+			Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
+			return;
+		}
+		
+		if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
+			if (me.record && me.record.get('id')) {
+				var descr = form.findField('descr').getValue();
+				values = "product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+				Ext.Ajax.request({
+				   url: 'avia.php',
+				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
+				   success: function(response, opts) {							  
+					  me.close();
+				   },
+				   failure: function(response, opts) {										   
+					  Ext.MessageBox.alert('Status', 'Error !', function() {});
+				   }
+				});	
+			} else {
+				var descr = form.findField('descr').getValue();
+				values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+				Ext.Ajax.request({
+				   url: 'avia.php',
+				   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
+				   success: function(response, opts) {							  
+					  me.close();
+				   },
+				   failure: function(response, opts) {										   
+					  Ext.MessageBox.alert('Status', 'Error !', function() {});
+				   }
+				});	
+			}
+		} else
+			 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+	}
+});
+
 Ext.define('OCS.DealAddCompetitorWindow', {
 	extend: 'OCS.Window',
 	title: 'Competitor',
