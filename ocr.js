@@ -4497,6 +4497,7 @@ Ext.define('OCS.ProductPanel', {
 											region: 'south',
 											flex: 0.5,
 											layout: 'border',
+											border: false,
 											items: [
 												new Ext.create('OCS.GridWithFormPanel', {
 													modelName:'CRM_WAREHOUSE',
