@@ -3231,36 +3231,21 @@ Ext.define('OCS.StorageAddProductWindow', {
 			return;
 		}
 		
-		if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
-			if (me.record && me.record.get('id')) {
-				var descr = form.findField('descr').getValue();
-				values = "product_name='"+form.findField('product_name').getValue()+"'&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
-				Ext.Ajax.request({
-				   url: 'avia.php',
-				   params: {handle: 'web', table: 'crm_deal_products', action: 'update', values: values, where: 'id='+me.record.get('id')},
-				   success: function(response, opts) {							  
-					  me.close();
-				   },
-				   failure: function(response, opts) {										   
-					  Ext.MessageBox.alert('Status', 'Error !', function() {});
-				   }
-				});	
-			} else {
-				var descr = form.findField('descr').getValue();
-				values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
-				Ext.Ajax.request({
-				   url: 'avia.php',
-				   params: {handle: 'web', table: 'crm_deal_products', action: 'insert', values: values, where: ''},
-				   success: function(response, opts) {							  
-					  me.close();
-				   },
-				   failure: function(response, opts) {										   
-					  Ext.MessageBox.alert('Status', 'Error !', function() {});
-				   }
-				});	
-			}
+		if (form.findField('qty').getValue() > 0) {								
+			var descr = form.findField('descr').getValue();
+			values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+			Ext.Ajax.request({
+			   url: 'avia.php',
+			   params: {handle: 'web', func: 'crm_finance_fun', table: 'crm_balance', action: 'balance', values: values, where: ''},
+			   success: function(response, opts) {							  
+				  me.close();
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});			
 		} else
-			 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+			 Ext.MessageBox.alert('Status', 'Qty is empty !', function() {});
 	}
 });
 
