@@ -4487,7 +4487,7 @@ Ext.define('OCS.ProductPanel', {
 									{
 										id : 'warehouse_list',
 										title: '',
-										flex: 0.75,
+										flex: 0.8,
 										region: 'east',
 										split: true,
 										closable: false,
