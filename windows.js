@@ -3230,13 +3230,23 @@ Ext.define('OCS.StorageAddProductWindow', {
 			Ext.MessageBox.alert('Status', 'Please select a product !', function() {});
 			return;
 		}
-		
+		/*
+		v[0] - qty
+		v[1] - type
+		v[2] - price
+		v[3] - product_id
+		v[4] - crm_id
+		v[5] - owner
+		v[6] - _date
+		v[7] - amount
+		v[8] - descr
+		*/
 		if (form.findField('qty').getValue() > 0) {								
 			var descr = form.findField('descr').getValue();
-			values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&product_name="+form.findField('product_name').getValue()+"&precent="+form.findField('precent').getValue()+"&qty="+form.findField('qty').getValue()+"&price="+form.findField('price').getValue()+"&amount="+form.findField('amount').getValue();
+			values = "qty="+form.findField('qty').getValue()+"&type=0&price=0&product_id="+form.findField('product_id').getValue()+"&crm_id=0&owner="+logged+"&_date=&amount=0&descr="+descr;
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', func: 'crm_finance_fun', table: 'crm_balance', action: 'balance', values: values, where: ''},
+			   params: {handle: 'web', func: 'crm_finance_fun', table: 'storage', action: 'balance', values: values, where: ''},
 			   success: function(response, opts) {							  
 				  me.close();
 			   },
