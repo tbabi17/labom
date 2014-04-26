@@ -612,7 +612,7 @@ fields['CRM_WAREHOUSE_FIELDS'] = [
    {name: 'warehouse_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'name', text: 'Name', width: 150, primary: true}, 
    {name: 'location', text: 'Type', width: 120},
-   {name: 'capacity', text: 'Unit price', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
+   {name: 'capacity', text: 'Capacity', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
    {name: 'descr', text: 'Company', width: 120},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'warehouse_type', text: 'Type', width: 80},
