@@ -3140,7 +3140,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_NEXT',
-				 data: [{value: '0',name:'Дебит'},{value: '1',name:'Кредит'}] 
+				 data: [{value: 0,name:'Дебит'},{value: 1,name:'Кредит'}] 
 			  }),
 			  fieldLabel: 'Type',
 			  name: 'type',
@@ -3154,7 +3154,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
 				 model: 'CRM_NEXT',
-				 data: [{value: '0',name:'Хайрцагаар'},{value: '1',name:'Ширхэгээр'}] 
+				 data: [{value: 0,name:'Хайрцагаар'},{value: 1,name:'Ширхэгээр'}] 
 			  }),
 			  fieldLabel: 'Unit',
 			  name: 'unit',

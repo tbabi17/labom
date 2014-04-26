@@ -20,7 +20,7 @@ Ext.define('CRM_OBJECT', {
 
 Ext.define('CRM_NEXT', {
 	extend: 'Ext.data.Model',
-	fields: [{name: 'value', type: 'string'}, {name: 'name'}]
+	fields: [{name: 'value', type: 'int'}, {name: 'name'}]
 });
 
 fields['CRM_RETAIL_FIELDS'] = [
