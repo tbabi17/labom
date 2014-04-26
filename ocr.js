@@ -3413,7 +3413,7 @@ Ext.define('OCS.ServiceAction', {
 				},'-',
 				{
 					iconCls: 'deal_won',
-					text: 'Close',
+					text: 'Next stage',
 					id: 'service_closewon',
 					scope: this,
 					handler: function() {
@@ -3425,7 +3425,7 @@ Ext.define('OCS.ServiceAction', {
 						if (me.selected.get('owner') == logged) {				
 							new OCS.ServiceDescrWindow({
 								selected: me.selected,								
-								title: 'Close complete'
+								title: 'Next stage'
 							}).show();
 						} else 
 							Ext.MessageBox.alert('Error', 'Not available !', function() {});
