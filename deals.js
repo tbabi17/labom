@@ -880,7 +880,21 @@ Ext.define('OCS.ServiceProductGrid', {
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
-			})			
+			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'delete',
+				text: 'Create sale ...',
+				handler: function(widget, event) {		
+					if (me.action) {
+						var sel = me.grid.getView().getSelectionModel().getSelection();
+						if (sel.length > 0) {							
+							me.deleteRecord();											
+						} else
+							Ext.MessageBox.alert('Status', 'No selection !', function() {});
+					} else
+						Ext.MessageBox.alert('Error', 'Not available !', function() {});
+				}
+			})
 		];
 
 		return me.actions;
