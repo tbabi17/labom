@@ -1343,8 +1343,7 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				text: 'Add...',
 				disabled: me.insert,
 				handler: function(widget, event) {
-					me.form.updateSource(me.defaultRec);
-					me.form.setVisible(true);
+					
 				}
 			}),			
 			Ext.create('Ext.Action', {
