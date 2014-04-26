@@ -3146,7 +3146,7 @@ Ext.define('OCS.StorageAddProductWindow', {
 			  editable: false
 			},{
 				xtype: 'numberfield',
-				value: 1,
+				value: 0,
 				fieldLabel: 'Qty',
 				name: 'qty'				
 			},{
