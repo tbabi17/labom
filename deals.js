@@ -888,7 +888,7 @@ Ext.define('OCS.ServiceProductGrid', {
 					if (me.action) {
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', action: 'sales', values: '', where: ''},
+						   params: {handle: 'web', action: 'sales', values: 'service_id', where: me.where},
 						   success: function(response, opts) {							  
 							  me.backgrid.getStore().reload();
 						   },
