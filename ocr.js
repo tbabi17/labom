@@ -4494,7 +4494,7 @@ Ext.define('OCS.ProductPanel', {
 										layout: 'border',
 										items: [{
 											xtype: 'panel',
-											region: 'south',
+											region: 'north',
 											flex: 0.5,
 											layout: 'border',
 											border: false,
