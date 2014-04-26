@@ -1927,7 +1927,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 		      displayField: 'value',
 			  valueField: 'value',
 			  triggerAction: 'all',
-			  disabled: true,
+			  fieldLabel: 'Stage',
 			  editable: false
 			},
 			{
