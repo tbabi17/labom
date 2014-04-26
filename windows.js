@@ -3022,7 +3022,7 @@ Ext.define('OCS.DealAddProductWindow', {
 
 
 Ext.define('OCS.ServiceAddProductWindow', {
-	extend: 'OCS.DealAddProductWindow',
+	extend: 'OCS.Window',
 	title: 'Products',
 	maximizable: true,
 	height: 400,
