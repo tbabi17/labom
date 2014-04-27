@@ -3230,6 +3230,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 			return;
 		}
 		
+		alert(form.findField('warehouse_id').getValue());
 		if (form.findField('precent').getValue() > 0 || form.findField('amount').getValue() > 0) {					
 			if (me.record && me.record.get('id')) {
 				var descr = form.findField('descr').getValue();
