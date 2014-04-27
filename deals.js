@@ -913,6 +913,54 @@ Ext.define('OCS.ServiceProductGrid', {
 		me.values = 'service_id';
 		me.loadStore();
 	},
+	
+	,
+	
+	createColumns: function() {
+		var me = this;
+		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
+			text: 'Product name',
+			dataIndex: 'product_name',
+			flex: 1,			
+			sortable: false
+		},{
+			text: 'Precent',
+			dataIndex: 'precent',
+			width: 100,
+			renderer: renderPrecent,
+			align: 'right',
+			sortable: true
+		},{
+			text: 'Type',
+			dataIndex: 'type',
+			width: 60,
+			sortable: true
+		},{
+			text: 'Qty',
+			dataIndex: 'qty',
+			width: 60,
+			renderer: renderNumber,
+			summaryType: 'sum',
+			summaryRenderer: renderTNumber,
+			sortable: true
+		},{
+			text: 'Total',
+			dataIndex: 'amount',
+			width: 100,
+			renderer: renderMoney,
+			summaryType: 'sum',
+			summaryRenderer: renderTMoney,
+			align: 'right',
+			sortable: true
+		},{
+			text: 'Created on',
+			dataIndex: '_date',
+			width: 120,
+			hidden: true,
+			renderer: renderDate,
+			sortable: true
+		}];
+	},
 
 	createGrid: function() {
 		var me = this;	
