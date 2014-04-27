@@ -2006,9 +2006,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 						   url: 'avia.php',
 						   params: {handle: 'web', table: 'crm_services', action: 'update', values: values_services, where: "service_id="+me.selected.get('service_id')},
 						   success: function(response, opts) {
-							  me.close();
-							  me.competitorWrite();
-							  me.customerLevelDetection();
+							  me.customerLevelDetection();							 
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
