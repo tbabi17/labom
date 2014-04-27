@@ -914,8 +914,6 @@ Ext.define('OCS.ServiceProductGrid', {
 		me.loadStore();
 	},
 	
-	,
-	
 	createColumns: function() {
 		var me = this;
 		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
