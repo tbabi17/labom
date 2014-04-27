@@ -3415,7 +3415,7 @@ Ext.define('OCS.ServiceAction', {
 					iconCls: 'deal_won',
 					text: 'Next stage',
 					id: 'service_closewon',
-					disabled: (me.selected.get('service_stage') == 'closed'),
+					disabled: (me.selected && me.selected.get('service_stage') == 'closed'),
 					scope: this,
 					handler: function() {
 						if (me.serviceActivity.openActivityCount() > 0) {
