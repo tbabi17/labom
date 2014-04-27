@@ -880,25 +880,6 @@ Ext.define('OCS.ServiceProductGrid', {
 					} else
 						Ext.MessageBox.alert('Error', 'Not available !', function() {});
 				}
-			}),
-			Ext.create('Ext.Action', {
-				iconCls : 'delete',
-				text: 'Create sale ...',
-				handler: function(widget, event) {		
-					if (me.action) {
-						Ext.Ajax.request({
-						   url: 'avia.php',
-						   params: {handle: 'web', action: 'sales', values: 'service_id', where: me.where},
-						   success: function(response, opts) {							  
-							  me.backgrid.getStore().reload();
-						   },
-						   failure: function(response, opts) {										   
-							  Ext.MessageBox.alert('Status', 'Error !', function() {});
-						   }
-						});	
-					} else
-						Ext.MessageBox.alert('Error', 'Not available !', function() {});
-				}
 			})
 		];
 
@@ -2050,6 +2031,17 @@ Ext.define('OCS.ServiceDescrWindow', {
 		{
 			Ext.Ajax.request({
 			   url: 'avia.php',
+			   params: {handle: 'web', action: 'sales', values: 'service_id', where: me.selected.get('service_id')},
+			   success: function(response, opts) {							  
+				  
+			   },
+			   failure: function(response, opts) {										   
+				  Ext.MessageBox.alert('Status', 'Error !', function() {});
+			   }
+			});	
+
+			Ext.Ajax.request({
+			   url: 'avia.php',
 			   params: {handle: 'web', table: 'crm_customer', action: 'update', values: "level='customer'", where: "crm_id="+me.selected.get('crm_id')+" and (level='suspect' or level='prospect')"},
 			   success: function(response, opts) {
 				  me.close();
@@ -2058,7 +2050,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 			   failure: function(response, opts) {										   
 				  Ext.MessageBox.alert('Status', 'Error !', function() {});
 			   }
-			});		
+			});					
 		} else
 		if (me.stage == 'service')
 		{						
