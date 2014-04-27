@@ -780,7 +780,7 @@ Ext.define('OSS.WareSearchCombo', {
 					update : 'POST',
 					destroy: 'POST'
 				},
-				extraParams: {handler: 'web', func: 'crm_query_list', action: 'select'}
+				extraParams: {handler: 'web', func: 'crm_query_list', action: 'select', table: me.table, fields: 'warehouse_id'}
 			},
 			fields: [{name: 'warehouse_id'}, {name: 'name'}]
 		});
