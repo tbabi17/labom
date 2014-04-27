@@ -2027,7 +2027,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 
 	customerLevelDetection: function() {
 		var me = this;
-		if (me.stage == 'closed')
+		if (me.service_stage == 'closed')
 		{
 			Ext.Ajax.request({
 			   url: 'avia.php',
@@ -2052,7 +2052,7 @@ Ext.define('OCS.ServiceDescrWindow', {
 			   }
 			});					
 		} else
-		if (me.stage == 'service')
+		if (me.service_stage == 'service')
 		{						
 			Ext.Ajax.request({
 			   url: 'avia.php',
