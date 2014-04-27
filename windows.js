@@ -3072,7 +3072,13 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				xtype: 'textfield',
 				fieldLabel: 'Product ID',
 				readOnly: true,
+				hidden: true,
 				name: 'product_id'
+			},{
+				xtype: 'searchcombo',
+				fieldLabel: 'Warehoues',
+				table: 'crm_warehouse',
+				name: 'warehouse_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Product',
