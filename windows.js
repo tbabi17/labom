@@ -3079,7 +3079,7 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				fieldLabel: 'Warehoues',
 				table: 'crm_warehouse',
 				name: 'warehouse_id',
-				valueField: 'name'
+				valueField: 'warehouse_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Product',
