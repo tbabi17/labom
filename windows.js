@@ -3076,7 +3076,8 @@ Ext.define('OCS.ServiceAddProductWindow', {
 				name: 'product_id'
 			},{
 				xtype: 'warecombo',
-				fieldLabel: 'Warehoues'
+				fieldLabel: 'Warehoues',
+				name: 'warehouse_id'
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Product',
