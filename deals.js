@@ -916,7 +916,7 @@ Ext.define('OCS.ServiceProductGrid', {
 	
 	createColumns: function() {
 		var me = this;
-		return [Ext.create('Ext.grid.RowNumberer', {width: 32}), {
+		return [/*Ext.create('Ext.grid.RowNumberer', {width: 32}), */{
 			text: 'Product name',
 			dataIndex: 'product_name',
 			flex: 1,			
