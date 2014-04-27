@@ -937,6 +937,7 @@ Ext.define('OCS.ServiceProductGrid', {
 			text: 'Qty',
 			dataIndex: 'qty',
 			width: 60,
+			align: 'right',
 			renderer: renderNumber,
 			summaryType: 'sum',
 			summaryRenderer: renderTNumber,
