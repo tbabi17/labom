@@ -613,7 +613,7 @@ Ext.define('CRM_PRODUCT', {
 fields['CRM_WAREHOUSE_FIELDS'] = [
    {name: 'warehouse_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'name', text: 'Name', width: 150, primary: true}, 
-   {name: 'location', text: 'Type', width: 120},
+   {name: 'location', text: 'Location', width: 120},
    {name: 'capacity', text: 'Capacity', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
    {name: 'descr', text: 'Company', width: 120},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
