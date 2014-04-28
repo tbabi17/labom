@@ -1268,7 +1268,8 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 	remove: (user_level==0),	
 	defaultRec: {
 		data: {
-			warehouse_id: '0'
+			warehouse_id: '0',
+			_date
 		}
 	},
 
@@ -1386,7 +1387,8 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 	remove: (user_level==0),	
 	defaultRec: {
 		data: {
-			warehouse_id: '0'
+			warehouse_id: '0',
+			_date: Ext.Date.format(new Date(),'Y-m-d h:m:s')
 		}
 	},
 	
