@@ -615,7 +615,7 @@ fields['CRM_WAREHOUSE_FIELDS'] = [
    {name: 'name', text: 'Name', width: 150, primary: true}, 
    {name: 'location', text: 'Location', width: 120},
    {name: 'capacity', text: 'Capacity', type: 'float', width: 90, renderer: renderNumber, align: 'right'},
-   {name: 'descr', text: 'Company', width: 120},
+   {name: 'descr', text: 'Description', width: 120},
    {name: 'owner', text: 'Owner', width: 110, renderer:renderOwner}, 
    {name: 'warehouse_type', text: 'Type', width: 80},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
