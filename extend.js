@@ -2762,6 +2762,23 @@ Ext.define('OCS.PropertyGrid', {
 			};
 		}
 		
+		if (name == 'warehouse_type')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+				 model: 'CRM_NEXT',
+				 data: [{value: 'storage',name:'Байнгын'},{value: 'container',name:'Богино хугацааны'},{value: 'owner',name:'Борлуулагчийн'}] 
+			  }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'name',
+		      valueField: 'value',
+			  triggerAction: 'all',
+			  editable: false
+			};
+		}
+
 		if (name == 'call_from')
 		{
 			return {
