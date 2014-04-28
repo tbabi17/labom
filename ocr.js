@@ -4472,24 +4472,8 @@ Ext.define('OCS.ProductPanel', {
 										closable: false,
 										layout: 'border',
 										items: [
-											new Ext.create('OCS.GridWithFormPanel', {
-												modelName:'CRM_PRODUCT',
-												func:'crm_product_list',
-												title: 'Products',
-												table: 'crm_products',
-												tab: 'my_crm_product_list',
-												primary: 'product_id',
-												buttons: !(user_level==0),
-												feature: true,
-												merge: true,
-												insert: (user_level==0),
-												remove: (user_level==0),	
-												defaultRec: {
-													data: {
-														product_id: '0',
-														price: '0'
-													}
-												}
+											new Ext.create('OCS.ProductGridWithFormPanel', {
+												
 											}).createGrid()
 										]
 									},
