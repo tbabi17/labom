@@ -2767,7 +2767,7 @@ Ext.define('OCS.PropertyGrid', {
 			return {
 			  xtype: 'combo',
 			  store: Ext.create('Ext.data.Store', {
-				 model: 'CRM_NEXT',
+				 model: 'CRM_PREV',
 				 data: [{value: 'storage',name:'Байнгын'},{value: 'container',name:'Богино хугацааны'},{value: 'owner',name:'Борлуулагчийн'}] 
 			  }),
 			  name: name,
