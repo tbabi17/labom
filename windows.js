@@ -3313,7 +3313,6 @@ Ext.define('OCS.StorageAddProductWindow', {
 			},{
 				xtype: 'warecombo',
 				fieldLabel: 'Source',
-				readOnly: true,
 				name: 'source_warehouse_id'				
 			},{
 				xtype: 'textfield',
