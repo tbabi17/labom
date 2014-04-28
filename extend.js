@@ -1429,7 +1429,9 @@ Ext.define('OCS.StorageGridWithFormPanel', {
 				iconCls   : 'import',
 				text: 'Import',
 				handler: function(widget, event) {
-
+					new OCS.UploadWindow({
+						name: me.xlsName
+					}).show();
 				}
 			}),
 			Ext.create('Ext.Action', {
