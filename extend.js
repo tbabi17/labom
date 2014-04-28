@@ -1268,8 +1268,7 @@ Ext.define('OCS.WareHouseGridWithFormPanel', {
 	remove: (user_level==0),	
 	defaultRec: {
 		data: {
-			warehouse_id: '0',
-			_date
+			warehouse_id: '0'
 		}
 	},
 
