@@ -1505,9 +1505,18 @@ Ext.define('OCS.ProductGridWithFormPanel', {
 				text: 'Add...',
 				disabled: me.insert,
 				handler: function(widget, event) {
-					
+					me.form.updateSource(me.defaultRec);
+					me.form.setVisible(true);
 				}
 			}),			
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				disabled: me.insert,
+				handler: function(widget, event) {
+					me.showForm();
+				}
+			}),
 			Ext.create('Ext.Action', {
 				iconCls   : 'delete',
 				text: 'Delete',
