@@ -1025,6 +1025,10 @@ fields['CRM_REPORT_DIRECT_SALES_FIELDS'] = [
    {name: 'a_m', type:'int', text: 'Meeting', align: 'center', width: 90}, 
    {name: 'a_p', type:'int', text: 'Phone call', align: 'center', width: 90}, 
    {name: 'a_e', type:'int', text: 'Email', align: 'center', width: 90}, 
+   {name: 'd_l', type:'int', text: 'Meeting', align: 'center', width: 90}, 
+   {name: 'd_o', type:'int', text: 'Phone call', align: 'center', width: 90}, 
+   {name: 'd_q', type:'int', text: 'Email', align: 'center', width: 90}, 
+   {name: 'd_c', type:'int', text: 'Email', align: 'center', width: 90}, 
    {name: 'total_qty', type:'int', text: 'Qty', align: 'center', width: 90}, 
    {name: 'total_amount', type:'int', text: 'Amount', align: 'center', width: 90}
 ];

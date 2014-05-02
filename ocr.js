@@ -4567,6 +4567,7 @@ Ext.define('OCS.GoalsPanel', {
 										title: 'Planning',
 										table: 'crm_user_stat',
 										tab: 'my_crm_tat_list',
+										primary: 'id',
 										buttons: true,
 //										insert: (user_level==0),
 //										remove: (user_level==0),	
@@ -4604,6 +4605,7 @@ Ext.define('OCS.GoalsPanel', {
 											data: {
 												id: '0',
 												target: '0',
+												userCode: logged,
 												start_date: Ext.Date.format(new Date(),'Y-m-d'),
 												end_date: Ext.Date.format(new Date(),'Y-m-d')
 											}
