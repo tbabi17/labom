@@ -1023,7 +1023,7 @@ Ext.define('OCS.CaseStageWindow', {
 							queryMode: 'local',
 							store: Ext.create('Ext.data.Store', {
 							  model: 'CRM_ITEM',
-							  data: [{value: 'problem solved'},{value: 'information provided'}]
+							  data: [{value: 'calls',name:'Дуудлагын бүртгэл'},{value: 'information request',name:'Мэдээлэл хүссэн хүмүүсийн бүртгэл'},{value: 'complaints',name:'Санал гомдлын бүртгэл'},{value: 'information submitted', name:'Мэдээлэл хүргүүлсэн бүртгэл'},{value: 'problem solved', name: 'Problem solved'},{value: 'information provided', name: 'Information provided'},{value: 'other', name: 'Бусад'}] 
 							})
 						},							
 						{
