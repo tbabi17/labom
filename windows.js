@@ -4546,12 +4546,13 @@ Ext.define('OCS.NewCaseWindow', {
 						   params: {handle: 'web', table: 'crm_complain', action: 'insert', values: values, where: ''},
 						   success: function(response, opts) {							  							  
 							   views['cases'].reload();
+							   me.close();
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
 						   }
 						});
-												
+									
 						me.close();
 					}
 				}

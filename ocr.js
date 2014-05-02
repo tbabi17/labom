@@ -3965,7 +3965,8 @@ Ext.define('OCS.CaseView', {
 				iconCls   : 'add',
 				text: 'New...',
 				handler: function(widget, event) {
-					new OCS.NewCaseWindow({						
+					new OCS.NewCaseWindow({			
+						backgrid: me.grid
 					}).show();			
 				}
 			}),	
