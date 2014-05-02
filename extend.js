@@ -518,7 +518,7 @@ Ext.define('OCS.Module', {
 		Ext.Msg.confirm('Warning ','Are you sure you want to delete? ('+selection.length+' records)',function(btn){
 			if(btn === 'yes'){
 				if (selection.length == 1) {
-					if (user_level > 0 || selection[0].get('userCode') != '' || (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged)) {
+					if (user_level != 3 || selection[0].get('userCode') != '' || (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged)) {
 						Ext.MessageBox.alert('Status', 'Not available !', function() {});
 						return;
 					}
