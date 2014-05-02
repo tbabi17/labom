@@ -1076,6 +1076,8 @@ fields['CRM_REPORT_CASE_FIELDS'] = [
    {name: 'c3', type:'int', text: 'Success', align: 'center', width: 90}, 
    {name: 'c4', type:'int', text: 'Success', align: 'center', width: 90}, 
    {name: 'c5', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'c6', type:'int', text: 'Success', align: 'center', width: 90}, 
+   {name: 'c7', type:'int', text: 'Success', align: 'center', width: 90}, 
    {name: 'p1', type:'int', text: 'Meeting', align: 'center', width: 90}, 
    {name: 'p2', type:'int', text: 'Phone call', align: 'center', width: 90}, 
    {name: 'p3', type:'int', text: 'Email', align: 'center', width: 90}, 
@@ -1104,6 +1106,8 @@ columns['CRM_REPORT_CASE_COLUMNS'] = [
 				 {dataIndex:'c2', text: 'Мэдээлэл хүссэн хүмүүсийн бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c3', text: 'Санал гомдлын бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c4', text: 'Мэдээлэл хүргүүлсэн бүртгэл', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c6', text: 'Problem solved', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'c7', text: 'Information provided', width: 120, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'c5', text: 'Бусад', width: 60, align: 'center', renderer: renderIntNumber, summaryType: 'sum', summaryRenderer: renderTNumber}
 				]
    },
