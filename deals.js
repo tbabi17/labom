@@ -1760,7 +1760,6 @@ Ext.define('OCS.DealDescrWindow', {
 				fieldLabel: 'Competitor',				
 				name: 'competitor_name',
 				hidden: me.comp,
-				readOnly: true,
 				value: me.selected.get('competitor_name'),
 				table: 'crm_competitors'
 			},{
