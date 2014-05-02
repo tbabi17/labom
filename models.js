@@ -1050,6 +1050,13 @@ columns['CRM_REPORT_DIRECT_SALES_COLUMNS'] = [
 				 {dataIndex:'a_e', text: 'Email', width: 90, align: 'center', renderer: renderPrecent}]
    },
    {
+	   text: 'Deal',
+	   columns: [{dataIndex:'d_l', text: 'Lead', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'d_o', text: 'Opportunity', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'d_q', text: 'Quote', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+				 {dataIndex:'d_c', text: 'Closed', width: 70, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber}]
+   },
+   {
 	   text: 'Total',
 	   columns: [{dataIndex:'total_qty', text: 'Qty', width: 90, align: 'center', renderer: renderReportNumber, summaryType: 'sum', summaryRenderer: renderTNumber},
 				 {dataIndex:'total_amount', text: 'Amount', width: 120, align: 'center', renderer: renderMoney, summaryType: 'sum', summaryRenderer: renderTMoney}]
