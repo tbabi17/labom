@@ -1933,7 +1933,7 @@ Ext.define('OCS.CaseResolveWindow', {
 				xtype: 'combo',
 				fieldLabel: 'Resolution type',
 				valueField: 'value',
-				displayField: 'value',
+				displayField: 'name',
 				name: 'resolution_type',
 				allowBlank: false,
 				forceSelection: true,
