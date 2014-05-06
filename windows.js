@@ -119,7 +119,26 @@ Ext.define('OCS.ComplainWindow', {
 			listeners: {
 				'close': function() {
 					if (me.backgrid)
-						me.backgrid.getStore().reload();
+						me.backgrid.getStore().reload({callback: function() {					
+							if (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1)  
+							{
+								if (me.backgrid.getStore().getCount() > 0) {										
+									if (me.selected.get('stage') == 'lead') {
+										me.selected.set('stage', 'opportunity');
+										Ext.Ajax.request({
+										   url: 'avia.php',
+										   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='opportunity'", where: 'deal_id='+me.selected.get('deal_id')},
+										   success: function(response, opts) {							  
+											 
+										   },
+										   failure: function(response, opts) {									 
+										   }
+										});	
+									}
+									views[pk].action.update(me.selected);
+								}
+							}
+						}});
 				}
 			}
 		});

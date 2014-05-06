@@ -1637,7 +1637,7 @@ Ext.define('OCS.Window', {
 						
 						if (amount > 0)	{											
 							if (me.selected.get('stage') == 'lead' || me.selected.get('stage') == 'opportunity') {
-								me.selected.set('stage', 'opportunity');
+								me.selected.set('stage', 'quote');
 								Ext.Ajax.request({
 								   url: 'avia.php',
 								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='quote'", where: 'deal_id='+me.selected.get('deal_id')},
@@ -1652,24 +1652,6 @@ Ext.define('OCS.Window', {
 
 						me.selected.set('expected_revenue', amount);
 						views[pk].action.update(me.selected);
-					} else
-					if (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1)  
-					{
-						if (me.backgrid.getStore().getCount() > 0) {										
-							if (me.selected.get('stage') == 'lead') {
-								me.selected.set('stage', 'opportunity');
-								Ext.Ajax.request({
-								   url: 'avia.php',
-								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='opportunity'", where: 'deal_id='+me.selected.get('deal_id')},
-								   success: function(response, opts) {							  
-									 
-								   },
-								   failure: function(response, opts) {									 
-								   }
-								});	
-							}
-							views[pk].action.update(me.selected);
-						}
 					}
 				}});
 		}
