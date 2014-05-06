@@ -1628,6 +1628,7 @@ Ext.define('OCS.Window', {
 			var me = this;
 			if (me.backgrid)
 				me.backgrid.getStore().reload({callback: function() {
+				alert(me.title);
 					if (me.title == 'Products') {
 						var amount = 0;
 						me.backgrid.getStore().each(function(rec){
