@@ -1639,7 +1639,7 @@ Ext.define('OCS.Window', {
 								me.selected.set('stage', 'opportunity');
 								Ext.Ajax.request({
 								   url: 'avia.php',
-								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='quote'", where: 'deal_id='+me.record.get('deal_id')},
+								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='quote'", where: 'deal_id='+me.selected.get('deal_id')},
 								   success: function(response, opts) {							  
 									 
 								   },
@@ -1659,7 +1659,7 @@ Ext.define('OCS.Window', {
 								me.selected.set('stage', 'opportunity');
 								Ext.Ajax.request({
 								   url: 'avia.php',
-								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='opportunity'", where: 'deal_id='+me.record.get('deal_id')},
+								   params: {handle: 'web', table: 'crm_deals', action: 'update', values: "stage='opportunity'", where: 'deal_id='+me.selected.get('deal_id')},
 								   success: function(response, opts) {							  
 									 
 								   },
