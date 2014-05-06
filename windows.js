@@ -120,7 +120,7 @@ Ext.define('OCS.ComplainWindow', {
 				'close': function() {
 					if (me.backgrid)
 						me.backgrid.getStore().reload({callback: function() {					
-							if (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1)  
+							if (pk == 'deals' && (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1))  
 							{
 								if (me.backgrid.getStore().getCount() > 0) {										
 									if (me.selected.get('stage') == 'lead') {
