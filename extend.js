@@ -1652,7 +1652,7 @@ Ext.define('OCS.Window', {
 						me.selected.set('expected_revenue', amount);
 						views[pk].action.update(me.selected);
 					} else
-					if (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1  
+					if (me.title.indexOf('Call') != -1 || me.title.indexOf('Email') != -1 || me.title.indexOf('Appointment') != -1)  
 					{
 						if (me.backgrid.getStore().getCount() > 0) {										
 							if (me.selected.get('stage') == 'lead') {
