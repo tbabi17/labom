@@ -1341,7 +1341,7 @@ Ext.define('OCS.ActivityGrid', {
 						new OCS.ActivityDetailWindow({
 							title: 'Activity detail',
 							record: record,
-							backgrid: me
+							backgrid: me.grid
 						}).show();							
 					}
 
