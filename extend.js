@@ -1635,7 +1635,7 @@ Ext.define('OCS.Window', {
 							amount += rec.get('amount');
 						});
 						
-						if (amount > 0)	{											
+						if (me.backgrid.getStore().getCount() > 0)	{											
 							if (me.selected.get('stage') == 'lead' || me.selected.get('stage') == 'opportunity') {
 								me.selected.set('stage', 'quote');
 								Ext.Ajax.request({
