@@ -830,6 +830,7 @@ fields['CRM_RESELLER_FIELDS'] = [
    {name: 'deal', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'crm_name', text: 'Potential customer', width: 250, renderer: renderCRMName},
+   {name: 'expected_revenue', text: 'Expected revenue', type:'float', width: 120, align: 'right', summaryType:'sum', summaryRenderer: renderTMoney, renderer: renderMoney},
    {name: 'closing_date', text: 'Close date', dateFormat: 'Y-m-d', width: 85, align: 'center'},   
    {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
    {name: 'descr', text: 'Description', width: 200, hidden: true},
