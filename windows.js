@@ -4124,7 +4124,7 @@ Ext.define('OCS.AddNoteWindow', {
 								});
 							},
 							failure: function(form, action) {
-								alert('failed');
+								
 							}
 						});
 					}
