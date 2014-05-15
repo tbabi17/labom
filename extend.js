@@ -347,9 +347,18 @@ Ext.define('OCS.Module', {
 					return;
 				}
 			}
+			
+			if (rec.get('value') != '0')
+			{
+				if (rec.get('name').substring(2, rec.get('name').length) != 'personal') {				
+					values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
+					values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
+				}
+			} else {
+				values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
+				values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
+			}
 
-			values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
-			values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
 			if (me.table == 'crm_customer' && rec.get('name').substring(2, rec.get('name').length) == 'crm_id' && rec.get('value') != '0')
 			{
 				action = 'update';
