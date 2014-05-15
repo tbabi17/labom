@@ -348,12 +348,9 @@ Ext.define('OCS.Module', {
 				}
 			}
 			
-			if (rec.get('name').length) == 'id' && rec.get('value') != '0')
+			if (rec.get('name').length) == 'personal' && rec.get('value').length > 10)
 			{
-				if (rec.get('name').substring(2, rec.get('name').length) != 'personal') {				
-					values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
-					values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
-				}
+				
 			} else {
 				values += rec.get('name').substring(2, rec.get('name').length)+'='+me.rawValue(rec)+'&';
 				values1 += rec.get('name').substring(2, rec.get('name').length)+"='"+me.rawValue(rec)+"',";
