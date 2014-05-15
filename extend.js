@@ -348,7 +348,7 @@ Ext.define('OCS.Module', {
 				}
 			}
 			
-			if (rec.get('name').length) == 'personal' && rec.get('value').length > 10)
+			if (rec.get('name').substring(2, rec.get('name').length) == 'personal' && rec.get('value').length > 10)
 			{
 				
 			} else {
