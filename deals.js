@@ -751,7 +751,7 @@ Ext.define('OCS.DealProductGrid', {
 
 	updateSource: function(rec) {
 		var me = this;
-		me.action = rec.get('owner') == logged;
+		me.action = rec.get('owner') == logged || rec.get('userCode') == logged;
 		me.selected = rec;
 		me.where = rec.get('deal_id');
 		me.values = 'deal_id';
