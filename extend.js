@@ -531,7 +531,7 @@ Ext.define('OCS.Module', {
 
 					var id = selection[0].get(me.primary);
 					if (id == '' || id == '0') {
-					    Ext.MessageBox.alert('Status', 'Not available!', function() {});
+					    Ext.MessageBox.alert('Status', 'Not available !', function() {});
 						return;
 					}
 				
