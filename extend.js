@@ -525,13 +525,13 @@ Ext.define('OCS.Module', {
 			if(btn === 'yes'){
 				if (selection.length == 1) {
 					if (user_level != 3 || (selection[0].get('owner') && selection[0].get('owner') != logged && selection[0].get('userCode') != logged)) {
-						Ext.MessageBox.alert('Status', 'Not available !', function() {});
+						Ext.MessageBox.alert('Status', 'Not available !1', function() {});
 						return;
 					}
 
 					var id = selection[0].get(me.primary);
 					if (id == '' || id == '0') {
-					    Ext.MessageBox.alert('Status', 'Not available!', function() {});
+					    Ext.MessageBox.alert('Status', 'Not available!2', function() {});
 						return;
 					}
 				
