@@ -5947,7 +5947,7 @@ Ext.define('OCS.CampaignPanel', {
 						id: me.func
 					}).show();
 				}
-			},
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
