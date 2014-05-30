@@ -329,6 +329,7 @@ Ext.define('CRM_COMPLAIN', {
 fields['CRM_NOTES_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'crm_id', text: 'CRM ID', width: 50, hidden: true},   
+   {name: 'campaign_id', text: 'Campaign ID', width: 50, hidden: true}, 
    {name: 'deal_id', text: 'Deal ID', width: 50, hidden: true},   
    {name: 'case_id', text: 'Case ID', width: 50, hidden: true}, 
    {name: 'crm_name', text: 'Customer', width: 200, renderer: renderCRMName},
