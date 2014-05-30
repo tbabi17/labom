@@ -3334,7 +3334,6 @@ Ext.define('OCS.StorageAddProductWindow', {
 				fieldLabel: 'Warehouse ID',
 				readOnly: true,
 				disabled: true,
-				hidden: true,
 				allowBlank: false,
 				value: me.selected.get('warehouse_id'),
 				name: 'warehouse_id'
