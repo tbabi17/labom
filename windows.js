@@ -649,7 +649,7 @@ Ext.define('OCS.NotesWindow', {
 		var deal_id = me.selected.get('deal_id');
 		var case_id = me.selected.get('case_id');
 		var campaign_id = 0;
-		if (rec.selected.get('campaign') != '')
+		if (me.selected.get('campaign') != '')
 			campaign_id = me.selected.get('id');
 
 		me.defaultRec = {
