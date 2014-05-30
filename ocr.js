@@ -5943,8 +5943,10 @@ Ext.define('OCS.CampaignPanel', {
 				iconCls   : 'notes',
 				text: 'Notes ...',
 				handler: function(widget, event) {
+					var rec = me.grid.getView().getSelectionModel().getSelection()[0];
+					rec.set('crm_name', ',');
 					new OCS.NotesWindow({
-						selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						selected: rec
 					}).createWindow();
 				}
 			}),
