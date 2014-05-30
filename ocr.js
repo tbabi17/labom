@@ -5945,7 +5945,7 @@ Ext.define('OCS.CampaignPanel', {
 				handler: function(widget, event) {
 					new OCS.NotesWindow({
 						selected: me.grid.getView().getSelectionModel().getSelection()[0]
-					}).show();
+					}).createWindow();
 				}
 			}),
 			'-',
