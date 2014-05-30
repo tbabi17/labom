@@ -648,6 +648,10 @@ Ext.define('OCS.NotesWindow', {
 		var me = this;
 		var deal_id = me.selected.get('deal_id');
 		var case_id = me.selected.get('case_id');
+		var campaign_id = 0;
+		if (rec.selected.get('campaign') != '')
+			campaign_id = me.selected.get('id');
+
 		me.defaultRec = {
 			data: {
 				id: '0',
@@ -656,11 +660,16 @@ Ext.define('OCS.NotesWindow', {
 				userCode: logged,
 				deal_id: deal_id?deal_id:'0',
 				case_id: case_id?case_id:'0',		
+				campaign_id: campaign_id?campaign_id:'0',
 				_date: Ext.Date.format(new Date(),'Y-m-d H:m:s')
 			}
 		};
 
-		me.where = me.selected.get('crm_id');
+		if (campaign_id > 0) {
+			me.values = 'campaign_id';
+			me.where = campaign_id;
+		} else
+			me.where = me.selected.get('crm_id');
 	}
 });
 
