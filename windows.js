@@ -4076,6 +4076,14 @@ Ext.define('OCS.AddNoteWindow', {
 				name: 'crm_id'
 			},{
 				xtype: 'textfield',
+				fieldLabel: 'Campaign ID',
+				readOnly: true,
+				hidden: true,
+				value: me.selected.get('campaign_id'),
+				disabled: true,
+				name: 'campaign_id'
+			},{
+				xtype: 'textfield',
 				fieldLabel: 'Deal ID',
 				readOnly: true,
 				hidden: true,
@@ -4122,7 +4130,7 @@ Ext.define('OCS.AddNoteWindow', {
 					if(form.isValid()){
 						form.submit({
 							url: 'avia.php',
-							params: {handle: 'file', action:'attach', values: form.findField('crm_id').getValue()+','+form.findField('deal_id').getValue()+','+form.findField('case_id').getValue()+','+form.findField('descr').getValue()},
+							params: {handle: 'file', action:'attach', values: form.findField('crm_id').getValue()+','+form.findField('deal_id').getValue()+','+form.findField('case_id').getValue()+','+form.findField('descr').getValue()+','+form.findField('campaign_id').getValue()},
 							waitMsg: 'Uploading your data...',
 							standardSubmit: false,
 							success: function(fp, o) {
