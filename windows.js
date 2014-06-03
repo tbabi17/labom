@@ -4058,6 +4058,10 @@ Ext.define('OCS.AddNoteWindow', {
 
 	initComponent: function() {
 		var me = this;								
+		var campaign_id = 0;
+		if (me.selected.get('campaign') != '') {
+			campaign_id = me.selected.get('id');
+		}
 
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',
@@ -4079,7 +4083,7 @@ Ext.define('OCS.AddNoteWindow', {
 				fieldLabel: 'Campaign ID',
 				readOnly: true,
 				hidden: true,
-				value: me.selected.get('campaign_id'),
+				value: campaign_id,
 				disabled: true,
 				name: 'campaign_id'
 			},{
