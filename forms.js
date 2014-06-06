@@ -1145,7 +1145,7 @@ Ext.define('OCS.CorporateForm', {
 										crm_id: response.responseText
 									}).show();
 
-								views['corporate'].store.loadPage(1);	
+								views['corporate'].store.reload();	
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
@@ -1171,7 +1171,7 @@ Ext.define('OCS.CorporateForm', {
 										crm_id: response.responseText
 									}).show();
 
-								views['corporate'].store.loadPage(1);	
+								views['corporate'].store.reload();	
 						   },
 						   failure: function(response, opts) {										   
 							  Ext.MessageBox.alert('Status', 'Error !', function() {});
