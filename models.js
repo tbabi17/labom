@@ -773,7 +773,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'deal_id', text: 'ID', width: 50, hidden:true}, 
    {name: 'crm_id', text: 'CRM ID', hidden: true, width: 80},
    {name: 'status', text: 'Status', width: 80, align: 'center'},
-   {name: 'phone', text: 'Phone', width: 80, hidden: true, primary: true},
+   {name: 'phone', text: 'Phone', width: 80, primary: true},
    {name: 'deal', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},   
    {name: 'descr', text: 'Description', width: 200},
    {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
