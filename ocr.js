@@ -2440,7 +2440,8 @@ Ext.define('OCS.DealView', {
 				handler: function(widget, event) {
 					if (me.grid.getView().getSelectionModel().getSelection().length > 0) {
 						new OCS.DealUpdateWindow({
-							selected: me.grid.getView().getSelectionModel().getSelection()[0]
+							selected: me.grid.getView().getSelectionModel().getSelection()[0],
+							backgrid: me.grid
 						}).show();
 						/*
 						new OCS.NewDealWindow({
