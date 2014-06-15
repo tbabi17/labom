@@ -4789,7 +4789,72 @@ Ext.define('OCS.RiskResultWindow', {
 
 	createActions: function() {
 		var me = this;
-		me.actions = [						
+		me.actions = [				
+			Ext.create('Ext.Action', {
+				iconCls: 'activity',
+				text: 'Risk list',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							iconCls   : 'notes',  
+							text: 'Галын аюулгүй байдал ...',
+							handler: function(widget, event) {															
+								
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'task',  
+							text: 'Цахилгааны аюулгүй байдал ...',
+							handler: function(widget, event) {
+								
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'event',  
+							text: 'Хөдөлмөрийн аюулгүй байдал ...',
+							handler: function(widget, event) {
+								
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'call', 
+							text: 'Тээврийн хэрэгсэл техникийн аюулгүй байдал ...',
+							handler: function(widget, event) {
+														
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'email',  
+							text: 'Агуулахын аюулгүй байдал ...',
+							handler: function(widget, event) {
+							
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'email',  
+							text: 'Тоног төхөөрөмжийн аюулгүй байдал ...',
+							handler: function(widget, event) {
+							
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'email',  
+							text: 'Оффисын аюулгүй байдал ...',
+							handler: function(widget, event) {
+							
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'email',  
+							text: 'Барилагын аюулгүй байдал ...',
+							handler: function(widget, event) {
+							
+							}
+						})
+					]
+				}		
+			}),	
 			Ext.create('Ext.Action', {
 				iconCls : 'chart',
 				text: 'Chart',
