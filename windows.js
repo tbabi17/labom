@@ -2686,7 +2686,7 @@ Ext.define('OCS.DealUpdateWindow', {
 						return;
 					}
 
-					if (form.findField('amount').getValue() > 0) {					
+					if (form.findField('deal').getValue() != '') {					
 						var descr = form.findField('descr').getValue();
 						var cdate = form.findField('closing_date').getValue(), rdate = form.findField('remind_date').getValue();
 						values = "deal='"+form.findField('deal').getValue()+"'&phone='"+form.findField('phone').getValue()+"'&expected_revenue="+form.findField('expected_revenue').getValue()+"&owner='"+form.findField('owner').getValue()+"'&descr='"+descr+"'&closing_date='"+cdate+"'&remind_date='"+rdate+"'";
@@ -2701,7 +2701,7 @@ Ext.define('OCS.DealUpdateWindow', {
 						   }
 						});	
 					} else
-						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+						 Ext.MessageBox.alert('Status', 'Topic name is empty !', function() {});
 				}
 			}]
 		});
