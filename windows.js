@@ -2644,6 +2644,14 @@ Ext.define('OCS.DealUpdateWindow', {
 				value: me.selected.get('probablity'),
 				name: 'probablity'				
 			},{
+				xtype: 'datefield',
+				fieldLabel: 'Close date',				
+				name: 'closing_date'
+			},{
+				xtype: 'datefield',
+				fieldLabel: 'Remind date',				
+				name: 'remind_date'
+			},{
 				xtype: 'textfield',
 				fieldLabel: 'Owner',				
 				readOnly: true,
@@ -2676,10 +2684,11 @@ Ext.define('OCS.DealUpdateWindow', {
 
 					if (form.findField('amount').getValue() > 0) {					
 						var descr = form.findField('descr').getValue();
-						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&amount="+form.findField('amount').getValue()+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						var cdate = form.findField('closing_date').getValue(), rdate = form.findField('remind_date').getValue();
+						values = "deal='"+form.findField('deal').getValue()+"'&phone='"+form.findField('phone').getValue()+"'&expected_revenue="+form.findField('expected_revenue').getValue()+"&owner='"+form.findField('owner').getValue()+"'&descr='"+descr+"'&closing_date='"+cdate+"'&remind_date='"+rdate+"'";
 						Ext.Ajax.request({
 						   url: 'avia.php',
-						   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
+						   params: {handle: 'web', table: 'crm_deals', action: 'update', values: values, where: 'deal_id='+me.selected.get('deal_id')},
 						   success: function(response, opts) {							  
 							  me.close();
 						   },
