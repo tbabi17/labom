@@ -5219,6 +5219,59 @@ Ext.define('OCS.Dashboard', {
 				border: false,
 				items: [{
 					layout: 'fit',
+					title:'Alarms',
+					collapsible: true,						
+					columnWidth: 1/2,
+					autoScroll: true,
+					height: 500,
+					tbar: [{
+						text: 'Views',
+						iconCls: 'list',
+						menu: {
+							xtype: 'menu',
+							items: []
+						}
+					},'->',
+					{
+						id: 'start_7',
+						text: me.month(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('start_7').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+							}
+						})
+					},
+					{
+						id: 'end_7',
+						text: me.nextmonth(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
+								Ext.getCmp('end_7').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
+							}
+						})
+					},{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							Ext.getCmp('start_7').setText(me.month());
+							Ext.getCmp('end_7').setText(me.nextmonth());
+							me.charts[7].rangeData(me.charts[7].month(), me.charts[7].nextmonth());
+						}
+					}],
+					items: []
+				}]
+			},{
+				columnWidth: 1,
+				padding: '5 5 5 5',
+				border: false,
+				items: [{
+					layout: 'fit',
 					title:'Deals by revenue',
 					collapsible: true,						
 					columnWidth: 1/2,
