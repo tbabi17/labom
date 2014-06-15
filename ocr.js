@@ -5243,6 +5243,7 @@ Ext.define('OCS.Dashboard', {
 							remove: (user_level==0),
 							tab: 'alarm_tabs',
 							values: '',
+							feature: false,
 							createActions: function(actions) {
 								var me = this;
 								me.actions = [];
