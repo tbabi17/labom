@@ -2611,6 +2611,7 @@ Ext.define('OCS.DealUpdateWindow', {
 		me.form = Ext.create('OCS.FormPanel', {
 			region: 'center',			
 			title: '',
+			hidden: false,
 			flex: 1,
 			items: [{
 				xtype: 'textfield',
