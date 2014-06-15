@@ -5230,16 +5230,7 @@ Ext.define('OCS.Dashboard', {
 						menu: {
 							xtype: 'menu',
 							items: [
-								new Ext.create('OCS.GridWithFormPanel', {
-									modelName:'CRM_ALARM',
-									func:'crm_alarm_list',
-									title: '',
-									table: 'crm_alarms',
-									insert: (user_level==0),
-									remove: (user_level==0),
-									tab: 'alarm_tabs',
-									values: ''
-								})
+								
 							]
 						}
 					},'->',
@@ -5275,7 +5266,16 @@ Ext.define('OCS.Dashboard', {
 							me.charts[7].rangeData(me.charts[7].month(), me.charts[7].nextmonth());
 						}
 					}],
-					items: []
+					items: [new Ext.create('OCS.GridWithFormPanel', {
+							modelName:'CRM_ALARM',
+							func:'crm_alarm_list',
+							title: '',
+							table: 'crm_alarms',
+							insert: (user_level==0),
+							remove: (user_level==0),
+							tab: 'alarm_tabs',
+							values: ''
+						})]
 				}]
 			},{
 				columnWidth: 1,
