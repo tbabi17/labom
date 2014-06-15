@@ -5275,7 +5275,7 @@ Ext.define('OCS.Dashboard', {
 							remove: (user_level==0),
 							tab: 'alarm_tabs',
 							values: ''
-						})]
+						}).createGrid()]
 				}]
 			},{
 				columnWidth: 1,
