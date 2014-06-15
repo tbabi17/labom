@@ -5229,7 +5229,18 @@ Ext.define('OCS.Dashboard', {
 						iconCls: 'list',
 						menu: {
 							xtype: 'menu',
-							items: []
+							items: [
+								new Ext.create('OCS.GridWithFormPanel', {
+									modelName:'CRM_ALARM',
+									func:'crm_alarm_list',
+									title: '',
+									table: 'crm_alarms',
+									insert: (user_level==0),
+									remove: (user_level==0),
+									tab: 'alarm_tabs',
+									values: ''
+								})
+							]
 						}
 					},'->',
 					{
