@@ -4797,56 +4797,56 @@ Ext.define('OCS.RiskResultWindow', {
 					xtype: 'menu',
 					items: [
 						Ext.create('Ext.Action', {
-							iconCls   : 'notes',  
+							iconCls   : '',  
 							text: 'Галын аюулгүй байдал ...',
 							handler: function(widget, event) {															
 								
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'task',  
+							iconCls   : '',  
 							text: 'Цахилгааны аюулгүй байдал ...',
 							handler: function(widget, event) {
 								
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'event',  
+							iconCls   : '',  
 							text: 'Хөдөлмөрийн аюулгүй байдал ...',
 							handler: function(widget, event) {
 								
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'call', 
+							iconCls   : '', 
 							text: 'Тээврийн хэрэгсэл техникийн аюулгүй байдал ...',
 							handler: function(widget, event) {
 														
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'email',  
+							iconCls   : '',  
 							text: 'Агуулахын аюулгүй байдал ...',
 							handler: function(widget, event) {
 							
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'email',  
+							iconCls   : '',  
 							text: 'Тоног төхөөрөмжийн аюулгүй байдал ...',
 							handler: function(widget, event) {
 							
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'email',  
+							iconCls   : '',  
 							text: 'Оффисын аюулгүй байдал ...',
 							handler: function(widget, event) {
 							
 							}
 						}),
 						Ext.create('Ext.Action', {
-							iconCls   : 'email',  
+							iconCls   : '',  
 							text: 'Барилагын аюулгүй байдал ...',
 							handler: function(widget, event) {
 							
