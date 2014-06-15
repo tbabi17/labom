@@ -2596,6 +2596,107 @@ Ext.define('OCS.ActivityDetailWindow', {
 	}
 });
 
+Ext.define('OCS.DealUpdateWindow', {
+	extend: 'OCS.Window',
+	title: 'Expand',
+	maximizable: true,
+	height: 520,
+	modal: false,
+	width: 500,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;				
+		
+		me.form = Ext.create('OCS.FormPanel', {
+			region: 'center',			
+			title: '',
+			flex: 1,
+			items: [{
+				xtype: 'textfield',
+				fieldLabel: 'Deal ID',
+				readOnly: true,
+				disabled: true,
+				allowBlank: false,
+				value: me.selected.get('deal_id'),
+				name: 'crm_id'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Topic name',
+				name: 'deal'
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Phone',
+				value: me.selected.get('phone'),
+				name: 'phone'				
+			},{
+				xtype: 'currencyfield',
+				value: me.selected.get('expected_revenue'),
+				fieldLabel: 'Expected revenue',
+				allowBlank: false,
+				name: 'expected_revenue' 
+			},{
+				xtype: 'numberfield',
+				fieldLabel: 'Probablity %',
+				maxValue: 100,
+				minValue: 0,
+				value: me.selected.get('probablity'),
+				name: 'probablity'				
+			},{
+				xtype: 'textfield',
+				fieldLabel: 'Owner',				
+				readOnly: true,
+				value: me.selected.get('owner'),
+				name: 'owner'
+			},{
+				xtype: 'textarea',
+				fieldLabel: 'Description',	
+				value: me.selected.get('descr'),
+				flex: 1,
+				name: 'descr'
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					var values = form.getValues(true);
+					if (!form.findField('crm_id').getValue()) {
+						Ext.MessageBox.alert('Status', 'Please select a contact !', function() {});
+						return;
+					}
+
+					if (form.findField('amount').getValue() > 0) {					
+						var descr = form.findField('descr').getValue();
+						values = "deal_id="+me.selected.get('deal_id')+"&crm_id="+me.selected.get('crm_id')+"&amount="+form.findField('amount').getValue()+"&owner="+form.findField('owner').getValue()+"&descr="+descr+"&userCode="+logged;
+						Ext.Ajax.request({
+						   url: 'avia.php',
+						   params: {handle: 'web', table: 'crm_comission', action: 'insert', values: values, where: ''},
+						   success: function(response, opts) {							  
+							  me.close();
+						   },
+						   failure: function(response, opts) {										   
+							  Ext.MessageBox.alert('Status', 'Error !', function() {});
+						   }
+						});	
+					} else
+						 Ext.MessageBox.alert('Status', 'Amount is empty !', function() {});
+				}
+			}]
+		});
+	
+
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
 
 Ext.define('OCS.CommissionWindow', {
 	extend: 'OCS.Window',

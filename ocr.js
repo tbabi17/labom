@@ -2439,9 +2439,13 @@ Ext.define('OCS.DealView', {
 				text: 'Expand...',
 				handler: function(widget, event) {
 					if (me.grid.getView().getSelectionModel().getSelection().length > 0) {
+						new OCS.DealUpdateWindow({
+							selected: me.grid.getView().getSelectionModel().getSelection()[0]
+						}).show();
+						/*
 						new OCS.NewDealWindow({
 							selected: me.grid.getView().getSelectionModel().getSelection()[0]
-						}).createWindow();
+						}).createWindow();*/
 					} else 
 						Ext.MessageBox.alert('Status', 'No selection !', function() {});
 				}
