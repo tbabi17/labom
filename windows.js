@@ -2693,7 +2693,14 @@ Ext.define('OCS.DealUpdateWindow', {
 		});
 	
 
-		me.items = [me.form];
+		me.items = [{
+			xtype: 'panel',
+			layout: 'border',
+			region: 'center',
+			flex: 1,
+			border: false,
+			items: me.form
+		}];
 		me.callParent(arguments);
 	}
 });
