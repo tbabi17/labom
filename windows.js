@@ -2612,6 +2612,7 @@ Ext.define('OCS.DealUpdateWindow', {
 			region: 'center',			
 			title: '',
 			hidden: false,
+			closable: false,
 			flex: 1,
 			items: [{
 				xtype: 'textfield',
@@ -2624,6 +2625,7 @@ Ext.define('OCS.DealUpdateWindow', {
 			},{
 				xtype: 'textfield',
 				fieldLabel: 'Topic name',
+				value: me.selected.get('deal'),
 				name: 'deal'
 			},{
 				xtype: 'textfield',
@@ -2645,11 +2647,13 @@ Ext.define('OCS.DealUpdateWindow', {
 				name: 'probablity'				
 			},{
 				xtype: 'datefield',
-				fieldLabel: 'Close date',				
+				fieldLabel: 'Close date',		
+				value: me.selected.get('closing_date'),
 				name: 'closing_date'
 			},{
 				xtype: 'datefield',
-				fieldLabel: 'Remind date',				
+				fieldLabel: 'Remind date',		
+				value: me.selected.get('remind_date'),
 				name: 'remind_date'
 			},{
 				xtype: 'textfield',
