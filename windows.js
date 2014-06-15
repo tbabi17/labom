@@ -4767,7 +4767,7 @@ Ext.define('OCS.GMapWindow', {
 	}	
 });
 
-Ext.define('OCS.RiskResultWindow', {
+Ext.define('OCS.RiskTotalWindow', {
 	extend: 'OCS.GridWithFormPanel',
 	func : 'crm_risk_total_list', 
 	title: 'Risk results',
@@ -4800,7 +4800,9 @@ Ext.define('OCS.RiskResultWindow', {
 							iconCls   : '',  
 							text: 'Галын аюулгүй байдал ...',
 							handler: function(widget, event) {															
-								
+								new OCS.RiskResultWindow({
+									
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
@@ -4874,6 +4876,76 @@ Ext.define('OCS.RiskResultWindow', {
 					}).show();
 				}
 			})
+		];
+
+		return me.actions;
+	},
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				
+			}			
+		}
+
+		me.where = me.selected.get('crm_id');
+	},
+
+	createWindow: function() {
+		var me = this;
+		me.initSource();
+		me.panel = me.createGrid();
+		me.form.updateSource(me.defaultRec);
+		//me.showForm();
+
+		me.win = Ext.create('widget.window', {
+			title: me.getCustomerName(me.selected)+' - '+me.title.split(' ')[0],
+			closable: true,
+			maximizable: true,
+			minimizable: true,
+			width: 650,
+			modal: true,
+			minWidth: 650,
+			height: 500,
+			layout: 'border',
+			items: [me.panel],
+			listeners: {
+				'close': function() {
+					if (me.backgrid)
+						me.backgrid.getStore().reload();
+				}
+			}
+		});
+
+		me.win.show();
+	}
+});
+
+Ext.define('OCS.RiskResultWindow', {
+	extend: 'OCS.GridWithFormPanel',
+	func : 'crm_risk_result_list', 
+	title: 'Risk results',
+	table: 'crm_risk_resutls',	
+	values: 'crm_id',
+	groupField: '',
+	buttons: true,
+	modelName: 'CRM_RISK_RESULT',
+	primary: 'id',
+	xlsName: 'risk',
+	windowed: true,
+	
+	filterData: function(views) {
+		var me = this;		
+		me.title = views;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
+		me.store.loadPage(1);
+	},
+
+	createActions: function() {
+		var me = this;
+		me.actions = [				
+			
 		];
 
 		return me.actions;
