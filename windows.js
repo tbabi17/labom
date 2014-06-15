@@ -4801,7 +4801,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							text: 'Галын аюулгүй байдал ...',
 							handler: function(widget, event) {															
 								new OCS.RiskResultWindow({
-									
+									selected: me.selected
 								}).createWindow();
 							}
 						}),
