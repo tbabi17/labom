@@ -2602,7 +2602,7 @@ Ext.define('OCS.DealUpdateWindow', {
 	maximizable: true,
 	height: 520,
 	modal: false,
-	width: 500,	
+	width: 400,	
 	modal: true,
 
 	initComponent: function() {
