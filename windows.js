@@ -2686,7 +2686,7 @@ Ext.define('OCS.DealUpdateWindow', {
 						return;
 					}
 
-					if (form.findField('deal').getValue() != '') {					
+					if (form.findField('deal').getValue() != '' && me.selected.get('deal_id') > 0) {					
 						var descr = form.findField('descr').getValue();
 						var cdate = Ext.Date.format(form.findField('closing_date').getValue(),'Y-m-d'), 
 							rdate = Ext.Date.format(form.findField('remind_date').getValue(),'Y-m-d');
