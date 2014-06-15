@@ -737,7 +737,7 @@ Ext.define('CRM_USERS_GROUP', {
 
 fields['CRM_ALARM_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
-   {name: 'crm_id', text: 'CRM ID', width: 150},
+   {name: 'crm_id', text: 'CRM ID', width: 150, hidden: true},
    {name: 'crm_name', text: 'Customer', width: 150},
    {name: 'subject', text: 'Description', width: 200},
    {name: 'status', text: 'Status', width: 100},
