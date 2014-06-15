@@ -750,6 +750,18 @@ Ext.define('CRM_ALARM', {
 	fields: fields['CRM_ALARM_FIELDS']
 });
 
+fields['CRM_RISK_TOTAL_FIELDS'] = [
+   {name: 'category', text: 'Category', width: 200},
+   {name: 'risk', text: 'Risk', width: 70, align: 'center'},
+   {name: 'descr', text: 'Descr', width: 120}
+];
+
+Ext.define('CRM_RISK_TOTAL', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_RISK_TOTAL_FIELDS']
+});
+
+
 fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
    {name: 'crm_name', text: 'Potential Customer', width: 200, renderer: renderCRMName},

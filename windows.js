@@ -4775,7 +4775,7 @@ Ext.define('OCS.RiskResultWindow', {
 	values: 'crm_id',
 	groupField: 'category',
 	buttons: true,
-	modelName: 'CRM_RISK_RESULT',
+	modelName: 'CRM_RISK_TOTAL',
 	primary: 'id',
 	xlsName: 'risk',
 	windowed: true,
