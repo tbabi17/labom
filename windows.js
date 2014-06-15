@@ -4769,7 +4769,7 @@ Ext.define('OCS.GMapWindow', {
 
 Ext.define('OCS.RiskResultWindow', {
 	extend: 'OCS.GridWithFormPanel',
-	func : 'crm_risk_result_list', 
+	func : 'crm_risk_total_list', 
 	title: 'Risk results',
 	table: 'crm_risk_resutls',	
 	values: 'crm_id',
