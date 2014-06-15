@@ -5242,7 +5242,12 @@ Ext.define('OCS.Dashboard', {
 							insert: (user_level==0),
 							remove: (user_level==0),
 							tab: 'alarm_tabs',
-							values: ''
+							values: '',
+							createActions: function(actions) {
+								var me = this;
+								me.actions = [];
+								return me.actions;
+							}
 						}).createGrid()]
 				}]
 			},{
