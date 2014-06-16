@@ -752,7 +752,7 @@ Ext.define('CRM_ALARM', {
 
 fields['CRM_RISK_TOTAL_FIELDS'] = [
    {name: 'category', text: 'Эрсдлийн төрөл', width: 250},
-   {name: 'risk', text: 'Эрсдэл', width: 70, align: 'center'},
+   {name: 'risk', text: 'Эрсдэл', width: 70, align: 'center', renderer: renderReportNumber},
    {name: 'descr', text: 'Тайлбар', width: 180}
 ];
 
