@@ -769,7 +769,7 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'section', text: 'Section', width: 160, hidden: true},
    {name: 'question', text: 'Question', flex: 1},
    {name: 'score', text: 'Магадлал', type: 'float', width: 80, align: 'center', renderer: renderNumber},
-   {name: '_repeat', text: 'Repeat', width: 80, align: 'center', hidden: true},
+   {name: '_repeat', text: 'Үржвэр', type: 'float', width: 80, align: 'center', renderer: renderNumber},
    {name: 'status', text: 'Үр дагавар', type: 'float', width: 80, align: 'center', renderer: renderNumber},
    {name: 'owner', text: 'Create by', width: 100, hidden: true},
    {name: 'descr', text: 'Тайлбар', width: 80, align: 'center'},
