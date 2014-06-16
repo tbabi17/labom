@@ -4996,7 +4996,7 @@ Ext.define('OCS.RiskResultWindow', {
 			closable: true,
 			maximizable: true,
 			minimizable: true,
-			width: 900,
+			width: 950,
 			modal: true,
 			minWidth: 650,
 			height: 600,
