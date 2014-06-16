@@ -768,11 +768,11 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'category', text: 'Category', width: 90, hidden: true},
    {name: 'section', text: 'Section', width: 160, hidden: true},
    {name: 'question', text: 'Асуулт', flex: 1},
-   {name: 'score', text: 'Магадлал', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
-   {name: '_repeat', text: 'Үржвэр', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
-   {name: 'status', text: 'Үр дагавар', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
-   {name: 'owner', text: 'Create by', width: 100, hidden: true},
    {name: 'descr', text: 'Тайлбар', width: 80, align: 'center'},
+   {name: 'score', text: 'Магадлал', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
+   {name: 'status', text: 'Үр дагавар', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
+   {name: '_repeat', text: 'Үржвэр', type: 'float', width: 80, align: 'center', renderer: renderReportNumber},
+   {name: 'owner', text: 'Create by', width: 100, hidden: true},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate, hidden: true}
 ];
 
