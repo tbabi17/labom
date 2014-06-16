@@ -4974,10 +4974,10 @@ Ext.define('OCS.RiskResultWindow', {
 			closable: true,
 			maximizable: true,
 			minimizable: true,
-			width: 650,
+			width: 750,
 			modal: true,
 			minWidth: 650,
-			height: 500,
+			height: 400,
 			layout: 'border',
 			items: [me.panel],
 			listeners: {

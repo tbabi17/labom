@@ -769,10 +769,10 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'section', text: 'Section', width: 120},
    {name: 'question', text: 'Question', width: 250},
    {name: 'score', text: 'Score', width: 60, align: 'center'},
-   {name: '_repeat', text: 'Repeat', width: 60, align: 'center'},
-   {name: 'status', text: 'Status', width: 60, align: 'center'},
+   {name: '_repeat', text: 'Repeat', width: 60, align: 'center', hidden: true},
+   {name: 'status', text: 'Status', width: 60, align: 'center', hidden: true},
    {name: 'owner', text: 'Create by', width: 100, hidden: true},
-   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate}
+   {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate, hidden: true}
 ];
 
 Ext.define('CRM_RISK_RESULT', {
