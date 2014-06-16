@@ -767,7 +767,7 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'crm_name', text: 'Potential Customer', width: 200, renderer: renderCRMName, hidden: true},
    {name: 'category', text: 'Category', width: 90, hidden: true},
    {name: 'section', text: 'Section', width: 160, hidden: true},
-   {name: 'question', text: 'Question', width: 500},
+   {name: 'question', text: 'Question', width: 600},
    {name: 'score', text: 'Score', width: 60, align: 'center'},
    {name: '_repeat', text: 'Repeat', width: 60, align: 'center', hidden: true},
    {name: 'status', text: 'Status', width: 60, align: 'center', hidden: true},
