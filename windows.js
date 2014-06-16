@@ -4792,7 +4792,7 @@ Ext.define('OCS.RiskTotalWindow', {
 		me.actions = [				
 			Ext.create('Ext.Action', {
 				iconCls: 'activity',
-				text: 'Risk list',
+				text: 'Эрсдлийн жагсаалт',
 				menu: {
 					xtype: 'menu',
 					items: [
@@ -4859,7 +4859,7 @@ Ext.define('OCS.RiskTotalWindow', {
 			}),	
 			Ext.create('Ext.Action', {
 				iconCls : 'chart',
-				text: 'Chart',
+				text: 'Чарт',
 				handler: function(widget, event) {
 					new OCS.ScatterWindow({
 						selected: me.selected
