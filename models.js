@@ -772,6 +772,7 @@ fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: '_repeat', text: 'Repeat', width: 60, align: 'center', hidden: true},
    {name: 'status', text: 'Status', width: 60, align: 'center', hidden: true},
    {name: 'owner', text: 'Create by', width: 100, hidden: true},
+   {name: 'descr', text: 'Description', width: 80, align: 'center'},
    {name: '_date', type: 'datetime', dateFormat: 'Y-m-d', text: 'Created on', width: 120, renderer: renderCreatedDate, hidden: true}
 ];
 
