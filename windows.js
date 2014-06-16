@@ -4801,7 +4801,8 @@ Ext.define('OCS.RiskTotalWindow', {
 							text: 'Галын аюулгүй байдал ...',
 							handler: function(widget, event) {															
 								new OCS.RiskResultWindow({
-									selected: me.selected
+									selected: me.selected,
+									risk: 'Гал'
 								}).createWindow();
 							}
 						}),
@@ -4809,49 +4810,70 @@ Ext.define('OCS.RiskTotalWindow', {
 							iconCls   : '',  
 							text: 'Цахилгааны аюулгүй байдал ...',
 							handler: function(widget, event) {
-								
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Цахилгаан'
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '',  
 							text: 'Хөдөлмөрийн аюулгүй байдал ...',
 							handler: function(widget, event) {
-								
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Хөдөлмөр'
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '', 
 							text: 'Тээврийн хэрэгсэл техникийн аюулгүй байдал ...',
 							handler: function(widget, event) {
-														
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Тээврийн хэрэгсэл'
+								}).createWindow();						
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '',  
 							text: 'Агуулахын аюулгүй байдал ...',
 							handler: function(widget, event) {
-							
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Агуулах'
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '',  
 							text: 'Тоног төхөөрөмжийн аюулгүй байдал ...',
 							handler: function(widget, event) {
-							
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Тоног төхөөрөмж'
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '',  
 							text: 'Оффисын аюулгүй байдал ...',
 							handler: function(widget, event) {
-							
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Оффис'
+								}).createWindow();
 							}
 						}),
 						Ext.create('Ext.Action', {
 							iconCls   : '',  
 							text: 'Барилагын аюулгүй байдал ...',
 							handler: function(widget, event) {
-							
+								new OCS.RiskResultWindow({
+									selected: me.selected,
+									risk: 'Барилга'
+								}).createWindow();
 							}
 						})
 					]
