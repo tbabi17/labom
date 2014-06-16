@@ -4981,7 +4981,7 @@ Ext.define('OCS.RiskResultWindow', {
 			}			
 		}
 
-		me.where = me.selected.get('crm_id');
+		me.where = me.selected.get('crm_id')+','+me.risk;
 	},
 
 	createWindow: function() {
