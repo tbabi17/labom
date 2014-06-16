@@ -764,8 +764,8 @@ Ext.define('CRM_RISK_TOTAL', {
 
 fields['CRM_RISK_RESULT_FIELDS'] = [
    {name: 'crm_id', text: 'ID', width: 20, hidden: true},   
-   {name: 'crm_name', text: 'Potential Customer', width: 200, renderer: renderCRMName},
-   {name: 'category', text: 'Category', width: 90},
+   {name: 'crm_name', text: 'Potential Customer', width: 200, renderer: renderCRMName, hidden: true},
+   {name: 'category', text: 'Category', width: 90, hidden: true},
    {name: 'section', text: 'Section', width: 120},
    {name: 'question', text: 'Question', width: 250},
    {name: 'score', text: 'Score', width: 60, align: 'center'},
