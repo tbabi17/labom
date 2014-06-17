@@ -359,6 +359,92 @@ Ext.define('OCS.NewServiceWindow', {
 	}
 });
 
+Ext.define('OCS.NewQuestionWindow', {
+	extend: 'OCS.GridWithFormPanel',
+	func : 'crm_risk_question_list', 
+	title: 'Асуултууд',
+	table: 'crm_risk_question',
+	values: '',
+	groupField: '',
+	buttons: true,
+	sortField: 'id',
+	modelName: 'CRM_RISK_QUESTION',
+	primary: 'id',
+	xlsName: 'question',
+	windowed: true,
+
+	createActions: function() {
+		var me = this;
+		me.actions = [
+			Ext.create('Ext.Action', {
+				iconCls   : 'add',
+				text: 'New ...',
+				disabled: permit(me.xlsName+'-new'),
+				handler: function(widget, event) {
+					me.updateSource(me.defaultRec);
+					me.initSource();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'edit',
+				text: 'Expand...',
+				handler: function(widget, event) {
+					me.showForm();
+				}
+			}),
+			Ext.create('Ext.Action', {
+				iconCls   : 'delete',
+				text: 'Delete',
+				handler: function(widget, event) {
+					me.deleteRecord();
+				}
+			}),
+			'-',
+			Ext.create('Ext.Action', {
+				iconCls   : 'help', 
+				text: 'Help',
+				handler: function(widget, event) {		
+					new OCS.HelpWindow({
+						id: me.func
+					}).show();
+				}
+			})
+		];
+
+		return me.actions;
+	},
+
+	initSource: function() {
+		var me = this;
+		me.defaultRec = {
+			data: {
+				id: '0'				
+			}			
+		}
+	},
+
+	createWindow: function() {
+		var me = this;
+		me.initSource();
+		me.panel = me.createGrid();
+		me.form.updateSource(me.defaultRec);
+
+		me.win = Ext.create('widget.window', {
+			title: me.title,
+			closable: true,
+			maximizable: true,
+			width: 950,
+			modal: true,
+			minWidth: 650,
+			height: 500,
+			layout: 'border',		
+			items: [me.panel]		
+		});
+
+		me.win.show();
+	}
+});
+
 Ext.define('OCS.PersonalViewWindow', {
 	extend: 'OCS.ComplainWindow',
 	func : 'crm_personal_view_list', 
@@ -4890,9 +4976,10 @@ Ext.define('OCS.RiskTotalWindow', {
 			}),
 			Ext.create('Ext.Action', {
 				iconCls : 'expand',
-				text: 'Асуултууд',
+				text: 'Асуултууд ...',
 				handler: function(widget, event) {
-					
+					new OCS.NewQuestionWindow({
+					}).createWindow();
 				}
 			}),
 			'-',

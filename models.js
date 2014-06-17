@@ -750,6 +750,18 @@ Ext.define('CRM_ALARM', {
 	fields: fields['CRM_ALARM_FIELDS']
 });
 
+fields['CRM_RISK_QUESTION_FIELDS'] = [
+   {name: 'category', text: 'Бүлэг', width: 250},
+   {name: 'section', text: 'Хэсэг', width: 250},
+   {name: 'question', text: 'Асуулт', flex: 1},
+   {name: 'status', text: 'Төлөв', width: 70}
+];
+
+Ext.define('CRM_RISK_QUESTION', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_RISK_QUESTION_FIELDS']
+});
+
 fields['CRM_RISK_TOTAL_FIELDS'] = [
    {name: 'category', text: 'Эрсдлийн төрөл', width: 250},
    {name: 'descr', text: 'Тайлбар', width: 180},
