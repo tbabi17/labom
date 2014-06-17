@@ -4975,10 +4975,11 @@ Ext.define('OCS.RiskTotalWindow', {
 				}
 			}),
 			Ext.create('Ext.Action', {
-				iconCls : 'expand',
+				iconCls : 'edit',
 				text: 'Асуултууд ...',
 				handler: function(widget, event) {
 					new OCS.NewQuestionWindow({
+
 					}).createWindow();
 				}
 			}),

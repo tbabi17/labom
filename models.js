@@ -751,10 +751,10 @@ Ext.define('CRM_ALARM', {
 });
 
 fields['CRM_RISK_QUESTION_FIELDS'] = [
-   {name: 'category', text: 'Бүлэг', width: 250},
-   {name: 'section', text: 'Хэсэг', width: 250},
+   {name: 'category', text: 'Бүлэг', width: 180},
+   {name: 'section', text: 'Хэсэг', width: 180},
    {name: 'question', text: 'Асуулт', flex: 1},
-   {name: 'status', text: 'Төлөв', width: 70}
+   {name: 'status', text: 'Төлөв', width: 70, align: 'center', renderer: renderQuestionStatus}
 ];
 
 Ext.define('CRM_RISK_QUESTION', {
@@ -1612,6 +1612,12 @@ function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {
 	return v;
 }
 
+function renderQuestionStatus(v) {
+	if (v == 1)
+		return 'Эерэг';
+	else
+		return 'Сөрөг';
+}
 
 function renderTMoney(v) {
 /*	if (logged == 'batbileg@mxc')
