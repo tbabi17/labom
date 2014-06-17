@@ -4888,6 +4888,13 @@ Ext.define('OCS.RiskTotalWindow', {
 					}).show();
 				}
 			}),
+			Ext.create('Ext.Action', {
+				iconCls : 'expand',
+				text: 'Асуултууд',
+				handler: function(widget, event) {
+					
+				}
+			}),
 			'-',
 			Ext.create('Ext.Action', {
 				iconCls   : 'help',
