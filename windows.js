@@ -2570,6 +2570,22 @@ Ext.define('OCS.ActivityDetailWindow', {
 						}).show();
 					}
 				});
+			} else {
+				if (id != 0 && id > 0)
+				{				
+					Ext.Ajax.request({
+					   url: 'avia.php',
+					   params: {handle: 'web', table: 'crm_calllog', action: 'delete', where: id},
+					   success: function(response, opts) {
+						   if (me.backgrid)
+							 me.backgrid.getStore().reload();
+						   me.close();
+					   },
+					   failure: function(response, opts) {										   
+						  Ext.MessageBox.alert('Status', 'Error !', function() {});
+					   }
+					});
+				}
 			}
 
 			Ext.Ajax.request({
