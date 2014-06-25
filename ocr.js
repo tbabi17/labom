@@ -3738,6 +3738,65 @@ Ext.define('OCS.ResellerView', {
 			}),
 			'-',
 			Ext.create('Ext.Action', {
+				iconCls: 'activity',
+				text: 'Activity',
+				menu: {
+					xtype: 'menu',
+					items: [
+						Ext.create('Ext.Action', {
+							iconCls   : 'notes',  
+							text: 'Notes ...',
+							handler: function(widget, event) {															
+								if (me.recordSelected())
+									new OCS.NotesWindow({
+										selected: me.grid.getView().getSelectionModel().getSelection()[0]
+									}).createWindow();
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'task',  
+							text: 'Task ...',
+							handler: function(widget, event) {
+								if (me.recordSelected())
+									new OCS.TaskWindow({
+										selected: me.grid.getView().getSelectionModel().getSelection()[0]
+									}).createWindow();
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'event',  
+							text: 'Appointment ...',
+							handler: function(widget, event) {
+								if (me.recordSelected())
+									new OCS.EventWindow({
+										selected: me.grid.getView().getSelectionModel().getSelection()[0]
+									}).createWindow();
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'call', 
+							text: 'Phone call ...',
+							handler: function(widget, event) {
+								if (me.recordSelected())							
+									new OCS.CallLogWindow({
+										selected: me.grid.getView().getSelectionModel().getSelection()[0]
+									}).createWindow();							
+							}
+						}),
+						Ext.create('Ext.Action', {
+							iconCls   : 'email',  
+							text: 'Email ...',
+							handler: function(widget, event) {
+								if (me.recordSelected())
+									new OCS.EmailWindow({
+										selected: me.grid.getView().getSelectionModel().getSelection()[0]
+									}).createWindow();
+							}
+						})
+					]
+				}		
+			}),	
+			Ext.create('Ext.Action', {
 				iconCls   : 'deal_assign',
 				text: 'Assign ...',
 				handler: function(widget, event) {
