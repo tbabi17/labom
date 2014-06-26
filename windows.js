@@ -4903,7 +4903,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {															
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Гал'
+									risk: 'ГАЛЫН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4913,7 +4913,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Цахилгаан'
+									risk: 'ЦАХИЛГААНЫ АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4923,7 +4923,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Хөдөлмөр'
+									risk: 'ХӨДӨЛМӨРИЙН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4933,7 +4933,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Тээврийн хэрэгсэл'
+									risk: 'ТЭЭВРИЙН ХЭРЭГСЭЛ ТЕХНИКИЙН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();						
 							}
 						}),
@@ -4943,7 +4943,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Агуулах'
+									risk: 'АГУУЛАХЫН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4953,7 +4953,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Тоног төхөөрөмж'
+									risk: 'ТОНОГ ТӨХӨӨРӨМЖИЙН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4963,7 +4963,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Оффис'
+									risk: 'ОФФИСЫН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						}),
@@ -4973,7 +4973,7 @@ Ext.define('OCS.RiskTotalWindow', {
 							handler: function(widget, event) {
 								new OCS.RiskResultWindow({
 									selected: me.selected,
-									risk: 'Барилга'
+									risk: 'БАРИЛГЫН АЮУЛГҮЙ БАЙДАЛ'
 								}).createWindow();
 							}
 						})
