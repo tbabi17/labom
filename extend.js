@@ -2275,6 +2275,23 @@ Ext.define('OCS.PropertyGrid', {
 			};
 		}
 		
+		if (name == 'status' && me.modelName == 'CRM_RISK_QUESTION')
+		{
+			return {
+			  xtype: 'combo',
+			  store: Ext.create('Ext.data.Store', {
+  				  model: 'CRM_OBJECT',
+ 				  data: [{id: 0, name: 'Сөрөг'},{id: 1, name: 'Эерэг'}]
+              }),
+			  name: name,
+			  queryMode: 'local',
+		      displayField: 'name',
+			  valueField: 'id',
+			  triggerAction: 'all',
+			  editable: false
+			};
+		}
+
 		if (name == 'status')
 		{
 			return {
