@@ -473,6 +473,12 @@ Ext.define('OCS.Module', {
 				action = 'update';
 				walue = rec.get('value');
 				captcha = 'case_id='+rec.get('value');
+			} else
+			if (me.table == 'crm_risk_question' && rec.get('name').substring(2, rec.get('name').length) == 'id' && rec.get('value') != '0')
+			{
+				action = 'update';
+				walue = rec.get('value');
+				captcha = 'id='+rec.get('value');
 			}
         });	
 		if (walue.length == 0 || walue == '0') {
