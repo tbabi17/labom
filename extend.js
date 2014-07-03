@@ -2954,8 +2954,8 @@ Ext.define('OCS.FormPanel', {
 Ext.define('OCS.GridView', {
 	extend: 'Ext.grid.Panel',	
 	border: false,
+	region: 'center',
 	split: true,
-	layout: 'fit',
 	multiSelect: true,
 	columnLines: true,
 	stripeRows: true,	
