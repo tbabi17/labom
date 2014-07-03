@@ -2970,6 +2970,7 @@ Ext.define('OCS.GridView', {
 	trackMouseOver: true,	
 	views: '',
 	autoScroll: true,
+	overflowY: 'scroll',
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
