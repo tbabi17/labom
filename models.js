@@ -751,6 +751,7 @@ Ext.define('CRM_ALARM', {
 });
 
 fields['CRM_RISK_QUESTION_FIELDS'] = [
+   {name: 'id', text: 'ID', width: 0, hidden: true},
    {name: 'category', text: 'Бүлэг', width: 180},
    {name: 'section', text: 'Хэсэг', width: 180},
    {name: 'question', text: 'Асуулт', flex: 1},
