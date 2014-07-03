@@ -1614,7 +1614,7 @@ function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {
 }
 
 function renderQuestionStatus(v) {
-	if (v == 0)
+	if (v == 1)
 		return 'Эерэг';
 	else
 		return 'Сөрөг';

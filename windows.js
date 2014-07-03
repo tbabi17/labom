@@ -363,7 +363,7 @@ Ext.define('OCS.NewQuestionWindow', {
 	extend: 'OCS.GridWithFormPanel',
 	func : 'crm_risk_question_list', 
 	title: 'Асуултууд',
-	table: 'crm_risk_question',
+	table: 'crm_risk_questions',
 	values: '',
 	groupField: '',
 	buttons: true,

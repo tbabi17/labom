@@ -474,7 +474,7 @@ Ext.define('OCS.Module', {
 				walue = rec.get('value');
 				captcha = 'case_id='+rec.get('value');
 			} else
-			if (me.table == 'crm_risk_question' && rec.get('name').substring(2, rec.get('name').length) == 'id' && rec.get('value') != '0')
+			if (me.table == 'crm_risk_questions' && rec.get('name').substring(2, rec.get('name').length) == 'id' && rec.get('value') != '0')
 			{
 				action = 'update';
 				walue = rec.get('value');
