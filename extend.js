@@ -3085,6 +3085,8 @@ Ext.define('OCS.GridView', {
 			emptyText: me.emptyText,
 			trackOver: true,
 			trackMouseOver: true,
+			scroll:false,
+	        style:{overflow: 'auto',overflowX: 'hidden'},
 			stripeRows: false,
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
