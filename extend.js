@@ -2971,6 +2971,7 @@ Ext.define('OCS.GridView', {
 	views: '',
 	autoScroll: true,
 	overflowY: 'scroll',
+	invalidateScrollerOnRefresh: false,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
@@ -3087,6 +3088,7 @@ Ext.define('OCS.GridView', {
 			trackOver: true,
 			trackMouseOver: true,
 			stripeRows: false,
+			invalidateScrollerOnRefresh: false,
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
 					e.stopEvent();
