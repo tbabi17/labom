@@ -2968,6 +2968,7 @@ Ext.define('OCS.GridView', {
 	cls : 'custom-grid',
 	trackMouseOver: true,	
 	views: '',
+	autoScroll: true,
 	
 	constructor: function(cnfg) {
         this.callParent(arguments);
