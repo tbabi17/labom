@@ -977,7 +977,7 @@ Ext.define('OCS.GridWithFormPanel', {
 		me.initSource();
 
 		me.panel = Ext.create('Ext.panel.Panel', {
-			layout: 'border',
+			layout: 'fit',
 			border: false,
 			region: me.region,
 			items : [me.grid, me.form]	
@@ -2954,8 +2954,8 @@ Ext.define('OCS.FormPanel', {
 Ext.define('OCS.GridView', {
 	extend: 'Ext.grid.Panel',	
 	border: false,
-	region: 'center',
 	split: true,
+	layout: 'fit',
 	multiSelect: true,
 	columnLines: true,
 	stripeRows: true,	
@@ -3085,8 +3085,6 @@ Ext.define('OCS.GridView', {
 			emptyText: me.emptyText,
 			trackOver: true,
 			trackMouseOver: true,
-			scroll:false,
-	        style:{overflow: 'auto',overflowX: 'hidden'},
 			stripeRows: false,
 			listeners: {
 				itemcontextmenu: function(view, rec, node, index, e) {
