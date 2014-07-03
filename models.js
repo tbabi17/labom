@@ -2694,3 +2694,23 @@ Ext.define('Ext.ux.window.Notification', {
 	}
 
 });
+
+Ext.override(Ext.grid.Scroller, {
+  afterRender: function() {
+     var me = this;
+     me.callParent();
+     me.mon(me.scrollEl, 'scroll', me.onElScroll, me);
+     Ext.cache[me.el.id].skipGarbageCollection = true;
+     $(me.scrollEl.dom).scroll({scope: me}, me.onElScrollCheck);
+   },
+   wasScrolled: false,
+   onElScroll: function(event, target) {
+     this.fireEvent('bodyscroll', event, target);
+   },
+   onElScrollCheck: function(event, target) {
+     var me = event.data.scope;
+     if (!me.wasScrolled)
+       me.mon(me.scrollEl, 'scroll', me.onElScroll, me);
+     me.wasScrolled = false; 
+   }
+});
