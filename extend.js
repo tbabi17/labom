@@ -2965,6 +2965,7 @@ Ext.define('OCS.GridView', {
 	feature: true,
 	search : true,
 	emptyText: 'No records.',
+	flex: 1,
 	cls : 'custom-grid',
 	trackMouseOver: true,	
 	views: '',
