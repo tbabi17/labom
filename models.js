@@ -1615,9 +1615,9 @@ function renderTopicName(v, metadata, record, rowIndex, colIndex, store) {
 
 function renderQuestionStatus(v) {
 	if (v == 1)
-		return 'Эерэг';
+		return '<span style="color:green">Эерэг</span>';
 	else
-		return 'Сөрөг';
+		return '<span style="color:red">Сөрөг</span>';
 }
 
 function renderTMoney(v) {
