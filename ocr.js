@@ -5307,7 +5307,36 @@ Ext.define('OCS.Dashboard', {
 								
 							]
 						}
-					},'->'],
+					},'->',
+					{
+						id: 'start_13',
+						text: me.month(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								Ext.getCmp('start_13').setText(Ext.Date.format(date, 'Y-m-d'));
+							}
+						})
+					},
+					{
+						id: 'end_13',
+						text: me.nextmonth(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								Ext.getCmp('end_13').setText(Ext.Date.format(date, 'Y-m-d'));
+								
+							}
+						})
+					},{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							Ext.getCmp('start_13').setText(me.month());
+							Ext.getCmp('end_13').setText(me.nextmonth());
+							
+						}
+					}],
 					items: [new Ext.create('OCS.GridWithFormPanel', {
 							modelName:'CRM_ALARM',
 							func:'crm_alarm_list',
