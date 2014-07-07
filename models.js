@@ -742,7 +742,7 @@ fields['CRM_ALARM_FIELDS'] = [
    {name: 'crm_name', text: 'Customer', width: 250},
    {name: 'subject', text: 'Description', width: 250},
    {name: 'status', text: 'Status', width: 100},
-   {name: '_date', text: 'Date', width: 100},
+   {name: '_date', text: 'Date', width: 130},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner}
 ];
 
