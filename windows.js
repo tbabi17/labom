@@ -2587,9 +2587,12 @@ Ext.define('OCS.ActivityDetailWindow', {
 				});
 			}
 
+			var now = new Date();
+			today = Ext.Date.format(now, 'Y-m-d');
+
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success',descr='"+descr+"'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success',modified_date='"+today+"',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
