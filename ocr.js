@@ -1228,9 +1228,12 @@ Ext.define('OCS.ActivityGrid', {
 				});
 			}
 
+			var now = new Date();
+			today = Ext.Date.format(now, 'Y-m-d');
+
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success',descr='"+descr+"'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='success',modified_date='"+today+"',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   me.store.reload();
 			   },
@@ -5111,6 +5114,22 @@ Ext.define('OCS.Dashboard', {
 		me.charts[6] = new OCS.AccountByIndustry();	
 		me.charts[8] = new OCS.SalesFunnel();
 		me.charts[9] = new OCS.ProductChart();
+		me.charts[10] = new Ext.create('OCS.GridWithFormPanel', {
+							modelName:'CRM_ALARM',
+							func:'crm_alarm_list',
+							title: '',
+							table: 'crm_alarms',
+							insert: (user_level==0),
+							remove: (user_level==0),
+							tab: 'alarm_tabs',
+							values: '',
+							feature: false,
+							createActions: function(actions) {
+								var me = this;
+								me.actions = [];
+								return me.actions;
+							}
+						});
 	},
 
 	reloadCharts: function() {
@@ -5325,7 +5344,7 @@ Ext.define('OCS.Dashboard', {
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
 								Ext.getCmp('end_13').setText(Ext.Date.format(date, 'Y-m-d'));
-								
+								me.charts[10].
 							}
 						})
 					},{
@@ -5337,22 +5356,7 @@ Ext.define('OCS.Dashboard', {
 							
 						}
 					}],
-					items: [new Ext.create('OCS.GridWithFormPanel', {
-							modelName:'CRM_ALARM',
-							func:'crm_alarm_list',
-							title: '',
-							table: 'crm_alarms',
-							insert: (user_level==0),
-							remove: (user_level==0),
-							tab: 'alarm_tabs',
-							values: '',
-							feature: false,
-							createActions: function(actions) {
-								var me = this;
-								me.actions = [];
-								return me.actions;
-							}
-						}).createGrid()]
+					items: [me.charts[10].createGrid()]
 				}]
 			},{
 				columnWidth: 1,
