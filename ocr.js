@@ -5344,7 +5344,7 @@ Ext.define('OCS.Dashboard', {
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
 								Ext.getCmp('end_13').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[10].
+//								me.charts[10].
 							}
 						})
 					},{
