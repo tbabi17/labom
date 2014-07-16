@@ -2121,14 +2121,34 @@ Ext.define('OCS.CustomerCampaigns', {
 			width: 200,
 			sortable: true
 		},{
-			text: "Created by",
-			dataIndex: 'userCode',
-			renderer: renderOwner,
+			text: "Created on",
+			dataIndex: '_date',
 			width: 100,
 			sortable: true
 		},{
-			text: "Created on",
-			dataIndex: '_date',
+			text: "Modified",
+			dataIndex: 'modified_date',
+			width: 100,
+			sortable: true
+		},{
+			text: "Description",
+			dataIndex: 'descr',
+			width: 150,
+			sortable: true
+		},{
+			text: "Status",
+			dataIndex: 'status',
+			width: 70,
+			sortable: true
+		},{
+			text: "Success",
+			dataIndex: 'complete',
+			width: 70,
+			sortable: true
+		},{
+			text: "Created by",
+			dataIndex: 'userCode',
+			renderer: renderOwner,
 			width: 100,
 			sortable: true
 		}];
