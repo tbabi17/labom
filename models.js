@@ -65,6 +65,7 @@ fields['CRM_RETAIL_FIELDS'] = [
    {name: 'userCode', text: 'Created by', width: 120},
    {name: 'mayDuplicate', text: 'Duplicate', width: 80, align: 'right', renderer: renderPrecent},
    {name: 'priority', text: 'Priority', width: 60, align: 'center'},
+   {name: 'campaign', text: 'Active campaign', width: 180},
    {name: 'source', text: 'Source', width: 250}
 ];
 
@@ -119,7 +120,7 @@ fields['CRM_CORPORATE_FIELDS'] = [
    {name: 'industry_sub', text: 'Organization', width: 150},
    {name: 'employees', text: 'Employees', width: 80, align: 'center'},
    {name: 'sorog_huchin', text: 'Service provider', width: 150},
-  // {name: 'campaign', text: 'Active campaign', width: 180, hidden: true},
+   {name: 'campaign', text: 'Active campaign', width: 180},
    {name: 'country', text: 'Counry', width: 100, hidden: true},
    {name: 'city', text: 'City', width: 100, hidden: true},
    {name: 'district', text: 'District', width: 100, hidden: true},
