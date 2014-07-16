@@ -2047,7 +2047,7 @@ Ext.define('OCS.CustomerCompany', {
 		},{
 			text: "Created on",
 			dataIndex: '_date',
-			width: 100,
+			width: 150,
 			sortable: true
 		}];
 	},
