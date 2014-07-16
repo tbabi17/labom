@@ -532,11 +532,15 @@ Ext.define('CRM_DEAL_SALES_TEAM', {
 
 fields['CRM_CUSTOMER_CAMPAIGN_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'campaign', text: 'Campaign', width: 200},
+   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140, renderer: renderCreatedDate},
+   {name: 'modified_date', text: 'Modified', dateFormat: 'Y-m-d', width: 140, renderer: renderCreatedDate},
+   {name: 'descr', text: 'Description', width: 150},
+   {name: 'status', text: 'Status', width: 70},
+   {name: 'complete', text: 'Success', width: 70},
    {name: 'crm_id', text: 'CRM ID', hidden: true},
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
-   {name: 'campaign', text: 'Campaign', width: 200},
    {name: 'userCode', text: 'Created by', width: 100},
-   {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 140, renderer: renderCreatedDate}
 ];
 
 Ext.define('CRM_CUSTOMER_CAMPAIGN', {
