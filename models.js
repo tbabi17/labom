@@ -541,7 +541,7 @@ fields['CRM_CUSTOMER_CAMPAIGN_FIELDS'] = [
    {name: 'complete', text: 'Success', width: 70},
    {name: 'crm_id', text: 'CRM ID', hidden: true},
    {name: 'crm_name', text: 'Potential Customer', width: 250, renderer: renderCRMName},
-   {name: 'userCode', text: 'Created by', width: 100},
+   {name: 'userCode', text: 'Created by', width: 100}
 ];
 
 Ext.define('CRM_CUSTOMER_CAMPAIGN', {
