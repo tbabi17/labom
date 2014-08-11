@@ -810,6 +810,7 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'phone', text: 'Phone', width: 80, primary: true},
    {name: 'deal', text: 'Topic Name', width: 250, primary: true, renderer: renderTopicName},   
    {name: 'descr', text: 'Description', width: 200},
+   {name: 'campaign', text: 'Campaign', width: 200},   
    {name: 'crm_name', text: 'Potential customer', width: 200, renderer: renderCRMName},
    {name: '_date', text: 'Created on', width: 120, renderer: renderCreatedDate},
    {name: 'remind_date', text: 'Remind date', dateFormat: 'Y-m-d', width: 85, align: 'center', renderer: renderDate},   
@@ -823,7 +824,6 @@ fields['CRM_DEAL_FIELDS'] = [
    {name: 'proposed_solution', text: 'Proposed solution', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 130, renderer: renderOwner},
    {name: 'competitor_name', text: 'Competitor', width: 200},
-   {name: 'campaign', text: 'Campaign', width: 200},   
    {name: 'company', text: 'Company', width: 200},
    {name: 'userCode', text: 'Created by', width: 80, hidden: true},
    {name: 'notify', text: 'Notify', hidden: true}
