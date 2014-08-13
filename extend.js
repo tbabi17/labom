@@ -200,7 +200,7 @@ Ext.define('OCS.Module', {
 		if (me.func == 'crm_customer_activity_list' && pk == 'deals') {
 			var i = 0;
 			store.each(function(rec){
-				if (i == 0 && rec.get('status') == 'pending') {				
+				if (i == 0 && rec.get('status') == 'pending' && rec.get('remind_at') != '') {				
 					views['deals'].action.remindUpdate(rec.get('remind_at'));
 					i++;
 				}
