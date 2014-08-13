@@ -3038,6 +3038,11 @@ Ext.define('OCS.DealAction', {
 		var me = this;
 		me.dealActivity.teamOn(ownerList);
 	},
+	
+	remindUpdate: function(_date) {
+		var me = this;
+		me.selected.set('remind_date', _date);
+	},
 
 	select: function(rec) {
 		var me = this;

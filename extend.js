@@ -195,6 +195,17 @@ Ext.define('OCS.Module', {
 	},
 	
 	callBack: function(store) {
+		var me = this;
+
+		if (me.func == 'crm_customer_activity_list' && pk == 'deals') {
+			var i = 0;
+			store.each(function(rec){
+				if (i == 0 && rec.get('status') == 'pending') {				
+					views['deals'].action.remindUpdate(rec.get('remind_at'));
+					i++;
+				}
+			});	
+		}
 	},
 
 	loadStore: function() {
