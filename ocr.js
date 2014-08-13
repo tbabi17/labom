@@ -1210,20 +1210,19 @@ Ext.define('OCS.ActivityGrid', {
 							selected: me.selected
 						}).show();
 					} else {
-						if (id != 0 && id > 0) {
-							/*
+						if (id != 0 && id > 0) {	
+							var now = new Date();
+							today = Ext.Date.format(now, 'Y-m-d');
 							Ext.Ajax.request({
 							   url: 'avia.php',
-							   params: {handle: 'web', table: 'crm_calllog', action: 'delete', where: id},
+							   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='unsuccess',modified_date='"+today+"',descr='"+descr+"'", where: "id="+id},
 							   success: function(response, opts) {
-								   if (me.backgrid)
-									 me.backgrid.getStore().reload();
-								   me.close();
+								   me.store.reload();
 							   },
 							   failure: function(response, opts) {										   
 								  Ext.MessageBox.alert('Status', 'Error !', function() {});
 							   }
-							});*/
+							});
 						}
 					}
 				});
