@@ -1003,6 +1003,7 @@ fields['CRM_CAMPAIGN_RESULT_FIELDS'] = [
    {name: 'pending', text: 'Pending', type:'int', width: 60, align: 'center', renderer: renderENumber, summaryType: 'sum', summaryRenderer: renderTNumber}, 
    {name: 'remind', text: 'Remind', type:'int', width: 60, align: 'center', renderer: renderENumber, summaryType: 'sum', summaryRenderer: renderTNumber},
    {name: 'success', text: 'Success', type:'int', width: 60, align: 'center', renderer: renderENumber, summaryType: 'sum', summaryRenderer: renderTNumber},
+   {name: 'unsuccess', text: 'UnSuccess', type:'int', width: 60, align: 'center', renderer: renderENumber, summaryType: 'sum', summaryRenderer: renderTNumber},
    {name: 'total', text: 'Total', type:'int', width: 70, align: 'center', renderer: renderENumber, summaryType: 'sum', summaryRenderer: renderTNumber},
    {name: 'performance', text: 'Performance', type:'float', width: 70, align: 'center', renderer: renderPrecent, summaryType: 'average', summaryRenderer: renderTPrecent}  
 ];
