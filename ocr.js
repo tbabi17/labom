@@ -5424,7 +5424,7 @@ Ext.define('OCS.Dashboard', {
 					}],
 					items: me.charts[3]
 				},{
-					columnWidth: 0.25,
+					columnWidth: 0.2
 					padding: '5 5 5 5',
 					margin: '0 0 10 0',
 					border: false,
