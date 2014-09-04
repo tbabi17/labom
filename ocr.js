@@ -300,6 +300,97 @@ Ext.define('OCS.OwnerView', {
 	}
 });
 
+Ext.define('OCS.TopCrosses', {
+	extend: 'OCS.Module',
+	func: 'crm_users_list',
+	modelName : 'CRM_USERS',
+	cls : 'leads',
+
+	createTmpl: function() {
+		return Ext.create('Ext.XTemplate',
+				'<tpl for=".">',
+					'<div class="phone">',
+						'<div class="content">',
+						'<strong>{owner}</strong>',
+						'<span class="text">{gmailAccount}</span></br></br>',
+						'</div>',	
+					'</div>',
+				'</tpl>'
+			);
+	},
+
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.dataview = Ext.create('Ext.view.View', {
+			deferInitialRefresh: false,
+			store: me.store,
+			tpl  : me.createTmpl(),
+			id: me.cls,
+			itemSelector: 'div.phone',
+			overItemCls : 'phone-hover',
+			multiSelect : true,
+			autoScroll  : true,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			}
+		});
+		me.store.groupField = 'team';
+		me.grid = Ext.create('Ext.grid.Panel', {
+			border: false,
+			columns: [{
+					text: "Owner",
+					dataIndex: 'owner',
+					flex: 1,
+					renderer: renderOwner,
+					sortable: true
+				},{
+					text: "Gmail",
+					dataIndex: 'gmailAccount',
+					width: 140,
+					sortable: true
+				},{
+					text: "Section",
+					dataIndex: 'section',
+					width: 60,
+					sortable: true
+				},{
+					text: "Team",
+					dataIndex: 'team',
+					width: 100,
+					sortable: true
+				}
+			],
+			store: me.store,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			},
+			features : [{
+				ftype: 'grouping',
+				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)'
+			}]
+		});
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.grid,		
+			region: 'center'
+		});			
+		return me.panel;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.reload();
+	}
+});
+
 Ext.define('OCS.CompetitorView', {
 	extend: 'OCS.OwnerView',
 	func: 'crm_competitor_list',
@@ -5155,6 +5246,8 @@ Ext.define('OCS.Dashboard', {
 								return me.actions;
 							}
 						});
+
+		me.charts[11] = new OCS.TopCrosses();
 	},
 
 	reloadCharts: function() {
@@ -5330,6 +5423,16 @@ Ext.define('OCS.Dashboard', {
 						}
 					}],
 					items: me.charts[3]
+				},{
+					columnWidth: 1/2,
+					padding: '5 5 5 5',
+					margin: '0 0 10 0',
+					border: false,
+					items:[{
+						title:'Sales Leaderboard',		
+						layout: 'fit',
+						collapsible: true
+					}]						
 				}]
 			},{
 				columnWidth: 1,
