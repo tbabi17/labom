@@ -5440,7 +5440,7 @@ Ext.define('OCS.Dashboard', {
 				border: false,
 				items: [{
 					layout: 'fit',
-					title:'Alarms',
+					title:'Open Activities',
 					collapsible: true,						
 					columnWidth: 1/2,
 					autoScroll: true,
