@@ -5272,7 +5272,7 @@ Ext.define('OCS.Dashboard', {
 			bodyStyle: 'background: white;',
 			border: false,		
 			items: [{
-				columnWidth: 1/2,
+				columnWidth: 0.4,
 				padding: '5 5 5 5',
 				border: false,
 				items:[{
@@ -5353,7 +5353,7 @@ Ext.define('OCS.Dashboard', {
 					}*/me.charts[8]
 				}]
 			},{
-				columnWidth: 1/2,
+				columnWidth: 0.35,
 				padding: '5 5 5 5',
 				margin: '0 0 10 0',
 				border: false,
@@ -5424,7 +5424,7 @@ Ext.define('OCS.Dashboard', {
 					}],
 					items: me.charts[3]
 				},{
-					columnWidth: 1/2,
+					columnWidth: 0.25,
 					padding: '5 5 5 5',
 					margin: '0 0 10 0',
 					border: false,
