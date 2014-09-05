@@ -827,6 +827,7 @@ Ext.define('OCS.GridWithFormPanel', {
 	merge: false,
 	tbarable: true,
 	windowed: false,
+	bbarable: true,
 	views: '',
 	title: '',
 
@@ -926,6 +927,7 @@ Ext.define('OCS.GridWithFormPanel', {
 			feature: me.feature,
 			hidden: me.hidden,
 			tbarable: me.tbarable,
+			bbarable: me.bbarable,
 			title: (me.windowed?'':me.title),
 			listeners : {
 				scope: this,
@@ -2973,6 +2975,7 @@ Ext.define('OCS.GridView', {
 	stateful: false,
 	filter: false,
 	tbarable: false,
+	bbarable: true,
 	feature: true,
 	search : true,
 	emptyText: 'No records.',
@@ -3031,6 +3034,7 @@ Ext.define('OCS.GridView', {
 		me.bbar = Ext.create('Ext.PagingToolbar', {
 			store: me.store,
 			displayInfo: true,
+			hidden: !me.bbarable,
 			displayMsg: '{0}-{1} of {2}',
 			emptyMsg: "Empty !",
 			items: [/*me.searchField, */{

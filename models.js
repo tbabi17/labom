@@ -699,6 +699,17 @@ Ext.define('CRM_USERS', {
 	fields: fields['CRM_USERS_FIELDS']
 });
 
+fields['CRM_TOPCROSS_FIELDS'] = [
+   {name: 'owner', text: 'Owner', width: 130, primary: true}, 
+   {name: 'amount', text: 'amount', width: 150},
+   {name: 'section', text: 'Section', width: 150},
+];
+
+Ext.define('CRM_TOPCROSS', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_TOPCROSS_FIELDS']
+});
+
 fields['CRM_COMPETITOR_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
    {name: 'competitor_name', text: 'Competitor name', width: 120},

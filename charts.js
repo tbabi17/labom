@@ -94,7 +94,7 @@ Ext.define('OCS.SalesFunnel', {
 		position: 'right',
 
 	},
-	insetPadding: 30,
+	insetPadding: 20,
 	theme: 'Base:gradients',
 
 	initComponent: function() {
@@ -164,7 +164,7 @@ Ext.define('OCS.CampaignChartRevenue', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
-	insetPadding: 50,
+	insetPadding: 20,
 	legend: {
 		position: 'bottom'
 	},
@@ -247,7 +247,7 @@ Ext.define('OCS.OpportunityRevenueChart', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
-	insetPadding: 30,
+	insetPadding: 20,
 	legend: {
 		position: 'bottom'
 	},
@@ -437,11 +437,182 @@ Ext.define('OCS.OpportunityRevenueChart', {
 	}	
 });
 
+Ext.define('OCS.ActivityLeaderBoardChart', {
+	extend: 'OCS.Chart',
+	animate: true,
+	shadow: false,
+	insetPadding: 20,
+	legend: {
+		position: 'bottom'
+	},
+
+	initComponent: function() {
+		var me = this;
+		me.start = me.month();
+		me.end = me.nextmonth();
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['owner', 'team', 'call', 'email', 'meeting', 'task', 'other'],
+			groupField: 'team',
+			sortField: 'actual_revenue',
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_activity_leaderboard_list', start_date: new Date(new Date().getFullYear(), 0, 1), end_date: new Date(new Date().getFullYear(), 11, 31), values: 'user_level', where: 0}
+			}
+		});
+
+		me.rangeData(me.month(), me.nextmonth());
+
+		me.axes = [{
+			type: 'Numeric',
+			position: 'left',
+			fields: ['call', 'email', 'meeting', 'task', 'other'],
+			title: true,
+			grid: false,
+			majorTickSteps: 0,
+			minimum: 0			
+		}, {
+			type: 'Category',
+			position: 'bottom',
+			fields: ['owner'],
+			label: {
+                renderer: function(v) {
+                    return Ext.String.ellipsis(v, 15, false);
+                },
+                font: '11px Arial'                
+            }
+		}];
+
+		me.series = [{
+			type: 'column',
+			axis: 'bottom',
+			gutter: 120,
+			xField: 'owner',
+			yField: ['call', 'email', 'meeting', 'task', 'other'],			
+		}];
+
+		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.start = e1;
+		me.end = e2;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_activity_leaderboard_list', start_date: e1, end_date: e2};
+		me.store.load();
+	}
+});
+
+Ext.define('OCS.CompareOwnerChart', {
+	extend: 'OCS.Chart',
+	animate: true,
+	shadow: false,
+	insetPadding: 20,
+	legend: {
+		position: 'bottom'
+	},
+
+	initComponent: function() {
+		var me = this;
+		me.start = me.month();
+		me.end = me.nextmonth();
+		me.store = Ext.create('Ext.data.Store', {
+			fields: ['owner', 'team', 'actual_revenue', 'expected_revenue', 'target_revenue'],
+			groupField: 'team',
+			sortField: 'actual_revenue',
+			proxy: {				
+				type: 'ajax',
+    			url: 'avia.php',
+				actionMethods: {
+					create : 'POST',
+					read   : 'POST',
+					update : 'POST',
+					destroy: 'POST'
+				},
+    	        reader: {
+    	            root:'items',
+    	            totalProperty: 'results'
+    	        },				
+				simpleSortMode: true,
+				extraParams: {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: new Date(new Date().getFullYear(), 0, 1), end_date: new Date(new Date().getFullYear(), 11, 31), values: 'user_level', where: 0}
+			}
+		});
+
+		me.rangeData(me.month(), me.nextmonth());
+
+		me.axes = [{
+			type: 'Numeric',
+			position: 'left',
+			fields: ['actual_revenue', 'expected_revenue', 'target_revenue'],
+			title: true,
+			grid: false,
+			majorTickSteps: 0,
+			minimum: 0,
+			label: {
+				renderer: function(v) {
+					return String(v).replace(/(.)00000$/, '.$1M');
+				}
+			}
+		}, {
+			type: 'Category',
+			position: 'bottom',
+			fields: ['owner'],
+			label: {
+                renderer: function(v) {
+                    return Ext.String.ellipsis(v, 15, false);
+                },
+                font: '11px Arial',
+                rotate: {
+                    degrees: 270
+                }
+            }
+		}];
+
+		me.series = [{
+			type: 'column',
+			axis: 'bottom',
+			gutter: 120,
+			xField: 'owner',
+			yField: ['actual_revenue', 'expected_revenue', 'target_revenue'],
+//			stacked: true,
+			tips: {
+				trackMouse: true,
+				width: 150,
+				height: 28,
+				renderer: function(storeItem, item) {
+					this.setTitle(item.value[0]+' '+String(item.value[1] / 1000000) + 'M');
+				}
+			}
+		}];
+
+		me.callParent(arguments);
+	},
+
+	rangeData: function(e1, e2) {
+		var me = this;
+		me.start = e1;
+		me.end = e2;
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_opportunity_by_revenue_list', start_date: e1, end_date: e2};
+		me.store.load();
+	}
+});
+
 Ext.define('OCS.StatUserChart', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: false,
-	insetPadding: 50,
+	insetPadding: 20,
 	values: '',
 	where: '',
 	legend: {
@@ -590,7 +761,7 @@ Ext.define('OCS.CampaignChartSuccess', {
 	extend: 'OCS.Chart',
 	animate: true,
 	shadow: true,
-	insetPadding: 50,
+	insetPadding: 20,
 	legend: {
 		position: 'bottom'
 	},
@@ -956,7 +1127,7 @@ Ext.define('OCS.LeadBySource', {
 	legend: {
 		position: 'right'
 	},
-	insetPadding: 50,
+	insetPadding: 20,
 	theme: 'Base:gradients',
 
 	initComponent: function() {

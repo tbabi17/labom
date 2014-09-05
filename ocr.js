@@ -302,65 +302,79 @@ Ext.define('OCS.OwnerView', {
 
 Ext.define('OCS.TopCrosses', {
 	extend: 'OCS.Module',
-	func: 'crm_users_list',
-	modelName : 'CRM_USERS',
+	func: 'crm_topcross_list',
+	modelName : 'CRM_TOPCROSS',
 	cls : 'leads',
 
-	createTmpl: function() {
-		return Ext.create('Ext.XTemplate',
-				'<tpl for=".">',
-					'<div class="phone">',
-						'<div class="content">',
-						'<strong>{owner}</strong>',
-						'<span class="text">{gmailAccount}</span></br></br>',
-						'</div>',	
-					'</div>',
-				'</tpl>'
-			);
+	renderTitle: function(value, p, record) {
+		return Ext.String.format(
+				'<table class="{2}"><tr><td width="50px"><div class="c-contact" title="Contact"></div></td><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;<span class="lightgray">{2}</span></br><span class="gray" style="font-size:15px; line-height: 20px;">{1}</span></td></tr></table>',
+			    value.substring(0, value.indexOf('@')),
+				renderMoney(record.data.amount),
+	            record.data.section			
+		    );
 	},
 
 	createView: function() {
 		var me = this;		
 		me.createStore();
 
-		me.dataview = Ext.create('Ext.view.View', {
-			deferInitialRefresh: false,
-			store: me.store,
-			tpl  : me.createTmpl(),
-			id: me.cls,
-			itemSelector: 'div.phone',
-			overItemCls : 'phone-hover',
-			multiSelect : true,
-			autoScroll  : true,
-			listeners: {
-				selectionchange : function(item, selections){
-					me.selectAction(selections);
-				}
-			}
-		});
-		me.store.groupField = 'team';
 		me.grid = Ext.create('Ext.grid.Panel', {
 			border: false,
 			columns: [{
-					text: "Owner",
+					text: "List",
 					dataIndex: 'owner',
 					flex: 1,
-					renderer: renderOwner,
+					renderer: me.renderTitle,
+					sortable: true
+				}
+			],
+			store: me.store
+		});	
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.grid,		
+			region: 'center'
+		});
+		return me.panel;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.reload();
+	}
+});
+
+Ext.define('OCS.KeyDeals', {
+	extend: 'OCS.Module',
+	func: 'crm_key_deal_list',
+	modelName : 'CRM_DEAL',
+	cls : 'leads',
+
+	renderDeal: function(v) {
+		return '<a href="?pk=deals" class="select_customer">'+v+'</a>';
+	},
+
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.grid = Ext.create('Ext.grid.Panel', {
+			border: false,
+			columns: [{
+					text: "Deal name",
+					dataIndex: 'deal',
+					renderer: me.renderDeal,
+					flex: 1,
 					sortable: true
 				},{
-					text: "Gmail",
-					dataIndex: 'gmailAccount',
-					width: 140,
-					sortable: true
-				},{
-					text: "Section",
-					dataIndex: 'section',
-					width: 60,
-					sortable: true
-				},{
-					text: "Team",
-					dataIndex: 'team',
+					text: "Sum of revenue",
+					dataIndex: 'expected_revenue',
 					width: 100,
+					align: 'right',
+					renderer: renderMoney,
 					sortable: true
 				}
 			],
@@ -390,6 +404,7 @@ Ext.define('OCS.TopCrosses', {
 		me.store.reload();
 	}
 });
+
 
 Ext.define('OCS.CompetitorView', {
 	extend: 'OCS.OwnerView',
@@ -5222,6 +5237,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts = [];
 		me.charts[0] = new OCS.CampaignChartRevenue();
 		me.charts[7] = new OCS.OpportunityRevenueChart();
+		me.charts[13] = new OCS.ActivityLeaderBoardChart();
 		me.charts[1] = new OCS.CampaignChartSuccess();
 		me.charts[2] = new OCS.CasesByStatus();
 		me.charts[3] = new OCS.LeadBySource();
@@ -5240,6 +5256,7 @@ Ext.define('OCS.Dashboard', {
 							tab: 'alarm_tabs',
 							values: '',
 							feature: false,
+							bbarable: false,
 							createActions: function(actions) {
 								var me = this;
 								me.actions = [];
@@ -5248,6 +5265,7 @@ Ext.define('OCS.Dashboard', {
 						});
 
 		me.charts[11] = new OCS.TopCrosses();
+		me.charts[12] = new OCS.KeyDeals();
 	},
 
 	reloadCharts: function() {
@@ -5272,7 +5290,7 @@ Ext.define('OCS.Dashboard', {
 			bodyStyle: 'background: white;',
 			border: false,		
 			items: [{
-				columnWidth: 0.4,
+				columnWidth: 0.3,
 				padding: '5 5 5 5',
 				border: false,
 				items:[{
@@ -5353,7 +5371,7 @@ Ext.define('OCS.Dashboard', {
 					}*/me.charts[8]
 				}]
 			},{
-				columnWidth: 0.35,
+				columnWidth: 0.29,
 				padding: '5 5 5 5',
 				margin: '0 0 10 0',
 				border: false,
@@ -5423,28 +5441,40 @@ Ext.define('OCS.Dashboard', {
 						}
 					}],
 					items: me.charts[3]
-				},{
-					columnWidth: 0.2,
-					padding: '5 5 5 5',
-					margin: '0 0 10 0',
-					border: false,
-					items:[{
-						title:'Sales Leaderboard',		
-						layout: 'fit',
-						collapsible: true
-					}]						
 				}]
 			},{
-				columnWidth: 1,
+				columnWidth: 0.23,
+				padding: '5 5 5 5',
+				margin: '0 0 10 0',
+				border: false,
+				items:[{
+					title:'Key Deals',		
+					layout: 'fit',
+					collapsible: true,
+					height: 400,
+					items: me.charts[12].createView()
+				}]						
+			},{
+				columnWidth: 0.18,
+				padding: '5 5 5 5',
+				margin: '0 0 10 0',
+				border: false,
+				items:[{
+					title:'Sales Leaderboard',		
+					layout: 'fit',
+					collapsible: true,
+					height: 400,
+					items: me.charts[11].createView()
+				}]						
+			},{
+				columnWidth: 0.35,
 				padding: '5 5 5 5',
 				border: false,
 				items: [{
 					layout: 'fit',
 					title:'Open Activities',
-					collapsible: true,						
-					columnWidth: 1/2,
-					autoScroll: true,
-					height: 500,
+					collapsible: true,		
+					height: 300,
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',
@@ -5456,12 +5486,98 @@ Ext.define('OCS.Dashboard', {
 						}
 					},'->',
 					{
+						id: 'start_10',
+						text: me.month(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								Ext.getCmp('start_10').setText(Ext.Date.format(date, 'Y-m-d'));
+							}
+						})
+					},
+					{
+						id: 'end_10',
+						text: me.nextmonth(),
+						iconCls: 'calendar',
+						menu: Ext.create('Ext.menu.DatePicker', {
+							handler: function(dp, date){
+								Ext.getCmp('end_10').setText(Ext.Date.format(date, 'Y-m-d'));
+//								me.charts[10]. 
+							}
+						})
+					},{
+						text: 'Reset',
+						iconCls: 'reset',
+						handler: function() {
+							Ext.getCmp('start_10').setText(me.month());
+							Ext.getCmp('end_10').setText(me.nextmonth());
+							
+						}
+					}],
+					items: [me.charts[10].createGrid()]
+				}]
+			},{
+				columnWidth: 0.65,
+				padding: '5 5 5 5',
+				border: false,
+				items: [{
+					layout: 'fit',
+					title:'Activity Leaderboard',
+					collapsible: true,											
+					autoScroll: true,
+					height: 300,
+					tbar: [{
+						text: 'Views',
+						iconCls: 'list',
+						menu: {
+							xtype: 'menu',
+							items: [{
+								text: 'Today',
+								handler: function() {
+									Ext.getCmp('start_13').setText(me.today());
+									Ext.getCmp('end_13').setText( me.tommorow());
+									me.charts[13].rangeData(me.today(), me.tommorow());
+								}
+							},{
+								text: 'This week',
+								handler: function() {
+									Ext.getCmp('start_13').setText(me.monday());
+									Ext.getCmp('end_13').setText( me.tommorow());
+									me.charts[13].rangeData(me.monday(), me.tommorow());
+								}
+							},{
+								text: 'This month',
+								handler: function() {
+									Ext.getCmp('start_13').setText(me.month());
+									Ext.getCmp('end_13').setText( me.nextmonth());
+									me.charts[13].rangeData(me.month(), me.nextmonth());
+								}
+							},{
+								text: 'This year',
+								handler: function() {
+									Ext.getCmp('start_13').setText(me.year());
+									Ext.getCmp('end_13').setText( me.nextyear());
+									me.charts[13].rangeData(me.year(), me.nextyear());
+								}
+							}
+							,'-',
+							{
+								text: 'Filter ...',
+								handler: function() {
+									me.charts[13].createWindow();
+								}
+							}]
+						}
+					},'->',
+					{
 						id: 'start_13',
 						text: me.month(),
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
+								me.charts[13].start = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('start_13').setText(Ext.Date.format(date, 'Y-m-d'));
+								me.charts[13].rangeData(me.charts[13].start, me.charts[13].end);
 							}
 						})
 					},
@@ -5471,8 +5587,9 @@ Ext.define('OCS.Dashboard', {
 						iconCls: 'calendar',
 						menu: Ext.create('Ext.menu.DatePicker', {
 							handler: function(dp, date){
+								me.charts[13].end = Ext.Date.format(date, 'Y-m-d');
 								Ext.getCmp('end_13').setText(Ext.Date.format(date, 'Y-m-d'));
-//								me.charts[10]. 
+								me.charts[13].rangeData(me.charts[13].start, me.charts[13].end);
 							}
 						})
 					},{
@@ -5481,108 +5598,20 @@ Ext.define('OCS.Dashboard', {
 						handler: function() {
 							Ext.getCmp('start_13').setText(me.month());
 							Ext.getCmp('end_13').setText(me.nextmonth());
-							
+							me.charts[13].rangeData(me.charts[13].month(), me.charts[13].nextmonth());
 						}
 					}],
-					items: [me.charts[10].createGrid()]
+					items: [me.charts[13]]
 				}]
 			},{
-				columnWidth: 1,
-				padding: '5 5 5 5',
-				border: false,
-				items: [{
-					layout: 'fit',
-					title:'Deals by revenue',
-					collapsible: true,						
-					columnWidth: 1/2,
-					autoScroll: true,
-					height: 500,
-					tbar: [{
-						text: 'Views',
-						iconCls: 'list',
-						menu: {
-							xtype: 'menu',
-							items: [{
-								text: 'Today',
-								handler: function() {
-									Ext.getCmp('start_7').setText(me.today());
-									Ext.getCmp('end_7').setText( me.tommorow());
-									me.charts[7].rangeData(me.today(), me.tommorow());
-								}
-							},{
-								text: 'This week',
-								handler: function() {
-									Ext.getCmp('start_7').setText(me.monday());
-									Ext.getCmp('end_7').setText( me.tommorow());
-									me.charts[7].rangeData(me.monday(), me.tommorow());
-								}
-							},{
-								text: 'This month',
-								handler: function() {
-									Ext.getCmp('start_7').setText(me.month());
-									Ext.getCmp('end_7').setText( me.nextmonth());
-									me.charts[7].rangeData(me.month(), me.nextmonth());
-								}
-							},{
-								text: 'This year',
-								handler: function() {
-									Ext.getCmp('start_7').setText(me.year());
-									Ext.getCmp('end_7').setText( me.nextyear());
-									me.charts[7].rangeData(me.year(), me.nextyear());
-								}
-							}
-							,'-',
-							{
-								text: 'Filter ...',
-								handler: function() {
-									me.charts[7].createWindow();
-								}
-							}]
-						}
-					},'->',
-					{
-						id: 'start_7',
-						text: me.month(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								me.charts[7].start = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('start_7').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
-							}
-						})
-					},
-					{
-						id: 'end_7',
-						text: me.nextmonth(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								me.charts[7].end = Ext.Date.format(date, 'Y-m-d');
-								Ext.getCmp('end_7').setText(Ext.Date.format(date, 'Y-m-d'));
-								me.charts[7].rangeData(me.charts[7].start, me.charts[7].end);
-							}
-						})
-					},{
-						text: 'Reset',
-						iconCls: 'reset',
-						handler: function() {
-							Ext.getCmp('start_7').setText(me.month());
-							Ext.getCmp('end_7').setText(me.nextmonth());
-							me.charts[7].rangeData(me.charts[7].month(), me.charts[7].nextmonth());
-						}
-					}],
-					items: [me.charts[7]]
-				}]
-			},{
-				columnWidth: 1,
+				columnWidth: 0.65,
 				padding: '5 5 5 5',
 				border: false,
 				items:[{
 					title:'Plan & Summary',	
 					collapsible: true,						
 					layout: 'fit',
-					height: 400,
+					height: 350,
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',
@@ -5617,13 +5646,13 @@ Ext.define('OCS.Dashboard', {
 					items: me.charts[4]
 				}]
 			},{
-				columnWidth: 1,
+				columnWidth: 0.35,
 				padding: '5 5 5 5',
 				border: false,
 				items:[{
 					title:'Products by revenue',		
 					layout: 'fit',
-					height: 700,
+					height: 350,
 					tbar: [{
 						text: 'Views',
 						iconCls: 'list',
