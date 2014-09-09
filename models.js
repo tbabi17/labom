@@ -1419,7 +1419,7 @@ function renderWWW(v) {
 function renderGroup(v) {
 	return '<img src="images/buildings.png" title="" style="height:12px"/>&nbsp;'+v.toUpperCase();
 }
-
+ 
 function renderLink(v) {
 	var input = 'http';
 	if (v != '' && v.substring(0, input.length) != input)
