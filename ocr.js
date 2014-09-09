@@ -300,6 +300,63 @@ Ext.define('OCS.OwnerView', {
 	}
 });
 
+Ext.define('OCS.GroupView', {
+	extend: 'OCS.Module',
+	func: 'crm_group_list',
+	modelName : 'CRM_GROUP',
+	cls : 'leads',
+
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.grid = Ext.create('Ext.grid.Panel', {
+			region: 'center',
+			border: false,
+			columns: [{
+					text: "Group name",
+					dataIndex: 'lastName',
+					flex: 1,
+					renderer: renderGroup,
+					sortable: true
+				},{
+					text: "Count",
+					dataIndex: 'count',
+					width: 60,
+					align: 'right',
+					sortable: true
+				}
+			],
+			store: me.store,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			}
+		});
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.grid,		
+			region: 'center'
+		});			
+
+		return me.panel;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.reload();
+	},
+
+	selectAction: function(selections) {
+		var me = this;
+		selectedLastName = selections[0].get('lastName');
+		views['corporate'].reloadGroup(selectedLastName);
+	}
+});
+
 Ext.define('OCS.TopCrosses', {
 	extend: 'OCS.Module',
 	func: 'crm_topcross_list',
@@ -1221,7 +1278,18 @@ Ext.define('OCS.CorporatePanel', {
 			layout: 'border',
 			border: false,
 			region: 'center',
-			items : [me.grid]			
+			items : [{
+				xtype: 'panel',
+				region: 'west',
+				title: 'Group list',
+				collapsible: true,
+				split: true,
+				border: false,
+				collapsed: false,
+				width: 250,
+				layout: 'border',
+				items: [new OCS.GroupView().createView()]
+			},me.grid]			
 		});
 
 		return me.panel;
