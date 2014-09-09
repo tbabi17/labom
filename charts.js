@@ -453,7 +453,7 @@ Ext.define('OCS.ActivityLeaderBoardChart', {
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['owner', 'team', 'call', 'email', 'meeting', 'task', 'other'],
 			groupField: 'team',
-			sortField: 'actual_revenue',
+			sortField: 'owner',
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -491,7 +491,10 @@ Ext.define('OCS.ActivityLeaderBoardChart', {
                     return Ext.String.ellipsis(v, 15, false);
                 },
                 font: '11px Arial'                
-            }
+            },
+			rotate: {
+				degrees: 270
+			}
 		}];
 
 		me.series = [{
