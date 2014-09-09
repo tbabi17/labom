@@ -1315,7 +1315,7 @@ Ext.define('OCS.CorporatePanel', {
 			},me.grid]			
 		});
 		
-		me.filterData('My Account List');
+		me.filterData('All Account List');
 		return me.panel;
 	}
 });
