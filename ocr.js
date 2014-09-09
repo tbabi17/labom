@@ -1278,6 +1278,29 @@ Ext.define('OCS.CorporatePanel', {
 			layout: 'border',
 			border: false,
 			region: 'center',
+			items : [me.grid]			
+		});
+
+		return me.panel;
+	},	
+
+	createPanel: function() {
+		var me = this;
+		me.createStore();		
+
+		me.grid = Ext.create('OCS.GridView', {
+			store: me.store,
+			columns: me.createColumns(),
+			actions: me.createActions(),
+			func: me.func
+		});										
+
+		me.panel = Ext.create('Ext.panel.Panel', {
+			title: me.title,
+			id: me.tab,
+			layout: 'border',
+			border: false,
+			region: 'center',
 			items : [{
 				xtype: 'panel',
 				region: 'west',
@@ -1291,7 +1314,8 @@ Ext.define('OCS.CorporatePanel', {
 				items: [new OCS.GroupView().createView()]
 			},me.grid]			
 		});
-
+		
+		me.filterData('My Account List');
 		return me.panel;
 	}
 });
