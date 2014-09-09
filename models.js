@@ -1416,6 +1416,10 @@ function renderWWW(v) {
 	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+v+'</span></a>';
 }
 
+function renderGroup(v) {
+	return '<img src="images/buildings.png" title="" style="height:12px"/>&nbsp;'+v.toUpperCase();
+}
+
 function renderLink(v) {
 	var input = 'http';
 	if (v != '' && v.substring(0, input.length) != input)
