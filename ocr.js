@@ -429,7 +429,7 @@ Ext.define('OCS.KeyDeals', {
 				},{
 					text: "Sum of revenue",
 					dataIndex: 'expected_revenue',
-					width: 100,
+					width: 110,
 					align: 'right',
 					renderer: renderMoney,
 					sortable: true
@@ -536,7 +536,16 @@ Ext.define('OCS.RetailPanel', {
 	filterData: function(views) {
 		var me = this;		
 		me.title = views;
+		me.views = views;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: me.values, where: me.where, views: views};
+		me.store.loadPage(1);
+	},
+
+	reloadGroup: function(group) {
+		var me = this;	
+		me.title = group.toUpperCase();
+		if (group == ' Тодорхойгүй') group = '';		
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: me.func, values: 'lastName', where: group, views: me.views};
 		me.store.loadPage(1);
 	},
 	
@@ -1070,7 +1079,7 @@ Ext.define('OCS.RetailPanel', {
 			items : [me.grid]			
 		});
 		
-		me.filterData('My Company List');
+		me.filterData('My Account List');
 		return me.panel;
 	}
 });
@@ -1282,7 +1291,7 @@ Ext.define('OCS.CorporatePanel', {
 		});
 
 		return me.panel;
-	},	
+	},
 
 	createPanel: function() {
 		var me = this;
@@ -1315,7 +1324,7 @@ Ext.define('OCS.CorporatePanel', {
 			},me.grid]			
 		});
 		
-		me.filterData('');
+		me.filterData('My Account List');
 		return me.panel;
 	}
 });
@@ -5321,6 +5330,7 @@ Ext.define('OCS.SalesOrders', {
 	}
 });
 
+
 Ext.define('OCS.Dashboard', {
 	extend: 'OCS.Module',
 	
@@ -5444,23 +5454,24 @@ Ext.define('OCS.Dashboard', {
 							}
 						})
 					},{
-						text: 'Reset',
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_8').setText(me.month());
 							Ext.getCmp('end_8').setText(me.nextmonth());
 							me.charts[8].rangeData(me.charts[8].month(), me.charts[8].nextmonth());
 						}
-					}],
-					items: /*{
-						xtype: 'panel',
-						bodyPadding: 30,
-						border: false,
-						autoLoad: {
-							url: 'funnel.php',
-							scripts: true
+					},{
+						iconCls: 'chart',
+						enableToggle: true,
+						pressed: true,
+						toggleHandler: function(e, p) {
+							me.charts[8].grid.setVisible(!p);
 						}
-					}*/me.charts[8]
+					}],
+					items: [
+						me.charts[8].createGrid(),
+						me.charts[8]
+					]
 				}]
 			},{
 				columnWidth: 0.29,
@@ -5524,15 +5535,24 @@ Ext.define('OCS.Dashboard', {
 							}
 						})
 					},{
-						text: 'Reset',
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_3').setText(me.month());
 							Ext.getCmp('end_3').setText(me.nextmonth());
 							me.charts[3].rangeData(me.charts[3].month(), me.charts[3].nextmonth());
 						}
+					},{
+						iconCls: 'chart',
+						enableToggle: true,
+						pressed: true,
+						toggleHandler: function(e, p) {
+							me.charts[3].grid.setVisible(!p);
+						}
 					}],
-					items: me.charts[3]
+					items: [
+						me.charts[3].createGrid(),
+						me.charts[3]
+					]
 				}]
 			},{
 				columnWidth: 0.23,
@@ -5564,48 +5584,9 @@ Ext.define('OCS.Dashboard', {
 				border: false,
 				items: [{
 					layout: 'fit',
-					title:'Open Activities',
+					title:'My Activities',
 					collapsible: true,		
-					height: 300,
-					tbar: [{
-						text: 'Views',
-						iconCls: 'list',
-						menu: {
-							xtype: 'menu',
-							items: [
-								
-							]
-						}
-					},'->',
-					{
-						id: 'start_10',
-						text: me.month(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								Ext.getCmp('start_10').setText(Ext.Date.format(date, 'Y-m-d'));
-							}
-						})
-					},
-					{
-						id: 'end_10',
-						text: me.nextmonth(),
-						iconCls: 'calendar',
-						menu: Ext.create('Ext.menu.DatePicker', {
-							handler: function(dp, date){
-								Ext.getCmp('end_10').setText(Ext.Date.format(date, 'Y-m-d'));
-//								me.charts[10]. 
-							}
-						})
-					},{
-						text: 'Reset',
-						iconCls: 'reset',
-						handler: function() {
-							Ext.getCmp('start_10').setText(me.month());
-							Ext.getCmp('end_10').setText(me.nextmonth());
-							
-						}
-					}],
+					height: 300,					
 					items: [me.charts[10].createGrid()]
 				}]
 			},{
@@ -5684,16 +5665,22 @@ Ext.define('OCS.Dashboard', {
 								me.charts[13].rangeData(me.charts[13].start, me.charts[13].end);
 							}
 						})
-					},{
-						text: 'Reset',
+					},{					
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_13').setText(me.month());
 							Ext.getCmp('end_13').setText(me.nextmonth());
 							me.charts[13].rangeData(me.charts[13].month(), me.charts[13].nextmonth());
 						}
+					},{
+						iconCls: 'chart',
+						enableToggle: true,
+						pressed: true,
+						toggleHandler: function(e, p) {
+							me.charts[13].grid.setVisible(!p);
+						}
 					}],
-					items: [me.charts[13]]
+					items: [me.charts[13].createGrid(), me.charts[13]]
 				}]
 			},{
 				columnWidth: 0.65,
@@ -5729,7 +5716,6 @@ Ext.define('OCS.Dashboard', {
 						}
 					},'->',
 					{
-						text: 'Reset',
 						iconCls: 'reset',
 						handler: function() {
 							me.charts[4].rangeData(me.charts[4].yearValue(), me.charts[7].monthValue());
@@ -5812,7 +5798,6 @@ Ext.define('OCS.Dashboard', {
 							}
 						})
 					},{
-						text: 'Reset',
 						iconCls: 'reset',
 						handler: function() {
 							Ext.getCmp('start_9').setText(me.month());
@@ -7532,6 +7517,7 @@ Ext.define('OCS.MyCalendar', {
 			border: true,
 			title: 'Calendar',
 			collapsible: true,
+			collapsed: true,
 			region: 'center',
 			autoScroll: true,
 			items : [me.frame]
@@ -7562,6 +7548,28 @@ Ext.define('OCS.UploadWindow', {
 		var me = this;
 
 		me.form = Ext.create('OCS.UploadForm', {
+			id : 'upload_form',
+			region: 'center',
+			name: this.name,
+			win: this
+		});
+
+		me.items = [me.form];
+		me.callParent(arguments);
+	}
+});
+
+Ext.define('OCS.UploadProfileWindow', {
+	extend: 'OCS.Window',
+	title: 'Upload from image',
+	maximizable: true,
+	width: 270,
+	height: 160,
+
+	initComponent: function() {
+		var me = this;
+
+		me.form = Ext.create('OCS.UploadImageForm', {
 			id : 'upload_form',
 			region: 'center',
 			name: this.name,
