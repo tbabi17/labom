@@ -1,3 +1,4 @@
+var position = '';
 var views = [];
 var shows = [];
 Ext.define('OCS.Viewport', {
