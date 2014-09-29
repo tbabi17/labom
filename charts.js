@@ -83,6 +83,36 @@ Ext.define('OCS.Chart', {
 		me.start = me.month();
 		me.end = me.nextmonth();
 		me.store.load();
+	},
+
+	createGrid: function() {
+		var me = this;
+		me.grid = Ext.create('Ext.grid.Panel', {	
+			store: me.store,
+			border: false,
+			hidden: true,
+			region: 'west',
+			flex: 1,
+			columnLines: true,			
+			columns: [				
+				{
+					text     : 'Name',
+					width    : 150,
+					sortable : true,
+					dataIndex: 'name'
+				},
+				{
+					text     : 'Value',
+					width    : 120,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'value',
+				}
+			]
+		});	
+
+		return me.grid;
 	}
 });
 
@@ -92,7 +122,6 @@ Ext.define('OCS.SalesFunnel', {
 	shadow: false,
 	legend: {
 		position: 'right',
-
 	},
 	insetPadding: 20,
 	theme: 'Base:gradients',
@@ -453,7 +482,7 @@ Ext.define('OCS.ActivityLeaderBoardChart', {
 		me.store = Ext.create('Ext.data.Store', {
 			fields: ['owner', 'team', 'call', 'email', 'meeting', 'task', 'other'],
 			groupField: 'team',
-			sortField: 'owner',
+			sortField: 'actual_revenue',
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -491,10 +520,7 @@ Ext.define('OCS.ActivityLeaderBoardChart', {
                     return Ext.String.ellipsis(v, 15, false);
                 },
                 font: '11px Arial'                
-            },
-			rotate: {
-				degrees: 270
-			}
+            }
 		}];
 
 		me.series = [{
@@ -514,6 +540,68 @@ Ext.define('OCS.ActivityLeaderBoardChart', {
 		me.end = e2;
 		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_activity_leaderboard_list', start_date: e1, end_date: e2};
 		me.store.load();
+	},	
+
+	createGrid: function() {
+		var me = this;
+		me.grid = Ext.create('Ext.grid.Panel', {	
+			store: me.store,
+			border: false,
+			hidden: true,
+			region: 'west',
+			flex: 1,
+			columnLines: true,			
+			columns: [				
+				{
+					text     : 'Owner',
+					width    : 150,
+					sortable : true,
+					dataIndex: 'owner'
+				},
+				{
+					text     : 'Phone Call',
+					width    : 80,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'call',
+				},
+				{
+					text     : 'Email',
+					width    : 80,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'email',
+				},
+				{
+					text     : 'Meeting',
+					width    : 80,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'meeting',
+				},
+				{
+					text     : 'Task',
+					width    : 80,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'task',
+				},
+				{
+					text     : 'Other',
+					width    : 80,
+					sortable : true,
+					renderer : renderNumber,
+					align	 : 'right',
+					dataIndex: 'other',
+				}
+			]
+		});	
+
+		return me.grid;
 	}
 });
 
@@ -1185,7 +1273,7 @@ Ext.define('OCS.LeadBySource', {
 		}];
 
 		me.callParent(arguments);
-	},
+	},	
 
 	rangeData: function(e1, e2) {
 		var me = this;
