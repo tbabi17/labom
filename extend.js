@@ -166,7 +166,7 @@ Ext.define('OCS.Module', {
 									 			   '</div>');
 							} else {
 								views['topbar'].update('<div class="caption">'+
-													 '<table cellpadding=0 cellspacing=0>
+													 '<table cellpadding=0 cellspacing=0>'+
 													  '<tr>'+
 													  '<td>'+
 													'<table class="horizon">'+
