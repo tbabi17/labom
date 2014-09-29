@@ -1079,7 +1079,7 @@ Ext.define('OCS.RetailPanel', {
 			items : [me.grid]			
 		});
 		
-		me.filterData('My Account List');
+		me.filterData('My Company List');
 		return me.panel;
 	}
 });
@@ -1324,7 +1324,7 @@ Ext.define('OCS.CorporatePanel', {
 			},me.grid]			
 		});
 		
-		me.filterData('My Account List');
+		me.filterData('My Company List');
 		return me.panel;
 	}
 });
