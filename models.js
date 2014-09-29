@@ -3,6 +3,7 @@ var selected;
 var selectedLead;
 var selectedQuote;
 var selectedOwner;
+var selectedLastName;
 var fields = [];
 var columns = [];
 var customers = [];
@@ -365,6 +366,7 @@ Ext.define('CRM_POSTS', {
 
 fields['CRM_EMAIL_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
+   {name: 'campaign', text: 'Campaign', width: 150},
    {name: 'crm_id', text: 'CRM ID', width: 50, hidden: true},   
    {name: 'deal_id', text: 'Deal ID', width: 50, hidden: true},   
    {name: 'case_id', text: 'Case ID', width: 50, hidden: true},   
@@ -375,10 +377,11 @@ fields['CRM_EMAIL_FIELDS'] = [
    {name: 'subject', text: 'Subject', width: 200, primary: true},
    {name: '_to', text: 'To', width: 150, renderer: renderMail},
    {name: '_from', text: 'From', width: 150, renderer: renderMail, hidden: true},
-   {name: 'campaign', text: 'Campaign', width: 150},
    {name: 'descr', text: 'Message body', width: 200, hidden: true},
    {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
    {name: 'userCode', text: 'Created by', width: 100, hidden: true},
+   {name: 'remind_at', type: 'date', text: 'Remind', hidden: true,  width: 200, dateFormat: 'Y-m-d'},
+   {name: 'remind_type', text: 'Remind type', hidden: true,  width: 200},
    {name: '_date', text: 'Created on', dateFormat: 'Y-m-d', width: 120, renderer: renderCreatedDate}
 ];
 
@@ -387,6 +390,15 @@ Ext.define('CRM_EMAIL', {
 	fields: fields['CRM_EMAIL_FIELDS']
 });
 
+fields['CRM_GROUP_FIELDS'] = [
+   {name: 'lastName', text: 'lastName', width: 150},
+   {name: 'count', text: 'Count', width: 50, hidden: true},   
+];
+
+Ext.define('CRM_GROUP', {
+	extend: 'Ext.data.Model',
+	fields: fields['CRM_GROUP_FIELDS']
+});
 
 fields['CRM_QUOTE_FIELDS'] = [
    {name: 'id', text: 'ID', width: 50, hidden:true}, 
@@ -759,7 +771,8 @@ fields['CRM_ALARM_FIELDS'] = [
    {name: 'subject', text: 'Description', width: 250},
    {name: 'status', text: 'Status', width: 100},
    {name: '_date', text: 'Date', width: 130},
-   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner}
+   {name: 'owner', text: 'Owner', width: 100, renderer: renderOwner},
+   {name: 'flag', text:'flag'}
 ];
 
 Ext.define('CRM_ALARM', {
@@ -1416,10 +1429,6 @@ function renderWWW(v) {
 	return '<a href="'+v+'" target="_blank"><span style="color:blue; text-decoration: underline;">'+v+'</span></a>';
 }
 
-function renderGroup(v) {
-	return '<img src="images/buildings.png" title="" style="height:12px"/>&nbsp;'+v.toUpperCase();
-}
- 
 function renderLink(v) {
 	var input = 'http';
 	if (v != '' && v.substring(0, input.length) != input)
@@ -1772,6 +1781,10 @@ function renderTime(v) {
 
 function renderAny(v) {
 	return v;
+}
+
+function renderGroup(v) {
+	return '<img src="images/buildings.png" title="" style="height:12px"/>&nbsp;'+v.toUpperCase();
 }
 
 Ext.define('Teller.ext.CurrencyField', {
@@ -2261,7 +2274,7 @@ Ext.define('Ext.ux.window.Notification', {
 	paddingX: 30,
 	paddingY: 10,
 	
-	minWidth: 200,
+	minWidth: 250,
 
 	slideInAnimation: 'easeIn',
 	slideBackAnimation: 'bounceOut',
@@ -2717,3 +2730,7 @@ Ext.define('Ext.ux.window.Notification', {
 	}
 
 });
+
+function show_avatar() {
+	new OCS.UploadProfileWindow().show();
+}
