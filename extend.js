@@ -1,3 +1,5 @@
+var reuse;
+
 Ext.define('OCS.Module', {
 	modelName: '',
 	remoteSort : true,
@@ -61,86 +63,112 @@ Ext.define('OCS.Module', {
 							var deal = 0, ccase = 0, activity = 0;
 							var show = (pk == 'dashboard');				
 							me.store.each(function(rec){
-								if (show && rec.data['type'] == 'phone call' || rec.data['type'] == 'appointment') {
-										Ext.create('widget.uxNotification', {
-											title: 'Phone call',
-											closeAction: 'hide',
-											position: 'br',
-											manager: 'demo1',
-											useXAxis: false,
-											stickWhileHover: false,
-											autoCloseDelay: 20000,
-											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' ('+rec.data['type']+')</br> reminded by <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
-										}).show();
-								} else
-								if (rec.data['type'] == 'deal') {
-									if (rec.data['status'] == 'assigned' && show) {										
-										Ext.create('widget.uxNotification', {
-											title: 'Assigned',
-											closeAction: 'hide',
-											position: 'br',
-											manager: 'demo1',
-											useXAxis: false,
-											stickWhileHover: false,
-											iconCls: 'ux-notification-icon-information',
-											html: rec.data['subject']+' (deal)</br> assigned by <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
-										}).show();
+								if (rec.data['flag'] == 1) {
+									if (show && rec.data['type'] == 'phone call' || rec.data['type'] == 'appointment') {
+											var ico = 'a-call';
+											if (rec.data['type'] == 'appointment')
+												ico = 'a-event';
+											if (!reuse) {																
+												reuse = Ext.create('widget.uxNotification', {
+													position: 'tl',
+													cls: 'ux-notification-light',
+													closable: false,										
+													title: '',
+													html: '<img src="images/'+ico+'.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=workspace"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> remind by '+rec.data['owner']
+												}).show();
+											} else {
+												reuse.update('<img src="images/'+ico+'.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=workspace"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> remind by '+rec.data['owner']);
+												reuse.show();
+											}
 									} else
-									if (rec.data['status'] == 'remind' && show) {										
-										Ext.create('widget.uxNotification', {
-											title: 'Remind',
-											closeAction: 'hide',
-											position: 'br',
-											manager: 'demo1',
-											useXAxis: false,
-											stickWhileHover: false,
-											iconCls: 'ux-notification-icon-remind',
-											html: rec.data['subject']+' (deal)</br> remind <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
-										}).show();
-									} else
-									if (rec.data['status'] == 'commented' && show) {										
-										Ext.create('widget.uxNotification', {
-											title: 'Message',
-											closeAction: 'hide',
-											position: 'br',
-											manager: 'demo1',
-											useXAxis: false,
-											stickWhileHover: false,
-											iconCls: 'ux-notification-icon-message',
-											html: rec.data['subject']+' (deal)</br> posted by <b>'+rec.data['owner']+'</b> <a href="?pk=deals">Go to</a>'
-										}).show();
-									} else
-										deal++;
-								}
-								else
-								if (rec.data['type'] == 'case')
-									ccase++;
-								else
-								{
-									if (rec.data['status'] == 'workflow' && show) {	
-										Ext.create('widget.uxNotification', {
-											title: 'Task',
-											closeAction: 'hide',
-											position: 'br',
-											manager: 'demo1',
-											useXAxis: false,
-											stickWhileHover: false,
-											iconCls: 'ux-notification-icon-task',
-											html: rec.data['subject']+' (task)</br> assigned <b>'+rec.data['owner']+'</b> <a href="?pk=workspace">Go to</a>'
-										}).show();
+									if (rec.data['type'] == 'deal') {
+										if (rec.data['status'] == 'assigned' && show) {											
+											if (!reuse) {				
+												reuse = Ext.create('widget.uxNotification', {
+													position: 'tl',
+													cls: 'ux-notification-light',
+													closable: false,										
+													title: '',
+													html: '<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> assigned by '+rec.data['owner']
+												}).show();
+											} else {
+												reuse.update('<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> assigned by '+rec.data['owner']);
+												reuse.show();
+											}
+										} else
+										if (rec.data['status'] == 'remind' && show) {								
+											if (!reuse) {				
+												reuse = Ext.create('widget.uxNotification', {
+													position: 'tl',
+													cls: 'ux-notification-light',
+													closable: false,										
+													title: '',
+													html: '<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> remind by '+rec.data['owner']
+												}).show();
+											} else {
+												reuse.update('<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> remind by '+rec.data['owner']);
+												reuse.show();
+											}
+										} else
+										if (rec.data['status'] == 'commented' && show) {					
+											if (!reuse) {				
+												reuse = Ext.create('widget.uxNotification', {
+													position: 'tl',
+													cls: 'ux-notification-light',
+													closable: false,										
+													title: '',
+													html: '<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> posted by '+rec.data['owner']
+												}).show();
+											} else {
+												reuse.update('<img src="images/deal.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=deals"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> posted by '+rec.data['owner']);
+												reuse.show();
+											}
+										} else
+											deal++;
 									}
-									activity++;
+									else
+									if (rec.data['type'] == 'case')
+										ccase++;
+									else
+									{									
+										if (!reuse) {				
+											reuse = Ext.create('widget.uxNotification', {
+												position: 'tl',
+												cls: 'ux-notification-light',
+												closable: false,										
+												title: '',
+												html: '<img src="images/a-task.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=workspace"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> assigned by '+rec.data['owner']
+											}).show();
+										} else {
+											reuse.update('<img src="images/a-task.png" width="16px" style="float:left; margin-right: 5px;"></img><a href="?pk=workspace"><b>'+rec.data['subject']+' ('+rec.data['type']+')</b></a></br> assigned by '+rec.data['owner']);
+											reuse.show();
+										}
+
+										activity++;
+									}
 								}
-							});							
+							});
 
 							if (user_level == 3) {
 								views['topbar'].update('<div class="caption">'+
-													 '<table cellpadding=0 cellspacing=0><tr><td class="padding green"></td><td class="padding'+(pk=='dashboard'?' active':'')+'"><a href="index.php?pk=dashboard">Dashboard</a></td><td class="padding'+(pk=='workspace'?' active':'')+'"><a href="index.php?pk=workspace">Activities'+(activity>0?'<div class="noti_bubble">'+activity+'</div>':'')+'</a></td><td class="padding'+(pk=='deals'?' active':'')+'"><a href="index.php?pk=deals">Deals'+(deal>0?'<div class="noti_bubble">'+deal+'</div>':'')+'</a></td><td class="padding'+(pk=='reseller'?' active':'')+'"><a href="index.php?pk=reseller">Reseller</a></td><td class="padding'+(pk=='retail'?' active':'')+'"><a href="index.php?pk=retail">Contacts</a></td><td class="padding'+(pk=='corporate'?' active':'')+'"><a href="index.php?pk=corporate">Accounts</a></td><td class="padding'+(pk=='cases'?' active':'')+'"><a href="index.php?pk=cases">Cases'+(ccase>0?'<div class="noti_bubble">'+ccase+'</div>':'')+'</a></td><td class="padding'+(pk=='campaigns'?' active':'')+'"><a href="index.php?pk=campaigns">Campaigns</a></td><td class="padding'+(pk=='competitor'?' active':'')+'"><a href="index.php?pk=competitor">Competitors</a></td><td style="display:none" class="padding'+(pk=='quotes'?' active':'')+'"><a href="index.php?pk=quotes">Invoices</a></td><td style="display:none" class="padding'+(pk=='sales'?' active':'')+'"><a href="index.php?pk=sales">Contracts</a></td><td class="padding'+(pk=='goal'?' active':'')+'"><a href="index.php?pk=goal">Goals</a></td><td class="padding'+(pk=='product'?' active':'')+'"><a href="index.php?pk=product">Products</a></td><td class="padding'+(pk=='reports'?' active':'')+'"><a href="index.php?pk=reports">Reports</a></td><td class="padding'+(pk=='settings'?' active':'')+'"><a href="index.php?pk=settings">Settings</a></td><td class="padding" style="float:right"><a href="logout.php">Logout</a></td></tr></table>'+
+													 '<table cellpadding=0 cellspacing=0>'+
+													 '<tr>'+
+													 '<td>'+
+													'<table class="horizon">'+
+														'<tr>'+
+															'<td><a onclick="show_avatar()"><img id="avatar" src="images/users/'+logged+'.png" height="30px"></img></a></td>'+
+															'<td><b>'+logged+'</b></br><span style="font-size:11px">'+position+'</span></td>'+
+														'</tr>'+
+														'</table>'+
+													 '</td>'+
+													 '<td class="padding'+(pk=='dashboard'?' active':'')+'"><a href="index.php?pk=dashboard">Dashboard</a></td><td class="padding'+(pk=='workspace'?' active':'')+'"><a href="index.php?pk=workspace">Activities'+(activity>0?'<div class="noti_bubble">'+activity+'</div>':'')+'</a></td><td class="padding'+(pk=='deals'?' active':'')+'"><a href="index.php?pk=deals">Deals'+(deal>0?'<div class="noti_bubble">'+deal+'</div>':'')+'</a></td><td class="padding'+(pk=='reseller'?' active':'')+'"><a href="index.php?pk=reseller">Reseller</a></td><td class="padding'+(pk=='retail'?' active':'')+'"><a href="index.php?pk=retail">Contacts</a></td><td class="padding'+(pk=='corporate'?' active':'')+'"><a href="index.php?pk=corporate">Accounts</a></td><td class="padding'+(pk=='cases'?' active':'')+'"><a href="index.php?pk=cases">Cases'+(ccase>0?'<div class="noti_bubble">'+ccase+'</div>':'')+'</a></td><td class="padding'+(pk=='campaigns'?' active':'')+'"><a href="index.php?pk=campaigns">Campaigns</a></td><td class="padding'+(pk=='competitor'?' active':'')+'"><a href="index.php?pk=competitor">Competitors</a></td><td class="padding'+(pk=='quotes'?' active':'')+'"><a href="index.php?pk=quotes">Invoices</a></td><td class="padding'+(pk=='sales'?' active':'')+'"><a href="index.php?pk=sales">Contracts</a></td><td class="padding'+(pk=='goal'?' active':'')+'"><a href="index.php?pk=goal">Goals</a></td><td class="padding'+(pk=='product'?' active':'')+'"><a href="index.php?pk=product">Products</a></td><td class="padding'+(pk=='reports'?' active':'')+'"><a href="index.php?pk=reports">Reports</a></td><td class="padding'+(pk=='settings'?' active':'')+'"><a href="index.php?pk=settings">Settings</a></td><td class="padding"><a href="logout.php">Logout</a></td>'+
+													 '</tr></table>'+
 									 			   '</div>');
 							} else {
 								views['topbar'].update('<div class="caption">'+
-													 '<table cellpadding=0 cellspacing=0><tr><td class="padding green"></td><td class="padding'+(pk=='dashboard'?' active':'')+'"><a href="index.php?pk=dashboard">Dashboard</a></td><td class="padding'+(pk=='workspace'?' active':'')+'"><a href="index.php?pk=workspace">Activities'+(activity>0?'<div class="noti_bubble">'+activity+'</div>':'')+'</a></td><td class="padding'+(pk=='deals'?' active':'')+'"><a href="index.php?pk=deals">Deals'+(deal>0?'<div class="noti_bubble">'+deal+'</div>':'')+'</a></td><td class="padding'+(pk=='reseller'?' active':'')+'"><a href="index.php?pk=reseller">Reseller</a></td><td class="padding'+(pk=='retail'?' active':'')+'"><a href="index.php?pk=retail">Contacts</a></td><td class="padding'+(pk=='corporate'?' active':'')+'"><a href="index.php?pk=corporate">Accounts</a></td><td class="padding'+(pk=='cases'?' active':'')+'"><a href="index.php?pk=cases">Cases'+(ccase>0?'<div class="noti_bubble">'+ccase+'</div>':'')+'</a></td><td class="padding'+(pk=='campaigns'?' active':'')+'"><a href="index.php?pk=campaigns">Campaigns</a></td><td style="display:none" class="padding'+(pk=='services'?' active':'')+'"><a href="index.php?pk=services">Services</a></td><td class="padding'+(pk=='competitor'?' active':'')+'"><a href="index.php?pk=competitor">Competitors</a></td><td class="padding'+(pk=='goal'?' active':'')+'"><a href="index.php?pk=goal">Goals</a></td><td class="padding'+(pk=='product'?' active':'')+'"><a href="index.php?pk=product">Products</a></td><td class="padding'+(pk=='reports'?' active':'')+'"><a href="index.php?pk=reports">Reports</a></td><td class="padding'+(pk=='settings'?' active':'')+'"><a href="index.php?pk=settings">Settings</a></td><td class="padding" style="float:right"><a href="logout.php">Logout</a></td></tr></table>'+
+													 '<table cellpadding=0 cellspacing=0><tr><td class="padding green"></td><td class="padding'+(pk=='dashboard'?' active':'')+'"><a href="index.php?pk=dashboard">Dashboard</a></td><td class="padding'+(pk=='workspace'?' active':'')+'"><a href="index.php?pk=workspace">Activities'+(activity>0?'<div class="noti_bubble">'+activity+'</div>':'')+'</a></td><td class="padding'+(pk=='deals'?' active':'')+'"><a href="index.php?pk=deals">Deals'+(deal>0?'<div class="noti_bubble">'+deal+'</div>':'')+'</a></td><td class="padding'+(pk=='reseller'?' active':'')+'"><a href="index.php?pk=reseller">Reseller</a></td><td class="padding'+(pk=='retail'?' active':'')+'"><a href="index.php?pk=retail">Contacts</a></td><td class="padding'+(pk=='corporate'?' active':'')+'"><a href="index.php?pk=corporate">Accounts</a></td><td class="padding'+(pk=='cases'?' active':'')+'"><a href="index.php?pk=cases">Cases'+(ccase>0?'<div class="noti_bubble">'+ccase+'</div>':'')+'</a></td><td class="padding'+(pk=='campaigns'?' active':'')+'"><a href="index.php?pk=campaigns">Campaigns</a></td><td class="padding'+(pk=='services'?' active':'')+'"><a href="index.php?pk=services">Services</a></td><td class="padding'+(pk=='competitor'?' active':'')+'"><a href="index.php?pk=competitor">Competitors</a></td><td class="padding'+(pk=='goal'?' active':'')+'"><a href="index.php?pk=goal">Goals</a></td><td class="padding'+(pk=='product'?' active':'')+'"><a href="index.php?pk=product">Products</a></td><td class="padding'+(pk=='reports'?' active':'')+'"><a href="index.php?pk=reports">Reports</a></td><td class="padding'+(pk=='settings'?' active':'')+'"><a href="index.php?pk=settings">Settings</a></td><td class="padding" style="float:right"><a href="logout.php">Logout</a></td>'+
+													 '<td align="right">batbileg</td>'+
+													 '</tr></table>'+
 									 			   '</div>');
 							}
 						}
