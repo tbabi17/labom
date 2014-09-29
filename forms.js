@@ -758,6 +758,8 @@ Ext.define('OCS.CorporateForm', {
 						flex: 0.4,
 						maskRe : /[а-яөүА-ЯӨҮёЁ0-9 ]/,
 						margins: '0 0 0 6',
+						xtype: 'searchcombo',
+						table: 'crm_customer',
 						emptyText: 'Групп нэр'
 					},{
 						name: 'customer_type',
@@ -2460,7 +2462,74 @@ Ext.define('OCS.UploadForm', {
 	}
 });
 
+Ext.define('OCS.UploadImageForm', {
+	extend: 'Ext.form.Panel',
+	border: false,
+	region: 'center',
+	width: 280,
+	height: 210,
+	bodyPadding: '10 10 0',	
 
+	constructor: function(cnfg) {
+        this.callParent(arguments);
+        this.initConfig(cnfg);	
+    },				
+
+	initComponent: function() {
+		var me = this;
+
+		me.items = [{
+			id: 'upload-name',
+			name: 'upload-name',
+            xtype: 'textfield',
+            fieldLabel: 'Name',
+			value: this.name,
+			width: 300
+        },{
+            xtype: 'filefield',
+            id: 'form-file',
+            emptyText: 'Select an file',
+            fieldLabel: 'File',
+            name: 'file-path',
+			width: 300,
+            buttonText: '',
+            buttonConfig: {
+                iconCls: 'upload-icon'
+            }
+        }];
+		
+		me.buttons = [{
+            text: 'Upload',
+			iconCls: 'commit',
+            handler: function(){
+                var form = this.up('form').getForm();
+                if(form.isValid()){
+                    form.submit({
+                        url: 'avia.php',
+						params: {handle: 'file', action:'upload', where: form.findField('upload-name').getValue()},
+                        waitMsg: 'Uploading your data...',
+						standardSubmit: false,
+                        success: function(fp, o) {
+							var data = Ext.decode(o.response.responseText);
+							me.win.close();                  			
+                        },
+						failure: function(form, action) {
+							alert('failed');
+						}
+                    });
+                }
+            }
+        },{
+            text: 'Reset',
+			iconCls: 'reset',
+            handler: function() {
+                this.up('form').getForm().reset();
+            }
+        }];
+
+		me.callParent(arguments);
+	}
+});
 
 Ext.define('OCS.MergeRecordForm', {
 	extend: 'Ext.form.Panel',
