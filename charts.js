@@ -1302,7 +1302,7 @@ Ext.define('OCS.ProductChart', {
 		var me = this;
 		
 		me.store = Ext.create('Ext.data.Store', {
-			fields: ['product_name', 'amount'],
+			fields: [{name:'rangeName', type: 'string'}, {name:'amount', type:'float'}],
 			proxy: {				
 				type: 'ajax',
     			url: 'avia.php',
@@ -1322,37 +1322,45 @@ Ext.define('OCS.ProductChart', {
 		});
 		
 		me.rangeData(me.month(), me.nextmonth());
+		
+		me.axes = [{
+            type: 'Numeric',
+            position: 'left',
+            fields: ['amount'],
+            grid: true,
+            minimum: 0,
+			label: {
+                renderer: Ext.util.Format.numberRenderer('0,0')
+            }
+        }, {
+            type: 'Category',
+            position: 'bottom',
+            fields: ['rangeName'],
+            title: false,
+            label: {
+                font: '11px Arial',
+                renderer: function(name) {
+                    return name;
+                }
+            }
+        }];
+
 
 		me.series = [{
-			type: 'pie',
-			field: 'amount',
-			showInLegend: true,
-			donut: false,
-			tips: {
-			  trackMouse: true,
-			  width: 200,
-			  height: 32,
-			  renderer: function(storeItem, item) {				
-				this.setTitle(storeItem.get('product_name') + ': </br>' + renderMoney(storeItem.get('amount'))+'</br>');
-			  }
+            type: 'line',
+            highlight: {
+				size: 2,
+				radius: 2
 			},
-			highlight: {
-			  segment: {
-				margin: 5
-			  }
-			},
-			label: {
-				field: 'product_name',
-				renderer: function(v) {
-					if (v.length > 32)
-						return v.substring(0, 32)+'...';
-					return v;
-				},
-				display: 'rotate',
-				contrast: true,
-				font: '11px Segoe UI'				
+            axis: 'left',
+            xField: 'product_name',
+            yField: 'amount',			
+			title: '',
+			markerConfig: {
+				size: 2,
+				radius: 2
 			}
-		}];
+        }];
 
 		me.callParent(arguments);
 	},
@@ -1361,7 +1369,7 @@ Ext.define('OCS.ProductChart', {
 		var me = this;
 		me.start = e1;
 		me.end = e2;
-		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_report_product_list', start_date: e1, end_date: e2, sort:'_date', dir: 'asc'};
+		me.store.getProxy().extraParams = {handle: 'web', action: 'select', func: 'crm_chart_product_list', start_date: e1, end_date: e2, sort:'_date', dir: 'asc'};
 		me.store.load({callback: function() {
 				me.refresh();
 				me.redraw();
@@ -1379,6 +1387,36 @@ Ext.define('OCS.ProductChart', {
 				});
 			}
 		});
+	},
+	
+	createGrid: function() {
+		var me = this;
+		me.grid = Ext.create('Ext.grid.Panel', {	
+			store: me.store,
+			border: false,
+			hidden: true,
+			region: 'west',
+			flex: 1,
+			columnLines: true,			
+			columns: [				
+				{
+					text     : 'Name',
+					width    : 150,
+					sortable : true,
+					dataIndex: 'rangeName'
+				},
+				{
+					text     : 'Value',
+					width    : 120,
+					sortable : true,
+					renderer : renderMoney,
+					align	 : 'right',
+					dataIndex: 'amount',
+				}
+			]
+		});	
+
+		return me.grid;
 	}
 });
 
