@@ -470,7 +470,7 @@ Ext.define('OCS.AlarmView', {
 
 	renderTitle: function(value, p, record) {
 		return Ext.String.format(
-				'<table><tr><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;<span class="lightgray">{2}</span></br><span class="gray" style="font-size:15px; line-height: 20px;">{1}</span></td></tr></table>',
+				'<table><tr><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;<span class="lightgray">{2}</span></br><span class="gray">{1}</span></td></tr></table>',
 			    value,
 				record.data.crm_name,
 	            record.data.type
