@@ -462,6 +462,67 @@ Ext.define('OCS.KeyDeals', {
 	}
 });
 
+Ext.define('OCS.AlarmView', {
+	extend: 'OCS.Module',
+	func: 'crm_alarm_list',
+	modelName : 'CRM_ALARM',
+	cls : 'leads',
+
+	renderTitle: function(value, p, record) {
+		return Ext.String.format(
+				'<table class="{2}"><tr><td><b><span class="title">{0}</span></b>&nbsp;&nbsp;<span class="lightgray">{2}</span></br><span class="gray" style="font-size:15px; line-height: 20px;">{1}</span></td></tr></table>',
+			    value,
+				record.data.crm_name,
+	            record.data.type
+		    );
+	},
+
+	createView: function() {
+		var me = this;		
+		me.createStore();
+
+		me.grid = Ext.create('Ext.grid.Panel', {
+			border: false,
+			columns: [{
+					text: "Subject",
+					dataIndex: 'subject',
+					renderer: me.renderTitle,
+					flex: 1,
+					sortable: true
+				},{
+					text: "Status",
+					dataIndex: 'status',
+					width: 80,
+					align: 'right',
+					sortable: true
+				}
+			],
+			store: me.store,
+			listeners: {
+				selectionchange : function(item, selections){
+					me.selectAction(selections);
+				}
+			},
+			features : [{
+				ftype: 'grouping',
+				groupHeaderTpl: '{columnName}: {name} ({rows.length} бичлэг)'
+			}]
+		});
+				
+		me.panel = Ext.create('Ext.panel.Panel', {
+			layout: 'fit',
+			border: false,
+			items : me.grid,		
+			region: 'center'
+		});			
+		return me.panel;
+	},
+
+	loadStore: function() {
+		var me = this;
+		me.store.reload();
+	}
+});
 
 Ext.define('OCS.CompetitorView', {
 	extend: 'OCS.OwnerView',
@@ -5348,24 +5409,7 @@ Ext.define('OCS.Dashboard', {
 		me.charts[6] = new OCS.AccountByIndustry();	
 		me.charts[8] = new OCS.SalesFunnel();
 		me.charts[9] = new OCS.ProductChart();
-		me.charts[10] = new Ext.create('OCS.GridWithFormPanel', {
-							modelName:'CRM_ALARM',
-							func:'crm_alarm_list',
-							title: '',
-							table: 'crm_alarms',
-							insert: (user_level==0),
-							remove: (user_level==0),
-							tab: 'alarm_tabs',
-							values: '',
-							feature: false,
-							bbarable: false,
-							createActions: function(actions) {
-								var me = this;
-								me.actions = [];
-								return me.actions;
-							}
-						});
-
+		me.charts[10] = new OCS.AlarmView();
 		me.charts[11] = new OCS.TopCrosses();
 		me.charts[12] = new OCS.KeyDeals();
 	},
@@ -5584,10 +5628,16 @@ Ext.define('OCS.Dashboard', {
 				border: false,
 				items: [{
 					layout: 'fit',
-					title:'My Activities',
-					collapsible: true,		
-					height: 300,					
-					items: [me.charts[10].createGrid()]
+					height: 300,		
+					title: 'Open Activities',
+					tbar: [{
+						text: 'Views',
+						iconCls: 'list',
+						handler: function() {
+							new OCS.ChartFilterWindow().show();
+						}
+					}],
+					items: [me.charts[10].createView()]
 				}]
 			},{
 				columnWidth: 0.65,
@@ -5737,6 +5787,11 @@ Ext.define('OCS.Dashboard', {
 						menu: {
 							xtype: 'menu',
 							items: [{
+								text: 'Custom filter',
+								handler: function() {
+									new OCS.ChartFilterWindow().show();
+								}
+							},'-',{
 								text: 'Today',
 								handler: function() {
 									Ext.getCmp('start_9').setText(me.today());
@@ -5804,8 +5859,18 @@ Ext.define('OCS.Dashboard', {
 							Ext.getCmp('end_9').setText(me.nextmonth());
 							me.charts[9].rangeData(me.charts[9].month(), me.charts[9].nextmonth());
 						}
+					},{
+						iconCls: 'chart',
+						enableToggle: true,
+						pressed: true,
+						toggleHandler: function(e, p) {
+							me.charts[9].grid.setVisible(!p);
+						}
 					}],
-					items: me.charts[9]
+					items: [
+						me.charts[9].createGrid(),
+						me.charts[9]
+					]
 				}]
 			}]
 		});
