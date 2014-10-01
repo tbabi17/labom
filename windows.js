@@ -2685,7 +2685,7 @@ Ext.define('OCS.ActivityDetailWindow', {
 			
 			Ext.Ajax.request({
 			   url: 'avia.php',
-			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "callresult='remind',remind_at='"+remind_date+"',descr='"+descr+"'", where: "id="+id},
+			   params: {handle: 'web', table: 'crm_calllog', action: 'update', values: "flag=1,callresult='remind',remind_at='"+remind_date+"',descr='"+descr+"'", where: "id="+id},
 			   success: function(response, opts) {
 				   if (me.backgrid)
 					 me.backgrid.getStore().reload();
@@ -5340,6 +5340,87 @@ Ext.define('OCS.UrgencyWindow', {
 				url: 'scad.php'
 			}
 		}];			
+		me.callParent(arguments);
+	}
+});
+
+Ext.define('OCS.ChartFilterWindow', {
+	extend: 'OCS.Window',
+	title: 'Custom filter',
+	maximizable: true,
+	height: 200,
+	modal: false,
+	width: 300,	
+	modal: true,
+
+	initComponent: function() {
+		var me = this;								
+
+		me.form = Ext.create('OCS.FormPanel', {
+			id: 'custom_chart_window',
+			region: 'center',
+			hidden: false,
+			closable: false,			
+			title: '',
+			flex: 1,
+			items: [{
+			    xtype: 'combo',
+				store: Ext.create('Ext.data.Store', {
+					  model: 'CRM_ITEM',
+					  data: [{value: 'lead'},{value: 'opportunity'},{value: 'quote'},{value: 'close as lost'},{value: 'close as won'}]
+				}),				
+				fieldLabel: 'Deal stage',
+				name: 'deal_stage',
+				value: 'lead',
+				queryMode: 'local',
+				displayField: 'value',
+				valueField: 'value',
+				triggerAction: 'all',
+				editable: false
+			},{
+				xtype: 'searchcombo',
+				table: 'crm_products',
+				fieldLabel: 'Product',
+				name: 'product_name'
+			},
+			{
+			    xtype: 'combo',
+				store: Ext.create('Ext.data.Store', {
+					  model: 'CRM_ITEM',
+					  data: [{value: 'week'},{value: 'month'},{value: 'season'},{value: 'year'}]
+				}),				
+				fieldLabel: 'Summary',
+				name: 'summary',
+				value: 'week',
+				queryMode: 'local',
+				displayField: 'value',
+				valueField: 'value',
+				triggerAction: 'all',
+				editable: false
+			}],
+			buttons: [{
+				iconCls: 'reset',
+				text: 'Reset',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					form.reset();
+				}
+			},{
+				iconCls: 'commit',
+				text: 'Commit',				
+				handler: function() {
+					var form = this.up('form').getForm();
+					if(form.isValid()){
+						var values = form.getValues(true);						
+						
+									
+						me.close();
+					}
+				}
+			}]
+		});
+
+		me.items = [me.form];	
 		me.callParent(arguments);
 	}
 });
